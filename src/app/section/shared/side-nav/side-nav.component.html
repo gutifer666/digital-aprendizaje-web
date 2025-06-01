@@ -22,8 +22,45 @@
                 </button>
             }
             <span>digital-aprendizaje-web</span>
+            <span class="toolbar-spacer"></span>
+            <button
+                type="button"
+                aria-label="Toggle right sidenav"
+                matIconButton
+                (click)="endDrawer.toggle()">
+                <mat-icon aria-label="Right nav toggle icon">menu_book</mat-icon>
+            </button>
         </mat-toolbar>
         <!-- Add Content Here -->
         <router-outlet/>
     </mat-sidenav-content>
+    <mat-sidenav #endDrawer class="sidenav right-sidenav" position="end" fixedInViewport
+                 [mode]="(isHandset$ | async) ? 'over' : 'side'"
+                 [opened]="false">
+        <mat-toolbar>Angular Docs</mat-toolbar>
+        <mat-nav-list>
+            <h3 matSubheader>Components</h3>
+            <a mat-list-item href="https://angular.dev/guide/components" target="_blank">
+                <mat-icon matListItemIcon>description</mat-icon>
+                What is a component
+            </a>
+            <a mat-list-item href="https://angular.dev/guide/components/inputs" target="_blank">
+                <mat-icon matListItemIcon>input</mat-icon>
+                Input properties
+            </a>
+            <a mat-list-item href="https://angular.dev/guide/components/outputs" target="_blank">
+                <mat-icon matListItemIcon>output</mat-icon>
+                Output events
+            </a>
+            <h3 matSubheader>Templates</h3>
+            <a mat-list-item href="https://angular.dev/guide/templates" target="_blank">
+                <mat-icon matListItemIcon>code</mat-icon>
+                Template Overview
+            </a>
+            <a mat-list-item href="https://angular.dev/guide/templates/control-flow" target="_blank">
+                <mat-icon matListItemIcon>fork_right</mat-icon>
+                Control Flow
+            </a>
+        </mat-nav-list>
+    </mat-sidenav>
 </mat-sidenav-container>
