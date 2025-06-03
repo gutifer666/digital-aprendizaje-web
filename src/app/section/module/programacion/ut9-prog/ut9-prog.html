@@ -1718,100 +1718,101 @@ public class VBoxEjemplo extends Application &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>/**
- * Ejemplo de uso de etiquetas y campos de texto en JavaFX
- * Se muestra también cómo se puede asociar una imagen a una etiqueta
- *
- * &#64;author JJBH
- */
-public class EtiquetasyTexto extends Application &#123;
+         <pre ngNonBindable>/**
+             * Ejemplo de uso de etiquetas y campos de texto en JavaFX
+             * Se muestra también cómo se puede asociar una imagen a una etiqueta
+             *
+             * &#64;author JJBH
+             */
+            public class EtiquetasyTexto extends Application &#123;
 
-    // Crear etiqueta
-    Label etiqueta = new Label("Escribe tu nombre en los campos de texto.");
-    // Crear etiqueta para el nombre
-    Label labelNombre = new Label("Nombre:") ;
+                // Crear etiqueta
+                Label etiqueta = new Label("Escribe tu nombre en los campos de texto.");
+                // Crear etiqueta para el nombre
+                Label labelNombre = new Label("Nombre:") ;
 
-    &#64;Override
-    public void start(Stage primaryStage) &#123;
+                &#64;Override
+                public void start(Stage primaryStage) &#123;
 
-        // Dar color a la etiqueta
-        etiqueta.setTextFill(Color.web("#0076a3"));
+                    // Dar color a la etiqueta
+                    etiqueta.setTextFill(Color.web("#0076a3"));
 
-        // Obtener image y asoociarla a la etiqueta.
-        // (Estamos suponiendo que existe esa imagen, por lo que deberíamos
-        // capturar las excepciones que puedan surgir en este punto, por si no
-        // existiera, pero lo omitimos por claraida de este código.
-        Image image = new Image(getClass().getResourceAsStream("lupa.png"));
-        etiqueta.setGraphic(new ImageView(image));
-
-
-        // Crear campos de texto
-        TextField campoNombre = new TextField();
-        TextField campoApellidos = new TextField();
-        // Ancho para mostraar 15 caracteres
-        campoNombre.setPrefColumnCount(15);
-        campoApellidos.setPrefColumnCount(15);
-
-        // Establecer los manejadores ActionEvent para ambos campos de texto
-        campoNombre.setOnAction((ActionEvent e) -> &#123;
-            etiqueta.setText("Has cambiado el nombre");
-        &#125;);
-        campoApellidos.setOnAction((ActionEvent e) -> &#123;
-            etiqueta.setText("Has cambiado los apellidos");
-        &#125;);
+                    // Obtener image y asoociarla a la etiqueta.
+                    // (Estamos suponiendo que existe esa imagen, por lo que deberíamos
+                    // capturar las excepciones que puedan surgir en este punto, por si no
+                    // existiera, pero lo omitimos por claraida de este código.
+                    Image image = new Image(getClass().getResourceAsStream("lupa.png"));
+                    etiqueta.setGraphic(new ImageView(image));
 
 
-        // Para la etiqueta del nombre establecemos manejadores para que se
-        // haga un zoom, cuando con el ratón nos acerquemos a ella, y se quite
-        // el zoom al alejarnos, al salir de ella.
-        labelNombre.setOnMouseEntered(new EventHandler<MouseEvent>() &#123;
-            &#64;Override public void handle(MouseEvent e) &#123;
-                labelNombre.setScaleX(1.5);
-                labelNombre.setScaleY(1.5);
+                    // Crear campos de texto
+                    TextField campoNombre = new TextField();
+                    TextField campoApellidos = new TextField();
+                    // Ancho para mostraar 15 caracteres
+                    campoNombre.setPrefColumnCount(15);
+                    campoApellidos.setPrefColumnCount(15);
+
+                    // Establecer los manejadores ActionEvent para ambos campos de texto
+                    campoNombre.setOnAction((ActionEvent e) -> &#123;
+                        etiqueta.setText("Has cambiado el nombre");
+                    &#125;);
+                    campoApellidos.setOnAction((ActionEvent e) -> &#123;
+                        etiqueta.setText("Has cambiado los apellidos");
+                    &#125;);
+
+
+                    // Para la etiqueta del nombre establecemos manejadores para que se
+                    // haga un zoom, cuando con el ratón nos acerquemos a ella, y se quite
+                    // el zoom al alejarnos, al salir de ella.
+                    labelNombre.setOnMouseEntered(new EventHandler<MouseEvent>() &#123;
+                        &#64;Override public void handle(MouseEvent e) &#123;
+                            labelNombre.setScaleX(1.5);
+                            labelNombre.setScaleY(1.5);
+                        &#125;
+                    &#125;);
+                    labelNombre.setOnMouseExited(new EventHandler<MouseEvent>() &#123;
+                        &#64;Override public void handle(MouseEvent e) &#123;
+                            labelNombre.setScaleX(1);
+                            labelNombre.setScaleY(1);
+                        &#125;
+                    &#125;);
+
+
+
+                    // Crear un Gridpane
+                    GridPane panel = new GridPane();
+
+                    // Añadir etiquetas y campos al GridPane
+                    panel.addRow(0, etiqueta);
+                    panel.addRow(1, labelNombre, campoNombre);
+                    panel.addRow(2, new Label("Apellidos:"), campoApellidos);
+
+                    // Establecer el tamaño del panel
+                    panel.setMinSize(350, 250);
+                    // Establecer propiedades del GridPane
+                    panel.setStyle("-fx-padding: 10;" +
+                    "-fx-border-style: solid inside;" +
+                    "-fx-border-width: 2;" +
+                    "-fx-border-insets: 5;" +
+                    "-fx-border-radius: 5;" +
+                    "-fx-border-color: blue;");
+
+                    // Crear la escena
+                    Scene scene = new Scene(panel);
+
+                    // Título de la ventana
+                    primaryStage.setTitle("Etiquetas y campos de texto");
+                    // Añadir la escena al escenario
+                    primaryStage.setScene(scene);
+                    // Mostrar el escenario
+                    primaryStage.show();
+                &#125;
+
+                public static void main(String[] args) &#123;
+                    Application.launch(args);
+                &#125;
             &#125;
-        &#125;);
-        labelNombre.setOnMouseExited(new EventHandler<MouseEvent>() &#123;
-            &#64;Override public void handle(MouseEvent e) &#123;
-                labelNombre.setScaleX(1);
-                labelNombre.setScaleY(1);
-            &#125;
-        &#125;);
-
-
-
-        // Crear un Gridpane
-        GridPane panel = new GridPane();
-
-        // Añadir etiquetas y campos al GridPane
-        panel.addRow(0, etiqueta);
-        panel.addRow(1, labelNombre, campoNombre);
-        panel.addRow(2, new Label("Apellidos:"), campoApellidos);
-
-        // Establecer el tamaño del panel
-        panel.setMinSize(350, 250);
-        // Establecer propiedades del GridPane
-        panel.setStyle("-fx-padding: 10;" +
-        "-fx-border-style: solid inside;" +
-        "-fx-border-width: 2;" +
-        "-fx-border-insets: 5;" +
-        "-fx-border-radius: 5;" +
-        "-fx-border-color: blue;");
-
-        // Crear la escena
-        Scene scene = new Scene(panel);
-
-        // Título de la ventana
-        primaryStage.setTitle("Etiquetas y campos de texto");
-        // Añadir la escena al escenario
-        primaryStage.setScene(scene);
-        // Mostrar el escenario
-        primaryStage.show();
-    &#125;
-
-    public static void main(String[] args) &#123;
-        Application.launch(args);
-    &#125;
-&#125;</pre>
+         </pre>
         </div>
     </div>
     <p>
@@ -1844,8 +1845,7 @@ public class EtiquetasyTexto extends Application &#123;
          <pre>// Crear un botón normal con N como mnemónico
 Button newBtn = new Button("_Nuevo");
 // Añadir EventHandler al botón
-newBtn.setOnAction(new EventHandler<ActionEvent>() &#123;
-    &#64;Override
+newBtn.setOnAction(new EventHandler&lt;ActionEvent&gt;() &#123;    &#64;Override
     public void handle(ActionEvent e) &#123;
       // Establecer el texto de una etiqueta
       etiqueta.setText("Has pulsado el botón Nuevo");
@@ -2395,8 +2395,8 @@ public class RadioBotonFX extends Application &#123;
         miEtiqueta = new Label("Seleccionado: ") ;
 
         // Añadir EventHandler al checkbox
-        comboBox.setOnAction(new EventHandler<ActionEvent>() &#123;
-            &#64;Override
+comboBox.setOnAction(new EventHandler&lt;ActionEvent&gt;() &#123;
+             &#64;Override
             public void handle(ActionEvent e) &#123;
 
                 String valor = (String) comboBox.getValue();
@@ -2893,22 +2893,24 @@ public class Lista extends Application  &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre><?xml version="1.0" encoding="UTF-8"?>
+    <pre><code>
+    &lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
-             <?import java.lang.*?>
-             <?import java.util.*?>
-             <?import javafx.scene.*?>
-             <?import javafx.scene.control.*?>
-             <?import javafx.scene.layout.*?>
+    &lt;?import java.lang.*?&gt;
+    &lt;?import java.util.*?&gt;
+    &lt;?import javafx.scene.*?&gt;
+    &lt;?import javafx.scene.control.*?&gt;
+    &lt;?import javafx.scene.layout.*?&gt;
 
-             <AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1"
-                         xmlns="http://javafx.com/javafx/8" fx:controller="javafxejemplo.FXMLDocumentController">
-    <children>
-        <Button fx:id="button" layoutX="121.0" layoutY="75.0" onAction="#handleButtonAction" text="Click Me!"/>
-        <Label fx:id="label" layoutX="119.0" layoutY="178.0" minHeight="16" minWidth="69" text="Prueba"/>
-        <Button fx:id="button2" layoutX="121.0" layoutY="115.0" onAction="#handleButtonAction2" text="Otro botón"/>
-    </children>
-</AnchorPane></pre>
+    &lt;AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1"
+                 xmlns="http://javafx.com/javafx/8" fx:controller="javafxejemplo.FXMLDocumentController"&gt;
+        &lt;children&gt;
+            &lt;Button fx:id="button" layoutX="121.0" layoutY="75.0" onAction="#handleButtonAction" text="Click Me!"/&gt;
+            &lt;Label fx:id="label" layoutX="119.0" layoutY="178.0" minHeight="16" minWidth="69" text="Prueba"/&gt;
+            &lt;Button fx:id="button2" layoutX="121.0" layoutY="115.0" onAction="#handleButtonAction2" text="Otro botón"/&gt;
+        &lt;/children&gt;
+    &lt;/AnchorPane&gt;
+    </code></pre>
         </div>
     </div>
     <p>
@@ -2984,8 +2986,10 @@ public class Lista extends Application  &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre><Button fx:id="button2" layoutX="121.0" layoutY="115.0" onAction="#handleButtonAction2"
-                         text="Otro botón"/></pre>
+    <pre><code>
+        &lt;Button fx:id="button2" layoutX="121.0" layoutY="115.0" onAction="#handleButtonAction2"
+                 text="Otro botón"/&gt;
+    </code></pre>
         </div>
     </div>
     <p>
@@ -3284,24 +3288,19 @@ public class JavaFXEjemplo extends Application &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre><?xml version="1.0" encoding="UTF-8"?>
+    <pre><code class="language-xml">
+    &lt;AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320"
+        xmlns:fx="http://javafx.com/fxml/1"
+        xmlns="http://javafx.com/javafx/8" fx:controller="comunicaventanas.PrincipalController"&gt;
+       &lt;children&gt;
+           &lt;Label fx:id="label" layoutX="126" layoutY="60" minHeight="16" minWidth="69"
+                  text="Principal de personas"&gt;&lt;/Label&gt;
+           &lt;Button fx:id="button" layoutX="126" layoutY="90" onAction="#nuevaVentana"
+                   text="Crear persona"&gt;&lt;/Button&gt;
+       &lt;/children&gt;
+    &lt;/AnchorPane&gt;
+    </code></pre>
 
-             <?import java.lang.*?>
-             <?import java.util.*?>
-             <?import javafx.scene.*?>
-             <?import javafx.scene.control.*?>
-             <?import javafx.scene.layout.*?>
-
-             <AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320"
-                         xmlns:fx="http://javafx.com/fxml/1"
-                         xmlns="http://javafx.com/javafx/8" fx:controller="comunicaventanas.PrincipalController">
-    <children>
-        <Label fx:id="label" layoutX="126" layoutY="60" minHeight="16" minWidth="69"
-               text="Principal de personas"/>
-        <Button fx:id="button" layoutX="126" layoutY="90" onAction="#nuevaVentana"
-                text="Crear persona"/>
-    </children>
-</AnchorPane></pre>
         </div>
     </div>
     <p>
@@ -3613,10 +3612,7 @@ private void nuevaVentana(ActionEvent event) &#123;
         web utilizando el protocolo http como en este ejemplo:
         <br/></p>
     <p style="text-align: center;">
-        <span "="" http:="" pic001.jpg");="" title="Image img = new Image(" www.domain.com="">
-        Imagen imagen = nueva Imagen ("http://www.dominio.com/foto0001.png");
-        <br>
-        <br/></span>
+
     </p>
     <p>
         En algunos casos puede que nos interese cargar una imagen desde un objeto de la clase File
