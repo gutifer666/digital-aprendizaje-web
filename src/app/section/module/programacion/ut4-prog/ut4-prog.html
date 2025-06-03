@@ -1,0 +1,5576 @@
+<h1 class="title">
+    Cadenas de caracteres y arrays.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-pd" style="width: 240px;">
+    </figure>
+    <p align="justify">
+        <strong>
+            Ana
+        </strong>
+        ha recibido un pequeño encargo de parte de su
+        tutora,
+        <strong>
+            María
+        </strong>
+        . Se trata de que realice un pequeño programita, muy
+        sencillo pero fundamental.
+    </p>
+    <p align="justify">
+        -Hola
+        <strong>
+            Ana
+        </strong>
+        -dice
+        <strong>
+            María
+        </strong>
+        -, hoy tengo una
+        tarea especial para ti.
+    </p>
+    <p align="justify">
+        -¿Sí? -responde
+        <strong>
+            Ana
+        </strong>
+        -. Estoy deseando, últimamente no hay
+        nada que se me resista, llevo dos semanas en racha.
+    </p>
+    <p align="justify">
+        -Bueno, quizás esto se te resista un poco más. Es fácil, pero tiene
+        cierta complicación. Un cliente para el que hicimos una aplicación, nos ha preguntado si
+        podemos ayudarle. El cliente tiene una aplicación para gestionar sus clientes. Ahora
+        está pensando en que se le añada el correo electrónico de cada cliente, para en un
+        futuro poderle enviar publicidad y otras cosas. Además, también quiere que la aplicación
+        busque cadenas de caracteres, por ejemplo, para cuando le interese ver los clientes cuyo
+        apellido contenga "Garc" o la cadena que sea.
+    </p>
+    <p align="justify">
+        -¿Qué? -dice
+        <strong>
+            Ana
+        </strong>
+        con cierta perplejidad.
+    </p>
+    <p align="justify">
+        -Me alegra que te guste -dice
+        <strong>
+            María
+        </strong>
+        esbozando una
+        sonrisa pícara-, sé que te atraen los retos.
+    </p>
+    <p align="justify">
+        -Pero, ¿eso cómo se hace? ¿Cómo compruebo yo si un correo electrónico es
+        válido? -pregunta
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+    <p align="justify">
+        -Bueno, tranquila, que es más fácil de lo que parece, lo del correo
+        electrónico lo puedes hacer con
+        <strong>
+            expresiones regulares
+        </strong>
+        . Y respecto a lo
+        de ver las
+        <strong>
+            cadenas de caracteres
+        </strong>
+        que contienen o empiezan por tal o
+        cual otra cadena, recuerda que Java tiene un montón de métodos y operadores para
+        trabajar con cadenas de caracteres.
+    </p>
+    <p align="justify">
+        -Bueno -dice
+        <strong>
+            María
+        </strong>
+        justo después de resoplar tres veces
+        seguidas-, parece que no será tan difícil después de todo.
+    </p>
+</div><h1 class="title">
+    1.- Introducción a las estructuras de almacenamiento.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p align="justify">
+        ¿Cómo almacenarías en memoria un listado de números del que tienes que extraer el
+        valor máximo? Hasta ahora solo podríamos hacerlo mediante un conjunto de variables de tipo
+        numérico. Pero, ¿y si el listado de números no tiene un tamaño conocido en tiempo de
+        compilación, sino que ese tamaño puede ser diferente para cada ejecución del programa? Entonces
+        la cosa se complica.
+    </p>
+    <p align="justify">
+        Un listado de varios elementos de un
+        <strong>
+            tipo simple
+        </strong>
+        (por ejemplo,
+        números enteros) consiste en un tipo de dato de
+        <strong>
+            tipo compuesto
+        </strong>
+        o estructurado.
+        De hecho, una clase podría considerarse como la evolución de un tipo de dato compuesto donde los
+        elementos que contiene no tienen por qué ser todos del mismo tipo, sino que pueden tener tipos
+        diferentes (serían los atributos de la clase) y además integra métodos que permiten manipular
+        esos atributos. En lenguajes no orientados a objetos, a ese tipo de estructuras se les suele
+        llamar
+        registros
+        .
+        Pero todo eso lo veremos en detalle en la próxima unidad. Ahora nos toca trabajar con una
+        primera aproximación a los tipos compuestos más sencillos: las
+        <strong>
+            cadenas de
+            caracteres
+        </strong>
+        y los
+        <strong>
+            arrays
+        </strong>
+        .
+    </p>
+    <p align="justify">
+        Las estructuras de almacenamiento, en general, se pueden clasificar de varias
+        formas. Por ejemplo, atendiendo a
+        <strong>
+            si pueden almacenar datos de diferente tipo
+        </strong>
+        ,
+        o si solo pueden almacenar datos de un solo tipo, se pueden distinguir:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Estructuras con capacidad de
+            <strong>
+                almacenar varios datos del mismo tipo:
+            </strong>
+            varios
+            números, varios caracteres,
+            <abbr title="Etcétera.">
+                etc
+            </abbr>
+            . Ejemplos de estas
+            estructuras son los
+            <span lang="en">
+          arrays
+         </span>
+            , las cadenas de caracteres, las listas y
+            los conjuntos.
+        </li>
+        <li>
+            Estructuras con capacidad de
+            <strong>
+                almacenar varios datos de distinto tipo:
+            </strong>
+            números, fechas, cadenas de caracteres,
+            <abbr title="Etcétera.">
+                etc
+            </abbr>
+            ., todo junto
+            dentro de una misma estructura. Ejemplos de este tipo de estructuras son las clases.
+        </li>
+    </ul>
+    <p align="justify">
+        Otra forma de clasificar las estructuras de almacenamiento va en función de
+        <strong>
+            si pueden o no cambiar de tamaño de forma dinámica
+        </strong>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Estructuras cuyo tamaño se establece en el momento de la creación o
+                definición
+            </strong>
+            y su tamaño no puede variar después. Ejemplos de estas estructuras son
+            los
+            <strong>
+          <span lang="en">
+           arrays
+          </span>
+            </strong>
+            (
+            <span lang="en">
+          de una o varias dimensiones
+         </span>
+            ),
+            donde una vez que se reserva memoria para ellas, ya no podemos aumentar o disminuir su
+            tamaño.
+        </li>
+        <li>
+            <strong>
+                Estructuras cuyo tamaño es variable (conocidas como estructuras dinámicas)
+            </strong>
+            .
+            Su tamaño crece o decrece según las necesidades de forma dinámica. Es el caso de las listas,
+            árboles, conjuntos y, como veremos también, el caso de algunos tipos de cadenas de
+            caracteres.
+        </li>
+    </ul>
+    <p align="justify">
+        Desde el punto de vista de dónde se almacenan los datos, también podemos
+        clasificarlas como:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Estructuras internas
+            </strong>
+            , si se almacenan en
+            <strong>
+                memoria principal
+            </strong>
+            (memoria
+            <abbr title="Random Access Memory">
+                RAM
+            </abbr>
+            ). Eso significa que cuando el
+            proceso (programa en ejecución) finalice, esa información se perderá.
+        </li>
+        <li>
+            <strong>
+                Estructuras externas
+            </strong>
+            , si se almacenan en
+            <strong>
+                memoria
+                secundaria
+            </strong>
+            (discos magnéticos o de estado sólido, dispositivos de memoria flash,
+            cintas,
+            <abbr title="etcétera">
+                etc.
+            </abbr>
+            ), permitiendo que la información que allí se
+            registre persista más allá de la ejecución del programa.
+        </li>
+    </ul>
+    <p align="justify">
+        Por último, atendiendo a la forma en la que los datos se ordenan dentro de la
+        estructura, podemos diferenciar varios tipos de estructuras:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Estructuras que no se ordenan de por sí
+            </strong>
+            , y debe ser el programador el
+            encargado de ordenar los datos si fuera necesario. Un ejemplo de estas estructuras son los
+            <span lang="en">
+          arrays o las listas
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                Estructuras ordenadas
+            </strong>
+            . Se trata de estructuras que al incorporar un dato
+            nuevo a todos los datos existentes, este se almacena en una posición concreta que irá en
+            función del orden. El orden establecido en la estructura puede variar dependiendo de las
+            necesidades del programa: alfabético, orden numérico de mayor a menor, momento de inserción,
+            <abbr title="Etcétera.">
+                etc
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p align="justify">
+        Todavía no conoces mucho de las estructuras, y probablemente todo te suena raro y
+        extraño. No te preocupes, poco a poco irás descubriéndolas. Verás que son sencillas de utilizar
+        y muy cómodas.
+    </p>
+    <div class="exe-tooltip-text" id="t598b66ef-ce35-b410-057f-318e4d95ff3c">
+        <p>
+            Estructura de datos que almacena uno o varios datos de diferente tipo (números enteros,
+            cadenas de texto, números flotantes, ...) de forma conjunta, porque dichos datos están
+            íntimamente relacionados entre sí. Por ejemplo, una dirección está compuesta de varios
+            datos: calle (cadena de texto), número (número entero), código postal (cadena de texto),
+            etc.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.- Cadenas de caracteres.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-pd" style="width: 192px;">
+    </figure>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        está asustada, le acaban de asignar una nueva tarea y está pensando
+        qué métodos le ayudarían a buscar cadenas de caracteres que empiecen por unos caracteres
+        determinados. Por ejemplo, la lista de más abajo presenta apellidos de personas que
+        empiezan por "Garc":
+    </p>
+    <p>
+        Por tanto,
+        <strong>
+            Ana
+        </strong>
+        podrá obtener las personas que necesite la aplicación del
+        cliente, según los caracteres que le interese buscar al usuario de la aplicación:
+    </p>
+    <p>
+        "Garcés Pérez"&lt;br /&gt; "García López"&lt;br /&gt; "García Pineda"&lt;br /&gt; "García
+        Piquillo"&lt;br /&gt;
+    </p>
+    <p>
+        Como puedes observar, también podría interesar buscar solo aquellas personas en cuyos
+        apellidos aparezcan los caracteres "Pi", para apellidos como Pineda o Piquillo.
+    </p>
+</div><h1 class="title">
+    2.1.- Operaciones con cadenas de caracteres.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+    </div>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        ¿Qué operaciones puedes hacer con una cadena? Muchas más de las que te imaginas. Empezaremos con
+        la operación más sencilla: la
+        <strong>
+            concatenación
+        </strong>
+        .
+        <strong>
+            La concatenación es la
+            unión de dos cadenas, para formar una sola
+        </strong>
+        . En Java es muy fácil, pues solamente
+        tienes que utilizar el
+        <strong>
+            operador de concatenación
+        </strong>
+        (signo de suma):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String cad1= "¡Bien";
+String cad2= "venido!";
+String cadResultado= cad1 + cad2;
+
+System.out.println(cadResultado);
+</pre>
+        </div>
+    </div>
+    <p align="left" style="text-align: justify;">
+        También podrías haberlo hecho directamente con los
+        literales, sin utilizar variables intermedias:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String cadResultado = "¡Bien" + "venido!";
+System.out.println(cadResultado);
+</pre>
+        </div>
+    </div>
+    <p align="left" style="text-align: justify;">
+        Incluso podríamos haberlo hecho sin utilizar una
+        variable para apuntar al resultado:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>System.out.println("¡Bien" + "venido!");</pre>
+        </div>
+    </div>
+    <p align="left" style="text-align: justify;">
+        En los ejemplos anteriores se está creando una nueva
+        cadena, resultado de unir dos cadenas: una cadena con el texto "¡Bien", y otra cadena con el
+        texto "venido!".
+    </p>
+    <p align="left" style="text-align: justify;">
+        En estos ejemplos se puede observar una vez más cómo la
+        clase&nbsp;String es tratada de una manera "especial" en Java. El lenguaje ha permitido
+        "sobrecargar" el
+        <strong>
+            operador +
+        </strong>
+        , que es un operador aritmético de tipos primitivos
+        numéricos, para que pueda ser utilizado también por un tipo externo al lenguaje como es la clase
+        String. Nuevamente, esto se ha hecho para simplificar y facilitar a los programadores la
+        operación de concatenación, que es una de las más usadas en la mayoría de los programas.
+    </p>
+    <p align="left" style="text-align: justify;">
+        Además de disponer de este operador de concatenación,
+        la clase&nbsp;String proporciona también un método para poder concatenar dos cadenas: el
+        <strong>
+            método concat
+        </strong>
+        . A cualquier objeto de tipo&nbsp;String se le puede aplicar el
+        método
+        <strong>
+            concat
+        </strong>
+        , que necesitará como parámetro un segundo objeto de tipo String.
+        El método devolverá una tercera cadena, que también será instancia de la clase&nbsp;String y que
+        consistirá en la cadena resultado de unir o concatenar esas dos cadenas.
+    </p>
+    <p align="left">
+        Un ejemplo de uso podría ser el siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String cad1= "¡Bien";
+String cad2= "venido!";
+String cadResultado= cad1.concat(cad2);
+
+System.out.print(cadResultado);</pre>
+        </div>
+    </div>
+    <p align="left" style="text-align: justify;">
+        Aquí, nuevamente, podríamos haber optado por utilizar
+        también literales directamente en lugar de variables intermedias:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String cad="¡Bien".concat("venido!");
+System.out.printf(cad);</pre>
+        </div>
+    </div>
+    <p align="left" style="text-align: justify;">
+        En este ejemplo participan tres instancias de la clase
+        String. Una instancia literal que contiene el texto "¡Bien" (un literal de tipo&nbsp;String al
+        que no apuntará ninguna variable) otra instancia que contiene el texto "venido!" (otro literal)
+        y otra que contiene el texto "¡Bienvenido!". La tercera cadena se crea nueva al realizar la
+        operación de concatenación, sin que las otras dos hayan desaparecido o se hayan modificado
+        (recuerda que los&nbsp;String son inmutables). Ahora bien, como esas dos cadenas no están siendo
+        referenciadas por ninguna variable de tipo String, se borrarán de la memoria cuando el
+        recolector de basura
+        detecte que ya no
+        se usan.
+    </p>
+    <p align="left" style="text-align: justify;">
+        Fíjate, además, que se puede invocar directamente un
+        método de la clase String, posponiendo el método al literal de cadena. Esto es una señal de que
+        al escribir un literal de cadena, se produce una instancia del
+        objeto inmutable
+        String.
+    </p>
+    <p align="left" style="text-align: justify;">
+        Pero no solo podemos concatenar una cadena a otra
+        cadena. Gracias al método toString(), que incorpora toda clase Java, podemos concatenar cadenas
+        con literales numéricos e instancias de otros objetos sin problemas.
+    </p>
+    <div class="exe-tooltip-text" id="t7930320d-ffcb-b37f-3cae-0d2f0f3d5bf1">
+        <p>
+            Es una pieza clave de Java. Se trata de un mecanismo para ir eliminando de memoria aquellas
+            instancias de clases u objetos que ya no están siendo utilizados.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="tf2ed0174-fa7f-0c15-3d5a-316fa56feb5a">
+        <p>
+            Los objetos inmutables son aquellos que no se pueden modificar una vez creados. Es el caso de
+            las clases String, LocalDate y LocalTime de Java, así como las clases envoltorio Integer,
+            Float, Double, etc.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.1.1.- Operaciones básicas con cadenas de caracteres (I).
+</h1>
+<div class="iDevice_content">
+    <p align="left">
+        Vamos a continuar revisando las operaciones básicas que se pueden realizar con
+        cadenas. Algunas de ellas ya las vimos en la primera unidad, al presentar las cadenas de
+        caracteres como un posible tipo más. En todos los ejemplos que presentaremos a continuación, la
+        variable cad contiene la cadena "¡Bienvenido!", como se muestra en las imágenes.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            &lt;strong&gt;int length(&lt;/strong&gt;). Devuelve un número entero que contiene la
+            longitud de una cadena, resultado de contar el número de caracteres que contiene. Recuerda
+            que un espacio en blanco es también un carácter.
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            <div class="elemento_derecha">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+            <strong>
+          <span style="font-size: medium;">
+           char charAt(int pos)
+          </span>
+            </strong>
+            . Devuelve el
+            carácter ubicado en la posición pasada por parámetro. El carácter obtenido de dicha posición
+            será almacenado en un tipo de dato
+            <strong>
+          <span style="font-size: medium;">
+           char
+          </span>
+            </strong>
+            . Las posiciones se empiezan a contar
+            desde el 0 (y no desde el 1), y van desde 0 hasta
+            <span title="Longitud menos uno.">
+          longitud - 1
+         </span>
+            .
+            Por ejemplo, el código siguiente mostraría por pantalla el carácter "
+            <strong>
+          <span style="font-size: medium;">
+           v
+          </span>
+            </strong>
+            ":
+            <br>
+            <div class="highlighted-code language-java">
+                <div class="texto_izquierda">
+           <pre>char t = cad.charAt(5);
+System.out.println(t);
+</pre>
+                </div>
+            </div>
+            <br/></li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           String substring(int beginIndex, int endIndex)
+          </span>
+            </strong>
+            .
+            Este método permite extraer una subcadena de otra de mayor tamaño. Devolverá una nueva
+            cadena compuesta por todos los caracteres existentes entre la posición
+            <strong>
+          <span style="font-size: medium;">
+           beginIndex
+          </span>
+            </strong>
+            y la posición
+            <strong>
+          <span style="font-size: medium;">
+           &lt;span title="endIndex o índice final menos uno."&gt;endIndex - 1&lt;/span&gt;
+          </span>
+            </strong>
+            .
+            Por ejemplo, si pusiéramos
+            <strong>
+          <span style="font-size: medium;">
+           cad.substring(0,5)
+          </span>
+            </strong>
+            en nuestro programa,
+            sobre la variable
+            <strong>
+          <span style="font-size: medium;">
+           cad
+          </span>
+            </strong>
+            anterior,
+            dicho método devolvería la subcadena "
+            <strong>
+          <span style="font-size: medium;">
+           ¡Bien
+          </span>
+            </strong>
+            "
+            tal y como se muestra en la imagen.
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           String substring (int beginIndex)
+          </span>
+            </strong>
+            .
+            Cuando al método
+            <strong>
+          <span style="font-size: medium;">
+           substring
+          </span>
+            </strong>
+            solo le
+            proporcionamos un parámetro, extraerá una cadena que comenzará en el carácter con posición
+            <strong>
+          <span style="font-size: medium;">
+           beginIndex
+          </span>
+            </strong>
+            e irá hasta el final de
+            la cadena. En el siguiente ejemplo se mostraría por pantalla la cadena "
+            <strong>
+          <span style="font-size: medium;">
+           ienvenido!
+          </span>
+            </strong>
+            ":
+            <br>
+            <div class="highlighted-code language-java">
+                <div class="texto_izquierda">
+           <pre>String subcad = cad.substring(2);
+System.out.println(subcad);
+</pre>
+                </div>
+            </div>
+            <br/></li>
+    </ul>
+</div><h1 class="title">
+    2.1.2.- Operaciones básicas con cadenas de caracteres (II).
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Continuamos estudiando algunas de las operaciones básicas que se pueden llevar a cabo con esta
+        estructura de datos. ¿Cómo puedo
+        <strong>
+            comprobar si dos cadenas son iguales
+        </strong>
+        (tienen
+        el
+        <strong>
+            mismo contenido
+        </strong>
+        )? ¿Se pueden realizar
+        <strong>
+            comparaciones sin tener en
+            cuenta las mayúsculas y las minúsculas
+        </strong>
+        ? ¿Existe la posibilidad de
+        <strong>
+            pasar
+            todo el contenido de un texto a mayúsculas o a minúsculas
+        </strong>
+        ? En la siguiente tabla
+        puedes observar algunas operaciones adicionales a las que llevamos vistas hasta el momento. En
+        todos los ejemplos expuestos, las variables cad1 y
+        <code>
+            cad2
+        </code>
+        son cadenas ya existentes.
+    </p>
+    <table class="tabla">
+        <caption>
+            Algunos métodos básicos de la clase
+            <strong>
+                String
+            </strong>
+            .
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Método
+            </th>
+            <th scope="col">
+                Descripción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.compareTo(cad2)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Permite comparar dos cadenas entre sí lexicográficamente. Retornará 0 si son iguales, un
+                número menor que cero si la cadena (
+                <strong>
+            <span style="font-size: medium;">
+             cad1
+            </span>
+                </strong>
+                )
+                es anterior en orden alfabético a la que se pasa por argumento (
+                <strong>
+            <span style="font-size: medium;">
+             cad2
+            </span>
+                </strong>
+                ), y un número mayor que cero si
+                la cadena es posterior en orden alfabético.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.equals(cad2)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Cuando se compara si dos cadenas son iguales, no se debe usar el operador de comparación
+                "
+                <strong>
+            <span style="font-size: medium;">
+             ==
+            </span>
+                </strong>
+                ", sino el método
+                <span style="font-size: medium;">
+            <strong>
+             equals()
+            </strong>
+           </span>
+                . Retornará
+                <strong>
+            <span style="font-size: medium;">
+             true
+            </span>
+                </strong>
+                si son iguales, y
+                <strong>
+            <span style="font-size: medium;">
+             false
+            </span>
+                </strong>
+                si no lo son.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.compareToIgnoreCase(cad2)&lt;br /&gt; cad1.equalsIgnoreCase(cad2)
+            </strong>
+           </span>
+            </td>
+            <td>
+                El método
+                <strong>
+            <span style="font-size: medium;">
+             compareToIgnoreCase()
+            </span>
+                </strong>
+                funciona igual que el método
+                <strong>
+            <span style="font-size: medium;">
+             compareTo()
+            </span>
+                </strong>
+                ,
+                pero ignora las mayúsculas y las minúsculas a la hora de hacer la comparación. Las
+                mayúsculas van antes en orden alfabético que las minúsculas, por lo que hay que tenerlo
+                en cuenta. El método
+                <span style="font-size: medium;">
+            <strong>
+             equalsIgnoresCase()
+            </strong>
+           </span>
+                es igual
+                que el método
+                <strong>
+            <span style="font-size: medium;">
+             equals()
+            </span>
+                </strong>
+                pero sin
+                tener en cuenta las minúsculas.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.toLowerCase()
+            </strong>
+           </span>
+            </td>
+            <td>
+                Genera una copia de la cadena con todos los caracteres a minúscula.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.toUpperCase()
+            </strong>
+           </span>
+            </td>
+            <td>
+                Genera una copia de la cadena con todos los caracteres a mayúsculas.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.1.3.- Operaciones avanzadas con cadenas de caracteres (I).
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 192px;">
+    </figure>
+    <p>
+        Además de las operaciones vistas hasta ahora, ¿qué más posibilidades de trabajo ofrece Java sobre
+        las cadenas? Vamos a continuar viendo algunos métodos algo más sofisticados como la
+        <strong>
+            búsqueda
+            de una cadena dentro de otra
+        </strong>
+        , la
+        <strong>
+            eliminación de espacios en blanco
+        </strong>
+        o la
+        <strong>
+            sustitución
+        </strong>
+        . Nuevamente, en todos los ejemplos expuestos, las variables
+        cad1,
+        <code>
+            cad2
+        </code>
+        y cad3 son cadenas ya existentes, y la variable num es un número entero
+        mayor o igual a cero.
+    </p>
+    <table class="tabla">
+        <caption>
+            Más métodos de la clase String.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Método
+            </th>
+            <th scope="col">
+                Descripción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.trim()
+            </strong>
+           </span>
+            </td>
+            <td>
+                Genera una copia de la cadena eliminando los espacios en blanco anteriores y posteriores
+                de la cadena. Si solo quieres eliminar los espacios anteriores o solo los posteriores,
+                dispones también de los métodos
+                <span style="font-size: medium;">
+            <strong>
+             stripLeading
+            </strong>
+           </span>
+                y
+                <span style="font-size: medium;">
+            <strong>
+             stripTrailing
+            </strong>
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.indexOf(cad2)&lt;br /&gt; cad1.indexOf(cad2,num)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Si la cadena o carácter pasado por argumento está contenida en la cadena invocante,
+                retorna su posición, en caso contrario retornará -1. Opcionalmente se le puede indicar
+                la posición a partir de la cual buscar, lo cual es útil para buscar varias apariciones
+                de una cadena dentro de otra.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.contains(cad2)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Retornará
+                <strong>
+            <span style="font-size: medium;">
+             true
+            </span>
+                </strong>
+                si la cadena
+                pasada por argumento está contenida dentro de la cadena. En caso contrario retornará
+                <strong>
+            <span style="font-size: medium;">
+             false
+            </span>
+                </strong>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.startsWith(cad2)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Retornará
+                <strong>
+            <span style="font-size: medium;">
+             true
+            </span>
+                </strong>
+                si la cadena
+                comienza por la cadena pasada como argumento. En caso contrario retornará
+                <strong>
+            <span style="font-size: medium;">
+             false
+            </span>
+                </strong>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.endsWith(cad2)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Retornará
+                <strong>
+            <span style="font-size: medium;">
+             true
+            </span>
+                </strong>
+                si la
+                cadena acaba por la cadena pasada como argumento. En caso contrario retornará
+                <strong>
+            <span style="font-size: medium;">
+             false
+            </span>
+                </strong>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             cad1.replace(cad2,cad3)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Generará una copia de la cadena
+                <strong>
+            <span style="font-size: medium;">
+             cad1
+            </span>
+                </strong>
+                , en la que se sustituirán todas las
+                apariciones de
+                <strong>
+            <span style="font-size: medium;">
+             cad2
+            </span>
+                </strong>
+                por
+                <strong>
+            <span style="font-size: medium;">
+             cad3
+            </span>
+                </strong>
+                . El reemplazo se hará de
+                izquierda a derecha, por ejemplo: reemplazar "
+                <strong>
+            <span style="font-size: medium;">
+             zzz
+            </span>
+                </strong>
+                "
+                por "
+                <strong>
+            <span style="font-size: medium;">
+             xx
+            </span>
+                </strong>
+                " en la cadena "
+                <strong>
+            <span style="font-size: medium;">
+             zzzzz
+            </span>
+                </strong>
+                " generará "
+                <strong>
+            <span style="font-size: medium;">
+             xxzz
+            </span>
+                </strong>
+                " y no "
+                <strong>
+            <span style="font-size: medium;">
+             zzxx
+            </span>
+                </strong>
+                ".
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.1.4.- Operaciones avanzadas con cadenas de caracteres
+    (II).
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Podríamos continuar revisando uno por uno todos los métodos disponibles para la clase String,
+        pero acabaría convirtiéndose en una actividad tediosa y, probablemente, aburrida. En general, la
+        idea es conocer los métodos más básicos e importantes de una clase y a continuación empezar a
+        utilizarla para comprender bien su funcionamiento. Si más adelante intuimos que necesitamos algo
+        más, siempre podemos consultar la documentación javadoc de la
+        <abbr title="Application Programming Interface">
+            API
+        </abbr>
+        de Java para la clase String e
+        investigar si hay algún método que puede ayudarnos a resolver nuestro problema:
+    </p>
+    <p style="text-align: center;">
+        Documentación javadoc de la clase String
+    </p>
+    <p>
+        Por el momento nos vamos a limitar a enumerar y describir brevemente algunos métodos más cuya
+        potencia descubrirás más adelente pero que aún no podrás utilizar porque hacen uso de algunos
+        conceptos y herramientas que todavía no conocemos. Según vayamos avanzando, podremos hacer uso
+        de ellos en nuestros programas:
+    </p>
+    <p>
+    </p>
+    <table class="tabla">
+        <caption>
+            Algunos métodos avanzados de la clase String.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Método
+            </th>
+            <th scope="col">
+                Descripción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             boolean matches (String regex)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Indica si la expresión regular regex, que se pasa como parámetro, "encaja" (o hace
+                "
+                <em>
+                </em>
+                <span lang="en">
+            <em>
+             match
+            </em>
+           </span>
+                ") con la cadena. Dado que aún no sabemos
+                lo que es una
+                <strong>
+                    expresión regular
+                </strong>
+                , todavía no vamos a utilizar este
+                método. Lo dejaremos para los siguientes apartados.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+           <span style="font-size: medium;">
+            <strong>
+             String[] split (String regex)
+            </strong>
+           </span>
+            </td>
+            <td>
+                Divide una cadena en fragmentos teniendo en cuenta que cada fragmento estaría separado
+                en la cadena original mediante una cadena de caracteres representada por la expresión
+                regular&nbsp;regex, que se pasa como parámetro. El método devuelve un array de&nbsp;regex
+                donde cada elemento del array será cada uno de los fragmentos encontrados. Nuevamente,
+                como tampoco sabemos lo que es un
+                <strong>
+                    array
+                </strong>
+                (ni una
+                <strong>
+                    expresión
+                    regular
+                </strong>
+                ), tendremos que dejarlo para más adelante.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                <p>
+            <span style="font-size: medium;">
+             <strong>
+              String replaceAll (String regex, String replacement)
+             </strong>
+            </span>
+                </p>
+            </td>
+            <td>
+                Similar al método replace que ya has visto, pero permitiendo que la sustitución no sea
+                simplemente para las subcadenas que sean exactamente iguales al parámetro pasado
+                (regex), sino que se nos permite especificar toda una familia de cadenas que cumplan
+                unas determinadas características (
+                <strong>
+                    expresión regular
+                </strong>
+                ).
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.2.- Conversiones entre cadenas y tipos numéricos (I).
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Una operación muy habitual al trabajar con textos es la conversión de número a cadena y
+        viceversa. Imagínate que un texto aparece un número que representa un precio, ¿cómo compruebas
+        que esa edad es mayor que una determinada cantidad? Para poder realizar esa comprobación tienes
+        que pasar la cadena a número. Por otro lado, a veces tenemos valores numéricos que nos interesa
+        que formen parte de un texto. En ese otro caso lo que nos interesa es transformar ese número en
+        una cadena.
+    </p>
+    <p>
+        Supongamos que disponemos de una cadena que contiene el texto "35". Se trata de un texto que
+        contiene caracteres numéricos, pero no es un número. No podemos efectuar operaciones aritméticas
+        con él. Por ejemplo, si intentamos sumarlo a un 35, ya hemos visto en apartados anteriores que
+        Java automáticamente transformará el int a un String para llevar a cabo una concatenación:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String elem1 = 35;
+int elem2 = 5;
+System.out.printf ("La suma es: %s\n", elem1+elem2); // Mostrará por pantalla 355 y no 40</pre>
+        </div>
+    </div>
+    <p>
+        Por tanto, la conversión de un número a texto es automática si el número forma parte de una
+        concatenación con otras cadenas, pues Java llevará a cabo la conversión de manera implícita y
+        automática:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>System.out.printf ("La suma es: %s\n", Integer.toString(elem1) + elem2); // Esto no es necesario pues se hace de manera automática</pre>
+        </div>
+    </div>
+    <p>
+        En general, siempre que deseemos transformar un valor numérico a un texto, podemos usar alguno de
+        las clases "
+        <em>
+        </em>
+        <span lang="en">
+         <em>
+          wrapper
+         </em>
+        </span>
+        " o "
+        envoltorio
+        " (Byte,
+        <code>
+            Short
+        </code>
+        ,
+        Integer,
+        <code>
+            Long
+        </code>
+        , Float,
+        <code>
+            Double
+        </code>
+        ) que nos proporciona Java para "envolver"
+        cada uno de los tipos primitivos numéricos (byte,
+        <code>
+            short
+        </code>
+        , int,
+        <code>
+            long
+        </code>
+        ,
+        float,
+        <code>
+            double
+        </code>
+        ). A partir de ahí, basta con utilizar el método estático toString().
+        Por ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int valorInt = 25;
+String textoInt = Integer.toString(valorInt);
+System.out.printf ("Entero: %d - Cadena: \"%s\"\n", valorInt, textoInt);</pre>
+        </div>
+    </div>
+    <p>
+        Como puedes observar, la variable valorInt es de tipo int y la variable textoInt es de tipo
+        String. Y aunque al mostrarlas por pantalla podría parecer que contienen el mismo valor, al
+        observar el código se ve claramente que no es así:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            en un caso se trata de la
+            <strong>
+                representación mediante 32 bits
+                de un número entero
+            </strong>
+            mediante ceros y unos (variable o literal de tipo int);
+        </li>
+        <li class="lista_verificacion">
+            en el otro caso se trata de la representación, mediante
+            <strong>
+                dos
+                caracteres del código Unicode
+            </strong>
+            , de un número de dos cifras (objeto o literal de tipo
+            String).
+        </li>
+    </ul>
+    <p>
+        En ambos casos se trata de una representación de un contenido mediante ceros y unos (como
+        cualquier dato contenido en la memoria de un ordenador), pero esos ceros y unos serán diferentes
+        dado que estarán representando algo diferente, aunque aparentemente ante nuestros ojos puedan
+        parecer lo mismo al mostrarse por pantalla (pues en ambos casos tienen la misma representación
+        "textual" por pantalla).
+    </p>
+    <p>
+        El mismo experimento podríamos realizarlo con cualquier otro valor numérico (literal o variable)
+        tanto de tipo entero como real. Aquí tienes un par de ejemplos más con valores de tipo&nbsp;long
+        y de tipo double:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>long valorLong = 25_000_000_000L;  // Veinticinco mil millones
+String textoLong = Long.toString(valorLong);
+System.out.printf ("Long: %d - Cadena: \"%s\"\n", valorLong, textoLong);</pre>
+        </div>
+    </div>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>double valorDouble = 6.023e23; // Equivalente a 6.023 multiplicado por 10 elevado a 23
+String textoDouble = Double.toString(valorDouble);
+System.out.printf ("Double: %f - Cadena: \"%s\"\n", valorDouble, textoDouble); </pre>
+        </div>
+    </div>
+    <div class="exe-tooltip-text" id="tb2407284-d1a5-1d29-59d1-ee66df8022e1">
+        <p>
+            Las clases envoltorio son clases que encapsulan tipos de datos básicos, tales como tales como
+            int, short, double, etc. Sirven básicamente para poder usar los tipos básicos como si fueran
+            objetos. Las clases envoltorio son generalmente inmutables.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.2.1.- Conversiones entre cadenas y tipos numéricos (II).
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Ya hemos visto cómo obtener una representación textual de un valor numérico mediante diferentes
+        técnicas (de manera automática cuando es posible, mediante métodos estáticos de las clases
+        "envoltorio" o mediante el método estático format de la clase String). Ahora es el momento de
+        plantearnos la operación inversa:
+        <strong>
+            obtener valores numéricos
+        </strong>
+        (byte,
+        <code>
+            short
+        </code>
+        ,
+        int,
+        <code>
+            long
+        </code>
+        , float o
+        <code>
+            double
+        </code>
+        )
+        <strong>
+            a partir de textos
+        </strong>
+        (objetos String)
+        <strong>
+            que supuestamente contengan números
+        </strong>
+        . Decimos "supuestamente"
+        porque a priori no estaremos seguros de si lo que contiene un texto es realmente un número
+        correctamente formateado o no. Por eso normalmente habrá que realizar un análisis previo del
+        texto para comprobar que realmente contiene un número (entero corto o largo, número real con
+        decimales,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .).
+    </p>
+    <p>
+        Del mismo modo que todas las clases "envoltorio" de tipos numéricos (Byte, Short, Integer, Long,
+        Float,
+        <code>
+            Double
+        </code>
+        ) disponían de uno o varios métodos estáticos (por ejemplo toString)
+        que permitían obtener la representación textual de valores numéricos, también disponen de uno o
+        varios métodos que permiten justamente lo contrario: la
+        <strong>
+            obtención de un valor numérico a
+            partir una cadena
+        </strong>
+        .
+    </p>
+    <p>
+        Veamos un primer ejemplo:
+    </p>
+    <div class="highlighted-code language-java line-numbers">
+        <div>
+         <pre>String textoInt = "250";
+Integer objetoInteger = Integer.valueOf(textoInt); // Crea un objeto de tipo Integer a partir de un String
+int valInt1 = objetoInteger.intValue();            // Obtiene un valor int a partir de un objeto Integer
+int valInt2 = objetoInteger;                       // Obtiene un valor int a partir de un objeto Integer (automático)
+System.out.printf ("textoInt1 = \"%s\" \nobjetoInteger = %d \nvalInt1 = %d \nvalInt2 = %d\n",
+        textoInt, objetoInteger, valInt1, valInt2);</pre>
+        </div>
+    </div>
+    <p>
+        En este ejemplo podemos observar cómo hemos conseguido, a partir de la cadena "250", el valor
+        numérico entero 250:
+    </p>
+    <ol>
+        <li>
+            en la primera línea creamos un objeto&nbsp;String con el texto "250";
+        </li>
+        <li>
+            en la segunda línea creamos un objeto de tipo Integer mediante el método estático "fábrica"
+            valueOf de la clase Integer;
+        </li>
+        <li>
+            en la tercera línea obtenemos el valor&nbsp;int que "envuelve" el objeto&nbsp;Integer
+            mediante el método intValue;
+        </li>
+        <li lang="en">
+            en la cuarta línea conseguimos lo mismo que en la tercera sin necesidad de invocar
+            al método intValue, pues Java lleva a cabo la operación "unboxing" ("desenvolver" el valor
+            int del "envoltorio" objeto Integer) automáticamente.
+        </li>
+    </ol>
+    <p>
+        Resumiendo, podríamos haberlo hecho todo en una única línea de la siguiente manera:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>int valInt = Integer.valueOf("250");</pre>
+        </div>
+    </div>
+    <p>
+        Hasta aquí todo ha funcionado perfectamente. El problema está cuando lo que hay en la cadena de
+        caracteres no puede ser convertido a un valor numérico. Por ejemplo, imagina que el valor de
+        textoInt es
+        <code>
+            "25x"
+        </code>
+        . ¿Qué crees que sucederá al ejecutar el método
+        Integer.valueOf(textoInt)? Te invitamos a que lo pruebes. Si lo haces, lo más probable es que se
+        lance la excepción NumberFormatException. Y si tu código no está preparado para reaccionar ante
+        esa posible excepción, lo hará la máquina virtual de Java, abortando la ejecución de tu programa
+        de manera brusca e inesperada (algo que debemos siempre evitar).
+    </p>
+    <p>
+        Cuando hacíamos una conversión de número a texto no había ningún problema, pues cualquier número
+        puede ser transformado a un texto (un texto "admite" cualquier cosa), pero en el sentido
+        contrario debemos procurar ser más precavidos, pues no todo texto es susceptible de ser
+        interpretado como un valor numérico. Por esta razón, cada vez que intentemos obtener un número a
+        partir de un texto, se tratará de una operación "sensible" y susceptible de fallos y, por tanto,
+        deberá estar encerrada dentro de un bloque try, preparándonos para capturar una posible
+        excepción de tipo NumberFormatException.
+    </p>
+    <p>
+        En consecuencia, los ejemplos anteriores deberían estar siempre "protegidos" dentro de un&nbsp;try
+        con un catch ante una posible NumberFormatException:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String textoInt1 = "25e";
+try &#123;
+    Integer objetoInteger = Integer.valueOf(textoInt1); // Crea un objeto de tipo Integer a partir de un String
+    System.out.printf ("Número entero obtenido correctamente: %d\n", objetoInteger);  // No es necesario hacer objetoInteger.intValue()
+&#125; catch (NumberFormatException ex) &#123;
+    System.out.printf ("El texto no cumple el formato de un número entero.\n");
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        Solo podríamos "permitirnos" no encerrar este tipo de conversiones en un bloque&nbsp;try-
+        <code>
+            catch
+        </code>
+        si estamos plenamente seguros de que el texto es perfectamente "transformable" en un número,
+        algo que habitualmente no podremos garantizar. Por eso lo habitual será "asegurar" este tipo de
+        conversiones en bloques try-
+        <code>
+            catch
+        </code>
+        . En el fondo es algo similar a lo que hacemos
+        cuando "aseguramos" las lecturas de teclado de valores numéricos en los objetos de la clase
+        Scanner cuando hacemos nextInt,
+        <code>
+            nextDouble
+        </code>
+        , nextLong,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . pues cuando introducimos un supuesto valor numérico por
+        teclado no existe la garantía de que el usuario lo introduzca correctamente. De hecho, es
+        exactamente la misma situación: se intenta transformar un texto introducido por teclado (lo que
+        teclea el usuario, que deben ser caracteres numéricos) en un valor numérico.
+    </p>
+    <p>
+        Hasta el momento hemos trabajado con la posibilidad de realizar conversiones de texto a número
+        para el caso de enteros de tipo int, pero puede hacerse también para el resto de enteros (byte,
+        <code>
+            short
+        </code>
+        , long) y para los reales (float y
+        <code>
+            double
+        </code>
+        ). Por ejemplo, para el
+        caso de un número real, podríamos hacer algo así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String textoDouble = "250.12";
+try &#123;
+    Double objetoDouble = Double.valueOf(textoDouble);
+    System.out.printf ("El texto cumple el formato de un número real. El valor es: %6.2f\n", objetoDouble);
+&#125; catch (NumberFormatException ex) &#123;
+    System.out.printf ("El texto no cumple el formato de un número real.\n");
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        En este caso sabemos que va a funcionar seguro, pues el texto "250.12" cumple las reglas de
+        formato de un número real. Sin embargo, si el valor de esa variable no fuera conocida a priori,
+        debemos disponer de un mecanismo de seguridad que garantice que nuestro programa no va a abortar
+        abruptamente. Por esto necesitamos el bloque try-
+        <code>
+            catch
+        </code>
+        . Prueba a leer de teclado
+        distintos posibles valores en lugar de escribir un literal en el código y podrás observar el
+        comportamiento de este ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Scanner teclado = new Scanner (System.in);
+System.out.print ("Introduzca un número real: ");
+String textoDouble = teclado.nextLine();
+try &#123;
+    Double objetoDouble = Double.valueOf(textoDouble);
+    System.out.printf ("El texto cumple el formato de un número real. El valor es: %6.2f\n", objetoDouble);
+&#125; catch (NumberFormatException ex) &#123;
+    System.out.printf ("El texto no cumple el formato de un número real.\n");
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Del mismo modo que hemos trabajado con la posibilidad de transformar valores numéricos a su
+        representación textual en diferentes bases numéricas (decimal, binaria, hexadecimal, etc.),
+        también podemos hacer algo similar en el proceso de conversión de textos a números. Para ello
+        podemos usar la versión sobrecargada del método valueOf, que admite un segundo parámetro en el
+        que se indica la base de conversión. Por ejemplo:
+        <br>
+        <br>
+        <br/><br/></p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Scanner teclado = new Scanner (System.in);
+System.out.print ("Introduzca un número entero en base binaria: ");
+String textoIntBin = teclado.nextLine();
+try &#123;
+    Integer objetoInt = Integer.valueOf(textoIntBin, 2); // Interpretamos el texto como un número entero en base binaria
+    System.out.printf ("El texto cumple el formato de un número entero binario. El valor es: %d\n", objetoInt);
+&#125; catch (NumberFormatException ex) &#123;
+    System.out.printf ("El texto no cumple el formato de un número entero binario.\n");
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Si probamos el programa e introducimos un número binario correcto:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+         <pre>Introduzca un número entero en base binaria: 1111
+El texto cumple el formato de un número entero binario. El valor es: 15</pre>
+        </div>
+    </div>
+    <p>
+        Sin embargo, si introducimos algo que no coincide con el patrón de un número en base binaria,
+        obtendremos un error:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+         <pre>Introduzca un número entero en base binaria: 15
+El texto no cumple el formato de un número entero binario.</pre>
+        </div>
+    </div>
+    <p>
+        ¿Por qué? Porque aunque el texto "15" es convertible en un número entero en formato decimal, no
+        es convertible en un número entero en formato binario (donde solamente se admiten los caracteres
+        '0' y
+        <code>
+            '1'
+        </code>
+        ) y en consecuencia la invocación Integer.valueOf(textoIntBin,2) hará
+        saltar la excepción NumberFormatException.
+    </p>
+    <p>
+        Por último, indicarte que además de los métodos valueOf, la clase Integer también dispone de
+        métodos del tipo parseInt, que llevan a cabo un análisis (o "parseo") de un texto para intentar
+        convertirlo en int. Si el análisis no tiene éxito, también se lanzará una excepción de tipo
+        NumberFormatException. Su funcionamiento es muy similar al de valueOf.
+    </p>
+</div><h1 class="title">
+    2.3.- La clase StringTokenizer en Java.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        La clase StringTokenizer es una herramienta que nos proporciona la
+        <abbr title="Application Programming Interface">
+            API
+        </abbr>
+        de Java para dividir una cadena en
+        subcadenas (también conocidas como "
+        <strong>
+            tokens
+        </strong>
+        " o "elementos") en base a un
+        <strong>
+            separador
+        </strong>
+        o delimitador (otra cadena). Este proceso es conocido también como
+        "tokenización" o "división". Esta clase se encuentra en el paquete java.util.
+    </p>
+    <p>
+        Los métodos más usuales de esta clase son:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            <strong>
+                constructores
+            </strong>
+            , que crean un objeto&nbsp;StringTokenizer
+            con la cadena que se pasa como parámetro. Si se añade un segundo parámetro, será la cadena
+            delimitadora. Si no se indica un segundo parámetro, se considera que la cadena delimitadora
+            es el espacio en blanco (así como el avance de línea y el tabulador). A partir de este
+            objeto podremos llevar a cabo el proceso de "tokenización" u obtención de cada uno de los
+            elementos o tokens de la cadena en función del separador que se haya especificado;
+        </li>
+        <li class="lista_verificacion">
+            método nextToken, que devuelve el siguiente elemento o token de
+            la cadena. La primera vez que se llama a este método se devolverá el primer token, la
+            segunda vez el segundo token, y así sucesivamente. Si no quedaran tokens por devolver, se
+            lanzaría la excepción NoSuchElementException.
+        </li>
+        <li class="lista_verificacion">
+            método hasMoreTokens, que indica si quedan o no más tokens por
+            devolver. Este método te puede servir para evitar que se te lance la excepción anterior;
+        </li>
+        <li class="lista_verificacion">
+            método countTokens, que devuelve la cantidad de tokens que tiene
+            un objeto de tipo StringTokenizer.
+        </li>
+    </ul>
+    <p>
+        La mejor manera de comprender su funcionamiento es mediante un ejemplo. Imagina una cadena
+        formada por el nombre y los dos apellidos de una persona separados por espacios en blanco. La
+        clase&nbsp;StringTokenizer nos ayuda a separar esa cadena en tres subcadenas usando como
+        delimitador un espacio en blanco. Una forma sencilla de extraer el nombre y los apellidos podría
+        ser la siguiente (no olvides el import java.lang.StringTokenizer al comienzo de tu
+        programa):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>import java.lang.StringTokenizer;
+. . .
+. . .
+String nombreCompleto ="Luis Torres Ugarte";
+StringTokenizer tokens =new StringTokenizer(nombreCompleto); // Si no hay segundo parámetro se asume el espacio como separador
+String nombre = tokens.nextToken();
+String apellido1 = tokens.nextToken();
+String apellido2 = tokens.nextToken();
+System.out.printf ("Nombre completo: %s\n", nombreCompleto);
+System.out.printf ("Nombre: %s \nApellido1: %s \nApellido2: %s\n",
+        nombre, apellido1, apellido2);</pre>
+        </div>
+    </div>
+    <p>
+        La salida de ese programa debería ser algo similar a lo siguiente:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+         <pre>Nombre completo: Luis Torres Ugarte
+Nombre: Luis
+Apellido1: Torres
+Apellido2: Ugarte</pre>
+        </div>
+    </div>
+    <p>
+        Ahora bien, este ejemplo es extremadamente simple, pues conocíamos a priori cuántos tokens o
+        elementos íbamos a encontrar en la cadena. Eso no será lo habitual, sino que el número de
+        elementos será desconocido y habrá que ir recorriéndolos hasta que se acaben. Para ello podremos
+        utilizar el método hasMoreTokens como condición de continuidad dentro de un bucle donde iremos
+        extrayendo uno a uno cada elemento mediante el método nextToken.
+        <br>
+        <br>
+        Por ejemplo, imagina un
+        programa en el que se piden por teclado una serie de palabras separadas por comas y
+        posteriormente deseamos mostrar por pantalla cada una de esas palabras. Podríamos hacer algo
+        así:
+        <br/><br/></p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>System.out.println ("Introduzca una lista de palabras separadas por comas: ");
+String linea = teclado.nextLine();
+StringTokenizer lista = new StringTokenizer (linea, ","); // El separador de elementos será la cadena ","
+System.out.println ("\nLas palabras son:");
+do &#123;
+    String palabra = lista.nextToken().trim(); // Obtenemos la siguiente palabra y quitamos los posibles espacios de los extremos
+    System.out.printf ("%s\n", palabra);
+&#125; while (lista.hasMoreTokens());</pre>
+        </div>
+    </div>
+    <p>
+        Un ejemplo de funcionamiento podría ser el siguiente:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+         <pre>Introduzca una lista de palabras separadas por coma:
+Argentina, Polonia, Portugal,  Chile
+
+Las palabras son:
+Argentina
+Polonia
+Portugal
+Chile</pre>
+        </div>
+    </div>
+    <p>
+        También podrías haberlo resuelto mediante un bucle for, teniendo en cuenta que puedes obtener la
+        cantidad de elementos mediante el método countTokens:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>System.out.println ("Introduzca una lista de palabras separadas por comas: ");
+String linea = teclado.nextLine();
+StringTokenizer lista = new StringTokenizer (linea, ","); &nbsp;// El separador de elementos será la cadena ","
+System.out.println ("\nLas palabras son:");
+for (int i=0 ; i<lista.countTokens() ; i++) &#123;
+    String palabra = lista.nextToken().trim(); // Obtenemos la siguiente palabra y quitamos espacios de los extremos
+    System.out.printf ("%s\n", palabra);
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.4.- Otros tipos de cadenas de caracteres en Java.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p align="left" style="text-align: justify;">
+        Probablemente, el principal problema de los objetos
+        String en Java es su alto consumo de memoria. Por tanto, cuando realizamos un programa que
+        realiza muchísimas operaciones con cadenas, es necesario optimizar el uso de memoria.
+    </p>
+    <p>
+        ¿Cuál crees que es la razón de ese alto consumo de memoria? Recuerda que en Java, los objetos de
+        la clase String son objetos inmutables, lo cual significa, entre otras cosas, que cada vez que
+        creamos un String, o un literal de String, se crea un nuevo objeto que nuevamente no es
+        modificable.
+    </p>
+    <p>
+        Para evitar estos problemas de rendimiento, o bien para simplificar en algunos casos, Java
+        proporciona la clase StringBuilder, cuyos objetos sí son
+        mutables
+        , permitiendo una mayor optimización de la
+        memoria. También existe la clase StringBuffer, pero consume mayores recursos al estar pensada
+        para programas
+        multi-hilo
+        , por lo que en nuestro caso
+        nos centraremos en la primera.
+    </p>
+    <p align="left">
+        Pero, ¿en qué se diferencia StringBuilder de la clase String? Pues básicamente en
+        que la clase StringBuilder permite modificar la cadena que contiene, mientras que la clase
+        String no. Como ya se ha indicado en anteriores ocasiones, siempre que se realice una operación
+        sobre un objeto String, se genera una nueva instancia de la clase String.
+    </p>
+    <p align="left">
+        Veamos un pequeño ejemplo de uso de esta clase. En el ejemplo que vas a ver, se
+        parte de una cadena con errores que modificaremos para ir haciéndola legible. Lo primero que
+        tenemos que hacer es crear la instancia de esta clase. Se puede inicializar de muchas formas,
+        por ejemplo, partiendo de un literal de cadena:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>StringBuilder strb=new StringBuilder ("Hoal Muuundo");
+</pre>
+        </div>
+    </div>
+    <p align="left">
+        Y ahora, usando los métodos append (insertar al final), insert (insertar una cadena
+        o carácter en una posición específica), delete (eliminar los caracteres que hay entre dos
+        posiciones) y replace (reemplazar los caracteres que hay entre dos posiciones por otros
+        diferentes), rectificaremos la cadena anterior y la haremos correcta:
+    </p>
+    <ol>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           strb.delete(6,8);
+          </span>
+            </strong>
+            Eliminamos las
+            <strong>
+          <span style="font-size: medium;">
+           'uu'
+          </span>
+            </strong>
+            que sobran en la cadena. La
+            primera
+            <strong>
+          <span style="font-size: medium;">
+           'u'
+          </span>
+            </strong>
+            que sobra está en la
+            posición 6 (no olvides contar el espacio), y la última
+            <strong>
+          <span style="font-size: medium;">
+           'u'
+          </span>
+            </strong>
+            a eliminar está en la posición 7.
+            Para eliminar dichos caracteres de forma correcta hay que pasar como primer argumento la
+            posición 6 (posición inicial) y como segundo argumento la posición 8 (posición contigua al
+            último carácter a eliminar), dado que la posición final no indica el último carácter a
+            eliminar, sino el carácter justo posterior al último que hay que eliminar (igual que ocurría
+            con el método
+            <strong>
+          <span style="font-size: medium;">
+           substring()
+          </span>
+            </strong>
+            ).
+        </li>
+        <li>
+         <span style="font-size: medium;">
+          <strong>
+           strb.append ("!");
+          </strong>
+         </span>
+            Añadimos al
+            final de la cadena el símbolo de cierre de exclamación.
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           strb.insert (0,"¡");
+          </span>
+            </strong>
+            Insertamos en
+            la posición 0, el símbolo de apertura de exclamación.
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           strb.replace (3,5,"la");
+          </span>
+            </strong>
+            Reemplazamos los caracteres 'al' situados entre la posición inicial 3 y la posición final 4,
+            por la cadena
+            <strong>
+          <span style="font-size: medium;">
+           'la'
+          </span>
+            </strong>
+            . En este método
+            ocurre igual que en los métodos
+            <strong>
+          <span style="font-size: medium;">
+           delete()
+          </span>
+            </strong>
+            y
+            <strong>
+          <span style="font-size: medium;">
+           substring()
+          </span>
+            </strong>
+            , en vez de indicar como
+            posición final la posición 4, se debe indicar justo la posición contigua, es decir 5.
+        </li>
+    </ol>
+    <p align="left">
+        StringBuilder proporciona muchos métodos similares a los de la clase String (
+        <code>
+            charAt,
+            indexOf, lenght, substring, replace,
+        </code>
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        ), aunque no
+        todos, pues se trata de clases diferentes.
+    </p>
+    <div class="exe-tooltip-text" id="tcef8929b-94f6-107a-802d-63355ee82ea9">
+        <p>
+            Es lo contrario a un objeto inmutable. Son objetos que, una vez creados, se puede modificar
+            su contenido sin problema.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="tf90ce143-23a1-bf5f-3fa3-4fd21c3af68e">
+        <p>
+            Se trata de aplicaciones que ejecutan varias líneas de ejecución simultáneamente y que
+            necesitan acceder a datos compartidos. Cuando varias líneas de ejecución, cada una a su
+            ritmo, necesitan acceder a datos compartidos, hay que tener mucho cuidado para que los datos
+            que manejan no sean incoherentes.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.- Expresiones regulares.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        continúa avanzando con la manipulación de cadenas, pero se ha
+        encontrado con algunas dificultades a la hora de buscar determinados patrones dentro de
+        un texto. Parece sencillo cuando el patrón es algo fijo, pero si lo que busca dentro del
+        texto puede ser algo variable (por ejemplo números o ciertas combinaciones de letras y
+        números), la cosa ya no es tan evidente. Por ejemplo, si tuviera que comprobar si una
+        determinada entrada es o no un DNI correcto (cumple la estructura de números y letras
+        apropiada) no parece tan inmediato de resolver con los métodos que de la clase&nbsp;String
+        que ha visto hasta ahora.
+    </p>
+    <p>
+        Uno de sus compañeros le ha hablado de la posibilidad de utilizar
+        <strong>
+            expresiones
+            regulares
+        </strong>
+        para representar esos
+        <strong>
+            patrones
+        </strong>
+        y de esa manera poder
+        realizar las búsquedas o las comprobaciones de una manera muchísimo más sencilla y
+        eficaz.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.1.- Construcción de expresiones regulares.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Antes de empezar a trabajar con ningún lenguaje de programación concreto, vamos a presentar las
+        expresiones regulares de manera general, para intentar comprender su sintaxis y funcionamiento,
+        independientemente del contexto en el que las utilicemos en el futuro.
+    </p>
+    <p>
+        Se trata de un conjunto de reglas con las cuales podemos expresar un patrón. Normalmente, ese
+        patrón estará compuesto por símbolos (letras, números, espacios, caracteres especiales). La
+        mayoría de esos símbolos tendrá un significado "literal", aunque también habrá
+        <strong>
+            determinados
+            símbolos que tengan un significado especial
+        </strong>
+        (se les suele llamar "
+        <strong>
+            metacaracteres
+        </strong>
+        ")
+        y para poder usar su valor "literal" tendrán que ser "escapados".
+    </p>
+    <p>
+        Veamos cuáles son las reglas generales para construir una expresión regular:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Podemos indicar que una cadena debe contener una
+            <strong>
+                secuencia de símbolos fija
+            </strong>
+            ,
+            simplemente colocando dichos símbolos en el patrón, excepto para algunos símbolos especiales
+            que necesitarán un carácter de escape, como veremos más adelante. Por ejemplo, el patrón
+            <strong>
+          <span style="font-size: medium;">
+           "aaa"
+          </span>
+            </strong>
+            admitirá únicamente cadenas
+            que estén formadas tres aes. Cualquier otro texto no "encajará" con ese patrón.
+        </li>
+        <li>
+            Dado que la regla anterior es muy estricta y sería equivalente a una simple comparación de
+            cadenas, las expresiones regulares flexibilizan esto al permitir indicar
+            <strong>
+                un conjunto
+                de posibles símbolos
+            </strong>
+            (y no solo un símbolo) mediante el uso de los corchetes.
+            Por ejemplo, el patrón
+            <strong>
+          <span style="font-size: medium;">
+           [xyz]
+          </span>
+            </strong>
+            indica que en la posición donde aparezcan esos corchetes podrá aparecer uno de los símbolos
+            que están encerrados entre los corchetes (el conjunto). Basándonos en ese ejemplo, la
+            expresión regular
+            <strong>
+          <span style="font-size: medium;">
+           "aaa[xyz]"
+          </span>
+            </strong>
+            admitirá como válidas las cadenas
+            <strong>
+          <span style="font-size: medium;">
+           "aaax"
+          </span>
+            </strong>
+            , la cadena
+            <strong>
+          <span style="font-size: medium;">
+           "aaay"
+          </span>
+            </strong>
+            y la cadena
+            <strong>
+          <span style="font-size: medium;">
+           "aaaz"
+          </span>
+            </strong>
+            . Son las únicas tres cadenas que
+            "encajan" (o hacen "matching") con el patrón representado por esa expresión regular.
+            <strong>
+                Los corchetes representan una posición de la cadena que puede tomar uno de varios
+                valores posibles
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Veamos otro ejemplo:
+        <strong>
+            ¿cómo construirías un patrón que represente cualquier número impar
+            negativo de una sola cifra?
+        </strong>
+    </p>
+    <p>
+        Lo primero que tendríamos que hacer sería indicar el signo menos (carácter guion '-') y a
+        continuación cualquier dígito que sea impar (el uno, el tres, el cinco, el siete o el nueve).
+        Para ello podríamos especificar un conjunto con esos caracteres: [13579]. Por tanto, la
+        expresión regular podría quedar como:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>-[13579]</pre>
+        </div>
+    </div>
+    <p>
+        Esa expresión regular representa a un patrón que encajará o se "acoplará" con las cadenas "-1", "
+        <code>
+            -3
+        </code>
+        ",
+        "-5", "
+        <code>
+            -7
+        </code>
+        " y "-9". Es decir, que escribiendo la expresión "-[13579]", estamos
+        representando a todas esas posibles cadenas.
+    </p>
+</div><h1 class="title">
+    3.1.1.- Rangos.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 160px;">
+    </figure>
+    <p>
+        Como acabamos de ver, una de las principales ventajas que nos ofrece la posibilidad de expresar
+        un patrón mediante una expresión regular es la posibilidad de indicar un
+        <strong>
+            posible
+            conjunto de caracteres
+        </strong>
+        para una o varias posiciones en una cadena.
+    </p>
+    <p>
+        Ahora bien, una de las dificultades que puede que te hayas encontrado es que si quieres escribir
+        un conjunto que represente todas las letras del alfabeto, las tendrías que escribir una a una.
+        Por ejemplo:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            para referirte a las letras mayúsculas, tendrías que escribir
+            <strong>
+          <span style="font-size: medium;">
+           "[abcdefghijklmnopqrstuvwxyz]"
+          </span>
+            </strong>
+            ;
+        </li>
+        <li class="lista_verificacion">
+            para referirte a las letras mayúsculas, tendrías que escribir
+            <span style="font-size: medium;">
+          <strong>
+           <span style="font-size: medium;">
+            "[ABCDEFGHIKLMNOPQRSTUVWXYZ]"
+           </span>
+          </strong>
+         </span>
+            ;
+        </li>
+        <li class="lista_verificacion">
+            para referirte a las letras mayúsculas y también a las
+            minúsculas, tendrías que escribir el conjunto siguiente:
+            <ul>
+                <li class="lista_verificacion">
+           <span style="font-size: medium;">
+            <span style="font-size: medium;">
+             <strong>
+              <span style="font-size: medium;">
+               "[abcdefghijklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTUVWXYZ]"
+              </span>
+             </strong>
+            </span>
+           </span>
+                    ;
+                </li>
+            </ul>
+        </li>
+        <li class="lista_verificacion">
+            y así sucesivamente, si quieres ir incluyendo más caracteres en
+            el conjunto.
+        </li>
+    </ul>
+    <p>
+        Para intentar simplificar estas expresiones tan largas dentro de los conjuntos, disponemos de los
+        <strong>
+            rangos de caracteres
+        </strong>
+        .
+    </p>
+    <p>
+        Mediante el empleo del
+        <strong>
+            guion
+        </strong>
+        dentro de los corchetes podemos indicar que el
+        patrón admite cualquier carácter entre el símbolo inicial y el final. Es posible indicar varios
+        posibles rangos dentro de un conjunto e incluso añadir algunos caracteres más. Aquí tienes
+        varios ejemplos de especificación de rangos dentro de conjuntos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[a-z]"
+          </span>
+            </strong>
+            indica que el conjunto
+            representa a todas las letras minúsculas de alfabeto latino (sin incluir la eñe, que no está
+            entre los caracteres estándar). Sería equivalente a escribir
+            <strong>
+          <span style="font-size: medium;">
+           "[abcdefghijklmnopqrstuvwxyz]"
+          </span>
+            </strong>
+            ;
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[A-Z]"
+          </span>
+            </strong>
+            <span style="font-size: medium;">
+          hace referencia a todas las letras
+          <span style="font-size: medium;">
+           mayúsculas
+          </span>
+          . Equivalente a
+          <strong>
+           <span style="font-size: medium;">
+            "[ABCDEFGHIKLMNOPQRSTUVWXYZ]"
+           </span>
+          </strong>
+          ;
+          <br>
+         <br/></span>
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[a-zA-Z]"
+          </span>
+            </strong>
+            <span style="font-size: medium;">
+          se refiere al conjunto de todas las letras minúsculas y mayúsculas. En este caso hemos unido dos rangos y sería equivalente a
+          <span style="font-size: medium;">
+           <strong>
+            <span style="font-size: medium;">
+             "[abcdefghijklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTUVWXYZ]"
+            </span>
+           </strong>
+           ;
+          </span>
+         </span>
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[A-Fu-z]"
+          </span>
+            </strong>
+            hace referencia al
+            conjunto de todas las letras mayúsculas entre '
+            <strong>
+          <span style="font-size: medium;">
+           A
+          </span>
+            </strong>
+            ' y '
+            <strong>
+          <span style="font-size: medium;">
+           F
+          </span>
+            </strong>
+            ' y las minúsculas entre '
+            <strong>
+          <span style="font-size: medium;">
+           u
+          </span>
+            </strong>
+            y '
+            <strong>
+          <span style="font-size: medium;">
+           z
+          </span>
+            </strong>
+            '.
+            <span style="font-size: medium;">
+          Equivalente a
+          <strong>
+           <span style="font-size: medium;">
+            "[ABCDEFuvwxyz]"
+           </span>
+          </strong>
+          ;
+         </span>
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[0-9]"
+          </span>
+            </strong>
+            indica el conjunto de los
+            diez posibles caracteres numéricos del sistema decimal. De este modo podemos indicar que se
+            permite la presencia de un dígito numérico entre
+            <strong>
+          <span style="font-size: medium;">
+           0
+          </span>
+            </strong>
+            y
+            <strong>
+          <span style="font-size: medium;">
+           9
+          </span>
+            </strong>
+            , cualquiera de ellos, pero solo uno.
+            Sería equivalente a haber escrito
+            <strong>
+          <span style="font-size: medium;">
+           "[0123456789]"
+          </span>
+            </strong>
+            ;
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[a-zA-Z0-9_]"
+          </span>
+            </strong>
+            hace referencia a
+            cualquier letra mayúscula o minúscula, o dígito, o el carácter '_' (
+            <em>
+          <span lang="en">
+           underscore
+          </span>
+            </em>
+            o "guion bajo" o "subrayado"). En este caso se han incluido tres rangos y un carácter.
+            Sería equivalente a haber escrito
+            <span style="font-size: medium;">
+          <span style="font-size: medium;">
+           <strong>
+            <span style="font-size: medium;">
+             "[abcdefghijklmnopqrstuvwxyzABCDEFGHIKLMNOPQRSTUVWXYZ0123456789_]"
+            </span>
+           </strong>
+          </span>
+         </span>
+            .
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.1.2.- Cuantificadores.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Con las reglas que hemos visto hasta el momento, podemos indicar el conjunto de símbolos que
+        admite el patrón y el orden que deben tener. Si una cadena no contiene los símbolos
+        especificados en el patrón, en el mismo orden, entonces la cadena no encajará con el patrón. El
+        problema que habrás visto al resolver algunos ejercicios, es que en más de una ocasión habrás
+        tenido que repetir una y otra vez el mismo carácter o conjunto de caracteres para poder
+        construir el patrón que necesitas. Eso puede llegar a ser tedioso y dificultar muchísimo la
+        legibilidad de la expresión regular, además de resultar muy poco flexible si se pretende definir
+        un patrón que represente un conjunto de cadenas que no tuvieran todas el mismo tamaño.
+    </p>
+    <p>
+        Para resolver esto vamos a ver cómo indicar repeticiones. Se llevan a cabo mediante los
+        <strong>
+            operadores
+            de cuantificación
+        </strong>
+        (o
+        <strong>
+            cuantificadores
+        </strong>
+        ). Son cuatro operadores:
+        <strong>
+            interrogación
+        </strong>
+        (símbolo "
+        <strong>
+            ?
+        </strong>
+        "),
+        <strong>
+            estrella
+        </strong>
+        (símbolo "
+        <strong>
+            *
+        </strong>
+        "),
+        <strong>
+            más
+        </strong>
+        (símbolo "
+        <strong>
+            +
+        </strong>
+        ") y
+        <strong>
+            llaves
+        </strong>
+        (símbolos
+        "
+        <strong>
+            &#123;
+        </strong>
+        " y "
+        <strong>
+            &#125;
+        </strong>
+        "):
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           Interrogante
+          </span>
+            </strong>
+            <span style="font-size: medium;">
+          (?)
+         </span>
+            <span style="font-size: medium;">
+          . Por ejemplo,
+         </span>
+            <strong>
+          <span style="font-size: medium;">
+           "a?"
+          </span>
+            </strong>
+            . Usaremos el
+            <strong>
+                interrogante
+            </strong>
+            para indicar que un símbolo puede aparecer
+            <strong>
+                una vez o
+                ninguna
+            </strong>
+            . De esta forma, la letra "a" podrá aparecer una vez o simplemente no
+            aparecer.
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           Asterisco
+          </span>
+            </strong>
+            <span style="font-size: medium;">
+          (*). Por ejemplo,
+         </span>
+            <strong>
+          <span style="font-size: medium;">
+           "a*"
+          </span>
+            </strong>
+            . Emplearemos el
+            <strong>
+                asterisco
+            </strong>
+            para indicar que un símbolo puede aparecer
+            <strong>
+                una vez o
+                muchas veces, pero también ninguna
+            </strong>
+            (
+            <em>
+                <strong>
+                    cero o más veces
+                </strong>
+            </em>
+            ).
+            Cadenas válidas que cumplen esta expresión regular podrían ser
+            <strong>
+          <span style="font-size: medium;">
+           "aa", "
+           <code>
+            aaa
+           </code>
+           "
+          </span>
+            </strong>
+            o
+            <strong>
+          <span style="font-size: medium;">
+           "aaaaaaaa"
+          </span>
+            </strong>
+            .
+        </li>
+        <li>
+         <span style="font-size: medium;">
+          <strong>
+           Más
+          </strong>
+          (+). Por ejemplo, "a+"
+         </span>
+            . Con el
+            símbolo de
+            <strong>
+                suma
+            </strong>
+            podemos indicar que otro símbolo debe aparecer
+            <strong>
+                al
+                menos una vez
+            </strong>
+            (
+            <em>
+                <strong>
+                    una o más veces
+                </strong>
+            </em>
+            ), pudiendo repetirse
+            cuantas veces quiera.
+        </li>
+        <li>
+         <span style="font-size: medium;">
+          <strong>
+           Llaves
+          </strong>
+          (
+          <strong>
+           &#123;n,m&#125;
+          </strong>
+          ). Por ejemplo, "a&#123;1,4&#125;"
+         </span>
+            .
+            Mediante las
+            <strong>
+                llaves
+            </strong>
+            , podemos indicar el
+            <strong>
+                número mínimo y máximo de
+                veces
+            </strong>
+            que un símbolo podrá repetirse. El primer número del ejemplo es el número
+            1, y quiere decir que la letra
+            <strong>
+          <span style="font-size: medium;">
+           "a"
+          </span>
+            </strong>
+            debe aparecer al menos una vez. El segundo número, 4, indica que como máximo puede repetirse
+            cuatro veces.
+        </li>
+    </ul>
+    <p>
+        Las llaves permiten además utilizar sólo uno de sus parámetros:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           Indicación de un número mínimo de
+          </span>
+                <span style="font-size: medium;">
+           repeticiones
+          </span>
+            </strong>
+            <span style="font-size: medium;">
+          . Por ejemplo, "a&#123;2,&#125;"
+         </span>
+            . Es posible indicar solo el
+            <strong>
+                número mínimo de veces
+            </strong>
+            que un carácter debe aparecer (sin determinar el
+            máximo), haciendo uso de las llaves, indicando el primer número y poniendo la coma (no la
+            olvides).
+        </li>
+        <li>
+            <strong>
+                Indicación un número exacto de repeticiones
+            </strong>
+            . Por ejemplo,
+            <strong>
+          <span style="font-size: medium;">
+           "a&#123;5&#125;"
+          </span>
+            </strong>
+            . A diferencia de la forma anterior, si
+            únicamente escribimos un número entre llaves, sin poner la coma detrás, significará que el
+            símbolo debe aparecer un
+            <strong>
+                número exacto de veces
+            </strong>
+            . En este caso,
+            la
+            <strong>
+          <span style="font-size: medium;">
+           "a"
+          </span>
+            </strong>
+            debe aparecer exactamente
+            cinco veces.
+        </li>
+    </ul>
+    <p>
+        Mediante el uso de las llaves podríamos sustituir al resto de los cuantificadores (asterisco,
+        interrogación y más), pero suelen utilizarse mucho porque simplifican bastante la expresión:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "a?"
+          </span>
+            </strong>
+            es equivalente a
+            <strong>
+          <span style="font-size: medium;">
+           "a&#123;0,1&#125;"
+          </span>
+            </strong>
+            ;
+        </li>
+        <li>
+         <span style="font-size: medium;">
+          <strong>
+           <span style="font-size: medium;">
+            "a*"
+           </span>
+          </strong>
+          es equivalente a
+          <strong>
+           <span style="font-size: medium;">
+            "a&#123;0,&#125;"
+           </span>
+          </strong>
+          ;
+         </span>
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "a+"
+          </span>
+            </strong>
+            es equivalente a
+            <strong>
+          <span style="font-size: medium;">
+           "a&#123;1,&#125;"
+          </span>
+            </strong>
+            ;
+        </li>
+    </ul>
+    <p>
+        Dado que un corchete representa a un símbolo entre varios posibles, los cuantificadores pueden
+        utilizarse para indicar posibles repeticiones no solamente de un carácter concreto literal, sino
+        de un conjunto de posibles valores expresado mediante el uso de los corchetes. Por ejemplo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[a-z]&#123;1,4&#125;[0-9]"
+          </span>
+            </strong>
+            es un patrón que
+            hace referencia a una secuencia de entre una y cuatro letras minúsculas (entre 'a' y 'z') y
+            a continuación un único dígito numérico (entre '0' y '9'). Por tanto, las siguientes cadenas
+            podrían encajar con ese patrón:
+            <strong>
+          <span style="font-size: medium;">
+           "a0"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "ab7"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "xyz1"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "aaxx5"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "wow9"
+          </span>
+            </strong>
+            ,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .
+            Sin embargo, las siguientes cadenas no encajarían:
+            <strong>
+          <span style="font-size: medium;">
+           "0"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "aaxxx"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "a1x5"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "A0"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "Wow9"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "x22"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "xyz"
+          </span>
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           "[0-9A-F]+"
+          </span>
+            </strong>
+            es un patrón que hace
+            referencia a una secuencia de dígitos y/o letras entre la '
+            <strong>
+          <span style="font-size: medium;">
+           A
+          </span>
+            </strong>
+            ' y la '
+            <strong>
+          <span style="font-size: medium;">
+           F
+          </span>
+            </strong>
+            ' que pueden ir mezclados. La secuencia
+            tendrá como mínimo un símbolo y no se especifica límite máximo. Por tanto, las siguientes
+            cadenas podrían encajar con ese patrón:
+            <strong>
+          <span style="font-size: medium;">
+           "A0"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "AB7"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "1"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "000"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "0FF"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "A0FF"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "00011101010111"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "BBB"
+          </span>
+            </strong>
+            ,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .
+            Sin embargo, las siguientes cadenas no encajarían:
+            <strong>
+          <span style="font-size: medium;">
+           "a0"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "AX7"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "j"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "0ff"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "A0fF"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "91G"
+          </span>
+            </strong>
+            ,
+            <strong>
+          <span style="font-size: medium;">
+           "bbb"
+          </span>
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Fíjate que
+        <strong>
+            la cuantificación se aplica siempre al elemento inmediatamente anterior al
+            operador de cuantificación
+        </strong>
+        . Si deseamos que se aplique a más de un elemento, habrá que
+        agruparlos mediante el uso de los paréntesis. Eso lo veremos en el siguiente apartado.
+    </p>
+</div><h1 class="title">
+    3.1.3.- Agrupaciones: uso de paréntesis.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        En ocasiones, tendremos necesidad de
+        <strong>
+            agrupar una secuencia de símbolos
+        </strong>
+        para que
+        se le pueda aplicar un cuantificador a toda esa agrupación. Por ejemplo, si tenemos la siguiente
+        expresión regular:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>xy+</pre>
+        </div>
+    </div>
+    <p>
+        es un patrón que indica que debe aparecer un carácter 'x' y a continuación uno más caracteres
+        'y
+        <code>
+        </code>
+        '. Es decir, que se admitirían cadenas del tipo "xy", "
+        <code>
+            xyy
+        </code>
+        ",
+        "xyy
+        <code>
+            y
+        </code>
+        ",
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+    <p>
+        Sin embargo, si lo que queremos es poder reconocer o admitir cadenas del tipo "xy",
+        "
+        <code>
+            xyxy
+        </code>
+        ", "xyxyx
+        <code>
+            y
+        </code>
+        ",
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . Es decir,
+        repeticiones del par "xy", entonces tendríamos que cuantificar ambos elementos. Pero no podemos
+        cuantificarlos individualmente haciendo algo como:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>x+y+</pre>
+        </div>
+    </div>
+    <p>
+        Porque en tal caso, estaríamos indicando repeticiones del carácter 'x
+        <code>
+        </code>
+        ' y luego
+        repeticiones del carácter 'y
+        <code>
+        </code>
+        ', pero no repeticiones del par "xy". Por ejemplo, se
+        admitirían cadenas del tipo "xxxxy", "
+        <code>
+            xxyyyyy
+        </code>
+        ", "xy",
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . Pero una vez que aparezca la primera 'y
+        <code>
+        </code>
+        ', ya
+        no aparecerán más 'x'.
+    </p>
+    <p>
+        Por tanto, lo que tenemos que hacer es agrupar la secuencia de símbolos que queremos que se
+        repita. De ese modo el cuantificador afectará a toda esa secuencia. Para ello se utilizan los
+        paréntesis:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>(xy)+</pre>
+        </div>
+    </div>
+    <p>
+        De este modo convertimos a la secuencia "xy" en una unidad indivisible a la cual se le aplicará
+        el cuantificador '+'.
+        <br>
+        <br>
+        <br/><br/></p>
+    <p>
+        Si en lugar de utilizar caracteres "fijos" (como 'x' o 'y
+        <code>
+        </code>
+        '), se utilizan conjuntos
+        mediante los corchetes, nuestras posibilidades a la hora de flexibilizar nuestras reglas se
+        multiplican. Por ejemplo, si queremos detectar cadenas que sigan la siguiente secuencia:
+    </p>
+    <p style="text-align: center;">
+        "
+        <em>
+            una cifra cero o uno seguida de una letra minúscula, todo eso
+            entre una y tres veces
+        </em>
+        "
+    </p>
+    <p>
+        podríamos construir la siguiente expresión regular:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>([01][a-z])&#123;1,3&#125;</pre>
+        </div>
+    </div>
+    <p>
+        De esa manera, este patrón detectaría cadenas del tipo "0s", "
+        <code>
+            1b1a0x
+        </code>
+        ", "0c1z",
+        "
+        <code>
+            1a1a
+        </code>
+        ", "1a&lt;code&gt;1a1a", "0b&lt;code&gt;0b0b", "0b1&lt;code&gt;b0j",
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    3.1.4.- Alternativas: operador barra ('|') o disyuntor.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Otro operador importante en las expresiones regulares es la
+        <strong>
+            barra
+        </strong>
+        (símbolo
+        '
+        <strong>
+            |
+        </strong>
+        ') o
+        <strong>
+            disyuntor
+        </strong>
+        , utilizado para indicar varias opciones o
+        alternativas. Por ejemplo, la expresión regular
+        <strong>
+            "o|u"
+        </strong>
+        buscará cualquier
+        "
+        <strong>
+            o
+        </strong>
+        " o "
+        <strong>
+            u
+        </strong>
+        " dentro del texto y la expresión regular
+        <strong>
+            "este|oeste|norte|sur"
+        </strong>
+        puede servir para encontrar el nombre de cualquiera de los puntos cardinales (en minúscula).
+    </p>
+    <p>
+        Cuando se usa una
+        <strong>
+            barra
+        </strong>
+        ('
+        <strong>
+            |
+        </strong>
+        '), la primera opción o alternativa
+        comienza al principio de la expresión regular y finaliza cuando encuentra una
+        <strong>
+            barra
+        </strong>
+        (símbolo '
+        <strong>
+            |
+        </strong>
+        '). A partir de ahí comienza la segunda
+        alternativa, que finalizará cuando haya otra barra o bien cuando termine la expresión, y así
+        sucesivamente. Por ejemplo, si queremos dar la alternativa entre las palabras
+        <strong>
+            "Antes"
+        </strong>
+        y
+        <strong>
+            "antes"
+        </strong>
+        , podríamos escribir
+        <strong>
+            "Antes|antes"
+        </strong>
+        , aunque en tal
+        caso podríamos interesarnos escribir una sola vez la parte común (
+        <strong>
+            "ntes"
+        </strong>
+        ).
+        Ahora bien, para hacerlo correctamente no podemos escribir
+        <strong>
+            "
+            <strong>
+                &lt;strong&gt;&lt;strong&gt;&lt;code&gt;A
+            </strong>
+        </strong>
+        <strong>
+            <strong>
+                |
+            </strong>
+        </strong>
+        antes",
+        porque entonces las alternativas serían
+        <strong>
+            "
+            <strong>
+                &lt;strong&gt;&lt;strong&gt;&lt;code&gt;A
+            </strong>
+        </strong>
+        "
+        y
+        <strong>
+            "
+            <strong>
+                a
+            </strong>
+            ntes"
+        </strong>
+        , sino que habrá que aislar entre paréntesis la parte
+        que contenga la barra para que la opcionalidad únicamente afecte a ese fragmento de la
+        expresión:
+        <strong>
+            "
+            <strong>
+                (A|a)
+            </strong>
+            "
+        </strong>
+        . Eso hará que la expresión regular quede
+        finalmente como
+        <strong>
+            "(A|a)ntes"
+        </strong>
+        . Esto significa que podemos encerrar la
+        opcionalidad entre paréntesis para que no afecte a todo el patrón, sino solamente a una parte de
+        él.
+    </p>
+    <p>
+        En algunos casos (normalmente cuando las alternativas representan un único carácter) se puede
+        obtener el mismo resultado mediante el uso de la barra o bien de los corchetes, pues en ambos
+        casos se está expresando una opcionalidad. Por ejemplo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            el patrón
+            <strong>
+                "(A|a)ntes"
+            </strong>
+            es equivalente a
+            <strong class="lista_verificacion">
+                "[Aa]ntes";
+            </strong>
+        </li>
+        <li>
+            el patrón
+            <strong>
+                "[xyz]=[0-2]"
+            </strong>
+            es equivalente a
+            <strong>
+                "(x|y|z)=(0|1|2)"
+            </strong>
+            .
+            <strong class="lista_verificacion">
+            </strong>
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.1.5.- Metacaracteres y escapado.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Como ya has podido observar, dentro del contexto de una expresión regular algunos caracteres no
+        tienen su significado "literal", sino que cumplen otra función. Entre ellos se encuentran las
+        <strong>
+            llaves
+        </strong>
+        (usadas para cuantificar elementos), los
+        <strong>
+            paréntesis
+        </strong>
+        (utilizados para agrupar elementos básicos y así formar elementos mayores), los
+        <strong>
+            corchetes
+        </strong>
+        (para indicar conjuntos de posibles valores), la
+        <strong>
+            barra
+        </strong>
+        (operador disyuntor), el
+        <strong>
+            asterisco
+        </strong>
+        (cuantificador), el
+        <strong>
+            guion dentro de unos corchetes
+        </strong>
+        (para indicar rangos), la
+        <strong>
+            interrogación
+        </strong>
+        (cuantificador),
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . A estos símbolos, que pierden su significado "literal" para
+        cumplir una función más avanzada, se les suele llamar
+        <strong>
+            metacaracteres
+        </strong>
+        .
+    </p>
+    <p>
+        Como ya habíamos hecho con las cadenas en Java, para poder indicar el significado "literal" de
+        esos caracteres es necesario
+        <strong>
+            escaparlos
+        </strong>
+        mediante el carácter
+        <strong>
+            barra
+            invertida
+        </strong>
+        '\'. Es decir que si en una expresión queremos indicar que puede aparecer
+        un asterisco, dado que carácter * ya tiene un significado especial (metacarácter), debemos
+        escribir \* para dejar claro que nos estamos refiriendo al carácter "asterisco" y no al
+        "cuantificador asterisco".&nbsp; Dependiendo del contexto dentro de la expresión regular, es
+        posible que a veces sea necesario llevar a cabo el escape y en otras no. Por ejemplo, el
+        asterisco tiene normalmente significado como cuantificador, pero si lo incluimos dentro de unos
+        corchetes (para indicar un conjunto de opciones), entonces no hay que escaparlo porque dentro de
+        los corchetes ya no existe el concepto de cuantificación (no tiene sentido).
+    </p>
+    <p>
+        Por ejemplo:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            la expresión regular x* representa una cadena que consiste en un
+            carácter&nbsp;'x' cero o más veces;
+        </li>
+        <li class="lista_verificacion">
+            sin embargo, la expresión regular x\* representa la cadena "x*"
+            (el carácter 'x' seguido del carácter '*').
+        </li>
+    </ul>
+    <p>
+        Ahora bien, dado que
+        <strong>
+            normalmente vamos a escribir las expresiones regulares entre
+            comillas dobles
+        </strong>
+        , que es como
+        <strong>
+            Java
+        </strong>
+        las trata (utiliza objetos String
+        para procesarlas), habrá que tener en cuenta que
+        <strong>
+            en las cadenas de Java la barra
+            invertida ya sirve para escapar
+        </strong>
+        .&nbsp; Eso significa que si escribes "x\*", tendrás
+        un problema de interpretación en Java, dado que se estaría intentando escapar el asterisco
+        dentro de la propia cadena y confundiéndose lo que quieres indicar.
+    </p>
+    <p>
+        Digamos que aquí tendríamos dos "niveles" de escape. Uno inmediato (el de los&nbsp;String de
+        Java) y otro superior (el de la sintaxis de las expresiones regulares). Por tanto, cuando
+        encerremos una expresión regular entre comillas (que será lo habitual, al menos al trabajar en
+        un lenguaje de programación convencional), tendremos que "escapar" la barra invertida dentro de
+        la cadena para poder indicar que queremos literalmente una barra. De ese modo no se perderá en
+        ese "primer nivel" de escape y conservaremos la barra invertida para el intérprete de
+        expresiones regulares.
+    </p>
+    <p>
+        La conclusión de todo esto es que
+        <strong>
+            cada vez que vayamos a utilizar una barra invertida (\)
+            en una expresión regular entre comillas tendremos que escribir dos barras invertidas
+            ("\
+            <code>
+                \
+            </code>
+            ")
+        </strong>
+        .
+    </p>
+    <p>
+        Por tanto, en el ejemplo anterior, la expresión regular entre comillas debería haber quedado así:
+        "x\\*". Esa "doble barra invertida" significará para las cadenas en Java que deseamos escribir
+        realmente una barra invertida dentro de la cadena (hemos "escapado" la barra invertida). Así
+        habremos "conservado" la barra y podrá usarse a continuación, en el intérprete de expresiones
+        regulares de Java, para escapar el asterisco e indicar que deseamos hacer "match" con un
+        asterisco y no llevar a cabo una cuantificación del elemento anterior.
+    </p>
+    <p>
+        Veamos un ejemplo. Imagina que quieres elaborar una expresión regular que represente cadenas que
+        empiecen con la barra invertida (\), a continuación un espacio, un asterisco (*), un símbolo de
+        suma (+) y otro espacio. Tras esto una palabra que empiece en mayúscula y con el resto de letras
+        en minúscula ([A-Z][a-z]*). Finalmente, la cadena debe finalizar obligatoriamente con otro
+        espacio, otro símbolo de suma, otro asterisco, otro espacio y otra barra invertida.
+    </p>
+    <p>
+        Para implementar ese patrón tendríamos que incluir el asterisco escapado (\*), la barra invertida
+        escapada (\\) y el símbolo de suma (\+):
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>\\ \*\+ [A-Z][a-z]* \+\* \\</pre>
+        </div>
+    </div>
+    <p>
+        Esa expresión regular admitirá cadenas como, por ejemplo, "\ *+ Hola +* \". Así podrías
+        utilizarla, por ejemplo, en la herramienta
+        <span lang="en">
+         online
+        </span>
+        Regexr.com
+        .
+    </p>
+    <p>
+        Ahora bien, dado que nosotros normalmente
+        <strong>
+            encerraremos esa expresión regular entre
+            comillas dobles
+        </strong>
+        (para poder usarla como una cadena en Java),
+        <strong>
+            cada vez que
+            aparezca una barra invertida, habrá que añadirle otra para que la cadena de Java entienda cada
+            dos barras invertidas como una barra invertida "literal"
+        </strong>
+        . Es decir, que cada barra
+        invertida (\) habrá que sustituirla por un par de barras invertidas (\\):
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>"\\\\ \\*\\+ [A-Z][a-z]* \\+\\* \\\\"</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.2.- Expresiones regulares en Java (I): clases Pattern y
+    Matcher.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Una vez que ya hemos aprendido a construir expresiones regulares de cierta complejidad, la
+        siguiente pregunta queºes: ¿y cómo uso las expresiones regulares en un programa?
+    </p>
+    <p>
+        Para poder trabajar con expresiones regulares, Java ofrece las clases Pattern y
+        <code>
+            Matcher
+        </code>
+        contenidas en el paquete java.util.regex:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            la clase Pattern o "patrón" se utiliza para procesar la expresión
+            regular y "compilarla", lo cual significa verificar que es correcta, y dejarla lista para su
+            utilización en un objeto de tipo Pattern. Para ello disponemos del método estático
+            Pattern.compile;
+        </li>
+        <li class="lista_verificacion">
+            la clase Matcher o "acoplador" sirve para comprobar si una cadena
+            cualquiera sigue o no un patrón indicado en un objeto de tipo Pattern. A eso se le suele
+            llamar hacer "
+            <em>
+            </em>
+            <span class="lista_verificacion" lang="en">
+          <em>
+           matching
+          </em>
+         </span>
+            ",
+            o "acoplar", o "encajar" con el patrón. Para ello disponemos del método matcher en la clase
+            Pattern, que nos devolverá un objeto de tipo Matcher. Sobre ese objeto podremos aplicar el
+            método&nbsp;matches de la clase Matcher para saber si se produce un "
+            <em>
+                matching
+            </em>
+            " o
+            no.
+        </li>
+    </ul>
+    <p class="lista_verificacion">
+        Veámoslo con un ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Pattern patron=Pattern.compile("[01]+");   // Creamos el patrón: objeto de tipo Pattern
+Matcher texto=patron.matcher("00001010");  // Creamos un caso de posible acoplamiento, encaje o matching: objeto de tipo Matcher
+if (texto.matches())  // Se produce "matching" o "acoplamiento"
+    System.out.println("La cadena encaja con el patrón.");
+else  // No se produce "matching"
+    System.out.println("La cadena no encaja con el patrón.");
+</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo, el método estático compile de la clase Pattern permite crear un objeto de tipo
+        patrón (Pattern). Dicho método compila la expresión regular pasada por parámetro en forma de
+        String y genera una instancia de Pattern (
+        <code>
+            patron
+        </code>
+        en el ejemplo). El patrón patron
+        podrá ser usado múltiples veces para revisar si una cadena coincide o no con el patrón, dicha
+        comprobación se hace invocando el método matcher, el cual combina el patrón con la cadena de
+        entrada y genera una instancia de la clase Matcher (
+        <code>
+            texto
+        </code>
+        en el ejemplo). La clase
+        Matcher contiene el resultado de la comprobación y ofrece varios métodos para analizar el modo
+        en el que la cadena puede encajar o acoplarse (o hacer "matching") con un patrón. En este primer
+        ejemplo hemos utilizado el método
+        <strong>
+         <span style="font-size: medium;">
+          matches()
+         </span>
+        </strong>
+        , que devolverá
+        <strong>
+         <span style="font-size: medium;">
+          true
+         </span>
+        </strong>
+        si toda la cadena (de principio a fin)
+        encaja con el patrón o
+        <strong>
+         <span style="font-size: medium;">
+          false
+         </span>
+        </strong>
+        en caso
+        contrario.
+    </p>
+    <p>
+        Ahora ya podemos empezar a escribir pequeños programas en Java que prueben todos los ejemplos de
+        expresiones regulares que hemos estado viendo en los apartados anteriores.
+    </p>
+</div><h1 class="title">
+    3.2.1.- El método matches de la clase String.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Además de comprobar si un determinado texto encaja exactamente con un patrón, las clases&nbsp;Pattern
+        y
+        <code>
+            Matcher
+        </code>
+        ofrecen muchas más posibilidades. Ahora bien, si simplemente queremos
+        hacer ese tipo de comprobación (si un texto "encaja" con un determinado patrón), podemos evitar
+        la creación de este tipo de objetos y utilizar directamente el método matches que proporciona la
+        clase String. Únicamente hay que pasarle como parámetro una cadena con la expresión regular que
+        representa el patrón que deseamos verificar.
+    </p>
+    <p>
+        Veamos el mismo ejemplo del apartado anterior utilizando esta técnica:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String patron = "[01]+";     // Almacenamos el patron en una cadena
+String texto  = "00001010";  // Almacenamos el texto a comprobar en otra cadena
+if (texto.matches())  // Se produce "matching" o "acoplamiento"
+    System.out.println("La cadena encaja con el patrón.");
+else  // No se produce "matching"
+    System.out.println("La cadena no encaja con el patrón.");</pre>
+        </div>
+    </div>
+    <p>
+        Queda bastante más sencillo, ¿verdad?
+    </p>
+    <p>
+        En realidad, ni siquiera es necesario almacenar el patrón en una cadena. Podría haberse incluido
+        directamente la cadena con el patrón en la llamada al método:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>if (texto.matches("[01]+"))</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.3.- Expresiones regulares en Java (II): búsquedas.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        El método matches de la clase Matcher nos permite comprobar si una cadena encaja exactamente o no
+        con un determinado patrón. Pero esta clase nos ofrece un conjunto de métodos con bastantes más
+        posibilidades a la hora analizar la forma en la que la cadena ha encajado con un patrón. Veamos
+        algunos de ellos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           matches()
+          </span>
+            </strong>
+            , que devolverá
+            <strong>
+          <span style="font-size: medium;">
+           true
+          </span>
+            </strong>
+            si toda la cadena (de
+            principio a fin) encaja con el patrón o
+            <strong>
+          <span style="font-size: medium;">
+           false
+          </span>
+            </strong>
+            en caso contrario;
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           lookingAt()
+          </span>
+            </strong>
+            , que
+            devolverá
+            <strong>
+          <span style="font-size: medium;">
+           true
+          </span>
+            </strong>
+            si el patrón se
+            ha encontrado al principio de la cadena. A diferencia del método
+            <strong>
+          <span style="font-size: medium;">
+           matches()
+          </span>
+            </strong>
+            , la cadena podrá contener al
+            final caracteres adicionales a los indicados por el patrón, sin que ello suponga un
+            problema;
+        </li>
+        <li>
+            <strong>
+          <span style="font-size: medium;">
+           find()
+          </span>
+            </strong>
+            , que devolverá
+            <strong>
+          <span style="font-size: medium;">
+           true
+          </span>
+            </strong>
+            si el patrón existe en algún lugar la
+            cadena (no necesariamente toda la cadena debe coincidir con el patrón) y
+            <strong>
+          <span style="font-size: medium;">
+           false
+          </span>
+            </strong>
+            en caso contrario, pudiendo tener
+            más de una coincidencia. Para obtener la posición exacta donde se ha producido la
+            coincidencia con el patrón podemos usar los métodos
+            <strong>
+          <span style="font-size: medium;">
+           start()
+          </span>
+            </strong>
+            y
+            <strong>
+          <span style="font-size: medium;">
+           end()
+          </span>
+            </strong>
+            , para saber la posición inicial y
+            final donde se ha encontrado. Una segunda invocación del método
+            <strong>
+          <span style="font-size: medium;">
+           find()
+          </span>
+            </strong>
+            irá a la segunda coincidencia (si
+            existe), y así sucesivamente. Podemos reiniciar el método
+            <strong>
+          <span style="font-size: medium;">
+           find()
+          </span>
+            </strong>
+            , para que vuelva a comenzar por la
+            primera coincidencia, invocando el método
+            <strong>
+          <span style="font-size: medium;">
+           reset()
+          </span>
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Como puedes observar ya no se trata simplemente de poder comprobar si un texto cumple exactamente
+        un determinado patrón o requisito, sino que también podríamos comprobar si lo cumplen una o
+        varias partes del texto. Veamos un ejemplo:
+    </p>
+    <p style="text-align: center;">
+        <em>
+            Comprobar si en un determinado texto aparecen números enteros,
+            cuántos y en qué posición.
+        </em>
+    </p>
+    <p>
+        Lo primero que tendríamos que hacer sería diseñar la expresión regular para representar números
+        enteros. Una forma sencilla de hacerlo podría ser "
+        <strong>
+         <span style="font-size: medium;">
+          [0-9]+
+         </span>
+        </strong>
+        ".
+        Si queremos, podríamos complicarlo un poco más si queremos evitar que puedan tener ceros a la
+        izquierda. Eso ya dependería del problema concreto que tuviéramos que resolver.
+    </p>
+    <p>
+        Una vez que tenemos clara la expresión regular, habría que aplicarla al texto que deseamos
+        analizar y a partir de ahí empezar a usar el método
+        <strong>
+         <span style="font-size: medium;">
+          find
+         </span>
+        </strong>
+        en un bucle hasta que nos devuelva
+        <strong>
+         <span style="font-size: medium;">
+          false
+         </span>
+        </strong>
+        :
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Suponemos que la variable "texto" contiene el texto que se desea analizar
+
+Pattern patron = Pattern.compile("[0-9]+");   // Patrón de búsqueda
+Matcher acoplamiento = patron.matcher(texto); // Texto donde buscar o "acoplar"
+boolean patronEcontrado; // Si el patron ha sido encontrado
+
+int numVeces= 0; // Contador para saber cuántas veces aparece el patrón
+do &#123;
+    patronEncontrado= acoplamiento.find(); // Buscamos el patrón en el texto
+    if ( patronEncontrado ) &#123;  // Si lo encontramos, lo contabilizamos, ubicamos y extraemos
+        numVeces++;
+        inicio= acoplamiento.start();
+        fin= acoplamiento.end();
+        System.out.printf  ("%2d.- Patrón numérico encontrado. Ubicado entre las posiciones %d y %d: %s\n",
+                numVeces, inicio, fin, texto.substring(inicio, fin));
+    &#125;
+&#125; while (patronEncontrado);
+
+if (numVeces == 0) &#123;
+    System.out.println ("Patrón numérico entero no encontrado en el texto.");
+&#125; else &#123;
+    System.out.printf ("Encontrado %d veces.", numVeces);
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        En este ejemplo, si el texto de entrada hubiera sido "
+        <em>
+            Este número 220 es mayor que el 200,
+            pero menor que el 300.
+        </em>
+        ", el resultado debería haber sido algo como:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+         <pre>Este número 220 es mayor que el 200, pero menor que el 300.
+ 1.- Patrón numérico encontrado. Ubicado entre las posiciones 12 y 15: 220
+ 2.- Patrón numérico encontrado. Ubicado entre las posiciones 32 y 35: 200
+ 3.- Patrón numérico encontrado. Ubicado entre las posiciones 55 y 58: 300
+Encontrado 3 veces.</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.4.- Expresiones regulares en Java (III): agrupaciones.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Como ya hemos visto,
+        <strong>
+            los paréntesis tienen un significado especial en las expresiones
+            regulares
+        </strong>
+        (son
+        <strong>
+            metacaracteres
+        </strong>
+        ): permiten establecer agrupaciones de un
+        conjunto de símbolos. Por ejemplo, en la expresión "(#[01])&#123;2,3&#125;", el subpatrón "#[01]"
+        representa cadenas como "#0" o "#1". Pero al encerrarlo entre paréntesis y añadir un
+        cuantificador, lo que estamos indicando es que la misma secuencia se tiene que repetir entre dos
+        y tres veces, con lo que las cadenas que admitiría serían del estilo a: "#0#1" o "#0#1#0".
+    </p>
+    <p>
+        Pero los paréntesis tienen una función adicional, y es la de poder
+        <strong>
+            extraer
+            grupos
+        </strong>
+        .
+        <strong>
+            Un grupo comienza cuando se abre un paréntesis y termina cuando se
+            cierra el paréntesis
+        </strong>
+        . El establecimiento de grupos permite acceder de forma cómoda a
+        las diferentes partes de una cadena cuando esta coincide con una expresión regular.
+        <strong>
+            En
+            Java podemos extraer los distintos grupos de un texto que encaja con una expresión regular
+            mediante el método
+        </strong>
+        group de la clase Matcher. Vamos a verlo con un ejemplo:
+    </p>
+    <p>
+        Imagina que debemos reconocer si una fecha cumple el formato
+        <em>
+            <strong>
+                dd/mm/aaaa
+            </strong>
+        </em>
+        ,
+        donde el año solo puede estar entre 2000 y 2099. Ya hemos construido expresiones regulares muy
+        similares para expresar ese patrón. Por ejemplo, podríamos hacer:
+        "(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/20[0-9]&#123;2&#125;".
+    </p>
+    <p>
+        Supongamos ahora que deseamos
+        <strong>
+            obtener por separado el día, el mes y el año
+        </strong>
+        .
+        Podríamos entonces aislar cada uno de esos campos entre paréntesis para poder extraer esos
+        grupos:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>"(3[01]|[12][0-9]|0[1-9])/(1[0-2]|0[1-9])/(20[0-9]&#123;2&#125;)"</pre>
+        </div>
+    </div>
+    <p>
+        Para el caso del día y del mes, ya habíamos tenido que aislar los grupos para un correcto
+        funcionamiento del disyuntor ('|'), así que solamente hemos necesitado encerrar entre paréntesis
+        la parte del año.
+    </p>
+    <p>
+        Para extraer cada uno de los grupos, basta con utilizar el método&nbsp;group sobre el objeto
+        Matcher. Si se la pasa 1 como parámetro, se obtendrá una subcadena con el primer grupo, si se le
+        pasa 2, el segundo, y así sucesivamente.
+    </p>
+    <p>
+        Primero creamos los objetos patrón (Pattern) y acomplamiento (Matcher):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Suponemos que la variable "texto" contiene el texto que se desea analizar
+
+Pattern patron = Pattern.compile("[0-9]+");   // Patrón de búsqueda
+Matcher acoplamiento = patron.matcher(texto); // Objeto que contiene el texto donde buscar o "acoplar"
+</pre>
+        </div>
+    </div>
+    <p>
+        A partir de ahí no tendríamos más que ir obteniendo cada uno de los grupos que proporciona el
+        acoplamiento (objeto Matcher):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if (acoplamiento.matches()) &#123;  // Solo debes extraer grupos si se produce acoplamiento
+    dia = acoplamiento.group(1);
+    mes = acoplamiento.group(2);
+    ano = acoplamiento.group(3);
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Usando los grupos, podemos obtener por separado el texto contenido en cada uno de los grupos. En
+        el ejemplo anterior, en el patrón hay tres grupos: uno para el día (grupo 1), otro el mes (grupo
+        2), y otro para el año (grupo 3). Solo debes extraer grupos si se ha producido acoplamiento. Si
+        no es así, la llamada al método&nbsp;group generará una excepción.
+    </p>
+    <p>
+        Aquí tienes otro ejemplo en el que combinamos los agrupamientos con el uso del método find:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Pattern p=Pattern.compile("([XY]?)([0-9]&#123;8&#125;)([A-Za-z])");
+Matcher m=p.matcher("X123456789Z Y00110011M 999999T");
+while (m.find()) &#123;
+   System.out.println("Letra inicial (opcional):" + m.group(1));
+   System.out.println("Número:" + m.group(2));
+   System.out.println("Letra NIF:" + m.group(3));
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        En este caso también hay tres grupos en el patrón: uno para la letra inicial (grupo 1), otro para
+        el número del
+        <abbr title="Documento Nacional de Identidad.">
+            DNI
+        </abbr>
+        o
+        <abbr title="Número de Identificación de Extranjeros.">
+            NIE
+        </abbr>
+        (grupo 2), y otro para la
+        letra final o letra
+        <abbr title="Número de Identificación Fiscal.">
+            NIF
+        </abbr>
+        (grupo 3).
+        Como además hemos empleado find en lugar de matches, podremos extraer los grupos para cada
+        fragmento de texto en el cual se ha producido un acoplamiento.
+    </p>
+</div><h1 class="title">
+    4.- Arrays.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-pd" style="width: 128px;">
+    </figure>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        se ha puesto a pensar en que cuando hay que trabajar con muchos
+        elementos: números, o cadenas de caracteres,
+        <abbr title="etcétera.">
+            etc
+        </abbr>
+        ., lo más
+        adecuado es utilizar algún tipo de variable que nos permita usar el mismo nombre, donde
+        almacenar varios elementos. Es decir, si tenemos 100 elementos sobre los que hacer
+        determinada operación, una solución sería utilizar cien variables, y entonces en el
+        programa ir usando cada una de esas cien variables, digamos var1, var2,..., y así hasta
+        var100. Pero esto es muy incómodo para el programador, puesto que entre otras cosas
+        tendrá que usar cien nombres distintos para referirse a las variables. Además, ¿y si
+        luego en vez de 100 elementos, necesita que sean 200? Pues el programador tendrá que
+        declarar otras cien variables más en el programa. Por tanto, hay que buscar otra
+        solución más adecuada, y esa solución son los
+        <strong>
+            arrays
+        </strong>
+        , como vamos a ver.
+    </p>
+</div><h1 class="title">
+    4.1.- Uso de arrays unidimensionales.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Ya sabes declarar y crear de
+        <span lang="en">
+         arrays
+        </span>
+        , pero, ¿cómo y cuándo se usan?
+    </p>
+    <p>
+        Las operaciones habituales que se suelen realizar sobre ellos son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            modificación del elemento ubicado en una posición del
+            <span lang="en">
+          array;
+         </span>
+        </li>
+        <li>
+            acceso al elemento ubicado en una posición del
+            <span lang="en">
+          array
+         </span>
+            .
+        </li>
+    </ul>
+    <p>
+        La
+        <strong>
+            modificación de un elemento en una posición del
+            <span lang="en">
+          array
+         </span>
+        </strong>
+        se realiza mediante una simple asignación. Simplemente, se especifica entre corchetes la
+        posición a modificar después del nombre del
+        <span lang="en">
+         array (operador "corchete")
+        </span>
+        .
+        Veámoslo con un simple ejemplo:
+    </p>
+    <p>
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int[] numeros = new int[3] ; // Array de 3 números (posiciones del 0 al 2).
+numeros[0] = 99 ; // Primera posición del array.
+numeros[1] = 120 ; // Segunda posición del array.
+numeros[2] = 33; // Tercera y última posición del array.
+</pre>
+        </div>
+    </div>
+    <p>
+        El
+        <strong>
+            acceso a un valor ya existente dentro de una posición del
+            <span lang="en">
+          array
+         </span>
+        </strong>
+        se consigue de forma similar, simplemente poniendo el nombre del
+        <span lang="en">
+         array
+        </span>
+        y
+        la posición a la cual se quiere acceder entre corchetes:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>int suma = numeros[0] + numeros[1] + numeros[2];</pre>
+        </div>
+    </div>
+    <p>
+        Para nuestra comodidad, los
+        <span lang="en">
+         arrays
+        </span>
+        , como referencias que son en
+        <span lang="en">
+         Java
+        </span>
+        , disponen de una propiedad pública muy útil: la propiedad length, que
+        nos permite conocer el tamaño de cualquier
+        <span lang="en">
+         array
+        </span>
+        .
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>System.out.println("Longitud del array: " + numeros.length);</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.2.- Inicialización.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Rellenar un
+        <span lang="en">
+         array
+        </span>
+        para su primera utilización, es una tarea muy habitual
+        que en muchas ocasiones puede ser simplificada. Vamos a explorar dos sistemas que nos van a
+        permitir inicializar un
+        <span lang="en">
+         array
+        </span>
+        de forma cómoda y rápida.
+    </p>
+    <p>
+        En primer lugar, se puede inicializar un array simplemente accediendo a cada posición del mismo
+        (directamente una a una o mediante un bucle) y asignando un valor a cada una. Veamos un
+        ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int totalNumeros = 10 ;
+int[] consecutivos = new int[totalNumeros];
+for (int i=0; i < totalNumeros;i++)
+     consecutivos[i] = i ;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior se crea un
+        <span lang="en">
+         array
+        </span>
+        con una serie de números
+        consecutivos, empezando por el cero, ¿sencillo no? Este uso suele ahorrar bastantes líneas de
+        código en tareas repetitivas. Otra manera de inicializar los
+        <span lang="en">
+         arrays
+        </span>
+        ,
+        cuando el número de elementos es fijo y conocido a priori, es indicando entre llaves el listado
+        de valores que tiene el
+        <span lang="en">
+         array
+        </span>
+        . En el siguiente ejemplo puedes ver la
+        inicialización de un
+        <span lang="en">
+         array
+        </span>
+        de tres números, y la inicialización de un
+        <span lang="en">
+         array
+        </span>
+        con siete cadenas de texto:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int[] array = &#123;10, 20, 30&#125;;
+
+String[] diasSemana = &#123;"Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"&#125;;</pre>
+        </div>
+    </div>
+    <p>
+        Pero cuidado, esta inicialización solo se puede usar en ciertos casos. La inicialización anterior
+        funciona cuando se trata de un tipo de dato del cual Java permita expresar literales en el
+        propio código. Es decir, para los literales de los tipos primitivos (int, short, float, double,
+        <code>
+            boolean
+        </code>
+        , char,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        ) o de un String (cuyos literales
+        se expresan mediante un texto entre comillas dobles). Para otro tipo de objetos habrá que
+        realizar una instanciación (mediante invocaciones bien a constructores bien a métodos que
+        devuelvan la referencia a un objeto).
+    </p>
+    <p>
+        Cuando se trata de un
+        <span lang="en">
+         array
+        </span>
+        de referencias a objetos, la inicialización
+        del mismo requiere, como acabamos de comentar, invocaciones a métodos que devuelvan referencias
+        a instancias.
+    </p>
+    <p>
+        Un array de referencias a objetos recién creado y sin inicializar contendrá valores de tipo
+        null
+        .
+        Debemos tener en cuenta que crear el array (reservar memoria para él mediante el operador new)
+        no significa que se hayan creado las instancias de los objetos a los que va a apuntar cada
+        celda. Hay que instanciar, para cada posición del
+        <span lang="en">
+         array
+        </span>
+        , el objeto del
+        tipo correspondiente con el operador new o, al menos, asignarle la referencia a un objeto que ya
+        exista.
+    </p>
+    <p>
+        Veamos un ejemplo con la clase StringBuilder. En el siguiente ejemplo solo aparecerá null por
+        pantalla:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>StringBuilder[] oStrBuilds = new StringBuilder[10];
+
+for (int i = 0; i < oStrBuilds.length; i++)
+    System.out.println("Valor" + i + "=" + oStrBuilds[i]); // Imprimirá null para los 10 valores.</pre>
+        </div>
+    </div>
+    <p>
+        Para solucionar este problema podemos optar por lo siguiente, crear para cada posición del
+        <span lang="en">
+         array
+        </span>
+        una instancia del objeto:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>StringBuilder[] oStrBuilds = new StringBuilder[10];
+
+for (int i=0; i < oStrBuilds.length;i++)
+     oStrBuilds[i] = new StringBuilder("cadena " + i);</pre>
+        </div>
+    </div>
+    <p>
+        Si hubiéramos querido inicializar un array de referencias a objetos&nbsp;StringBuilder usando las
+        llaves, habríamos tenido que realizar las instanciaciones con&nbsp;new dentro de la propia
+        declaración. Es decir, hacer algo del estilo a lo siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>StringBuilder[] oStrBuilds = &#123;new StringBuilder ("cadena 0"), new StringBuilder ("cadena 1"), new StringBuilder ("cadena 2"), . . . &#125;;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si se tratara, por ejemplo, de un array de referencias a objetos de tipo LocalDate, podríamos
+        haber hecho lo siguiente (recuerda que la clase&nbsp;LocalDate no dispone de constructores, sino
+        de métodos "fábrica" para instanciarse):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>LocalDate[] arrayFechas= &#123;LocalDate.of (2001, 1, 1), LocalDate.of (2002, 2, 2), LocalDate.of (2003, 3, 3), . . .  &#125;; </pre>
+        </div>
+    </div>
+    <div class="exe-tooltip-text" id="t3898451b-8eac-06a0-62f5-afce62cdab6a">
+        <p>
+            Una variable que almacena un objeto en realidad es un apuntador a la zona de memoria donde se
+            almacena dicho objeto. Cuando dicha variable no apunta a ningún objeto, porque el objeto aún
+            no se ha creado con el operador new, entonces la variable apunta a null para indicar que no
+            hace referencia todavía a ningún objeto.
+        </p>
+    </div>
+</div><h1 class="title">
+    4.3.- Mostrar el contenido de un array.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Es posible que en nuestros programas necesitemos mostrar por pantalla el contenido completo de
+        todos los elementos contenidos en un array. Para ello bastaría con realizar un
+        <strong>
+            bucle que
+            fuera desde el primer índice hasta el último
+        </strong>
+        y se encargara de ir mostrando el
+        contenido de cada elemento correspondiente a esa posición o índice:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Mostrar el contenido del array escribiendo cada elemento en una línea diferente
+for (int i = 0; i < arrayElementos.length; i++) &#123;
+    System.out.printf("El contenido de la posición: %d es %d\n", i, arrayElementos[i]);
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        Este ejemplo mostraría cada elemento en una línea diferente indicando su posición. Si
+        quisiéramos, por ejemplo, mostrar todos los elementos en una misma línea, separándolos por un
+        espacio en blanco podríamos hacer:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Mostrar el contenido del array escribiendo cada elemento seperado por un espacio
+System.out.printf("El contenido del array es: ");
+for (int i = 0; i < arrayElementos.length; i++) &#123;
+    System.out.printf("%d ", i, arrayElementos[i]);
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        Y así en general para cualquier manera que se te ocurra a la hora de presentar esa
+        información.
+    </p>
+    <p>
+        También puedes, en lugar de escribir toda esa información en pantalla, generar una única cadena
+        con todos los datos para más adelante mostrarla en pantalla con una sóla sentencia o bien para
+        que la utilice otra parte de tu programa (o incluso otro programa). En tal caso, en lugar de ir
+        mostrando cada fragmento de información por pantalla irías concatenando todos esos fragmentos en
+        una única cadena. Los ejemplos anteriores podrían quedar entonces así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Volcar el contenido del array en un objeto String
+String contenidoArray= "";
+for (int i = 0; i < arrayElementos.length; i++) &#123;
+    contenidoArray += String.format ("El contenido de la posición: %d es %d\n", i, arrayElementos[i]);
+&#125;
+// Mostrar el contenido del array
+System.out.printf("%s\n", contenidoArray);
+</pre>
+        </div>
+    </div>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Volcar el contenido del array en un objeto String
+String contenidoArray= "";
+for (int i = 0; i < arrayElementos.length; i++) &#123;
+    contenidoArray += arrayElementos[i] + " ";
+&#125;
+// Mostrar el contenido del array
+System.out.printf("El contenido del array es: %s", contenidoArray);</pre>
+        </div>
+    </div>
+    <p>
+        Basándose en esa filosofía de encapsular los resultados, Java proporciona algunas herramientas
+        para generar un String con una representación textual del contenido de un array. Se trata del
+        método estático toString de la clase Arrays, que recibe como parámetro un arrray y devuelve un
+        objeto&nbsp;String con una representación textual. El formato de la cadena que devuelve es del
+        estilo:
+    </p>
+    <div class="highlighted-code language-latex">
+        <div>
+            <pre>[elemento_0, elemento_1, elemento_2, . . . , elemento_(n-1)]</pre>
+        </div>
+    </div>
+    <p>
+        donde n sería el tamaño del array.
+    </p>
+    <p>
+        En tal caso, el código para mostrar el contenido de un array se vería sensiblemente
+        simplificado:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>System.out.printf("El contenido del array es: %s\n", Arrays.toString(arrayElementos));</pre>
+        </div>
+    </div>
+    <p>
+        La clase&nbsp;Arrays se encuentra en el paquete java.util, así que recuerda que deberás hacer un
+        import
+        <code>
+            java.util.Arrays
+        </code>
+        para poder utilizarla en tus programas. Puedes consultar
+        toda la información sobre el método estático Arrays.toString en la documentación de la
+        <abbr title="Application Programming Interface">
+            API
+        </abbr>
+        de Java:
+    </p>
+    <p style="text-align: center;">
+        Método toString de la clase Arrays
+        .
+    </p>
+    <p>
+        Observarás que en realidad que el método está
+        <strong>
+            sobrecargado
+        </strong>
+        y que hay tantas
+        versiones del método como tipos primitivos hay en Java.
+    </p>
+</div><h1 class="title">
+    4.4.- El método split de la clase String.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Cuando estuvimos estudiando las posibilidades de los objetos
+        <strong>
+         <span style="font-size: medium;">
+          String
+         </span>
+        </strong>
+        en Java, se mencionó el método
+        <strong>
+         <span style="font-size: medium;">
+          split
+         </span>
+        </strong>
+        y lo dejamos pendiente para más
+        adelante porque aún necesitábamos conocer un par de conceptos previos: las
+        <strong>
+            expresiones
+            regulares
+        </strong>
+        y los
+        <strong>
+            arrays
+        </strong>
+        . Ese momento ya ha llegado.
+    </p>
+    <p>
+        El método
+        <strong>
+         <span style="font-size: medium;">
+          split
+         </span>
+        </strong>
+        de la
+        clase
+        <strong>
+         <span style="font-size: medium;">
+          String
+         </span>
+        </strong>
+        permite dividir o
+        trocear una cadena a partir de un separador. Ya vimos una forma de llevar a cabo este proceso
+        mediante el uso de la clase
+        <strong>
+         <span style="font-size: medium;">
+          StringTokenizer
+         </span>
+        </strong>
+        . Con este método ese proceso
+        se puede simplificar y potenciar porque:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            el
+            <strong>
+                separador
+            </strong>
+            , en lugar de ser una cadena de
+            caracteres fija, es una
+            <strong>
+                expresión regular
+            </strong>
+            , de manera que podrían
+            especificarse a la vez varios tipos o familias de separadores;
+        </li>
+        <li class="lista_verificacion">
+            se devuelve directamente el
+            <strong>
+                resultado de la división en
+                fragmentos
+            </strong>
+            en un
+            <strong>
+                array de referencias a objetos
+                <span style="font-size: medium;">
+           String
+          </span>
+            </strong>
+            , de manera que con una única ejecución
+            de este método ya tenemos todos los fragmentos o trozos separados en un único contenedor (el
+            array resultado). No hay que ir recorriendo con un bucle cada token como se hacía con la
+            clase
+            <strong>
+          <span style="font-size: medium;">
+           StringTokenizer
+          </span>
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Veamos un ejemplo en el que vamos a resolver el mismo problema que se resolvió en apartados
+        anteriores utilizando
+        <strong>
+         <span style="font-size: medium;">
+          StringTokenizer
+         </span>
+        </strong>
+        :
+        un programa en el que
+        <strong>
+            se piden por teclado una serie de palabras separadas por comas y
+            posteriormente deseamos mostrar por pantalla cada una de esas palabras
+        </strong>
+        .
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>System.out.println ("Introduzca una lista de palabras separadas por comas: ");
+String linea = teclado.nextLine();
+String[] lista = linea.split (" *, *"); // El separador de elementos será la cadena "," con posibles espacios antes y después
+System.out.printf ("\nLas palabras son: %s\n", Arrays.toString(lista));
+</pre>
+        </div>
+    </div>
+    <p>
+        Si en lugar de mostrar el array directamente, preferimos ir recorriendo elemento a elemento
+        mostrándolo en una línea diferente, también podríamos haber hecho:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>System.out.println ("Las palabras son:");
+for (int i = 0; i < lista.length; i++) &#123;
+    System.out.printf ("%s\n", lista[i]);
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.- Arrays multidimensionales.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-pd" style="width: 188px;">
+    </figure>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        reflexiona sobre la gran utilidad que ofrecen los
+        <span lang="en">
+           arrays
+          </span>
+        .
+        Ya no solamente cuando interesa almacenar listas sencillas de elementos, sino que es
+        posible manejar
+        <span lang="en">
+           arrays
+          </span>
+        bidimensionales, tridimensionales,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        , permitiendo así tener matrices. Así, declarando
+        un
+        <span lang="en">
+           array
+          </span>
+        bidimensional, podríamos tener un elemento en una
+        posición a la que se accede indicando dos coordenadas. La manera más fácil de
+        comprenderlo es mediante un ejemplo, así que
+        <strong>
+            Ana
+        </strong>
+        le pregunta a su
+        tutora,
+        <strong>
+            María
+        </strong>
+        , que le pone un ejemplo referente a cómo almacenar los
+        distintos puntos de una imagen digital.
+    </p>
+</div><h1 class="title">
+    5.1.- Uso de arrays multidimensionales.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        ¿Y en qué se diferencia el uso de un
+        <span lang="en">
+         array
+        </span>
+        multidimensional con respecto a
+        uno de una única dimensión?
+    </p>
+    <p>
+        Pues en muy poco, la verdad. Continuamos con el ejemplo del apartado anterior:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>int[][] a2d = new int[4][5];</pre>
+        </div>
+    </div>
+    <p>
+        Para acceder a cada uno de los elementos del
+        <span lang="en">
+         array
+        </span>
+        anterior, habrá que
+        indicar su posición en las dos dimensiones, teniendo en cuenta que los índices de cada una de
+        las dimensiones empieza a numerarse en 0 y que la última posición es el tamaño de la dimensión
+        en cuestión menos 1.
+    </p>
+    <p>
+        Puedes asignar un valor a una posición concreta dentro del
+        <span lang="en">
+         array
+        </span>
+        ,
+        indicando la posición en cada una de las dimensiones entre corchetes:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>a2d[0][0] = 3 ;</pre>
+        </div>
+    </div>
+    <p>
+        Y como es de imaginar, puedes usar un valor almacenado en una posición del
+        <span lang="en">
+         array
+        </span>
+        multidimensional simplemente poniendo el nombre del
+        <span lang="en">
+         array
+        </span>
+        y los índices del elemento al que deseas acceder entre corchetes, para cada una de las
+        dimensiones del
+        <span lang="en">
+         array
+        </span>
+        . Por ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int suma = a2d[0][0] + a2d[0][1] + a2d[0][2] + a2d[0][3] + a2d[0][4] ;
+</pre>
+        </div>
+    </div>
+    <p>
+        Los
+        <span lang="en">
+         arrays
+        </span>
+        multidimensionales pueden ser recorridos con bucles de forma
+        similar a como se realizaba para
+        <span lang="en">
+         arrays
+        </span>
+        de una dimensión, pero teniendo
+        presente que debemos recorrer, para cada posición del array principal, su array interior. Veamos
+        un ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>    int suma = 0;
+    for (int i1 = 0; i1 < a2d.length; i1++)
+        for (int i2 = 0; i2 < a2d[i1].length; i2++)
+            suma += a2d[i1][i2];</pre>
+        </div>
+    </div>
+    <p>
+        Del código anterior, fíjate especialmente en el uso del atributo length (que nos permite obtener
+        el tamaño de un
+        <span lang="en">
+         array
+        </span>
+        ). Aplicado directamente sobre el
+        <span lang="en">
+         array
+        </span>
+        nos permite saber el tamaño de la primera dimensión (a2d.length). Como los
+        <span lang="en">
+         arrays
+        </span>
+        multidimensionales son
+        <span lang="en">
+         arrays
+        </span>
+        que tienen como elementos
+        <span lang="en">
+         arrays
+        </span>
+        (excepto el último nivel que ya será del tipo concreto almacenado), para saber el tamaño de una
+        dimensión superior tenemos que poner el o los índices entre corchetes seguidos de length (
+        <code>
+            a2d[i1].length
+        </code>
+        ).
+    </p>
+    <p>
+        Para saber el tamaño de una segunda dimensión hay que hacerlo así y puede resultar un poco
+        engorroso, pero gracias a esto podemos tener
+        <strong>
+         <span lang="en">
+          arrays
+         </span>
+            multidimensionales irregulares
+        </strong>
+        .
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Una matriz es un ejemplo de
+        <strong>
+         <span lang="en">
+          array
+         </span>
+            multidimensional
+            regular
+        </strong>
+        . ¿Por qué?
+    </p>
+    <p>
+        Pues porque es un
+        <span lang="en">
+         array
+        </span>
+        que contiene
+        <span lang="en">
+         arrays
+        </span>
+        de
+        números todos del mismo tamaño. Cuando esto no es así, es decir, cuando los
+        <span lang="en">
+         arrays
+        </span>
+        de la segunda dimensión son de diferente tamaño entre sí, se puede decir que es un
+        <strong>
+         <span lang="en">
+          array
+         </span>
+            multidimensional irregular
+        </strong>
+        . En
+        <span lang="en">
+         Java
+        </span>
+        se puede crear un
+        <span lang="en">
+         array
+        </span>
+        irregular de forma
+        relativamente fácil, veamos un ejemplo para dos dimensiones.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Declaramos y creamos el
+            </strong>
+            <strong>
+          <span lang="en">
+           array
+          </span>
+            </strong>
+            <strong>
+                pero sin especificar la segunda
+                dimensión.
+            </strong>
+            Lo que estamos haciendo en realidad es crear simplemente un
+            <span lang="en">
+          array
+         </span>
+            que contendrá
+            <span lang="en">
+          arrays
+         </span>
+            , sin decir cómo son
+            de grandes los
+            <span lang="en">
+          arrays
+         </span>
+            de la siguiente dimensión:
+        </li>
+    </ul>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>int[][] irregular=new int[4][];</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Después creamos cada uno de los
+            </strong>
+            <strong>
+          <span lang="en">
+           arrays
+          </span>
+            </strong>
+            <strong>
+                unidimensionales
+            </strong>
+            (del tamaño que
+            queramos) y lo asignamos a la posición correspondiente del
+            <span lang="en">
+          array
+         </span>
+            anterior:
+        </li>
+    </ul>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>irregular[0]=new int[4]; // El primer elemento de la primera dimensión apunta un array de tamaño 3
+irregular[1]=new int[5]; // El segundo elemento de la primera dimensión apunta un array de tamaño 5
+irregular[2]=new int[3]; // El tecer elemento de la primera dimensión apunta un array de tamaño 3
+irregular[3]=new int[5]; // El cuarto elemento de la primera dimensión apunta un array de tamaño 4</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    5.2.- Inicialización de arrays multidimensionales.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        ¿En qué se diferencia la inicialización de
+        <span lang="en">
+         arrays
+        </span>
+        unidimensionales y de
+        <span lang="en">
+         arrays
+        </span>
+        multidimensionales? En muy poco, la inicialización se puede hacer
+        de las mismas formas.
+    </p>
+    <p>
+        Podemos inicializar un
+        <span lang="en">
+         array
+        </span>
+        multidimensional recorriéndolo con dos bucles
+        y asignando un valor a cada posición de los arrays internos. Veamos un ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>"int n=3;
+int m=4;
+
+int[][] a2d=new int[n][m];
+
+for (int i=0;i&lt;n;i++)
+
+    for (int j=0;j&lt;m;j++)
+
+        a2d[i][j]=n*m;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        También se puede inicializar un
+        <span lang="en">
+         array
+        </span>
+        multidimensional usando las llaves,
+        poniendo después de la declaración del
+        <span lang="en">
+         array
+        </span>
+        un símbolo de igual, y
+        encerrado entre llaves los diferentes valores del
+        <span lang="en">
+         array
+        </span>
+        separados por
+        comas, con la salvedad de que hay que poner unas llaves nuevas cada vez que haya que poner los
+        datos de una nueva dimensión, lo mejor es verlo con un ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int[][] a2d=&#123;&#123;0,1,2&#125;,&#123;3,4,5&#125;,&#123;6,7,8&#125;,&#123;9,10,11&#125;&#125;;
+int[][][] a3d=&#123;&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;,&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;&#125;;
+</pre>
+        </div>
+    </div>
+    <p>
+        El primer
+        <span lang="en">
+         array
+        </span>
+        anterior sería un
+        <span lang="en">
+         array
+        </span>
+        de 4 por 3
+        y el siguiente sería un
+        <span lang="en">
+         array
+        </span>
+        de
+        <abbr title="Dos por dos por dos">
+         <span title="Primera dimensión 2, segunda dimensión 2 y tercera dimensión 2.">
+          2x2x2
+         </span>
+        </abbr>
+        .
+        Como puedes observar esta notación a partir de 3 dimensiones ya es muy liosa y normalmente no se
+        usa. Utilizando esta notación también podemos inicializar rápidamente
+        <span lang="en">
+         arrays
+        </span>
+        irregulares, simplemente poniendo separados por comas los
+        elementos que tiene cada dimensión:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int[][] i2d = &#123;&#123;0,1&#125;,&#123;0,1,2&#125;,&#123;0,1,2,3&#125;,&#123;0,1,2,3,4&#125;,&#123;0,1,2,3,4,5&#125;&#125;;
+int[][][] i3d = &#123; &#123; &#123;0,1&#125;,&#123;0,2&#125; &#125; , &#123;&#123;0,1,3&#125;&#125; , &#123;&#123;0,3,4&#125;,&#123;0,1,5&#125; &#125; &#125;;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    5.3.- Mostrar el contenido de un array multidimensional.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 240px;">
+    </figure>
+    <p>
+        Para mostrar por pantalla un array de más de una dimensión o simplemente para realizar una
+        representación textual que queramos almacenar en una cadena, tendremos que construir una
+        <strong>
+            estructura de bucles anidados
+        </strong>
+        que vayan recorriendo cada dimensión, uno dentro
+        de otro. Necesitaremos por tanto un bucle por cada dimensión.
+    </p>
+    <p>
+        Por ejemplo, para
+        <strong>
+            recorrer un array de dos dimensiones (bidimensional) regular (todas las
+            filas tienen las mismas columnas)
+        </strong>
+        , podríamos hacer algo así:
+    </p>
+    <div class="highlighted-code language-java">
+        <pre>int numFilas= tabla.length;  // Tamaño de la primera dimensión (número de filas)
+int numColumnas= tabla[0].length;  // Tamaño de la segunda dimensión: número columnas en primera fila (igual para todas)
+for (int fila=0; fila&lt;numFilas; fila++) &#123;
+    for (int columna=0; columna&lt;numColumnas; columna++) &#123;
+        // Mostramos en elemento colocado en la posición [fila][columna]
+        // o bien vamos concatenando fragmentos en una cadena de resultado final
+    &#125;
+&#125;</pre>
+    </div>
+    <p>
+        Ahora bien, si los elementos de la segunda dimensión (columnas de cada fila) no tienen todos el
+        mismo tamaño (cada fila puede tener un número diferente de columnas) entonces tendremos que
+        recorrer en cada caso un número de columnas diferente y deberemos consultar ese tamaño para cada
+        fila (nombreArray[fila].length):
+    </p>
+    <div class="highlighted-code language-java">
+        <pre>int numFilas= tabla.length;  // Tamaño de la primera dimensión ()
+for (int fila=0; fila<numFilas; fila++) &#123;
+     int numColumnas= tabla[fila].length;  // Tamaño de la segunda dimensión (potencialmente diferente para cada fila)
+     for (int columna=0; columna<numColumnas; columna++) &#123;
+        // Mostramos en elemento colocado en la posición [fila][columna]
+        // o bien vamos concatenando fragmentos en una cadena de resultado final
+    &#125;
+&#125;</pre>
+    </div>
+    <p>
+        Otra opción es no utilizar una variable para guardar los tamaños de cada dimensión y consultarlos
+        con el atributo&nbsp;length cada vez que sea necesario, que suele ser lo más habitual:
+    </p>
+    <div class="highlighted-code language-java">
+        <pre>for (int fila=0; fila<tabla.length; fila++) &#123;
+     for (int columna=0; columna<tabla[fila].length; columna++) &#123;
+        . . .
+        . . .
+    &#125;
+&#125;</pre>
+    </div>
+    <p>
+        ¿Y qué ocurre si decidimos usar la herramienta Arrays.toString? En este caso la representación
+        textual del array que devuelve este método puede resultarnos algo confusa pues devolverá una
+        cadena con un aspecto similar al siguiente:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <pre>[[I&#64;28d93b30, [I&#64;1b6d3586, . . . , [I&#64;1540e19d]</pre>
+    </div>
+    <p>
+        ¿Qué significado tiene esto? Ten en cuenta que cada elemento de este array es, a su vez, una
+        referencia a un nuevo array (la siguiente dimensión). Sin embargo, para cada elemento no se nos
+        muestra su contenido (otro array) sino el hash de esa referencia (una marca de identificación de
+        la máquina virtual respecto a su almacenamiento). Si quisiéramos que esa referencia se
+        "expandiera" y se mostrara también una representación textual de los elementos de cada subarray
+        (segunda dimensión) podríamos usar
+        <strong>
+            otro método estático
+        </strong>
+        proporcionado por la
+        clase&nbsp;Arrays llamado deepToString. Este método sí "profundizará" en todas las
+        subdimensiones o subarrays y generará una representación textual de todas las subdimensiones,
+        sean de los niveles que sean. Por ejemplo, para un array de dos dimensiones podría obtenerse un
+        resultado de este estilo:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <pre>[[1, 2, 3], [4, 5, 6, 7], . . . , [50, 51, 52, 53]]</pre>
+    </div>
+    <p>
+        Podemos observar que se abre un nuevo corchete para cada "subdimensión" o "subarray" que exista.
+        Es decir, que para llegar a un elemento final (escalar) habrá que pasar por tantos corchetes
+        como dimensiones existan.
+        <strong>
+            Para un array de tres dimensiones
+        </strong>
+        habría por tanto
+        que pasar a través de tres corchetes para poder llegar a los elementos finales almacenados. Por
+        ejemplo:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <pre>[[[1, 2], [3]], [[4], [5], [6, 7]], . . . , [[50, 51], [52, 53]]]</pre>
+    </div>
+    <p>
+        Aquí se puede observar que en la posición [0][0][0] hay almacenado un 1, en la [0][0][1] un 2, en
+        la [0][1]0] un 3, en la [1][0][0] un 4, en la [1][1][0] un 5, en la [1][2][0] un 6, y así
+        sucesivamente, tal y como se ha visto en el apartado anterior al explicar el funcionamiento de
+        los arrays multidimensionales.
+    </p>
+    <p>
+        Ahora, podemos ver un ejemplo donde se rellena primero y se muestra después el contenido de un
+        array de dos dimensiones. En cada celda de este array se almacenará el valor de la suma de las
+        posiciones de cada dimensión. Es decir, en la posición [0][0] se almacenará un 0, en la [0][1]
+        un 1, en la [0][2] un 2, en la [1][0] un 1, en la [1][1] un 2, en la [0][3] un 3, y así
+        sucesivamente.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>final int FILAS = 5 ;
+final int COLUMNAS = 3 ;
+
+// Declaramos el array y reservamos espacio para sus dos dimensiones
+int[][] arrayBidimensional = new int[FILAS][COLUMNAS];
+
+// Rellenamos el array
+for (int i=0; i< arrayBidimensional.length; i++)
+    for (int j=0;j< arrayBidimensional[i].length;j++)
+        arrayBidimensional[i][j] = i + j  ;
+
+// Escribimos el contenido de cada celda del array usando dos bucles anidados
+for (int i=0; i< arrayBidimensional.length; i++) &#123;
+    for (int j=0;j< arrayBidimensional[i].length;j++) &#123;
+        System.out.print ("[" + i + "][" + j + "] = " + arrayBidimensional[i][j] + "    ") ;
+    &#125;
+    System.out.println() ;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El resultado final de este fragmento de código debería ser algo similar a lo siguiente:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+         <pre>[0][0] = 0    [0][1] = 1    [0][2] = 2
+[1][0] = 1    [1][1] = 2    [1][2] = 3
+[2][0] = 2    [2][1] = 3    [2][2] = 4
+[3][0] = 3    [3][1] = 4    [3][2] = 5
+[4][0] = 4    [4][1] = 5    [4][2] = 6  </pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    5.4.- Aplicaciones de los arrays multidimensionales.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 180px;">
+    </figure>
+    <p>
+        Hasta el momento hemos trabajado con arrays de una y dos dimensiones, junto con algún ejemplo de
+        tres. Pero hemos de tener en cuenta que es posible crear arrays de cuatro, cinco o más
+        dimensiones. Se seguiría el mismo procedimiento.
+    </p>
+    <p>
+        Los
+        <strong>
+            arrays de una dimensión
+        </strong>
+        son fáciles de imaginar: una lista de elementos del
+        mismo tipo. Los de
+        <strong>
+            dos dimensiones
+        </strong>
+        también, aunque aquí ya podemos imaginarlos
+        de dos formas diferentes:
+    </p>
+    <ol>
+        <li>
+            como un array donde cada componente del array es a su vez una referencia a otro array, donde
+            cada uno de esos subarrays no tienen por qué ser del mismo tamaño (un array bidimensional
+            "irregular"). Esa es la definición más precisa y real;
+        </li>
+        <li>
+            como una "tabla" con filas y columnas. En este caso la "irregularidad" podría indicarse
+            diciendo que cada fila no tiene por qué tener la misma cantidad de celdas o columnas. La
+            primera dimensión del array es donde te puedes "mover" por filas (imaginamos el array en
+            "vertical"), mientras que la segunda dimensión del array es un nuevo subarray para cada
+            fila. En esta segunda coordenada sería donde te podrías "mover" por columnas (imaginamos
+            varios subarrays en "horizontal", uno para cada casilla del array vertical).
+        </li>
+    </ol>
+    <p>
+        Algunos ejemplos de situaciones donde nos podría interesar hacer uso de arrays bidimensionales
+        podrían ser:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            estructuras matemáticas matriciales (
+            <strong>
+                matrices
+            </strong>
+            ),
+            con las que se puede operar: sumar matrices, multiplicar matrices, calcular el determinante
+            de una matriz, diagonalizar,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .;
+        </li>
+        <li class="lista_verificacion">
+            Almacenamiento y representación de
+            <strong>
+                imágenes
+            </strong>
+            .
+            Cada celda sería un píxel (un color);
+        </li>
+        <li class="lista_verificacion">
+            <strong>
+                mapas
+            </strong>
+            geográficos, topográficos, de juegos
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            . donde se utilizan cuadrículas;
+        </li>
+        <li class="lista_verificacion">
+            <strong>
+                juegos
+            </strong>
+            donde sea necesario un tablero,
+            cuadrícula, mapa, etc. (crucigramas, sopas de letras, ajedrez, damas, barquitos, buscaminas,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .);
+        </li>
+        <li class="lista_verificacion">
+            estructuras jerárquicas de dos niveles. Por ejemplo, un array
+            donde cada elemento de la primera dimensión represente una comunidad autónoma, apuntando a
+            un nuevo array donde cada elemento será un String con el nombre de cada una de las
+            provincias de esa comunidad autónoma. De ese modo, la primera dimensión del array tendrá
+            tamaño 17, mientras que para los arrays de la segunda dimensión, cada uno tendrá un tamaño
+            diferente dependiendo de la cantidad de provincias que haya en cada comunidad. En el caso de
+            Andalucía será ocho, dos para Extremadura, cuatro para Cataluña, una para Murcia,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .
+        </li>
+        <li class="lista_verificacion">
+            el ejercicio de las conjugaciones. Un array de tres elementos
+            cada uno de los cuales es otro array con cada conjugación.
+        </li>
+    </ul>
+    <p class="lista_verificacion">
+        El problema puede empezar a complicarse cuando hablamos de arrays
+        tridimensionales, donde estamos hablando ya de tres niveles. Todavía podemos imaginarlos como
+        una figura 3D, pero ya puede costarnos un poco más. Por eso lo mejor es siempre utilizar la
+        primera forma de entender los arrays de varias dimensiones: como arrays cuyos elementos apuntan
+        a arrays cuyos elementos a su vez también apuntan a arrays de algún tipo de elemento. Algunos
+        casos donde nos podría venir bien disponer de arrays tridimensionales podrían ser:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            almacenamiento y representación de
+            <strong>
+                figuras geométricas en
+                el espacio
+            </strong>
+            (tridimensionales), como si estuvieran formadas por pequeños cubos o
+            dados;
+        </li>
+        <li class="lista_verificacion">
+            <strong>
+                registros de información "jerárquicos"
+            </strong>
+            de
+            hasta
+            <strong>
+                tres niveles
+            </strong>
+            . Por ejemplo: guardar un registro temperaturas en un día
+            para cada hora: podría pensarse en un array de una dimensión con 24 celdas de tipo real (una
+            por hora). Si queremos ampliarlo para guardar para todos los días de un mes, podríamos
+            pensar en un array de dos dimensiones de 30x24. Si queremos guardar todo el año (doce
+            meses): un array de 3 dimensiones 12x30x24. Es más, dado que no todos los meses tienen 30
+            días, podríamos pensar en un array "irregular", si es que vale la pena;
+        </li>
+        <li class="lista_verificacion">
+            <strong>
+                mapas de juegos
+            </strong>
+            donde existan varios "planos" o
+            "niveles" de altura. Es decir, como si tuviéramos varios pisos o tableros uno sobre otro;
+        </li>
+        <li class="lista_verificacion">
+            <strong>
+                estructuras matemáticas n-dimensionales
+            </strong>
+            (vectores, matrices, tensores, espacios vectoriales, etc.).
+        </li>
+    </ul>
+    <p class="lista_verificacion">
+        Es a partir de la cuarta dimensión cuando ya empieza a ser complicado
+        imaginar un array de manera gráfica. Es entonces cuando debemos utilizar la primera forma de
+        imaginar los arrays: como estructuras jerárquicas de distintos niveles, donde el número de
+        niveles será el número de dimensiones del array. Esa manera de representar un array podrá
+        admitir cualquier número de dimensiones sin suponer un problema para nuestra imaginación.
+        Simplemente, se tratará de tener que codificar más o menos bucles para ir recorriendo cada una
+        de las jerarquías (dimensiones) de la estructura (array). En general, se tratará de
+        <strong>
+            registros
+            de información "jerárquicos" de hasta n-niveles
+        </strong>
+        . Veamos un par de ejemplos de
+        estructuras "n-dimensionales", donde n sería de cuatro en adelante.
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            guardar un registro de temperaturas:
+            <ul>
+                <li class="lista_verificacion">
+                    en un día para cada hora: array de una dimensión con 24
+                    celdas (una por hora) de tipo real;
+                </li>
+                <li class="lista_verificacion">
+                    si queremos guardar para todos los días del mes: array de
+                    2 dimensiones de 30x24;
+                </li>
+                <li class="lista_verificacion">
+                    si queremos almacenar todos los meses del año: array de
+                    tres dimensiones: 12x30x24;
+                </li>
+                <li class="lista_verificacion">
+                    si queremos disponer del registro de los últimos 100
+                    años: array de cuatro dimensiones: 100x12x30x24;
+                </li>
+                <li class="lista_verificacion">
+                    si además queremos guardar esa información para 10
+                    ciudades -&gt; array de cinco dimensiones con 10x100x12x30x24 celdas;
+                </li>
+                <li class="lista_verificacion">
+                    y así sucesivamente: países, continentes,
+                    <abbr title="etcétera">
+                        etc
+                    </abbr>
+                    .;
+                </li>
+            </ul>
+        </li>
+        <li class="lista_verificacion">
+            llevar a cabo un conteo de vehículos que pasan por una
+            calle: por horas (24), por días (30), por meses (12), por calles (xx), por ciudades (yy),
+            por países (zz),
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        Nosotros, por el momento, no vamos a ir más allá de la tercera dimensión. De hecho, lo habitual
+        será trabajar con arrays de solamente una o de dos dimensiones, pero debes tener en cuenta que
+        en el futuro, durante tu vida profesional, es probable que tengas que enfrentarte con
+        estructuras mucho más complejas. También veremos más adelante, en unidades posteriores, que la
+        mayoría de los lenguajes de programación incorporan herramientas mucho más sofisticadas y más
+        sencillas de utilizar que los arrays para poder trabajar con estructuras complejas: listas,
+        pilas, colas, conjuntos, diccionarios, árboles, grafos,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    Anexo I.- Formateado de cadenas en Java.
+</h1>
+<div class="iDevice_content">
+    <p>
+
+    </p>
+    <p class="texto_centrado">
+        <strong>
+            Sintaxis de las cadenas de formato y uso del método
+        </strong>
+        format()
+        <strong>
+            .
+        </strong>
+    </p>
+    <p>
+        En Java, el método estático format() de la clase String permite formatear los datos que se
+        muestran al usuario o a la usuaria de la aplicación. El método format() tiene los siguientes
+        argumentos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Cadena de formato
+            </strong>
+            . Cadena que especifica cómo será el formato de salida; en
+            ella se mezclará texto normal con especificadores de formato, que indicarán cómo se deben
+            formatear los datos.
+        </li>
+        <li>
+            <strong>
+                Lista de argumentos
+            </strong>
+            . Variables que contienen los datos que se formatearán.
+            Tiene que haber tantos argumentos como especificadores de formato haya en la cadena de
+            formato.
+        </li>
+    </ul>
+    <p>
+        Los especificadores de formato comienzan siempre por "
+        <span style="font-size: medium;">
+         <strong>
+          %
+         </strong>
+        </span>
+        ", es lo que se denomina un carácter de
+        escape (carácter que sirve para indicar que lo que hay a continuación no es texto normal, sino
+        algo especial que debe ser interpretado de una determinada manera). El especificador de formato
+        debe llevar como mínimo el símbolo "
+        <strong>
+         <span style="font-size: medium;">
+          %
+         </span>
+        </strong>
+        "
+        y un carácter que indica la conversión a realizar, por ejemplo "%d".
+    </p>
+    <p>
+    </p>
+    <p>
+        La conversión se indica con un simple carácter, e indica al método format() cómo debe ser
+        formateado el argumento. Dependiendo del tipo de dato podemos usar unas conversiones u otras.
+        Veamos las conversiones más utilizadas:
+    </p>
+    <table class="tabla">
+        <caption>
+            Listado de conversiones más utilizadas y ejemplos.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Tipo de conversión
+            </th>
+            <th scope="col">
+                Especificación de formato
+            </th>
+            <th scope="col">
+                Tipos de datos aplicables
+            </th>
+            <th scope="col">
+                Ejemplo
+            </th>
+            <th scope="col">
+                Resultado del ejemplo
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td scope="row">
+                Valor lógico o booleano.
+            </td>
+            <td>
+           <span style="font-size: small;">
+            <strong>
+             "
+             <span style="font-size: medium;">
+              %b
+             </span>
+             "
+            </strong>
+            <span style="font-size: x-small;">
+             o
+             <span style="font-size: medium;">
+              <strong>
+               "%B"
+              </strong>
+             </span>
+            </span>
+           </span>
+            </td>
+            <td>
+                <strong>
+            <span style="font-size: medium;">
+             Boolean
+            </span>
+                </strong>
+                (cuando se usan otros
+                tipos de datos siempre lo formateará escribiendo
+                <strong>
+            <span style="font-size: medium;">
+             true
+            </span>
+                </strong>
+                ).
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>boolean b=true;
+String d= String.format("Resultado: %b", b);
+System.out.println (d);</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p>
+                    <strong>
+             <span style="font-size: small;">
+              true
+             </span>
+                    </strong>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                Cadena de caracteres.
+            </td>
+            <td>
+                <strong>
+            <span style="font-size: medium;">
+             "%s"
+            </span>
+                </strong>
+                o
+                <strong>
+            <span style="font-size: medium;">
+             "%S"
+            </span>
+                </strong>
+            </td>
+            <td>
+                Cualquiera, se convertirá el objeto a cadena si es posible (invocando el método
+                <span style="font-size: medium;">
+            toString()
+           </span>
+                ).
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>String cad="hola mundo";
+String d= String.format("Resultado: %s", cad);
+System.out.println (d);</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p>
+                    hola mundo
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                Entero decimal
+            </td>
+            <td>
+           <span style="font-size: medium;">
+            <strong>
+             "%d"
+            </strong>
+           </span>
+            </td>
+            <td>
+                Un tipo de dato entero.
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>int i=10;
+String d= String.format("Resultado: %d", i);
+System.out.println (d);</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p>
+                    10
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                Número en notación científica
+            </td>
+            <td>
+                <strong>
+            <span style="font-size: small;">
+             "
+             <span style="font-size: medium;">
+              %e
+             </span>
+             " o "
+             <span style="font-size: medium;">
+              %E
+             </span>
+             "
+            </span>
+                </strong>
+            </td>
+            <td>
+                Flotantes simples o dobles.
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>double i=10.5;
+String d= String.format("Resultado: %E", i);
+System.out.println (d);</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p>
+                    1.050000E+01
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                Número decimal
+            </td>
+            <td>
+                <strong>
+            <span style="font-size: small;">
+             "
+             <span style="font-size: medium;">
+              %f
+             </span>
+             "
+            </span>
+                </strong>
+            </td>
+            <td>
+                Flotantes simples o dobles.
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>float i = 10.5f;
+String d = String.format("Resultado: %f", i);
+System.out.println (d);</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p>
+                    10,500000
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                Número en notación científica o decimal (lo más corto)
+            </td>
+            <td>
+                <strong>
+            <span style="font-size: small;">
+             "
+             <span style="font-size: medium;">
+              %g
+             </span>
+             " o "%G"
+            </span>
+                </strong>
+            </td>
+            <td>
+                Flotantes simples o dobles. El número se mostrará como decimal o en notación científica
+                dependiendo de lo que sea mas corto.
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>double i=10.5;
+String d= String.format("Resultado: %g", i);
+System.out.println (d);</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <p>
+                    10.5000
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        Ahora que ya hemos visto alguna de las conversiones existentes (las más importantes), veamos
+        algunos modificadores que se le pueden aplicar a las conversiones, para ajustar como queremos
+        que sea la salida. Los modificadores se sitúan entre el carácter de escape ("
+        <span style="font-size: medium;">
+         <strong>
+          %
+         </strong>
+        </span>
+        ") y la letra que indica el tipo de
+        conversión (d, f, g,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        ).
+    </p>
+    <p>
+        Podemos especificar, por ejemplo, el número de caracteres que tendrá como mínimo la salida de una
+        conversión. Si el dato mostrado no llega a ese ancho en caracteres, se rellenará con espacios
+        (salvo que se especifique lo contrario):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>%[Ancho]Conversión</pre>
+        </div>
+    </div>
+    <p>
+        El hecho de que esté entre corchetes significa que es opcional. Si queremos por ejemplo que la
+        salida genere al menos 5 caracteres (poniendo espacios delante) podríamos ponerlo así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>String.format ("%5d",10);</pre>
+        </div>
+    </div>
+    <p>
+        Se mostrará el "10" pero también se añadirán 3 espacios delante para rellenar. Este tipo de
+        modificador se puede usar con cualquier conversión.
+    </p>
+    <p>
+        Cuando se trata de conversiones de tipo numéricas con decimales, solo para tipos de datos que
+        admitan decimales, podemos indicar también la precisión, que será el número de decimales mínimos
+        que se mostrarán:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>%[Ancho][.Precisión]Conversión</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Como puedes ver, tanto el ancho como la precisión van entre corchetes, los corchetes no hay que
+        ponerlos, solo indican que son modificaciones opcionales. Si queremos, por ejemplo, que la
+        salida genere 3 decimales como mínimo, podremos ponerlo así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>String.format ("%.3f",4.2f);</pre>
+        </div>
+    </div>
+    <p>
+        Como el número indicado como parámetro solo tiene un decimal, el resultado se completará con
+        ceros por la derecha, generando una cadena como la siguiente: "4,200".
+    </p>
+    <p>
+        Una cadena de formato puede contener varios especificadores de formato y varios argumentos.
+        Veamos un ejemplo de una cadena con varios especificadores de formato:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String np = "Lavadora";
+int u = 10 ;
+
+float ppu = 302.4f ;
+
+float p = u*ppu ;
+
+String output = String.format("Producto: %s; Unidades: %d; Precio por unidad: %.2f €; Total: %.2f €", np, u, ppu, p);
+
+System.out.println(output);</pre>
+        </div>
+    </div>
+    <p>
+        Cuando el orden de los argumentos es un poco complicado, porque se reutilizan varias veces en la
+        cadena de formato los mismos argumentos, se puede recurrir a los índices de argumento. Se trata
+        de especificar la posición del argumento a utilizar, indicando la posición del argumento (el
+        primer argumento sería el 1 y no el 0) seguido por el símbolo del dólar ("$"). El índice se
+        ubicaría al comienzo del especificador de formato, después del porcentaje, por ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int i=10;
+int j=20;
+
+String d = String.format("%1$d multiplicado por %2$d (%1$dx%2$d) es %3$d",i,j,i*j) ;
+System.out.println(d) ;
+</pre>
+        </div>
+    </div>
+    <p>
+        El ejemplo anterior mostraría por pantalla la cadena "10 multiplicado por 20 (10x20) es 200". Los
+        índices de argumento se pueden usar con todas las conversiones, y es compatible con otros
+        modificadores de formato (incluida la precisión).
+    </p>
+</div><h1 class="title">
+    Anexo II.- Ejercicios resueltos.
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+    </figure>
+    <p>
+        María y Juan han estado trabajando con
+        <strong>
+            arrays
+        </strong>
+        de diferentes dimensiones
+        y
+        <strong>
+            cadenas de caracteres
+        </strong>
+        de distintos tipos, así como elaborando
+        <strong>
+            patrones
+        </strong>
+        mediante
+        <strong>
+            expresiones regulares
+        </strong>
+        para llevar a
+        cabo búsquedas y comprobaciones. Combinando todas esas herramientas ya se sienten con en
+        el entrenamiento suficiente como para intentar resolver problemas que involucren a una
+        cierta cantidad de información y no solo a unas cuantas variables.
+    </p>
+    <p>
+        Por supuesto, aún siguen siendo pocas herramientas para trabajar, pero cada vez disponen
+        de un arsenal un poco más amplio para poder enfrentarse a los problemas que sus
+        superiores les van proponiendo. Vamos a ver algunos de ellos.
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1>
+<div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p align="center" style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por
+                el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la
+                Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

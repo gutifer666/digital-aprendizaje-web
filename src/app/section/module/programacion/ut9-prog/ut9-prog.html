@@ -1,0 +1,3930 @@
+<h1 class="title">
+    Interfaces gráficas de usuario
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
+    </figure>
+    <p>
+        <strong>
+            <br>
+            Ana
+            <br/></strong>
+        está cursando el módulo de Programación.
+    </p>
+    <p>
+        En el aula suele sentarse junto a su compañero
+        <strong>
+            Ricardo
+        </strong>
+        .
+    </p>
+    <p>
+        En clase llevan unos días explicándoles cómo construir aplicaciones Java, utilizando
+        interfaces gráficas de usuario (
+        <abbr title="Graphical user interface.">
+            GUI
+        </abbr>
+        ).
+    </p>
+    <p>
+        Pero, ¿qué es una interfaz de usuario? A grandes rasgos, les han comentado que una
+        interfaz de usuario es el medio con que el usuario puede comunicarse con una
+        computadora. Las interfaces gráficas de usuario incluyen elementos tales como: menús,
+        ventanas, paneles,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        , en general, elementos gráficos
+        que facilitan la comunicación entre el ser humano y la computadora.
+    </p>
+    <p>
+        Hasta ahora, las aplicaciones de ejemplo que habían realizado, estaban en modo consola, o
+        modo carácter, y están contentos porque están viendo las posibilidades que se les abren
+        ahora. Están comprobando que podrán dar a sus aplicaciones un aspecto mucho más
+        agradable para el usuario.
+        <strong>
+            Ana
+        </strong>
+        le comenta a
+        <strong>
+            Ricardo
+        </strong>
+        :
+    </p>
+    <p>
+        —Así podremos dar un aspecto profesional a nuestros programas.
+    </p>
+</div><h1 class="title">
+    1.- Arquitectura de JavaFX
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Ricardo
+        </strong>
+        está un poco abrumado por la cantidad de componentes y clases
+        que posee
+        <span lang="en">
+           JavaFX
+          </span>
+        para desarrollar interfaces gráficos. Piensa que
+        hay tantos, que son tantas clases, que nunca podrá aprendérselos.
+        <strong>
+            Ana
+        </strong>
+        le dice:
+    </p>
+    <p>
+        —
+        <strong>
+            Ricardo
+        </strong>
+        , no te preocupes, seguro que haciendo programas enseguida
+        ubicarás los que más utilices, y el resto, siempre tienes la documentación de
+        <span lang="en">
+           Java
+          </span>
+        para consultarla cuando dudes.
+    </p>
+</div><h1 class="title">
+    2.- Estructura de una aplicación
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        presta atención en sus clases, pero especialmente más desde que han
+        empezado a estudiar la tecnología JavaFX. Quiere comprender todo sin que se le escape
+        detalle y desde el primer momento, así que se sienta siempre en las primeras filas de
+        clase.
+    </p>
+    <p>
+        Es un cambio en la forma de programar que han visto hasta ahora y hay un montón de
+        conceptos nuevos que debe asimilar desde el principio y sentar bien las bases, dada la
+        complejidad del tema.
+    </p>
+</div><h1 class="title">
+    2.1.- Grafo de escena
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        El
+        <strong>
+            grafo de escena
+        </strong>
+        constituye una
+        <strong>
+            estructura jerárquica
+        </strong>
+        que
+        contiene la descripción de los elementos que forman la interfaz gráfica. Está
+        <strong>
+            formado
+            por nodos
+        </strong>
+        dispuestos en un orden jerárquico.
+    </p>
+    <p>
+        Este árbol jerárquico de nodos representa todos los elementos visuales del interfaz de usuario de
+        la aplicación JavaFX.
+    </p>
+    <p>
+        Cada elemento de un grafo de escena es un nodo. Salvo el
+        <strong>
+            nodo raíz
+        </strong>
+        (
+        <span lang="en">
+         root node
+        </span>
+        ) que es el primer nodo del árbol y no tiene padres, tenemos dos
+        tipos de nodos:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            <strong>
+                Nodo contenedor
+            </strong>
+            , de tipo Parent, que contienen
+            otros nodos hijos.
+        </li>
+        <li class="lista_verificacion">
+            <strong>
+                Nodo hoja
+            </strong>
+            , que no contienen otros nodos y pueden
+            ser formas gráficas o texto, o bien controles de interfaz de usuario. Las formas geométricas
+            y el texto heredan de la clase Shape o bien de la clase Shape3D. Los controles de interfaz
+            de usuario así como los paneles de
+            layouts
+
+
+            Layout
+
+            Se puede traducir al español como: disposición, diseño gráfico, pero sobre todo como esquema de distribución
+            de elementos.
+            heredan de la clase Parent.
+        </li>
+    </ul>
+    <p>
+        Podemos manipular la escena modificando propiedades de un nodo. De esta forma, podemos animar
+        nodos, aplicar efectos, hacer transformaciones o cambiar su opacidad,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+    <div style="text-align: justify;">
+        Los
+        <strong>
+            nodos son elementos individuales que forman una
+            escena
+        </strong>
+        , como por ejemplo
+        <strong>
+            botones
+        </strong>
+        ,
+        <strong>
+            cuadros de texto
+        </strong>
+        ,
+        <strong>
+         <span lang="en">
+          layouts
+         </span>
+        </strong>
+        ,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . Si seguimos
+        con el símil de un teatro, los nodos serían los actores y el
+        atrezo
+
+
+        Atrezo
+
+        Conjunto de enseres, objetos, muebles y otras cosas que se emplean en una representación dramática, una
+        filmación, una sesión fotográfica, etc.
+        .
+    </div>
+</div><h1 class="title">
+    2.2.- Instalar SDK
+</h1>
+<div class="iDevice_content">
+    <p>
+        Aunque en las primeras versiones de JavaFX, éste iba integrado en el
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        , Oracle decidió a partir de la versión
+        11 que saldría del
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        . Desde
+        entonces, para poder realizar aplicaciones JavaFX hay que instalar el
+        <abbr title="Software Development Kit">
+            SDK
+        </abbr>
+        .
+    </p>
+    <p>
+        Para crear un proyecto JavaFX con NetBeans, en primer lugar necesitamos descargar el kit de
+        desarrollo de software que nos permita compilar y ejecutar este tipo de aplicaciones.
+        <br>
+        <br>
+        Por
+        tanto, descargaremos el
+        <abbr title="Software Development Kit">
+            SDK
+        </abbr>
+        JavaFX
+        apropiado para nuestro sistema operativo, lo descomprimiremos y ubicaremos en la carpeta que
+        deseemos, por ejemplo en
+        <em>
+            Descargas
+        </em>
+        o donde queramos.
+        <br/><br/></p>
+    <div class="elemento_centrado titulo">
+        Instalar entorno para JavaFX
+    </div>
+    <div class="elemento_centrado">
+        <p>
+         <span class="external-iframe-src" style="display:none">
+          https://www.youtube.com/embed/a-65124nsQE
+         </span>
+            <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen="" class="external-iframe" frameborder="0" height="315"
+                    src="./recopila_files/a-65124nsQE.html" width="560">
+            </iframe>
+        </p>
+    </div>
+
+</div><h1 class="title">
+    2.3.- Primer ejemplo
+</h1>
+<div class="iDevice_content">
+    <p>
+        Como ya sabemos, en una aplicación JavaFX los nodos de la escena son los elementos que componen
+        la escena. La clase superior que representa estos nodos, de la que partirá el grafo, por tanto
+        la raíz, es un panel: en este caso vamos a utilizar un StackPane.
+    </p>
+</div><h1 class="title">
+    3.- Eventos
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
+    </figure>
+    <p>
+        <strong>
+            <br>
+            Ana
+            <br/></strong>
+        ya ha oído hablar de la programación por eventos, y sabe que la
+        clave para manejarla está en utilizar correctamente los eventos más adecuados en cada
+        momento.
+        <strong>
+            Ana
+        </strong>
+        tiene muy claro que el evento se asocia a un botón cuando
+        se pulsa, pero
+        <strong>
+            Ricardo
+        </strong>
+        la hace dudar, cuando la llama por teléfono para
+        preguntarle unas dudas y le dice, que él cree, que el evento se produce cuando el botón
+        se suelta. Tras hablar, ambos piensan que realmente no es tan complicado, porque se
+        repiten muchos eventos y si nos paramos a pensarlo, todos ellos son predecibles y
+        bastante lógicos.
+    </p>
+</div><h1 class="title">
+    3.1.- Modelo de gestión de eventos
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        ¿Qué sistema operativo utilizas? ¿Posee un entorno gráfico? Hoy en día, la mayoría de sistemas
+        operativos utilizan interfaces gráficas de usuario. Este tipo de sistemas operativos están
+        <strong>
+            continuamente monitorizando el entorno para capturar y tratar los eventos
+        </strong>
+        que
+        se producen.
+    </p>
+    <p>
+        El sistema operativo informa de estos eventos a los programas que se están ejecutando y entonces
+        cada programa decide, según lo que se haya programado, qué hace para dar respuesta a esos
+        eventos.
+    </p>
+    <p>
+        Cada vez que el usuario realiza una determinada acción sobre una aplicación que estamos
+        programando en
+        <span lang="en">
+         Java
+        </span>
+        (un clic sobre el ratón, presionar una tecla,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        ), se produce un
+        <strong>
+            evento
+        </strong>
+        que el sistema
+        operativo transmite a
+        <span lang="en">
+         Java
+        </span>
+        .
+    </p>
+    <p>
+        Java crea un objeto de una determinada clase de evento, y este evento se transmite a un
+        determinado método para que lo gestione.
+    </p>
+    <p>
+        El
+        <strong>
+            modelo de eventos de Java está basado en delegación
+        </strong>
+        , es decir, la
+        responsabilidad de gestionar un evento que ocurre en un objeto fuente la tiene otro objeto
+        <strong>
+            oyente
+        </strong>
+        .
+    </p>
+    <p>
+        Las
+        <strong>
+            fuentes de eventos
+        </strong>
+        (
+        <span lang="en">
+         event sources
+        </span>
+        ) son objetos que
+        detectan eventos y notifican a los receptores que se han producido dichos eventos. Ejemplos de
+        fuentes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Botón sobre el que se pulsa o pincha con el ratón.
+        </li>
+        <li>
+            Campo de texto que pierde el foco.
+        </li>
+        <li>
+            Campo de texto sobre el que se presiona una tecla.
+        </li>
+        <li>
+            Ventana que se cierra.
+        </li>
+        <li>
+            <abbr title="etcétera.">
+                etc.
+            </abbr>
+        </li>
+    </ul>
+    <p>
+        Aunque la gestión de eventos se emplea sobre todo para responder a clics de botones, se usa
+        también para dar respuesta a otros tipos de interacciones. Por ejemplo, se puede utilizar para
+        especificar el código que se ejecute cuando el usuario de una aplicación haga una selección en
+        un Combobox, cuando pase el ratón sobre una etiqueta, cuando presione una tecla,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    3.2.- Tipos de eventos
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Un evento representa la ocurrencia de algo interesante en la aplicación, como por ejemplo: el
+        ratón moviendose, la pulsación de una tecla, etc. En JavaFX, un evento es una instancia de la
+        clase javafx.event.Event o de cualquier subclase de Event.
+    </p>
+    <p>
+        JavaFX proporciona una amplia variedad de eventos. Algunos de ellos son:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+         <span lang="en">
+          Mouse Event
+         </span>
+            . Es un evento de entrada que
+            se produce cuando se mueve el ratón o se hace clic en un botón. Está representado por la
+            clase MouseEvent.
+        </li>
+        <li class="lista_verificacion">
+         <span lang="en">
+          Key Event
+         </span>
+            . Es un evento de entrada que se
+            genera cuando una tecla se pulsa o libera. Se representa por la clase KeyEvent.
+        </li>
+        <li class="lista_verificacion">
+         <span lang="en">
+          Drag Event
+         </span>
+            . Es un evento de entrada que se
+            produce cuando se arrastra el ratón. Está representado por la clase DragEvent.
+        </li>
+        <li class="lista_verificacion">
+         <span lang="en">
+          Window Event
+         </span>
+            . Este es un evento
+            relacionado con acciones sobre mostrar y ocultar ventana. Está representado por la clase
+            llamada WindowEvent.
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.3.- Añadir un manejador de evento
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-copyright" style="width: 191px;">
+
+        <figcaption class="figcaption">
+         <span class="author">
+          José Javier Bermúdez Hernández
+         </span>
+            .
+
+            <span class="license">
+          <span class="sep">
+           aplicación JavaFX
+          </span>
+         </span>
+        </figcaption>
+    </figure>
+    <p>
+        Veamos, mediante un ejemplo, cómo trabajar con eventos. En concreto, vamos a ver una sencilla
+        aplicación que tenga un botón, que al pulsar escriba por consola "Hola mundo".
+    </p>
+    <p>
+        Creamos un nuevo proyecto Java y le damos un nombre, por ejemplo: "Hola Mundo".
+    </p>
+    <p>
+        El código que escribimos en la clase HolaMundo realmente será muy básico y es el siguiente:
+    </p>
+</div><h1 class="title">
+    4.- CSS
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        A
+        <strong>
+            Ana
+        </strong>
+        y
+        <strong>
+            Ricardo
+        </strong>
+        , hoy en clase les han hablado acerca de
+        cómo cambiar el aspecto de la aplicación gráfica que se quiera desarrollar.
+    </p>
+    <p>
+        El profesor ha mencionado algunos conceptos que más o menos
+        <strong>
+            Ana
+        </strong>
+        intuye,
+        pero que todavía no termina de saber del todo lo que son. Algo como "
+        <span lang="en">
+           look and feel
+          </span>
+        ",
+        experiencia del usuario,...
+    </p>
+</div><h1 class="title">
+    4.1.- Introducción
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Las reglas de estilo
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        <abbr title="Cascading Style Sheets">
+        </abbr>
+        se interpretan por el navegador y luego
+        se aplican a los elementos correspondientes en el documento.
+        <br>
+        <br>
+        Una regla de estilo se
+        compone de tres partes:
+        <br/><br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Selector
+            </strong>
+            . Un selector es una etiqueta
+            <abbr title="HyperText Markup Language">
+                HTML
+            </abbr>
+            a la que se aplica un estilo.
+            Podría ser cualquier etiqueta como
+        </li>
+        <li>
+            <strong>
+                Propiedad
+            </strong>
+            . Una propiedad es un tipo de atributo de la etiqueta
+            <abbr title="HyperText Markup Language">
+                HTML
+            </abbr>
+            . En términos sencillos, todos
+            los atributos
+            <abbr title="HyperText Markup Language">
+                HTML
+            </abbr>
+            se
+            convierten en propiedades
+            <abbr title="Cascading Style Sheets">
+                CSS
+            </abbr>
+            .
+            Podrían ser color,
+            <code>
+                border
+            </code>
+            , etcétera.
+        </li>
+        <li>
+            <strong>
+                Valor
+            </strong>
+            . Los valores son asignados a las propiedades. Por ejemplo, una
+            propiedad de color puede tener un valor ya sea red o
+            <code>
+                #F1F1F1
+            </code>
+            , etcétera. .
+        </li>
+    </ul>
+    <p style="text-align: left;">
+        <br>
+        Se puede poner una regla de estilo con la siguiente sintaxis
+        <span lang="en">
+         :
+        </span>
+        <br/></p>
+    <p style="text-align: center;">
+        selector &#123; propiedad: valor &#125;
+        <br>
+        <br>
+        <br/><br/></p>
+</div><h1 class="title">
+    4.2.- Hoja de estilo por defecto
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        Es la que acabamos de comentar, que consiste en que se aplica la hoja modena.css.
+    </p>
+    <p>
+        Esta hoja de estilos se aplica siempre
+        <strong>
+            por defecto
+        </strong>
+        a cualquier aplicación
+        JavaFX. Pero como vamos a ver en los siguientes apartados, podemos crear hojas de estilo
+        personalizadas y añadirlas a nuestras aplicaciones, de manera que se emplee ese estilo y no el
+        estilo por defecto.
+    </p>
+    <p>
+        Es el caso del ejemplo del botón mostrado anteriormente, donde el resultado sería el que vemos en
+        la imagen, y donde simplemente escribirá por consola
+        <em>
+            Hola mundo
+        </em>
+        , cuando se pulse en el
+        botón que aparece en el centro de la ventana. Puedes ver el código un poco más abajo.
+    </p>
+    <p>
+        Un aspecto interesante a resaltar en el código siguiente es la
+        <strong>
+            notación lambda
+        </strong>
+        que se puede observar para ejecutar la acción del botón. Como ves, se ha comentado cómo se haría
+        lo mismo, pero sin la notación lambda. Esta notación surgió con el
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        8 y
+        <strong>
+            simplifica en muchos
+            casos la escritura de código
+        </strong>
+        . Como tienes también más abajo el proyecto entero,
+        puedes descargarlo y comentar y descomentar el trozo de código para comprobar que efectivamente
+        funciona exactamente igual el programa con una u otra notación.
+    </p>
+    <p>
+        En el Anexo I del final de la unidad puedes ver una pequeña introducción a esta característica de
+        Java.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package saludando;
+
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+/**
+ * Aplicación que escribe hola mundo por consola, cuando se pulsa un botón.
+ * &#64;author JJBH
+ */
+public class Saludando extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage) &#123;
+
+        // Crear un Nodo de clase Button
+        Button btn = new Button();
+
+        // Establecer el texto del botón
+        btn.setText("Di 'Hola mundo'");
+
+        /* Utilizando la notación lambda, establcer la acción del programa
+           cuando se pulse el botón: escribir por consola un mensaje */
+        btn.setOnAction((ActionEvent event) -> &#123;
+            System.out.println("¡Hola mundo!");
+        &#125;);
+
+        // Sin notación lambda sería así.
+        /*btn.setOnAction(new EventHandler() &#123;
+            &#64;Override
+            public void handle(Event event) &#123;
+                System.out.println("¡Hola mundo!");
+            &#125;
+        &#125;);*/
+
+        // Nodo raiz, de clase StackPane
+        StackPane root = new StackPane();
+        // Añadimos el botón como hijo de raiz
+        root.getChildren().add(btn);
+        // Crear la escena para que contenga la raíz
+        Scene scene = new Scene(root, 300, 250);
+
+        // Establecer el título de la ventana
+        primaryStage.setTitle("Hola Mundo con JavaFX");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        Puedes descargar el proyecto completo a continuación:
+    </p>
+    <p style="text-align: center;">
+        Saludando
+        <span class="tamano">
+         (22 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.3.- Hoja de estilo específica de la escena
+</h1>
+<div class="iDevice_content">
+    <p>
+        Puedes establecer una hoja de estilo para un objeto de la clase Scene. La hoja de estilo se
+        aplica en este caso a todos los componentes JavaFX añadidos al grafo de escena para ese objeto.
+        Así, la hoja sobrescribirá los estilos de la hoja por defecto.
+    </p>
+    <p>
+        De este modo, lo que haríamos sería simplemente lo siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Crear la escena para que contenga la raíz
+Scene scene = new Scene(root, 300, 250);
+
+// Cargar una hoja de estilo específica
+scene.getStylesheets().add("recursos/css/JMetroLightTheme.css");</pre>
+        </div>
+    </div>
+    <p>
+        Este ejemplo le dice a JavaFX que busque un fichero hoja de estilos llamado
+        <span style="background-color: #fff0f0;">
+         JMetroLightTheme.css
+        </span>
+        ubicado en la
+        carpeta
+        <span style="background-color: #fff0f0;">
+         recursos/css
+        </span>
+        .
+    </p>
+    <figure class="exe-figure exe-image float-right license-copyright" style="width: 306px;">
+    </figure>
+    <p>
+        <br>
+        Esa cadena que indica el archivo de hoja de estilo
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        se interpreta como una
+        <abbr title="Localizador Uniforme de Recursos">
+            URL
+        </abbr>
+        . Esto significa que también podemos
+        especificar rutas completas a un archivo en el sistema de archivos. Sin embargo, es una buena
+        práctica pensar en los archivos
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        como
+        recursos y agruparlos con el código de nuestra aplicación.
+        <br/></p>
+    <p>
+        Puedes descargar el proyecto completo a continuación, que tal y como el anterior, simplemente
+        escribirá por consola
+        <em>
+            Hola mundo
+        </em>
+        , cuando se pulse en el botón que aparece en el centro
+        de la ventana, pero ahora verás al pulsar el botón cómo cambia ligeramente el aspecto:
+    </p>
+    <p style="text-align: center;">
+        Seguimos saludando
+        <span class="tamano">
+         (24.90 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.4.- Hoja de estilo específica del padre
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        También es posible establecer una hoja de estilo
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        en todas las subclases de la clase JavaFX
+        padre. La clase padre es una clase base para todos los componentes que pueden tener hijos, lo
+        que significa que pueden contener otros componentes dentro de ellos. Las propiedades de
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        <abbr title="Cascading Style Sheets">
+        </abbr>
+        especificadas en una hoja de estilo establecida en una subclase principal normalmente
+        <strong>
+            tendrán
+            prioridad sobre las reglas
+            <abbr title="Hoja de estilos en cascada">
+                CSS
+            </abbr>
+            especificadas en una hoja de estilo de escena y la hoja de estilo
+            predeterminada
+        </strong>
+        .
+        <br>
+        <br>
+        Los componentes de diseño de JavaFX son ejemplos típicos de
+        subclases de Parent. Si establece una hoja de estilo
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        <abbr title="Cascading Style Sheets">
+        </abbr>
+        en un
+        componente de diseño, la hoja de estilo se aplicará a todos los componentes dentro de ese
+        componente de diseño.
+        <br>
+        <br>
+        Establecer una hoja de estilos
+        <abbr title="">
+            <acronym title="Hoja de estilos en cascada">
+                CSS
+            </acronym>
+        </abbr>
+        <abbr title="Cascading Style Sheets">
+        </abbr>
+        en una subclase principal es similar
+        a configurarlo en un objeto de la clase Scene. Aquí tenemos un ejemplo de configuración de una
+        hoja de estilo
+        <abbr title="Hoja de estilos en cascada">
+            CSS
+        </abbr>
+        <abbr title="Cascading Style Sheets">
+        </abbr>
+        en un VBox. Un VBox es un componente
+        de diseño (
+        <span lang="en">
+         layout
+
+
+            layout
+
+           Esquema de distribución de los elementos dentro un diseño.
+        </span>
+        )
+        que coloca todos sus nodos hijos en una fila vertical.
+        <br/><br/><br/><br/></p>
+    <p>
+        El listado puedes comprobar cómo se añaden dos botones a un panel contenedor VBox, que son los
+        dos que ves en la imagen arriba a la izquierda. Ese VBox es el padre de los dos botones, y
+        también se añade otro botón a la escena. Como se puede observar, no tienen el mismo aspecto, el
+        mismo
+        <span lang="en">
+         look and feel
+        </span>
+        , ya que los dos botones tiene el estilo de la hoja de
+        estilo del padre y el botón adicional toma el estilo de la hoja de estilo por defecto:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package javafxconcssespecificapadre;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+/**
+ * Ejemplo donde se usa un layout VBox, al cual se añaden dos botones. Ese vbox
+ * se añade a la escena.
+ * &#64;author JJBH
+ */
+public class JavaFXconCssEspecificaPadre extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage) &#123;
+
+        // Nodo raiz, de clase StackPane
+        StackPane root = new StackPane();
+
+        // Crear un Nodo de clase Button
+        Button btn = new Button();
+
+        // Establecer el texto del botón
+        btn.setText("Botón que no pertenece al panel VBox");
+
+
+        // Creamos dos botones
+        Button button1 = new Button("Botón 1");
+        Button button2 = new Button("Botón 2");
+
+        // Añadimos los botones al Vbox
+        VBox vbox = new VBox(button1, button2);
+        vbox.getStylesheets().add("recursos/css/JMetroLightTheme.css");
+
+        // Añadimos el vbox como hijo de raíz
+        root.getChildren().add(vbox);
+
+        // Añadimos el botón como hijo de raíz. Nótese que éste no es hijo del VBox
+        root.getChildren().add(btn);
+
+        // Crear la escena para que contenga la raíz
+        Scene scene = new Scene(root, 300, 250);
+
+        // Tñtulo de la ventana
+        primaryStage.setTitle("Prueba Specific Parent CSS");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    &#125;
+
+    /**
+     * &#64;param args the command line arguments
+     */
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Puedes descargar el proyecto completo a continuación. Fíjate que en la estructura del proyecto,
+        en el paquete al que hemos nombrado como recursos.css está el fichero correspondiente a la hoja
+        de estilos.
+    </p>
+    <p style="text-align: center;">
+        Estilo específico del padre
+        <span class="tamano">
+         (33 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.5.- Estilo específico en componente
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Otra opción a la hora de especificar el estilo
+        <abbr title="Cascading Style Sheets">
+            CSS
+        </abbr>
+        es estableciéndolo directamente en el componente que deseemos. Así, lo especificaremos mediante
+        una cadena de caracteres que contiene las propiedades
+        <abbr title="Cascading Style Sheets">
+            CSS
+        </abbr>
+        a
+        aplicar.
+        <br>
+        <br>
+        Las propiedades
+        <abbr title="Cascading Style Sheets">
+            CSS
+        </abbr>
+        <strong>
+            establecidas de
+            este modo tendrán prioridad
+        </strong>
+        sobre cualquier otra propiedad
+        <abbr title="Cascading Style Sheets">
+            CSS
+        </abbr>
+        especificada a clases padre donde
+        se encuentre el componente, y sobre la hoja de estilos por defecto de la escena.
+        <br/><br/></p>
+</div><h1 class="title">
+    5.- Layout panes
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        sigue aprendiendo conceptos sobre aplicaciones gráficas
+        desarrolladas con JavaFX.
+    </p>
+    <p>
+        En la clase de hoy, ha aprendido el concepto de contenedor o
+        <span lang="en">
+           layout
+          </span>
+        , es decir, el panel sobre el que se van depositando los
+        controles (botones, listas, campos de texto,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        )
+        que compondrán una ventana.
+    </p>
+    <p>
+        A
+        <strong>
+            Ana
+        </strong>
+        le llama la atención la variedad de
+        <span lang="en">
+           layouts
+          </span>
+        que ofrece JavaFX. Su compañero
+        <strong>
+            Ricardo
+        </strong>
+        , que está más suelto con el
+        tema, le está ayudando a entender lo que son y la facilidad de uso.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.1.- Absolute layout
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        Los layouts absolutos se suelen usar sobre todo para posicionar diagramas o imágenes.
+    </p>
+    <p>
+        Como se ve en el listado de ejemplo de más abajo, se emplea la clase Pane. Se puede utilizar para
+        <strong>
+            posicionar nodos en coordenadas absolutas
+        </strong>
+        .
+    </p>
+    <p>
+        En el ejemplo que ves en la imagen, y cuyo código puedes ver más abajo, muestras tres formas: un
+        rectángulo, una línea y un círculo. Las figuras se ubican usando coordenadas absolutas.
+    </p>
+</div><h1 class="title">
+    5.2.- HBox
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        Este
+        <span lang="en">
+         layout
+        </span>
+        nos permite colocar nodos hijos en una
+        <strong>
+            fila
+            horizontal
+        </strong>
+        .
+    </p>
+    <p>
+        En el siguiente ejemplo se usan unos controles de tipo Button para ejemplificar el uso de
+        este
+        <span lang="en">
+         layout
+        </span>
+        .
+    </p>
+    <p>
+        Puedes ver el código a continuación con los comentarios que son bastante aclaratorios.
+    </p>
+    <p>
+        También, más abajo puedes descargar el proyecto completo.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package hboxejemplo;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
+
+/**
+ * Ejemplo de uso del layout HBox
+ * &#64;author JJBH
+ */
+public class HBoxEjemplo extends Application &#123;
+    // Declarar el layout
+    private HBox caja ;
+
+    &#64;Override
+    public void start(Stage stage) &#123;
+        // Asignar 10 píxeles de separación entre los nodos
+        caja = new HBox(10);
+        // Agregar un relleno de 15 píxeles para separarlo del borde de la ventana
+        caja.setPadding(new Insets(15));
+        // Llamando al metodo addAll podemos agregar nodos en una sola línea
+        caja.getChildren().addAll(new Button("Botón 1"), new Button("Botón 2"),
+                new Button("Botón 3"));
+
+
+        Scene s = new Scene(caja);
+        stage.setScene(s);
+        stage.setTitle("Horizontal");
+        stage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;
+</pre>
+        </div>
+    </div>
+    <p style="text-align: center;">
+        Layout HBox en JavaFX
+        <span class="tamano">
+         (24 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    5.3.- VBox
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-copyright" style="width: 122px;">
+    </figure>
+    <p>
+        <br>
+        Casi idéntico al anterior, este
+        <span lang="en">
+         layout
+        </span>
+        nos permite colocar nodos hijos
+        en una
+        <strong>
+            fila vertical
+        </strong>
+        .
+        <br/></p>
+    <p>
+        En el siguiente ejemplo se usan unos controles de tipo Button para ejemplificar el uso de
+        este
+        <span lang="en">
+         layout
+        </span>
+        .
+    </p>
+    <p>
+        Observa en el listado cómo se añade con:&nbsp;caja.setPadding(new Insets(15)); el espacio de
+        relleno desde el borde de la ventana hasta el control, para que no esté demasiado pegado a ella.
+        Puedes experimentar comentado esa línea y viendo lo que pasa si no está.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package vboxejemplo;
+
+import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+/**
+ * Ejemplo de uso del layout VBox
+ * &#64;author JJBH
+ */
+public class VBoxEjemplo extends Application &#123;
+    // Declarar el layout
+    private VBox caja ;
+
+    &#64;Override
+    public void start(Stage stage) &#123;
+        // Asignar 10 píxeles de separación entre los nodos
+        caja = new VBox(10);
+        // Agregar un relleno de 15 píxeles para separarlo del borde de la ventana
+        caja.setPadding(new Insets(15));
+        // Llamando al metodo addAll podemos agregar nodos en una sola línea
+        caja.getChildren().addAll(new Button("Botón 1"), new Button("Botón 2"),
+                new Button("Botón 3"));
+
+
+        Scene s = new Scene(caja);
+        stage.setScene(s);
+        stage.setTitle("Vertical");
+        stage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.4.- BorderPane
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Este panel contenedor
+        <strong>
+            dispone el contenido
+        </strong>
+        , sus nodos hijos,
+        <strong>
+            en cinco
+            áreas separadas
+        </strong>
+        : parte superior (TOP), inferior (BOTTOM), derecha (
+        <span lang="en">
+         RIGHT
+        </span>
+        ),
+        izquierda (LEFT) y centro
+        <span lang="en">
+         CENTER
+        </span>
+        ).
+    </p>
+    <p>
+        Puedes ver el resultado en la imagen y el código sería el siguiente, en este caso hemos dispuesto
+        cinco botones en cada una de las posiciones posibles.
+    </p>
+</div><h1 class="title">
+    5.5.- AnchorPane
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        AnchorPane vendría a traducirse como panel ancla.
+    </p>
+    <p>
+        Este panel ancla los bordes de los nodos secundarios (los componentes que pongamos sobre este
+        panel) a un desplazamiento especificado desde los bordes del panel de anclaje. Si el panel de
+        anclaje tiene establecido un borde o un relleno (
+        <span lang="en">
+         padding
+        </span>
+        ), los
+        desplazamientos se medirán desde el borde interior de dichos encartes.
+    </p>
+    <p>
+        AnchorPane es un panel de diseño bastante sencillo que se suele usar con otros paneles de diseño
+        para crear diseños más elaborados.
+    </p>
+</div><h1 class="title">
+    5.6.- StackPane
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Se trata de un
+        <span lang="en">
+         layout
+        </span>
+        bastante curioso, pues
+        <strong>
+            añade sus nodos a
+            modo de pila
+        </strong>
+        : el primer elemento queda debajo del segundo y así sucesivamente.
+    </p>
+    <p>
+        Hay que tener en cuenta que de manera predeterminada el
+        <strong>
+            StackPane
+        </strong>
+        coloca los
+        nodos en el centro, pero eso se puede modificar, como podemos ver en el ejemplo de la imagen.
+    </p>
+    <p>
+        Cuando se crea una aplicación nueva JavaFX desde
+        <span lang="en">
+         NetBeans
+        </span>
+        , el panel por
+        defecto que aparece en ella es un StackPane.
+    </p>
+    <p>
+        En el sencillo ejemplo que puedes ver en la imagen, y que también puedes descargar más abajo,
+        además de ver su código listado, puedes comprobar que es posible usar este panel dándole un
+        posicionamiento determinado. En este caso le estamos indicando
+        <span style="color: #0000cc;">
+         BOTTOM_RIGHT
+        </span>
+        es decir, en vez de centrado aparecerá abajo a la derecha. Y posteriormente añadimos dos nodos
+        hijos: un círculo relleno de color beige y un botón, que se sitúa como vemos sobre el círculo.
+    </p>
+</div><h1 class="title">
+    5.7.- FlowPane
+</h1>
+<div class="iDevice_content">
+    <p>
+        Un
+        <span lang="en">
+         layout
+        </span>
+        horizontal de este tipo
+        <strong>
+            dispone sus nodos hijos en una
+            fila hasta que la anchura del panel alcanza cierto tamaño que puedes especificar
+        </strong>
+        . En el
+        momento en que se alcanza ese tamaño se empieza por una nueva fila de nodos hijo.
+    </p>
+    <p>
+        Un
+        <span lang="en">
+         layout
+        </span>
+        vertical de este tipo funciona de manera similar a lo expuesto,
+        en vez de en filas en columnas. Cuando se alcanza el tamaño límite se añade una nueva columna
+        inmediatamente a la derecha de la columna actual.
+    </p>
+    <p>
+        En el siguiente listado podemos ver un ejemplo de este panel con orientación vertical:
+    </p>
+</div><h1 class="title">
+    5.8.- TilePane
+</h1>
+<div class="iDevice_content">
+    <p>
+        Este panel dispone los nodos en filas y columnas ordenadas o bien horizontalmente, o bien
+        verticalmente. Se parece en ese sentido al FlowPane, aunque la diferencia fundamental entre uno
+        y otro es que en un TilePane todas las celdas tienen el mismo tamaño.
+    </p>
+    <p>
+        Si no se establecen los espacios entre columnas (con setVgap y
+        <code>
+            setHgap
+        </code>
+        ) que vemos en
+        el código, los botones se colocan uno al lado del otro.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class TilePaneEjemplo extends Application  &#123;
+
+    &#64;Override
+    public void start(Stage stage) throws Exception &#123;
+
+        // Añadir unos botones
+        Button button1 = new Button("Botón 1");
+        Button button2 = new Button("Botón 2");
+        Button button3 = new Button("Botón 3");
+        Button button4 = new Button("Botón Nuúmero 4");
+        Button button5 = new Button("Botón 5");
+        Button button6 = new Button("Botón 6");
+
+        // Crear panel
+        TilePane tilePane = new TilePane();
+
+        tilePane.getChildren().add(button1);
+        tilePane.getChildren().add(button2);
+        tilePane.getChildren().add(button3);
+        tilePane.getChildren().add(button4);
+        tilePane.getChildren().add(button5);
+        tilePane.getChildren().add(button6);
+
+        // Espacio entre filas y columnas
+        tilePane.setHgap(10);
+        tilePane.setVgap(10);
+
+
+        tilePane.setTileAlignment(Pos.CENTER);
+
+        // Creamos escena
+        Scene scene = new Scene(tilePane, 300, 200);
+        // Añair escena al escenario
+        stage.setScene(scene);
+        stage.setTitle("TilePane Ejemplo");
+        // Mostrar escenario
+        stage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    5.9.- GridPane
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-copyright" style="width: 388px;">
+    </figure>
+    <p>
+        <br>
+        Este panel de distribución dispone los nodos hijos en una
+        <strong>
+            cuadrícula de filas y
+            columnas
+        </strong>
+        .
+        <br/></p>
+    <p>
+        La cuadrícula no tiene por qué tener tamaño uniforme, así, la anchura de cada columna y la altura
+        de cada fila puede variar según su contenido.
+    </p>
+    <p>
+        Este
+        <span lang="en">
+         layout
+        </span>
+        es recomendable para formularios que recojan información del
+        usuario a través de controles de interfaz de usuario como campos de texto, listas,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+    <p>
+        Mediante el método setGridLinesVisible() se pueden mostrar las líneas de la cuadrícula de diseño,
+        lo que permite depurar visualmente el diseño. A continuación puede ver el código de un ejemplo
+        explicado con comentarios:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class GridPaneEjemplo extends Application &#123;
+
+    &#64;Override
+    public void start(Stage stage) &#123;
+
+        // Crear el panel
+        GridPane root = new GridPane();
+
+        // Establecer espacios entre los nodos
+        root.setHgap(8);
+        root.setVgap(8);
+        root.setPadding(new Insets(5));
+
+        // Tenemos que hacer que la segunda columna pueda crecer.
+        // De forma predeterminada, el panel muestra sus elementos secundarios
+        // en sus tamaños preferidos y no los agranda cuando se amplía la
+        // ventana. Creamos restricciones de columna, donde establecemos la
+        // prioridad de crecimiento horizontal en Priority.ALWAYS para la
+        // segunda columna. Esto hace que el campo de texto y los controles de
+        // la vista de lista crezcan en dirección horizontal a medida que se
+        // agranda la ventana.
+        ColumnConstraints cons1 = new ColumnConstraints();
+        cons1.setHgrow(Priority.NEVER);
+        root.getColumnConstraints().add(cons1);
+
+        // De manera similar, hacemos crecer la segunda fila. Al hacer crecer
+        // la segunda columna y la fila, la vista de lista crece en ambas
+        // direcciones, ocupando la mayor parte del área del cliente.
+        ColumnConstraints cons2 = new ColumnConstraints();
+        cons2.setHgrow(Priority.ALWAYS);
+
+        root.getColumnConstraints().addAll(cons1, cons2);
+
+        RowConstraints rcons1 = new RowConstraints();
+        rcons1.setVgrow(Priority.NEVER);
+
+        RowConstraints rcons2 = new RowConstraints();
+        rcons2.setVgrow(Priority.ALWAYS);
+
+        root.getRowConstraints().addAll(rcons1, rcons2);
+
+        Label lbl = new Label("Nombre:");
+        TextField field = new TextField();
+        ListView view = new ListView();
+        Button okBtn = new Button("Aceptar");
+        Button closeBtn = new Button("Cerrar");
+
+        // Botón de aceptar alineado a la derecha
+        GridPane.setHalignment(okBtn, HPos.RIGHT);
+
+        //root.setGridLinesVisible(true) ;
+
+        // Se añaden los controles al panel. Los dos primeros parámetros
+        // del método add() son los índices de columna y fila. Los índices
+        // empiezan por 0.
+        root.add(lbl, 0, 0);
+        root.add(field, 1, 0, 3, 1);
+        root.add(view, 0, 1, 4, 2);
+        root.add(okBtn, 2, 3);
+        root.add(closeBtn, 3, 3);
+
+        Scene scene = new Scene(root, 280, 300);
+
+        stage.setTitle("Prueba GridPane");
+        stage.setScene(scene);
+        stage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El resultado de ejecutar ese código es el que puedes ver en la imagen siguiente:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+        <br>
+        <br>
+        <p style="text-align: left;">
+            A continuación puedes descargar el proyecto:
+        </p>
+        <p style="text-align: center;">
+            GridPane en JavaFX
+            <span class="tamano">
+          (24 KB)
+         </span>
+        </p>
+        <br/><br/></div>
+</div><h1 class="title">
+    6.- Controles UI
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        se toma un descanso en el trabajo, se levanta y en el pasillo se
+        encuentra con
+        <strong>
+            Juan
+        </strong>
+        , con el que entabla una conversación bastante amena.
+        Se toman un café y
+        <strong>
+            Ana
+        </strong>
+        recuerda lo que está aprendiendo en clase:
+    </p>
+    <p>
+        —¿Cuántos controles hay en JavaFX? ¿Los usas todos? —pregunta
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+    <p>
+        —¿Qué? ¡Qué va mujer! Normalmente miro cuáles le vendrán bien a la aplicación que haya
+        que desarrollar y consulto la documentación en aquellos que no he usado antes.
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        se queda pensativa y recuerda que
+        <strong>
+            Ricardo
+        </strong>
+        también
+        le comentó algo parecido en clase.
+    </p>
+</div><h1 class="title">
+    6.1.- Label (Etiqueta) y TextField (Campo de texto)
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY" style="width: 196px;">
+    </figure>
+    <p>
+        <br>
+        Una instancia de la clase Label representa un control de etiqueta. Este control consiste
+        simplemente en una etiqueta que se utiliza para describir otro componente. Puede mostrar un
+        texto, un icono o imagen o ambas cosas. Por lo general, una etiqueta se coloca al lado de (a la
+        derecha o izquierda) o en la parte superior del nodo que describe. Una etiqueta no puede tener
+        el foco, es decir, no se puede acceder a ella mediante la tecla
+        <strong>
+            Tab
+        </strong>
+        o el click
+        del ratón.
+        <br/></p>
+    <p>
+        Un TextField es un control de entrada de texto. Hereda de la clase TextInputControl. Permite al
+        usuario introducir una sola línea de texto plano. Si necesitamos un control para introducir más
+        de una línea, entonces hay que recurrir al control TextArea.
+    </p>
+    <p>
+        En un&nbsp;TextField, al definir tanto texto como contenido gráfico para un botón, se puede usar
+        el método setGraphicTextGap para establecer el espacio entre ellos.
+        <br>
+        <br>
+        Además, se puede
+        variar la posición del contenido de la etiqueta dentro de su área de diseño mediante el método
+        setTextAlignment. También puede definir la posición del gráfico en relación con el texto
+        aplicando el método setContentDisplay y especificando una de las siguientes constantes de
+        ContentDisplay:
+        <code>
+            LEFT
+        </code>
+        , RIGHT,
+        <code>
+            CENTER
+        </code>
+        , TOP,
+        <code>
+            BOTTOM
+        </code>
+        .
+        <br/><br/></p>
+    <p>
+        Se puede utilizar el método setPrefWidth para indicar el tamaño del control. Así, dado un campo
+        de texto llamado por ejemplo ctex, con ctex.setPrefWidth(50) le estaríamos dando una anchura de
+        50.
+    </p>
+    <p>
+        En el siguiente ejemplo se puede ver el uso de etiquetas y campos de texto.
+    </p>
+    <p>
+        Al principio se declaran un par de etiquetas donde se muestran mensajes al usuario. Se muestra
+        también cómo emplear una imagen, una lupa que se muestra en la ventana como podrás ver cuando
+        ejecutes el proyecto, que está más abajo para descargar.
+    </p>
+    <p>
+        Cuando se introduce algo en el campo de texto y se pulsa la tecla
+        <strong>
+            Intro
+        </strong>
+        , se
+        escribe mediante una etiqueta, llamada etiqueta, que el campo ha cambiado. Fíjate que eso se
+        especifica mediante el método setOnAction.
+    </p>
+    <p>
+        Debes observar también que para la etiqueta labelNombre establecemos manejadores, esta vez sin la
+        notación lambda, para que se haga un
+        <span lang="en">
+         zoom
+        </span>
+        cuando con el puntero del ratón
+        se acerque a ella, y se quite el
+        <span lang="en">
+         zoom
+        </span>
+        al alejarnos, al salir de ella.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Ejemplo de uso de etiquetas y campos de texto en JavaFX
+ * Se muestra también cómo se puede asociar una imagen a una etiqueta
+ *
+ * &#64;author JJBH
+ */
+public class EtiquetasyTexto extends Application &#123;
+
+    // Crear etiqueta
+    Label etiqueta = new Label("Escribe tu nombre en los campos de texto.");
+    // Crear etiqueta para el nombre
+    Label labelNombre = new Label("Nombre:") ;
+
+    &#64;Override
+    public void start(Stage primaryStage) &#123;
+
+        // Dar color a la etiqueta
+        etiqueta.setTextFill(Color.web("#0076a3"));
+
+        // Obtener image y asoociarla a la etiqueta.
+        // (Estamos suponiendo que existe esa imagen, por lo que deberíamos
+        // capturar las excepciones que puedan surgir en este punto, por si no
+        // existiera, pero lo omitimos por claraida de este código.
+        Image image = new Image(getClass().getResourceAsStream("lupa.png"));
+        etiqueta.setGraphic(new ImageView(image));
+
+
+        // Crear campos de texto
+        TextField campoNombre = new TextField();
+        TextField campoApellidos = new TextField();
+        // Ancho para mostraar 15 caracteres
+        campoNombre.setPrefColumnCount(15);
+        campoApellidos.setPrefColumnCount(15);
+
+        // Establecer los manejadores ActionEvent para ambos campos de texto
+        campoNombre.setOnAction((ActionEvent e) -> &#123;
+            etiqueta.setText("Has cambiado el nombre");
+        &#125;);
+        campoApellidos.setOnAction((ActionEvent e) -> &#123;
+            etiqueta.setText("Has cambiado los apellidos");
+        &#125;);
+
+
+        // Para la etiqueta del nombre establecemos manejadores para que se
+        // haga un zoom, cuando con el ratón nos acerquemos a ella, y se quite
+        // el zoom al alejarnos, al salir de ella.
+        labelNombre.setOnMouseEntered(new EventHandler<MouseEvent>() &#123;
+            &#64;Override public void handle(MouseEvent e) &#123;
+                labelNombre.setScaleX(1.5);
+                labelNombre.setScaleY(1.5);
+            &#125;
+        &#125;);
+        labelNombre.setOnMouseExited(new EventHandler<MouseEvent>() &#123;
+            &#64;Override public void handle(MouseEvent e) &#123;
+                labelNombre.setScaleX(1);
+                labelNombre.setScaleY(1);
+            &#125;
+        &#125;);
+
+
+
+        // Crear un Gridpane
+        GridPane panel = new GridPane();
+
+        // Añadir etiquetas y campos al GridPane
+        panel.addRow(0, etiqueta);
+        panel.addRow(1, labelNombre, campoNombre);
+        panel.addRow(2, new Label("Apellidos:"), campoApellidos);
+
+        // Establecer el tamaño del panel
+        panel.setMinSize(350, 250);
+        // Establecer propiedades del GridPane
+        panel.setStyle("-fx-padding: 10;" +
+        "-fx-border-style: solid inside;" +
+        "-fx-border-width: 2;" +
+        "-fx-border-insets: 5;" +
+        "-fx-border-radius: 5;" +
+        "-fx-border-color: blue;");
+
+        // Crear la escena
+        Scene scene = new Scene(panel);
+
+        // Título de la ventana
+        primaryStage.setTitle("Etiquetas y campos de texto");
+        // Añadir la escena al escenario
+        primaryStage.setScene(scene);
+        // Mostrar el escenario
+        primaryStage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El proyecto puedes descargarlo de:
+    </p>
+    <p style="text-align: center;">
+        Ejemplo de uso de Label y TextField
+        <span class="tamano">
+         (40 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    6.2.- Button (Botón)
+</h1>
+<div class="iDevice_content">
+    <p>
+        Ya hemos visto el uso de los botones en ejemplos anteriores. Veamos algunas posibilidades y
+        características más sobre ellos.
+    </p>
+    <p>
+        Como ya sabemos, una instancia de la clase Button representa un botón de comando. Por regla
+        general, un botón tiene texto en su etiqueta y un manejador ActionEvent registrado en dicho
+        botón, que servirá para especificar lo que se desee hacer cuando se haga click en un botón,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Crear un botón normal con N como mnemónico
+Button newBtn = new Button("_Nuevo");
+// Añadir EventHandler al botón
+newBtn.setOnAction(new EventHandler<ActionEvent>() &#123;
+    &#64;Override
+    public void handle(ActionEvent e) &#123;
+      // Establecer el texto de una etiqueta
+      etiqueta.setText("Has pulsado el botón Nuevo");
+    &#125;
+&#125;);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Un botón puede estar en uno de los tres siguientes
+        <strong>
+            modos
+        </strong>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Botón
+            <strong>
+                normal
+            </strong>
+            : su ActionEvent asociado se dispara cuando el botón se activa.
+        </li>
+        <li>
+            Botón
+            <strong>
+                por defecto
+            </strong>
+            : su ActionEvent se dispara cuando se pulsa la tecla
+            <strong>
+                Intro
+            </strong>
+            y ningún otro nodo de la escena consume la tecla presionada.
+        </li>
+        <li>
+            Botón
+            <strong>
+                cancelar
+            </strong>
+            : su ActionEvent se dispara cuando se pulsa la tecla
+            <strong>
+                Esc
+            </strong>
+            y ningún otro nodo de la escena consume la tecla presionada.
+        </li>
+    </ul>
+    <p>
+        Por defecto, un botón es un botón normal. Los modos por defecto y cancelar se representan por las
+        propiedades defaultButton y
+        <code>
+            cancelButton
+        </code>
+        . Podemos establecer una de estas
+        propiedades a true para obtener un botón de ese tipo. Por defecto ambas propiedades está a
+        false. En el siguiente ejemplo obtendríamos un botón en modo cancelar:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Crear un botón cancelar con C como su mnemonic
+Button cancelBtn = new Button("_Cancelar");
+cancelBtn.setCancelButton(true);
+// Añadir EventHandler al botón
+cancelBtn.setOnAction(new EventHandler<ActionEvent>() &#123;
+   &#64;Override
+   public void handle(ActionEvent e) &#123;
+       // Establecer el texto de una etiqueta
+       etiqueta.setText("Has pulsado el botón Cancelar");
+   &#125;
+&#125;);</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.2.1.- Añadir imagen/icono a botón
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        La clase Button hereda de la clase Labeled, por ello, se pueden utilizar los siguientes métodos
+        para especificar contenidos para un botón:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            setText(String text): especifica el texto para el botón.
+        </li>
+        <li>
+            setGraphic(Node graphic): especifica el gráfico.
+        </li>
+    </ul>
+    <p>
+        Cuando se definen ambos, texto y gráfico en un botón, se puede emplear el método
+        setGraphicTextGap para establecer la separación entre ellos.
+    </p>
+    <p>
+        En el ejemplo que tienes más abajo, el gráfico es un objeto ImageView. Sin embargo, es posible
+        utilizar otros objetos gráficos, como por ejemplo formas del paquete javafx.scene.shape.
+    </p>
+    <p style="text-align: center;">
+        Ejemplo de uso de botón con imagen
+        <span class="tamano">
+         (28.20 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    6.2.2.- Validar entrada
+</h1>
+<div class="iDevice_content">
+    <p>
+        En este momento, en el que ya sabemos cómo utilizar un campo de texto y un botón en JavaFX, nos
+        podemos plantear la siguiente situación.
+    </p>
+</div><h1 class="title">
+    6.3.- Menú
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Con JavaFX podemos tener la clásica barra de menú que suele tener toda aplicación de
+        escritorio.
+    </p>
+    <p>
+        Para utilizar el control JavaFX MenuBar hay crear una instancia MenuBar como se ve en el listado
+        de más abajo.
+    </p>
+    <p>
+        También habrá que añadir el menú al grafo de escena. Se puede ver en el código que lo que hacemos
+        en este caso es añadirlo a un panel VBox y ese panel será el que añadamos a la escena. De este
+        modo se dispondrá el MenuBar en la parte superior de la ventana.
+    </p>
+    <p>
+        Cuando se ha creado el MenuBar, podremos añadirle instancias de Menu. En el ejemplo, añadimos uno
+        de nombre "Archivo".
+    </p>
+    <p>
+        Para responder a la selección de un MenuItem hay que establecer un oyente de evento (
+        <span lang="en">
+         event listener
+        </span>
+        ) en el MenuItem. Se observa cómo se ha especificado mediante
+        notación lambda el método setOnAction() del MenuItem. Cuando se seleccione el elemento
+        <em>
+            Cerrar
+        </em>
+        ,
+        podemos ver que lo que se hará será escribir un mensaje por consola y se cerrará la ventana.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class JavaFXMenuBar extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage) &#123;
+        // Crear barra de menú
+        MenuBar menuBar = new MenuBar();
+        // Añadir la barra a un panel contenedor
+        VBox vBox = new VBox(menuBar);
+
+        // Crear un menú llamado Archivo
+        Menu menu = new Menu("Archivo");
+        // Añadir dos elementos de menú
+        MenuItem menuItem1 = new MenuItem("Abrir");
+        MenuItem menuItem2 = new MenuItem("Cerrar");
+        // Añadir los elementos de menú al menú
+        menu.getItems().add(menuItem1);
+        menu.getItems().add(menuItem2);
+
+        // Especificamos las acciones a tomar si se pincha en las opciones
+        // de menú
+        menuItem1.setOnAction(e -> &#123;
+            System.out.println("Se seleccionó la opción abrir");
+        &#125;);
+        menuItem2.setOnAction(e -> &#123;
+            System.out.println("Se seleccionó la opción cerrar");
+            primaryStage.close();
+        &#125;);
+
+        // Añadir el menú a la barra de menú
+        menuBar.getMenus().add(menu);
+
+        // Crear la escena
+        Scene scene = new Scene(vBox, 700, 500);
+        primaryStage.setTitle("Barra de menú");
+        primaryStage.setScene(scene);
+        primaryStage.show();
+
+    &#125;
+
+    /**
+     * &#64;param args the command line arguments
+     */
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        También es posible poner iconos a un Menu mediante su método setGraphic(). El icono se dispone
+        junto a la etiqueta de texto.
+    </p>
+    <p>
+    </p>
+    <p style="text-align: center;">
+        Ejemplo de uso de Menu
+        <span class="tamano">
+         (164 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    6.4.- MenuButton
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Un control MenuButton tiene la apariencia de un botón y se comporta como un menú. Cuando se
+        activa, muestra una lista de opciones en forma de menú emergente.
+    </p>
+    <p>
+        La lista de opciones del menú se mantiene en una lista cuya referencia se devuelve por el método
+        getItems().
+    </p>
+    <p>
+        Para ejecutar un comando cuando se selecciona una opción de menú, debemos añadir un controlador
+        ActionEvent al
+        <code>
+            MenuItem
+        </code>
+        .
+    </p>
+</div><h1 class="title">
+    6.5.- CheckBox
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Este control de interacción de la interfaz gráfica de usuario permite a hacer
+        <strong>
+            selecciones
+            múltiples
+        </strong>
+        de un conjunto de opciones.
+    </p>
+    <p>
+        Este control es un botón que puede estar en tres estados diferentes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            seleccionado
+        </li>
+        <li>
+            no seleccionado
+        </li>
+        <li>
+            indeterminado.
+        </li>
+    </ul>
+    <p>
+        Para crear un control CheckBox a través de su constructor, haríamos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Crear checkbox
+CheckBox checkBox1 = new CheckBox("Estudiante") ;</pre>
+        </div>
+    </div>
+    <p>
+        La cadena pasada al constructor CheckBox se muestra junto al control CheckBox.
+    </p>
+    <p>
+        Para hacer visible un control CheckBox hay añadirlo al grafo de escena de la aplicación. Es
+        decir, añadir hay que añadir el control&nbsp;CheckBox a un objeto escena (Scene) o a algún
+        componente
+        <span lang="en">
+         layout
+        </span>
+        que se añada al objeto Scene.
+    </p>
+    <p>
+        En este ejemplo se muestra cómo añadir un&nbsp;CheckBox al grafo de escena:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Ejemplo de uso de CheckBox
+ * &#64;author JJBH
+ */
+public class CheckBoxEjemplo extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage) &#123;
+        // Crear una etiqueta
+        Label etiqueta = new Label() ;
+        // Establecer el texto de una etiqueta recien creada
+        etiqueta.setText("No está seleccionado.");
+
+        // Título de la ventana.
+        primaryStage.setTitle("Ejemplo CheckBox");
+
+        // Crear checkbox
+        CheckBox checkBox1 = new CheckBox("Estudiante");
+
+        // Añadir EventHandler al checkbox
+        checkBox1.setOnAction(new EventHandler<ActionEvent>() &#123;
+            &#64;Override
+            public void handle(ActionEvent e) &#123;
+                if (checkBox1.isSelected()) &#123;
+                    // Establecer el texto de una etiqueta
+                    etiqueta.setText("Está seleccionado.");
+                &#125; else &#123;
+                    // Establecer el texto de una etiqueta
+                    etiqueta.setText("No está seleccionado.");
+                &#125;
+
+            &#125;
+        &#125;);
+
+        // Crear layout
+        VBox hbox = new VBox(checkBox1);
+
+        // Añadir la etiqueta al layout
+        hbox.getChildren().add(etiqueta) ;
+
+        //Añadir layout a la escena
+        Scene scene = new Scene(hbox, 250, 130);
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    &#125;
+
+    /**
+     * &#64;param args the command line arguments
+     */
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        Podemos averiguar el estado seleccionado de un CheckBox mediante su método isSelected(). Así,
+        lo comprobaríamos con:
+        <br/></p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>boolean isSelected = miCheckBox.isSelected();</pre>
+        </div>
+    </div>
+    <p>
+        Así, podríamos usar ese método para averiguar si se ha seleccionado o no la casilla. En el
+        siguiente ejemplo, puedes ver cómo añadimos un manejador de eventos para detectarlo, e informar
+        en una etiqueta.
+    </p>
+    <p style="text-align: center;">
+        Ejemplo de Checkbox
+        <span class="tamano">
+         (21.30 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    6.6.- RadioButton (Radiobotón)
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        Un botón de opción o de radio es un componente de interfaz gráfica de usuario que suele emplearse
+        para permitir al usuario
+        <strong>
+            elegir una de un conjunto predefinido de opciones
+        </strong>
+        . Los
+        botones de opción se arreglan en grupos de dos o más y se muestran en la pantalla como, por
+        ejemplo, una lista de agujeros circulares que pueden contener un espacio blanco.
+    </p>
+    <p>
+        Un RadioButton puede estar en uno de dos estados:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            Seleccionado.
+        </li>
+        <li class="lista_verificacion">
+            No seleccionado.
+        </li>
+    </ul>
+    <p>
+        La propiedad selected indica su estado actual. Cuando se selecciona o deselecciona envía un
+        evento ActionEvent.
+    </p>
+    <p>
+        En este ejemplo, en el que se añaden cuatro radiobotones, podemos ver su uso. Tal y como está,
+        puedes probar que se pueden seleccionar varios radiobotones a la vez
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Ejemplo en el que se añaden cuatro radiobotones. Tal y como está, pueden
+ * ser seleccionados varios a la vez.
+ *
+ * &#64;author JJBH
+ */
+public class RadioBotonFX extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage)  &#123;
+        // Título de la ventana
+        primaryStage.setTitle("Canales de TV");
+
+        // Crear cuatro radiobotones
+        RadioButton radioButton1 = new RadioButton("La 1");
+        RadioButton radioButton2 = new RadioButton("La 2");
+        RadioButton radioButton3 = new RadioButton("Antena 3");
+        RadioButton radioButton4 = new RadioButton("Cuatro");
+        // Crear un layout HBox y añadirle los radiobotones
+        HBox hbox = new HBox(radioButton1, radioButton2, radioButton3,
+                radioButton4);
+
+        // Establecer espaciado entre los elementos del layout en 10px
+        hbox.setSpacing(10);
+
+        // Crear un ToggleGroup
+        ToggleGroup grupo = new ToggleGroup();
+        // Añadir todos los readiobotnes al ToggleGroup
+        grupo.getToggles().addAll(radioButton1, radioButton2, radioButton3,
+                radioButton4);
+
+        // Seleccionar el primer radiobotón
+        radioButton1.setSelected(true);
+
+        // Crear la escena con el layout recién creado
+        Scene scene = new Scene(hbox, 300, 100);
+        // Añadir la escena al escenario
+        primaryStage.setScene(scene);
+        // Mostrar el escenario
+        primaryStage.show();
+
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Es posible agrupar los radiobotones en un control ToggleGroup. Así, con este nuevo control
+        podremos hacer que sólo un RadioButton pueda ser seleccionado a la vez.
+    </p>
+    <p>
+        Podemos averiguar qué radiobotón de un ToggleGroup está seleccionado utilizando el método
+        getSelectedToggle():
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>RadioButton selectedRadioButton = (RadioButton) toggleGroup.getSelectedToggle();</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.7.- ComboBox
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Uno de los controles que más se suele utilizar en las aplicaciones, lo encontramos a diario en
+        páginas webs cuando contratamos un seguro, o compramos algún producto y seleccionamos por
+        ejemplo la talla, o el color,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        , es el control ComboBox.
+    </p>
+    <p>
+        Este control permite elegir una opción de una lista predefinida de opciones. Para usarlo hay que
+        importar javafx.scene.control.ComboBox.
+    </p>
+    <p>
+        Veamos un ejemplo de uso, en el que mostraremos un control ComboBox que permitirá elegir entre
+        varios elementos, concretamente se visualizará una lista con nombres de lenguajes de
+        programación.
+    </p>
+    <p>
+        En el siguiente código puedes ver el código para conseguir ese ComboBox de la imagen.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    6.7.1.- Seleccionar un valor
+</h1>
+<div class="iDevice_content">
+    <p>
+        Puedes fácilmente, y de igual forma que hemos hecho en casos anteriores, añadir un manejador de
+        evento para capturar el valor seleccionado y, por ejemplo, mostrarlo en una etiqueta.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class JavaFXmiComboBox extends Application &#123;
+
+    private Label miEtiqueta ;
+
+    &#64;Override
+    public void start(Stage primaryStage) throws Exception &#123;
+        // Título del escenario
+        primaryStage.setTitle("Ejemplo ComboBox");
+
+        // Crear combobox
+        ComboBox comboBox = new ComboBox();
+
+        // Añadir elementos al combobox
+        comboBox.getItems().add("Java");
+        comboBox.getItems().add("C#");
+        comboBox.getItems().add("Ada");
+        comboBox.getItems().add("Lisp");
+        comboBox.getItems().add("Visual Basic");
+
+        miEtiqueta = new Label("Seleccionado: ") ;
+
+        // Añadir EventHandler al checkbox
+        comboBox.setOnAction(new EventHandler<ActionEvent>() &#123;
+            &#64;Override
+            public void handle(ActionEvent e) &#123;
+
+                String valor = (String) comboBox.getValue();
+
+                if (valor != null) &#123;
+                    // Establecer el texto de una etiqueta
+                    miEtiqueta.setText("Seleccionado: " + valor);
+                &#125; else &#123;
+                    // Establecer el texto de una etiqueta
+                    miEtiqueta.setText("No se selecciona nada.");
+                &#125;
+
+            &#125;
+        &#125;);
+
+
+        // Declarar el layout y añadirle el comboBox y la etiqueta
+        VBox sp = new VBox(comboBox, miEtiqueta);
+
+        // Crear la escena y pasarle el layout
+        Scene scene = new Scene(sp, 300, 120);
+        // A�adir escena al escenario
+        primaryStage.setScene(scene);
+        // Mostrar el escenario
+        primaryStage.show();
+
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        A continuación, puedes descargar el ejemplo mostrado anteriormente. Como verás, hemos añadido un
+        manejador de evento para que se ocupe de obtener el valor y mostrarlo en una etiqueta añadida
+        para dicho menester. Observa también que hemos cambiado el panel, ahora en vez de un StackPane
+        hemos empleado un VBox:
+    </p>
+    <p style="text-align: center;">
+        Ejemplo del control ComboBox
+        <span class="exe-link-data file-size">
+         (zip - 24.65
+         <abbr lang="en" title="KiloBytes">
+          KB
+         </abbr>
+         )
+        </span>
+        <span class="tamano">
+         <br>
+        <br/></span>
+    </p>
+    <p>
+        Un ComboBox no es editable por defecto, es decir, el usuario no puede introducir valores en él,
+        sólo puede escoger. Es posible hacer editable un ComboBox mediante el método setEditable():
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>comboBox.setEditable(true);</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.8.- ListView (Lista)
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        El control ListView de JavaFX permite al usuario seleccionar uno o más elementos (en este último
+        caso, si se habilita para ello) de una lista.
+    </p>
+    <p>
+        Puedes establecer un alto y un ancho para un ListView (con el método setPrefSize), pero
+        <strong>
+            no
+            puedes
+        </strong>
+        establecer explícitamente cuántos elementos deben estar visibles. La altura se
+        determina en función de la altura de cada elemento que se muestra. Si hay más elementos en el
+        ListView de los que caben en su área visible, el ListView agregará barras de desplazamiento para
+        que el usuario pueda desplazarse hacia arriba y hacia abajo sobre los elementos.
+    </p>
+    <p>
+        Dado un objeto lista de la clase ListView, mediante lista.getSelectionModel().selectFirst()
+        mostraríamos la lista con el primer elemento de la misma seleccionado.
+    </p>
+    <p>
+        Puedes modificar la anchura y altura de este control mediante los métodos: setPrefHeight y
+        <code>
+            setPrefWidth
+        </code>
+        .
+        O ambas medidas a la vez con setPrefSize comentado más arriba.
+    </p>
+    <p>
+        El código que muestra la ventana de la imagen que vemos es el siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package lista;
+
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+/**
+ * Ejemplo de uso del control Lista (ListView)
+ * &#64;author JJBH
+ */
+public class Lista extends Application  &#123;
+
+
+    &#64;Override
+    public void start(Stage primaryStage) throws Exception &#123;
+        primaryStage.setTitle("Lista de postres.");
+
+        // Crear la lista
+        ListView listView = new ListView();
+
+        // Añadir los elementos
+        listView.getItems().add("Bizcocho");
+        listView.getItems().add("Tortada");
+        listView.getItems().add("Helado");
+
+        // Añadir la lista al layout
+        VBox vbox = new VBox(listView);
+
+        // Añadir layout a la escena
+        Scene scene = new Scene(vbox, 300, 120);
+
+        // Añadir la escena al escenario
+        primaryStage.setScene(scene);
+
+        // Mostrar el escenario
+        primaryStage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.8.1.- Obtener valor seleccionado
+</h1>
+<div class="iDevice_content">
+    <p>
+        Para recoger el valor de un elemento seleccionado en un ListView usaremos su propiedad
+        SelectionModel. De este modo, haríamos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>ObservableList selectedIndices = listView.getSelectionModel().getSelectedIndices() ;</pre>
+        </div>
+    </div>
+    <p>
+        El objeto OberservableList contiene objetos Integer que representan los índices de los elementos
+        seleccionados en el control ListView.
+    </p>
+    <p>
+        En el siguiente código, añadimos al ejemplo anterior un botón que al pulsarlo, escriba por
+        consola el índice del elemento seleccionado y también el elemento en sí:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package lista;
+
+import javafx.application.Application;
+import javafx.collections.ObservableList;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+
+/**
+ * Ejemplo de uso del control Lista (ListView)
+ * &#64;author JJBH
+ */
+public class Lista extends Application  &#123;
+
+
+    &#64;Override
+    public void start(Stage primaryStage) throws Exception &#123;
+        primaryStage.setTitle("Lista de postres.");
+
+        // Crear la lista
+        ListView listView = new ListView();
+
+        // Añadir los elementos
+        listView.getItems().add("Bizcocho");
+        listView.getItems().add("Tortada");
+        listView.getItems().add("Helado");
+
+        // Añadimos un botón para obtener el valor seleccionado.
+        Button boton = new Button("Obtener valor seleccionado");
+
+        // Cuando se haga click en el botón, obtendremos los datos que queremos
+        boton.setOnAction(event -> &#123;
+            // Obtener el modelo, los datos guardados en la lista, y
+            // concretamente los índices de los elementos con getSelectedIndices()
+            ObservableList selectedIndices =
+                    listView.getSelectionModel().getSelectedIndices();
+
+            // Recorrer los elementos seleccionados y escribir el índice y
+            // su clase
+            for(Object o : selectedIndices)&#123;
+                System.out.println("o = " + o + " (" + o.getClass() + ")");
+
+            &#125;
+
+            // También, así podemos obtener el elemento en sí
+            System.out.println(listView.getSelectionModel().getSelectedItem());
+
+        &#125;);
+
+
+        // Añadir la lista al layout
+        VBox vbox = new VBox(listView, boton);
+
+        // Añadir layout a la escena
+        Scene scene = new Scene(vbox, 300, 120);
+
+        // Añadir la escena al escenario
+        primaryStage.setScene(scene);
+
+        // Mostrar el escenario
+        primaryStage.show();
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+&#125;
+
+
+</pre>
+        </div>
+    </div>
+    <p>
+        Podríamos
+        <strong>
+            obtener el índice
+        </strong>
+        del elemento seleccionado mediante:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>int selectedIndex = listView.getSelectionModel().getSelectedIndex();</pre>
+        </div>
+    </div>
+    <p style="text-align: left;">
+        Y para
+        <strong>
+            eliminar el elemento seleccionado
+        </strong>
+        sería:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>listView.getItems().remove(selectedIndex);</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.8.2.- Seleccionar varios elementos.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        A veces, puede que necesites permitir que en una lista se puedan seleccionar varios elementos, y
+        no uno sólo. Para conseguirlo, tienes que establecer el modo adecuado de selección en el
+        ListView. Concretamente tendremos que establecerlo así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>listView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);</pre>
+        </div>
+    </div>
+    <p>
+        Y entonces, el usuario de la aplicación podrá seleccionar varios elementos de la lista pulsando
+        las teclas SHIFT (para seleccionar un intervalo) o CTRL (para seleccionar elementos no contiguos
+        en la lista).
+    </p>
+    <p>
+        Puedes descargar el proyecto con el ejemplo visto anteriormente, y en el que se le ha añadido esa
+        posibilidad de elegir más de un elemento de la lista.
+    </p>
+</div><h1 class="title">
+    7.- JavaFX FXML
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Uno de los módulos que está estudiando
+        <strong>
+            Ana
+        </strong>
+        en el ciclo es el de lenguaje
+        de marcas, y ahora está comprobando que le va a ser de mucha utilidad, ya que esos
+        conceptos que está aprendiendo en ese módulo, le van a venir de perlas para entender
+        mejor JavaFX, en concreto cómo se organizan y se trabaja con los proyectos FXML.
+    </p>
+    <p>
+        Hasta ahora, con JavaFX ha visto cómo crear proyectos usando código, como en cualquier
+        otra aplicación Java, pero ahora está descubriendo que existe otra forma de desarrollar
+        proyectos JavaFX, y es usando un lenguaje llamado FXML.
+    </p>
+</div><h1 class="title">
+    7.1.- JavaFX Scene Builder
+</h1>
+<div class="iDevice_content">
+    <p>
+        La aplicación
+        <span lang="en">
+         Scene Builder
+        </span>
+        nos permite
+        <strong>
+            diseñar mediante una
+            interfaz gráfica
+        </strong>
+        las ventanas de las aplicaciones que queramos desarrollar usando
+        JavaFX, arrastrando los componentes que nos interesen, pudiendo modificar las propiedades de
+        dichos componentes, de la manera que nos interesa para nuestro programa.
+    </p>
+    <p>
+        En la
+        página de descargas de Gluon Scene Builder
+        podemos descargar el programa.
+    </p>
+</div><h1 class="title">
+    7.2.- Estructura de un proyecto FXML
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
+
+        <figcaption class="figcaption">
+         <span class="author">
+          José Javier Bermúdez Hernández.
+         </span>
+            <span class="license">
+          <span class="sep">
+           Captura de pantalla de la aplicación NetBeans, propiedad de Apache, con licencia GNU GPL2.
+          </span>
+         </span>
+        </figcaption>
+    </figure>
+    <p>
+        FXML es un lenguaje basado en XML,
+        <strong>
+            diseñado para construir interfaces de usuario para
+            aplicaciones JavaFX
+        </strong>
+        .
+    </p>
+    <p>
+        Un proyecto FXML sigue el patrón de diseño
+        <abbr title="Modelo Vista Controlador">
+            MVC
+
+
+            MVC
+
+            Es un patrón de arquitectura de software, que separa los datos y la lógica de negocio de una aplicación de
+            su presentación y del módulo encargado de gestionar los eventos y las comunicaciones
+        </abbr>
+        (
+        <strong>
+            Modelo, Vista y Controlador
+        </strong>
+        ), donde FXMLDocument.fxml es la vista y
+        FXMLDocumentController.java el controlador.
+    </p>
+    <p>
+        FXML permite separar la
+        lógica de
+        negocio
+
+
+        Lógica de negocio
+
+        Es la parte de un sistema que contiene las reglas de negocio del mundo real que determinan cómo se gestiona la
+        información del sistema, cómo se crea, muestra, cambia,...
+        de la interfaz de usuario. Si cambia la interfaz de usuario, no es necesario recompilar el
+        código JavaFX. En vez de eso, puedes cambiar el código del documento FXML mediante una editor de
+        texto y ejecutar de nuevo la aplicación.
+    </p>
+    <p>
+        Veremos la estructura de un proyecto JavaFX.
+    </p>
+    <p>
+        Actualmente, si nos vamos al menú
+        <strong>
+         <span lang="en">
+          File
+         </span>
+        </strong>
+        de Apache NetBeans
+        12, pulsamos en
+        <strong>
+         <span lang="en">
+          New Project
+         </span>
+        </strong>
+        , elegimos
+        <strong>
+        </strong>
+        <span lang="en">
+         <strong>
+          JavaFX FXML Application
+         </strong>
+        </span>
+        y pulsamos en
+        el botón siguiente tenemos el problema de que no está soportada esta característica.
+    </p>
+</div><h1 class="title">
+    7.2.1.- El fichero .fxml
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        El fichero .fxml es el fichero fuente en el cual se encuentra definida la interfaz de
+        usuario.
+    </p>
+    <p>
+        Como ya sabemos por el ejercicio resuelto visto antes, si haces doble clic sobre el archivo&nbsp;FXMLDocument.fxml,
+        o bien lo seleccionas con la opción
+        <strong>
+            Abrir
+        </strong>
+        del menú contextual que aparece al
+        darle al botón derecho del ratón, verás que se abre automáticamente la aplicación Scene Builder
+        con ese documento abierto.
+    </p>
+    <p>
+        Desde aquí, puedes crear
+        <abbr title="Graphical user interface">
+            GUI
+        </abbr>
+        s de
+        manera rápida y eficiente sin tener que escribir una sola línea de código, puedes arrastrar
+        controles y posicionarlos en la ubicación deseada, editando las propiedades de cada componente
+        de manera visual.
+    </p>
+    <p>
+        También puede optar por ver el código fuente de dicho archivo desde
+        <span lang="en">
+         NetBeans
+        </span>
+        . Como puedes observar, se trata de un archivo
+        <abbr title="eXtensible Markup Language">
+            XML
+        </abbr>
+        que
+        <strong>
+            especifica la
+            interfaz de usuario
+        </strong>
+        .
+    </p>
+    <p>
+        Vamos a modificar ligeramente el fichero para añadir un nuevo botón. Observa que el atributo&nbsp;fx:id
+        es el
+        <strong>
+            identificador único de un componente
+        </strong>
+        , que puede usarse para referenciar
+        al componente desde otras partes, por ejemplo desde el fichero controlador.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre><?xml version="1.0" encoding="UTF-8"?>
+
+             <?import java.lang.*?>
+             <?import java.util.*?>
+             <?import javafx.scene.*?>
+             <?import javafx.scene.control.*?>
+             <?import javafx.scene.layout.*?>
+
+             <AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml/1"
+                         xmlns="http://javafx.com/javafx/8" fx:controller="javafxejemplo.FXMLDocumentController">
+    <children>
+        <Button fx:id="button" layoutX="121.0" layoutY="75.0" onAction="#handleButtonAction" text="Click Me!"/>
+        <Label fx:id="label" layoutX="119.0" layoutY="178.0" minHeight="16" minWidth="69" text="Prueba"/>
+        <Button fx:id="button2" layoutX="121.0" layoutY="115.0" onAction="#handleButtonAction2" text="Otro botón"/>
+    </children>
+</AnchorPane></pre>
+        </div>
+    </div>
+    <p>
+        Por tanto, hemos editado directamente el fichero .fxml y añadido una línea con otro botón, le
+        hemos dado un identificador, en este caso button2 y nada más añadir la línea, podemos ver en la
+        imagen cómo NetBeans nos ha dado un error porque avisa sobre que no encuentra el
+        handleButtonAction2 que acabamos de poner, en el fichero del controlador. Por consiguiente, el
+        siguiente paso es añadir ese método en el fichero del controlador.
+    </p>
+</div><h1 class="title">
+    7.2.2.- Controlador
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Cada archivo FXML tiene asociada una clase Java a la que se le denomina
+        <strong>
+            controladora
+        </strong>
+        . En esta clase se declaran las instrucciones Java que se desean
+        ejecutar cuando se inicializa el interfaz gráfico contenido en al archivo FXML, así como la
+        funcionalidad que necesitemos, por ejemplo, declarar el método que debe ejecutarse cuando el
+        usuario haga clic en un botón, el código necesario para cambiar un campo de texto, rellenar una
+        lista,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+    </p>
+    <p>
+        FXMLDocumentController hace por tanto las funciones de controlador, gestionando las acciones que
+        realice el usuario sobre los elementos de la ventana y se encarga, entre otras cosas, de
+        gestionar la entrada del ratón y el teclado.
+    </p>
+    <p>
+        Siguiendo con el ejemplo anterior, si abrimos con NetBeans el fichero del controlador,
+        añadiremos, como se ve en la imagen, el código que faltaba para indicar qué se debe hacer cuando
+        se haga clic en el segundo botón que hemos añadido a la aplicación.
+    </p>
+    <p>
+        Así, dentro del trozo de
+        <strong>
+            código correspondiente al botón
+        </strong>
+        (Button) en el archivo
+        del fichero .fxml que hemos visto antes, puedes observar que se hace referencia al
+        <strong>
+            método
+            que se ejecutará
+        </strong>
+        cuando el usuario de la aplicación haga clic en él. En concreto se
+        indica que se ejecute el método&nbsp;handleButtonAction que se encuentra dentro del controlador
+        FXMLDocumentController, y para el segundo botón añadir, el método&nbsp;handleButtonAction2.
+    </p>
+    <p>
+        Observa que para que un
+        <strong>
+            método&nbsp;pueda ser invocado desde el archivo FXML
+        </strong>
+        ,
+        debe indicarse antes de la&nbsp;declaración de dicho método la
+        <strong>
+            anotación &#64;FXML
+        </strong>
+        ,
+        como puedes ver en la imagen. Esa anotación indica que el elemento que aparece a continuación de
+        él está asociado a algún elemento del archivo FXML. Por ejemplo, como se ve en la imagen, el
+        método&nbsp;handleButtonAction2 aparecía asociado al botón en el fichero .fxml, en la línea:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre><Button fx:id="button2" layoutX="121.0" layoutY="115.0" onAction="#handleButtonAction2"
+                         text="Otro botón"/></pre>
+        </div>
+    </div>
+    <p>
+        Y de forma similar, fíjate que antes de la declaración del elemento label también se ha usado esa
+        anotación. Eso es necesario también en este caso, ya que desde el código Java se está haciendo
+        referencia al elemento con ese mismo nombre (label) para cambiar el texto que contiene.
+    </p>
+</div><h1 class="title">
+    7.2.3.- Clase principal
+</h1>
+<div class="iDevice_content">
+    <p>
+        La clase java
+        <strong>
+            JavaFXEjemplo
+        </strong>
+        es la clase principal en este proyecto, la que:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            define el
+            <strong>
+                escenario
+            </strong>
+            y la
+            <strong>
+                escena
+            </strong>
+            ,
+            y
+        </li>
+        <li class="lista_verificacion">
+            es la que inicia la ejecución de la aplicación. Dentro de su
+            código fuente puedes observar que se encarga de
+            <strong>
+                cargar la estructura de la
+                ventana
+            </strong>
+            contenida en el archivo&nbsp;FXMLDocument.fxml y
+            <strong>
+                devolver el
+                grafo
+            </strong>
+            resultante.
+        </li>
+    </ul>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>package javafxejemplo;
+
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+/**
+ * Clase principal del ejemplo
+ *
+ * &#64;author Profesor
+ */
+public class JavaFXEjemplo extends Application &#123;
+
+    &#64;Override
+    public void start(Stage stage) throws Exception &#123;
+
+        // El contenido del archivo FXML se carga en un contenedor genérico de
+        // tipo panel JavaFX, que se almacena en la variable root. Dicho
+        // contenedor será el contenedor principal de los elementos gráficos
+        // de la aplicación, y en la línea siguiente se le asigna a la escena
+        // (Scene) de la ventana de la aplicación.
+        Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
+        Scene scene = new Scene(root);
+
+        stage.setScene(scene);
+        stage.show();
+    &#125;
+
+    /**
+     * &#64;param args the command line arguments
+     */
+    public static void main(String[] args) &#123;
+        launch(args);
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    7.2.4.- Ejemplo JavaFX con Scene Builder y NetBeans
+</h1>
+<div class="iDevice_content">
+    <p>
+        En este apartado te ofrecemos algunos ejemplos paso a paso para que aprendas a utilizar Scene
+        Builder. Ten en cuenta que está realizado con una versión anterior, por tanto, la creación del
+        proyecto inicial en nuestro caso sería descargar la plantilla, descomprimirla y abrir el
+        proyecto, y ya el resto se haría como se ve en el vídeo de más abajo.
+    </p>
+</div><h1 class="title">
+    8.- Paso de información entre ventanas
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        De todo lo que
+        <strong>
+            Ana
+        </strong>
+        está aprendiendo en clase, lo que más le está
+        costando sobre la tecnología JavaFX, es el paso de información entre ventanas.
+    </p>
+    <p>
+        El otro día, el profesor mencionó algo sobre el asunto, pero muy superficialmente, unas
+        breves pinceladas y
+        <strong>
+            Ana
+        </strong>
+        no acaba de verlo claro...
+    </p>
+    <p>
+        Ha preguntado a su compañero de clase,
+        <strong>
+            Ricardo
+        </strong>
+        , pero él tampoco lo tiene
+        nada claro.
+    </p>
+    <p>
+        Así que esta tarde en clase, se armará de valor y aunque le da un poco de vergüenza,
+        preguntará al profe para que le explique cómo se hace eso de pasar información entre
+        ventanas, en una aplicación.
+    </p>
+</div><h1 class="title">
+    8.1.- Paso de información entre ventanas usando FXML
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY" style="width: 200px;">
+    </figure>
+    <p>
+        En condiciones normales lo que haríamos sería crear un proyecto JavaFX eligiendo JavaFX FMXL
+        Application que generaría un proyecto con tres archivos. Pero como se comentó anteriormente, con
+        la versión con la que trabajamos actualmente, el asistente de NetBeans falla al intentar generar
+        la plantilla inicial de un proyecto Java FXML, por lo que tendríamos de nuevo que trabajar a
+        partir de la plantilla que proporcionamos en el apartado de estructura del proyecto en FXML.
+    </p>
+    <p>
+        Podemos entonces renombrar los ficheros de la plantilla, de manera que tengamos los ficheros
+        siguientes para tener&nbsp; lo que toca al modelo, la vista y el controlador, nombrado así:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ComunicaVentanas.java: donde se ejecuta el programa.
+        </li>
+        <li>
+            Principal.fxml: constituye la vista de nuestro programa.
+        </li>
+        <li>
+            PrincipalController.java: es el controlador de la vista.
+        </li>
+    </ul>
+    <p>
+        La idea en esta aplicación va a ser tener esta ventana principal con un botón para crear una
+        nueva persona y otro botón para listar las personas. Al darle al botón de dar de alta una
+        persona, se abrirá una nueva ventana donde se pedirá el nombre de la persona y cuando se vaya a
+        cerrar esa ventana de alta, al pulsar el botón aceptar, en la ventana principal recogeremos el
+        objeto persona creado en la ventana de alta y lo añadiremos a una lista de personas que
+        gestionaremos desde el programa principal.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public void start(Stage stage) &#123;
+   Parent root = FXMLLoader.load(getClass().getResource("Principal.fxml"));
+
+   Scene scene = new Scene(root);
+
+   stage.setScene(scene);
+   stage.show();
+ &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Este código que genera el asistente carga la vista por defecto. Se crea en un elemento parent
+        pero nosotros vamos a utilizar un panel de tipo AnchorPane para acomodar los controles que
+        usemos en nuestra interfaz de usuario. Modificaremos entonces el código para tener acceso al
+        controlador de la vista. Y entonces así podremos enviar parámetros a los métodos que definiremos
+        en el controlador. Mediante el método setProgramaPrincipal() creamos la comunicación entre el
+        controlador y el programa principal.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class ComunicaVentanas extends Application &#123;
+
+    private Stage stagePrincipal;
+
+    // Nombre de la ventana de la vista
+    private final String VENTANA_PRINCIPAL = "Principal.fxml" ;
+    private final String VENTANA_ALTA = "AltaPersona.fxml" ;
+
+
+    &#64;Override
+    public void start(Stage stagePrincipal) throws Exception &#123;
+        this.stagePrincipal = stagePrincipal;
+        mostrarVentanaPrincipal();
+
+    &#125;
+
+
+    /**
+     * Cargar la ventana principal. Tenemos acceso al controlador de la vista.
+     * Así podemos enviar parámetros a los métodos que definiremos en el
+     * controlador. En este caso será el método setProgramaPrincipal(),
+     * con este método creamos la comunicación entre el controlador y el
+     * programa principal.
+     */
+    private void mostrarVentanaPrincipal() &#123;
+        AnchorPane panelRaiz ;
+        try &#123;
+            // Recoger el grafo resultante.
+            FXMLLoader loader = new FXMLLoader(ComunicaVentanas.class.getResource(VENTANA_PRINCIPAL));
+            // Carga la jerarquía de objetos desde un documento FXML.
+            panelRaiz = (AnchorPane) loader.load() ;
+
+            // Añadir el panel a la escena
+            Scene scene = new Scene(panelRaiz) ;
+            // Establecer el título del escenario
+            stagePrincipal.setTitle("Ventana Principal") ;
+            // Añadir la escena al escenario
+            stagePrincipal.setScene(scene) ;
+
+            // Obtener el controlador asociado
+            PrincipalController controller = loader.getController();
+            controller.setProgramaPrincipal(this);
+            // Mostrar ventana
+            stagePrincipal.show();
+        &#125; catch (Exception e) &#123;
+            System.err.println(e.getMessage());
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Ahora podemos echar un vistazo al código que debe ir en nuestro controlador, de momento:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class PrincipalController implements Initializable &#123;
+
+    // La referencia al programa principal se tiene en esta variable de tipo
+    // Principal. La declaramos privado para que solo se pueda acceder desde
+    // este controlador.
+    private ComunicaVentanas ProgramaPrincipal;
+
+    // Un elemento clave a destacar en JavaFX es la notación &#64;FXML, que sirve
+    // para indicar al código que el elemento tiene referencia en el
+    // archivo FXML de la vista (Principal.fxml).
+    &#64;FXML
+    private void nuevaVentana(ActionEvent event) &#123;
+        // Aquí pondremos la llamada para cargar la ventana de alta
+    &#125;
+
+
+    public void setProgramaPrincipal(ComunicaVentanas ProgramaPrincipal) &#123;
+        this.ProgramaPrincipal = ProgramaPrincipal;
+    &#125;
+
+
+    &#64;Override
+    public void initialize(URL url, ResourceBundle rb) &#123;
+        // TODO
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        La referencia a nuestro programa principal se tiene en la variable de tipo ComunicaVentanas a la
+        que llamamos ProgramaPrincial y está declarada de forma privada para que sólo se pueda acceder
+        desde el controlador. De esta forma, podemos trabajar con diferentes ventanas y enviar
+        parámetros, datos o valores entre las ventanas.
+        <br>
+        <br>
+        Es importante fijarse en la anotación
+        &#64;FXML, que sirve para indicarle al código que el elemento tiene referencia en el archivo FXML de
+        la vista.
+        <br/><br/></p>
+    <p>
+        En principio, en la vista principal tendremos lo que podemos ver en código (aunque gráficamente
+        se ve puede ver con
+        <span lang="en">
+         Scene Builder
+        </span>
+        ), en el fichero Principal.fxml:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre><?xml version="1.0" encoding="UTF-8"?>
+
+             <?import java.lang.*?>
+             <?import java.util.*?>
+             <?import javafx.scene.*?>
+             <?import javafx.scene.control.*?>
+             <?import javafx.scene.layout.*?>
+
+             <AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320"
+                         xmlns:fx="http://javafx.com/fxml/1"
+                         xmlns="http://javafx.com/javafx/8" fx:controller="comunicaventanas.PrincipalController">
+    <children>
+        <Label fx:id="label" layoutX="126" layoutY="60" minHeight="16" minWidth="69"
+               text="Principal de personas"/>
+        <Button fx:id="button" layoutX="126" layoutY="90" onAction="#nuevaVentana"
+                text="Crear persona"/>
+    </children>
+</AnchorPane></pre>
+        </div>
+    </div>
+    <p>
+        Como vemos en este código el elemento Button tiene en su atributo onAction la referencia hacia
+        nuestro método nuevaVentana en el controlador. Para invocar la nueva ventana, la ventana que
+        será de alta de personas, ahora debemos modificar nuestro programa principal Principal.java y
+        agregamos el siguiente código:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>    /**
+     * Muestra la ventana secundaria, la ventana para dar de alta.
+     */
+    protected void mostrarVentanaAltaPersona() &#123;
+        try &#123;
+            // Recoger el grafo resultante.
+            FXMLLoader loader = new FXMLLoader(ComunicaVentanas.class.getResource(VENTANA_ALTA));
+            // Crear un panel contenedor
+            AnchorPane panel = (AnchorPane) loader.load();
+            // Crear nueva ventana
+            Stage ventana = new Stage() ;
+            // Título de la ventana
+            ventana.setTitle("Alta de una persona");
+            // Especifica el propietario de esta ventana.
+            ventana.initOwner(stagePrincipal);
+
+            // Añadir panel a la escena
+            Scene scene = new Scene(panel);
+            ventana.setScene(scene);
+            // Obtener el controlador asociado
+            AltaPersonaController controller = loader.getController();
+            controller.setStagePrincipal(ventana);
+            // Hacemos la ventana modal
+            ventana.initModality(Modality.WINDOW_MODAL);
+            // Mostrar la ventana
+            ventana.show();
+
+        &#125; catch (Exception e) &#123;
+            System.err.println(e.getMessage());
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Y en el controlador, rellenamos el contenido del método nuevaVentana invocando el método que
+        acabamos de ver:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;FXML
+private void nuevaVentana(ActionEvent event) &#123;
+     ProgramaPrincipal.mostrarVentanaAltaPersona() ;
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    8.2.- Paso de información entre ventanas usando FXML (II)
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Seguimos analizando el caso que nos ocupa.
+    </p>
+    <p>
+        Ahora añadiremos una ventana para poder introducir los datos de las personas, en este caso va a
+        ser simplemente y por sencillez, el nombre de la persona.
+    </p>
+    <p>
+        Como se ve en la imagen, en el inspector que aparece en la parte de la derecha de
+        <span lang="en">
+         Scene Builder
+        </span>
+        , en el apartado
+        <strong>
+         <span lang="en">
+          Code
+         </span>
+        </strong>
+        ,
+        en el caso del campo de texto, ponemos el identificador campoNombre en el apartado fx:id. Con
+        ese identificador podremos hacer referencia a ese control en el controlador.
+    </p>
+    <p>
+        Si vemos código de la vista en su formato de texto, el contenido de este fichero AltaPersona.fxml
+        podemos ver la definición de un panel AnchorPane, que tiene como hijos una etiqueta, un botón y
+        un campo de texto. Observa los&nbsp;fx:id que hay en esos controles:
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    9.- Gráficos
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        En
+        <strong>
+            BK Programación
+        </strong>
+        , en un día más de trabajo,
+        <strong>
+            Ada
+        </strong>
+        está
+        interesándose por la marcha de algunos proyectos que está desarrollando la empresa, y
+        les está preguntado a
+        <strong>
+            Juan
+        </strong>
+        y a
+        <strong>
+            María:
+        </strong>
+    </p>
+    <p>
+        —¿Cómo vais con el desarrollo de la aplicación para el gimnasio Kanku, habéis realizado
+        el módulo con los diagramas gráficos que pedían? ¿Y la de la farmacia de Esteban? Estoy
+        mirando las próximas fechas de entrega y vamos un poco raspados de tiempo. —pregunta
+        <strong>
+            Ada
+        </strong>
+        .
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        le contesta:
+    </p>
+    <p>
+        —Todo controlado,
+        <strong>
+            Ada
+        </strong>
+        , nos quedan unos flecos para ir terminando...
+    </p>
+</div><h1 class="title">
+    9.1.- Ejemplo: diagrama de quesos
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        Podemos realizar por ejemplo un diagramas de "quesitos" empleando el componente PieChart.
+    </p>
+    <p>
+        Este componente dibuja este tipo de diagramas con los datos que le suministremos, es muy fácil de
+        usar como vamos a ver. Este componente lo podemos encontrar en la clase:&nbsp;
+        javafx.scene.chart.PieChart.
+    </p>
+    <p>
+        En el ejemplo, podemos ver que creamos el diagrama y posteriormente instanciamos las cuatro
+        porciones que nos interesan en este caso. El primer parámetro de cada porción del diagrama es la
+        leyenda que va a mostrar y el segundo es la cantidad que ocuparía en el diagrama.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class JavaFXDiagramaQuesos extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage) throws Exception &#123;
+        // Título de la ventana
+        primaryStage.setTitle("Estadísticas uso de s.o. móviles.");
+
+        // Crear el diagrama
+        PieChart pieChart = new PieChart();
+
+        // Instanciar las porciones con los datos que nos interesan
+        PieChart.Data queso1 = new PieChart.Data("Android", 47);
+        PieChart.Data queso2 = new PieChart.Data("iPhone"  , 27);
+        PieChart.Data queso3 = new PieChart.Data("Windows Phone" , 13);
+        PieChart.Data queso4 = new PieChart.Data("Blackberry" , 13);
+
+        // Añadir las porciones al diagrama
+        pieChart.getData().add(queso1);
+        pieChart.getData().add(queso2);
+        pieChart.getData().add(queso3);
+        pieChart.getData().add(queso4);
+
+        // Crear un layout y añadir el diagrama
+        VBox vbox = new VBox(pieChart);
+
+        // Crear la escena
+        Scene scene = new Scene(vbox, 400, 190);
+
+        // Añadir la escena al escenario
+        primaryStage.setScene(scene);
+        // Mostrar el escenario
+        primaryStage.show();
+    &#125;
+
+ </pre>
+        </div>
+    </div>
+    <p>
+        Puedes descargar el proyecto completo a continuación:
+    </p>
+    <p style="text-align: center;">
+        Diagrama de quesos, PieChart
+        <span class="tamano">
+         (164 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    10.- Imagen, audio y vídeo
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            María
+        </strong>
+        está teniendo un primer acercamiento a la programación de
+        elementos multimedia como audio y vídeo con JavaFX. Como se siente un poco insegura con
+        el tema, le está consultado a
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+    <p>
+          <span class="st">
+           —¿Cómo hago para reproducir un vídeo en una aplicación JavaFX, puedes echarme una mano?
+          </span>
+        <span class="st">
+           —
+          </span>
+        pregunta
+        <strong>
+            María
+        </strong>
+        .
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Pues claro, si es muy fácil... ¡Vamos allá!
+        <span class="st">
+           —responde
+          </span>
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    10.1.- Imagen
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En un apartado anterior vimos de pasada cómo añadir una imagen, en concreto cuando vimos el
+        control Button. Veamos un poco más sobre imágenes con JavaFX.
+    </p>
+    <p>
+        Java admite imágenes en varios formatos, incluidos .jpg,
+        <code>
+            .png
+        </code>
+        , .gif y
+        <code>
+            .bmp
+        </code>
+        . Así, para añadir una imagen en nuestra aplicación necesitaremos usar las
+        clases:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Image: representa una imagen en la memoria.
+        </li>
+        <li>
+            ImageView: es un Node que se emplea para mostrar una imagen por pantalla.
+        </li>
+    </ul>
+    <p>
+        Se puede cargar una imagen desde nuestro disco duro o incluso a través de una dirección web,
+        especificando una ruta de archivo en el constructor de Imagen. La cadena de ruta de archivo debe
+        estar precedida por el archivo de cadena de protocolo.
+    </p>
+    <p>
+        Por ejemplo, en el código siguiente se ve cómo el constructor crea un objeto de imagen desde un
+        archivo llamado mifoto.png en la carpeta C:\fotos.
+        <br>
+        También puede especificar una ubicación
+        web utilizando el protocolo http como en este ejemplo:
+        <br/></p>
+    <p style="text-align: center;">
+        <span "="" http:="" pic001.jpg");="" title="Image img = new Image(" www.domain.com="">
+        Imagen imagen = nueva Imagen ("http://www.dominio.com/foto0001.png");
+        <br>
+        <br/></span>
+    </p>
+    <p>
+        En algunos casos puede que nos interese cargar una imagen desde un objeto de la clase File
+        <span title="Image img = new Image(f.toURI().toString());
+">
+         . En esos casos, usaremos el método toURI para obtener la ruta correcta.
+        </span>
+    </p>
+    <p>
+        <span id="result_box" lang="es">
+         <span title="Image img = new Image(f.toURI().toString());
+">
+          Dado que toURI devuelve un objeto de tipo URI, tenemos que convertirlo a String llamando al método getString:
+          <br>
+         <br/></span>
+        </span>
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>File f = new File("C:\\fotos\\moto.jpg");
+Image img = new Image(f.toURI().toString());</pre>
+        </div>
+    </div>
+    <p>
+        El código del ejemplo que se muestra en la imagen sería el siguiente:
+        <span title="Image img = new Image(f.toURI().toString());
+">
+         <br>
+        <br/></span>
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Carga un imagen y la muestra en una ventana.
+ *
+ * &#64;author Profesor
+ */
+public class JavaFXcargaImagen extends Application &#123;
+
+    &#64;Override
+    public void start(Stage primaryStage) throws Exception &#123;
+
+        try &#123;
+            // Título de la ventana
+            primaryStage.setTitle("Cargar imagen");
+            // Ruta con la imagen a cargar
+            //FileInputStream input = new FileInputStream("C:\\fotos\\mifoto.png");
+            FileInputStream input = new FileInputStream("moto.jpg");
+            Image image = new Image(input);
+            ImageView imageView = new ImageView(image);
+
+            // Crear panel
+            HBox hbox = new HBox(imageView);
+            // Centrar el pael hbox en la ventana
+            hbox.setAlignment(Pos.CENTER);
+
+            // Crear escena
+            Scene scene = new Scene(hbox, 300, 200);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+
+        &#125; catch (FileNotFoundException e)&#123;
+            System.err.print("Imagen no encontrada");
+            exit(-1);
+        &#125;
+
+    &#125;
+
+    public static void main(String[] args) &#123;
+        Application.launch(args);
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    10.2.- Audio
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
+    </figure>
+    <p>
+        <br>
+        JavaFX proporciona soporte integrado para reproducir archivos de audio en los formatos más
+        extendidos como .mp3,
+        <code>
+            .wav
+        </code>
+        y .aiff.
+        <br/></p>
+    <p>
+        Para su gestión ofrece dos clases Media y
+        <code>
+            MediaPlayer
+        </code>
+        , diseñadas para
+        <span>
+         ser empleadas de forma análoga a las clases Image e
+         <code>
+          ImageViewer
+         </code>
+         que acabamos de ver en el apartado anterior.
+        </span>
+    </p>
+    <p>
+        Para crear un objeto de esta clase Media, habría que&nbsp; llamar al constructor de la clase
+        enviándole el
+        <abbr title="Uniform Resource Identifier">
+            URI
+        </abbr>
+        (
+        <span lang="en">
+         Uniform Resource Identifier
+        </span>
+        ) al fichero.
+    </p>
+</div><h1 class="title">
+    10.3.- Vídeo
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 200px;">
+    </figure>
+    <p>
+        <br>
+        La reproducción de vídeo es muy parecida a la de audio, con una diferencia fundamental: para
+        reproducir un vídeo se debe añadir un control MediaView al grafo de escena.
+        <br/></p>
+    <p>
+        A diferencia de la clase MediaPlayer, la clase MediaView es una subclase de Node, de modo que es
+        posible gestionarla del mismo modo que a cualquier otro nodo, es decir: se puede controlar su
+        tamaño, posición, mover, o aplicar efectos especiales.
+    </p>
+    <p>
+        Para reproducir un fichero de vídeo, se crearía un objeto de la clase Media que carga el fichero
+        de vídeo. Después, crearíamos un objeto de la clase MediaPlayer que reproduzca ese vídeo, y
+        finalmente empleamos un objeto de la clase MediaView para visualizar el fichero de vídeo.
+    </p>
+</div><h1 class="title">
+    Anexo I.- Lambda
+</h1>
+<div class="iDevice_content">
+    <p>
+        Se puede definir expresión lambda como una función que espera y acepta parámetros de entrada y
+        produce resultados de salida.
+        <br>
+        <br>
+        El uso de expresiones lambdas apareció como una de las
+        principales características de Java 8.
+        <br>
+        <br>
+        Una expresión lambda es una instancia de una
+        interfaz funcional (hasta Java 8, estas se llamaban interfaces de método abstracto único,
+        interfaces
+        <abbr title="Single Abstract Method">
+            SAM
+        </abbr>
+        , como por ejemplo:
+        Runnable
+        ,
+        Comparator
+        o
+        Callable
+        )
+        y permite pasar funciones como estamos acostumbrados a hacer con parámetros y datos en general.
+        <br/><br/><br/><br/></p>
+    <p>
+        Antes, usábamos clases internas anónimas para crear instancias de objetos de interfaces
+        funcionales, y desde Java 8 con expresiones lambda se puede simplificar eso. Es posible anotar
+        estas interfaces funcionales usando la nueva anotación &#64;FunctionalInterface.
+    </p>
+    <p>
+        <span id="result_box" lang="es">
+         <span>
+          Básicamente, se componen de una sección de argumentos que puede estar vacía, o contener uno o más parámetros de entrada, una flecha (-&gt;) y un cuerpo que puede ser casi cualquier clase de código Java.
+         </span>
+        </span>
+    </p>
+    <p>
+        <span lang="es">
+         <span>
+          Algunos ejemplos:
+          <br>
+         <br/></span>
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+         <span lang="es">
+          <span>
+           (x, y) -&gt; x + y;  en este ejemplo hay dos parámetros de entrada y una salida que es la suma de ambos parámetros.
+          </span>
+         </span>
+        </li>
+        <li>
+         <span lang="es">
+          <span>
+           Un parámetro de entrada, ningún parámetro de salida y una acción para ser ejecutada
+           <span lang="es">
+            <span>
+             . E
+            </span>
+           </span>
+           n este caso la acción es escribir por consola la cadena pasada como entrada: str -&gt; &#123; System.out.println(str); &#125;;
+          </span>
+         </span>
+        </li>
+        <li>
+         <span lang="es">
+          <span>
+           Escribir los elementos de una lista. En este caso usamos como parámetro de entrada
+           <span lang="es">
+            <span>
+             cada elemento de la lista y la acción a ejecutar es escribirlos en la consola
+            </span>
+           </span>
+           : Arrays.asList( "1", "2", "3" ).forEach( e -&gt; System.out.println( e ) );
+           <br>
+          <br/></span>
+         </span>
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo II.- Atributos tipo Property
+</h1>
+<div class="iDevice_content">
+    <p>
+        Aunque en los ejemplos que hemos ido viendo en la unidad no las hemos empleado, JavaFX soporta el
+        concepto de
+        <strong>
+            propiedades
+        </strong>
+        .
+    </p>
+    <p>
+        En pocas palabras, una propiedad es una variable cuyo valor puede ser
+        <strong>
+            observado
+        </strong>
+        .
+        Puedes registrar un
+        <span lang="en">
+         listener
+        </span>
+        con cualquier propiedad, permitiendo así
+        escribir código que sea ejecutado automáticamente cada vez que la propiedad cambie.
+    </p>
+</div><h1 class="title">
+    Anexo III.- Ejemplo de aplicación
+</h1>
+<div class="iDevice_content">
+    <p>
+        A continuación puedes ver un ejemplo de tarea realizada en JavaFX sin usar FXML y la
+        misma pero usando FXML. El enunciado de la tarea (debes descomprimir el fichero y hacer
+        doble click en el fichero&nbsp;index.html que encontrarás al descomprimir):
+    </p>
+    <p style="text-align: center;">
+        Enunciado de la tarea
+        <span class="tamano">
+           (381.00 KB)
+          </span>
+    </p>
+    <p>
+        Solución de la tarea sin utilizar FXML:
+    </p>
+    <p style="text-align: center;">
+        Solución sin usar FXML
+        <span class="tamano">
+           (148 KB)
+          </span>
+    </p>
+    <p>
+        Solución de la tarea empleando FXML:
+    </p>
+    <p style="text-align: center;">
+        Solución con FXML
+        <span class="tamano">
+           (33.70 KB)
+          </span>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1>
+<div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p align="center" style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por
+                el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la
+                Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

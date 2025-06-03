@@ -1,0 +1,2540 @@
+<h1 class="title">
+    Uso de estructuras de control.
+</h1>
+<div class="iDevice_content">
+    <p>
+        Los miembros de BK Programación están inmersos en el mundo de
+        <span lang="en">
+           Java
+          </span>
+        , ya conocen una buena parte del lenguaje y ahora van a
+        empezar a controlar el comportamiento de sus programas.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        pregunta a
+        <strong>
+            Juan:
+        </strong>
+    </p>
+    <p>
+        -Dime Juan, ¿las estructuras de control en
+        <span lang="en">
+           Java
+          </span>
+        son similares
+        a las de cualquier otro lenguaje?
+    </p>
+    <p>
+        -Efectivamente,
+        <strong>
+            María
+        </strong>
+        , como la gran mayoría de los lenguajes de
+        programación,
+        <span lang="en">
+           Java
+          </span>
+        incorpora estructuras que nos permiten
+        tomar decisiones, repetir código,
+        <abbr title="etcétera.">
+            etc
+        </abbr>
+        . Cada
+        estructura tiene sus ventajas, inconvenientes y situaciones para las que es
+        adecuada. Hay que saber dónde utilizar cada una de ellas -aclara
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+    <div style="width: 100%;">
+        <div style="width: 33%; float: left;">
+            <div class="elemento_centrado">
+                <div class="elemento_izquierda">
+                    <div class="elemento_centrado">
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div style="width: 34%; float: left;">
+            <div class="elemento_centrado">
+            </div>
+        </div>
+        <div style="width: 33%; float: right;">
+            <div class="elemento_centrado">
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">
+    </div>
+</div><h1 class="title">
+    1.- Introducción.
+</h1>
+<div class="iDevice_content">
+    <p>
+        En la unidad anterior has podido aprender cuestiones básicas sobre el lenguaje
+        <span lang="en">
+         Java
+        </span>
+        : definición de variables, tipos de datos, asignación de valores,
+        uso de literales, diferentes operadores que se pueden aplicar, conversiones de tipos,
+        inserción de comentarios,
+        <abbr title="etcétera.">
+            etc
+        </abbr>
+        . Posteriormente, hemos dado los
+        primeros pasos en la solución de algoritmos sencillos, que sólo requieren ejecutar unas
+        instrucciones detrás de otras, sin posibilidad de decidir, según la situación, ejecutar unas
+        u otras sentencias, ni nada parecido. Todo era una ejecución secuencial, una sentencia
+        detrás de otra, sin vuelta atrás, ni saltos de ningún tipo en el orden de ejecución en que
+        estaban escritas.
+    </p>
+    <p>
+        ¿Pero es eso suficiente?
+    </p>
+</div><h1 class="title">
+    2.- Estructura secuencial: sentencias y bloques.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        valora muy positivamente en un programador el orden y la
+        pulcritud.
+    </p>
+    <p>
+        Organizar correctamente el código fuente es de vital importancia cuando se trabaja en
+        entornos colaborativos en los que son varios los desarrolladores que forman los
+        equipos de programación. Por ello, incide en la necesidad de recordar a
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        las nociones básicas a la hora de escribir
+        programas.
+    </p>
+</div><h1 class="title">
+    2.1.- Ámbito o alcance de una variable.
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 189px;">
+    </div>
+    <p>
+        Hasta el momento habrás podido observar que las variables siempre se definen dentro de un
+        bloque (entre llaves &#123; ... &#125; ). Por ahora no hemos tenido mucho problema porque la
+        estructura de todos nuestros programas hasta el momento tenía un único bloque dentro de un
+        mecanismo llamado main:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class ProgramaEjemplo &#123;
+
+    public static void main(String[] args) &#123;
+        ...
+
+        // Aquí dentro, entre las llaves, estamos escribiendo el código de nuestros programas...
+
+        ...
+    &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Más adelante, cuando aprendamos a implementar
+        <strong>
+            métodos
+        </strong>
+        dentro de una clase,
+        volveremos a ver este tema con más profundidad al estudiar las variables locales, pero dado
+        que a partir de ahora vamos a empezar a utilizar más de un bloque dentro de nuestros
+        programas, es importante que introduzcamos el concepto de
+        <strong>
+            ámbito, contexto o alcance
+            de una variable
+        </strong>
+        (también conocido como
+        <em>
+         <span lang="en">
+          scope
+         </span>
+        </em>
+        ).
+        El ámbito de una variable es la zona de código en la que esa variable "existe", es decir,
+        donde puede ser utilizada tanto para obtener su valor como para cambiarlo (suponiendo que no
+        haya sido definida como constante final).
+    </p>
+    <p>
+        <strong>
+            Ese ámbito está definido por el bloque encerrado entre llaves donde ha sido declarada
+            la variable
+        </strong>
+        . En el momento en que esa llave se cierre, la variable será
+        eliminada y cualquier sentencia que intente hacer referencia a ella será considerada como un
+        error, pues esa variable ya no existe, de manera que no podréis compilar ni ejecutar ese
+        programa.
+    </p>
+    <p>
+        Dado que en cuanto comencemos a trabajar con las estructuras de control no secuenciales (las
+        condicionales y las repetitivas) vamos a tener un montón de bloques, algunos de ellos unos
+        dentro de otros y en otros casos en bloques independientes, vamos a ver un ejemplo de
+        bloques donde se vayan creando y destruyendo variables para que observéis cómo funciona.
+        Tened en cuenta que cualquier variable declarada dentro de un bloque (inicio de la llave
+        "&#123;") dejará de existir en cuanto se cierre el bloque (fin de la llave "&#125;") donde fue
+        declarada.
+    </p>
+    <div class="highlighted-code language-java line-numbers">
+        <div>
+         <pre>public class ProgramaEjemploBloques &#123;
+
+    public static void main(String[] args) &#123;
+        // Bloque principal (0)
+        int num1;
+        num1 = 10;
+
+        System.out.println("En bloque principal (0)");
+        System.out.println("num1= " + num1);
+        System.out.println();
+        &#123;
+            // Bloque 0.1
+            System.out.println("En bloque 0.1");
+            int num2;
+            num1++;
+            num2 = 20;
+            System.out.println("num1= " + num1);
+            System.out.println("num2= " + num2);
+            System.out.println();
+        &#125;
+        System.out.println("En bloque principal (0)");
+        System.out.println("num1= " + num1);
+        //System.out.println("num2= " + num2); // Error
+        System.out.println();
+        &#123;
+            // Bloque 0.2
+            System.out.println("En bloque 0.2");
+            int num2;
+            num1++;
+            num2 = 20;
+            System.out.println("num1= " + num1);
+            System.out.println("num2= " + num2);
+            System.out.println();
+            &#123;
+                // Bloque 0.2.1
+                System.out.println("En bloque 0.2.1");
+                int num3 = 30;
+                num1++;
+                num2++;
+                System.out.println("num1= " + num1);
+                System.out.println("num2= " + num2);
+                System.out.println("num3= " + num3);
+                System.out.println();
+            &#125;
+            System.out.println("En bloque 0.2");
+            System.out.println("num1= " + num1);
+            System.out.println("num2= " + num2);
+            //System.out.println("num3= " + num3);// Error
+            System.out.println();
+        &#125;
+        System.out.println("En bloque principal (0)");
+        System.out.println("num1= " + num1);
+        //System.out.println("num2= " + num2);// Error
+        //System.out.println("num3= " + num3);// Error
+        System.out.println();
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.- Estructuras de selección o condicionales.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        está desarrollando un método en el que ha de comparar los
+        valores de las entradas de un usuario y una contraseña introducidas desde el
+        teclado, con los valores almacenados en una base de datos. Para poder hacer dicha
+        comparación necesitará utilizar una estructura condicional que le permita llevar a
+        cabo esta operación, incluso necesitará que dicha estructura condicional sea capaz
+        de decidir qué hacer en función de si ambos valores son correctos o no.
+    </p>
+</div><h1 class="title">
+    3.1.- Estructura condicional simple: if.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La estructura de control if es una
+        <strong>
+            estructura de selección
+        </strong>
+        o
+        <strong>
+            estructura selectiva
+        </strong>
+        o
+        <strong>
+            estructura condicional
+        </strong>
+        . Os la
+        podéis encontrar con todos estos nombres. Permite condicionar la ejecución entre dos
+        sentencias (o dos bloques de sentencias) dependiendo de la evaluación de una expresión
+        lógica (condición). Al comprobar una condición podamos tomar dos caminos alternativos
+        (bloques de sentencias) dependiendo de si esa condición se evaluó como verdadera (true) o
+        como falsa (false). La representación en diagrama de flujo sería la de la imagen de la
+        derecha, que es bastante explicativa:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si la expresión que se evalúa es verdadera
+            </strong>
+            ,
+            <strong>
+                se ejecuta la
+                secuencia de instrucciones 1
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Si es falsa, se ejecuta la secuencia de instrucciones 2
+            </strong>
+            . Esta rama, a
+            veces, puede no contener ninguna sentencia a ejecutar. Este caso es el que conocemos
+            como
+            <strong>
+                estructura condicional simple
+            </strong>
+            . Es el que vamos a estudiar en este
+            apartado.
+        </li>
+    </ul>
+    <p>
+        En ambos casos, una vez finalizada la ejecución del bloque de sentencias 1 o 2, el flujo
+        continúa con la siguiente sentencia que haya tras esta estructura condicional.
+    </p>
+    <p>
+        En lenguaje natural (o
+        pseudocódigo
+        ), eso se expresaría como:
+    </p>
+    <table class="tabla">
+        <caption>
+            Estructura if en lenguaje natural
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Estructura condicional simple.(
+                <strong>
+            <span style="font-size: medium;">
+             Si-entonces
+            </span>
+                </strong>
+                )
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="highlighted-code language-markup">
+                    <div>
+             <pre>Si expresion Entonces
+   secuencia_1
+Fin Si</pre>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    <strong>
+                        Funcionamiento:
+                    </strong>
+                </p>
+                <p>
+                    La secuencia de instrucciones secuencia_1 se ejecuta si y solo si en el caso
+                    de que la expresion se evalúe como verdadera.
+                </p>
+                <p>
+                </p>
+                <p>
+                    No se hace nada en caso contrario, simplemente "se omite" la ejecución de
+                    secuencia_1.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        Fíjate que la palabra Entonces
+        <strong>
+            <em>
+            </em>
+        </strong>
+        se indica para delimitar con
+        claridad dónde termina la expresión que se va a evaluar y dónde empieza la secuencia de
+        instrucciones del primer bloque.
+    </p>
+    <p>
+        La estructura if puede presentarse en
+        <span lang="en">
+         Java
+        </span>
+        de las siguientes formas:
+    </p>
+    <table class="tabla">
+        <caption>
+            Estructura if
+            <code>
+            </code>
+            en
+            <span lang="en">
+          Java
+         </span>
+        </caption>
+        <thead>
+        <tr>
+            <th colspan="2" scope="col">
+                Estructura
+                <strong>
+            <span style="font-size: medium;">
+             if
+            </span>
+                </strong>
+                simple.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="col">
+                <strong>
+                    Sintaxis para el caso de ejecución condicional de una sola
+                    rama con una sola sentencia
+                </strong>
+            </th>
+            <th scope="col">
+                <strong>
+                    <strong>
+                        Sintaxis para el caso de ejecución condicional de
+                        una sola rama con un bloque de sentencias
+                    </strong>
+                </strong>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="highlighted-code language-markup">
+                    <div>
+             <pre>if (expresion_logica)
+    sentencia_1;</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="highlighted-code language-markup">
+                    <div>
+             <pre>if (expresion_logica) &#123;
+    sentencia_1;
+    sentencia_2;
+    . . .
+    sentencia_N;
+&#125;
+</pre>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>
+                    <strong>
+                        Funcionamiento:
+                    </strong>
+                </p>
+                <p>
+                    Si la evaluación de la expresion_logica ofrece un resultado verdadero, se
+                    ejecuta la sentencia_1 o bien el bloque de sentencias asociado. Si el
+                    resultado de dicha evaluación es falso, no se ejecutará ninguna instrucción
+                    asociada a la estructura condicional.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="tb9649008-82f7-47b9-bd9e-6968056548ed">
+        <p>
+            El pseudocódigo consiste en la descripción de algoritmos mediante el uso del lenguaje
+            natural. De este modo el código que se escribe es independiente de cualquier lenguaje de
+            programación formal y debería poder entenderlo cualquier persona nativa del idioma
+            (español, inglés, francés, etc.) en que se haya escrito el algoritmo.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.2.- Estructura condicional compuesta: if-else.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Una vez que hemos visto en detalle la estructura condicional simple, vamos a estudiar ahora
+        la estructura condicional compuesta, también conocida como if-ese. En este caso si tendremos
+        que implementar los dos posibles caminos alternativos (bloques de sentencias), dependiendo
+        de que la condición se evalúe como verdadera (true) o como falsa (false), tal y como se
+        indica en la representación en diagrama de flujo de la imagen de la derecha:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si la expresión que se evalúa es verdadera
+            </strong>
+            ,
+            <strong>
+                se ejecuta la
+                secuencia de instrucciones 1
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Si es falsa, se ejecuta la secuencia de instrucciones 2
+            </strong>
+            . En este caso,
+            esta rama sí existe. Si no la hubiera, estaríamos en el caso anterior de una estructura
+            condicional "simple".
+        </li>
+    </ul>
+    <p>
+        En lenguaje natural (o
+        pseudocódigo
+        ), esto se expresaría como:
+    </p>
+    <table class="tabla">
+        <caption>
+            Estructura if-else en lenguaje natural
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Estructura condicional de doble alternativa. (
+                <strong>
+            <span style="font-size: medium;">
+             Si-entonces-Si no
+            </span>
+                </strong>
+                ).
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="highlighted-code language-markup">
+                    <div>
+             <pre>Si expresion Entonces
+   secuencia_1
+Sino
+   secuencia_2
+Fin Si</pre>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>
+                    <strong>
+                        Funcionamiento:
+                    </strong>
+                </p>
+                <p>
+                    Si
+                    <strong>
+             <span style="font-size: medium;">
+              expresion
+             </span>
+                    </strong>
+                    es
+                    evaluada como verdadera, se ejecuta
+                    <strong>
+             <span style="font-size: medium;">
+              secuencia_1
+             </span>
+                    </strong>
+                    y en caso
+                    contrario, no se ejecuta
+                    <strong>
+             <span style="font-size: medium;">
+              secuencia_1
+             </span>
+                    </strong>
+                    y se ejecuta
+                    <span style="font-size: medium;">
+             <strong>
+              secuencia_2
+             </strong>
+            </span>
+                    .
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        Fíjate que la palabra Entonces
+        <strong>
+            <em>
+            </em>
+        </strong>
+        se pone para delimitar con claridad
+        dónde termina la expresión que se va a evaluar y dónde empieza la secuencia de instrucciones
+        del primer bloque. En la parte&nbsp;Sino
+        <strong>
+            <em>
+            </em>
+        </strong>
+        no es necesario, ya que
+        esa misma palabra delimita el final del primer bloque de instrucciones y el comienzo del
+        segundo. Y se pondría un Fin Si
+        <strong>
+            <em>
+            </em>
+        </strong>
+        <strong>
+        </strong>
+        que delimita
+        dónde acaba la sentencia condicional, bien sea delimitando el final del único bloque de
+        sentencias en el condicional simple o bien delimitando el segundo.
+    </p>
+    <p>
+        Una vez que tenemos clara la estructura, vamos a ver como se particulariza en el lenguaje
+        Java, pues cada lenguaje de programación tendrá sus particularidades específicas.
+    </p>
+    <p>
+        La estructura condicional if puede presentarse en
+        <span lang="en">
+         Java
+        </span>
+        de las
+        siguientes formas:
+    </p>
+    <table class="tabla">
+        <caption>
+            Estructura if-else en
+            <span lang="en">
+          Java
+         </span>
+        </caption>
+        <thead>
+        <tr>
+            <th colspan="2" scope="col">
+                Estructura if de doble alternativa ( o
+                <strong>
+            <span style="font-size: medium;">
+             if-else
+             <code>
+             </code>
+            </span>
+                </strong>
+                ).
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="col">
+                <strong>
+                    <strong>
+                        Sintaxis para el caso de ejecución condicional&nbsp;
+                        de dos ramas y una sola&nbsp; sentencia en cada
+                        rama
+                        <br>
+                        <br/></strong>
+                </strong>
+            </th>
+            <th scope="col">
+                <strong>
+                    <strong>
+                        <strong>
+                            Sintaxis para el caso de ejecución
+                            condicional&nbsp; de dos ramas y un bloque de sentencias en cada
+                            rama
+                        </strong>
+                    </strong>
+                </strong>
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="highlighted-code language-markup">
+                    <div>
+             <pre>if (expresion_logica)
+    sentencia_1;
+else
+    sentencia_2;</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="highlighted-code language-markup">
+                    <div>
+             <pre>if (expresion_logica) &#123;
+     sentencia_1;
+     . . .
+     sentencia_N;
+&#125; else &#123;
+     sentencia_1;
+     . . .
+     sentencia_N;
+&#125;
+</pre>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <p>
+                    <strong>
+                        Funcionamiento:
+                    </strong>
+                </p>
+                <p>
+                    Si la evaluación de la&nbsp;expresion_logica ofrece un resultado verdadero,
+                    se ejecutará la primera sentencia o el primer bloque de sentencias. Si, por
+                    el contrario, la evaluación de la&nbsp;expresion_logica ofrece un resultado
+                    falso, no se ejecutará la primera sentencia o el primer bloque y sí se
+                    ejecutará la segunda sentencia o el segundo bloque.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="tb9649008-82f7-47b9-bd9e-6968056548ec">
+        <p>
+            El pseudocódigo consiste en la descripción de algoritmos mediante el uso del lenguaje
+            natural. De este modo el código que se escribe es independiente de cualquier lenguaje de
+            programación formal y debería poder entenderlo cualquier persona nativa del idioma
+            (español, inglés, francés, etc.) en que se haya escrito el algoritmo.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.3.- Estructuras condicionales anidadas.
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 189px;">
+    </div>
+    <p>
+        Como ya hemos visto en algún ejemplo en el apartado anterior,
+        <strong>
+            las estructuras de
+            control condicionales (y en general cualquier estructura de control) pueden
+            anidarse
+        </strong>
+        de manera que el bloque de sentencias dentro de la parte&nbsp;if o de
+        la parte else puede a su vez contener una nueva estructura if-else.
+    </p>
+    <p>
+        Veamos algunos ejemplos en los que pueda darse esa circunstancia.
+    </p>
+    <p>
+        1. Queremos mostrar por pantalla si un número entero x es
+        <strong>
+            par y además superior a
+            100
+        </strong>
+        . Para ello podríamos primero comprobar si es par y, a continuación, pero
+        dentro del bloque de sentencias del if, comprobar si es superior a 100:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if ( x % 2 == 0) &#123;
+    if ( x > 100 ) &#123;
+        System.out.println ("El número es par y superior a 100.");
+    &#125;
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        El
+        <strong>
+            if más interno
+        </strong>
+        sólo contiene una sentencia dentro en su bloque, así
+        podrían omitirse las llaves si así lo decidimos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if ( x % 2 == 0 ) &#123;
+    if ( x > 100 )
+        System.out.println ("El número es par y superior a 100.");
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El
+        <strong>
+            if más externo
+        </strong>
+        también contiene una única sentencia en su bloque (la
+        segunda sentencia if), de manera que también podríamos omitir sus llaves:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if ( x % 2 == 0 )
+    if ( x > 100 )
+        System.out.println ("El número es par y superior a 100.");</pre>
+        </div>
+    </div>
+    <p>
+        Ahora bien, en este caso la anidación no es necesaria, pues disponemos del operador lógico
+        AND (
+        <code>
+            &amp;&amp;
+        </code>
+        o&nbsp;&amp; en lenguaje Java) que nos permite unir ambas
+        condiciones en una única codición más compleja:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if ( x % 2 == 0 && x > 100 )
+    System.out.println ("El número es par y superior a 100.");</pre>
+        </div>
+    </div>
+    <p>
+        Con esto vemos que no siempre es necesario el anidamiento y que el uso de operadores lógicos
+        puede ayudarnos a simplicar la estructura de los programas.
+    </p>
+    <p>
+        2. Imaginemos que se nos pide ahora
+        <strong>
+            comprobar si el número x es negativo, cero o
+            positivo
+        </strong>
+        indicando para cada caso un mensaje de texto apropiado. Para resolver
+        este problema podríamos hacer una primera comprobación para ver si el número es negativo y,
+        en caso contrario, como nos quedan dos posibles opciones (cero o positivo), hacer una nueva
+        comprobación para ver si es positivo. Si no fuera positivo sabremos que se trata de la única
+        alternativa que nos queda: cero. Estas comprobaciones podríamos implementarlas con
+        un&nbsp;if-else que tendría un else cuyo bloque de sentencias contendría un nuevo if-else:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if (x < 0) &#123;  // El número es negativo
+    System.out.println("El número es negativo.");
+&#125; else &#123;  // El número es cero o positivo
+    if (x > 0 ) &#123;  // El número es positivo
+        System.out.println("El número es positivo.");
+    &#125; else &#123;  // Si se ha llegado hasta aquí el número es obligatoriamente cero
+        System.out.println("El número es cero.");
+&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        Nuevamente aquí podemos evitar todas las llaves, pues cada bloque de sentencias contiene una
+        única sentencia (aunque alguna de ellas contenga a su vez nuevos bloques):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>if (x < 0)
+    System.out.println("El número es negativo.");
+else
+    if (x > 0 )
+        System.out.println("El número es positivo.");
+    else
+        System.out.println("El número es cero.");</pre>
+        </div>
+    </div>
+    <p>
+        Ante esto podemos hacernos la pregunta: ¿nos conviene quitarlas todas o puede venirnos bien
+        dejar algunas para mejorar la legibilidad del código? Esa percepción nos la irá
+        proporcionando la experiencia según vayamos implementando cada vez programas más complejos.
+    </p>
+</div><h1 class="title">
+    3.4.- Estructura selectiva múltiple: switch (I).
+</h1>
+<div class="iDevice_content">
+    <p>
+        ¿Qué podemos hacer cuando nuestro programa debe elegir entre más de dos alternativas?
+    </p>
+    <div class="elemento_centrado">
+
+    </div>
+    <p>
+        Una posible solución podría ser emplear estructuras if anidadas, aunque no siempre esta
+        solución es la más eficiente, porque en caso de que las sucesivas condiciones que se van
+        evaluando sean falsas, puede ser necesario comprobar todas antes de saber con seguridad en
+        qué caso nos encontramos. ¿No sería deseable que con una sola comprobación pudiéramos ir
+        directamente al caso apropiado y ejecutar las instrucciones que lleve asociadas?
+    </p>
+    <p>
+        Desde luego que sí, esto sería más eficiente, y en algunos casos es posible. Cuando estamos
+        ante estas situaciones podemos utilizar la estructura de
+        <strong>
+            selección múltiple,
+        </strong>
+        que en
+        <span lang="en">
+         Java
+        </span>
+        es la sentencia
+        <strong>
+        </strong>
+        <code lang="en">
+            switch
+        </code>
+        .
+    </p>
+</div><h1 class="title">
+    3.4.1.- Estructura selectiva múltiple: switch (II).
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image position-center license-CC-BY" style="width: 180px;">
+    </div>
+    <p>
+        En algunas ocasiones es posible que más de una opción de un switch dé lugar a que se tengan
+        que realizar las mismas acciones. En tales casos lo que hay que hacer es acumular varias
+        cláusulas case sin contenido una tras otra (o una debajo de otra) y un único cuerpo de
+        sentencias para esas opciones. Algo así como:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>switch (expresion) &#123;<br/>
+   case valor1:
+   case valor2:
+      sentencia1_1;  // Este bloque de sentencias se ejecutará si expresion da como resultado tanto valor1 como valor2
+      sentencia1_2;
+      . . .
+      break;
+
+   case valor3:
+   case valor4:
+   case valor5:
+      sentencia2_1;   // Aquí se entraría si resultado fuera valor3, valor4 o valor5
+      sentencia2_2;
+      . . .
+      break;
+
+   . . .
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        O bien si lo prefieres:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>switch (expresion) &#123;
+
+   case valor1: case valor2:
+      sentencia1_1;
+      sentencia1_2;
+      . . .
+      break;
+
+   case valor3:  case valor4:  case valor5:
+      sentencia2_1;
+      sentencia2_2;
+      . . .
+      break;
+
+   . . .
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.- Estructuras repetitivas, iterativas o cíclicas.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        ya tiene claro cómo realizar la comprobación de los valores de
+        usuario y contraseña introducidos por teclado, pero le surge una duda:
+    </p>
+    <p>
+        ¿Cómo podría controlar el número de veces que el usuario ha introducido mal la
+        contraseña?
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        le indica que podría utilizar una estructura de repetición que
+        solicitase al usuario la introducción de la contraseña hasta un máximo de tres
+        veces. Aunque comenta que puede haber múltiples soluciones y todas válidas, lo
+        importante es conocer las herramientas que podemos emplear y saber cuándo
+        aplicarlas.
+    </p>
+</div><h1 class="title">
+    4.1.- Estructura repetitiva while (I).
+</h1>
+<div class="iDevice_content">
+    <p>
+        En la siguiente imagen puedes ver un diagrama de flujo que representa el funcionamiento de
+        este tipo de estructura repetitiva.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        El bucle while es la primera
+        <strong>
+            estructura de repetición controlada por sucesos
+        </strong>
+        que vamos a estudiar. La utilización de este bucle responde al planteamiento de la siguiente
+        pregunta:
+    </p>
+    <p style="text-align: center;">
+        <span class="destacado_inline">
+         ¿Qué podemos hacer si lo único que
+                                sabemos es que se han de repetir un conjunto de instrucciones mientras se cumpla una
+                                determinada condición?
+        </span>
+    </p>
+    <p>
+        La característica fundamental de este tipo de estructura repetitiva estriba en ser
+        <strong>
+            útil en aquellos casos en los que las instrucciones que forman el cuerpo del bucle
+            podría ser necesario ejecutarlas o no
+        </strong>
+        .
+    </p>
+    <p>
+        Es decir, en el bucle while siempre se evaluará la condición que lo controla, y si dicha
+        condición es cierta, el cuerpo del bucle se ejecutará una vez, y se seguirá ejecutando
+        mientras la condición sea cierta. Pero si en la evaluación inicial de la condición ésta no
+        es verdadera, el cuerpo del bucle no se ejecutará.
+    </p>
+    <p>
+        Es imprescindible que en el interior del bucle while se realice alguna acción que modifique
+        la condición que controla la ejecución del mismo, en caso contrario estaríamos ante un bucle
+        infinito, que es algo que se debe evitar siempre.
+    </p>
+</div><h1 class="title">
+    4.1.1.- Estructura repetitiva while (II).
+</h1>
+<div class="iDevice_content">
+    <p>
+
+        Una
+        utilidad muy interesante de las estructuras repetitivas es la posibilidad de volver a pedir
+        un dato de entrada si este no cumple alguna condición.
+    </p>
+    <p>
+        Por ejemplo, imagina que nos piden unos números de inicio y de fin y que el fin no pueda ser
+        mayor que el inicio. Podríamos realizar una primera lectura de los valores:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Entrada de datos
+System.out.println ("Debe introducir el incio y el fin.");
+System.out.println ("Tenga en cuenta que fin no debe ser menor que el inicio: ");
+System.out.print ("Introduzca el inicio: ");
+inicio = teclado.nextInt();
+System.out.print ("Introduzca el fin: ");
+fin = teclado.nextInt();</pre>
+        </div>
+    </div>
+    <p>
+        Y a continuación comprobar mediante la condición de un&nbsp;while si los valores cumplen o no
+        la condición que deben cumplir:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>while (inicio > fin)  // Si inicio es superior a fin hay que volver a solicitar</pre>
+        </div>
+    </div>
+    <p>
+        En caso de que se cumpla la condición de que inicio es mayor que fin (que es lo que no debe
+        suceder), se entraría en el cuerpo del&nbsp;while y se volvería a realizar la petición:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Si inicio es superior a fin hay que volver a solicitar
+&#123;
+    System.out.println ("Error: el fin no puede ser superior al inicio.");
+    System.out.print ("Introduzca el inicio: ");
+    inicio = teclado.nextInt();
+    System.out.print ("Introduzca el fin: ");
+    fin = teclado.nextInt();
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Y como está dentro de un&nbsp;while se volverá a comprobar una y otra vez hasta que
+        introduzcamos los valores correctamente.
+    </p>
+    <p>
+        Uniéndolo todo nos quedaría algo así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Entrada de datos
+System.out.println ("Debe introducir el incio y el fin.");
+System.out.println ("Tenga en cuenta que el fin no debe ser menor que el inicio: ");
+System.out.print ("Introduzca el inicio: ");
+inicio = teclado.nextInt();
+System.out.print ("Introduzca el fin: ");
+fin = teclado.nextInt();
+
+while (inicio > fin) &#123; // Si inicio es superior a fin hay que volver a solicitar
+    System.out.println ("Error: el fin no puede ser superior al inicio.");
+    System.out.print ("Introduzca el inicio: ");
+    inicio = teclado.nextInt();
+    System.out.print ("Introduzca el fin: ");
+    fin = teclado.nextInt();
+&#125;
+System.out.println ("Entrada correcta.");
+</pre>
+        </div>
+    </div>
+    <p>
+        De esta manera podríamos obligar al usuario a introducir unos datos de entrada válidos y
+        mientras no lo haga no se podrá avanzar en el programa y se seguirán pidiendo los valores
+        indefinidamente. Fíjate que
+        <em>
+        </em>
+        <span lang="en">
+         <em>
+          while
+         </em>
+        </span>
+        en inglés
+        significa precisamente "mientras".
+    </p>
+    <p>
+        Aquí tienes una muestra de cómo podría quedar su funcionamiento:
+    </p>
+    <div class="highlighted-code code-style-2 language-markup">
+        <div>
+         <pre>Debe introducir el incio y el fin.
+Tenga en cuenta que el fin no debe ser menor que el inicio:
+Introduzca el inicio: 5
+Introduzca el fin: 2
+Error: el fin no puede ser superior al inicio.
+Introduzca el inicio: 8
+Introduzca el fin: 5
+Error: el fin no puede ser superior al inicio.
+Introduzca el inicio: 2
+Introduzca el fin: 6
+Entrada correcta.</pre>
+        </div>
+    </div>
+    <p>
+        Una pega que podemos encontrar a esta manera de hacer una comprobación de validez de entradas
+        es que tenemos que escribir dos veces la solicitud de los valores.&nbsp; Una primera vez
+        antes del bucle y luego una segunda vez dentro del cuerpo del bucle, lo cual no parece muy
+        práctico. Esto lo podremos resolver con la estructura do-while, que veremos en el siguiente
+        apartado.
+    </p>
+</div><h1 class="title">
+    4.2.- Estructura repetitiva do-while (I).
+</h1>
+<div class="iDevice_content">
+    <p>
+        En la siguiente imagen puedes ver un diagrama de flujo que representa el funcionamiento de
+        este tipo de estructura repetitiva.
+    </p>
+    <div>
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La estructura
+        <strong>
+            do-while
+        </strong>
+        es otro tipo de estructura
+        <strong>
+            repetitiva
+            controlada por sucesos
+        </strong>
+        <strong>
+            .
+        </strong>
+        En este caso, la pregunta que nos
+        planteamos es la siguiente:
+    </p>
+    <p>
+        ¿Qué podemos hacer si sabemos que se han de ejecutar un conjunto de instrucciones
+        <strong>
+            al
+            menos una vez
+        </strong>
+        , y que dependiendo del resultado, puede que deban seguir
+        repitiéndose mientras que se cumpla una determinada condición?
+    </p>
+    <p>
+        La característica fundamental de este tipo de estructura repetitiva estriba en ser útil en
+        aquellos casos en los que las instrucciones que forman el cuerpo del bucle necesitan
+        <span class="destacado_inline">
+         ser ejecutadas
+         <strong>
+          al menos una vez
+         </strong>
+         y repetir su
+                                ejecución mientras que la condición sea verdadera. Por tanto, en esta estructura
+                                repetitiva se ejecuta el cuerpo del bucle
+         <strong>
+          siempre una primera
+                                    vez
+         </strong>
+        </span>
+        .
+    </p>
+    <p>
+        Como en el caso de while, para do-while también es imprescindible que en el interior del
+        bucle se realice alguna acción que modifique la condición que controla la ejecución del
+        mismo, en caso contrario estaríamos ante un bucle infinito.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    4.2.1.- Estructura repetitiva do-while (II)
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+    </div>
+    <div class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+    </div>
+    <p>
+        Si retomamos el ejemplo en el que se comprobaba la validez de los datos de entrada utilizando
+        un bucle while, recordarás la pega que le poníamos de tener obligatoriamente que escribir
+        dos veces las sentencias de lectura. Ese problema desaparece con la estructura
+        do-
+        <code>
+            while
+        </code>
+        , pues el cuerpo del bucle se va a ejecutar al menos una vez, ya que la
+        comprobación no se hará hasta el final. En tal caso la entrada de datos con comprobación de
+        validez nos podría quedar mucho más sencilla y compacta:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>System.out.println ("Debe introducir el incio y el fin.");
+do &#123; // La primera vez siempre se entra en el cuerpo del bucle
+    System.out.println ("Tenga en cuenta el fin que no debe ser menor que el inicio: ");
+    System.out.print ("Introduzca el inicio: ");
+    inicio = teclado.nextInt();
+    System.out.print ("Introduzca el fin: ");
+    fin = teclado.nextInt();
+&#125; while (inicio > fin);  // Si la condición no se cumple, se vuelve a ejecutar el cuerpo del bucle
+System.out.println ("Entrada correcta.");
+</pre>
+        </div>
+    </div>
+    <p>
+        De esta manera evitamos tener que escribir una lectura de valores inicial antes de bucle y
+        luego otra lectura exactamente igual en el cuerpo del bucle, por si hay que volver a
+        introducir los valores una segunda vez (o una tercera, o una cuarta).
+    </p>
+</div><h1 class="title">
+    4.3.- Concepto de contador.
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 189px;">
+    </div>
+    <p>
+        En muchas ocasiones cuando se implementa un bucle, suele disponer de una variable que se va
+        incrementando (o decrementando) a medida que se va realizando iteraciones sobre ese bucle. A
+        este tipo de variables se les suele llamar
+        <strong>
+            contadores
+        </strong>
+        .
+    </p>
+    <p>
+        En algunos de los ejemplos que ya hemos visto en apartados anteriores aparecían ese tipo de
+        variables "contadoras":
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            para ir desde 1 hasta 5, en el primer ejemplo que se planteó.
+            Variable numero;
+        </li>
+        <li class="lista_verificacion">
+            para ir desde inicio hasta fin, en el ejemplo de la secuencia
+            de números. Variable numero;
+        </li>
+        <li class="lista_verificacion">
+            para ir desde 1 hasta 10, en las tablas de multiplicar.
+            Variable contador.
+        </li>
+    </ul>
+    <p>
+        Ahora bien, no siempre tiene por qué haber un contador asociado a un bucle. Por ejemplo en el
+        caso de la comprobación de validez de entradas no se utilizaba ninguna variable para saber
+        cuántas veces se había tenido que repetir la entrada de datos. No se hacía porque no se ha
+        considerado útil o necesario. Si se hubiera considerado así podría haberse hecho sin
+        problema.
+    </p>
+    <p>
+        Veamos un ejemplo más de una variable de tipo contador que pueda resultarnos útil. Imagina un
+        cajero automático de un banco. Se nos permite introducir nuestro código hasta tres veces. Si
+        al tercer intento no introducimos el código correctamente, no se nos permitirá entrar al
+        sistema. Supongamos que nuestro código es 6767. Podríamos implementarlo utilizando un
+        contador (variable numIntentos) que llegara hasta tres y a partir de ahí se saliera del
+        bucle:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Declaración de variables
+Scanner teclado = new Scanner(System.in);
+final int CODIGO= 6767; // Constante que contiene el código correcto
+int codigoIntroducido;  // Código introducio por el usuario
+int numIntentos=0;      // Contador que representa el número de intentos
+
+// Entrada de datos
+do &#123;
+    System.out.print ("Introduzca código (entre 0 y 9999): ");
+    codigoIntroducido= teclado.nextInt();
+    numIntentos++;
+    if (codigoIntroducido != CODIGO)
+        System.out.println ("Código incorrecto.");
+&#125; while (codigoIntroducido != CODIGO && numIntentos<3); // Mientras el código sea incorrecto y no hayamos llegado al límite de intentos
+
+// Comprobación de código correcto
+if (codigoIntroducido == CODIGO)
+    System.out.println ("Código correcto. Acceso concedido.");
+else
+    System.out.println ("Número de intentos superado. Acceso bloqueado");
+</pre>
+        </div>
+    </div>
+    <p>
+        De esta manera, sabemos que el bucle se puede ejecutar entre una vez como mínimo (por ser
+        do-while) y tres veces como máximo (que es el número máximo de intentos permitidos). Eso lo
+        controlamos mediante la condición ( codigoIntroducido != CODIGO &amp;&amp; numIntentos&lt;3
+        ), que mientras sea true hará que se vuelva a ejecutar el cuerpo del bucle. Si una vez
+        salgamos del bucle
+    </p>
+    <p>
+        Puedes ver que dentro de una estructura iterativa (bucle) puede haber estructuras de tipo
+        condicional (if,
+        <code>
+            if-else
+        </code>
+        , switch) sin problema.
+    </p>
+    <p>
+        También podríamos haber implementado este programa utilizando una variable de tipo boolean
+        para evitar realizar varias veces comprobaciones similares:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Declaración de variables
+Scanner teclado = new Scanner(System.in);
+final int CODIGO= 6767; // Constante que contiene el código correcto
+int codigoIntroducido;  // Código introducio por el usuario
+int numIntentos=0;      // Contador que representa el número de intentos
+boolean codigoCorrecto; // Indica si se ha llegado a introducir el código correcto
+
+// Entrada de datos
+codigoCorrecto= false;  // Comenzamos asumiendo que no tenemos un código correcto
+do &#123;
+    System.out.print ("Introduzca código (entre 0 y 9999): ");
+    codigoIntroducido= teclado.nextInt();
+    numIntentos++;
+    if (codigoIntroducido == CODIGO) &#123;
+        codigoCorrecto= true;  // Si el código es correcto, esta variable pasa a true
+        System.out.println ("Código incorrecto.");
+    &#125;
+&#125; while (!codigoCorrecto && numIntentos<3); // Mientras el código sea incorrecto y no hayamos llegado al límite de intentos
+
+// Comprobación de código correcto
+if (codigoCorrecto)
+    System.out.println ("Número de intentos superado. Acceso bloqueado");
+else
+    System.out.println ("Código correcto. Acceso concedido.");
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.4.- Concepto de acumulador.
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 189px;">
+    </div>
+    <p>
+        Del mismo modo que hemos hablado de contadores, que son variables que se van incrementando (o
+        decrementando) según un determinado ritmo o bien cuando se produce alguna circunstancia (se
+        está "contando" algo), también podemos encontrarnos con la necesidad de ir acumulando en una
+        variable los resultados que vayamos obteniendo a lo largo de la ejecución de un bucle. Es
+        decir, que en lugar de ir sustituyendo el valor anterior por un valor nuevo, lo "acumulamos"
+        o "sumamos" en la variable de algún modo. A este tipo de variables se les suele conocer como
+        <strong>
+            acumuladores
+        </strong>
+        .
+    </p>
+    <p>
+        Los acumuladores más habituales son los
+        <strong>
+            aditivos
+        </strong>
+        o
+        <strong>
+            sumativos
+        </strong>
+        . Por ejemplo, imagina que queremos calcular la suma de todos los
+        números que hay entre un número de inicio y un número de fin, ambos incluidos. Por ejemplo,
+        la suma entre los números 1 y 5 sería 1+2+3+4+5 = 15. ¿Cómo podríamos automatizar este
+        proceso mediante un programa en Java? Para lograr algo así necesitaríamos un contador que
+        fuera desde 1 hasta 5 y un acumulador que fuera incorporando a lo que ya tienes cada uno de
+        los nuevos valores que va adquiriendo el contador.
+    </p>
+    <p>
+        Podemos verlo paso a paso:
+    </p>
+    <p>
+        1. Iniciamos el contador (variable contador) y el acumulador (variable suma):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int contador=1; // Contador que irá desde inicio (1) hasta fin (5)
+int suma=0;     // Acumulador que irá sumando de manera consecutiva los distintos valores que vaya tomando del contador
+</pre>
+        </div>
+    </div>
+    <p>
+        2. Recorremos todos los números que haya entre 1 y 5 (inicio y fin) con un bucle while
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>while (contador <= 5) </pre>
+        </div>
+    </div>
+    <p>
+        3. En el cuerpo del bucle vamos realizando la suma acumulada e incrementado el contador:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#123;
+    suma += contador;
+    contador++;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        4. Mostramos por pantalla el resultado final:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>System.out.println ("La suma de los números entre 1 y 5 es " + suma);</pre>
+        </div>
+    </div>
+    <p>
+        Uniéndolo todo tendríamos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>// Declaración de variables
+int contador; // Contador que irá desde inicio (1) hasta fin (5)
+int suma;     // Acumulador que irá sumando de manera consecutiva los distintos valores que vaya tomando del contador
+
+// Iniciamos contadores
+contador=1; // Iniciamos el contador a 1
+suma=0;     // Iniciamos el acumulador a 0, para ir sumando todo lo que se vaya recorriendo
+
+// Realizamos el recorrido
+while (contador <= 5) &#123;  // Mientras contador no supere el valor 5...
+    suma += contador; // En cada iteración: cumulamos en suma el valor de cada contador
+    contador++;       // En cada iteración: incrementamos en 1 el contador
+&#125;
+
+// Mostramos el resultado por pantalla
+System.out.println ("La suma de los números entre 1 y 5 es " + suma);</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        <br>
+        <br/><br/></p>
+</div><h1 class="title">
+    4.5.- Estructura repetitiva for (I).
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p align="justify">
+        Hemos indicado anteriormente que el bucle for es un bucle
+        <strong>
+            controlado
+            por contador
+        </strong>
+        . ¿Recuerdas lo que significaba un contador?
+    </p>
+    <p align="justify">
+        Este tipo de bucle tiene las siguientes características:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Se ejecuta
+            <strong>
+                un número determinado de veces conocido
+            </strong>
+            a priori.
+        </li>
+        <li>
+            Utiliza un
+            <strong>
+                contador
+            </strong>
+            (una variable usada como contador o índice) que
+            controla las iteraciones que se van haciendo&nbsp; del bucle.
+        </li>
+    </ul>
+    <p align="justify">
+        En general, existen
+        <strong>
+            tres operaciones
+        </strong>
+        que se llevan a
+        cabo&nbsp; sobre la variable contador que controla la ejecución en este tipo de bucles:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Se
+            <strong>
+                inicializa
+            </strong>
+            la variable contador.
+        </li>
+        <li>
+            Se
+            <strong>
+                evalúa
+            </strong>
+            el valor de la variable contador, por medio de una
+            comparación de su valor con el número de iteraciones especificado para saber si hay que
+            continuar con otra nueva iteración.
+        </li>
+        <li>
+            Se
+            <strong>
+                actualiza
+            </strong>
+            con incrementos o decrementos el valor del contador, en
+            cada una de las iteraciones.
+        </li>
+    </ul>
+    <p>
+        En realidad esas tres operaciones también las has realizado cuando has usado contadores en
+        bucles de tipo while o
+        <code>
+            do-while
+        </code>
+        . La diferencia en este tipo de bucles es que
+        sistematizamos su utilización.
+    </p>
+</div><h1 class="title">
+    4.5.1.- Estructura repetitiva for (II).
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        En las estructuras de tipo for en Java podemos prescindir de alguno de los tres elementos que
+        la forman e incluso, podemos utilizar más de una variable contadora separando estas por
+        comas. Se trata de algo que no usarás a menudo, pero que es bueno que al menos veas una vez
+        por si te lo encuentras en código ya escrito.
+    </p>
+    <p>
+        Veamos algunos ejemplos:
+    </p>
+    <p>
+        1. Inicialización de más de una variable:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>for (contador1=0, contador2=0 ; contador1 <= 10 ; contador1++)</pre>
+        </div>
+    </div>
+    <p>
+        2. Condiciones&nbsp; complejas donde se usan operadores lógicos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>for (contador1=0 ; contador1 <= 10 && limite<=10; contador1++) </pre>
+        </div>
+    </div>
+    <p>
+        3. Incremento o decremento de más de un contador:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>for (contador1=0, contador2=0; contador1 <= 10 && contador2<=10; contador1++, contador2++)</pre>
+        </div>
+    </div>
+    <p>
+        4. Ausencia de inicialización:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>for ( ; contador1 <= 10 ; contador1++)</pre>
+        </div>
+    </div>
+    <p>
+        5. Ausencia de inicializaciones y de incrementos o decrementos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>for ( ; contador1 <= 10 ; )</pre>
+        </div>
+    </div>
+    <p>
+        Y muchos otros ejemplos que se te puedan ocurrir. Lo que sí debes de tener en cuenta es que
+        si omites alguno de sus componentes esa función deberá realizarse en otra parte del código.
+        Por ejemplo, si omites la inicialización, la variable contador deberás inicializarla tú
+        antes al valor adecuado para que el bucle funcione como tú quieres que lo haga. En otros
+        casos, si omites el incremento/decremento, será tu responsabilidad en el cuerpo del bucle
+        hacer que el contador pueda modificar su valor en algún momento para que el ciclo no sea
+        infinito.
+    </p>
+</div><h1 class="title">
+    5.- Estructuras de salto incondicional.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        recuerda que algunos lenguajes de programación permitían
+        realizar saltos a lo largo de la ejecución de los programas, incluso a zonas remotas
+        del código, saltándose los ámbitos de las estructuras de control de flujo incluso, y
+        conoce algunas sentencias que aún se siguen utilizando para ello. Le pregunta a
+        <strong>
+            Ada
+        </strong>
+        :
+    </p>
+    <p>
+        -¿Es posible prescindir por completo de las estructuras de salto incondicional? ¿Es
+        posible programar cualquier salto incondicional de forma que se prescinda de él, y
+        sólo se hagan los saltos ligados a las estructuras de control condicionales o
+        cíclicas, tras comprobar sus condiciones?
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        , mientras toma un libro sobre
+        <span lang="en">
+           Java
+          </span>
+        de la
+        estantería del despacho, le aconseja:
+    </p>
+    <p>
+        Las instrucciones de salto incondicional a veces han sido mal valoradas por la
+        comunidad de programadores, pero en
+        <span lang="en">
+           Java
+          </span>
+        algunas de ellas son
+        totalmente necesarias. También es verdad que las situaciones en las que resultan o
+        bien útiles o bien necesarias están muy delimitadas, y que usarlas fuera de esos
+        casos concretos es en general evitable, y además resulta muy desaconsejable, ya que
+        produce código menos claro, difícil de entender y de mantener, y por tanto más
+        costoso, así que yo te voy a pedir que tengas muy claro cuándo debes usarlas y
+        cuándo debes evitarlas, porque en esta empresa queremos hacer
+        <span lang="en">
+           software
+          </span>
+        de calidad a buen precio. Mira, en este libro se habla
+        del uso de las sentencias break,
+        <code>
+            continue
+        </code>
+        y return en
+        <span lang="en">
+           Java
+          </span>
+        .
+    </p>
+    <p>
+        -Vale, voy a empaparme del asunto. Gracias por el libro.
+    </p>
+</div><h1 class="title">
+    5.1.- Sentencias break y continue.
+</h1>
+<div class="iDevice_content">
+    <div>
+        <div class="elemento_derecha">
+
+        </div>
+    </div>
+    <p>
+        Se trata de dos instrucciones que permiten modificar el comportamiento de otras estructuras o
+        sentencias de control, simplemente por el hecho de estar incluidas en algún punto de su
+        secuencia de instrucciones.
+    </p>
+    <p>
+        La
+        <strong>
+            sentencia
+        </strong>
+        <strong>
+            break
+        </strong>
+        incidirá sobre las estructuras de
+        control switch,
+        <code>
+            while
+        </code>
+        , for y
+        <code>
+            do-while
+        </code>
+        del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si aparece una sentencia break dentro de la secuencia de instrucciones de cualquiera de
+            las estructuras mencionadas anteriormente, dicha estructura terminará inmediatamente.
+        </li>
+        <li>
+            Si aparece una sentencia b
+            <code>
+                reak
+            </code>
+            dentro de un bucle anidado sólo finalizará
+            ejecución del bucle más interno en el que se encuentra, el resto se ejecuta de forma
+            normal.
+        </li>
+    </ul>
+    <p>
+        Es decir, que break sirve para romper el flujo de control de un bucle, aunque no se haya
+        cumplido la condición del bucle. Si colocamos un break dentro del código de un bucle, cuando
+        se alcance el break, automáticamente se saldrá del bucle pasando a ejecutarse la siguiente
+        instrucción inmediatamente después de él.
+    </p>
+    <p>
+        Aquí tienes un ejemplo de cómo se utilizaría la sentencia break dentro de un bucle for.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Ejemplo de uso de la sentencia de salto break
+ */
+public class SentenciaBreak &#123;
+     public static void main(String[] args) &#123;
+        // Declaración de variables
+            int contador;
+            1
+        //Procesamiento y salida de información
+       /* Este bucle sólo se ejecutará en 6 ocasiones, ya que cuando
+        * la variable contador sea igual a 7 encontraremos un break que
+        * romperá el flujo del bucle, transfiriéndonos el control a la
+        * sentencia que imprime el  mensaje  de Fin del programa.
+        */
+        for (contador=1;contador<=10;contador++)&#123;
+            if (contador==7)
+                 break;
+            System.out.println ("Valor: " + contador); // Es una forma muy inapropiada de salir del bucle!!
+        &#125;
+        System.out.println ("Fin del programa");
+     &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p class="destacado">
+        <strong>
+            ¡Recuerda!
+        </strong>
+        <br>
+        Debemos saber cómo funciona break, pero su
+        uso, salvo en el caso del switch, donde es obligado usarlo para evitar una "ejecución en
+        cascada", se desaconseja, y siempre es evitable.
+        <br>
+        <span class="resaltado_inline">
+         La
+                                salida de cualquier ciclo usando
+        </span>
+        break
+        <span class="resaltado_inline">
+         es&nbsp; en
+                                general
+         <strong>
+          una mala práctica
+         </strong>
+         de programación, que esconde una mala
+                                planificación de la lógica asociada al ciclo
+        </span>
+        . La
+        <strong>
+            salida natural y
+            <span class="resaltado_inline">
+          única
+         </span>
+            de cada ciclo
+        </strong>
+        debe ser comprobando la
+        condición de control del mismo, único punto donde debemos comprobar si ha llegado o no el
+        momento de terminarlo. Cualquier comprobación de cualquier condición de salida dentro del
+        cuerpo del bucle para forzar la salida del bucle desde el interior del mismo usando break,
+        debería haberse incorporado a la condición de control del mismo, y supone ir abriendo
+        puertas traseras de salida que hacen que el código se haga cada vez más complicado de
+        entender y mantener. ¡¡Evita usar break siempre que sea posible!! Y salvo el caso de switch,
+        siempre es posible.
+        <br/><br/></p>
+    <p>
+        La
+        <strong>
+            sentencia
+        </strong>
+        <strong>
+            continue
+        </strong>
+        incidirá sobre las sentencias o
+        estructuras de control while,
+        <code>
+            for
+        </code>
+        y do-while del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si aparece una sentencia continue dentro de la secuencia de instrucciones de cualquiera
+            de las sentencias anteriormente indicadas, dicha sentencia dará por terminada la
+            iteración actual y se ejecuta una nueva iteración, evaluando de nuevo la expresión
+            condicional del bucle.
+        </li>
+        <li>
+            Si aparece en el interior de un bucle anidado solo detendrá la ejecución de la iteración
+            del bucle más interno en el que se encuentra, el resto se ejecutaría de forma normal.
+        </li>
+    </ul>
+    <p>
+        Es decir, la sentencia continue
+        <code>
+        </code>
+        forzará a que se ejecute la siguiente iteración
+        del bucle, ignorando y saltándose las instrucciones que pudiera haber después del continue,
+        y hasta el final del código del bucle, para esta iteración.
+    </p>
+    <p>
+        Aquí tienes un ejemplo de cómo se utilizaría la sentencia continue dentro de un bucle for
+        para mostrar por pantalla los números pares que hay entre el 1 y el 10:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Ejemplo de uso de la sentencia de salto continue
+ */
+public class EjemploSentenciaContinue &#123;
+     public static void main(String[] args) &#123;
+        // Declaración de variables
+          int contador;
+        //Procesamiento y salida de información
+		  System.out.println ("Imprimiendo los números pares que hay del 1 al 10... ");
+          for (contador=1;contador<=10;contador++)&#123;
+            if (contador % 2 != 0)
+			   continue;
+            System.out.print(contador + " ");
+          &#125;
+          System.out.println ("\nFin del programa");
+        /* Las iteraciones del bucle que generarán la impresión de cada uno de los números
+         * pares, serán aquellas en las que el resultado de calcular el resto de la división
+         * entre 2 de cada valor de la variable contador, sea igual a 0.
+         */
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p class="destacado">
+        <strong>
+            ¡¡Recuerda!!
+        </strong>
+        <br>
+        Con la sentencia continue, también se
+        desaconseja el uso. Igual que pasaba con el uso de break, es en general
+        <span class="resaltado_inline">
+         <strong>
+          una mala práctica
+         </strong>
+         de programación, que esconde
+                                un mal diseño de la lógica asociada al ciclo
+        </span>
+        . De hecho, la sentencia continue,
+        como en el ejemplo de la imagen anterior, se pondría dentro de un if para que se ejecute
+        dependiendo de una condición. La sentencia&nbsp;continue lo que hace&nbsp; implícitamente de
+        hecho, es meter las demás sentencias que siguen a partir de ella en una "invisible" cláusula
+        else del condicional, ya que sólo serán alcanzables y ejecutables en el caso de que la
+        condición sea falsa y por tanto no se ejecute continue. Si un grupo de sentencias del bucle
+        deben dejar de ejecutarse bajo ciertas circunstancias, lo que hay que hacer es incluirlas en
+        un condicional que compruebe dicha condición, y que se salte esas sentencias cuando sea
+        oportuno.
+        <br/></p>
+    <p>
+        Para clarificar algo más el funcionamiento de ambas sentencias de salto, vuelve a mirar
+        detenidamente el diagrama representativo del comienzo de este epígrafe.
+    </p>
+</div><h1 class="title">
+    5.2.- Etiquetas.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Ya lo indicábamos al comienzo del epígrafe dedicado a las estructuras de salto:
+    </p>
+    <p style="text-align: center;">
+        <strong>
+         <span class="resaltado_inline">
+          Los saltos incondicionales
+                                    y, en especial, saltos a una etiqueta son totalmente
+                                    desaconsejables.
+         </span>
+        </strong>
+    </p>
+    <p>
+        No obstante,
+        <span lang="en">
+         Java
+        </span>
+        permite asociar etiquetas cuando se va a realizar un
+        salto, y por tanto es conveniente saber que existen y cómo se usan por si algún día te
+        encuentras con un fragmento de código donde se utilice esta herramienta.
+    </p>
+    <p>
+        <span class="destacado_inline">
+         Las estructuras de salto break y
+         <code>
+          continue
+         </code>
+         , pueden
+                                tener asociadas etiquetas. Es a lo que se llama un break
+         <strong>
+          etiquetado
+         </strong>
+         o
+                                un continue
+         <strong>
+          etiquetado
+         </strong>
+         . Pero sólo podría estar indicado su uso cuando
+                                se hace necesario salir de bucles anidados hacia diferentes niveles, para indicar a qué
+                                nivel nos traslada una sentencia break o&nbsp; continue. No obstante, desde el momento
+                                que cualquier salida por la puerta trasera de un bucle usando break o
+         <code>
+          continue
+         </code>
+         es
+         <span class="resaltado_inline">
+          indeseable y
+                                    evitable
+         </span>
+         . Si las cosas se han hecho bien, no debería haber tales salidas y,
+                                por tanto,
+         <strong>
+          no debería ser necesario recurrir a etiquetas.
+         </strong>
+        </span>
+    </p>
+    <p>
+        ¿Y cómo se crea un salto a una etiqueta?
+    </p>
+    <p>
+        En primer lugar, crearemos la etiqueta mediante un
+        <strong>
+            identificador seguido de dos
+            puntos (:).
+        </strong>
+        A continuación, se escriben las sentencias
+        <span lang="en">
+         Java
+        </span>
+        asociadas a dicha etiqueta encerradas entre llaves. Por así
+        decirlo, la creación de una etiqueta es como fijar un punto de salto en el programa para
+        poder saltar a él desde otro lugar de dicho programa.
+    </p>
+    <p>
+        ¿Cómo se lleva a cabo el salto?
+    </p>
+    <p>
+        Es sencillo, en el lugar donde vayamos a colocar la sentencia break o
+        <code>
+            continue
+        </code>
+        ,
+        añadiremos detrás el identificador de la etiqueta. Con ello, conseguiremos que el salto se
+        realice a un lugar determinado. La sintaxis será break &lt;etiqueta&gt;.
+    </p>
+    <p>
+        Quizá a quienes hayáis programado en
+        <abbr title="HyperText Markup Language.">
+            HTML
+        </abbr>
+        os suene esta herramienta,
+        ya que tiene cierta similitud con
+        las anclas que pueden crearse en el interior de una página web, a las que nos llevará el
+        hiperenlace o
+        <span lang="en">
+         link
+        </span>
+        que hayamos asociado.
+    </p>
+    <p>
+        También para quienes hayáis creado alguna vez archivos por lotes o archivos
+        <span lang="en">
+         batch
+        </span>
+        bajo
+        <abbr lang="en" title="Microsoft Disk Operating System">
+            MS-DOS
+        </abbr>
+        es probable que también os resulte
+        familiar el uso de etiquetas,
+        pues la sentencia GOTO
+        <code>
+        </code>
+        que se utilizaba en este tipo de archivos, hacía saltar
+        el flujo del programa al lugar donde se ubicaba la etiqueta que se indicara en dicha
+        sentencia.
+    </p>
+    <p>
+        A continuación, te ofrecemos un ejemplo de declaración y uso de etiquetas en un bucle. Como
+        podrás apreciar, las sentencias asociadas a cada etiqueta están encerradas entre llaves para
+        delimitar así su ámbito de acción.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>/**
+ * Ejemplo de uso de etiquetas en bucle
+ */
+public class EjemploUsoEtiquetas &#123;
+     public static void main(String[] args) &#123;
+	    /*Creamos cabecera del bucle*/
+        for (int i=1; i<3; i++)&#123;
+            bloqueUno:&#123;   //Creamos primera etiqueta
+                bloqueDos:&#123;    //Creamos segunda etiqueta
+                    System.out.println("Iteración: "+i);
+                    if (i==1) break bloqueUno;   //Llevamos a cabo el primer salto
+                    if (i==2) break bloqueDos;   //Llevamos a cabo el segundo salto
+                &#125;
+                System.out.println("después del bloque dos");
+            &#125;
+            System.out.println("después del bloque uno");
+        &#125;
+        System.out.println("Fin del bucle  for");
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.- Errores, pruebas y depuración de programas.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        ya conocen las capacidades del depurador
+        que incorpora el entorno
+        <span lang="en">
+           NetBeans
+          </span>
+        y van a enseñar a
+        <strong>
+            María
+        </strong>
+        las ventajas de utilizarlo.
+    </p>
+    <p>
+        -Puedes depurar tus programas haciendo dos cosas: creando
+        <strong>
+           <span lang="en">
+            breakpoints
+           </span>
+        </strong>
+        o haciendo ejecuciones paso a paso-,
+        le comenta
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        , que estaba codificando un nuevo método, se detiene un momento
+        y pregunta:
+    </p>
+    <p>
+        -Entonces, ¿cuando el programa llega al
+        <span lang="en">
+           breakpoint
+          </span>
+        podré saber
+        qué valor tiene una variable determinada?
+    </p>
+    <p>
+        -Efectivamente,
+        <strong>
+            María
+        </strong>
+        , y podrás saber el valor de aquellas que tú
+        decidas. De este modo a través de los puntos de ruptura y de las ejecuciones paso a
+        paso podrás descubrir dónde puede haber errores en tus programas. Conocer bien las
+        herramientas que el depurador nos ofrece es algo que puede ahorrarnos mucho
+        trabajo-, aporta
+        <strong>
+            Ada.
+        </strong>
+    </p>
+</div><h1 class="title">
+    6.1.- Depuración de código.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        La depuración de programas es algo así como ser doctor: existe un síntoma, hemos de encontrar
+        la causa y entonces determinar el problema. Y, como ya se ha dicho, suele requerir una
+        cantidad de tiempo considerable en comparación con el tiempo dedicado a la primera
+        codificación del programa.
+    </p>
+    <p>
+        ¿Y cómo llevamos a cabo la depuración de nuestros programas?
+    </p>
+    <p>
+        Pues a través del
+        <span lang="en">
+         debugger
+        </span>
+        o depurador del sistema de desarrollo que
+        estemos utilizando. Este depurador será una herramienta que nos ayudará a eliminar posibles
+        errores de nuestro programa. En nuestro caso concreto se tratará de un entorno de desarrollo
+        para el lenguaje Java. En tal caso podremos utilizar depuradores simples, como el
+        <strong>
+            <abbr title="The Java Debugger.">
+                jdb
+            </abbr>
+            propio de
+            <span lang="en">
+          Java
+         </span>
+        </strong>
+        basado en línea de órdenes (
+        <em>
+         <span lang="en">
+          command line
+         </span>
+        </em>
+        ). O bien, utilizar el
+        <strong>
+            depurador existente
+            en nuestro
+            <abbr title="Integrated Development Environment.">
+                IDE
+            </abbr>
+        </strong>
+        (en nuestro caso
+        <span lang="en">
+         NetBeans
+        </span>
+        ).
+        Los depuradores suelen mostrar los siguientes elementos simultáneamente en pantalla:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            El programa en funcionamiento (consola).
+        </li>
+        <li class="lista_verificacion">
+            El código fuente del programa.
+        </li>
+        <li class="lista_verificacion">
+            Los nombres y valores actuales de las variables que se
+            seleccionen.
+        </li>
+    </ul>
+    <p>
+        A partir de ahí, podremos realizar un análisis y diagnóstico del funcionamiento de nuestro
+        programa mediante el uso de las herramientas que nos proporcionan los depuradores.
+    </p>
+    <p>
+        ¿Cuáles son estas herramientas? Existen al menos tres herramientas fundamentales que podemos
+        utilizar en nuestro
+        <span lang="en">
+         debugger
+        </span>
+        o depurador. Son las siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span lang="en">
+           Breakpoints
+          </span>
+            </strong>
+            <strong>
+                o puntos de
+                ruptura:
+            </strong>
+            estos puntos pueden ser determinados por el propio programador a
+            lo largo del código fuente de su aplicación. Un b
+            <span lang="en">
+          reakpoint
+         </span>
+            es un
+            lugar en el programa en el que la ejecución se detiene. Estos puntos se insertan en una
+            determinada línea del código, entonces el programa se pone en funcionamiento y cuando el
+            flujo de ejecución llega hasta él, la ejecución queda congelada y un puntero
+            (normalmente una barra en un color diferente, por ejemplo rojo) indica el lugar en el
+            que la ejecución se ha detenido. En ese momento es como si "congeláramos el tiempo" y
+            podríamos observar los valores de las variables tal y como están en ese instante.
+            Cualquier discrepancia entre el valor actual y el valor que deberían tener supone una
+            importante información para el proceso de depuración.
+        </li>
+        <li>
+            <strong>
+                Ejecución paso a paso:
+            </strong>
+            el depurador también nos permite ejecutar un
+            programa paso a paso, es decir, línea por línea. A través de esta herramienta podremos
+            seguir el progreso de ejecución de nuestra aplicación y supervisar su funcionamiento.
+            Cuando la ejecución no es la esperada quizá estemos cerca de localizar un error o
+            <span lang="en">
+          bug
+         </span>
+            . En ocasiones, si utilizamos métodos procedentes de la
+            biblioteca estándar no necesitaremos hacer un recorrido paso a paso por el interior de
+            estos métodos, ya que es seguro que no contendrán errores internos y podremos ahorrar
+            tiempo no entrando en su interior paso a paso. El
+            <span lang="en">
+          debugger
+         </span>
+            ofrece
+            la posibilidad de entrar o no en dicho métodos.
+        </li>
+        <li>
+            <strong>
+                Observación y manipulación de variables y atributos en la ejecución paso a
+                paso
+            </strong>
+            : una de las mayores ventajas que ofrecen la mayoría de los depuradores
+            es la posibilidad de observar (e incluso manipular) el valor de las variables en tiempo
+            real durante la ejecución, así como el resultado de la evaluación de expresiones o
+            subexpresiones que forman parte de una sentencia. Para ello dispondrás de diversos
+            mecanismos para observar esos valores.
+        </li>
+    </ul>
+</div><h1 class="title">
+    6.2.- Depurando código Java con Netbeans.
+</h1>
+<div class="iDevice_content">
+    <p>
+        A continuación tienes un breve resumen descriptivo de las opciones más habituales que se
+        pueden llevar a cabo durante un proceso de depuración básico con Netbeans.
+    </p>
+    <p>
+        Para depurar un archivo o un proyecto, puedes usar el menú de depuración o bien el menú
+        contextual de cada pestaña de código Java. Imagina que tienes abierto el archivo
+        "Ejercicio1.java", el menú general de depuración podría aparecer así (puede haber
+        variaciones dependiendo de la versión de
+        <span lang="en">
+         Netbeans
+        </span>
+        que se utilice):
+    </p>
+    <figure class="exe-figure exe-image position-center" style="width: 347px;">
+    </figure>
+    <p>
+        Para comenzar a depurar podemos elegir una de estas dos opciones:
+    </p>
+    <ul>
+        <li>
+            <em>
+                <strong>
+                    Debug Project
+                </strong>
+            </em>
+            o
+            <em>
+                <strong>
+                    Depurar Proyecto
+                </strong>
+            </em>
+            iniciará la depuración del proyecto y se detendrá cuando encuentre un punto de ruptura.
+            En todo proyecto hay un archivo&nbsp;.java principal, que será el que se depurará al
+            seleccionar esta opción.
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Debug File
+                </strong>
+            </em>
+            iniciará la depuración de un archivo&nbsp;.java
+            concreto, concretamente el que estemos editando en ese momento, deteniéndose en cuanto
+            encuentre un punto de ruptura. Esta será la opción que usaremos en nuestro caso.
+        </li>
+    </ul>
+    <p>
+        Para establecer un nuevo
+        <strong>
+            punto de ruptura
+        </strong>
+        (
+        <strong>
+            <em>
+            </em>
+        </strong>
+        <span lang="en">
+         <strong>
+          <em>
+           breakpoint
+          </em>
+         </strong>
+        </span>
+        ) lo más sencillo es hacer clic en
+        sobre el número de línea, aunque también puedes usar la opción de menú
+        <em>
+            <strong>
+            </strong>
+        </em>
+        <span lang="en">
+         <em>
+          <strong>
+           Toggle Line
+                                        Breakpoint
+          </strong>
+         </em>
+        </span>
+        o su atajo de teclado equivalente:
+    </p>
+    <figure class="exe-figure exe-image position-center" style="width: 498px;">
+    </figure>
+    <p>
+        Una vez que se inicia la depuración y/o se alcanza un punto de ruptura, la opción de
+        <strong>
+            "Step Over (F8)"
+        </strong>
+        o
+        <strong>
+            "Continuar Ejecución (F8)"
+        </strong>
+        está
+        disponible. Esta opción permitirá ir ejecutando el código sentencia a sentencia, sin entrar
+        en ningún método que se pudiera invocar. La opción
+        <strong>
+            "Step Into (F7)"
+        </strong>
+        o
+        <strong>
+            "Paso a paso (F7)"
+        </strong>
+        sí que permitiría ejecutar paso a paso cualquier método
+        que se invoque, entrando dentro del código del método en cuestión (eso lo veremos más
+        adelante, cuando aprendamos a implementar clases y métodos). Pero para el propósito de la
+        tarea de esta unidad, de momento, es suficiente con
+        <strong>
+            "Step Over (F8)"
+        </strong>
+        :
+    </p>
+    <figure class="exe-figure exe-image position-center" style="width: 350px;">
+    </figure>
+    <p>
+        Por último, para observar el valor de las variables en un momento concreto de la
+        ejecución tenemos la ventana
+        <strong>
+            "
+            <em>
+                Variables
+            </em>
+            "
+        </strong>
+        de NetBeans. Si esta
+        ventana no te aparece puedes mostrarla accediendo al menú "
+        <em>
+            <strong>
+          <span lang="en">
+           Window
+          </span>
+                &gt;
+                <span lang="en">
+           Debugging
+          </span>
+                &gt;
+            </strong>
+        </em>
+        <span lang="en">
+         <em>
+          <strong>
+           Variables
+          </strong>
+         </em>
+        </span>
+        ":
+    </p>
+    <figure class="exe-figure exe-image position-center" style="width: 475px;">
+    </figure>
+</div><h1 class="title">
+    Anexo I.- Ejercicios resueltos
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+    </figure>
+    <p>
+        María y Juan han estado trabajando con las diferentes
+        <strong>
+            estructuras de control
+            disponibles en Java
+        </strong>
+        : if-else,
+        <code>
+            switch
+        </code>
+        , while,
+        <code>
+            do-while
+        </code>
+        , for,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . así como con las
+        <strong>
+            variables
+        </strong>
+        ,
+        <strong>
+            tipos de datos
+        </strong>
+        y
+        <strong>
+            operadores
+        </strong>
+        que vimos en la unidad anterior. Además también ha
+        seguido
+        <strong>
+            leyendo datos desde el teclado
+        </strong>
+        y
+        <strong>
+            mostrando
+            información por pantalla
+        </strong>
+        . Combinando todas esas herramientas ya pueden
+        empezar a construir pequeños programas en Java que reciban cierta información de
+        entrada, la procesen y tomen decisiones en función de esas entradas dando lugar a la
+        ejecución de unas u otras partes del código.
+    </p>
+    <p>
+        Aún siguen siendo pocas herramientas para trabajar, pero ya son más que suficientes
+        como para plantear soluciones a pequeños problemas en los que haya que automatizar
+        tareas repetitivas o donde sea necesario realizar unos cálculos u otros en función
+        de las entradas recibidas. Para ello van a seguir utilizando la
+        <strong>
+            plantilla
+            genérica de programa en Java
+        </strong>
+        que se os proporcionó en la unidad
+        anterior. Te sugerimos que tú también lo sigas haciendo, tus programas estarán más
+        claros y organizados.
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1>
+<div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p align="center" style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+                                        uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

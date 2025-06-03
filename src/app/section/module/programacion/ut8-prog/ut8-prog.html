@@ -1,0 +1,3160 @@
+<h1 class="title">
+    Estructuras de datos externas (ficheros).
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        está repasando los requisitos de la aplicación informática que están
+        desarrollando para la clínica veterinaria.
+    </p>
+    <p>
+        En particular, ahora mismo se está centrando en estudiar las necesidades respecto al
+        almacenamiento de datos.
+        <strong>
+            Ada
+        </strong>
+        piensa que hay ciertas partes de la
+        aplicación que no necesitan una base de datos para guardar los datos, y sería suficiente
+        con emplear ficheros. Por ejemplo, para guardar datos de configuración de la aplicación.
+    </p>
+    <p>
+        Tras repasar, se reúne con
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        para planificar
+        adecuadamente el tema de los ficheros que van a usar en la aplicación, ya que es un
+        asunto muy importante, que no deben dejar aparcado por más tiempo.
+    </p>
+    <p>
+        Precisamente
+        <strong>
+            Antonio
+        </strong>
+        , que está matriculado y cursando el módulo de
+        Programación, está repasando para el examen que tiene la semana que viene. Uno de los
+        temas que le "cae" es precisamente el de almacenamiento de información en ficheros.
+    </p>
+</div><h1 class="title">
+    1.- Introducción.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Cuando desarrollas programas, en la mayoría de ellos los usuarios pueden pedirle a la aplicación
+        que realice cosas y pueda suministrarle datos con los que se quiere hacer algo. Una vez
+        introducidos los datos y las órdenes, se espera que el programa manipule de alguna forma esos
+        datos, para proporcionar una respuesta a lo solicitado.
+    </p>
+    <p>
+        Además, normalmente interesa que el programa guarde los datos que se le han introducido, de forma
+        que si el programa termina, los datos no se pierdan y puedan ser recuperados en una sesión
+        posterior. La forma más normal de hacer esto es mediante la utilización de ficheros, que se
+        guardarán en un dispositivo de memoria no volátil (normalmente un disco).
+    </p>
+    <p>
+        Por tanto, sabemos que el almacenamiento en variables o vectores (
+        <span lang="en">
+         arrays
+        </span>
+        )
+        es temporal, los datos se pierden en las variables cuando están fuera de su ámbito o cuando el
+        programa termina.
+        <strong>
+            Las computadoras utilizan ficheros para guardar los datos
+        </strong>
+        ,
+        incluso después de que el programa termine su ejecución. Se suele denominar a los datos que se
+        guardan en ficheros
+        <strong>
+            datos persistentes
+        </strong>
+        , porque persisten más allá de la
+        ejecución de la aplicación, es decir, siguen existiendo en algún soporte permanente, para poder
+        ser recuperados en una próxima ejecución. Los ordenadores almacenan los ficheros en unidades de
+        almacenamiento secundario como discos duros, discos ópticos, dispositivos
+        <abbr title="Bus Universal en Serie">
+            USB
+        </abbr>
+        , discos
+        <abbr title="Unidad de estado sólido">
+            SSD
+        </abbr>
+        ,
+        <abbr title="etcétera.">
+            etc
+        </abbr>
+        . En
+        esta unidad veremos cómo hacer con
+        <span lang="en">
+         Java
+        </span>
+        estas operaciones de crear,
+        actualizar y procesar ficheros.
+    </p>
+    <p>
+        A todas estas operaciones, que constituyen un flujo de información del programa con el exterior,
+        se les conoce como
+        <strong>
+            Entrada/Salida (
+            <abbr title="Entrada/Salida.">
+                E/S
+            </abbr>
+            ).
+        </strong>
+    </p>
+    <p>
+        Distinguimos dos tipos de
+        <abbr title="Entrada/Salida">
+            E/S
+        </abbr>
+        : la
+        <strong>
+            <abbr title="Entrada/Salida">
+                E/S
+            </abbr>
+            estándar
+        </strong>
+        que se realiza con el terminal del
+        usuario y la
+        <strong>
+            <abbr title="Entrada/Salida">
+                E/S
+            </abbr>
+        </strong>
+        <strong>
+            a través de
+            ficheros
+        </strong>
+        , en la que se trabaja con ficheros de disco.
+    </p>
+    <p>
+        Todas las operaciones de
+        <abbr title="Entrada/Salida">
+            E/S
+        </abbr>
+        en
+        <span lang="en">
+         Java
+        </span>
+        vienen proporcionadas por el paquete estándar del
+        <abbr title="Application Programming Interface">
+            API
+        </abbr>
+        de
+        <span lang="en">
+         Java
+        </span>
+        denominado java.io que incorpora interfaces, clases y excepciones para acceder a todo tipo de
+        ficheros.
+    </p>
+    <p>
+        El contenido de un archivo puede interpretarse como
+        <strong>
+            campos
+        </strong>
+        y
+        <strong>
+            registros
+        </strong>
+        (grupos de campos), dándole un significado al conjunto de bits que en
+        realidad posee.
+    </p>
+</div><h1 class="title">
+    1.1.- Excepciones.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Cuando se trabaja con archivos, es normal que pueda haber errores, por ejemplo: podríamos
+        intentar leer un archivo que no existe, o podríamos intentar escribir en un archivo para el que
+        no tenemos permisos de escritura. Para manejar todos estos errores debemos utilizar
+        excepciones
+
+
+        Excepción
+
+        Una aplicación, ante una entrada de usuario no esperada, o por alguna otra causa, puede producir un error
+        inesperado. Es posible admitir cierto número de errores y continuar su proceso para producir el mejor resultado
+        posible en lugar de producir una salida aparatosa con mensajes de error incomprensibles para el usuario. Esto se
+        consigue con las excepciones. Muchas veces, la acción asociada a una excepción es simplemente producir un
+        mensaje informativo y terminar.
+        .
+        Las dos excepciones más comunes al manejar archivos son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            FileNotFoundException: si no se puede encontrar el archivo.
+        </li>
+        <li>
+            IOException: si no se tienen permisos de lectura o escritura o si el archivo está dañado.
+        </li>
+    </ul>
+    <p>
+        Un esquema básico de uso de la captura y tratamiento de excepciones en un programa, podría ser
+        este, importando el paquete java.io.IOException:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p class="elemento_centrado">
+        Código de la estructura para gestionar
+        excepciones.
+        <span class="tamano">
+         (1.00 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    2.- Concepto de flujo.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+
+    </div>
+    <p>
+        <strong>
+            Antonio
+        </strong>
+        está estudiando un poco antes de irse a dormir. Se ha tomado un
+        vaso de leche con cacao y está repasando el concepto de flujo o stream
+        en
+        <span>
+           Java
+          </span>
+        . Entenderlo al principio, cuando lo estudió por primera vez, le
+        costó un poco, pero ya lo entiende a la perfección y piensa que si le sale alguna
+        pregunta en el examen de la semana que viene, sobre esto, seguro que la va a acertar.
+    </p>
+    <p>
+        Pensar en el flujo de datos como un chorro de agua que fluye por una tubería le ha sido
+        de gran ayuda: los datos son como el agua, de forma que lo que se introduce por la
+        entrada (fuente de datos), va obteniéndose en la salida (aplicación) en el mismo orden
+        que se introdujo, para el caso de un flujo de entrada.
+    </p>
+    <p>
+        Aunque también podemos habilitar una tubería que lleve el agua en sentido contrario,
+        desde la aplicación a la salida (destino de datos), para el caso de un flujo de salida.
+        Lo que no vamos a tener es una tubería (un flujo) en la que el agua (los datos) pueda
+        circular en los dos sentidos .
+    </p>
+</div><h1 class="title">
+    3.- Clases relativas a flujos.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        comenta:
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Quizás debemos usar los dos tipos de ficheros, dependerá de qué
+        se vaya a guardar.
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        le contesta:
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Tienes razón
+        <strong>
+            María
+        </strong>
+        , pero debemos pensar
+        entonces cómo va el programa a leer y a escribir la información, tendremos que utilizar
+        las clases
+        <span lang="en">
+           Java
+          </span>
+        adecuadas según los ficheros que decidamos usar.
+    </p>
+</div><h1 class="title">
+    3.1.- Ejemplo comentado de una clase con flujos.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Vamos a ver un ejemplo con una de las clases comentadas, en concreto, con StreamTokenizer.
+    </p>
+    <p>
+        La clase StreamTokenizer obtiene un flujo de entrada y lo divide en "
+        <span lang="en">
+         tokens
+        </span>
+        ". El flujo
+        <span lang="en">
+         tokenizer
+        </span>
+        puede reconocer
+        identificadores, números y otras cadenas.
+    </p>
+    <p>
+        El ejemplo que puedes descargarte en el siguiente enlace, muestra cómo utilizar la clase
+        StreamTokenizer para contar números y palabras de un fichero de texto. Se abre el flujo con
+        ayuda de la clase FileReader, y puedes ver cómo se "monta" el flujo StreamTokenizer sobre el
+        FileReader, es decir, que se construye el objeto
+        <strong>
+            StreamTokenizer
+        </strong>
+        con el flujo
+        FileReader como argumento, y entonces se empieza a iterar sobre él.
+    </p>
+    <p class="enlace_centrado">
+        Clase para leer palabras y números.
+        <span class="tamano">
+         (2.00 KB)
+        </span>
+    </p>
+    <p>
+        El método nextToken() devuelve un int que indica el tipo de
+        <span lang="en">
+         token
+        </span>
+        leído.
+        Hay una serie de constantes definidas para determinar el tipo de
+        <span lang="en">
+         token
+        </span>
+        :
+    </p>
+    <ul class="lista_verificacion" type="circle">
+        <li>
+            TT_WORD indica que el
+            <span lang="en">
+          token
+         </span>
+            es una palabra.
+        </li>
+        <li>
+            TT_NUMBER indica que el
+            <span lang="en">
+          token
+         </span>
+            es un número.
+        </li>
+        <li>
+            TT_EOL indica que se ha leído el fin de línea.
+        </li>
+        <li>
+            TT_EOF indica que se ha llegado al fin del flujo de entrada.
+        </li>
+    </ul>
+    <p>
+        En el código de la clase, apreciamos que se iterará hasta llegar al fin del fichero. Para cada
+        <span lang="en">
+         token
+        </span>
+        , se mira su tipo, y según el tipo se incrementa el contador de
+        palabras o de números.
+    </p>
+    <p>
+        Puedes probar el ejemplo con el siguiente fichero e datos:
+    </p>
+    <p class="enlace_centrado">
+        Fichero de texto para probar el código
+        anterior.
+        <span class="tamano">
+         (0.49 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.- Flujos.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        y
+        <strong>
+            Antonio
+        </strong>
+        salen de clase
+        <strong>
+            .
+        </strong>
+        <strong>
+            Antonio
+        </strong>
+        ha quedado con una amiga y
+        <strong>
+            Ana
+        </strong>
+        va camino de casa
+        pensando en lo que le explicaron en clase hace unos días. Como se quedó con dudas,
+        también le consultó a
+        <strong>
+            María
+        </strong>
+        . En concreto, le asaltaban dudas sobre cómo
+        leer y escribir datos por teclado en un programa, y también varias dudas sobre lectura y
+        escritura de información en ficheros.
+        <strong>
+            María
+        </strong>
+        le solventó las dudas
+        hablándole sobre el tema, pero aún así, tenía que probarlo tranquilamente en casa,
+        haciéndose unos pequeños ejemplos, para comprobar toda la nueva información aprendida.
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Antes de irte
+        <span class="st">
+           —
+          </span>
+        dice
+        <strong>
+            Antonio
+        </strong>
+        a
+        <strong>
+            Ana
+        </strong>
+        <span class="st">
+           —
+          </span>
+        , siéntate a
+        hablar con nosotros un rato.
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Bueno, pero me voy a ir enseguida,
+        <span class="st">
+           —
+          </span>
+        contesta
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    4.1.- Flujos predefinidos. Entrada y salida estándar.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Tradicionalmente, los usuarios del sistema operativo
+        <span>
+         Unix, Linux
+        </span>
+        y también
+        <abbr title="MicroSoft-Disk Operating System.">
+            MS-DOS
+        </abbr>
+        , han utilizado un tipo
+        de entrada/salida conocida comúnmente por entrada/salida estándar. El fichero de entrada
+        estándar (stdin) es típicamente el teclado. El fichero de salida estándar (stdout) es
+        típicamente la pantalla (o la ventana del terminal). El fichero de salida de error estándar
+        (stderr) también se dirige normalmente a la pantalla, pero se implementa como otro fichero de
+        forma que se pueda distinguir entre la salida normal y (si es necesario) los mensajes de error.
+    </p>
+    <p>
+        <span lang="en">
+         Java
+        </span>
+        tiene acceso a la entrada/salida estándar a través de la clase
+        System. En concreto, los tres ficheros que se implementan son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Stdin.
+            <code>
+                System.in
+            </code>
+            es un objeto de tipo InputStream, y está definido en la clase
+            System como flujo de entrada estándar. Por defecto es el teclado, pero puede redirigirse
+            para cada host o cada usuario, de forma que se corresponda con cualquier otro dispositivo de
+            entrada.
+        </li>
+        <li>
+            Stdout.
+            <code>
+                System.out
+            </code>
+            implementa stdout como una instancia de la clase PrintStream.
+            Se pueden utilizar los métodos print() y
+            <code>
+                println()
+            </code>
+            con cualquier tipo básico
+            <span lang="en">
+          Java
+         </span>
+            como argumento.
+        </li>
+        <li>
+            Stderr.
+            <code>
+                System.err
+            </code>
+            es un objeto de tipo PrintStream. Es un flujo de salida
+            definido en la clase System y representa la salida de error estándar. Por defecto, es el
+            monitor, aunque es posible redireccionarlo a otro dispositivo de salida.
+        </li>
+    </ul>
+    <p>
+        Para la entrada, se usa el método read() para leer de la entrada estándar:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            int System.in.read();
+            <ul>
+                <li>
+                    Lee el siguiente byte (char) de la entrada estándar.
+                </li>
+            </ul>
+        </li>
+        <li>
+            int System.in.read(byte[] b);
+            <ul>
+                <li>
+                    Lee un conjunto de
+                    <span lang="en">
+            bytes
+           </span>
+                    de la entrada estándar y lo almacena
+                    en el vector b.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Para la salida, se usa el método print() para escribir en la salida estándar:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            System.out.&lt;strong&gt;print&lt;/strong&gt;(String);
+            <ul>
+                <li>
+                    Muestra el texto en la consola.
+                </li>
+            </ul>
+        </li>
+        <li>
+            System.out.&lt;strong&gt;println&lt;/strong&gt;(String);
+            <ul>
+                <li>
+                    Muestra el texto en la consola y seguidamente efectúa un salto de línea.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Normalmente, para
+        <strong>
+            leer valores numéricos
+        </strong>
+        , lo que se hace es tomar el valor de la
+        entrada estándar en forma de cadena y entonces usar métodos que permiten transformar el texto a
+        números (int,
+        <code>
+            float
+        </code>
+        , double,
+        <abbr title="etcétera.">
+            etc
+        </abbr>
+        .) según se
+        requiera.
+    </p>
+    <table class="tabla">
+        <caption>
+            Funciones de conversión.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Método
+            </th>
+            <th scope="col">
+                Funcionamiento
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td scope="row">
+                byte Byte.parseByte(String)
+            </td>
+            <td>
+                Convierte una cadena en un número entero de un
+                <span lang="en">
+            byte.
+           </span>
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                short Short.parseShort(String)
+            </td>
+            <td>
+                Convierte una cadena en un número entero corto.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                int Integer.parseInt(String)
+            </td>
+            <td>
+                Convierte una cadena en un número entero.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                long Long.parseLong(String)
+            </td>
+            <td>
+                Convierte una cadena en un número entero largo.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                float Float.parseFloat(String)
+            </td>
+            <td>
+                Convierte una cadena en un número real simple.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                double Double.parseDouble(String)
+            </td>
+            <td>
+                Convierte una cadena en un número real doble.
+            </td>
+        </tr>
+        <tr>
+            <td scope="row">
+                boolean Boolean.parseBoolean(String)
+            </td>
+            <td>
+                Convierte una cadena en un valor lógico.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    4.2.- Flujos predefinidos. Entrada y salida estándar.
+    Ejemplo.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Veamos un ejemplo en el que se lee por teclado hasta pulsar la tecla de retorno, en ese momento
+        el programa acabará imprimiendo por la salida estándar la cadena leída.
+    </p>
+    <p>
+        Para ir construyendo la cadena con los caracteres leídos podríamos usar la clase StringBuffer o
+        la StringBuilder. La clase StringBuffer permite almacenar cadenas que cambiarán en la ejecución
+        del programa. StringBuilder es similar, pero no es
+        síncrona
+
+
+        Síncrona
+
+        En una ejecución síncrona, la instrucción siguiente a la llamada no se ejecuta hasta que no finalice el método
+        llamado.
+        .
+        De este modo, para la mayoría de las aplicaciones, donde se ejecuta un solo hilo, supone una
+        mejora de rendimiento sobre StringBuffer.
+    </p>
+    <p>
+        El proceso de lectura ha de estar en un bloque try..catch.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p class="enlace_centrado">
+        Código
+        del proceso de lectura.
+        <span class="tamano">
+         (1 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.3.- Flujos basados en bytes.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+    </div>
+    <p>
+        Este tipo de flujos es el idóneo para el manejo de entradas y salidas de
+        <span lang="en">
+         bytes
+        </span>
+        , y su uso por tanto está orientado a la lectura y escritura de datos
+        binarios.
+    </p>
+    <p>
+        Para el tratamiento de los flujos de
+        <span>
+         bytes, Java
+        </span>
+        tiene dos clases abstractas que son
+        InputStream y
+        <code>
+            OutputStream
+        </code>
+        . Cada una de estas clases abstractas tiene varias
+        subclases instanciables, que controlan las diferencias entre los distintos dispositivos de
+        <abbr title="Entrada/Salida">
+            E/S
+        </abbr>
+        que se pueden utilizar.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre>class FileInputStream extends InputStream &#123;
+</pre>
+            <pre>    FileInputStream (String fichero) throws FileNotFoundException;
+</pre>
+            <pre>    FileInputStream (File fichero) throws FileNotFoundException;
+</pre>
+            <pre>    ... ... ...
+</pre>
+            <pre>  &#125;
+</pre>
+            <pre> </pre>
+            <pre>class FileOutputStream extends OutputStream &#123;
+</pre>
+            <pre>    FileOutputStream (String fichero) throws FileNotFoundException;
+</pre>
+            <pre>    FileOutputStream (File fichero) throws FileNotFoundException;
+</pre>
+            <pre>    ... ... ...
+</pre>
+            <pre>&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        OutputStream y
+        <code>
+            InputStream
+        </code>
+        y todas sus subclases, reciben en el constructor el
+        objeto que representa el flujo de datos para el dispositivo de entrada o salida.
+    </p>
+    <p>
+        Por ejemplo, podemos copiar el contenido de un fichero en otro con este método:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p class="enlace_centrado">
+        Código
+        de copiar.
+        <span class="tamano">
+         (1 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.4.- Flujos basados en caracteres.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Las clases orientadas al flujo de
+        <span lang="en">
+         bytes
+        </span>
+        nos proporcionan la suficiente
+        funcionalidad para realizar cualquier tipo de operación de entrada o salida, pero no pueden
+        trabajar directamente con
+        <strong>
+            caracteres Unicode
+        </strong>
+        , los cuales están
+        <strong>
+            representados
+            por dos
+            <span lang="en">
+          bytes
+         </span>
+            .
+        </strong>
+        Por eso, se consideró necesaria la creación
+        de las clases orientadas al flujo de caracteres para ofrecernos el soporte necesario para el
+        tratamiento de caracteres.
+    </p>
+    <p>
+        Para los flujos de caracteres,
+        <span lang="en">
+         Java
+        </span>
+        dispone de dos clases abstractas:
+        Reader y
+        <code>
+            Writer
+        </code>
+        .
+    </p>
+    <p>
+        Reader,
+        <code>
+            Writer
+        </code>
+        , y todas sus subclases, reciben en el constructor el objeto que
+        representa el flujo de datos para el dispositivo de entrada o salida.
+    </p>
+    <p>
+        <strong>
+         <span class="destacado_inline">
+          Hay que recordar que cada vez que se llama a un constructor se abre el flujo de datos y es necesario cerrarlo cuando no lo necesitemos.
+         </span>
+        </strong>
+    </p>
+    <p>
+        Existen muchos tipos de flujos dependiendo de la utilidad que le vayamos a dar a los datos que
+        extraemos de los dispositivos.
+    </p>
+    <p>
+        <strong>
+            Un flujo puede ser envuelto por otro flujo para tratar el flujo de datos de forma
+            cómoda
+        </strong>
+        . Así, un bufferedWriter nos permite manipular el flujo de datos como un
+        <span lang="en">
+         buffer,
+        </span>
+        pero si lo envolvemos en un PrintWriter lo podemos escribir con
+        muchas más funcionalidades adicionales para diferentes tipos de datos.
+    </p>
+    <p>
+        En este ejemplo de código, se ve cómo podemos escribir la salida estándar a un fichero. Cuando se
+        teclee la palabra "salir", se dejará de leer y entonces se saldrá del bucle de lectura.
+    </p>
+    <p>
+        Podemos ver cómo se usa InputStreamReader que es un puente de flujos de
+        <span lang="en">
+         bytes
+        </span>
+        a flujos de caracteres: lee
+        <span lang="en">
+         bytes
+        </span>
+        y los
+        decodifica a caracteres. BufferedReader lee texto de un flujo de entrada de caracteres,
+        permitiendo efectuar una lectura eficiente de caracteres, vectores y líneas.
+    </p>
+    <p>
+        Como vemos en el código, usamos FileWriter para flujos de caracteres, pues para datos binarios se
+        utiliza FileOutputStream.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p class="enlace_centrado">
+        Código
+        de copiar.
+        <span class="tamano">
+         (1 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    4.5.- Rutas de los ficheros.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En los ejemplos que vemos en el tema estamos usando la ruta de los ficheros tal y como se usan en
+        <abbr title="MicroSoft-Disk Operating System.">
+            MS-DOS
+        </abbr>
+        , o
+        <span lang="en">
+         Windows
+        </span>
+        ,
+        es decir, por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.7em;">
+        <div class="texto_izquierda">
+         <pre>c:\\datos\\Programacion\\fichero.txt
+</pre>
+        </div>
+    </div>
+    <p>
+        Cuando operamos con rutas de ficheros, el carácter separador entre directorios o carpetas suele
+        cambiar dependiendo del sistema operativo en el que se esté ejecutando el programa.
+    </p>
+    <p>
+        En Java, una barra \ sirve como secuencia de escape de caracteres literales como
+        . , etc. Así, una barra literal se debe escribir como "\\". Es decir, son dos barras por cada
+        literal.
+    </p>
+    <p>
+        Para evitar problemas en la ejecución de los programas cuando se ejecuten en uno u otro sistema
+        operativo, y por tanto persiguiendo que nuestras aplicaciones sean lo más portables posibles, se
+        recomienda usar en
+        <span lang="en">
+         Java
+        </span>
+        : File.separator.
+    </p>
+    <p>
+        Podríamos hacer una función que al pasarle una ruta nos devolviera la adecuada según el separador
+        del sistema actual, del siguiente modo:
+    </p>
+    <div class="elemento_centrado">
+
+    </div>
+    <p class="enlace_centrado">
+        Código de separador de rutas.
+        <span class="tamano">
+         (1 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    5.- Trabajando con ficheros.
+</h1>
+<div class="iDevice_content">
+    <p>
+        <strong>
+        </strong>
+        le comenta a
+        <strong>
+            María
+        </strong>
+        :
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Tenemos que programar una copia de seguridad diaria de los datos
+        del fichero de texto plano que utiliza el programa para guardar la información.
+    </p>
+    <p>
+        Mientras
+        <strong>
+            María
+        </strong>
+        escucha a
+        <strong>
+            Juan
+        </strong>
+        , recuerda que para copias
+        de seguridad, siempre ha comprobado que la mejor opción es utilizar ficheros
+        secuenciales.
+    </p>
+</div><h1 class="title">
+    5.1.- Escritura y lectura de información en ficheros.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Acabamos de mencionar los pasos fundamentales para proceder con ficheros: abrir, operar,
+        cerrar.
+    </p>
+    <p>
+        Además de esas consideraciones, debemos tener en cuenta también las clases
+        <span lang="en">
+         Java
+        </span>
+        a emplear, es decir, recuerda que hemos comentado que si vamos a
+        tratar con ficheros de texto, es más eficiente emplear las clases de Reader y
+        <code>
+            Writer
+        </code>
+        , frente a las clases de InputStream y
+        <code>
+            OutputStream
+        </code>
+        que están
+        indicadas para flujos de
+        <span lang="en">
+         bytes
+        </span>
+        .
+    </p>
+    <p>
+        Otra cosa a considerar, cuando se va a hacer uso de ficheros, es la forma de acceso al fichero
+        que se va a utilizar, si va a ser de manera secuencial o bien aleatoria. En un fichero
+        secuencial,
+        <strong>
+            para acceder a un dato debemos recorrer todo el fichero desde el principio
+            hasta llegar a su posición
+        </strong>
+        . Sin embargo, en un fichero de
+        acceso
+        aleatorio
+
+
+        Acceso aleatorio
+
+        Es la posibilidad de acceder a un elemento arbitrario de una secuencia de datos en el mismo tiempo.
+        podemos posicionarnos directamente en una posición del fichero, y ahí leer o escribir.
+    </p>
+    <p>
+        Aunque ya has visto un ejemplo que usa BufferedReader, insistimos aquí sobre la filosofía de
+        estas clases, que usan la idea de un
+        <span lang="en">
+         buffer
+        </span>
+        .
+    </p>
+    <p>
+        La idea es que cuando una aplicación necesita leer datos de un fichero, tiene que estar esperando
+        a que el disco en el que está el fichero le proporcione la información.
+    </p>
+    <p>
+        Un dispositivo cualquiera de
+        memoria
+        masiva
+
+
+        Memoria masiva
+
+        Consiste en un tipo de almacenamiento permanente, no volátil, a diferencia de la memoria principal del ordenador
+        que sí es volátil, pero posee mayor capacidad de almacenamiento que la memoria principal, aunque es más lenta
+        que ésta.
+        ,
+        por muy rápido que sea, es mucho más lento que la
+        <abbr title="Central Processing Unit.">
+            CPU
+        </abbr>
+        del
+        ordenador.
+    </p>
+    <p>
+        Así que, es fundamental
+        <strong>
+            reducir el número de accesos al fichero
+        </strong>
+        a fin de mejorar
+        la eficiencia de la aplicación, y para ello se asocia al fichero una memoria intermedia, el
+        <span lang="en">
+         buffer
+        </span>
+        , de modo que cuando se necesita leer un
+        <span lang="en">
+         byte
+        </span>
+        del archivo, en realidad se traen hasta el
+        <span lang="en">
+         buffer
+        </span>
+        asociado al flujo, ya que es una memoria mucho más rápida que
+        cualquier otro dispositivo de memoria masiva.
+    </p>
+    <p>
+        Cualquier operación de Entrada/Salida a ficheros puede generar una IOException, es decir, un
+        error de Entrada/Salida. Puede ser por ejemplo, que el fichero no exista, o que el dispositivo
+        no funcione correctamente, o que nuestra aplicación no tenga permisos de lectura o escritura
+        sobre el fichero en cuestión. Por eso, las sentencias que involucran operaciones sobre ficheros,
+        deben ir siempre en un bloque try-catch.
+    </p>
+</div><h1 class="title">
+    5.2.- Ficheros binarios y ficheros de texto (I).
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Ya comentamos anteriormente que los ficheros se utilizan para guardar la información en un
+        soporte: disco duro, disquetes, memorias
+        <abbr title="Universal Serial Bus.">
+            usb
+        </abbr>
+        ,
+        <abbr title="Digital Versatile Disc.">
+            dvd
+        </abbr>
+        ,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        , y
+        posteriormente poder recuperarla. También distinguimos dos tipos de ficheros: los de
+        <strong>
+            texto
+        </strong>
+        y los
+        <strong>
+            binarios
+        </strong>
+        .
+    </p>
+    <p>
+        En los
+        <strong>
+            ficheros de texto
+        </strong>
+        la información se guarda como caracteres. Esos
+        caracteres están codificados en
+        <strong>
+         <span lang="en">
+          Unicode
+         </span>
+        </strong>
+        , o en
+        <strong>
+            <abbr title="American Standard Code for Information Interchange">
+                ASCII
+            </abbr>
+        </strong>
+        u otras codificaciones de texto.
+    </p>
+    <p>
+        En la siguiente porción de código puedes ver cómo para un fichero existente, que en este caso es
+        texto.txt, averiguamos la codificación que posee, usando el método getEncoding()
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p class="enlace_centrado">
+        Obtención del tipo de codificación.
+        <span class="tamano">
+         (1 KB)
+        </span>
+    </p>
+    <p>
+        Para
+        <strong>
+            archivos de texto
+        </strong>
+        , se puede abrir el fichero para leer usando la clase
+        FileReader. Ésta clase nos proporciona métodos para
+        <strong>
+            leer caracteres
+        </strong>
+        . Cuando nos
+        interese no leer carácter a carácter, sino
+        <strong>
+            leer líneas completas
+        </strong>
+        , podemos usar
+        la clase BufferedReader a partir de FileReader. Lo podemos hacer de la siguiente forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre>File archivo = new File ("C:\\fich.txt");
+</pre>
+            <pre>FileReader fr = new FileReader (archivo);
+</pre>
+            <pre>BufferedReader br = new BufferedReader(fr);
+</pre>
+            <pre>...
+</pre>
+            <pre>String linea = br.readLine();
+</pre>
+        </div>
+    </div>
+    <p>
+        Para
+        <strong>
+            escribir en archivos de texto
+        </strong>
+        lo podríamos hacer, teniendo en cuenta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre>FileWriter fichero = null;
+</pre>
+            <pre>PrintWriter pw = null;
+</pre>
+            <pre>fichero = new FileWriter("c:/fich2.txt");
+</pre>
+            <pre>pw = new PrintWriter(fichero);
+</pre>
+            <pre>pw.println("Linea de texto");
+</pre>
+            <pre>...
+</pre>
+        </div>
+    </div>
+    <p>
+        Si el fichero al que queremos escribir existe y lo que queremos es añadir información, entonces
+        pasaremos el segundo parámetro como true:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 23.6em;">
+        <div class="texto_izquierda">
+         <pre>FileWriter("c:/fich2.txt",true);
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    5.2.1.- Ficheros binarios y ficheros de texto (II).
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Los
+        <strong>
+            ficheros binarios
+        </strong>
+        almacenan la información en bytes, codificada en binario,
+        pudiendo ser de cualquier tipo: fotografías, números, letras, archivos ejecutables, etc.
+    </p>
+    <p>
+        Los archivos binarios guardan una representación de los datos en el fichero. O sea que, cuando se
+        guarda texto no se guarda el texto en sí, sino que se guarda su representación en código
+        UTF-8
+
+
+        UTF-8
+
+        Es un formato de codificación de caracteres Unicode usando símbolos de longitud variable.
+        .
+    </p>
+    <p>
+        Para
+        <strong>
+            leer datos de un fichero binario
+        </strong>
+        , Java proporciona la clase
+        <strong>
+            FileInputStream
+        </strong>
+        .
+        Dicha clase trabaja con bytes que se leen desde el flujo asociado a un fichero. Aquí puedes ver
+        un ejemplo comentado.
+    </p>
+    <p class="enlace_centrado">
+        Leer
+        de fichero binario con buffer.
+        <span class="tamano">
+         (3.00 KB)
+        </span>
+    </p>
+    <p>
+        Para
+        <strong>
+            escribir datos a un fichero binario
+        </strong>
+        , la clase nos permite usar un fichero
+        para escritura de
+        <span lang="en">
+         bytes
+        </span>
+        en él, es la claseFileOutputStream. La filosofía
+        es la misma que para la lectura de datos, pero ahora el flujo es en dirección contraria, desde
+        la aplicación que hace de fuente de datos hasta el fichero, que los consume.
+    </p>
+    <p>
+        En el siguiente fichero PDF puedes ver un esquema de cómo utilizar buffer para optimizar la
+        lectura de teclado desde consola, por medio de las envolturas, podemos usar métodos como
+        readline(), de la clase BufferedReader, que envuelve a un objeto de la clase
+        InputStreamReader.
+    </p>
+    <p style="text-align: center;">
+        Envolturas
+        <span class="exe-link-data file-size">
+         (pdf - 103.94
+         <abbr lang="en" title="KiloBytes">
+          KB
+         </abbr>
+         )
+        </span>
+    </p>
+</div><h1 class="title">
+    5.3.- Modos de acceso. Registros.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En Java no se impone una estructura en un fichero, por lo que conceptos como el de registro que
+        si existen en otros lenguajes, en principio no existen en los archivos que se crean con Java.
+        Por tanto, los programadores deben estructurar los ficheros de modo que cumplan con los
+        requerimientos de sus aplicaciones.
+    </p>
+    <p>
+        Así, el programador definirá su registro con el número de bytes que le interesen, moviéndose
+        luego por el fichero teniendo en cuenta ese tamaño que ha definido.
+    </p>
+    <p>
+        Se dice que un fichero es de acceso directo o de organización directa cuando para acceder a un
+        registro
+        <strong>
+            n
+        </strong>
+        cualquiera, no se tiene que pasar por los
+        <strong>
+            n-1
+        </strong>
+        registros anteriores. En caso contrario, estamos hablando de ficheros secuenciales.
+    </p>
+    <p>
+        Con Java se puede trabajar con
+        <strong>
+            ficheros secuenciales
+        </strong>
+        y con
+        <strong>
+            ficheros de
+            acceso aleatorio
+        </strong>
+        .
+    </p>
+    <p>
+        En los
+        <strong>
+            ficheros secuenciales
+        </strong>
+        , la información se almacena de manera secuencial,
+        de manera que para recuperarla se debe hacer en el mismo orden en que la información se ha
+        introducido en el archivo. Si por ejemplo queremos leer el registro del fichero que ocupa la
+        posición tres (en la ilustración sería el que contiene el número 5), tendremos que abrir el
+        fichero y leer los primeros tres registros, hasta que finalmente leamos el registro número tres.
+    </p>
+    <p>
+        Por el contrario, si se tratara de un
+        <strong>
+            fichero de acceso aleatorio
+        </strong>
+        , podríamos
+        acceder directamente a la posición tres del fichero, o a la que nos interesara.
+    </p>
+</div><h1 class="title">
+    5.4.- Acceso secuencial.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En el siguiente ejemplo vemos cómo se
+        <strong>
+            escriben datos en un fichero secuencial
+        </strong>
+        :
+        el nombre y apellidos de una persona utilizando el método writeUTF() que proporciona
+        DataOutputStream, seguido de su edad que la escribimos con el método writeInt() de la misma
+        clase. A continuación escribimos lo mismo para una segunda persona y de nuevo para una tercera.
+        Después cerramos el fichero. Y ahora lo abrimos de nuevo para ir
+        <strong>
+            leyendo de manera
+            secuencial
+        </strong>
+        los datos almacenados en el fichero, y escribiéndolos a consola.
+    </p>
+    <p class="enlace_centrado">
+        Escribir
+        y leer.
+        <span class="tamano">
+         (3.00 KB)
+        </span>
+    </p>
+    <p>
+        Si miras el ejemplo y la documentación en la API del método writeUTF(), verás que lo primero que
+        hace antes de escribir una cadena es guardar en el flujo de salida dos bytes que indican el
+        número de bytes que se van a usar para escribir esa cadena. De esta forma, cuando usemos el
+        método readUTF() para leer dicha cadena, java sabe dónde termina, cuándo tiene que parar de leer
+        bytes para esa cadena, sin que nosotros tengamos que preocuparnos de ello.
+        <br>
+        <br>
+        Con lo que sí
+        tenemos que ser cuidadosos, a la hora de leer del fichero, es con usar los métodos readUTF() y
+        <code>
+            readInt()
+        </code>
+        en el mismo orden en que habíamos usado antes writeUTF() y
+        <code>
+            writeInt()
+        </code>
+        para escribir en el fichero.
+        <br>
+        <br>
+        <br/><br/><br/><br/></p>
+    <p>
+        Por tanto para
+        <strong>
+            buscar información en un fichero secuencial
+        </strong>
+        , tendremos que abrir
+        el fichero e ir leyendo registros hasta encontrar el registro que buscamos.
+    </p>
+    <p>
+        ¿Y si queremos
+        <strong>
+            eliminar un registro en un fichero secuencial
+        </strong>
+        , qué hacemos? Esta
+        operación es un problema, puesto que no podemos quitar el registro y reordenar el resto. Una
+        opción, aunque costosa, sería crear un nuevo fichero. Recorremos el fichero original y vamos
+        copiando registros en el nuevo hasta llegar al registro que queremos borrar. Ese no lo copiamos
+        al nuevo, y seguimos copiando hasta el final, el resto de registros al nuevo fichero. De este
+        modo, obtendríamos un nuevo fichero que sería el mismo que teníamos pero sin el registro que
+        queríamos borrar. Por tanto, si se prevé que se va a borrar en el fichero, no es recomendable
+        usar un fichero de este tipo, o sea, secuencial.
+    </p>
+</div><h1 class="title">
+    5.5.- Acceso aleatorio.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        A veces no necesitamos leer un fichero de principio a fin, sino acceder al fichero como si fuera
+        una base de datos, donde se accede a un registro concreto del fichero. Java proporciona la clase
+        RandomAccessFile para este tipo de entrada/salida.
+    </p>
+    <p>
+        La clase RandomAccessFile permite utilizar un fichero de
+        <strong>
+            acceso aleatorio
+        </strong>
+        en el
+        que el programador define el formato de los registros.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37em;">
+        <div class="texto_izquierda">
+         <pre>RandomAccessFile objFile = new RandomAccessFile( ruta, modo );
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde ruta es la dirección física en el sistema de archivos y modo puede ser:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            "r" para sólo lectura.
+        </li>
+        <li>
+            "rw" para lectura y escritura.
+        </li>
+    </ul>
+    <p>
+        La clase RandomAccessFile implementa los interfaces DataInput y
+        <code>
+            DataOutput
+        </code>
+        . Para
+        abrir un archivo en modo lectura haríamos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37em;">
+        <div class="texto_izquierda">
+         <pre>RandomAccessFile in = new RandomAccessFile(“input.dat”, “r”);
+</pre>
+        </div>
+    </div>
+    <p>
+        Para abrirlo en modo lectura y escritura:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37em;">
+        <div class="texto_izquierda">
+         <pre>RandomAccessFile inOut = new RandomAccessFile(“input.dat”, “rw”);
+</pre>
+        </div>
+    </div>
+    <p>
+        Esta clase permite leer y escribir sobre el fichero, no se necesitan dos clases diferentes.
+    </p>
+    <p>
+        Hay que especificar el modo de acceso al construir un objeto de esta clase: sólo lectura o
+        lectura/escritura.
+    </p>
+    <p>
+        Dispone de métodos específicos de desplazamiento como seek y
+        <code>
+            skipBytes
+        </code>
+        para poder
+        moverse de un registro a otro del fichero, o posicionarse directamente en una posición concreta
+        del fichero.
+    </p>
+    <p>
+        No está basada en el concepto de flujos o
+        <span lang="en">
+         streams
+        </span>
+        .
+    </p>
+    <p>
+        En el siguiente enlace vemos cómo crear un fichero, cómo podemos acceder, y actualizar
+        información en él.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado titulo">
+            Trabajando con ficheros
+            <span class="exe-link-data file-size">
+          (pdf - 308091
+          <abbr lang="en" title="Bytes">
+           B
+          </abbr>
+          )
+         </span>
+            .
+        </div>
+        <div class="elemento_centrado titulo">
+        </div>
+    </div>
+</div><h1 class="title">
+    6.- Aplicaciones del almacenamiento de información en
+    ficheros.
+</h1>
+<div class="iDevice_content">
+    <p>
+        <strong>
+        </strong>
+        ha quedado con
+        <strong>
+            Ana
+        </strong>
+        para estudiar sobre el tema de ficheros. De camino a la biblioteca,
+        <strong>
+            Ana
+        </strong>
+        le pregunta a
+        <strong>
+            Antonio
+        </strong>
+        :
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        ¿Crees que los ficheros se utilizan realmente, o ya están
+        desfasados y sólo se utilizan las bases de datos?
+    </p>
+    <p>
+        <strong>
+            Antonio
+        </strong>
+        , tras pensarlo un momento, le dice a
+        <strong>
+            Ana
+        </strong>
+        :
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Yo creo que sí, piensa en el
+        <abbr title="MPEG-2 Audio Layer III">
+            mp3
+        </abbr>
+        que usas muchas veces, la música va
+        grabada en ese tipo de ficheros.
+    </p>
+</div><h1 class="title">
+    7.- Utilización de los sistemas de ficheros.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        está estudiando en la biblioteca, junto a
+        <strong>
+            Antonio
+        </strong>
+        .
+        Está repasando lo que le explicaron en clase sobre las operaciones relativas a ficheros
+        en Java. En concreto, está mirando lo relativo a crear carpetas o directorios, listar
+        directorios, borrarlos, operar en definitiva con ellos. Va a repasar ahora en la
+        biblioteca, para tener claros los conceptos y cuando llegue de vuelta a casa, probar a
+        compilar algunos ejemplos que a ella misma se le ocurran.
+    </p>
+</div><h1 class="title">
+    7.1.- Clase File.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        <strong>
+            La clase File proporciona una representación abstracta de ficheros y
+            directorios.
+        </strong>
+    </p>
+    <p>
+        Esta clase, permite examinar y manipular archivos y directorios, independientemente de la
+        plataforma en la que se esté trabajando: Linux, Windows, etc.
+    </p>
+    <p>
+        Las instancias de la clase File representan nombres de archivo, no los archivos en sí mismos.
+    </p>
+    <p>
+        El archivo correspondiente a un nombre dado podría ser que no existiera, por ello, habrá que
+        controlar las posibles excepciones.
+    </p>
+    <p>
+        Al trabajar con File, las rutas pueden ser:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Relativas al directorio actual.
+        </li>
+        <li>
+            Absolutas si la ruta que le pasamos como parámetro empieza por
+            <ul>
+                <li>
+                    La barra "/" en Unix, Linux.
+                </li>
+                <li>
+                    Letra de unidad (C:, D:, etc.) en Windows.
+                </li>
+                <li>
+                    <abbr title="universal naming convention">
+                        UNC
+                    </abbr>
+                    (universal naming
+                    convention) en windows, como por ejemplo:
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+         <pre>File miFile=new File("\\\\mimaquina\\download\\prueba.txt");
+</pre>
+        </div>
+    </div>
+    <p>
+        A través del objeto File, un programa puede examinar los atributos del archivo, cambiar su
+        nombre, borrarlo o cambiar sus permisos. Dado un objeto de la clase File, podemos hacer las
+        siguientes operaciones con él:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Renombrar
+            </strong>
+            el archivo, con el método renameTo(). El objeto File dejará de
+            referirse al archivo renombrado, ya que el String con el nombre del archivo en el objeto
+            File no cambia.
+        </li>
+        <li>
+            <strong>
+                Borrar
+            </strong>
+            el archivo, con el método delete(). También, con deleteOnExit() se
+            borra cuando finaliza la ejecución de la máquina virtual Java.
+        </li>
+        <li>
+            <strong>
+                Crear
+            </strong>
+            un nuevo fichero con un nombre único. El método estático
+            createTempFile() crea un fichero temporal y devuelve un objeto File que apunta a él. Es útil
+            para crear archivos temporales, que luego se borran, asegurándonos tener un nombre de
+            archivo no repetido.
+        </li>
+        <li>
+            <strong>
+                Establecer
+            </strong>
+            la fecha y la hora de modificación del archivo con
+            setLastModified(). Por ejemplo, se podría hacer: new File("prueba.txt").setLastModified(new
+            Date().getTime()); para establecerle la fecha actual al fichero que se le pasa como
+            parámetro, en este caso
+            <em>
+                prueba.txt
+            </em>
+            .
+        </li>
+        <li>
+            <strong>
+                Crear
+            </strong>
+            un directorio con el método mkdir(). También existe mkdirs(), que
+            crea los directorios superiores si no existen.
+        </li>
+        <li>
+            <strong>
+                Listar
+            </strong>
+            el contenido de un directorio. Los métodos list() y
+            <code>
+                listFiles()
+            </code>
+            listan el contenido de un directorio list() devuelve un vector de String con los nombres de
+            los archivos, listFiles() devuelve un vector de objetos File.
+        </li>
+        <li>
+            <strong>
+                Listar
+            </strong>
+            los nombres de archivo de la raíz del sistema de archivos, mediante
+            el método estático listRoots().
+        </li>
+    </ul>
+</div><h1 class="title">
+    7.2.- Interface FilenameFilter.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En ocasiones nos interesa ver la lista de los archivos que encajan con un determinado
+        criterio.
+    </p>
+    <p>
+        Así, nos puede interesar un filtro para ver los ficheros modificados después de una fecha, o los
+        que tienen un tamaño mayor del que indiquemos, etc.
+    </p>
+    <p>
+        El interface FilenameFilter se puede usar para crear filtros que establezcan criterios de
+        filtrado relativos al nombre de los ficheros. Una clase que lo implemente debe definir e
+        implementar el método:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 27.45em;">
+        <div class="texto_izquierda">
+         <pre>boolean accept(File dir, String nombre)
+</pre>
+        </div>
+    </div>
+    <p>
+        Este método devolverá verdadero (true), en el caso de que el fichero cuyo nombre se indica en el
+        parámetro nombre aparezca en la lista de los ficheros del directorio indicado por el parámetro
+        dir.
+    </p>
+    <p>
+        En el siguiente ejemplo vemos cómo se listan los ficheros de la carpeta c:\datos que tengan la
+        extensión .odt. Usamos try y
+        <code>
+            catch
+        </code>
+        para capturar las posibles excepciones, como que
+        no exista dicha carpeta.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el siguiente proyecto tienes un pequeño ejemplo de uso:
+    </p>
+    <p class="enlace_centrado">
+        Filtrar
+        ficheros.
+        <span class="tamano">
+         (32.00 KB)
+        </span>
+    </p>
+</div><h1 class="title">
+    7.3.- Creación y eliminación de ficheros y directorios.
+</h1>
+<div class="iDevice_content">
+    <p>
+        Podemos
+        <strong>
+            crear un fichero
+        </strong>
+        del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Creamos el objeto que encapsula el fichero, por ejemplo, suponiendo que vamos a crear un
+            fichero llamado miFichero.txt, en la carpeta C:\prueba, haríamos:
+            <div class="codigo elemento_centrado" style="width: 35.15em;">
+                <div class="texto_izquierda">
+           <pre>File fichero = new File("c:\\prueba\\miFichero.txt");
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            A partir del objeto File creamos el fichero físicamente, con la siguiente instrucción, que
+            devuelve un boolean con valor true si se creó correctamente, o false si no se pudo crear:
+            <div class="codigo elemento_centrado" style="width: 18.65em;">
+                <div class="texto_izquierda">
+           <pre>fichero.createNewFile()
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p>
+        Para
+        <strong>
+            borrar un fichero
+        </strong>
+        , podemos usar la clase File, comprobando previamente si
+        existe, del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Fijamos el nombre de la carpeta y del fichero con:
+            <div class="codigo elemento_centrado" style="width: 34.6em;">
+                <div class="texto_izquierda">
+           <pre>File fichero = new File("C:\\prueba", "agenda.txt");
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Comprobamos si existe el fichero con exists() y si es así lo borramos con:
+            <div class="codigo elemento_centrado" style="width: 15.35em;">
+                <div class="texto_izquierda">
+           <pre>if (fichero.exists())<br/>    fichero.delete();
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p>
+        Para
+        <strong>
+            crear directorios
+        </strong>
+        , podríamos hacer lo siguiente (se crea un directorio en
+        la unidad C, en la raíz, y también tres carpetas en la carpeta del proyecto):
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p class="enlace_centrado">
+        Crear
+        directorios.
+        <span class="tamano">
+         (12 KB)
+        </span>
+    </p>
+    <p>
+        Para
+        <strong>
+            borrar un directorio
+        </strong>
+        con Java tenemos que borrar cada uno de los ficheros y
+        directorios que éste contenga. Al poder almacenar otros directorios, se podría recorrer
+        recursivamente el directorio para ir borrando todos los ficheros.
+    </p>
+    <p>
+        Se puede listar el contenido del directorio con:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28.55em;">
+        <div class="texto_izquierda">
+         <pre>File[] ficheros = directorio.listFiles();
+</pre>
+        </div>
+    </div>
+    <p>
+        y entonces poder ir borrando. Si el elemento es un directorio, lo sabemos mediante el método
+        isDirectory,
+    </p>
+</div><h1 class="title">
+    8.- Almacenamiento de objetos en ficheros. Persistencia.
+    Serialización.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para la aplicación de la clínica veterinaria
+        <strong>
+            María
+        </strong>
+        le propone a
+        <strong>
+            Juan
+        </strong>
+        emplear un fichero para guardar los datos de los clientes de la clínica.
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Como vamos a guardar datos de la clase Cliente, tendremos que
+        serializar los datos.
+    </p>
+</div><h1 class="title">
+    8.1.- Serialización: utilidad.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La serialización en Java se desarrolló para utilizarse con
+        RMI
+
+
+        RMI
+
+        Permite a un objeto en una máquina virtual invocar métodos de otro objeto en otra máquina virtual, que podría
+        estar perfectamente en otro ordenador diferente, enviando parámetros y devolviendo valores a través de Internet.
+        .
+        <abbr title="Remote Method Invocation">
+            RMI
+        </abbr>
+        necesitaba un modo de
+        convertir los parámetros necesarios a enviar a un objeto en una máquina remota, y también para
+        devolver valores desde ella, en forma de flujos de bytes. Para datos primitivos es fácil, pero
+        para objetos más complejos no tanto, y ese mecanismo es precisamente lo que proporciona la
+        serialización.
+    </p>
+    <p>
+        El método writeObject se utiliza para guardar un objeto a través de un flujo de salida. El objeto
+        pasado a writeObject debe implementar el interfaz Serializable.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39.55em;">
+        <div class="texto_izquierda">
+         <pre>FileOutputStream fisal = new FileOutputStream(“cadenas.out”);
+</pre>
+            <pre>ObjectOutputStream oos = new ObjectOutputStream(fisal);
+</pre>
+            <pre>Oos.writeObject();
+</pre>
+        </div>
+    </div>
+    <p>
+        La serialización de objetos se emplea también en la arquitectura de componentes software
+        <span lang="en">
+         JavaBean
+        </span>
+        . Las clases bean se cargan en herramientas de construcción de
+        software visual, como NetBeans. Con la paleta de diseño se puede personalizar el bean asignando
+        fuentes, tamaños, texto y otras propiedades.
+    </p>
+    <p>
+        Una vez que se ha personalizado el bean, para guardarlo, se emplea la serialización: se almacena
+        el objeto con el valor de sus campos en un fichero con extensión .ser, que suele emplazarse
+        dentro de un fichero .jar.
+    </p>
+</div><h1 class="title">
+    9.- Tratamiento de documentos estructurados XML.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        ya ha terminado lo principal, ya es capaz de procesar el pedido y de
+        almacenar la información en estructuras de memoria que luego podrá proyectar a un
+        documento
+        <abbr title="eXtended Markup Language">
+            XML
+        </abbr>
+        , incluso ha
+        ordenado los artículos en base al código de artículo, definitivamente era bastante más
+        fácil de lo que ella pensaba.
+    </p>
+    <p>
+        Ahora le toca la tarea más ardua de todas, o al menos así lo ve ella, generar el
+        documento
+        <abbr title="eXtended Markup Language">
+            XML
+        </abbr>
+        con la
+        información del pedido. ¿Le resultará muy difícil?
+    </p>
+</div><h1 class="title">
+    9.1.- ¿Qué es un documento XML?
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Los documentos
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        son documentos
+        que solo utilizan los elementos expuestos en el apartado anterior (declaración, etiquetas,
+        comentarios, etc.) de
+        <strong>
+            forma estructurada
+        </strong>
+        . Siguen una estructura de árbol,
+        pseudo-jerárquica, permitiendo agrupar la información en diferentes niveles, que van desde la
+        raíz a las hojas.
+    </p>
+    <p>
+        Para comprender la estructura de un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        vamos a utilizar
+        una terminología afín a la forma en la cual procesaremos los documentos
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        . Un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        está compuesto desde el punto
+        de vista de programación por nodos, que pueden (o no) contener otros nodos. Todo es un nodo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El par formado por la etiqueta de apertura ("&lt;etiqueta&gt;") y por la de cierre ("&lt;/etiqueta&gt;"),
+            junto con todo su contenido (elementos, atributos y texto de su interior) es un nodo llamado
+            <strong>
+                elemento
+            </strong>
+            (Element desde el punto de vista de programación). Un elemento
+            puede contener otros elementos, es decir, puede contener en su interior subetiquetas, de
+            forma anidada.
+        </li>
+        <li>
+            Un
+            <strong>
+                atributo
+            </strong>
+            es un nodo especial llamado atributo (Attr desde el punto de
+            vista de programación), que solo puede estar dentro de un elemento (concretamente dentro de
+            la etiqueta de apertura).
+        </li>
+        <li>
+            El
+            <strong>
+                texto
+            </strong>
+            es un nodo especial llamado texto (Text), que solo puede estar
+            dentro de una etiqueta.
+        </li>
+        <li>
+            Un
+            <strong>
+                comentario
+            </strong>
+            es un nodo especial llamado comentario (Comment), que puede
+            estar en cualquier lugar del documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            .
+        </li>
+        <li>
+            Y por último, un
+            <strong>
+                documento
+            </strong>
+            (Document) es un nodo que contiene una jerarquía
+            de nodos en su interior. Está formado opcionalmente por una declaración, opcionalmente por
+            uno o varios comentarios y
+            <strong>
+                obligatoriamente por un único elemento
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Esto es un poco lioso, ¿verdad? Vamos a clarificarlo con ejemplos.
+    </p>
+    <p>
+        Primero, tenemos que entender la diferencia entre nodos padre y nodos hijo. Un elemento (par de
+        etiquetas) puede contener varios nodos hijo, que pueden ser texto u otros elementos. Por
+        ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+         <pre><padre att1="valor" att2="valor">
+</pre>
+            <pre>   texto 1
+</pre>
+            <pre>   <ethija> texto 2 </ethija>
+</pre>
+            <pre></padre>
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el ejemplo anterior, el elemento padre tendría dos hijos: el texto "texto 1", sería el primer
+        hijo, y el elemento etiquetado como "ethija", el segundo. Tendría también dos atributos, que
+        serían nodos hijo también, pero que se consideran especiales y la forma de acceso es diferente.
+        A su vez, el elemento "ethija" tiene un nodo hijo, que será el texto "texto 2". ¿Fácil no?
+    </p>
+    <p>
+        Ahora veamos el conjunto, un documento estará formado, como se dijo antes, por algunos elementos
+        opcionales, y obligatoriamente por un único elemento (es decir, por un único par de etiquetas
+        que lo engloba todo) que contendrá internamente el resto de información como nodos hijo. Por
+        ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 31.3em;">
+        <div class="texto_izquierda">
+         <pre><?xml version="1.0" encoding="ISO-8859-1"?>
+</pre>
+            <pre><pedido>
+</pre>
+            <pre><cliente> texto </cliente>
+</pre>
+            <pre><codCliente> texto </codCliente>
+</pre>
+            <pre>...
+</pre>
+            <pre></pedido>
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        La etiqueta pedido del ejemplo anterior, será por tanto el elemento raíz del documento y dentro
+        de él estará toda la información del documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        . Ahora seguro
+        que es más fácil, ¿no?
+    </p>
+    <p>
+        Se puede y se suele usar
+        <strong>
+            indentación
+        </strong>
+        para que visualmente se vea con más
+        claridad qué etiquetas van dentro de qué otras, aunque su uso no es obligado, ya que como
+        dijimos antes, el
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        no está
+        pensado para ser leído por humanos, (aunque puedan hacerlo) sino por la aplicación de forma
+        automática. Para el ordenador, la indentación es irrelevante.
+    </p>
+</div><h1 class="title">
+    9.2.- Librerías para procesar documentos XML (I). Convertir el
+    archivo XML a árbol DOM
+</h1>
+<div class="iDevice_content">
+
+    <p>
+        ¿Quién establece las bases del
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        ?
+    </p>
+    <p>
+        El
+        <abbr lang="en" title="World Wide Web Consortium.">
+            W3C
+        </abbr>
+        o
+        <span lang="en">
+         World Wide Web Consortium
+        </span>
+        (Consorcio para la gran red mundial) es la entidad que establece las bases del
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        . Dicha entidad, además de
+        describir cómo es el
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        internamente, define un montón de tecnologías estándar adicionales para verificar, convertir y
+        manipular documentos
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        .
+        Nosotros no vamos a explorar todas las tecnologías de
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        aquí (son
+        muchísimas), solamente vamos a usar dos de ellas, aquellas que nos van a permitir manejar de
+        forma simple un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Procesadores de
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            . Son
+            librerías para leer documentos
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            y comprobar que están bien
+            formados. En
+            <span lang="en">
+          Java
+         </span>
+            , el procesador más utilizado es
+            <abbr lang="en" title="Simple API for XML. (Interfaz de programación de aplicaciones simple para XML).">
+                SAX
+            </abbr>
+            , lo usaremos pero sin percatarnos casi de ello.
+        </li>
+        <li>
+            <abbr lang="en" title="Document Object Model.">
+                XML DOM
+            </abbr>
+            (Modelo de Objetos para
+            Documento). Permite transformar un documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            en un modelo
+            de objetos (de hecho
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            significa
+            <span lang="en">
+          Document Object Model
+         </span>
+            ), accesible cómodamente desde el lenguaje de
+            programación.
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            almacena cada
+            elemento, atributo, texto, comentario,
+            <abbr title="etcétera.">
+                etc.
+            </abbr>
+            del documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            en una estructura tipo
+            árbol compuesta por nodos fácilmente accesibles, sin perder la jerarquía del documento. A
+            partir de ahora, la estructura
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            que
+            almacena un
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            la llamaremos
+            árbol o jerarquía de objetos
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        En
+        <span lang="en">
+         Java
+        </span>
+        , éstas y otras funciones están implementadas en la librería
+        <abbr lang="en" title="API de Java para el procesamiento de XML. (Java API for XML Processing).">
+            JAXP
+        </abbr>
+        (
+        <span lang="en">
+         Java
+         <abbr title="Application Programming Interface.">
+          API
+         </abbr>
+         for
+         <abbr title="eXtended Markup Language.">
+          XML
+         </abbr>
+         Processing
+        </span>
+        ), y ya van
+        incorporadas en la edición estándar de
+        <span lang="en">
+         Java
+        </span>
+        (
+        <span lang="en">
+         Java
+        </span>
+        <abbr lang="en" title="Standard Edition.">
+            SE
+        </abbr>
+        ). En primer lugar vamos a ver cómo convertir
+        un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        a un árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        , y viceversa, para después ver cómo
+        manipular desde
+        <span lang="en">
+         Java
+        </span>
+        un árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        .
+    </p>
+    <p>
+        Para cargar un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        tenemos que hacer uso de un procesador de documentos
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        (conocidos
+        generalmente como
+        <strong>
+         <span lang="en">
+          parsers
+         </span>
+            )
+        </strong>
+        y de un constructor de
+        documentos
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        . Las clases de
+        <span lang="en">
+         Java
+        </span>
+        que tendremos que utilizar son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            javax.xml.parsers.DocumentBuilder: será el procesador y transformará un documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            a árbol
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            , se le conoce como constructor de
+            documentos.
+        </li>
+        <li>
+            javax.xml.parsers.DocumentBuilderFactory: permite crear un constructor de documentos, es una
+            fábrica de constructores de documentos.
+        </li>
+        <li>
+            org.w3c.dom.Document: una instancia de esta clase es un documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            pero almacenado en memoria
+            siguiendo el modelo
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            . Cuando el
+            <span lang="en">
+          parser
+         </span>
+            procesa un documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            creará una instancia de la
+            clase Document con el contenido del documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        Ahora bien, ¿esto cómo se usa?
+    </p>
+    <p>
+        Pues de una forma muy fácil, en pocas líneas (no olvides importar las tres clases anteriores,
+        DocumentBuilder,
+        <code>
+            DocumentBuilderFactory
+        </code>
+        y Document):
+    </p>
+    <div class="codigo elemento_centrado" style="width: 69.25em;">
+        <div class="texto_izquierda">
+         <pre>try &#123;
+</pre>
+            <pre>            // 1º Creamos una nueva instancia de un fábrica de constructores de documentos.
+</pre>
+            <pre>            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+</pre>
+            <pre>            // 2º A partir de la instancia anterior, fabricamos un constructor de documentos, que procesará el XML.
+</pre>
+            <pre>            DocumentBuilder db = dbf.newDocumentBuilder();
+</pre>
+            <pre>            // 3º Procesamos el documento (almacenado en un archivo) y lo convertimos en un árbol DOM.
+</pre>
+            <pre>            Document documento=db.parse(CaminoAArchivoXml);
+</pre>
+            <pre>&#125; catch (Exception ex) &#123;
+</pre>
+            <pre>            System.out.println("¡Error! No se ha podido cargar el documento XML.");
+</pre>
+            <pre>&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En este sentido (convertir el archivo
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        a árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        ) no tiene mucha complicación, pero es un
+        pelín más complicado para hacer el camino inverso (pasar el
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        a
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        ).
+    </p>
+    <p>
+        Este proceso puede generar hasta tres tipos de excepciones diferentes. La más común, que el
+        documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        esté mal formado,
+        por lo que tienes que tener cuidado con la sintaxis
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    9.2.1.- Librerías para procesar documentos XML (II). Transformar
+    el árbol DOM en archivo XML.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        ¿Y cómo paso la jerarquía o árbol de objetos
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        a
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        ?
+    </p>
+    <p>
+        Como hemos dicho en el apartado anterior, en
+        <span lang="en">
+         Java
+        </span>
+        esto es un pelín más
+        complicado que la operación inversa, y requiere el uso de un montón de clases del paquete
+        java.xml.transform, pues la idea es transformar el árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        en un
+        archivo de texto que contiene el documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        .
+    </p>
+    <p>
+        Las clases que tendremos que usar son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            javax.xml.transform.TransformerFactory. Fábrica de transformadores, permite crear un nuevo
+            transformador que convertirá el árbol
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            a
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            .
+        </li>
+        <li>
+            javax.xml.transform.Transformer. Transformador que permite pasar un árbol
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            a
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            .
+        </li>
+        <li>
+            javax.xml.transform.TransformerException. Excepción lanzada cuando se produce un fallo en la
+            transformación.
+        </li>
+        <li>
+            javax.xml.transform.OutputKeys. Clase que contiene opciones de salida para el transformador.
+            Se suele usar para indicar la codificación de salida (generalmente
+            <abbr title="8-bit Unicode Transformation Format.">
+                UTF-8
+            </abbr>
+            ) del
+            documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            generado.
+        </li>
+        <li>
+            javax.xml.transform.dom.DOMSource. Clase que actuará de intermediaria entre el árbol
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            y el transformador, permitiendo al
+            transformador acceder a la información del árbol
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            .
+        </li>
+        <li>
+            javax.xml.transform.stream.StreamResult. Clase que actuará de intermediaria entre el
+            transformador y el archivo o String donde se almacenará el documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            generado.
+        </li>
+        <li>
+            java.io.File. Clase que, como posiblemente sabrás, permite leer y escribir en un archivo
+            almacenado en disco. El archivo será obviamente el documento
+            <abbr title="eXtended Markup Language.">
+                XML
+            </abbr>
+            que vamos a escribir en el
+            disco.
+        </li>
+    </ul>
+    <p>
+        Esto es un poco lioso, ¿o no? No lo es tanto cuando se ve un ejemplo de cómo realizar el proceso
+        de transformación de árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        a
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        , así que veamos ese ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 64.3em;">
+        <div class="texto_izquierda">
+         <pre>try &#123;
+</pre>
+            <pre>            // 1º Creamos una instancia de la clase File para acceder al archivo donde guardaremos el XML.
+</pre>
+            <pre>            File f=new File(CaminoAlArchivoXML);
+</pre>
+            <pre>            //2º Creamos una nueva instancia del transformador a través de la fábrica de transformadores.
+</pre>
+            <pre>            Transformer transformer = TransformerFactory.newInstance().newTransformer();
+</pre>
+            <pre>            //3º Establecemos algunas opciones de salida, como por ejemplo, la codificación de salida.
+</pre>
+            <pre>            transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+</pre>
+            <pre>            transformer.setOutputProperty(OutputKeys.ENCODING, "UTF-8");
+</pre>
+            <pre>            //4º Creamos el StreamResult, que intermediará entre el transformador y el archivo de destino.
+</pre>
+            <pre>            StreamResult result = new StreamResult(f);
+</pre>
+            <pre>            //5º Creamos el DOMSource, que intermediará entre el transformador y el árbol DOM.
+</pre>
+            <pre>            DOMSource source = new DOMSource(doc);
+</pre>
+            <pre>            //6º Realizamos la transformación.
+</pre>
+            <pre>            transformer.transform(source, result);
+</pre>
+            <pre>&#125; catch (TransformerException ex) &#123;
+</pre>
+            <pre>     System.out.println("¡Error! No se ha podido llevar a cabo la transformación.");
+</pre>
+            <pre>&#125;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    9.3.- Manipulación de documentos XML (I). Obtener el elemento
+    raíz, y buscar un elemento.
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Bien, ahora sabes cargar un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        a árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        y de árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        a
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        , pero, ¿cómo se modifica el árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        ?
+    </p>
+    <p>
+        Cómo ya se dijo antes, un árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        es una
+        estructura en árbol, jerárquica como cabe esperar, formada por nodos de diferentes tipos. El
+        funcionamiento del modelo de objetos
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        es establecido por el organismo
+        <abbr lang="en" title="World Wide Web Consortium.">
+            W3C
+        </abbr>
+        ,
+        lo cual tiene una gran ventaja:
+        <strong>
+            el modelo es prácticamente el mismo en todos los
+            lenguajes de programación
+        </strong>
+        .
+    </p>
+    <p>
+        En
+        <span lang="en">
+         Java
+        </span>
+        , prácticamente todas las clases que vas a necesitar para manipular
+        un árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        están en el paquete
+        org.w3c.dom. Si vas a hacer un uso muy intenso de
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        es conveniente que
+        hagas una importación de todas las clases de este paquete ("import org.w3c.dom.*;").
+    </p>
+    <p>
+        Tras convertir un documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        a
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        lo que obtenemos es una instancia de
+        la clase org.w3c.dom.Document. Esta instancia será el nodo principal que contendrá en su
+        interior toda la jerarquía del documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        .
+        Dentro de un documento o árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        podremos encontrar los siguientes tipos de clases:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            org.w3c.dom.Node (Nodo). Todos los objetos contenidos en el árbol
+            <abbr lang="en" title="Document Object Model.">
+                DOM
+            </abbr>
+            son nodos. La clase Document es
+            también un tipo de nodo, considerado el nodo principal.
+        </li>
+        <li>
+            org.w3c.dom.Element (Elemento). Corresponde con cualquier par de etiquetas ("&lt;&gt; &lt;/&gt;")
+            y todo su contenido (atributos, texto, subetiquetas,
+            <abbr title="etcétera.">
+                etc.
+            </abbr>
+            ).
+        </li>
+        <li>
+            org.w3c.dom.Attr (Atributo). Corresponde con cualquier atributo.
+        </li>
+        <li>
+            org.w3c.dom.Comment (Comentario). Corresponde con un comentario.
+        </li>
+        <li>
+            org.w3c.dom.Text (Texto). Corresponde con el texto que encontramos dentro de dos
+            etiquetas.
+        </li>
+    </ul>
+    <p>
+        ¿A qué te resultan familiares?
+    </p>
+    <p>
+        Claro que sí. Estas clases tendrán diferentes métodos para acceder y manipular la información del
+        árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        . A continuación vamos a ver las
+        operaciones más importantes sobre un árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        . En todos los ejemplos,
+        "documento" corresponde con una instancia de la clase Document.
+    </p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Obtener el elemento raíz del documento
+         </strong>
+         .
+        </span>
+    </p>
+    <p>
+        Como ya sabes, los documentos
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        deben tener obligatoriamente un único elemento ("&lt;pedido&gt;&lt;/pedido&gt;" por ejemplo),
+        considerado el elemento raíz, dentro del cual está el resto de la información estructurada de
+        forma jerárquica. Para obtener dicho elemento y poder manipularlo podemos usar el método
+        getDocumentElement().
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre>Element raiz=<strong>documento</strong>.getDocumentElement();
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Buscar un elemento en toda la jerarquía del documento
+         </strong>
+         .
+        </span>
+    </p>
+    <p>
+        Para realizar esta operación se puede usar el método getElementsByTagName() disponible tanto en
+        la clase Document como en la clase Element. Dicha operación busca un elemento por el nombre de
+        la etiqueta y retorna una lista de nodos (NodeList) que cumplen con la condición. Si se usa en
+        la clase Element, solo buscará entre las subetiquetas (subelementos) de dicha clase (no en todo
+        el documento).
+    </p>
+    <div class="codigo elemento_centrado" style="width: 34.05em;">
+        <div class="texto_izquierda">
+         <pre>NodeList listaNodos=<strong>documento</strong>.getElementsByTagName("cliente");
+</pre>
+            <pre>Element cliente;
+</pre>
+            <pre>if (<code>listaNodos.getLength()==1)&#123; </pre>
+            <pre>     cliente=(Element)<code><code>listaNodos.item(0);</pre>
+            <pre>&#125;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El método getLength() de la clase NodeList, permite obtener el número de elementos (longitud de
+        la lista) encontrados cuyo nombre de etiqueta es coincidente. El método item() permite acceder a
+        cada uno de los elementos encontrados, y se le pasa por argumento el índice del elemento a
+        obtener (empezando por cero y acabando por longitud menos uno). Fíjate que es necesario hacer
+        una conversión de tipos después de invocar el método item(). Esto es porque la clase NodeList
+        almacena un listado de nodos (Node), sin diferenciar el tipo.
+    </p>
+</div><h1 class="title">
+    9.3.1.- Manipulación de documentos XML (II). Obtener y procesar
+    la lista de hijos y añadir uno nuevo.
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-NC-SA" style="width: 136px;">
+    </div>
+    <p>
+        <br>
+        ¿Y qué más operaciones puedo realizar sobre un árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        ? Veámoslas.
+        <br/></p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Obtener la lista de hijos de un elemento y procesarla
+         </strong>
+         .
+        </span>
+    </p>
+    <p>
+        Se trata de obtener una lista con los nodos hijo de un elemento cualquiera, estos pueden ser un
+        sub-elemento (sub-etiqueta) o texto. Para sacar la lista de nodos hijo se puede usar el método
+        getChildNodes():
+    </p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+            <pre>NodeList listaNodos=documento.getDocumentElement().getChildNodes();</pre>
+            <pre>for (int i=0; i<listaNodos.getLength();i++) &#123;</pre>
+            <pre>    Node nodo=listaNodos.item(i);</pre>
+            <pre>    switch (nodo.getNodeType())&#123;</pre>
+            <pre>        case Node.ELEMENT_NODE: </pre>
+            <pre>             Element elemento = (Element) nodo;</pre>
+            <pre>             System.out.println("Etiqueta:" + elemento.getTagName());</pre>
+            <pre>             break;</pre>
+            <pre>        case Node.TEXT_NODE: </pre>
+            <pre>             Text texto = (Text) nodo;</pre>
+            <pre>             System.out.println("Texto:" + texto.getWholeText());</pre>
+            <pre>             break;</pre>
+            <pre>    &#125;       </pre>
+            <pre>&#125;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el ejemplo anterior se usan varios métodos. El método getNodeType() de la clase Node permite
+        saber de qué tipo de nodo se trata, generalmente texto (Node.TEXT_NODE) o un sub-elemento
+        (Node.ELEMENT_NODE). De esta forma podremos hacer la conversión de tipos adecuada y gestionar
+        cada elemento según corresponda. También se usa el método getTagName() aplicado a un elemento,
+        lo cual permitirá obtener el nombre de la etiqueta, y el método getWholeText() aplicado a un
+        nodo de tipo texto (Text), que permite obtener el texto contenido en el nodo.
+    </p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Añadir un nuevo elemento hijo a otro elemento
+         </strong>
+         .
+        </span>
+    </p>
+    <p>
+        Hemos visto cómo mirar qué hay dentro de un documento
+        <abbr title="eXtended Markup Language">
+            XML
+        </abbr>
+        pero no
+        hemos visto cómo añadir cosas a dicho documento. Para añadir un sub-elemento o un texto a un
+        árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        , primero hay que crear los nodos
+        correspondientes y después insertarlos en la posición que queramos. Para crear un nuevo par de
+        etiquetas o elemento (Element) y un nuevo nodo texto (Text), lo podemos hacer de la siguiente
+        forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35.15em;">
+        <div class="texto_izquierda">
+         <pre>Element direccionTag=documento.createElement("DIRECCION_ENTREGADA")
+</pre>
+            <pre>Text direccionTxt=documento.createTextNode("C/Perdida S/N");
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Ahora los hemos creado, pero todavía no los hemos insertado en el documento. Para ello podemos
+        hacerlo usando el método appendChild() que añadirá el nodo (sea del tipo que sea) al final de la
+        lista de hijos del elemento correspondiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 31.3em;">
+        <div class="texto_izquierda">
+         <pre> direccionTag.appendChild(direccionTxt);
+</pre>
+            <pre> documento.getDocumentElement().appendChild(direccionTag);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el ejemplo anterior, el texto se añade como hijo de la etiqueta "DIRECCION_ENTREGADA", y a su
+        vez, la etiqueta&nbsp;"DIRECCION_ENTREGADA" se añade como hijo, al final del todo, de la
+        etiqueta o elemento raíz del documento. Aparte del método appendChild(), que siempre insertará
+        al final, puedes utilizar los siguientes métodos para insertar nodos dentro de un
+        árbol
+        <abbr lang="en" title="Document Object Model.">
+            DOM
+        </abbr>
+        (todos se usan sobre la
+        clase Element):
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            insertBefore (Node nuevoNodo, Node nodoReferencia). Insertará un nodo nuevo antes del nodo
+            de referencia (nodoReferencia).
+        </li>
+        <li>
+            replaceChild (Node nuevoNodo, Node nodoAnterior). Sustituye un nodo (nodoAnterior) por uno
+            nuevo.
+        </li>
+    </ul>
+</div><h1 class="title">
+    9.3.2.- Manipulación de documentos XML (III). Eliminar un hijo y
+    modificar un elemento texto.
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 200px;">
+    </div>
+    <p>
+        <br>
+        Seguimos con las operaciones sobre árboles
+        <abbr title="Document Object Model.">
+            DOM
+        </abbr>
+        .
+        ¿Sabrías cómo eliminar nodos de un árbol? ¿No? Vamos a descubrirlo.
+        <br/></p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Eliminar un elemento hijo de otro elemento
+         </strong>
+         .
+        </span>
+    </p>
+    <p>
+        Para eliminar un nodo, hay que recurrir al nodo padre de dicho nodo. En el nodo padre se invoca
+        el método removeChild(), al que se le pasa la instancia de la clase Element con el nodo a
+        eliminar (no el nombre de la etiqueta, sino la instancia), lo cual implica que primero hay que
+        buscar el nodo a eliminar, y después eliminarlo. Veamos un ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 38.45em;">
+        <div class="texto_izquierda">
+         <pre>NodeList listaNodos3=documento.getElementsByTagName("DIRECCION_ENTREGA");
+</pre>
+            <pre>for (int i=0;i<<code>listaNodos3.getLength();i++)&#123;
+</pre>
+            <pre>     Element elemento=(Element) <code>listaNodos3.item(i);
+</pre>
+            <pre>     Element padre = (Element)<code>elemento.getParentNode();
+</pre>
+            <pre>     padre.removeChild(elemento);
+</pre>
+            <pre>&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el ejemplo anterior se eliminan todas las etiquetas, estén donde estén, que se llamen
+        "DIRECCION_ENTREGA". Para ello ha sido necesario buscar todos los elementos cuya etiqueta sea
+        esa (como se explicó en ejemplos anteriores), recorrer los resultados obtenidos de la búsqueda,
+        obtener el nodo padre del hijo a través del método getParentNode(), para así poder eliminar el
+        nodo correspondiente con el método removeChild().
+    </p>
+    <p>
+        No es obligatorio obviamente invocar al método getParentNode() si el nodo padre es conocido. Por
+        ejemplo, si el nodo es un hijo del elemento o etiqueta raíz, hubiera bastado con poner lo
+        siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre>documento.getDocumentElement().removeChild(elemento);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Cambiar el contenido de un elemento cuando solo es texto
+         </strong>
+         .
+        </span>
+    </p>
+    <p>
+        Los métodos getTextContent() y
+        <code>
+            setTextContent()
+        </code>
+        , aplicados a un elemento, permiten
+        respectivamente acceder al texto contenido dentro de un elemento o etiqueta o modificar dicho
+        contenido. Tienes que tener cuidado, porque utilizar setTextContent() significa eliminar
+        cualquier hijo (sub-elemento por ejemplo) que previamente tuviera la etiqueta. Ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 54.4em;">
+        <div class="texto_izquierda">
+         <pre>Element nuevo=documento.createElement(DIRECCION_RECOGIDA").setTextContent("C/Del Medio S/N");
+</pre>
+            <pre>System.out.println(nuevo.getTextContent());
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    9.3.3.- Manipulación de documentos XML (IV). Manejar atributos de
+    un elemento.
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        El documento
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        que tiene
+        que generar
+        <strong>
+            Ana
+        </strong>
+        tiene que seguir un formato específico, para que la
+        otra aplicación sea capaz de entenderlo. Esto significa que los nombres de las etiquetas
+        tienen que ser unos concretos para cada dato del pedido. Ésta ha sido quizás la parte
+        que más complicada, ver cómo encajar cada dato del mapa con su correspondiente etiqueta
+        en
+        <abbr title="eXtended Markup Language.">
+            XML
+        </abbr>
+        , pero ha
+        conseguido resolverlo de forma elegante. De hecho, ya ha terminado su trabajo, ¿quieres
+        ver el resultado?
+    </p>
+    <div class="enlace_centrado">
+        Procesar
+        archivo de pedido completo.
+        <span class="tamano">
+           (0.01 MB)
+          </span>
+    </div>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1>
+<div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p align="center" style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por
+                el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la
+                Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

@@ -1,0 +1,2077 @@
+<h1 class="title">
+    Estructuras de datos internas (memoria)
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p align="justify">
+        <strong>
+            Ana
+        </strong>
+        ha recibido un pequeño encargo de parte de su
+        tutora,
+        <strong>
+            María
+        </strong>
+        . Se trata de que realice un pequeño programita, muy
+        sencillo pero fundamental.
+    </p>
+    <p align="justify">
+          <span class="st">
+           —
+          </span>
+        Hola
+        <strong>
+            Ana
+        </strong>
+        , hoy tengo una tarea
+        especial para ti.
+    </p>
+    <p align="justify">
+          <span class="st">
+           —
+          </span>
+        ¿Sí? Estoy deseando, últimamente no hay nada que
+        se me resista, llevo dos semanas en racha
+        <span class="st">
+           —
+          </span>
+        comenta
+        <strong>
+            Ana
+        </strong>
+        .
+        <abbr title="eXtensible Markup Language">
+        </abbr>
+    </p>
+    <p align="justify">
+          <span class="st">
+           —
+          </span>
+        Bueno, quizás esto se te resista un poco más, es
+        fácil, pero tiene cierta complicación. En la aplicación que estás realizando para el
+        cliente, necesitamos poder manejar datos de diferente tipo de una forma ágil y dinámica,
+        manipular algo más que la información de un objeto o instancia concreta de datos...
+        Necesitamos que la aplicación pueda guardar y manejar con facilidad conjuntos más
+        grandes de datos complejos, como los pedidos que recibe, y Java aporta para eso algunas
+        herramientas muy potentes. ¿Has oído hablar de Colecciones, Listas, Conjuntos,
+        Mapas,...?
+    </p>
+    <p align="justify">
+          <span class="st">
+           —Sí que me suena, pero no lo he usado antes... ¿Facilita el trabajo o lo complica? —pregunta
+           <strong>
+            Ana.
+           </strong>
+          </span>
+    </p>
+    <p align="justify">
+          <span class="st">
+           —¡¡Lo facilita, por supuesto!! No te preocupes, a partir de ahora vas a practicar con todo ello para esta aplicación y vas a entender hasta qué punto simplifica las cosas. Te voy poniendo al día de lo que debes hacer.
+          </span>
+    </p>
+</div><h1 class="title">
+    1.- Clases y métodos genéricos (I)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+            María
+        </strong>
+        se acerca a la mesa de
+        <strong>
+            Ana
+        </strong>
+        , quiere saber cómo lo
+        lleva:
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        ¿Qué tal? ¿Cómo vas con la tarea?
+        <span class="st">
+           —
+          </span>
+        pregunta
+        <strong>
+            María
+        </strong>
+        .
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Bien, creo. Mi programita ya sabe procesar el archivo de pedido
+        y he creado un par de clases para almacenar los datos de forma estructurada, pero no sé
+        cómo almacenar los artículos del pedido, porque son varios
+        <span class="st">
+           —
+          </span>
+        comenta
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Pero, ¿cuál es el problema? Eso es algo sencillo.
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Pues que tengo que crear un
+        <span lang="en">
+           array
+          </span>
+        para
+        guardar en él los artículos del pedido, y no sé cómo averiguar el número de artículos
+        antes de empezar a procesarlos. Es necesario saber el número de artículos para crear el
+        <span lang="en">
+           array
+          </span>
+        del tamaño adecuado.
+    </p>
+    <p>
+          <span class="st">
+           —
+          </span>
+        Pues en vez de utilizar un
+        <span lang="en">
+           array
+          </span>
+        , podrías
+        utilizar
+        <strong>
+            una lista
+        </strong>
+        .
+        <span lang="en">
+           Java
+          </span>
+        proporciona maneras muy
+        flexibles de solucionar esto, usando "genéricos" como por ejemplo ArrayList.
+    </p>
+    <p>
+          <span class="st">
+           —Suena bien.
+          </span>
+        Tendré que informarme y probarlo.
+    </p>
+</div><h1 class="title">
+    1.1.- Clases y métodos genéricos (II)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 300px;">
+    </div>
+    <p>
+        ¿Crees qué el código es más legible al utilizar genéricos o que se complica?
+    </p>
+    <p>
+        La verdad es que al principio cuesta, pero después, el código se entiende mejor que si se empieza
+        a insertar conversiones de tipo.
+    </p>
+    <p>
+        <strong>
+            Las clases genéricas son equivalentes a los métodos genéricos pero a nivel de
+            clase
+        </strong>
+        , permiten definir un parámetro de tipo o genérico que se podrá usar a lo largo de
+        toda la clase, facilitando así crear clases genéricas que son capaces de trabajar con diferentes
+        tipos de datos base. Para crear una clase genérica se especifican los parámetros de tipo al lado
+        del nombre de la clase:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public class Util<T> &#123;
+    T t1;
+    public void invertir(T[] array) &#123;
+        for (int i = 0; i < array.length / 2; i++) &#123;
+            t1 = array[i];
+            array[i] = array[array.length - 1 - i];
+            array[array.length - 1 - i] = t1;
+        &#125;
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior, la clase Util contiene el método invertir() cuya función es invertir el
+        orden de los elementos de cualquier
+        <span lang="en">
+         array
+        </span>
+        , sea del tipo que sea. Para
+        ello, va intercambiando entre sí el primer elemento con el último (cuando i=0),&nbsp; el segundo
+        con el penúltimo (cuando i=1),
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        , hasta llegar a la mitad del
+        <span lang="en">
+         array
+        </span>
+        , momento en que se habrán intercambiado todos y el
+        <span lang="en">
+         array
+        </span>
+        estará
+        invertido.
+    </p>
+    <p>
+        Para usar esa clase genérica hay que crear un objeto o instancia de dicha clase especificando el
+        tipo base entre los símbolos menor que ("
+        <strong>
+            &lt;
+        </strong>
+        ") y mayor que ("&lt;strong&gt;&gt;&lt;/strong&gt;"),
+        justo detrás del nombre de la clase. Veamos un ejemplo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Integer[] numeros=&#123;0,1,2,3,4,5,6,7,8,9&#125;;
+Util<Integer> u= new Util<Integer>();
+u.invertir(numeros);
+for (int i=0;i<numeros.length;i++)&#123;
+    System.out.println(numeros[i]);
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Como puedes observar, el uso de genéricos es sencillo, tanto a nivel de clase como a nivel de
+        método. Simplemente, a la hora de crear una instancia de una clase genérica, hay que especificar
+        el tipo, tanto en la definición (Util &lt;Integer&gt; u) como en la creación (new Util&lt;Integer&gt;()).
+        Así, el objeto u es una instancia de la clase genérica Util particularizada para objetos de tipo
+        Integer. Por eso podemos invocar al método u.invertir(numeros), de forma que el parámetro formal
+        T[] array (un
+        <span lang="en">
+         array
+        </span>
+        de objetos de tipo T) se sustituye por el parámetro
+        actual numeros, que es un
+        <span lang="en">
+         array
+        </span>
+        de objetos de tipo Integer.
+    </p>
+    <p>
+        Ahora bien, a partir de Java 7 es posible utilizar el
+        <em>
+            <strong>
+                operador diamante
+            </strong>
+        </em>
+        ("&lt;&gt;") para simplificar la instanciación o creación de nuevos objetos a partir de clases
+        genéricas, de manera que la instanciación anterior podría quedar como new Util&lt;&gt;(), sin
+        necesidad de especificar el tipo "concreto" Integer en la llamada al constructor. El ejemplo
+        anterior completo quedaría entonces como sigue:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Integer[] numeros=&#123;0,1,2,3,4,5,6,7,8,9&#125;;
+Util<Integer> u= new Util<>();  // Sólo a partir de Java 7
+u.invertir(numeros);
+for (int i=0;i<numeros.length;i++)&#123; <br/>    System.out.println(numeros[i]);<br/>&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Por tanto, a partir de ahora,
+        <strong>
+            siempre que nos sea posible utilizaremos
+            el
+        </strong>
+        <em>
+            <strong>
+                operador diamante
+            </strong>
+        </em>
+        ("
+        <strong>
+            &lt;&gt;
+        </strong>
+        ") para
+        mejorar la legibilidad del código, aunque la otra opción es siempre posible (y necesaria si por
+        alguna razón se fuera a trabajar con versiones anteriores a
+        <span lang="en">
+         Java
+        </span>
+        7).
+    </p>
+    <p>
+        Los genéricos los vamos a usar ampliamente a partir de ahora, aplicados a un montón de clases
+        genéricas que tiene
+        <span lang="en">
+         Java
+        </span>
+        y que son de gran utilidad, por lo que es
+        conveniente que aprendas bien a usar una clase genérica.
+    </p>
+</div><h1 class="title">
+    2.- Introducción a las colecciones
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-pd" style="width: 133px;">
+    </div>
+    <p>
+        A
+        <strong>
+            Ana
+        </strong>
+        las listas siempre se le han atragantado, por eso procura evitar
+        usarlas, y eso la lleva a perder una gran cantidad de tiempo "inventando la rueda" para
+        conseguir lo que podría obtener de forma casi automática si aprovechara la potencia que
+        éstas proporcionan, sobre todo en el lenguaje
+        <span lang="en">
+           Java
+          </span>
+        .
+    </p>
+    <p>
+        Después de darle muchas vueltas, ha pensado que no le queda más remedio y que tendrá que
+        usarlas para almacenar los artículos del pedido. Además, se ha convencido que es la
+        mejor forma de gestionar un grupo de objetos, aunque sean del mismo tipo.
+    </p>
+    <p>
+        No sabe si lo más adecuado es usar una lista u otro tipo de colección, así que ha decido
+        revisar todos los tipos de colecciones disponibles en
+        <span lang="en">
+           Java
+          </span>
+        , para
+        ver cuál se adecua mejor a sus necesidades.
+    </p>
+    <p>
+        Así que se toma un descanso para mentalizarse, y atacar la cuestión con ánimos
+        renovados.
+    </p>
+</div><h1 class="title">
+    3.- Conjuntos (I). ¿Qué son y cómo se declaran? HashSet
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        se levanta para ir a sacar un café de la máquina, y en el
+        pasillo se encuentra con
+        <strong>
+            Juan
+        </strong>
+        , con el que entabla una conversación
+        bastante amena. Una cosa lleva a otra y al final,
+        <strong>
+            Ana
+        </strong>
+        saca el tema que
+        más le preocupa:
+    </p>
+    <p>
+        —¿Cuántos tipos de colecciones hay? ¿Tú lo sabes? —pregunta
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+    <p>
+        —¿Yo? ¡Qué va! Normalmente consulto la documentación cuando las voy a usar, como todo el
+        mundo. Lo que sí creo recordar es que había cuatro tipos básicos: los
+        <strong>
+            conjuntos
+        </strong>
+        , las
+        <strong>
+            listas
+        </strong>
+        , las
+        <strong>
+            colas
+        </strong>
+        y
+        alguno más que no recuerdo. ¡Ah, sí!, los
+        <strong>
+            mapas
+        </strong>
+        , aunque creo que no se
+        consideraban un tipo de colección. ¿Por qué lo preguntas?
+    </p>
+    <p>
+        —Pues porque tengo que usar uno y no sé cuál me irá mejor para mi aplicación.
+    </p>
+</div><h1 class="title">
+    3.1.- Conjuntos (II). ¿Cómo acceder a sus elementos?
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Y ahora te preguntarás, ¿cómo accedo a los elementos almacenados en un conjunto?
+    </p>
+    <p>
+        Para obtener todos los elementos almacenados en un conjunto hay que usar
+        <strong>
+            iteradores
+        </strong>
+        , que permiten obtener los elementos del conjunto uno a uno de forma
+        secuencial (es la única forma de acceder a todos los elementos de un conjunto).
+    </p>
+    <p>
+        Los iteradores se verán en mayor profundidad más adelante, así que de momento los utilizaremos de
+        forma "transparente" mediante un bucle
+        <strong>
+         <span lang="en">
+          "for-each
+         </span>
+        </strong>
+        " o
+        bucle "para cada". Este tipo de bucles ya los vimos en la unidad dedicada a las estructuras de
+        control, aunque apenas los habíamos utilizado hasta ahora. En el siguiente código tienes un
+        ejemplo de uso de un bucle
+        <strong>
+         <span lang="en">
+          for-each
+         </span>
+        </strong>
+        . En él
+        <strong>
+            la
+            variable i va tomando todos los valores almacenados en el conjunto hasta que llega al
+            último
+        </strong>
+        :
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>for (Integer i: conjunto) &#123;
+     System.out.println("Elemento almacenado:"+i);
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Como ves, la estructura
+        <strong>
+         <span lang="en">
+          for-each
+         </span>
+        </strong>
+        es muy sencilla: la
+        palabra for seguida de "
+        <span title="Paréntesis seguido de tipo de la variable y espacio, seguido de nombre de la variable que irá tomando el valor de cada elemento de la colección, dos puntos, y después la variable que contiene la colección. Finalmente cierre de paréntesis.">
+         (tipo variable:colección)
+        </span>
+        "
+        y el cuerpo del bucle, donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            tipo es el tipo del objeto sobre el que se ha creado la colección;
+        </li>
+        <li>
+            variable es la variable donde se almacenará cada elemento de la colección para ser procesado
+            en cada iteración;
+        </li>
+        <li>
+            colección es la colección en sí.
+        </li>
+    </ul>
+    <p>
+        Los bucles
+        <strong>
+         <span lang="en">
+          for-each
+         </span>
+        </strong>
+        se pueden usar para todas las
+        colecciones.
+    </p>
+</div><h1 class="title">
+    3.2.- Conjuntos (III). ¿En qué se diferencian LinkedHashSet y
+    TreeSet?
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha" style="text-align: left;">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        ¿En qué se diferencian las estructuras LinkedHashSet y
+        <code>
+            TreeSet
+        </code>
+        de la estructura
+        HashSet?
+    </p>
+    <p>
+        Ya se comentó antes: la diferencia se encuentra básicamente en
+        <strong>
+            su funcionamiento
+            interno
+        </strong>
+        que las hace más o menos eficientes y por tanto más o menos adecuadas
+        <strong>
+            según el tipo de operaciones más frecuentes
+        </strong>
+        que necesitemos realizar con los elementos
+        que contienen.
+    </p>
+    <p>
+        La estructura LinkedHashSet es una estructura que internamente funciona como una lista enlazada,
+        aunque usa también
+        <strong>
+            tablas
+            <span lang="en">
+          hash
+         </span>
+        </strong>
+        para poder acceder
+        rápidamente a los elementos. Una lista enlazada es una estructura similar a la representada en
+        la imagen de la derecha, la cual está compuesta por nodos (elementos que forman la lista) que
+        van enlazándose entre sí. Un nodo contiene dos cosas:
+        <strong>
+            el dato u objeto almacenado en la
+            lista y una referencia al siguiente nodo de la lista
+        </strong>
+        . Si no hay siguiente nodo, se
+        indica poniendo nulo (null) en la referencia al siguiente nodo.
+    </p>
+    <p>
+        Las listas enlazadas tienen un montón de operaciones asociadas en las que no vamos a profundizar:
+        eliminación de un nodo de la lista, inserción de un nodo al final, al principio o entre dos
+        nodos,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+    </p>
+    <p class="destacado">
+        <strong>
+            Gracias a las colecciones que nos proporciona
+            <span lang="en">
+          Java
+         </span>
+            podremos utilizar listas enlazadas sin tener que complicarnos, ni
+            conocer, los detalles de su programación y funcionamiento interno, ya que nos las proporciona
+            "listas para usar" cómodamente, con toda una serie de métodos disponibles, que nos proporciona
+            su interfaz.
+        </strong>
+    </p>
+    <p>
+        La estructura TreeSet, utiliza internamente árboles. Los árboles son como las listas pero mucho
+        más complejos. En vez de tener un único elemento siguiente, pueden tener dos o más elementos
+        siguientes, formando estructuras organizadas y jerárquicas.
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Los nodos se diferencian en dos tipos:
+        <strong>
+            nodos padre y nodos hijo
+        </strong>
+        ; un nodo padre
+        puede tener varios nodos hijo asociados (depende del tipo de árbol), dando lugar a una
+        estructura que parece un árbol invertido (de ahí su nombre).
+    </p>
+    <p>
+        En la figura de la derecha se puede apreciar un árbol donde cada nodo puede tener dos hijos,
+        denominados izquierdo (
+        <abbr title="Izquierdo o izquierda.">
+            izq
+        </abbr>
+        ) y derecho (
+        <abbr title="Derecha o derecho.">
+            dch
+        </abbr>
+        ). Puesto que un nodo hijo puede también ser padre
+        a su vez, los árboles se suelen visualizar para su estudio por niveles para entenderlos mejor,
+        donde cada nivel contiene hijos de los nodos del nivel anterior, excepto el primer nivel (que no
+        tiene padre).
+    </p>
+    <p>
+        Los árboles son estructuras complejas de manejar y que permiten operaciones muy sofisticadas. Los
+        árboles usados en los TreeSet, los árboles rojo-negro, son árboles auto-ordenados, es decir, que
+        al insertar un elemento, éste queda ordenado por su valor de forma que al recorrer el árbol,
+        pasando por todos los nodos, los elementos salen ordenados. El ejemplo mostrado en la imagen es
+        simplemente un árbol binario, el más simple de todos.
+    </p>
+    <p>
+        Nuevamente, no se va a profundizar en las operaciones que se pueden realizar en un árbol a nivel
+        interno (inserción de nodos, eliminación de nodos, búsqueda de un valor,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        ).
+        <strong>
+            Nos aprovecharemos de las colecciones para hacer uso de su potencial.
+        </strong>
+        En la
+        siguiente tabla tienes un uso comparado de TreeSet y
+        <code>
+            LinkedHashSet
+        </code>
+        . Su creación es
+        similar a como se hace con HashSet, simplemente sustituyendo el nombre de la clase HashSet por
+        una de las otras.
+        <strong>
+            Ni TreeSet, ni LinkedHashSet admiten duplicados
+        </strong>
+        , como
+        conjuntos que son, y se usan los mismos métodos ya vistos antes, los existentes en la interfaz
+        Set (que es la interfaz que implementan).
+    </p>
+    <table class="tabla">
+        <caption>
+            Ejemplos de utilización de los conjuntos TreeSet y
+            <code>
+                LinkedHashSet
+            </code>
+            .
+        </caption>
+        <thead>
+        <tr>
+            <td>
+            </td>
+            <th scope="col">
+                Conjunto TreeSet.
+            </th>
+            <th scope="col">
+                Conjunto LinkedHashSet.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                Ejemplo de uso
+            </th>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>TreeSet <Integer> t;
+t=new TreeSet<Integer>();
+t.add(new Integer(4));
+t.add(new Integer(3));
+t.add(new Integer(1));
+t.add(new Integer(99));
+for (Integer i:t)&#123;
+    System.out.println(i);
+&#125;</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="highlighted-code language-java">
+                    <div>
+             <pre>LinkedHashSet <Integer> t;
+t=new LinkedHashSet<Integer>();
+t.add(new Integer(4));
+t.add(new Integer(3));
+t.add(new Integer(1));
+t.add(new Integer(99));
+for (Integer i:t)&#123;
+    System.out.println(i);
+&#125;</pre>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Resultado mostrado por pantalla
+            </th>
+            <td>
+                <p>
+                    1 3 4 99
+                </p>
+                <p>
+                    (el resultado sale ordenado por valor)
+                </p>
+            </td>
+            <td>
+                <p>
+                    4 3 1 99
+                </p>
+                <p>
+                    (los valores salen ordenados según el momento de inserción en el conjunto)
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        En los ejemplos anteriores también se podría haber optado por usar una variable tipo Set. Por
+        ejemplo, en el caso del TreeSet podría ser como sigue (con el mismo resultado):
+    </p>
+    <center>
+        <div class="highlighted-code language-java" style="width: 70%;">
+            <div style="text-align: left;">
+          <pre>Set <Integer> t;
+t=new TreeSet<Integer>();</pre>
+            </div>
+        </div>
+    </center>
+</div><h1 class="title">
+    3.3.- Conjuntos (IV). Combinando datos de varias colecciones
+</h1>
+<div class="iDevice_content">
+    <p>
+        ¿Cómo podría copiar los elementos de un conjunto de uno a otro? ¿Hay que usar un bucle &lt;span
+        lang="en"&gt;for&lt;/span&gt; y recorrer toda la lista para ello?
+    </p>
+    <p>
+        ¡Qué va! Para facilitar esta tarea, los conjuntos, y las colecciones en general, facilitan un
+        montón de operaciones para poder combinar los datos de varias colecciones. Ya se vieron en un
+        apartado anterior, aquí simplemente vamos poner un ejemplo de su uso.
+    </p>
+    <p>
+        Partimos del siguiente ejemplo, en el que hay dos colecciones de diferente tipo, cada una con 4
+        números enteros:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>TreeSet<Integer> conjuntoA= new TreeSet<Integer>();
+conjuntoA.add(9); conjuntoA.add(19); conjuntoA.add(5); conjuntoA.add(7); // Elementos del conjunto A: 9, 19, 5 y 7
+
+LinkedHashSet<Integer> conjuntoB= new LinkedHashSet<Integer>();
+conjuntoB.add(10); conjuntoB.add(20); conjuntoB.add(5); conjuntoB.add(7); // Elementos del conjunto B: 10, 20, 5 y 7</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior, el literal de número se convierte automáticamente a la clase envoltorio
+        Integer sin tener que hacer nada, lo cual es una ventaja. Veamos las formas de combinar ambas
+        colecciones:
+    </p>
+    <table class="tabla">
+        <caption>
+            Tipos de combinaciones.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Combinación.
+            </th>
+            <th scope="col">
+                Código.
+            </th>
+            <th scope="col">
+                Elementos finales del conjunto A.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                <p>
+                    <strong>
+                        Unión
+                    </strong>
+                    .
+                </p>
+                <p>
+                    Añadir todos los elementos del conjunto B en el conjunto A.
+                </p>
+            </th>
+            <td>
+                &lt;code&gt;conjuntoA.addAll(conjuntoB)
+            </td>
+            <td>
+                <p>
+                    Todos los del conjunto A, añadiendo los del B, pero sin repetir los que ya están: 5,
+                    7, 9, 10, 19 y 20.
+                </p>
+                <div class="elemento_centrado">
+                    <div class="elemento_centrado">
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    <strong>
+                        Diferencia
+                    </strong>
+                    .
+                </p>
+                <p>
+                    Eliminar los elementos del conjunto B que puedan estar en el conjunto A.
+                </p>
+            </th>
+            <td>
+                &lt;code&gt;conjuntoA.removeAll(conjuntoB)
+            </td>
+            <td>
+                <p>
+                    Todos los elementos del conjunto A, que no estén en el conjunto B: 9, 19.
+                </p>
+                <div class="elemento_centrado">
+                    <div class="elemento_centrado">
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    <strong>
+                        Intersección
+                    </strong>
+                    .
+                </p>
+                <p>
+                    Retiene los elementos comunes a ambos conjuntos.
+                </p>
+            </th>
+            <td>
+                &lt;code&gt;conjuntoA.retainAll(conjuntoB)
+            </td>
+            <td>
+                <p>
+                    Todos los elementos del conjunto A, que también están en el conjunto B: 5 y 7.
+                </p>
+                <div class="elemento_centrado">
+                    <div class="elemento_centrado">
+
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        Recuerda, estas operaciones
+        <strong>
+            son comunes a todas las colecciones
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    3.4.- Conjuntos (V). Ordenando sus elementos
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Por defecto, los TreeSet ordenan sus elementos de forma ascendente, pero, ¿se podría cambiar el
+        orden de ordenación?
+    </p>
+    <p>
+        Los TreeSet tienen un conjunto de operaciones adicionales, además de las que incluye por el hecho
+        de ser un conjunto e implementar la interfaz Set, que permite entre otras cosas, cambiar la
+        forma de ordenar los elementos. Esto es especialmente útil cuando el tipo de objeto que se
+        almacena no es un simple número, sino algo más complejo (un artículo por ejemplo). TreeSet es
+        capaz de ordenar tipos básicos (números, cadenas y fechas) pero otro tipo de objetos no puede
+        ordenarlos con tanta facilidad.
+    </p>
+    <p>
+        Para indicar a un TreeSet cómo tiene que ordenar los elementos, debemos decirle cuándo un
+        elemento va antes o después que otro, y cuándo son iguales. Para ello, utilizamos la interfaz
+        genérica java.util.Comparator, usada en general en algoritmos de ordenación, como veremos más
+        adelante. Se trata de crear una clase que implemente dicha interfaz, así de fácil. Dicha
+        interfaz requiere de un único método que debe calcular si un objeto pasado por parámetro es
+        mayor, menor o igual que otro del mismo tipo. Veamos un ejemplo general de cómo implementar un
+        comparador para una hipotética clase "Objeto":
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>class ComparadorDeObjetos implements Comparator<Objeto> &#123;
+    public int compare(Objeto objeto1, Objeto objeto2) &#123; ... &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        La interfaz Comparator obliga a implementar un único método, es el método compare(), con dos
+        parámetros: los dos elementos a comparar. Las reglas son sencillas, a la hora de personalizar
+        dicho método:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si el primer objeto (objeto1) se considera menor que el segundo (o&lt;code&gt;bjeto2), debe
+            devolver un número entero negativo.
+        </li>
+        <li>
+            Si el primer objeto (o&lt;code&gt;bjeto1) se considera mayor que el segundo (o&lt;code&gt;bjeto2),
+            debe devolver un número entero positivo.
+        </li>
+        <li>
+            Si ambos son iguales, debe devolver 0.
+        </li>
+    </ul>
+    <p>
+        Te suena, ¿verdad? Es el mismo criterio que seguía el método compareTo() que usábamos para
+        comparar dos String... pero eso es otra historia
+    </p>
+    <p>
+        A veces, cuando el orden que deben tener los elementos es diferente al orden real (por ejemplo
+        cuando ordenamos los números en orden inverso), la definición de antes, pensando en menor y
+        mayor,&nbsp; puede ser un poco liosa, así que es recomendable en tales casos pensar en términos
+        de delante y detrás, o de antes y después, más o menos de la siguiente forma:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si el primer objeto (o&lt;code&gt;bjeto1) debe ir antes que el segundo objeto (o&lt;code&gt;bjeto2),
+            devolver entero negativo.
+        </li>
+        <li>
+            Si el primer objeto (o&lt;code&gt;bjeto1) debe ir después que el segundo objeto (o&lt;code&gt;bjeto2),
+            devolver entero positivo.
+        </li>
+        <li>
+            Si ambos son iguales, debe devolver 0.
+        </li>
+    </ul>
+    <p>
+        Una vez creado el comparador simplemente tenemos que pasarlo como parámetro en el momento de la
+        creación al TreeSet, y los datos internamente mantendrán dicha ordenación:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>Set<Objeto> ts=new TreeSet<Objeto>(new ComparadorDeObjetos());</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.- Listas (I). Definición y diferencias con los conjuntos
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        se queda pensando después de que
+        <strong>
+            Ana
+        </strong>
+        le preguntara
+        si sabía los tipos de colecciones que había en
+        <span lang="en">
+           Java
+          </span>
+        . Obviamente
+        no lo sabía, son muchos tipos, pero ya tenía una respuesta preparada:
+    </p>
+    <p>
+        —Bueno, sea lo que sea, siempre puedes utilizar una lista para almacenar cualquier cosa.
+        Yo siempre las uso, pues te permiten almacenar cualquier tipo de objeto, extraer uno de
+        la lista sin tener que recorrerla entera, o buscar si hay o no un elemento en ella, de
+        forma cómoda. Son para mí el mejor invento desde la rueda —dijo
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+    <p>
+        —Ya, supongo, pero hay dos tipos de listas que me interesan, LinkedList y
+        <code>
+            ArrayList.
+        </code>
+        ¿Cuál es mejor? ¿Cuál me conviene más? —pregunta
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    4.1.- Listas (II). ¿Cómo se usan?
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 274px;">
+    </div>
+    <p>
+        Y, ¿cómo se usan las listas? Pues para usar una lista haremos uso de sus implementaciones
+        LinkedList y
+        <code>
+            ArrayList
+        </code>
+        . Veamos un ejemplo de su uso y después obtendrás respuesta a
+        esta pregunta.
+    </p>
+    <p>
+        Supongo que intuirás cómo se usan, pero nunca viene mal un ejemplo sencillo, que nos aclare las
+        ideas. El siguiente ejemplo muestra cómo usar una LinkedList, pero valdría también para
+        ArrayList (no olvides importar las clases java.util.LinkedList y
+        <code>
+            java.util.ArrayList
+        </code>
+        según sea necesario). En este ejemplo se usan los métodos de
+        acceso posicional a la lista:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>LinkedList<Integer> t=new LinkedList<Integer>(); // Declaración y creación del LinkedList de enteros.
+t.add(1); // Añade un elemento al final de la lista.
+t.add(3); // Añade otro elemento al final de la lista.
+t.add(1,2); // Añade en la posición 1 el elemento 2.
+t.add(t.get(1)+t.get(2)); // Suma los valores contenidos en la posición 1 y 2, y lo agrega al final.
+t.remove(0); // Elimina el primer elemento de la lista.
+int contador= 0;
+for (Integer i: t) &#123;
+    contador++;
+ System.out.println("Elemento " + contador + ": " + i); // Muestra cada elemento de la lista.
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior se realizan muchas operaciones,&nbsp; ¿ pero cuál será el contenido de la
+        lista al final?
+    </p>
+    <p>
+        Pues será 2, 3 y 5. En el ejemplo cabe destacar el uso del bucle
+        <strong>
+         <span lang="en">
+          for-each
+         </span>
+        </strong>
+        . Recuerda que se puede usar en cualquier colección.
+    </p>
+    <p>
+        Veamos otro ejemplo, esta vez con ArrayList, de cómo obtener la posición de un elemento en la
+        lista:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>ArrayList<Integer> miLista=new ArrayList<Integer>(); // Declaración y creación del ArrayList de enteros.
+miLista.add(10);
+miLista.add(11); // Añadimos dos elementos a la lista.
+miLista.set(miLista.indexOf(11), 12); // Sustituimos el 11 por el 12, primero lo buscamos y luego lo reemplazamos.</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior se emplea tanto el método indexOf() para obtener la posición de un
+        elemento como el método set() para reemplazar el valor en una posición, una combinación muy
+        habitual. Se generará un ArrayList que contendrá dos números, el 10 y el 12. Veamos ahora un
+        ejemplo algo más difícil:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>miLista.addAll(0, t.subList(1, t.size()));</pre>
+        </div>
+    </div>
+    <p>
+        Este ejemplo es especial porque usa sublistas. Se usa el método size() para obtener el tamaño de
+        la lista. Después el método subList() para extraer una sublista de la lista (que incluía en
+        origen los números 2, 3 y 5), desde la posición 1 hasta el final de la lista (lo cual dejaría
+        fuera al primer elemento). Y por último, se usa el método addAll() para añadir todos los
+        elementos de la sublista al ArrayList anterior.
+    </p>
+    <p>
+        Debes saber que
+        <strong>
+         <span class="destacado_inline">
+          las operaciones aplicadas a una sublista repercuten sobre la lista original
+         </span>
+        </strong>
+        .
+        Por ejemplo, si ejecutamos el método clear() sobre una sublista, se borrarán todos los elementos
+        de la sublista, pero también se borrarán dichos elementos de la lista original:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>miLista.subList(0, 2).clear();</pre>
+        </div>
+    </div>
+    <p>
+        Lo mismo ocurre al añadir un elemento, se añade en la sublista y en la lista original.
+    </p>
+</div><h1 class="title">
+    4.2.- Listas (III). Diferencias entre LinkedList y ArrayList
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        ¿Y en qué se diferencia un LinkedList de un ArrayList?
+    </p>
+    <p>
+        Las LinkedList utilizan listas doblemente enlazadas, que son listas enlazadas (como se vio en un
+        apartado anterior), pero que permiten ir hacia atrás en la lista de elementos. Los elementos de
+        la lista se encapsulan en los llamados nodos. Los nodos van enlazados unos a otros para no
+        perder el orden y no limitar el tamaño de almacenamiento. Tener un doble enlace significa que en
+        cada nodo se almacena la información de cuál es el siguiente nodo y además, de cuál es el nodo
+        anterior. Si un nodo no tiene nodo siguiente o nodo anterior, se almacena null o nulo para ambos
+        casos.
+    </p>
+    <p>
+        No es el caso de los ArrayList. Éstos se implementan utilizando
+        <span lang="en">
+         arrays
+        </span>
+        que
+        se van redimensionando conforme se necesita más espacio o menos. La redimensión es transparente
+        para nosotros, no nos enteramos cuando se produce, pero eso redunda en una diferencia de
+        rendimiento notable dependiendo del uso:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Los ArrayList son más rápidos en cuanto a acceso a los elementos, acceder a un elemento
+            según su posición es más rápido en un
+            <span lang="en">
+          array
+         </span>
+            que en una lista
+            doblemente enlazada (hay que recorrer la lista).
+        </li>
+        <li>
+            En cambio, eliminar un elemento implica muchas más operaciones en un
+            <span lang="en">
+          array
+         </span>
+            que en una lista enlazada de cualquier tipo.
+        </li>
+    </ul>
+    <p>
+        ¿Y esto que quiere decir?
+    </p>
+    <p class="destacado">
+        <strong>
+            Si se van a realizar muchas operaciones de eliminación de elementos
+            sobre la lista, conviene usar una lista enlazada (LinkedList), pero si no se van a realizar
+            muchas eliminaciones, sino que solamente se van a insertar y consultar elementos por posición,
+            conviene usar una lista basada en
+            <span lang="en">
+          arrays
+         </span>
+            redimensionados
+            (ArrayList)
+        </strong>
+        .
+    </p>
+    <p>
+        LinkedList tiene otras ventajas que pueden hacer aconsejable su uso. Implementa las interfaces
+        java.util.Queue y
+        <code>
+            java.util.Deque
+        </code>
+        . Dichas interfaces permiten hacer uso de las
+        listas como si fueran una cola de prioridad o una pila, respectivamente.
+    </p>
+    <p>
+        <strong>
+            Las colas
+        </strong>
+        , también conocidas como colas de prioridad, son una lista, pero que
+        aportan métodos para trabajar de forma diferente. ¿Tú sabes lo que es hacer cola para que te
+        atiendan en una ventanilla? Pues igual: se trata de que el primero que llega es el primero en
+        ser atendido (
+        <abbr title="First In First Out. ">
+            FIFO
+        </abbr>
+        , o Primero en
+        Entrar, Primero en Salir). Simplemente se aportan tres métodos nuevos: meter en el final de la
+        lista (add() y
+        <code>
+            offer()
+        </code>
+        ), sacar y eliminar el elemento más antiguo (poll()), y
+        examinar el elemento al principio de la lista sin eliminarlo (peek()). Dichos métodos están
+        disponibles en las listas enlazadas LinkedList:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            boolean add(E e) y boolean offer(E e), devolverán true si se ha podido insertar el elemento
+            al final de la LinkedList.
+        </li>
+        <li>
+            E poll()&nbsp;devolverá el primer elemento de la LinkedList y lo eliminará de la misma. Al
+            insertar al final, los elementos más antiguos siempre están al principio. Retornará null si
+            la lista está vacía.
+        </li>
+        <li>
+            E peek()&nbsp;devolverá el primer elemento de la LinkedList pero no lo eliminará, permite
+            examinarlo. Retornará null si la lista está vacía.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Las pilas
+        </strong>
+        , son todo lo contrario a las colas. Una pila es igual que una montaña
+        de hojas en blanco (o una pila de platos): para añadir hojas nuevas (o platos),&nbsp; se ponen
+        encima del resto, y para retirar una se coge la primera que hay, encima de todas. En las pilas
+        el último en llegar es el primero en ser atendido (
+        <abbr lang="en" title="Last-In, First-Out">
+            LIFO
+        </abbr>
+        ).
+        Para ello se proveen de tres métodos: meter al principio de la pila (push()), sacar y eliminar
+        del principio de la pila (pop()), y examinar el primer elemento de la pila (peek(), igual que si
+        usara la lista como una cola).
+    </p>
+    <p>
+        Ten en mente que tanto las colas como las pilas, son una lista enlazada sobre la que se hacen
+        operaciones especiales.
+    </p>
+</div><h1 class="title">
+    4.3.- Listas (IV). ¿Es igual si los elementos son mutables o
+    inmutables?
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 300px;">
+    </div>
+    <p>
+        A la hora de usar las listas, hay que tener en cuenta un par de detalles, ¿sabes cuáles? Es
+        sencillo, pero importante.
+    </p>
+    <p>
+        No es lo mismo usar las colecciones (listas y conjuntos) con objetos inmutables (String,
+        <code>
+            Integer
+        </code>
+        ,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        ) que con objetos mutables. Los objetos inmutables no pueden
+        ser modificados después de su creación, por lo que cuando se incorporan a la lista, a través de
+        los métodos add(), se pasan por copia (es decir, se realiza una copia de los mismos). En cambio
+        los objetos mutables (como las clases que tú puedes crear),
+        <strong>
+            no se copian
+        </strong>
+        , y eso
+        puede producir efectos no deseados.
+    </p>
+    <p>
+        Imagínate la siguiente clase, que contiene un número:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>class Test &#123;
+    public Integer numero;
+    Test (int numero) &#123;
+        this.numero=new Integer(numero);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        La clase de antes es mutable, por lo que no se pasa por copia a la lista. Ahora imagina el
+        siguiente código en el que se crea una lista que usa este tipo de objeto, y en el que se
+        insertan dos objetos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Test p1=new Test(11); // Se crea un objeto Test donde el entero que contiene vale 11.
+Test p2=new Test(12); // Se crea otro objeto Test donde el entero que contiene vale 12.
+LinkedList<Test> lista=new LinkedList<>(); // Creamos una lista enlazada para objetos tipo Test.
+lista.add(p1); // Añadimos el primer objeto test.
+lista.add(p2); // Añadimos el segundo objeto test.
+for (Test p:lista)&#123;
+     System.out.println(p.numero); // Mostramos la lista de objetos.
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        ¿Qué mostraría por pantalla el código anterior?&nbsp;&nbsp; Simplemente mostraría los números 11
+        y 12 en líneas consecutivas.
+    </p>
+    <p>
+        Ahora bien, ¿qué pasa si modificamos el valor de uno de los números de los objetos Test? ¿Qué se
+        mostrará al ejecutar el siguiente código?
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>p1.numero=44;
+for (Test p:lista)&#123;
+     System.out.println(p.numero);
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El resultado de ejecutar el código anterior es que se muestran los números 44 y 12. El número ha
+        sido modificado y no hemos tenido que volver a insertar el elemento en la lista para que en la
+        lista se cambie también. Esto es porque en la lista no se almacena una copia del objeto Test,
+        sino un apuntador o referencia a dicho objeto (solo hay una copia del objeto a la que se hace
+        referencia desde distintos lugares).
+    </p>
+</div><h1 class="title">
+    5.- Conjuntos de pares clave/valor
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-pd" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        se quedó pensativo después de la conversación con
+        <strong>
+            Ana
+        </strong>
+        .
+        <strong>
+            Ana
+        </strong>
+        se fue a su puesto a seguir trabajando, pero
+        él se quedó dándole vueltas al asunto...
+    </p>
+    <p>
+        —Sí que está bien preparada
+        <strong>
+            Ana
+        </strong>
+        , me ha puesto en jaque y no sabía qué
+        responder.
+    </p>
+    <p>
+        El hecho de no poder ayudar a
+        <strong>
+            Ana
+        </strong>
+        le frustró un poco.
+    </p>
+    <p>
+        De repente, apareció
+        <strong>
+            María
+        </strong>
+        . Entonces
+        <strong>
+            Juan
+        </strong>
+        aprovecha el
+        momento para preguntar con más detalle acerca del trabajo de
+        <strong>
+            Ana
+        </strong>
+        .
+        <strong>
+            María
+        </strong>
+        se lo cuenta y de repente, se le enciende una bombilla a
+        <strong>
+            Juan
+        </strong>
+        :
+    </p>
+    <p>
+        —Vale, creo que puedo ayudar a
+        <strong>
+            Ana
+        </strong>
+        en algo, le aconsejaré usar
+        <strong>
+            mapas
+        </strong>
+        y le explicaré cómo se usan.
+    </p>
+</div><h1 class="title">
+    6.- Iteradores (I). ¿Qué son y cómo se usan?
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 300px;">
+    </div>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        se acercó a la mesa de
+        <strong>
+            Ana
+        </strong>
+        y le dijo:
+    </p>
+    <p>
+        —
+        <strong>
+            María
+        </strong>
+        me ha contado la tarea que te ha encomendado y he pensado que
+        quizás te convendría usar mapas en algunos casos. Por ejemplo, para almacenar los datos
+        del pedido asociados con una etiqueta: nombre, dirección, fecha,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+        Así creo que te será más fácil encontrar la
+        información de un pedido concreto (valor) asociado a esa etiqueta (clave, o llave).
+    </p>
+    <p>
+        —La verdad es que pensaba almacenar los datos del pedido en una clase especial llamada
+        Pedido. No tengo ni idea de qué son los mapas —dijo
+        <strong>
+            Ana
+        </strong>
+        —, supongo que
+        son como las listas. ¿Tienen iteradores?
+    </p>
+    <p>
+        —Según me ha contado
+        <strong>
+            María,
+        </strong>
+        no necesitas hacer tanto, no es necesario
+        crear una clase específica para los pedidos. Y respondiendo a tu pregunta, los mapas no
+        tienen iteradores, pero hay una solución... Te explico.
+    </p>
+</div><h1 class="title">
+    6.1.- Iteradores (II). ¿Qué características debemos
+    considerar?
+</h1>
+<div class="iDevice_content">
+    <p>
+        ¿Qué inconvenientes tiene usar los iteradores sin especificar el tipo de objeto?
+    </p>
+    <p>
+        En el siguiente ejemplo, se genera una lista con los números del 0 al 10. Se eliminan de la lista
+        aquellos que son pares y sólo se dejan los impares. En el ejemplo de la izquierda se especifica
+        el tipo de objeto del iterador, en el ejemplo de la derecha no. Observa&nbsp; que al no
+        especificar el tipo de objeto del iterador,&nbsp; tenemos que usar la conversión explícita de
+        tipos (
+        <strong>
+         <span lang="en">
+          casting
+         </span>
+        </strong>
+        ) en la línea 7.
+    </p>
+    <table class="tabla">
+        <caption>
+            Comparación de usos de los iteradores, con o sin conversión de tipos.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Ejemplo indicando el tipo de objeto de iterador
+            </th>
+            <th scope="col">
+                Ejemplo no indicando el tipo de objeto del iterador
+            </th>
+        </tr>
+        <tr>
+            <td>
+                <div class="highlighted-code language-java line-numbers">
+                    <div>
+             <pre>ArrayList <Integer> lista=new ArrayList<>();
+for (int i=0;i<=10;i++)&#123;
+     lista.add(i);
+&#125;
+Iterator<Integer> it=lista.iterator();
+while (it.hasNext()) &#123;
+    Integer t=it.next();
+    if (t%2==0) it.remove();
+&#125;</pre>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="highlighted-code language-java line-numbers hightlight-7">
+                    <div>
+             <pre>ArrayList <Integer> lista=new ArrayList<>();
+for (int i=0;i<=10;i++)&#123;
+    lista.add(i);
+&#125;
+Iterator it=lista.iterator();
+while (it.hasNext()) &#123;
+    Integer t=(Integer)it.next();
+    if (t%2==0) it.remove();
+&#125;</pre>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
+    </div>
+    <p>
+        <br>
+        Un iterador
+        <strong>
+            es seguro porque está pensado para
+        </strong>
+        <strong>
+            no sobrepasar los
+            límites de la colección,
+        </strong>
+        ocultando operaciones más complicadas que pueden repercutir en
+        errores de
+        <span lang="en">
+         software
+        </span>
+        . Pero realmente
+        <strong>
+            se convierte en inseguro
+            cuando es necesario hacer la operación de conversión de tipos
+        </strong>
+        . Si la colección no
+        contiene los objetos esperados, al intentar hacer la conversión, saltará una incómoda excepción.
+        Usar genéricos aporta grandes ventajas, pero usándolos adecuadamente.
+        <br/></p>
+    <p>
+        <strong>
+            Para recorrer los mapas con iteradores, hay que hacer un pequeño truco
+        </strong>
+        . Usamos
+        el método entrySet() que ofrecen los mapas para generar un conjunto con las entradas (pares de
+        llave-valor) o bien el método keySet() para generar un conjunto con las llaves existentes en el
+        mapa. Veamos cómo sería para el segundo caso, el más sencillo:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>HashMap<Integer,Integer> mapa=new HashMap<Integer,Integer>();
+for (int i=0;i<10;i++)&#123;
+    mapa.put(i, i); // Insertamos datos de prueba en el mapa.
+&#125;
+for (Integer llave:mapa.keySet())&#123; // Recorremos el conjunto generado por keySet(), contendrá las llaves.
+           Integer valor=mapa.get(llave); //Para cada llave, accedemos a su valor si es necesario.
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Lo único que debes tener en cuenta es que el conjunto generado por keySet()&nbsp;no tendrá
+        obviamente el método add() para añadir elementos al mismo, dado que eso tendrás que hacerlo a
+        través del mapa.
+    </p>
+</div><h1 class="title">
+    7.- Algoritmos (I). ¿Qué podemos hacer con las colecciones?
+</h1>
+<div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        se acercó a preguntar a
+        <strong>
+            Ana
+        </strong>
+        cómo llevaba la tarea
+        que le había encomendado
+        <strong>
+            <strong>
+                María
+            </strong>
+        </strong>
+        .
+        <strong>
+            Ada
+        </strong>
+        era la jefa y
+        <strong>
+            Ana
+        </strong>
+        le tenía mucho respeto.&nbsp; Era una tarea
+        importante, así que prestó mucha atención.
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        le enseñó el código que estaba elaborando, le dijo que en un
+        principio había pensado crear una clase llamada Pedido para almacenar los datos del
+        pedido, pero que
+        <strong>
+            Juan
+        </strong>
+        le recomendó usar mapas para almacenar los pares
+        de valor y dato. Así que se decantó por usar mapas para ese caso. Le comentó también que
+        para almacenar los artículos sí había creado una pequeña clase llamada Articulo.
+        <strong>
+            Ada
+        </strong>
+        le dio el visto bueno:
+    </p>
+    <p>
+        —Pues
+        <strong>
+            Juan
+        </strong>
+        te ha recomendado de forma adecuada, no vas a necesitar hacer
+        ningún procesamiento especial de los datos del pedido, solo convertirlos de un formato
+        específico. Eso sí, sería recomendable que los artículos del pedido vayan ordenados por
+        código de artículo —dijo
+        <strong>
+            Ada
+        </strong>
+        .
+    </p>
+    <p>
+        —¿Ordenar los artículos? Vaya, que jaleo —respondió
+        <strong>
+            Ana
+        </strong>
+        .
+    </p>
+    <p>
+        —Arriba ese ánimo mujer, si has usado listas es muy fácil, déjame ver tu código y te
+        explicaré cómo hacerlo.
+    </p>
+</div><h1 class="title">
+    7.1.- Algoritmos (II). Ordenando los elementos de la
+    colección
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 300px;">
+    </div>
+    <p>
+        En
+        <span lang="en">
+         Java
+        </span>
+        hay dos mecanismos para cambiar la forma en la que los elementos
+        se ordenan. ¿Recuerdas la tarea que
+        <strong>
+            Ada
+        </strong>
+        pidió a
+        <strong>
+            Ana
+        </strong>
+        ?
+    </p>
+    <p>
+        Así es,
+        <strong>
+            Ada
+        </strong>
+        pidió a
+        <strong>
+            Ana
+        </strong>
+        que los artículos del pedido
+        aparecieran ordenados por código de artículo. Imagina que tienes los artículos almacenados en
+        una lista llamada "articulos", y que cada artículo se almacena en la siguiente clase (fíjate que
+        el código de artículo es una cadena y no un número):
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>class Articulo &#123;
+    public String codigoArticulo; // Código de artículo
+    public String descripcion; // Descripción del artículo.
+    public int cantidad; // Cantidad a proveer del artículo.
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        La
+        <strong>
+            primera forma
+        </strong>
+        de ordenar consiste en crear una clase que implemente la
+        interfaz java.util.Comparator, lo que supone implementar el método&nbsp;compare() definido en
+        dicha interfaz. Esto se explicó en el apartado de conjuntos, al explicar el TreeSet, así que no
+        vamos a profundizar en ello. No obstante, el comparador para ese caso podría ser así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>class ComparadorArticulos implements Comparator<Articulo>&#123;
+    &#64;Override
+    public int compare(Articulo articulo1, Articulo articulo2) &#123;
+       return articulo1.codigoArticulo.compareTo(articulo2.codigoArticulo);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Una vez creada esta clase, ordenar los elementos es muy sencillo, simplemente se pasa como
+        segundo parámetro del método sort() una instancia del comparador creado:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>Collections.sort(articulos, new comparadorArticulos());</pre>
+        </div>
+    </div>
+    <p>
+        La
+        <strong>
+            segunda forma
+        </strong>
+        es quizás más sencilla cuando se trata de objetos cuya
+        ordenación no existe de forma natural, pero requiere modificar la clase Articulo. Consiste en
+        hacer que los objetos que se meten en la lista o
+        <span lang="en">
+         array
+        </span>
+        implementen la
+        interfaz java.util.Comparable.
+        <strong>
+            Todos los objetos que implementan la interfaz Comparable
+            son "ordenables" y se puede invocar el método sort() sin indicar un comparador para
+            ordenarlos
+        </strong>
+        . La interfaz Comparable solo requiere implementar el método compareTo():
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>class Articulo implements Comparable<Articulo>&#123;
+    public String codigoArticulo;
+    public String descripcion;
+    public int cantidad;
+ 
+    &#64;Override
+    public int compareTo(Articulo articulo) &#123;
+         return codigoArticulo.compareTo(articulo.codigoArticulo);
+    &#125;
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Del ejemplo anterior se pueden resaltar dos cosas importantes: que la interfaz Comparable es
+        genérica y que para que funcione sin problemas es conveniente indicar el tipo base sobre el que
+        se permite la comparación (en este caso, el objeto Articulo debe compararse consigo mismo), y
+        que el método compareTo() solo admite un parámetro, dado que comparará el objeto con el que se
+        pasa por parámetro.
+    </p>
+    <p>
+        El funcionamiento del método compareTo() es el mismo que el método compare() de la interfaz
+        Comparator: si el objeto que se pasa por parámetro es igual al objeto ha llamado al método, se
+        tendría que devolver&nbsp; 0; si es menor o anterior, se debería retornar un número menor que
+        cero; si es mayor o posterior, se debería retornar un número mayor que 0.
+    </p>
+    <p>
+        Ordenar ahora la lista de artículos es sencillo, fíjate que fácil:
+        "Collections.sort(articulos);"
+    </p>
+</div><h1 class="title">
+    7.2.- Algoritmos (III). Algunas operaciones adicionales con
+    colecciones
+</h1>
+<div class="iDevice_content">
+    <p>
+        ¿Qué más ofrecen las clases java.util.Collections y
+        <code>
+            java.util.Arrays
+        </code>
+        de
+        <span lang="en">
+         Java
+        </span>
+        ?
+    </p>
+    <p>
+        Una vez vista la ordenación, que quizás es lo más complicado, veamos algunas operaciones
+        adicionales. En los ejemplos, la variable "array" es un
+        <span lang="en">
+         array
+        </span>
+        y la
+        variable "lista" es una lista de cualquier tipo de elemento:
+    </p>
+    <table class="tabla">
+        <caption>
+            Operaciones adicionales sobre listas y
+            <span lang="en">
+          arrays
+         </span>
+            .
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Operación
+            </th>
+            <th scope="col">
+                Descripción
+            </th>
+            <th scope="col">
+                Ejemplos
+            </th>
+        </tr>
+        <tr>
+            <th scope="row">
+                Desordenar una lista.
+            </th>
+            <td>
+                Desordena una lista, este método no está disponible para
+                <span lang="en">
+            arrays
+           </span>
+                .
+            </td>
+            <td>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+                                <pre>Collections.shuffle (lista);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Rellenar una lista o
+                <span lang="en">
+            array
+           </span>
+                .
+            </th>
+            <td>
+                Rellena una lista o
+                <span lang="en">
+            array
+           </span>
+                copiando el mismo valor en todos los
+                elementos del
+                <span lang="en">
+            array
+           </span>
+                o lista. Útil para reiniciar una lista o
+                <span lang="en">
+            array
+           </span>
+                .
+            </td>
+            <td>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+               <pre>Collections.fill (lista,elemento);
+Arrays.fill (array,elemento);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Búsqueda binaria.
+            </th>
+            <td>
+                Permite realizar búsquedas rápidas en un una lista o
+                <span lang="en">
+            array
+           </span>
+                ordenados. Es necesario que la lista o
+                <span lang="en">
+            array
+           </span>
+                estén ordenados, si
+                no lo están, la búsqueda no tendrá éxito.
+            </td>
+            <td>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+               <pre>Collections.binarySearch(lista,elemento);
+Arrays.binarySearch(array, elemento);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Convertir un array a lista.
+            </th>
+            <td>
+                Permite rápidamente convertir un
+                <span lang="en">
+            array
+           </span>
+                a una lista de elementos,
+                y es extremadamente útil. No se especifica el tipo de lista retornado (no es ArrayList
+                ni
+                <code>
+                    LinkedList
+                </code>
+                ), Solo se especifica que retorna una lista que implementa la
+                interfaz java.util.List.
+            </td>
+            <td>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+                                <pre>List lista=Arrays.asList(array);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p>
+                    Si el tipo de dato almacenado en el
+                    <span lang="en">
+             array
+            </span>
+                    es conocido (Integer&nbsp;por
+                    ejemplo), es conveniente especificar el tipo de objeto de la lista:
+                </p>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+                                <pre>List<Integer>lista = Arrays.asList(array);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Convertir una lista a
+                <span lang="en">
+            array
+           </span>
+                .
+            </th>
+            <td>
+                Permite convertir una lista a
+                <span lang="en">
+            array
+           </span>
+                . Esto se puede realizar en
+                todas las colecciones, y no es un método de la clase Collections, sino propio de la
+                interfaz Collection. Es conveniente que sepas de su existencia.
+            </td>
+            <td>
+                <p>
+                    Para este ejemplo, supondremos que los elementos de la lista son números, dado que
+                    hay que crear un
+                    <span lang="en">
+             array
+            </span>
+                    del tipo almacenado en la lista, y del
+                    tamaño de la lista:
+                </p>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+               <pre>Integer[] array=new Integer[lista.size()];
+lista.toArray(array);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Dar la vuelta.
+            </th>
+            <td>
+                Da la vuelta a una lista, poniéndola en orden inverso al que tiene.
+            </td>
+            <td>
+                <div>
+                    <div class="texto_izquierda">
+                        <div class="highlighted-code language-java">
+                            <div>
+                                <pre>Collections.reverse(lista);</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="exe-figure exe-image float-right license-pd" style="width: 300px;">
+    </div>
+    <p>
+        <br>
+        Otra operación que no se ha visto hasta ahora es la
+        <strong>
+            dividir una cadena en
+            partes
+        </strong>
+        .
+        <br/></p>
+    <p>
+        Cuando una cadena está formada internamente por trozos de texto claramente delimitados por un
+        separador (una coma, un punto y coma o cualquier otro), es posible dividir la cadena y obtener
+        cada uno de los trozos de texto por separado en un
+        <span lang="en">
+         array
+        </span>
+        de cadenas. Es
+        una operación sencilla, pero requiere conocer el funcionamiento de los
+        <span lang="en">
+         arrays
+        </span>
+        y de las expresiones regulares para su uso. Para poder realizar
+        esta operación, usaremos el método split() de la clase String. El delimitador o separador es una
+        expresión regular, único argumento del método split(), y puede ser obviamente todo lo complejo
+        que sea necesario:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String texto="Z,B,A,X,M,O,P,U";
+String[] partes=texto.split(",");
+Arrays.sort(partes);</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior la cadena texto contiene una serie de letras separadas por comas. La
+        cadena se ha dividido con el método split(), y se ha guardado cada carácter por separado en un
+        <span lang="en">
+         array
+        </span>
+        . Después se ha ordenado el
+        <span lang="en">
+         array
+        </span>
+        .
+    </p>
+    <p>
+        ¡Increíble lo que se puede llegar a hacer con solo tres líneas de código!
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1>
+<div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p align="center" style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por
+                el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la
+                Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

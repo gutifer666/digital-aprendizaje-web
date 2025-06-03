@@ -1,0 +1,4644 @@
+<h1 class="title">
+    Gestión de bases de datos: relacionales y orientadas a objetos.
+    Persistencia de objetos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+            <br>
+            Ada
+            <br/></strong>
+        ha asignado un proyecto a
+        <strong>
+            María
+        </strong>
+        y a
+        <strong>
+            Juan
+        </strong>
+        .
+        Se trata de un proyecto importante, puede suponer muchas ventas, y por tanto una gran
+        expansión para la empresa.
+    </p>
+    <p>
+        En concreto, una cadena de tiendas a nivel nacional se ha puesto en contacto con
+        <strong>
+            BK
+            programación
+        </strong>
+        para decirles que necesitan un programa que sustituya al actual
+        <span lang="en">
+           software
+          </span>
+        que utilizan para los puntos de venta. El nuevo
+        <span lang="en">
+           software
+          </span>
+        tendrá unas características especiales,&nbsp; todavía
+        por determinar. Este es un proyecto que si sale adelante será de largo recorrido, dado
+        que no solo requerirá el desarrollo, sino también el mantenimiento y mejora del mismo a
+        lo largo de los años. Podría ser trabajo asegurado para la empresa durante mucho tiempo.
+    </p>
+    <p>
+        De momento
+        <strong>
+            Ada
+        </strong>
+        les ha pedido a
+        <strong>
+            María
+        </strong>
+        y a
+        <strong>
+            Juan
+        </strong>
+        que se pongan a estudiar cómo es ese tipo de
+        <span lang="en">
+           software
+          </span>
+        y a prepararse para la tarea que está por venir. Ambos saben que una cuestión vital en
+        una aplicación como esta es el almacenamiento de los datos: productos, tiques,
+        movimientos de caja, entrada de productos,
+        <abbr lang="es" title="etcétera">
+            etc
+        </abbr>
+        .
+    </p>
+    <p>
+        Como en
+        <strong>
+            BK programación
+        </strong>
+        trabajan sobre todo con
+        <span lang="en">
+           Java
+          </span>
+        , desde el primer momento
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        tienen claro que van a tener que utilizar
+        <strong>
+            Bases de Datos
+        </strong>
+        .
+        Su idea ahora es explorar y experimentar, y para ello tienen pensado crear una
+        aplicación sencilla de punto de venta que van a denominar "mini
+        <abbr title="Point of Sale">
+            pos
+        </abbr>
+        ".
+    </p>
+</div><h1 class="title">
+    1.- Bases de datos relacionales
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-gnu-gpl" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+            <br>
+            María
+            <br/></strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        han empezado a darle vueltas a la
+        aplicación que quieren hacer para practicar, y lo primero que piensan es:
+    </p>
+    <p>
+        ¿Dónde almacenaremos los datos de nuestro mini punto de venta?
+    </p>
+    <p>
+        Saben que la persistencia de los datos es sumamente importante y claro, tal y como ya
+        aprendieron en el módulo de Bases de Datos, uno de los mecanismos más habituales es usar
+        una
+        <strong>
+            Base de Datos relacional
+        </strong>
+        .
+    </p>
+    <p>
+        Diseñar una base de datos relacional de forma adecuada es importante, y requiere
+        paciencia y técnica. Pero por ahora simplemente van a desarrollar una aplicación de
+        prueba, para experimentar, así que aunque lo tienen en cuenta, tampoco lo van a tomar a
+        rajatabla.
+    </p>
+</div><h1 class="title">
+    1.1.- El desfase objeto-relacional
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        El
+        <strong>
+            desfase objeto-relacional
+        </strong>
+        , también conocido como
+        <strong>
+            impedancia
+            objeto-relacional
+        </strong>
+        , consiste en la diferencia de aspectos que existen entre la
+        programación orientada a objetos y la base de datos. Estos aspectos se puede presentar en
+        cuestiones como:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Lenguaje de programación:
+            </strong>
+            el programador debe conocer el lenguaje de
+            programación orientada a objetos (
+            <abbr title="Programación Orientada a Objetos.">
+                POO
+            </abbr>
+            ) y el lenguaje de acceso a
+            datos.
+        </li>
+        <li>
+            <strong>
+                Tipos de datos:
+            </strong>
+            en las bases de datos relacionales siempre hay
+            restricciones en cuanto a los tipos de datos que se pueden usar, que suelen ser sencillos,
+            mientras que la programación orientada a objetos utiliza tipos de datos más complejos.
+        </li>
+        <li>
+            <strong>
+                Paradigma
+                de programación:
+            </strong>
+            en
+            el proceso de diseño y construcción del
+            <span lang="en">
+          software
+         </span>
+            se tiene que hacer
+            una traducción del modelo orientado a objetos de clases al
+            <strong>
+                modelo Entidad-Relación (
+                <abbr title="Entidad Relación.">
+                    E/R
+                </abbr>
+                )
+            </strong>
+            puesto que el primero maneja
+            objetos y el segundo maneja tablas y tuplas o filas, lo que implica que se tengan que
+            diseñar dos diagramas diferentes para el diseño de la aplicación.
+        </li>
+    </ul>
+    <p>
+        El modelo relacional trata con relaciones y conjuntos debido a su
+        <strong>
+            naturaleza
+            matemática
+        </strong>
+        . Sin embargo, el modelo de Programación Orientada a Objetos trata con
+        objetos y las asociaciones entre ellos. Por esta razón, el problema entre estos dos modelos
+        surge en el momento de querer hacer persistentes en la base de datos los objetos de negocio que
+        maneja la aplicación.
+    </p>
+    <p>
+        La escritura (y de manera similar la lectura) mediante
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        implica: abrir una conexión,
+        crear una sentencia en
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        y
+        copiar todos los valores de las propiedades o atributos de un objeto en la sentencia, ejecutarla
+        y así almacenar el objeto. Esto es sencillo para un caso simple, pero trabajoso si el objeto
+        posee muchas propiedades, o bien si se necesita almacenar un objeto que a su vez posee una
+        colección de otros elementos que también son objetos. Se necesita crear mucho más código, además
+        del tedioso trabajo de creación de sentencias
+        <abbr title="Strtuctured Query Language.">
+            SQL
+        </abbr>
+        .
+    </p>
+    <p>
+        Este problema es lo que denominábamos
+        <strong>
+            impedancia
+        </strong>
+        <strong>
+            Objeto-Relacional
+        </strong>
+        , o sea, el conjunto de
+        dificultades técnicas que surgen cuando una base de datos relacional se usa en asociación con un
+        programa escrito en un lenguajes de Programación Orientada a Objetos.
+    </p>
+    <p>
+        Podemos poner como ejemplo de desfase objeto-relacional, un equipo de fútbol, que tenga un
+        atributo que sea una colección de objetos de la clase Jugador. Cada jugador tiene un atributo
+        "teléfono". Al transformar este caso a relacional se ocuparía más de una tabla para almacenar la
+        información, implicando varias sentencias
+        <abbr title="Strtuctured Query Language.">
+            SQL
+        </abbr>
+        y bastante código.
+    </p>
+    <div class="exe-tooltip-text" id="tff0a115c-6d7c-3a15-1ff5-e070820761e4">
+        <p>
+            Es una propuesta tecnológica, un modelo, que se adopta por una comunidad de programadores que
+            unívocamente trata de resolver uno o varios problemas claramente delimitados. Tiene una
+            estrecha relación con la formalización de determinados lenguajes en su momento de
+            definición. Un paradigma de programación está delimitado en el tiempo en cuanto a aceptación
+            y uso, ya que nuevos paradigmas aportan nuevas o mejores soluciones que sustituyen esa
+            propuesta tecnológica parcial o totalmente.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.2.- JDBC
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+    </figure>
+    <div>
+        <div>
+            Ha llegado el momento de profundizar en
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            para empezar
+            a persistir datos de nuestra aplicación, ¿crees que serás capaz de usarlo?
+        </div>
+        <div>
+        </div>
+        <div>
+            Seguro que sí. Como ya se comentó en apartados anteriores,
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            es una
+            <abbr title="Application Programming Interface.">
+                API
+            </abbr>
+            <span lang="en">
+          Java
+         </span>
+            que hace posible ejecutar sentencias
+            <abbr title="Strtuctured Query Language.">
+                SQL
+            </abbr>
+            en cualquier base de datos
+            relacional.&nbsp;De
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            podemos decir que:
+        </div>
+        <ul class="lista_verificacion">
+            <li>
+                Consta de un
+                <strong>
+                    conjunto de clases e interfaces
+                </strong>
+                escritas en
+                <span lang="en">
+           Java
+          </span>
+                .
+            </li>
+            <li>
+                Proporciona un
+                <abbr title="Application Programming Interface.">
+                    API
+                </abbr>
+                estándar para desarrollar aplicaciones
+                que usen bases de datos. De esa forma, siempre usarás las mismas clases y métodos para
+                almacenar datos en la base de datos, independientemente de la base de datos.
+            </li>
+        </ul>
+        <p>
+         <span>
+          <strong>
+           Con
+           <abbr title="Java Database Connectivity.">
+            JDBC
+           </abbr>
+          </strong>
+          , no hay que usar mecanismos diferentes para almacenar datos en una base de datos
+          <strong>
+           <span lang="en">
+            Access
+           </span>
+          </strong>
+          , o para almacenar datos en una base de datos
+          <strong>
+           <span lang="en">
+            Oracle
+           </span>
+          </strong>
+          ,
+          <abbr title="etcétera.">
+           etc.
+          </abbr>
+          , sino que
+          <strong>
+           podemos hacer uso del mismo conjunto de técnicas para usar cualquier base de datos relacional.
+          </strong>
+          Gracias a la
+          <abbr title="Application Programming Interface.">
+           API
+          </abbr>
+          <abbr title="Java Database Connectivity.">
+           JDBC
+          </abbr>
+          , ejecutar consultas
+          <abbr title="Strtuctured Query Language.">
+           SQL
+          </abbr>
+          en una base de datos o en otra será algo transparente para el programador.
+         </span>
+        </p>
+        <p>
+            Cuando se desarrolló
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            , y debido a la confusión que hubo
+            por la proliferación de
+            <abbr title="Application Programming Interface.">
+                API
+            </abbr>
+            propietarias de acceso a datos,
+            <span lang="en">
+          Sun
+         </span>
+            buscó los aspectos de éxito de
+            una
+            <abbr title="Application Programming Interface.">
+                API
+            </abbr>
+            de este
+            tipo, y el ejemplo a seguir fue
+            ODBC
+            (
+            <span lang="en">
+          Open Database Connectivity
+         </span>
+            ).
+        </p>
+        <p>
+            <abbr title="Open Database Connectivity.">
+                ODBC
+            </abbr>
+            se desarrolló con la
+            idea de tener un estándar para el acceso a bases de datos en entornos
+            <span lang="en">
+          Windows
+         </span>
+            .
+            Aunque la industria ha aceptado
+            <abbr title="Open Database Connectivity.">
+                ODBC
+            </abbr>
+            como medio principal para acceso a bases de datos en
+            <span lang="en">
+          Windows
+         </span>
+            ,
+            <abbr title="Open Database Connectivity.">
+                ODBC
+            </abbr>
+            no se adapta bien
+            en el mundo
+            <span lang="en">
+          Java
+         </span>
+            , debido a la complejidad que presenta. Factor que
+            junto a otras cosas ha impedido su transición fuera de entornos
+            <span lang="en">
+          Windows
+         </span>
+            .
+        </p>
+        <p>
+            El
+            <strong>
+                nivel de abstracción
+            </strong>
+            al que
+            trabaja
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            es
+            alto en comparación con
+            <abbr title="Open Database Connectivity.">
+                ODBC
+            </abbr>
+            , la intención de
+            <span lang="en">
+          Sun
+         </span>
+            fue
+            que supusiera la base de partida para crear librerías de más alto nivel.
+        </p>
+        <p>
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            intenta ser tan
+            simple como sea posible, pero proporcionando a los desarrolladores la máxima flexibilidad.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t63986200-6f17-5a53-980e-21730737a74f">
+        <p>
+            Es una
+            <abbr title="Application Programming Interface">
+                API
+            </abbr>
+            de acceso a
+            datos, desarrollado por
+            <span lang="en">
+          Microsoft
+         </span>
+            , con la idea de tener un estándar
+            para el acceso a bases de datos en entornos
+            <span lang="en">
+          Windows
+         </span>
+            .
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t8359949a-2ee7-f937-6cda-0e28bc44a6ae">
+        <p>
+            Uno de los objetivos fundamentales de una base de datos es proporcionar a los usuarios una
+            visión abstracta de los datos. Es decir, el sistema oculta ciertos detalles relativos a la
+            forma en que se almacenan y mantienen los datos. Esto se logra definiendo tres niveles de
+            abstracción en los que puede considerarse la base de datos: físico, conceptual y de
+            visión.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.3.- Conectores o Drivers
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-pd" style="width: 152px;">
+
+        <figcaption class="figcaption">
+            Elaboración propia.
+
+
+            (
+
+
+            Dominio público
+
+
+            )
+        </figcaption>
+    </figure>
+    <p>
+        <br>
+        La
+        <abbr title="Application Programming Interface.">
+            API
+        </abbr>
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        viene distribuida en dos
+        paquetes dentro de
+        <span lang="en">
+         Java
+         <abbr title="Standard Edition">
+          SE
+         </abbr>
+        </span>
+        :
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li>
+         <span>
+          java.sql, contiene las clases e interfaces principales de la
+          <abbr title="Application Programming Interface.">
+           API
+          </abbr>
+          , y su propósito es facilitar el acceso y procesamiento de datos provenientes de diversas fuentes (generalmente bases de datos relacionales).
+         </span>
+        </li>
+        <li>
+         <span>
+          javax.sql, contiene clases que complementan a las incluidas en java.sql, y aunque está destinado a facilitar el acceso a fuentes de datos en el entorno de servidor, está incluido en Java
+          <span>
+           <abbr title="Standard Edition">
+            SE
+           </abbr>
+          </span>
+          desde la versión 1.4.
+         </span>
+        </li>
+    </ul>
+    <p>
+        Aunque
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        contiene un buen
+        conjunto de clases, este no es suficiente para poder conectarse y usar una base de datos
+        relacional. Para conectarnos a una base de datos específica,
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        necesita un
+        <strong>
+            conector
+            o
+            <span lang="en">
+          driver
+         </span>
+        </strong>
+        adicional.
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        es a su vez una
+        especificación que indica cómo debe implementarse dicho conector.
+    </p>
+    <p>
+        <span class="destacado_inline">
+         <strong>
+          Un conector
+          <span>
+           <abbr title="Java Database Connectivity.">
+            JDBC
+           </abbr>
+          </span>
+          <span lang="en">
+          </span>
+          es un conjunto de clases que implementan las interfaces de la
+          <abbr title="Application Programming Interface.">
+           API
+          </abbr>
+          <abbr title="Java Database Connectivity.">
+           JDBC
+          </abbr>
+          necesarias para conectar a una base de datos específica
+         </strong>
+        </span>
+        .
+    </p>
+    <p>
+        <strong>
+         <span class="resaltado_inline">
+          La función del conector es permitir el acceso y la comunicación con el motor de base de datos
+         </span>
+        </strong>
+        .
+    </p>
+    <p>
+        El conector es generalmente implementado por el fabricante del
+        <abbr title="Sistema Gestor de Bases de Datos">
+            SGBD
+        </abbr>
+        y consta de una o más
+        librerías java (archivos .jar) que deberemos incorporar a nuestro proyecto.
+    </p>
+    <p>
+        Cuando se construye una aplicación que accede a una
+        <del>
+        </del>
+        base de datos,
+        <strong>
+            <abbr title="Java Database Connectivity.">
+                JDBC
+            </abbr>
+            oculta los detalles específicos de
+            cada base de datos
+        </strong>
+        , de modo que al programar nos debemos preocupar
+        <del>
+        </del>
+        sólo de nuestra aplicación.
+    </p>
+    <p>
+        Por tanto, aunque el código de nuestra aplicación no depende del
+        <span lang="en">
+         driver
+        </span>
+        o
+        conector, puesto que trabajaremos directamente con los paquetes java.sql y
+        <code>
+            javax.sql
+        </code>
+        , para ejecutar nuestra aplicación y que esta pueda conectarse y usar la
+        base de datos, sí que vamos a necesitar el conector que nos proporcionará el fabricante.
+    </p>
+    <p>
+        Como se verá más adelante, de cara al desarrollo de nuestra aplicación,
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        nos ofrece clases e interfaces
+        para:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Establecer una conexión a una base de datos.
+        </li>
+        <li>
+            Ejecutar una consulta.
+        </li>
+        <li>
+            Procesar los resultados.
+        </li>
+    </ul>
+    <p>
+        Vamos a ver un pequeño ejemplo de las clases que tendríamos que usar para ejecutar una consulta
+        usando
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        , échale un vistazo
+        al código, no te preocupes si todavía no lo entiendes todo, más adelante veremos algunas cosas
+        en mayor profundidad:
+    </p>
+    <div class="highlighted-code language-java line-numbers">
+        <div>
+         <pre>        //URL de conexión
+        String connectionURL = "jdbc:h2:./minipos.h2db;MODE=MySQL;AUTO_RECONNECT=TRUE";
+        //Usuario para conectar a la base de datos (rellenar si es necesario).
+        String usuario = "";
+        //Contraseña para conectar a la base de datos (rellenar si es necesario).
+        String password = "";
+
+        //Paso 1: conectamos con la base de datos
+        try ( Connection con = DriverManager.getConnection(connectionURL, usuario, password)) &#123;
+
+            //Paso 2: crear y ejecutar una consulta
+            try ( Statement consulta = con.createStatement()) &#123;
+                if (consulta.execute("SELECT id,nombre,precio FROM producto")) &#123;
+                    ResultSet resultados = consulta.getResultSet();
+                    while (resultados.next()) &#123;
+                        long id = resultados.getLong("id");
+                        String nombre = resultados.getString("nombre");
+                        double precio = resultados.getDouble("precio");
+                        System.out.printf("%5d %-15s %10.2f\n", id, nombre, precio);
+                    &#125;
+                &#125;
+            &#125; catch (SQLException ex) &#123;
+                System.err.printf("Se ha producido un error al ejecutar la consulta SQL.");
+            &#125;
+
+        &#125; catch (SQLException ex) &#123;
+            System.err.printf("No se pudo conectar a la base de datos (%s)\n");
+        &#125;</pre>
+        </div>
+    </div>
+    <p>
+        En principio, todos los conectores deben ser compatibles con
+        <abbr title="American National Standards Institute.">
+            ANSI
+        </abbr>
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        -2
+        <span lang="en">
+         Entry Level
+        </span>
+        (
+        <abbr title="American National Standards Institute.">
+            ANSI
+        </abbr>
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        -2 se refiere a los estándares
+        adoptados por el
+        <strong>
+         <span lang="en">
+          American National Standards Institute
+         </span>
+        </strong>
+        (
+        <abbr title="American National Standards Institute.">
+            ANSI
+        </abbr>
+        ) en 1992.
+        <span lang="en">
+         Entry Level
+        </span>
+        se refiere a una lista específica de capacidades de
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        ). Los desarrolladores de
+        conectores pueden establecer que sus conectores conocen estos estándares.
+    </p>
+</div><h1 class="title">
+    1.4.- Instalación de la base de datos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        tienen claro que los datos de la
+        aplicación que tendrán que programar deberán almacenarse en una base de datos. En su
+        proyecto de prueba han estado valorando diferentes sistemas gestores de bases de datos,
+        cada uno por su cuenta, y ahora, van a ponerlos en común:
+    </p>
+    <p>
+        —
+        <strong>
+            Juan
+        </strong>
+        , he estado mirando diferentes opciones para nuestro proyecto de
+        prueba
+        <span>
+           —
+          </span>
+        comenta
+        <strong>
+            María
+        </strong>
+        —. Podríamos utilizar alguna base de
+        datos de las que ya hemos visto en el ciclo. ¿Qué piensas de
+        <span lang="en">
+           MySQ
+          </span>
+        L
+        o
+        <span lang="en">
+           PostgreSQL
+          </span>
+        ?
+    </p>
+    <p>
+          <span>
+           —
+          </span>
+        Yo he valorado también esas dos bases de datos, pero después de darle
+        vueltas al asunto, pienso que instalar un sistema gestor de base de datos para realizar
+        un proyecto de prueba es excesivo. Tampoco sabemos que base de datos utilizaremos
+        finalmente
+        <span>
+           —
+          </span>
+        responde
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+    <p>
+          <span>
+           —
+          </span>
+        ¿Y qué solución propones entonces?
+    </p>
+    <p>
+        —No lo sé, creo que quizás sería mejor preguntarle a
+        <strong>
+            Ada
+        </strong>
+        , a lo mejor
+        ella nos puede orientar.
+    </p>
+    <p>
+        Después de un ratito hablando con
+        <strong>
+            Ada
+        </strong>
+        tienen las cosas más claras. Les
+        ha propuesto que utilicen
+        <strong>
+            H2
+        </strong>
+        para realizar su proyecto de prueba, una
+        base de datos muy ligera que se usa principalmente a la hora de desarrollar. Pero eso
+        sí, deben tener en mente que el proyecto del cliente se hará sobre
+        <strong>
+           <span lang="en">
+            MySQL
+           </span>
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    1.5.- Creación de las tablas en una base de datos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+
+        <div class="figcaption">
+           <span class="author">
+            Elaboración propia. (Dominio público)
+           </span>
+            <span class="license">
+            <span>
+             <br>
+            <br/></span>
+           </span>
+        </div>
+    </div>
+    <p>
+        <strong>
+            <br>
+            María
+            <br/></strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        han realizado el diseño de las tablas
+        que necesitan para la base de datos del mini punto de venta. De momento incluye solo
+        tres tablas: producto, ticket y línea de ticket; con unos pocos atributos, pero piensan
+        hacerlo evolucionar. El aspecto que tiene ahora mismo es el que se muestra en el esquema
+        entidad-relación de la derecha.
+    </p>
+    <p>
+        También han decidido utilizar H2 como sistema gestor de bases de datos para las pruebas,
+        con la mente puesta en que luego tendrán que usar
+        <span lang="en">
+           MySQL
+          </span>
+        .
+    </p>
+    <p>
+        Saben que H2 es un sistema gestor de bases de datos relacional. Una vez instalado,
+        tendrán que programar los accesos a la base de datos para guardar los datos,
+        recuperarlos, realizar las consultas para los informes y documentos que sean necesarios,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+    </p>
+</div><h1 class="title">
+    1.5.1.- Lenguaje SQL (I)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-NC-SA" style="width: 136px;">
+    </div>
+    <p>
+        <br>
+        ¿Cómo le pedimos al Sistema Gestor de Bases de Datos Relacional (
+        <abbr title=" Sistema Gestor de Bases de Datos Relacional.">
+            SGBDR
+        </abbr>
+        ) que nos proporcione
+        la información que nos interesa de la base de datos?
+        <br/></p>
+    <p>
+        En todas o casi todas las bases de datos relacionales se utiliza el
+        <strong>
+            lenguaje
+            <abbr title="Structured Query Language.">
+                SQL
+            </abbr>
+        </strong>
+        para interactuar con el
+        <abbr title=" Sistema Gestor de Bases de Datos Relacional.">
+            SGBDR
+        </abbr>
+        . Veamos sus
+        características principales.
+    </p>
+    <p>
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        es un lenguaje
+        <strong>
+            no
+        </strong>
+        <strong>
+            procedimental
+        </strong>
+        en el cual se le indica al SGBDR
+        <strong>
+            qué
+        </strong>
+        queremos obtener y
+        <strong>
+            no cómo hacerlo
+        </strong>
+        . El
+        <abbr title=" Sistema Gestor de Bases de Datos Relacional.">
+            SGBDR
+        </abbr>
+        analiza nuestra
+        orden y si es correcta sintácticamente la ejecuta.
+    </p>
+    <p>
+        El estudio de
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        nos
+        llevaría mucho más que una unidad, y es objeto de estudio en otros módulos de este ciclo
+        formativo. Pero como resulta imprescindible para poder continuar, haremos una mínima
+        introducción sobre él.
+    </p>
+    <p>
+        Los comandos
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        se pueden
+        dividir en dos grandes grupos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Los que se utilizan para
+            <strong>
+                definir las estructuras de datos
+            </strong>
+            , llamados
+            comandos
+            <strong>
+                <abbr title="Data Definition Language. ">
+                    DDL
+                </abbr>
+            </strong>
+            (
+            <span lang="en">
+          Data Definition Language
+         </span>
+            ).
+        </li>
+        <li>
+            Los que se utilizan para
+            <strong>
+                operar con los datos almacenados en las
+                estructuras
+            </strong>
+            , llamados
+            <strong>
+                <abbr title="Data Manipulation Language.">
+                    DML
+                </abbr>
+            </strong>
+            (
+            <span lang="en">
+          Data Manipulation Language
+         </span>
+            ).
+        </li>
+    </ul>
+    <p>
+        En la siguiente presentación encontrarás algunos de los comandos
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        más utilizados.sencillo:
+    </p>
+    <p style="text-align: center;">
+        Resumen de comandos SQL
+        <span class="exe-link-data file-size">
+         (pdf - 215323
+         <abbr lang="en" title="Bytes">
+          B
+         </abbr>
+         )
+        </span>
+    </p>
+</div><h1 class="title">
+    1.5.2.- Lenguaje SQL (II)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 192px;">
+    </div>
+    <p>
+        La primera fase del trabajo con cualquier base de datos comienza con sentencias
+        <abbr title="Data Definition Language.">
+            DDL
+        </abbr>
+        , puesto que antes de poder
+        almacenar y recuperar información debemos definir las estructuras donde agrupar la información.
+        Las estructuras básicas con las que trabaja
+        <abbr title=" Structured Query Language.">
+            SQL
+        </abbr>
+        son las tablas.
+    </p>
+    <p>
+        Como hemos visto antes, una tabla es un conjunto de celdas agrupadas en filas y columnas donde se
+        almacenan elementos de información.
+    </p>
+    <p>
+        Antes de llevar a cabo la creación de una tabla conviene planificar: nombre de la tabla, nombre
+        de cada columna, tipo y tamaño de los datos almacenados en cada columna, información adicional,
+        restricciones,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+    </p>
+    <p>
+        Hay que tener en cuenta también ciertas restricciones en la formación de los nombres de las
+        tablas: longitud. Normalmente, aunque dependen del sistema gestor, suele tener una longitud
+        máxima de 30 caracteres, no puede haber nombres de tabla duplicados, deben comenzar con un
+        carácter alfabético, permitir caracteres alfanuméricos y el guión bajo '_', y normalmente no se
+        distingue entre mayúsculas y minúsculas.
+    </p>
+    <p>
+        Veamos cómo sería un ejemplo de
+        <abbr title="Data Definition Language.">
+            DDL
+        </abbr>
+        para crear una tabla,
+        concretamente la tabla PRODUCTO del mini punto de venta:
+    </p>
+    <div class="highlighted-code language-sql">
+        <div>
+         <pre>CREATE TABLE IF NOT EXISTS PRODUCTO(
+    ID BIGINT NOT NULL PRIMARY KEY auto_increment,
+    BARCODE VARCHAR(24) NOT NULL,
+    NOMBRE VARCHAR(200) NOT NULL,
+    PRECIO DOUBLE NOT NULL
+);</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior creamos la tabla PRODUCTO, solo si no existe previamente, además el campo&nbsp;ID
+        sería la clave primaria (PRIMARY KEY). El campo&nbsp;ID además es autoincremental, es decir, es
+        una secuencia que cada vez que se inserte un registro se incrementará automáticamente, algo muy
+        habitual en las bases de datos.
+    </p>
+    <p>
+        Pongamos ahora otro ejemplo, también relacionado con el mini punto de venta. En este caso, sería
+        la tabla que contendría los tickets:
+    </p>
+    <div class="highlighted-code language-sql">
+        <div>
+         <pre>CREATE TABLE IF NOT EXISTS TICKET (
+    ID BIGINT NOT NULL PRIMARY KEY auto_increment,
+    FECHA DATE NOT NULL,
+    HORA TIME NOT NULL,
+    TICKETCERRADO BOOLEAN NOT NULL
+);</pre>
+        </div>
+    </div>
+    <p>
+        En la tabla anterior, la clave primaria es igual que en la tabla PRODUCTO. Aparece información
+        sobre la fecha y la hora del ticket, y un boolean que indicará si el ticket está cerrado o
+        no.
+    </p>
+    <p>
+        Por último veamos como podría ser la última tabla del mini punto de venta, la tabla
+        LINEATICKET:
+    </p>
+    <div class="highlighted-code language-sql">
+        <div>
+         <pre>CREATE TABLE IF NOT EXISTS LINEATICKET(
+    ID BIGINT NOT NULL PRIMARY KEY auto_increment,
+    CANTIDAD INTEGER NOT NULL,
+    PRECIOVENTA DOUBLE NOT NULL,
+    PRODUCTO_ID BIGINT,
+    TICKET_ID BIGINT,
+    FOREIGN KEY(PRODUCTO_ID) REFERENCES PUBLIC.PRODUCTO(ID) ON UPDATE CASCADE ON DELETE CASCADE,
+    FOREIGN KEY(TICKET_ID) REFERENCES PUBLIC.TICKET(ID) ON UPDATE CASCADE ON DELETE CASCADE
+);
+</pre>
+        </div>
+    </div>
+    <p>
+        <span style="font-size: 1em;">
+         La tabla
+        </span>
+        LINEATICKET
+        <span style="font-size: 1em;">
+         contiene cada una de las líneas del ticket; como ya sabes, un ticket puede contener varios productos. Los campos
+        </span>
+        PRODUCTO_ID
+        <span style="font-size: 1em;">
+         y
+        </span>
+        TICKET_ID
+        <span style="font-size: 1em;">
+         conectarán esta línea de ticket con el ticket al que pertenece y con el producto en cuestión.
+        </span>
+    </p>
+    <p>
+        Como habrás observado en las tablas anteriores, cada campo tiene asociado un tipo de dato:
+        INTEGER,
+        <code>
+            BIGINT
+        </code>
+        , DATE,
+        <code>
+            TIME
+        </code>
+        , BOOLEAN,
+        <code>
+            VARCHAR
+        </code>
+        ,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . A la hora de almacenar dicha información en
+        <span lang="en">
+         Java
+        </span>
+        , tendrás que tener en cuenta las siguientes equivalencias:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El tipo de dato&nbsp;INTEGER en
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            equivaldría al tipo&nbsp;int
+            en
+            <span lang="en">
+          Java
+         </span>
+            .
+        </li>
+        <li>
+            El tipo de dato&nbsp;BIGINT en
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            equivaldría al tipo&nbsp;long
+            en
+            <span lang="en">
+          Java
+         </span>
+            .
+        </li>
+        <li>
+            El tipo de dato&nbsp;DOUBLE en
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            equivaldría al tipo&nbsp;double
+            en
+            <span lang="en">
+          Java
+         </span>
+            .
+        </li>
+        <li>
+            El tipo de dato&nbsp;VARCHAR en
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            equivaldría al tipo&nbsp;String en
+            <span lang="en">
+          Java
+         </span>
+            , pero tienes que tener
+            en cuenta que&nbsp;VARCHAR tiene un tamaño limitado, mientras que un&nbsp;String no. Por
+            ejemplo,&nbsp;"VARCHAR(30)" sería una cadena de hasta 30 caracteres. Así, que a la hora de
+            insertar datos en una base de datos relacional, debes tener en cuenta que la longitud del&nbsp;String
+            en
+            <span lang="en">
+          Java
+         </span>
+            no debería superar al tamaño límite del&nbsp;VARCHAR en
+            la base de datos.
+        </li>
+        <li>
+            El tipo de dato&nbsp;DATE en
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            equivaldría al tipo&nbsp;java.sql.Date
+            (no debe usarse&nbsp;java.util.Date ni
+            <code>
+                java.time.LocalDate
+            </code>
+            ).&nbsp;java.sql.Date
+            puede convertirse rápidamente a java.time.LocalDate.
+        </li>
+        <li>
+            El tipo de dato&nbsp;TIME en
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            equivaldría al tipo&nbsp;java.sql.Time
+            (no debe usarse&nbsp;java.util.Time ni
+            <code>
+                java.time.LocalTime
+            </code>
+            ). Nuevamente,&nbsp;java.sql.Time
+            puede convertirse rápidamente a java.time.LocalTime.
+        </li>
+    </ul>
+</div><h1 class="title">
+    1.6.- Establecimiento de conexiones
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-copyright" style="width: 196px;">
+    </div>
+    <p>
+        <br>
+        Tanto
+        <strong>
+            Juan
+        </strong>
+        como
+        <strong>
+            María
+        </strong>
+        están deseando empezar a
+        trabajar en su proyecto de mini punto de venta, ya tienen pensadas las tablas y ahora
+        toca empezar a escribir código. Saben que usar bases de datos relacionales en
+        <span lang="en">
+           Java
+          </span>
+        es sencillo, pero aún así tienen algunas dudas, por lo que
+        deciden preguntarle a
+        <strong>
+            Ada
+        </strong>
+        .
+        <br/></p>
+    <p>
+        ¿Cómo se crea una conexión a la base de datos? —pregunta
+        <strong>
+            Juan—
+        </strong>
+        . Estoy
+        intentando ejecutar una consulta usando lo que he visto en un tutorial en Internet, y no
+        consigo que se conecte, me falla en la primera línea.
+    </p>
+    <p>
+        —Primero tienes que cargar el conector —le responde
+        <strong>
+            Ada—
+        </strong>
+        . ¿Has
+        configurado en tu proyecto las librerías del conector
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        ? Para conectarte a
+        una base de datos como MySQL u Oracle desde tu programa necesitas el conector.
+    </p>
+    <p>
+          <span class="st">
+           <span class="st">
+            —Estamos usando H2 para nuestras pruebas, que va todo incluido en el archivo .jar&nbsp;—replica
+            <strong>
+             María
+            </strong>
+            .
+            <br>
+           <br/></span>
+          </span>
+    </p>
+    <p>
+        —Es verdad, no me acordaba —contesta
+        <strong>
+            Ada—
+        </strong>
+        . El problema entonces debe
+        estar en que no habéis realizado la conexión previamente, vamos a echarle un vistazo al
+        código. No obstante, no olvidéis que en el proyecto habrá que usar una base de datos más
+        potente, revisad también como conectaros con una base de datos como
+        <span lang="en">
+           <span lang="en">
+            MySQL
+           </span>
+          </span>
+        <span lang="en">
+          </span>
+        .
+    </p>
+</div><h1 class="title">
+    1.6.1.- Configurar un conector JDBC en un proyecto NetBeans
+</h1>
+<div class="iDevice_content">
+    <p>
+        En la siguiente presentación vamos a ver cómo descargarnos el conector o
+        <span lang="en">
+         driver
+        </span>
+        que necesitamos para trabajar con
+        <span lang="en">
+         MySQL
+        </span>
+        . Como
+        verás, tan sólo consiste en descargar un archivo, descomprimirlo y desde
+        <span lang="en">
+         NetBeans
+        </span>
+        añadir el fichero .jar que constituye el conector que necesitamos.
+    </p>
+    <div class="exe-figure exe-media position-center" style="width: 550px;">
+        <div class="figcaption header">
+            <strong>
+                Añadir el driver JDBC para MySQL en un proyecto de
+                NetBeans
+            </strong>
+        </div>
+        <span class="external-iframe-src" style="display:none">
+         https://prezi.com/view/s1aBqRhibJDlU34glDRl/embed
+        </span>
+        <iframe allowfullscreen="1" class="external-iframe" height="400" mozallowfullscreen="1"
+                src="./educacionadistancia.juntadeandalucia.es_formacionprofesional_blocks_recopila_recopila.php_id=4052&amp;dopt=1_files/embed.html"
+                webkitallowfullscreen="1" width="550">
+        </iframe>
+        <br>
+
+        <br/></div>
+    <p>
+        Recuerda que&nbsp;el conector
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        es un componente que se intercala
+        entre el programa
+        <span lang="en">
+         Java
+        </span>
+        y el Sistema Gestor de la Base de Datos (
+        <abbr title="Sistema Gestor de Bases de Datos.">
+            SGBD
+        </abbr>
+        ), y que implementa la
+        funcionalidad necesaria para proporcionar comunicación entre la
+        <abbr title="Application Programming Interface.">
+            API
+        </abbr>
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        y el
+        <abbr title="Sistema Gestor de Bases de Datos.">
+            SGBD
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    1.6.2.- Registrar el conector JDBC
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        A la hora de empezar a escribir código, ¿sabes si necesitas registrar el conector
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        ? Como se comentó en apartados
+        anteriores, es necesario registrar el conector
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        si estamos
+        trabajando con una versión de
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        anterior a la
+        <abbr title="cuatro punto cero">
+            4.0
+        </abbr>
+        .
+    </p>
+    <p>
+        En la práctica, es fácil saber cuándo tienes que registrar el conector, dado que solo las
+        versiones anteriores a
+        <abbr title="uno punto seis">
+            1.6
+        </abbr>
+        del
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        tienen una versión de
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        inferior a la
+        <abbr title="cuatro punto cero">
+            4.0
+        </abbr>
+        . Esto quiere decir que:
+    </p>
+    <p class="destacado">
+        <strong>
+            Solo tienes que registrar el conector si vas a usar un
+            <abbr title="Java Development Kit">
+                JDK
+            </abbr>
+            anterior a 1.6. Versiones actuales como
+            <strong>
+                <abbr title="Java Development Kit">
+                    JDK
+                </abbr>
+            </strong>
+            1.7,
+            <strong>
+                <abbr title="Java Development Kit">
+                    JDK
+                </abbr>
+            </strong>
+            8 y
+            posteriores, no necesitan registrar el conector, pero como se verá a continuación es una buena
+            práctica.
+            <br>
+            <br/></strong>
+    </p>
+    <p>
+        Para registrar el controlador primero, hay que consultar la documentación del conector que vamos
+        a utilizar para conocer el nombre de la clase que hay que emplear, dado que cada conector es
+        diferente.
+    </p>
+    <p>
+        En el caso del conector para
+        <span lang="en">
+         MySQL
+        </span>
+        la clase en cuestión es&nbsp;com.mysql.cj.jdbc.Driver.
+        Se trata de una clase que implementa la interfaz&nbsp;java.sql.Driver definida por
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        , y que es la interfaz que
+        todo conector debe implementar. Dicha clase ya compilada se encontrará obviamente dentro de la
+        librería .jar que instalamos en el paso anterior.
+    </p>
+    <p>
+        Las líneas de código necesarias para registrar el conector son tan sencillas como las
+        siguientes:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>boolean driverCargado=false;
+String driver="com.mysql.cj.jdbc.Driver";
+try &#123;
+      Class.forName(driver).newInstance();
+      driverCargado=true;
+&#125; catch (ClassNotFoundException e) &#123;
+      err.printf("No se encuentra el driver de la base de datos (%s)\n",driver);
+&#125; catch (InstantiationException ex) &#123;
+      err.printf("No se ha podido iniciar el driver de la base de datos (%s)\n",driver);
+&#125; catch (IllegalAccessException ex) &#123;
+      err.printf("No se ha podido iniciar el driver de la base de datos (%s)\n",driver);
+&#125;
+
+if (driverCargado) &#123;
+
+// podemos continuar, el driver se ha cargado correctamente
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Una vez cargado el conector, es posible hacer una conexión al
+        <abbr title="Sistema Gestor de Bases de Datos">
+            SGBD
+        </abbr>
+        . Fíjate que el proceso de carga
+        puede producir hasta tres tipos de excepciones diferentes, hay que tener especial cuidado con
+        eso, dado que el programa no debería continuar en caso de que dichas excepciones se produjeran.
+    </p>
+    <p>
+        Por último, toca hablar un poco de la distribución de la aplicación al cliente final. Los
+        proyectos que hemos creado hasta ahora, donde hemos incluido la librería del conector al
+        proyecto para poder desarrollar y probar nuestra aplicación, no generan proyectos listos para
+        ejecutar en un cliente final. ¿Por qué? Por que el archivo .jar generado para nuestra aplicación
+        no incluye en su interior el conector.
+    </p>
+    <p>
+        ¿Y esto que significa? Significa que debemos copiar también el conector
+        <abbr title="Java Database Connectivity.">
+            JDBC
+        </abbr>
+        en la máquina del cliente como
+        parte del proceso de instalación. Como parte del proceso de instalación debemos, o bien añadir
+        al CLASSPATH la localización del archivo&nbsp;.jar del conector, o bien indicar a la hora de
+        ejecutar la aplicación donde está el archivo .jar del conector. Un ejemplo de esto último sería
+        el siguiente:
+    </p>
+    <div class="highlighted-code code-style-2 language-latex">
+        <div>
+            <pre>java -cp UT10_ProyectoBaseMySQL.jar;librerias\mysql-connector-java-8.0.20.jar ejemplo.Aplicacion</pre>
+        </div>
+    </div>
+    <p>
+        En el código anterior el conector estaría en una carpeta llamada librerias.
+    </p>
+    <div class="destacado">
+        <p>
+            <strong>
+                Aunque el proceso de registro del conector no es necesario en muchos casos, es una
+                buena práctica por dos motivos:
+            </strong>
+        </p>
+        <ul class="lista_verificacion">
+            <li>
+                <strong>
+                    El primero es por asegurar compatibilidad con versiones anteriores del
+                </strong>
+                <abbr title="Java Development Kit">
+                    JDK
+                </abbr>
+                <strong>
+                    , dado que en muchas
+                    ocasiones no sabemos que versión del
+                </strong>
+                <abbr title="Java Development Kit">
+                    JDK
+                </abbr>
+                <strong>
+                    se usará en el cliente final.
+                </strong>
+            </li>
+            <li>
+                <strong style="font-size: 1em;">
+                    El segundo es para controlar situaciones como la
+                    anterior. Si al ejecutar la aplicación en el cliente no se encuentra el conector, porque
+                    no se ha configurado bien el&nbsp;CLASSPATH o porque al ejecutar la aplicación no se ha
+                    indicado donde está la librería del conector, podremos mostrar por pantalla un mensaje
+                    amigable y evitar así una incómoda excepción.
+                </strong>
+            </li>
+        </ul>
+    </div>
+</div><h1 class="title">
+    1.7.- Ejecución de consultas sobre la base de datos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-copyright" style="width: 128px;">
+    </div>
+    <p>
+        <strong>
+            <br>
+            Ada
+            <br/></strong>
+        está muy satisfecha con el interés que
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        han puesto y el empeño en empezar a utilizar una tecnología que
+        en breve van a usar. Los ve que están enfrascados en la creación de consultas para
+        gestionar los productos, los tickets y demás.
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        es consciente de que hacer consultas es una de las facetas de la
+        programación más delicadas. Por lo que, dada la importancia del proyecto, cuanto antes
+        avancen y mejoren sus destrezas en ese aspecto, mucho mejor.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        tienen experiencia en consultas
+        <abbr title="Structured Query Language">
+           <span lang="Structured Query Languege">
+            SQL
+           </span>
+        </abbr>
+        y saben que, cuando se
+        hace una consulta a una base de datos, hay que afinar y hacerla lo más eficiente
+        posible, pues si se descuidan el sistema gestor puede tardar mucho en devolver los
+        resultados.
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        se acerca discretamente a ver lo que está haciendo
+        <strong>
+            María
+        </strong>
+        , y se da cuenta de que está escribiendo código para crear
+        tickets. Prefiere no molestarla, dado que parece muy concentrada.
+    </p>
+</div><h1 class="title">
+    1.7.1.- Adición de información
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY-ND" style="width: 250px;">
+    </figure>
+    <p>
+        ¿Cómo añadirías un registro a una tabla en la base de datos?
+    </p>
+    <p>
+        Por lo que sabemos hasta ahora tendrás que crear una consulta INSERT INTO de
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        , usar un&nbsp;Statement o un
+        PreparedStatement, y además debemos utilizar el método executeUpdate().
+    </p>
+    <p>
+        Debido a innumerables motivos, se aconseja usar un&nbsp;PreparedStatement, por lo que vamos a
+        explicar en primer lugar su uso.
+    </p>
+    <p>
+        Un&nbsp;PreparedStatement&nbsp;necesita una consulta
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        que tenga parámetros, los
+        parámetros se indican con "?":
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String query = "INSERT INTO producto (nombre, barcode, precio) VALUES (?,?,?)";
+</pre>
+        </div>
+    </div>
+    <p>
+        La consulta anterior tendría 3 parámetros, y cada parámetro sería accesible por la posición que
+        ocupa en la consulta, empezando a numerar el primero en uno (el primer&nbsp;"?" sería el
+        parámetro número 1, el segundo&nbsp;"?" será el parámetro número 2, y así sucesivamente).
+        Después se pueden reemplazar cómodamente con una serie de métodos que proporciona la clase
+        PreparedStatement, veamos algunos de ellos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            setDouble (int pos, double value) para indicar el valor de un parámetro de tipo double.
+        </li>
+        <li>
+            setInt (int pos, int value)&nbsp;para indicar el valor de un parámetro tipo entero.
+        </li>
+        <li>
+            setString (int pos, String value)&nbsp;para indicar el valor de un parámeto tipo cadena de
+            texto.
+        </li>
+        <li>
+            setDate (int pos, Date value)&nbsp;para indicar el valor de un parámetro tipo fecha
+            (java.sql.Date).
+        </li>
+        <li>
+            setTime (int pos, Time value)&nbsp;para indicar el valor de un parámetro tipo hora
+            (java.sql.Time).
+        </li>
+    </ul>
+    <p>
+        Veamos cómo se podría ejecutar entonces la sentencia paramétrica anterior:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public static void nuevoProducto(Connection con, String nombre, String barcode, double precio) &#123;
+        String query = "INSERT INTO producto (nombre, barcode, precio) VALUES (?,?,?)";
+        if (con != null) &#123;
+
+            try ( PreparedStatement consulta = con.prepareStatement(query)) &#123;
+
+                consulta.setString(1, nombre);
+                consulta.setString(2, barcode);
+                consulta.setDouble(3, precio);
+
+                int registrosAfectados = consulta.executeUpdate();
+                if (registrosAfectados > 0) &#123;
+                    System.out.println("Producto insertado correctamente.");
+                &#125; else &#123;
+                    System.out.println("El producto no ha podido ser insertado.");
+                &#125;
+            &#125; catch (SQLException ex) &#123;
+                System.err.printf("Se ha producido un error al ejecutar la consulta SQL.");
+            &#125;
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior se muestra un método estático que recibe por parámetro la conexión (con) y
+        los datos necesarios para almacenar el producto.
+    </p>
+</div><h1 class="title">
+    1.7.2.- Recuperación de información (I)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
+    </div>
+    <p>
+        Y ahora, ¿cómo rescatamos la información ya almacenada en la base de datos?
+    </p>
+    <p>
+        Supongo que ya lo imaginas, tendremos que ejecutar consultas tipo SELECT. Tendremos que preparar
+        una cadena de texto que contenga la consulta
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        , y ejecutar dicha
+        consulta
+        <abbr title="Structured Query Language.">
+        </abbr>
+        .
+    </p>
+    <p>
+        Las consultas tipo&nbsp;SELECT se lanzarán principalmente con el método&nbsp;executeQuery (aunque
+        también se pueden lanzar con el método execute) de la clase&nbsp;Statement o
+        <code>
+            PreparedStatement
+        </code>
+        .
+        En ambos casos se obtiene un ResultSet, que es una clase
+        <span lang="en">
+         Java
+        </span>
+        parecida a
+        una lista en la que se aloja el resultado de la consulta. Cada elemento de la lista es uno de
+        los registros de la base de datos que cumple con los requisitos de la consulta.
+    </p>
+    <p>
+        El ResultSet no contiene todos los datos, sino que los va obteniendo de la base de datos según se
+        van pidiendo. La razón de esto es evitar que una consulta que devuelva una cantidad muy elevada
+        de registros, tarde mucho tiempo en obtenerse y sature la memoria del programa.
+    </p>
+    <p>
+        Con el ResultSet hay disponibles una serie de métodos que permiten movernos hacia delante y hacia
+        atrás en las filas, y obtener la información de cada fila. Vamos a ver un ejemplo sencillo en el
+        que se obtiene el id, el&nbsp;nombre y el&nbsp;precio de todos los productos almacenados en la
+        base de datos:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>    public static void mostrarTodosLosProductos(Connection con) &#123;
+        if (con != null) &#123;
+            try ( Statement consulta = con.createStatement()) &#123;
+                ResultSet resultados = consulta.executeQuery("SELECT id,nombre,precio FROM producto");
+
+                while (resultados.next()) &#123;
+                    long id = resultados.getLong("id");
+                    String nombre = resultados.getString("nombre");
+                    double precio = resultados.getDouble("precio");
+                    System.out.printf("%5d %-15s %10.2f\n", id, nombre, precio);
+                &#125;
+
+            &#125; catch (SQLException ex) &#123;
+                System.err.printf("Se ha producido un error al ejecutar la consulta SQL.");
+            &#125;
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        La clase&nbsp;ResultSet usa internamente un
+        cursor
+        que permitirá ir accediendo a cada uno de los
+        registros seleccionados. Inicialmente dicho cursor no apunta a ningún de registro.
+    </p>
+    <p>
+        En el ejemplo anterior, el método next() del ResultSet hace que dicho cursor avance al siguiente
+        registro (o que se sitúe en el primer registro si es la primera invocación del método). Si lo
+        consigue, el método next() devuelve true. Si no lo consigue, porque no haya más registros que
+        leer, entonces devuelve false.
+    </p>
+    <p>
+        Para obtener cada una de las columnas de cada registro, se utilizan los métodos get. A dichos
+        métodos habrá que pasar el nombre del campo cuyo valor se desea obtener ("id", "nombre",
+        "precio" ,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        ) o la posición del campo (empezando su numeración
+        en uno). Veamos algunos de los métodos&nbsp;get más importantes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            getDouble para obtener un campo cuyo valor es de tipo double.
+        </li>
+        <li>
+            getInt para obtener un campo cuyo valor es de tipo entero.
+        </li>
+        <li>
+            getString&nbsp;para obtener un campo cuyo valor es de tipo cadena de texto.
+        </li>
+        <li>
+            getDate para obtener un campo cuyo valor es de tipo fecha (java.sql.Date).
+        </li>
+        <li>
+            getTime para obtener un campo cuyo valor es de tipo
+            <strong>
+            </strong>
+            hora (java.sql.Time).
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t146e2c77-4b99-5024-6a25-b0b9ad791def">
+        <p>
+            Un cursor está formado por un conjunto de registros devueltos por una instrucción
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            de tipo SELECT.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.7.1.2.- Recuperación de información (II)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
+    </div>
+    <p>
+        ¿Y si necesitas realizar una consulta en la que se seleccione solo los registros que cumplan unas
+        determinadas condiciones?
+    </p>
+    <p>
+        En ese caso, necesitas una consulta paramétrica. Imagina que necesitas obtener todos los
+        productos de la base de datos que tienen un precio mayor a uno pasado por parámetro.
+        Necesitarías una consulta como la siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String query="SELECT id,nombre,precio FROM producto WHERE precio>=?";
+</pre>
+        </div>
+    </div>
+    <p>
+        El procedimiento de ejecución de la consulta anterior necesita hacer uso de las consultas tipo
+        PreparedStatement, vistas en apartados anteriores. Veamos un pequeño ejemplo donde se muestran
+        por pantalla los productos cuyo precio es superior a uno dado por parámetro:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public static void mostrarProductosPrecioMinimo (Connection con, double precioMinimo)
+    &#123;
+        String query="SELECT id,nombre,precio FROM producto WHERE precio>=?";
+        if (con!=null) &#123;
+         try ( PreparedStatement consulta = con.prepareStatement(query)) &#123;
+                consulta.setDouble(1, precioMinimo);
+                if (consulta.execute()) &#123;
+                    ResultSet resultados = consulta.getResultSet();
+                    while (resultados.next()) &#123;
+                        long id = resultados.getLong("id");
+                        String nombre = resultados.getString("nombre");
+                        double precio = resultados.getDouble("precio");
+                        System.out.printf("%5d %-15s %10.2f\n", id, nombre, precio);
+                    &#125;
+                &#125;
+            &#125; catch (SQLException ex) &#123;
+                System.err.printf("Se ha producido un error al ejecutar la consulta SQL.");
+            &#125;
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Igual que en el caso de inserción de registros en la base de datos, aquí se utilizan los métodos&nbsp;set
+        para establecer el valor de los parámetros de la consulta, en este caso, el método setDouble,
+        dado que el precio es de tipo&nbsp;DOUBLE en la tabla de la base de datos.
+    </p>
+</div><h1 class="title">
+    1.7.3.- Actualización de información
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY-ND" style="width: 250px;">
+    </figure>
+    <p>
+        Ya sabes cómo insertar registros en la base de datos, y también, cómo rescatarlos. Ahora toca
+        otra operación muy común: la actualización de datos. ¿Crees que serías capaz de hacerlo?
+    </p>
+    <p>
+        Las consultas de actualización son las consultas tipo UPDATE, y tal y como se comentó en
+        apartados anteriores, es necesario ejecutarlas usando el método executeUpdate. Ese método, como
+        ya sabes, retorna el número de registros insertados, actualizados o eliminados, dependiendo del
+        tipo de consulta que se trate.
+    </p>
+    <p>
+        Imagina la siguiente consulta que cambia el precio de un producto concreto:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>String query = "UPDATE producto SET precio=? WHERE id=?;";</pre>
+        </div>
+    </div>
+    <p>
+        Ejecutar la consulta anterior es similar a una inserción, veamos como podría ser:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>public static void actualizarPrecioProducto(Connection con, long id,double precio) &#123;
+        String query = "UPDATE producto SET precio=? WHERE id=?;";
+        if (con != null) &#123;
+
+            try ( PreparedStatement consulta = con.prepareStatement(query)) &#123;
+
+                consulta.setDouble(1, precio);
+                consulta.setLong(2, id);
+
+                int registrosAfectados = consulta.executeUpdate();
+                if (registrosAfectados>0)
+                &#123;
+                    System.out.println("El precio del producto se ha modificado." + precio);
+                &#125; else &#123;
+                    System.out.println("El precio del producto no se ha modificado, producto no encontrado.");
+                &#125;
+
+            &#125; catch (SQLException ex) &#123;
+                System.err.printf("Se ha producio un error al ejecutar la consulta SQL.");
+            &#125;
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Fíjate en el uso del valor retornado por el método&nbsp;executeUpdate, gracias a dicho valor
+        podemos determinar si la inserción se pudo realizar o no, dado que sabríamos el número de
+        registros que han sido modificados.
+    </p>
+</div><h1 class="title">
+    1.7.4.- Borrado de información
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
+    </div>
+    <p>
+        Hay que eliminar información, ¿te atreves?
+    </p>
+    <p>
+        Siempre da un poco de miedo eliminar datos, pero hay veces que es necesario hacerlo.
+    </p>
+    <p>
+        Cuando nos interese eliminar registros de una tabla de una base de datos, emplearemos la
+        sentencia
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        DELETE. Para
+        eliminar registros de la base de datos recomendamos utilizar PreparedStatement, dado que lo más
+        habitual es que haya que pasar algún parámetro a la consulta. Imagina que necesitamos eliminar
+        un producto concreto de la base de datos, deberíamos utilizar una consulta similar a la
+        siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String queryDelete = "DELETE FROM producto WHERE id=?";
+</pre>
+        </div>
+    </div>
+    <p>
+        En el código anterior se eliminaría un producto con un&nbsp;id interno concreto. En las
+        sentencias de este tipo, normalmente, siempre se usa la clave primaria para especificar qué
+        registro concreto se desea eliminar, y no eliminar otro por error.
+    </p>
+    <p>
+        Veamos un ejemplo de la ejecución de la sentencia anterior:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>    public static void borrarProducto(Connection con, long id) &#123;
+        String queryDelete = "DELETE FROM producto WHERE id=?";
+        if (con != null) &#123;
+            try ( PreparedStatement consultaDelete = con.prepareStatement(queryDelete)) &#123;
+                consultaDelete.setLong(1, id);
+                int registrosAfectados = consultaDelete.executeUpdate();
+                if (registrosAfectados > 0) &#123;
+                    System.out.println("El producto ha sido eliminado correctamente");
+                &#125; else &#123;
+                    System.out.println("El producto no ha sido eliminado, porque no existe.");
+                &#125;
+            &#125; catch (SQLException ex) &#123;
+                System.err.printf("Se ha producio un error al ejecutar la consulta SQL.");
+            &#125;
+        &#125;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Fíjate que tal y como ocurría en otros casos anteriores, aprovechamos el valor retornado por el
+        método&nbsp;executeUpdate para saber si el registro se eliminó o no.
+    </p>
+</div><h1 class="title">
+    1.7.5.- Cierre de conexiones
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-CC-BY-SA" style="width: 250px;">
+    </figure>
+    <p align="justify">
+        ¿Crees que es importante cerrar una conexión?
+    </p>
+    <p align="justify">
+        Las conexiones a una base de datos consumen muchos recursos en el sistema gestor
+        de bases de datos y también en la misma memoria del sistema donde se ejecuta la aplicación.
+    </p>
+    <p align="justify">
+        Si realizamos un programa que realiza múltiples conexiones a la base de datos, y
+        luego no las cerramos adecuadamente, estaremos ocupando memoria innecesariamente.
+    </p>
+    <p align="justify">
+        Por ello, conviene cerrar las conexiones con el método close() siempre que vayan
+        a dejar de ser utilizadas, en lugar de esperar a que el recolector de basura de
+        <span lang="en">
+         Java
+        </span>
+        (
+        <span lang="en">
+         garbage collector
+        </span>
+        ) las elimine.
+    </p>
+    <p align="justify">
+        Veamos un ejemplo de cómo cerrar una conexión a una base de datos de forma
+        adecuada:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>String url="jdbc:mysql://localhost/proyectobase?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
+String usuario="prueba";
+String password="prueba";
+Connection con = null
+try &#123;
+    con = DriverManager.getConnection(url,usuario,password);         <br/>
+    /* Consultas a la base de datos. */
+
+&#125; catch (SQLException ex) &#123;
+   err.printf("No se pudo conectar a la base de datos (%s)\n", dbname);
+   ex.printStackTrace();
+&#125; finally &#123;
+  if (con!=null) con.close();
+&#125;</pre>
+        </div>
+    </div>
+    <p align="justify">
+        El código anterior puede ser reemplazado por un try-with-resources, tal y como se
+        ha hecho en ejemplos anteriores. Esto tiene una gran ventaja, y es que nos libera de tener que
+        invocar el método .close(), dado que esta estructura garantiza el cierre de recursos de forma
+        automática y segura.
+    </p>
+    <p align="justify">
+        También es necesario cerrar las sentencias (Statement y
+        <code>
+            PreparedStatement
+        </code>
+        ). De esa forma también liberamos memoria y recursos del sistema.
+        No es un problema en programas que ejecutan pocas consultas, pero en programas que ejecutan
+        miles o millones de consultas se convierte en un problema grave. Como hemos visto en ejemplos
+        anteriores, con esas sentencias también se puede usar un&nbsp;try-with-resources, por lo que
+        vamos a poner un ejemplo alternativo donde no se utiliza dicha estructura:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>  Statement consulta=null;
+  try &#123;
+      consulta = con.createStatement();
+      if (consulta.execute("SELECT id,nombre,precio FROM producto")) &#123;
+          ResultSet resultados = consulta.getResultSet();
+          while (resultados.next()) &#123;
+             long id = resultados.getLong("id");
+             String nombre = resultados.getString("nombre");
+             double precio = resultados.getDouble("precio");
+             System.out.printf("%5d %-15s %10.2f\n", id, nombre, precio);
+          &#125;
+      &#125;
+  &#125; catch (SQLException ex) &#123;
+      System.err.printf("Se ha producio un error al ejecutar la consulta SQL.");
+  &#125; finally &#123;
+      if (consulta!=null)
+         consulta.close();
+ &#125;</pre>
+        </div>
+    </div>
+    <p align="justify">
+        A veces, incluso es conveniente liberar los resultados (ResultSet). No obstante,
+        cuando se cierra la consulta, también se liberan los&nbsp;ResultSet asociados.
+    </p>
+</div><h1 class="title">
+    1.7.6.- Excepciones en JDBC
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 113px;">
+    </div>
+    <p>
+        En todas las aplicaciones en general, y por tanto en las que acceden a bases de datos en
+        particular, nos puede ocurrir con frecuencia que la aplicación no funciona, no muestra los datos
+        de la base de datos que deseábamos,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+    </p>
+    <p>
+        Es importante capturar las excepciones que puedan ocurrir para que el programa no aborte de
+        manera abrupta. Además, es conveniente tratarlas para que nos den información sobre si el
+        problema es que se está intentando acceder a una base de datos que no existe, o que el servicio
+        <span lang="en">
+         MySQL
+        </span>
+        no está arrancado, o que se ha intentado hacer alguna operación no
+        permitida sobre la base de datos, como acceder con un usuario y contraseña no registrados, ...
+    </p>
+    <p>
+        Cuando alguna de las clases que usamos de
+        <abbr title="Java Database Connectivity">
+            JDBC
+        </abbr>
+        se encuentra con un error, generará una excepción tipo&nbsp;SQLException que incluye información
+        muy útil. En especial, cuando se trata de consultas, dado que nos puede dar detalles importantes
+        de cuál es el problema en la consulta.
+    </p>
+    <div class="destacado">
+        <strong>
+            Es importante que
+            <em>
+                las operaciones de acceso a base de datos
+            </em>
+            estén
+            <em>
+                dentro de un bloque
+            </em>
+            &lt;em&gt;try-catch&lt;/em&gt; que gestione las
+            excepciones.
+        </strong>
+    </div>
+    <p>
+        Los dos métodos más útiles&nbsp;de SQLException
+        <code>
+        </code>
+        son el método getMessage(), que
+        permite recoger y mostrar el mensaje de error que ha generado
+        <span lang="en">
+         la base de datos (generalmente en inglés), y también el método
+        </span>
+        getSQLState(),
+        que permite obtener un código que identifica el error que se ha producido. También es útil el
+        método getErrorCode(), el cual devuelve un número entero que representa el código de error
+        asociado.
+    </p>
+    <p>
+        Aunque cada base de datos hace sus propias adaptaciones y sigue sus propios criterios, los
+        códigos obtenidos por el método&nbsp;getSQLState() generalmente suelen seguir el convenio de los
+        estándares
+        <abbr title="Structured Query Language">
+            SQL
+        </abbr>
+        publicados por
+        organizaciones como
+        <abbr title="International Organization for Standardization">
+            ISO
+        </abbr>
+        y
+        <abbr title="American National Standards Institute">
+            ANSI
+        </abbr>
+        . En la
+        siguiente página puedes ver los códigos de error que genera
+        <span lang="en">
+         MySQL
+        </span>
+        y su
+        significado:
+    </p>
+    <p style="text-align: center;">
+        Códigos de error en
+
+        MySQL
+
+        8.0.
+    </p>
+    <p>
+        <span>
+         El que estos códigos estén medianamente estandarizados permite que podamos dar una respuesta desde la programación frente a determinados fallos.
+        </span>
+    </p>
+</div><h1 class="title">
+    2.- Persistencia de objetos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+           <span>
+            Antonio
+           </span>
+        </strong>
+        <span>
+           esta mañana está muy contento y todo es porque una aplicación que estaba haciendo le ha funcionado. Es una aplicación donde está utilizando bases de datos con
+           <abbr title="Java Persistence API">
+            JPA
+           </abbr>
+           , y se siente orgulloso por haber sido capaz de hacerlo.
+           <br>
+          <br/></span>
+    </p>
+    <p>
+          <span>
+           <strong>
+            Juan
+           </strong>
+           y
+           <strong>
+            Antonio
+           </strong>
+           se encuentran por el pasillo y comienza a hablar:
+          </span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           ¿Dónde vas tan contento?
+           <span>
+            —
+           </span>
+           pregunta
+           <strong>
+            Juan
+           </strong>
+           a
+           <strong>
+            Antonio
+           </strong>
+           .
+          </span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           Pues voy a tomarme un café, que desde que llegue esta mañana estoy sentado tecleando sin parar. ¿Te apuntas?
+          </span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           Sí claro, si me cuentas en que estás trabajando, ¿tan interesante es?
+          </span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           No es solo que sea interesante, es que es algo que no había hecho antes, y claro, para mí es un reto superado. Estoy trabajando en un proyecto que utiliza
+           <abbr title="Java Persistence API">
+            <span>
+             JPA
+            </span>
+           </abbr>
+           para almacenar datos en la base de datos, y aunque cuesta arrancar un poco, luego te das cuenta de la gran potencia que tiene.
+          </span>
+    </p>
+    <p>
+          <span>
+           —Dirás
+           <abbr title="Java Database Connectivity">
+            JDBC
+           </abbr>
+           —replica
+           <strong>
+            Juan
+           </strong>
+           , convencido de que
+           <strong>
+            Antonio
+           </strong>
+           estaba confundiendo términos.
+          </span>
+    </p>
+    <p>
+          <span>
+           —No, que va. Es otra tecnología diferente. Si tuviera que hacer lo mismo que estoy haciendo con
+           <span>
+            <abbr title="Java Database Connectivity">
+             JDBC
+            </abbr>
+           </span>
+           tardaría el triple.
+          </span>
+    </p>
+    <p>
+          <span>
+           —¿En serio? —pregunta
+           <strong>
+            Juan
+           </strong>
+           asombrado—. Cuéntame un poco como es,
+           <strong>
+            María
+           </strong>
+           y yo estamos en un proyecto donde quizás nos venga bien.
+          </span>
+    </p>
+</div><h1 class="title">
+    2.1.- ¿Qué son las bases de datos orientadas a objetos?
+</h1>
+<div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        ¿Cómo son las aplicaciones actuales?
+    </p>
+    <p>
+        La aplicaciones de hoy día tienden a crecer de forma exponencial, no como las aplicaciones de
+        antaño, donde la estructura de datos variaba poco o sufría pocos cambios.&nbsp; Hoy día, tenemos
+        que estar preparados para desarrollar aplicaciones que evolucionan rápidamente, y donde
+        almacenar objetos multimedia, como imágenes o sonidos, sea relativamente sencillo.
+    </p>
+    <p>
+        Hablamos de aplicaciones con estructuras de datos complejas y relaciones que son factibles a
+        nivel de programación orientada a objetos, pero complejas de llevar a la práctica en una base de
+        datos relacional.
+    </p>
+    <p>
+        Para solucionar este problema, han surgido multitud de alternativas, como se ha visto con
+        anterioridad. Una de las más notables, por su respercusión académica, han sido las
+        <strong>
+            Bases
+            de Datos Orientadas a Objetos
+        </strong>
+        (
+        <abbr title="Bases de Datos Orientadas a Objetos.">
+            BDOO
+        </abbr>
+        ) o Bases de Objetos.
+    </p>
+    <p>
+        Estas se integran directamente y sin problemas con las aplicaciones desarrolladas en lenguajes
+        orientados a objetos, ya que
+        <strong>
+            soportan un modelo de objetos puro
+        </strong>
+        y son ideales
+        para almacenar y recuperar datos complejos permitiendo a los usuarios su
+        navegación
+        directa (sin un
+        mapeo entre distintas representaciones).
+    </p>
+    <div class="exe-figure exe-image float-right license-pd" style="width: 188px;">
+
+        <div class="figcaption">
+         <span class="author">
+          Elaboración propia.
+         </span>
+            <span class="license">
+          <span class="sep">
+           (
+          </span>
+          <span>
+           Dominio público
+          </span>
+          <span class="sep">
+           )
+          </span>
+         </span>
+
+        </div>
+    </div>
+    <p>
+        <strong>
+            <br>
+            En una
+            <abbr title="Base de datos orientada a objetos.">
+                BDOO
+            </abbr>
+            , los datos
+            se almacenan como objetos
+            <br/></strong>
+        . Un
+        <strong>
+            objeto
+        </strong>
+        es, al igual que en la
+        programación orientada a objetos, una entidad que se puede identificar unívocamente y que
+        describe tanto el
+        estado
+        como el
+        comportamiento
+        de una
+        entidad del "mundo real". El estado de un objeto se describe mediante atributos y su
+        comportamiento es definido mediante procedimientos o métodos.
+    </p>
+    <p>
+        <strong>
+            Las
+            <abbr title="Base de datos orientada a objetos.">
+                BDOO
+            </abbr>
+            soportan
+            características propias de la orientación a objetos, como agregación, encapsulamiento,
+            polimorfismo y herencia.
+        </strong>
+        Los objetos pueden tener una complejidad arbitraria, a fin de
+        contener toda la información necesaria que describe el objeto.
+    </p>
+    <p>
+        Todo esto hace que las
+        <abbr title="Base de datos orientada a objetos.">
+            BDOO
+        </abbr>
+        sean,
+        en esencia, el sueño de cualquier programador o programadora. Sin embargo, a pesar de sus
+        bondades y de los años, no han logrado imponerse en el mercado, los motivos principales son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Carencia de un modelo de datos universal
+            </strong>
+            . No hay ningún modelo de datos
+            aceptado universalmente, y la mayor parte de los modelos carecen de una base teórica.
+        </li>
+        <li>
+         <span style="left: 538.2px; top: 516.984px; font-size: 17.6033px; font-family: sans-serif; transform: scaleX(0.937427);">
+         </span>
+            <span style="left: 508.198px; top: 697.71px; font-size: 16.7px; font-family: sans-serif; transform: scaleX(0.974461);">
+         </span>
+            <strong>
+                No
+                hay un lenguaje de consulta común a todas las
+                <abbr title="Base de datos orientada a objetos.">
+                    BDOO
+                </abbr>
+            </strong>
+            . A pesar de que
+            incluso la
+            <abbr title="Object Data Management Group">
+                ODMG
+            </abbr>
+            se esforzó
+            por estandarizar
+            <abbr title="Object Query Language">
+                OQL
+            </abbr>
+            (
+            <span lang="en">
+          Object Query Language
+         </span>
+            ), dicho lenguaje de consulta no está
+            disponible en muchas
+            <abbr title="Base de datos orientada a objetos.">
+                BDOO
+            </abbr>
+            .
+            <abbr title="Object Query Language">
+                OQL
+            </abbr>
+            no tiene el mismo respaldo
+            que
+            <abbr title="Structured Query Language">
+                SQL
+            </abbr>
+            y las empresas detrás
+            de cada
+            <abbr title="Base de datos orientada a objetos.">
+                BDOO
+            </abbr>
+            ofrecen sus
+            propias alternativas.
+        </li>
+        <li>
+            <strong>
+                Competencia con los modelos ya asentados
+            </strong>
+            . Las bases de datos relacionales y
+            objeto-relacionales están muy asentadas y extendidas. Además, las soluciones de mapeado
+            objeto-relacional se han hecho fuertes, y ahora permiten hacer aplicaciones que se
+            desarrollan rápido y que crecen con rapidez.
+        </li>
+        <li>
+            <strong>
+                Aparición de otros modelos de bases de datos NoSQL más sencillos y
+                flexibles.
+            </strong>
+            Hoy día es común escuchar hablar de bases de datos documentales tales
+            como
+            <span lang="en">
+          MongoDB
+         </span>
+            o de bases de datos clave-valor como Redis, que han
+            ocupado el espacio destinado a las bases de datos orientadas a objetos. La flexibilidad y
+            escalabilidad de estos modelos de datos han desplazado a las bases de datos orientadas a
+            objetos.
+        </li>
+    </ul>
+    <div class="elemento_derecha">
+    </div>
+    <div class="exe-tooltip-text" id="ta8b3aec0-b86e-23ff-c038-42242c2689bd">
+        <p>
+            El estado de un objeto es el conjunto de valores que toman sus propiedades (atributos y
+            relaciones).
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t1514d806-0a82-f94f-fdc9-70997e05fcc9">
+        <p>
+            El comportamiento de un objeto se refiere al conjunto de operaciones que se pueden realizar
+            sobre un objeto.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t96616a0e-4e04-2847-a2d6-8981858766d2">
+        <p>
+            Se refiere en el contexto de orientación a objetos, a descender por los diferentes nodos de
+            la red o grafo de objetos.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.2.- ¿Qué es el mapeado de objetos?
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
+    </div>
+    <p>
+        <strong>
+            <br>
+            <span>
+            María
+           </span>
+            <br/></strong>
+        <span>
+           está liada tratando de resolver un problema en la aplicación que están haciendo, cuando
+           <strong>
+            Juan
+           </strong>
+           llega y le comenta:
+           <br>
+          <br/></span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           ¿Sabes lo que me ha dicho
+           <strong>
+            Antonio
+           </strong>
+           ? Que ha empezado a usar
+           <abbr title="Java Persistence API">
+            JPA
+           </abbr>
+           en uno de sus proyectos.
+          </span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           Pues en eso estaba pensando ahora
+           <span>
+            —
+           </span>
+           replica
+           <strong>
+            María
+           </strong>
+           . Ahora que ya hemos cubierto una primera etapa de la aplicación, me he dado cuenta de que hacer que crezca la aplicación es complicado. He pensado en meter más información en la base de datos, como por ejemplo la posibilidad de que cada compra se envíe a casa, y me estoy dando cuenta de que la cantidad de código que hay que modificar es enorme.
+          </span>
+    </p>
+    <p>
+          <span>
+           <span>
+            —
+           </span>
+           Sí, la verdad es que tienes razón. Cualquier modificación supone ahora navegar por un montón de líneas de código para buscar qué hay que cambiar aquí y allí. Creo que deberíamos contemplar otras opciones que hagan el trabajo más productivo, así podremos centrarnos en otros aspectos de la aplicación que no solo sea guardar datos.
+          </span>
+    </p>
+</div><h1 class="title">
+    2.3.- ¿Cómo empiezo a usar JPA?
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        Seguro que ahora te estás preguntando por dónde empezar si quieres hacer un proyecto que use
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        . Pues vamos a ello. Pero antes hay
+        un par de cosas que debes saber sobre
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        .
+    </p>
+    <p>
+        La primera es que
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        engloba un
+        conjunto de librerías incluidas tanto en
+        <span lang="en">
+         Java
+        </span>
+        <abbr title="Standard Edition">
+            SE
+        </abbr>
+        como en
+        <span lang="en">
+         Java
+        </span>
+        <abbr title="Enterprise Edition">
+            EE
+        </abbr>
+        , esto quiere decir que si tenemos
+        instalado en nuestro equipo un
+        <abbr title="Java Development Kit">
+         <span title="Java Development Kit">
+          JDK
+         </span>
+        </abbr>
+        , ya tenemos
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        .
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        contiene un conjunto de clases,
+        conocidas como
+        <strong>
+            <abbr title="Java Persistence API">
+                JPA
+            </abbr>
+            <abbr title="Application Programming Interface">
+                API
+            </abbr>
+        </strong>
+        , que son las
+        que usaremos para persistir datos. Usaremos siempre las mismas clases y métodos
+        independientemente del almacén de datos donde estemos almacenando la información.
+    </p>
+    <p>
+        La segunda cosa que debes saber es que
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        no funciona solo.
+        Obviamente se necesitará un almacén de datos para almacenar la información (
+        <span lang="en">
+         MySQL
+        </span>
+        ,
+        H2,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        ), pero también necesitaremos lo que denominamos un
+        <strong>
+            proveedor de persistencia
+        </strong>
+        . El proveedor de persistencia, también llamado
+        <strong>
+            motor de persistencia
+        </strong>
+        e
+        <strong>
+            implementación de
+            <abbr title="Java Persistence API">
+                JPA
+            </abbr>
+        </strong>
+        , es una librería que
+        implementa en su interior la lógica de funcionamiento real de
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        .
+    </p>
+    <p>
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        es solo una fachada que usaremos en
+        nuestro programa, de forma que siempre usemos las mismas clases y métodos, pero quien hará el
+        "trabajo sucio" será el proveedor de persistencia. Existen muchos proveedores de persistencia,
+        es decir, muchas implementaciones de
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        , entre las que podemos
+        destacar
+        <abbr title="">
+         <span lang="en">
+         </span>
+        </abbr>
+        <span lang="en">
+         <span lang="en">
+         </span>
+        </span>
+        <span lang="en">
+         <span lang="en">
+          <span lang="en">
+           Hibernate
+          </span>
+         </span>
+         ,
+         <span lang="en">
+          TopLink
+         </span>
+         ,
+         <span lang="en">
+          DataNucleus AccessPlatform
+         </span>
+        </span>
+        <span lang="en">
+        </span>
+        y
+        <span lang="en">
+         EclipseLink
+        </span>
+        . De todas las anteriores usaremos
+        <span lang="en">
+         EclipseLink
+        </span>
+        , no por ser la mejor, sino por ser la
+        implementación de referencia
+        .
+    </p>
+    <p>
+        Y ahora vamos al meollo de la cuestión:
+        <strong>
+            cómo usar
+            <abbr title="Java Persistence API">
+                JPA
+            </abbr>
+            en un
+            proyecto
+            <span lang="en">
+          NetBeans
+         </span>
+        </strong>
+        . Lo primero que haremos será crear un proyecto
+        como de costumbre, y a continuación, indicarle que necesitaremos una librería específica, la de
+        <span lang="en">
+         EclipseLink
+        </span>
+        :
+    </p>
+    <div class="exe-figure exe-image position-center" style="width: 300px;">
+
+        <div class="figcaption">
+         <span class="title">
+          <em>
+           Elaboración propia. Pasos para incluir
+           <span lang="en">
+            EclipseLink
+           </span>
+           en proyecto
+           <span lang="en">
+            NetBeans
+           </span>
+           .
+          </em>
+         </span>
+        </div>
+    </div>
+    <p>
+        Como se muestra en la imagen anterior, simplemente hay que ir a las librerías del proyecto,
+        seleccionar la opción
+        <em>
+         <span lang="en">
+          Add Library
+         </span>
+        </em>
+        (añadir librería), después
+        seleccionar la librería
+        <em>
+         <span lang="en">
+          EclipseLink
+         </span>
+            (
+            <span lang="en" title="Java Persistence API">
+          JPA
+         </span>
+            2.1)
+        </em>
+        y hacer clic en el botón
+        <em>
+         <span lang="en">
+          Add Library
+         </span>
+        </em>
+        (añadir librería) de la ventana emergente.
+    </p>
+    <p>
+        Añadir las librerías del proveedor de persistencia sería lo primero, lo segundo es añadir el
+        archivo&nbsp;persistence.xml. Se trata de un archivo que cualquier aplicación que utilice
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        , ya sea
+        <span lang="en">
+         Java
+        </span>
+        <abbr title="Enterprise Edition">
+            EE
+        </abbr>
+        o
+        <span lang="en">
+         Java
+        </span>
+        <abbr title="Standard Edition">
+            SE
+        </abbr>
+        ,
+        necesitará tener. Este archivo contendrá la configuración necesaria para poder persistir objetos
+        en el almacén de datos.
+    </p>
+    <p>
+        Para empezar, vamos a partir de un archivo persistence.xml como el siguiente. Como ya imaginas es
+        un archivo
+        <abbr title="Extensible Markup Language">
+            XML
+        </abbr>
+        que todavía no
+        contiene gran cosa:
+    </p>
+    <div class="highlighted-code language-markup">
+        <div>
+         <pre><?xml version="1.0" encoding="UTF-8"?>
+             <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+</persistence></pre>
+        </div>
+    </div>
+    <p>
+        Dentro de la etiqueta &lt;persistence&gt;...&lt;/persistence&gt; irémos añadiendo la información
+        necesaria para usar
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        , tal y como
+        veremos en próximos apartados. Este archivo debe ir incluido en el programa a distribuir al
+        usuario final, es decir, debe ir dentro del archivo .jar que entregaremos al cliente. Para
+        lograr esto es necesario crear el archivo persistence.xml en la carpeta&nbsp; META-INF, tal y
+        como muestran las siguientes imágenes:
+    </p>
+    <div class="texto_centrado">
+        <div style="width: 40%; display: inline-block;">
+            <div class="exe-figure exe-image license-pd position-center" style="width: 268px;">
+            </div>
+        </div>
+        <div style="width: 40%; display: inline-block;">
+            <div class="exe-figure exe-image license-pd position-center" style="width: 254px;">
+            </div>
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="ta7e5d8e9-29c2-3308-0858-701ce8a7c50c">
+        <p>
+            En el mundo del
+            <span lang="en">
+          software
+         </span>
+            se denomina implementación de referencia al
+            <span lang="en">
+          software
+         </span>
+            que sirve de modelo para otras implementaciones.
+            Normalmente, el resto de desarrolladores se basan en la implementación de referencia para
+            realizar sus propias mejoras.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.4.- Unidades de persistencia (I)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
+    </div>
+    <p>
+        Con
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        aparece un concepto nuevo muy
+        importante, el concepto de
+        <strong>
+            unidad de persistencia
+        </strong>
+        . La idea de
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        es, como ya se ha explicado, poder
+        almacenar de forma sencilla objetos (y la información que contienen) en un almacén de datos.
+        Pero, ¿qué objetos podrán ser almacenables en dicho almacén? ¿Cómo indico qué objetos podrán ser
+        almacenados y cuáles no? ¿Cómo indico en qué almacén de datos se deberán almacenar los objetos?
+    </p>
+    <p>
+        Toda esa información es lo que llamamos la unidad de persistencia. Por tanto:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La
+            <strong>
+                unidad de persistencia incluye qué objetos serán persistentes
+            </strong>
+            . Estos
+            objetos los llamaremos
+            <strong>
+                entidades
+            </strong>
+            .
+        </li>
+        <li>
+            La
+            <strong>
+                unidad de persistencia incluye dónde persistirá la información
+            </strong>
+            , es
+            decir, en qué base de datos.
+        </li>
+        <li>
+            La
+            <strong>
+                unidad de persistencia incluye qué proveedor de persistencia se usará
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Esta información se indica en dos lugares. En primer lugar, en el archivo&nbsp;persistence.xml
+        donde indicaremos parte de la información, y el resto en nuestro código
+        <span lang="en">
+         Java
+        </span>
+        . Cada unidad de persistencia tendrá su propia sección en el
+        archivo de configuración persistence.xml, por ejemplo:
+    </p>
+    <div class="highlighted-code language-markup">
+        <div>
+         <pre><?xml version="1.0" encoding="UTF-8"?>
+             <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="EjemplosJPA" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>minipos.model.LineaTicket</class>
+    <class>minipos.model.DireccionEnvio</class>
+    <class>minipos.model.Producto</class>
+    <class>minipos.model.Ticket</class>
+  </persistence-unit>
+</persistence></pre>
+        </div>
+    </div>
+    <p>
+        Cada unidad de persistencia va definida con la etiqueta &lt;persistence-unit&gt;...&lt;/persistence-unit&gt;.
+        En su interior, indicaremos qué configuración debe usarse para conectar a la base de datos, cuál
+        será el proveedor de persistencia a usar, qué clases se podrán hacer persistentes,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . Solo una porción de esta información debe indicarse aquí de
+        forma obligatoria.
+    </p>
+    <p>
+        En el ejemplo anterior, se especifica el proveedor de persistencia a usar (&lt;provider&gt;...&lt;/provider&gt;),
+        aunque no es obligatorio (
+        <span style="background-color: #ffffff;">
+         si no lo indicamos buscará una implementación en el CLASSPATH).
+        </span>
+        Como proveedor de persistencia se ha usado org.eclipse.persistence.jpa.PersistenceProvider, lo
+        cual nos dice que la implementación de
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        usada en ese caso
+        es
+        <span lang="en">
+         EclipseLink
+        </span>
+        .
+    </p>
+    <p>
+        Además del proveedor de persistencia, en el ejemplo anterior se indica qué objetos serán
+        persistentes, a través de
+        <strong>
+            &lt;class&gt;...&lt;/class&gt;
+        </strong>
+        . Indicar las clases
+        que podrán ser persistentes sí será obligatorio.
+    </p>
+    <p class="destacado">
+        <strong>
+            Lo mínimo que debemos indicar en la unidad de persistencia es su nombre&nbsp;
+            (name="EjemplosJPA") y las clases que serán persistentes
+            (&lt;class&gt;...&lt;/class&gt;).
+        </strong>
+    </p>
+    <p>
+        Pero aquí faltarían cosas todavía para que
+        <abbr lang="en" title="Java Persistence API">
+            JPA
+        </abbr>
+        haga su magia.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ¿Qué pasa con la información necesaria para conectar a la base de datos?
+        </li>
+        <li>
+            ¿Dónde se indica la
+            <abbr title="Uniform Resource Locator">
+                URL
+            </abbr>
+            de
+            conexión, el
+            <span lang="en">
+          driver
+         </span>
+            , el usuario, el
+            <span lang="en">
+          password
+         </span>
+            ,
+            <abbr title="etcétera">
+                etc.
+            </abbr>
+            ?
+        </li>
+    </ul>
+    <p>
+        La verdad es que podremos indicar dicha información en el archivo anterior o bien por medio del
+        programa. Es decir, podemos completar la información de la unidad de persistencia usando
+        etiquetas
+        <abbr title="Extensible Markup Language">
+            XML
+        </abbr>
+        o bien desde
+        nuestro código en
+        <span lang="en">
+         Java
+        </span>
+        , sin necesidad de modificar el
+        <abbr title="Extensible Markup Language">
+            XML
+        </abbr>
+        .
+    </p>
+    <p>
+        ¿Y por dónde empiezo ahora?,&nbsp; te preguntarás.
+    </p>
+    <p>
+        Es sencillo: crea un archivo&nbsp;persistence.xml en la carpeta&nbsp;META-INF siguiendo el modelo
+        anterior y échale un vistazo al ejemplo siguiente.
+        <strong>
+            Pero ¡cuidado!, no pongas todavía las
+            clases a persistir (&lt;class&gt;...&lt;/class&gt;), eso lo haremos más adelante
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    2.4.1.- Unidades de persistencia (II)
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        Ya tenemos nuestro archivo persistence.xml, y ahora tenemos que dar el salto a
+        <span lang="en">
+         Java
+        </span>
+        .
+        En
+        <span lang="en">
+         Java
+        </span>
+        tendremos dos clases importantes, cuya función es un poco
+        complicada de entender al principio:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Clase EntityManagerFactory. Tendremos un EntityManagerFactory por cada unidad de
+            persistencia que necesitemos usar. La función de esta clase es fundamentalmente la de
+            encargarse de gestionar todas las conexiones al almacén de datos y facilitar así el
+            almacenamiento de información. Por tanto, esta clase es el primer vínculo entre la unidad de
+            persistencia (configuración) y el almacén de datos.
+        </li>
+        <li>
+            Clase EntityManager. Una vez que tenemos el&nbsp;EntityManagerFactory ya podremos crear uno
+            o varios EntityManager, podremos crear tantos como necesitemos a lo largo del programa, no
+            obstante
+            <strong>
+                en una aplicación de escritorio es suficiente con crear solo uno
+            </strong>
+            .
+            Usaremos el&nbsp;EntityManager para guardar o rescatar información del almacén de datos.
+        </li>
+    </ul>
+    <p class="destacado">
+        <strong>
+            Crear el EntityManagerFactory es una operación costosa y solo debe
+            hacerse una vez. Se debe usar la misma instancia en todo el código de tu aplicación.
+        </strong>
+    </p>
+    <p>
+        El esquema básico de un programa que use
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        será el siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Crearemos un mapa (Map&lt;String,String&gt;) para indicar la información necesaria para
+            conectar con la base de datos:
+            <abbr title="Uniform Resource Locator">
+                URL
+            </abbr>
+            ,
+            <span lang="en">
+          driver
+         </span>
+            , usuario, contraseña,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .
+            ¿Recuerdas que se dijo que esa información no era obligatorio indicarla en el archivo
+            persistence.xml? Y así es, podemos indicarla por programa, lo cual tiene ciertas ventajas en
+            aplicaciones de escritorio. Un ejemplo de propiedades para conectar a una base de datos H2
+            podría ser:
+        </li>
+    </ul>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Map<String,String> propiedades=new HashMap<>();
+
+/* driver utilizado en esta conexión */
+propiedades.put("javax.persistence.jdbc.driver", "org.h2.Driver");
+/* URL para conectar a la base de datos*/
+propiedades.put("javax.persistence.jdbc.url", "jdbc:h2:./mibasededatos_redif.h2db");
+/* nombre de usuario para conectar */
+propiedades.put("javax.persistence.jdbc.user", "");
+/* password para necesario para conectar */
+propiedades.put("javax.persistence.jdbc.password", "");
+/* modelo de generación de base de datos */
+propiedades.put("javax.persistence.schema-generation.database.action", "create"); </pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            Después, necesitaremos crear un EntityManagerFactory asociado a la unidad de persistencia
+            configurada en el archivo&nbsp;persistence.xml (recuerda que cada unidad de persitencia
+            tiene un nombre&nbsp;&lt;persistence-unit name="EjemplosJPA"&gt; , y debemos usarlo aquí):
+        </li>
+    </ul>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>EntityManagerFactory emf=Persistence.createEntityManagerFactory("EjemplosJPA",propiedades);</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            Una vez hayamos creado nuestro EntityManagerFactory, ya podemos empezar a crear uno o más
+            EntityManager (aunque con uno nos bastará). Es tan fácil como hacer:
+        </li>
+    </ul>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>EntityManager em=emf.createEntityManager();
+</pre>
+        </div>
+    </div>
+    <p>
+        El EntityManager tendrá los métodos necesarios para almacenar, rescatar, modifica y borrar.
+        Parece fácil, ¿no?
+    </p>
+    <p>
+        Una vez que terminemos de usar el EntityManager, no debemos olvidar cerrarlo. Y cuando nuestro
+        programa termine, debería cerrarse el EntityManagerFactory también, para cerrar apropiadamente
+        cualquier conexión con la base de datos.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>em.close();
+emf.close();</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.5.- Modelo de datos en JPA
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        le han dado una vuelta de tuerca a su mini
+        proyecto.
+        <strong>
+            Ada
+        </strong>
+        ha estado reunida esta mañana con el cliente, y, aunque
+        todavía está afinando los términos del contrato y del producto a desarrollar,
+        <strong>
+            Ada
+        </strong>
+        les ha adelantado que en el
+        <span lang="en">
+           software
+          </span>
+        que quiere el cliente debe
+        poder indicarse la dirección de envío de la compra.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        ha decidido investigar qué debería modificar en su proyecto de
+        prueba, el mini punto de venta, aprovechando que
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        les da
+        más flexibilidad a la hora de desarrollar. Después de conseguirlo, se lo comenta a
+        <strong>
+            Juan
+        </strong>
+        :
+    </p>
+    <p>
+          <span>
+           —
+          </span>
+        Mira
+        <strong>
+            Juan
+        </strong>
+        , he añadido otra entidad al proyecto, una
+        llamada DatosDeEntrega, asociada a cada
+        <span lang="en">
+           ticket
+          </span>
+        . Es bastante
+        sencillo la verdad.
+    </p>
+    <p>
+          <span>
+           —
+          </span>
+        Genial, algo así es lo que comentó
+        <strong>
+            Ada
+        </strong>
+        que se necesitará
+        en el proyecto real del cliente. Si seguimos a este ritmo vamos a terminar el proyecto
+        antes de que se firme el contrato
+        <span>
+           —
+          </span>
+        dice
+        <strong>
+            Juan
+        </strong>
+        notablemente
+        contento.
+    </p>
+</div><h1 class="title">
+    2.5.1.- Entidades
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        Ahora que ya tenemos establecido el modelo de datos que nuestro
+        <span lang="en">
+         software
+        </span>
+        va a necesitar, vamos a convertir simples clases en entidades que
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        podrá usar para almacenar
+        información.
+    </p>
+    <p>
+        Vamos a crear ahora una entidad para almacenar los productos de nuestro mini punto de venta, y
+        para ello es necesario hacer lo siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Debe anotarse la clase con la anotación &#64;Entity.
+        </li>
+        <li>
+            La clase debe tener al menos un constructor por defecto sin parámetros (se puede poner
+            protected para evitar instanciaciones sin datos de las entidades). Puede haber, por
+            supuesto, más constructores.
+        </li>
+        <li>
+            La clase no puede ser final. Tampoco puede haber ningún método marcado como final.
+        </li>
+        <li>
+            Es recomendable que implemente la interfaz Serializable.
+        </li>
+    </ul>
+    <p>
+        Dicho esto, vamos a crear nuestra clase Producto y a convertirla en una entidad:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Producto implements Serializable &#123;
+
+    private static final long serialVersionUID = 99488577171L;
+
+    protected Producto () &#123;  &#125;
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior el constructor se ha puesto como protected, para evitar que se pueda crear
+        una instancia de Producto a la que le falten datos obligatorios (como el nombre del producto).
+        Ahora que ya hemos creado una entidad, el siguiente paso es añadir el atributo que va a ser la
+        clave primaria de la entidad, el cual lo marcaremos con la anotación &#64;Id:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Producto implements Serializable &#123;
+
+    // ...resto del código...
+
+    &#64;Id
+    private Long id; //Clave primaria del producto
+
+    // ...resto del código...
+
+&#125;</pre>
+        </div>
+    </div>
+    <p class="destacado">
+        <strong>
+            La clave primaria de la entidad permitirá identificar a cada producto
+            almacenado en la base de datos. No podrá haber dos productos con la misma clave
+            primaria.
+        </strong>
+    </p>
+    <p>
+        En muchas situaciones, cuando la clave primaria es un número, podemos pedirle a
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        que genere de forma automática un
+        identificador. Esto lo podemos hacer en
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        con la anotación
+        &#64;GeneratedValue:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Producto implements Serializable &#123;
+
+    // ...resto del código...
+
+    &#64;Id
+    &#64;GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; //Clave primaria del producto
+
+    // ...resto del código...
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior strategy = GenerationType.AUTO&nbsp;es un parámetro de la anotación
+        &#64;GeneratedValue y con él simplemente indicamos la forma en la que se generará el identificador.
+        El valor del identificador se establecerá la primera vez que guardemos la entidad en el almacén
+        de datos, y no tendremos que hacer nada más.
+    </p>
+</div><h1 class="title">
+    2.5.2.- Atributos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
+    </div>
+    <p>
+        <br>
+        Aunque ya has definido un atributo en el apartado anterior, el identificador, todavía faltan
+        el resto de los atributos de la entidad. ¿Sabrías definirlos?
+        <br/></p>
+    <p>
+        Es muy fácil, vamos a añadir el resto de los atributos necesarios a la entidad&nbsp;Producto
+        (nombre, precio,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        ). No hay que hacer mucho, la verdad, solo
+        poner el atributo en cuestión en la clase:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Producto implements Serializable &#123;
+
+    // ...resto del código...
+
+    &#64;Id
+    &#64;GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; //Clave primaria del producto
+
+    private String nombre;
+
+    private Double precio;
+
+    private String barCode;
+
+    // ...resto del código...
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Aunque con lo anterior bastaría, a veces es necesario indicar información "extra" a dichos
+        atributos, y es normal encontrar las siguientes anotaciones en los atributos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            &#64;Basic&nbsp;para marcar los atributos que tendrá nuestra entidad. No es obligatorio ponerlo,
+            pues todos los atributos de nuestra clase serán atributos también de la entidad y se
+            almacenarán en el almacén de datos si no se indica lo contrario.
+        </li>
+        <li>
+            &#64;Transient&nbsp;para marcar aquellos atributos de la clase que no deberán almacenarse en la
+            base de datos porque contienen información de carácter temporal.
+        </li>
+        <li>
+            &#64;Column&nbsp;para indicar configuración adicional de un atributo. Lo utilizaremos sobre todo
+            para indicar si un atributo puede tener un valor nulo y la longitud en caso de cadenas.
+        </li>
+    </ul>
+    <p>
+        De las tres anotaciones anteriores, la más usada es &#64;Column. Fíjate en cómo se utiliza a
+        continuación para indicar que los atributos no pueden estar vacíos y la longitud máxima de
+        algunas cadenas:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Producto implements Serializable &#123;
+
+    // ...resto del código...
+
+    &#64;Id
+    &#64;GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id; //Clave primaria del producto
+
+    &#64;Column(nullable = false, length = 200)
+    private String nombre;
+
+    &#64;Column(nullable = false)
+    private Double precio;
+
+    &#64;Column(nullable = false, length=24)
+    private String barCode;
+
+    // ...resto del código...
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El parámetro nullable = false&nbsp;en la anotación&nbsp;&#64;Column indica que ese atributo no puede
+        contener un valor nulo, por lo que no puede estar vacío. Y por otro lado,&nbsp;length=24 indica
+        la cantidad de caracteres que se deben usar para almacenar el texto de dicho atributo en el
+        almacén de datos.
+    </p>
+</div><h1 class="title">
+    2.5.3.- Relaciones entre entidades
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </figure>
+    <p>
+        Una de las cosas más engorrosas con las bases de datos es tener en cuenta las relaciones que
+        tienen entre sí los datos. En general, existen tres tipos de relaciones fundamentales en
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        :
+    </p>
+    <p>
+        <strong>
+            Relación de uno a uno.
+        </strong>
+        Es una relación poco común, pero existe. Se produce
+        cuando una entidad tiene relación exclusiva y recíproca con otra entidad.
+    </p>
+    <p>
+        Para ilustrar esta relación, imagina una empresa donde trabajan muchos empleados y muchas
+        empleadas, y cada cual tendrá una tarjeta de seguridad que le da acceso solo a ciertas áreas. En
+        ese caso, habrá claramente una entidad llamada&nbsp;Persona y otra llamada TarjetaDeSeguridad.
+        Cada&nbsp;Persona tendrá una única TarjetaDeSeguridad, y cada&nbsp;TarjetaDeSeguridad
+        corresponderá de forma exclusiva a una Persona.
+    </p>
+    <p class="destacado" style="text-align: center;">
+        <strong>
+            En
+            <abbr title="Java Persistence API">
+                JPA
+            </abbr>
+            las
+            relaciones uno a uno se anotarán con la anotación &#64;OneToOne.
+        </strong>
+    </p>
+    <p>
+        <strong>
+            Relación de uno a muchos.
+        </strong>
+        Es posiblemente la relación más común que existe. Se
+        produce cuando una entidad tiene una relación con una o más instancias de otra entidad.
+    </p>
+    <p>
+        Para ilustrar esta relación, piensa otra vez en el ejemplo anterior. Imagina que cada empleado o
+        empleada de la empresa pertenece a un único departamento. En este caso, una hipotética entidad&nbsp;Departamento
+        tendría una o más instancias de la entidad&nbsp;Persona asociadas. Esto hace que entre&nbsp;Departamento
+        y
+        <code>
+            Persona
+        </code>
+        haya una clara relación uno a muchos.
+    </p>
+    <p class="destacado" style="text-align: center;">
+        <strong>
+            En
+            <abbr title="Java Persistence API">
+                JPA
+            </abbr>
+            las relaciones uno a muchos se anotarán
+            con las anotaciones &#64;OneToMany y
+            <strong>
+                &#64;ManyToOne
+            </strong>
+            .
+            <br>
+            <br/></strong>
+    </p>
+    <p>
+        <strong>
+            Relación de muchos a muchos.
+        </strong>
+        Esta es también una relación bastante común. Se
+        produce cuando una entidad A tiene una relación con una o varias instancias de otra entidad B, y
+        a su vez, la entidad B puede tener una relación con una o varias instancias de la entidad A.
+    </p>
+    <p>
+        Nuevamente para ilustrar esta relación, piensa otra vez en el ejemplo anterior. Imagina que cada
+        departamento tiene uno o varios proveedores de material de oficina, y que cada proveedor, a su
+        vez, provee de material a uno o más departamentos de la empresa. Esto haría que una hipotética
+        entidad Proveedor tuviera una relación muchos a muchos con la entidad Departamento.
+    </p>
+    <p class="destacado" style="text-align: center;">
+        <strong>
+            En
+            <abbr title="Java Persistence API">
+                JPA
+            </abbr>
+            las relaciones muchos a muchos se
+            anotarán con la anotación &#64;ManyToMany.
+        </strong>
+    </p>
+    <p>
+        De todos estos casos solo vamos a tratar las relaciones &#64;OneToOne y
+        <code>
+            &#64;OneToMany
+        </code>
+        /&#64;ManyToOne
+        para no extendernos demasiado.
+    </p>
+</div><h1 class="title">
+    2.5.4.- Relaciones uno a uno
+</h1>
+<div class="iDevice_content">
+    <p>
+        ¿Sabrías indicar la relación uno a uno entre dos entidades?
+    </p>
+    <p>
+        En este apartado vamos a profundizar en cómo indicar a través de anotaciones la existencia de una
+        relación uno a uno en el modelo de datos. Como en la aplicación de mini punto de venta tenemos
+        un ejemplo, vamos a resolver dicho caso. El ejemplo de relación uno a uno lo tenemos entre la
+        entidad&nbsp;Ticket y la entidad DatosDeEntrega. Cada Ticket será único y, además, tendrá sus
+        propios valores asociados en la entidad DatosDeEntrega.
+    </p>
+    <div class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+
+        <div class="figcaption">
+         <span class="title">
+          <em>
+           Elaboración propia. Relación uno a uno entre Ticket y DatosDeEntrega.
+          </em>
+         </span>
+            <span class="license">
+          <span class="sep">
+           (
+          </span>
+          <span>
+           Dominio público
+          </span>
+          <span class="sep">
+           )
+          </span>
+         </span>
+        </div>
+    </div>
+    <p>
+        Empecemos por la entidad Ticket. Lo primero que haremos en esta entidad será añadir un atributo
+        que serán los datos de entrega, eso lo indicaremos así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Ticket implements Serializable&#123;
+    //... resto del código
+
+    &#64;OneToOne
+    private DatosDeEntrega direccionEnvio;
+
+    //... resto del código
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        La relación se materializará por tanto como un atributo en la entidad Ticket anotado con&nbsp;&#64;OneToOne
+        para indicar la existencia de dicha relación, y
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        se encargará del resto. No obstante, podemos
+        configurar dicha relación un poco más. Sabemos que no es obligatorio que un&nbsp;Ticket tenga
+        DatosDeEntrega. ¿Cómo lo indicamos?
+    </p>
+    <p>
+        Se podría realizar así:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Ticket implements Serializable&#123;
+    //... resto del código
+
+    &#64;OneToOne(optional = true, orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private DatosDeEntrega direccionEnvio;
+
+    //... resto del código
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El parámetro&nbsp;optional = true indica que esa relación es opcional, es decir, que un&nbsp;Ticket
+        puede no tener DatosDeEntrega. Esto permitirá que el atributo direccionEnvio anterior pueda ser
+        null.
+    </p>
+    <p>
+        Por otro lado, si eliminamos un Ticket no tiene sentido que los datos de entrega se almacenen. Si
+        se elimina el Ticket, pero no los DatosDeEntrega, serían unos datos de entrega huérfanos. El
+        otro parámetro de la anotación&nbsp;&#64;OneToOne,
+        <code>
+            orphanRemoval = true
+        </code>
+        , hace
+        referencia precisamente a eso: si se elimina el Ticket se eliminarán también los DatosDeEntrega
+        asociados para que no queden huérfanos.
+    </p>
+    <p>
+        Además de los dos parámetros anteriores, aparece el parámetro&nbsp;cascade = CascadeType.PERSIST.
+        Este tercer parámetro permitirá que el cambio en los datos de entrega asociados al &nbsp;Ticket,&nbsp;se
+        guarden al guardar el&nbsp;&nbsp;Ticket.&nbsp;De esa forma, solo tendremos que hacer una
+        operación de guardado, sin tener que guardar los datos de entrega y el&nbsp;Ticket&nbsp;por
+        separado.
+    </p>
+    <p>
+        Pero cuidado, aún faltaría una cosa, y es indicar la relación en el otro sentido. En la entidad
+        DatosDeEntrega también deberíamos indicar dicha relación de forma similar:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class DatosDeEntrega implements Serializable &#123;
+
+    //... resto del código
+
+    &#64;OneToOne(optional=false)
+    private Ticket ticket;
+
+    //... resto del código
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        El proceso es similar, y la anotación es la misma (&#64;OneToOne), pero fíjate que en este caso se ha
+        puesto optional=false. Esto es porque aunque un &nbsp;Ticket&nbsp;no tiene porqué tener unos
+        datos de entrega asociados obligatoriamente, al revés no es lo mismo:
+        <strong>
+            los datos de
+            entrega siempre tienen que tener un&nbsp;Ticket&nbsp;asociado
+        </strong>
+        . Con esto estamos
+        diciendo que el atributo ticket, de la entidad DatosDeEntrega, no puede ser nunca null.
+    </p>
+</div><h1 class="title">
+    2.5.5.- Relaciones uno a muchos
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-pd" style="width: 350px;">
+
+        <div class="figcaption">
+         <span class="title">
+          <em>
+           Elaboración propia.&nbsp;Relación uno a muchos entre Ticket y LineaDeTicket.
+          </em>
+         </span>
+            <span class="license">
+          <span class="sep">
+           (
+          </span>
+          <span>
+           Dominio público
+          </span>
+          <span class="sep">
+           )
+          </span>
+         </span>
+        </div>
+    </div>
+    <p>
+        Ahora toca la relación más habitual en cualquier modelo de datos. Teniendo en cuenta el apartado
+        anterior, ¿cómo crees que se materializará la relación uno a muchos en nuestro modelo de datos
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        ?
+    </p>
+    <p>
+        En la aplicación del mini punto de venta que tenemos entre manos hay dos situaciones donde se
+        usan estas relaciones. Uno de esos casos es la relación entre&nbsp;LineaDeTicket y
+        <code>
+            Ticket
+        </code>
+        .
+    </p>
+    <p>
+        Empezaremos por ver cómo se materializa dicha relación en la entidad LineaDeTicket. Una línea
+        de
+        <span lang="en">
+         ticket
+        </span>
+        estará asociada a un único
+        <span lang="en">
+         ticket
+        </span>
+        , pero
+        además, un
+        <span lang="en">
+         ticket
+        </span>
+        podrá tener múltiples líneas de ticket, esto significa
+        que habrá una relación muchos a uno entre&nbsp;LineaDeTicket (muchos) y&nbsp;Ticket (uno). En
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        tendremos que usar la anotación
+        &#64;ManyToOne para indicar dicha relación. Veamos como sería:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class LineaDeTicket implements Serializable &#123;
+
+    // ... resto del código ...
+
+    &#64;ManyToOne(optional = false)
+    private Ticket ticket;
+
+    // ... resto del código ...
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Esta relación por tanto se materializará también en un atributo, llamado ticket y de tipo la
+        entidad Ticket,&nbsp; marcado con la anotación &#64;ManyToOne. No es obligatorio poner el parámetro
+        optional = false, pero aquí es conveniente ponerlo para indicar que siempre debe haber un
+        <span lang="en">
+         ticket
+        </span>
+        asociado a la línea de
+        <span lang="en">
+         ticket
+        </span>
+        . De esta
+        forma, el atributo&nbsp;ticket anterior no podrá ser&nbsp;null en el almacén de datos.
+    </p>
+    <p>
+        Y ahora que hemos hecho esa parte de la relación (la parte de &#64;ManyToOne), podemos completar el
+        código de la entidad Ticket, donde habrá que poner una relación &#64;OneToMany, dado que un
+        <span lang="en">
+         ticket
+        </span>
+        podrá tener multiples líneas de
+        <span lang="en">
+         ticket
+        </span>
+        .
+        Lo haríamos de la siguiente forma:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>&#64;Entity
+public class Ticket implements Serializable&#123;
+
+    //... resto del código
+
+    &#64;OneToMany(mappedBy = "ticket", orphanRemoval = true, cascade = CascadeType.PERSIST)
+    private List<LineaDeTicket> lineas;
+
+    //... resto del código
+
+&#125;</pre>
+        </div>
+    </div>
+    <p>
+        Fíjate que ahora, como tipo del atributo se ha puesto List&lt;LineaDeTicket&gt;. Hay que poner
+        una lista en este caso porque no habrá solo una línea de
+        <span lang="en">
+         ticket
+        </span>
+        , sino que
+        habrá varias líneas asociadas a un mismo
+        <span lang="en">
+         ticket
+        </span>
+        .
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        usará esa lista para almacenar las
+        líneas de
+        <span lang="en">
+         ticket
+        </span>
+        de cada
+        <span lang="en">
+         ticket
+        </span>
+        .
+    </p>
+    <p>
+        Como puedes ver en el ejemplo anterior, a la anotación &#64;OneToMany se le han pasado tres
+        parámetros. Dichos parámetros significan lo siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            mappedBy = "ticket" que indicará el atributo de la otra clase participante en la relación
+            (LineaDeTicket) que tiene la anotación &#64;ManyToOne.
+        </li>
+        <li>
+            orphanRemoval = true tiene el mismo significado que en la relación uno a uno vista en el
+            apartado anterior. Si un
+            <span lang="en">
+          ticket
+         </span>
+            desaparece, sus líneas de
+            <span lang="en">
+          ticket
+         </span>
+            quedan huérfanas. Este parámetro hará que las líneas de
+            <span lang="en">
+          ticket
+         </span>
+            se borren de forma automática cuando el
+            <span lang="en">
+          ticket
+         </span>
+            asociado también se borre.
+        </li>
+        <li>
+            cascade = CascadeType.PERSIST&nbsp; permite que los cambios en cualquier LineaDeTicket de la
+            lista List&lt;LineaDeTicket&gt; (tanto si añadimos una nueva línea de
+            <span lang="en">
+          ticket
+         </span>
+            , como si modificamos una ya existente), se guarden en la
+            base de datos al guardar el
+            <span lang="en">
+          ticket
+         </span>
+            . De esa forma no tendremos que
+            hacer dos operaciones por separado (guardar la línea de
+            <span lang="en">
+          ticket
+         </span>
+            y
+            después el
+            <span lang="en">
+          ticket
+         </span>
+            ), sino solamente una (guardar el
+            <span lang="en">
+          ticket
+         </span>
+            ).
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.6.- Operaciones CRUD con JPA
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        hoy está contenta, el cliente está a punto de firmar el contrato.
+        Pero les ha pedido una última cosa, conocer de primera mano a quien se va a encargar del
+        proyecto. Quieren mantener una charla con
+        <strong>
+            María
+        </strong>
+        y con
+        <strong>
+            Juan
+        </strong>
+        , y con otros miembros de la plantilla, para conocer su experiencia
+        programando.
+        <strong>
+            Ada
+        </strong>
+        está contenta, pero
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        están un tanto nerviosos por la situación.
+    </p>
+    <p>
+        Por lo visto, el cliente va a traer a una asesora, experta en desarrollo de aplicaciones,
+        para que evalúe al equipo de desarrollo. Es normal que
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        se sientan intimidados.
+        <strong>
+            Juan
+        </strong>
+        le comenta a
+        <strong>
+            María
+        </strong>
+        :
+    </p>
+    <p>
+          <span>
+           —
+          </span>
+        No se cómo puedes estar programando tan tranquila. Sabes que mañana nos
+        entrevistará la asesora, estoy muy nervioso, ¿tú no?
+    </p>
+    <p>
+        <strong>
+           <span>
+            —
+           </span>
+            Juan
+        </strong>
+        , lo único que podemos hacer ahora es acumular cuanta
+        más experiencia mejor. Quiero terminar la parte donde se guarda el
+        <span lang="en">
+           ticket
+          </span>
+        en el almacén de datos. Prefiero centrarme en esto, así se me olvida un poco lo de
+        mañana.
+    </p>
+    <p>
+          <span>
+           —
+          </span>
+        Tienes razón
+        <span>
+           —
+          </span>
+        contesta
+        <strong>
+            Juan
+            <span>
+            —
+           </span>
+        </strong>
+        ,
+        voy a hacer lo mismo, así me sentiré más seguro para la reunión de mañana.
+    </p>
+</div><h1 class="title">
+    2.6.1.- Persistir y leer
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        La operación de hacer persistente una instancia de entidad consiste, básicamente, en decirle al
+        EntityManager que almacene una instancia de entidad recién creada (estado
+        <strong>
+            nueva
+        </strong>
+        )
+        en el almacén de datos. Para ello, se debe utilizar el método&nbsp;persist() del EntityManager.
+    </p>
+    <p>
+        Imagina que has creado una instancia de la entidad&nbsp;Producto con el código siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>Producto p=new Producto("Cuchara Elegance", 3.49, "8480000145895");</pre>
+        </div>
+    </div>
+    <p>
+        Fíjate que para crear la nueva instancia de&nbsp;Producto no se le pasa al constructor el
+        identificador de producto (atributo id). Como se explicó en apartados anteriores, la entidad&nbsp;Producto
+        tiene un identificador (atributo marcado con la anotación &#64;Id) que se generará de forma
+        automática (
+        <code class="language-java">
+            &#64;
+            <span class="token function">
+          GeneratedValue
+         </span>
+            <span class="token punctuation">
+          (
+         </span>
+            strategy
+            <span class="token operator">
+          =
+         </span>
+            GenerationType
+            <span class="token punctuation">
+          .
+         </span>
+            AUTO
+            <span class="token punctuation">
+          )
+         </span>
+        </code>
+        ). Para que dicho identificador se genere
+        automáticamente, debe dejarse sin inicializar. Así,
+        <strong>
+            al invocar el método persist dicho
+            identificador se rellenará de forma automática
+        </strong>
+        .
+    </p>
+    <p>
+        ¿Cómo podrías hacer persistente dicha entidad?
+    </p>
+    <p>
+        Vamos a crear un ejemplo de método para llevar a cabo dicha operación:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>    public static boolean persistirProducto(EntityManager em, Producto p) &#123;
+        boolean ok = false;
+
+        /*1º Iniciamos la transacción.*/
+        em.getTransaction().begin();
+        try &#123;
+            /*2º Persistimos la entidad usando el método persist.*/
+            em.persist(p);
+
+            /*3º Concluimos la transacción*/
+            em.getTransaction().commit();
+
+            /*4º (opcional, pero recomendable) Desligamos la entidad del
+             EntityManager para que cambios en la misma no persistan en
+            otro commit posterior */
+            em.detach(p);
+
+            ok = true;
+        &#125; catch (EntityExistsException ex) &#123;
+
+            /*5º Excepción que saltará si ya existe una entidad con el mismo ID,
+            es conveniente capturarla.*/
+            System.out.println("El producto ya existe.");
+
+            /*6º Como la transacción ha ido mal, deshacemos la operación */
+            em.getTransaction().rollback();
+        &#125;
+
+        return ok;
+    &#125;</pre>
+        </div>
+    </div>
+    <p>
+        Fíjate que en el ejemplo anterior se captura, por seguridad, la excepción EntityExistsException.
+        Dicha excepción se producirá solamente cuando ya exista una instancia de entidad con el mismo
+        identificador. Aunque el identificador se genere automáticamente, es posible especificar un
+        valor concreto para el mismo, por lo que si dicha circunstancia se da, debemos prevenirla.
+    </p>
+    <p>
+        Después de persistir una instancia de entidad, esta tendrá el estado de
+        <strong>
+            gestionada
+        </strong>
+        por el EntityManager. Esto implica que cualquier cambio en la misma
+        en otras partes del código (cambiar el nombre del producto, por ejemplo), se podría guardar en
+        el almacén de datos en futuros commit, y puede que eso no sea lo que se desea. Para evitar esas
+        situaciones conviene desligar la instancia (detach) del EntityManager.
+        <code>
+        </code>
+    </p>
+    <p>
+        Ahora que ya hemos persistido una instancia de entidad, podremos leer dicha instancia de entidad
+        a través de su identificador (id). Para ello, la clase EntityManager tiene el método find.
+        Veamos un método donde se leería una instancia de entidad con un&nbsp;id concreto:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>    public static Producto leerProducto(EntityManager em, long id) &#123;
+        /* 1º Buscamos el producto por Id */
+        Producto p=em.find(Producto.class, id);
+        /* 2º (opcional, pero recomendable)
+           Si el producto se ha encontrado, entonces, lo desacoplamos. */
+        if (p!=null) em.detach(p);
+        return p;
+    &#125; </pre>
+        </div>
+    </div>
+    <p>
+        El método find necesita la clase del objeto que debe buscar (Producto.class en este caso) y el
+        identificador del objeto a extraer. Si no es posible encontrar a la instancia de entidad en
+        cuestión retornará null.
+    </p>
+    <p>
+        Después de ejecutar el método find, la entidad leída por el&nbsp;EntityManager tendrá el estado
+        de
+        <strong>
+            gestionada
+        </strong>
+        . Nuevamente, para evitar que cambios en el producto recién leído
+        sean guardados accidentalmente en el almacén de datos en un&nbsp;commit futuro, es conveniente
+        desligar la instancia del&nbsp;EntityManager como ocurría en el caso anterior (método detach).
+    </p>
+</div><h1 class="title">
+    2.6.2.- Actualizar y borrar instancias
+</h1>
+<div class="iDevice_content">
+    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </div>
+    <p>
+        ¿Te resultó fácil persistir y leer entidades usando
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        ? Seguro que
+        sí. Ahora vamos a ver cómo se realizan las operaciones de actualización y borrado de entidades.
+        ¿Cuál de las dos te causa más respeto?
+    </p>
+    <h4>
+        Actualizar una instancia de entidad
+    </h4>
+    <p>
+        Cuando se trata de una entidad que ya está siendo
+        <strong>
+            gestionada
+        </strong>
+        por el
+        EntityManager, basta con modificar los datos de la misma y hacer un&nbsp;commit para que se
+        modifiquen también los datos en el almacén de datos. Imagina que en el almacén de datos ya
+        existe un producto con id=990. Para modificarlo solo habría que hacer lo siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>//Cargamos la instancia de entidad. Esta instancia tendrá el estado de gestionada
+Producto productoGestionado=em.find(Producto.class, (long)990);
+
+//Realizamos las modificaciones oportunas
+productoGestionado.setNombre("Cuchara Premium");
+
+//Iniciamos y cerramos una transacción
+em.getTransaction().begin();
+em.getTransaction().commit();</pre>
+        </div>
+    </div>
+    <p>
+        En este caso, después de usar el método find, la instancia de entidad cambia su estado a
+        <strong>
+            gestionada
+        </strong>
+        ,
+        por lo que el&nbsp;EntityManager se hará cargo de actualizar el almacén de datos cuando haya
+        modificaciones en el siguiente commit.
+    </p>
+    <p>
+        Pero, ¿qué pasa cuando una instancia de entidad no está siendo gestionada por el EntityManager?
+        Recuerda que podemos decirle al&nbsp;EntityManager que deje de gestionar una entidad usando el
+        método detach. En ese caso hay que fusionar los datos de la entidad desligada con los que
+        pudiera haber en el almacén de datos, usando para ello el método merge:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>//Modificamos los datos de la instancia de entidad no gestionada
+productoNoGestionado.setNombre("Cuchara Premium");
+//Iniciamos una transacción
+em.getTransaction().begin();
+//Fusionamos la instancia de la entidad
+Producto productoGestionado=em.merge(productoNoGestionado);
+//Hacemos commit para sincronizar con el almacén de datos.
+em.getTransaction().commit();
+</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior la instancia de entidad productoNoGestionado contiene un producto que no
+        está siendo gestionado por el EntityManager. Al hacer el merge se fusiona su información con la
+        del almacén de datos y se convierte en un producto gestionado, retornado por el mismo método
+        merge. Al realizar la fusión se actualiza el objeto rescatado del almacén de datos con los datos
+        de la instancia no gestionada, y al hacer el commit, los cambios se volcarán al almacén de
+        datos.
+    </p>
+    <p>
+        En ambos casos, después de actualizar los datos del almacén conviene usar el método&nbsp;detach
+        para desligar la instancia del EntityManager. Tendrás que analizar en qué situaciones necesitas
+        desligar la instancia de entidad.
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>em.detach(productoGestionado);</pre>
+        </div>
+    </div>
+    <h4>
+        Borrar una instancia de entidad
+    </h4>
+    <p>
+        Borrar una entidad es un proceso sencillo que requiere que la entidad esté siendo
+        <strong>
+            gestionada
+        </strong>
+        por el EntityManager. Se dan nuevamente dos situaciones similares a las dadas en la operación de
+        actualización. Puede que la entidad ya esté siendo gestionada previamente o puede que no. Si la
+        entidad ya está siendo gestionada, podemos hacer algo como lo siguiente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>Producto productoGestionado=em.find(Producto.class, (long)990);<br/><br/>// ... código ...
+
+em.getTransaction().begin();
+em.remove(productoGestionado);
+em.getTransaction().commit();</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior, el método remove eliminará la instancia de entidad
+        <strong>
+            gestionada
+        </strong>
+        , que pasará al estado de
+        <strong>
+            eliminada
+        </strong>
+        . Sin embargo, el
+        procedimiento para eliminar una
+        <strong>
+            entidad no gestionada
+        </strong>
+        es completamente
+        diferente:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>em.getTransaction().begin();
+Producto productoGestionado=em.merge(productoNoGestionado);
+em.remove(productoGestionado);
+em.getTransaction().commit();</pre>
+        </div>
+    </div>
+    <p>
+        Como puedes ver, en este segundo caso, antes de usar el método remove, tendremos que usar el
+        método&nbsp;merge para que el&nbsp;EntityManager empiece a gestionar la instancia y poder así
+        eliminarla posteriormente.
+    </p>
+    <div class="destacado" style="text-align: center;">
+        <strong>
+            El EntityManager no podrá actualizar ni
+            borrar entidades que no tengan el estado de gestionadas.
+        </strong>
+    </div>
+</div><h1 class="title">
+    2.7.- JPQL (I)
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-left license-CC-BY-SA" style="width: 250px;">
+    </figure>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        acaban de tener una entrevista con
+        <strong>
+            Graciela
+        </strong>
+        , la asesora de la empresa cliente. Aunque ambos estaban un
+        poco nerviosos, finalmente la entrevista no ha ido nada mal.
+    </p>
+    <p>
+        <strong>
+            Graciela
+        </strong>
+        les ha resultado muy agradable y la entrevista ha sido muy
+        enriquecedora.
+        <strong>
+            Graciela
+        </strong>
+        se ha quedado sorprendida por su capacidad de
+        anticipación, y les ha dicho que anticiparse a los problemas es un factor clave para el
+        éxito de cualquier proyecto.
+    </p>
+    <p>
+        Durante la entrevista han hablando, entre otras cosas, de la tecnología que tenían
+        pensado usar para desarrollar el proyecto. Resulta que
+        <strong>
+            Graciela
+        </strong>
+        ya
+        había trabajado con
+        <abbr title="Java Persistence API">
+            JPA
+        </abbr>
+        y
+        mencionó varias veces
+        <abbr title="Java Persistence Query Language">
+            JPQL
+        </abbr>
+        .
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        realmente no sabían de qué estaba hablando y no querían preguntar
+        para no dar la impresión de que tenían poca experiencia.
+    </p>
+    <p>
+        En cuanto han salido de la entrevista, ambos se han puesto a buscar como locos que era
+        eso de
+        <abbr title="Java Persistence Query Language">
+            JPQL
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    2.7.1.- JPQL (II)
+</h1>
+<div class="iDevice_content">
+    <figure class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
+    </figure>
+    <p>
+        Y ahora seguro que te estarás preguntando, ¿cómo ejecuto una consulta
+        <abbr title="Java Persistence Query Language">
+            JPQL
+        </abbr>
+        ?
+    </p>
+    <p>
+        Si en el apartado anterior veíamos cómo eran las consultas
+        <abbr title="Java Persistence Query Language">
+            JPQL
+        </abbr>
+        , aquí vamos a responder
+        justo a esa pregunta. Estas consultas son muy similares a los&nbsp;PreparedStatement de
+        <abbr title="Java Database Connectivity">
+            JDBC
+        </abbr>
+        , verás qué fácil.
+    </p>
+    <p>
+        Vamos a empezar poniendo un ejemplo de consultas tipo&nbsp;UPDATE y
+        <code>
+            DELETE
+        </code>
+        , que en
+        el fondo son bastante similares. Partimos de la consulta paramétrica que dejamos al final del
+        apartado anterior. El primer paso, sería
+        <strong>
+         <span class="resaltado_inline">
+          crear la consulta
+         </span>
+        </strong>
+        :
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>EntityManager em=...<br/>Query q=em.createQuery("UPDATE Producto p SET p.precio=:precio where id=:id");
+</pre>
+        </div>
+    </div>
+    <p>
+        Crear una consulta es tan sencillo como usar el método&nbsp;createQuery. Después, el segundo paso
+        sería
+        <strong>
+         <span class="resaltado_inline">
+          establecer el valor de cada parámetro
+         </span>
+        </strong>
+        con el
+        método&nbsp;setParameter. En el caso de la consulta que tenemos entre manos, el parámetro ":id"
+        sería el&nbsp;id del producto a modificar y&nbsp;":precio" sería el nuevo precio del producto.
+        Veamos cómo se haría:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>q.setParameter("precio", nuevoPrecio);
+q.setParameter("id", idDelProductoAModificar);
+</pre>
+        </div>
+    </div>
+    <p>
+        Y el tercer paso sería
+        <strong>
+         <span class="resaltado_inline">
+          ejecutar la consulta
+         </span>
+        </strong>
+        . Al ejecutar la consulta los
+        parámetros serán sustituidos por los valores establecidos con el método setParameter. En el caso
+        de las consultas tipo&nbsp;UPDATE y
+        <code>
+            DELETE
+        </code>
+        esta ejecución se hará con el
+        método executeUpdate:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>int result=q.executeUpdate();
+</pre>
+        </div>
+    </div>
+    <p>
+        El valor retornado por el método executeUpdate será el número de entidades actualizadas o
+        eliminadas (dependiendo de la consulta realizada). Es importante tener en cuenta dicho valor
+        para saber si la actualización o eliminación se han llevado a término.
+    </p>
+    <div class="destacado">
+        <strong>
+         <span>
+          Recuerda, las consultas
+          <abbr title="Java Persistence Query Language">
+           JPQL
+          </abbr>
+          de borrado y actualización también hay que hacerlas en una transacción. Antes de iniciar la consulta
+          <span>
+           <abbr title="Java Persistence Query Language">
+            JPQL
+           </abbr>
+          </span>
+          , primero hay que iniciar la transacción:
+         </span>
+        </strong>
+        <br>
+        <br>
+        <strong>
+            em.getTransaction().begin();
+        </strong>
+        <br>
+        <br>
+        <strong>
+            Y al terminar tenemos que cerrar la
+            transacción:
+        </strong>
+        <br>
+        <br>
+        <strong>
+            em.getTransaction().commit();
+        </strong>
+        <br/><br/><br/><br/><br/><br/></div>
+    <p>
+        Cuando se trata de una consulta de tipo SELECT, la cosa cambia un poco. En primer lugar, debemos
+        <strong>
+         <span class="destacado_inline">
+          crear la consulta pero indicando la entidad que se espera en retorno
+         </span>
+        </strong>
+        :
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+         <pre>  TypedQuery<Producto> q=em.createQuery("SELECT p FROM Producto p WHERE p.precio>=:preciominimo",Producto.class);
+</pre>
+        </div>
+    </div>
+    <p>
+        Fíjate que ahora esta versión del método retorna una instancia de&nbsp;TypedQuery, donde se
+        especifica el tipo de dicha clase (dado que es genérica): TypedQuery&lt;Producto&gt;.
+        <strong>
+            Aquí
+            es importante indicar como segundo argumento del métoco&nbsp;createQuery la entidad que se
+            espera retornar, en este caso Producto.class
+        </strong>
+        . El siguiente paso, es igual al
+        anterior,
+        <strong>
+         <span class="destacado_inline">
+          establecer el valor de cada parámetro
+         </span>
+        </strong>
+        :
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre>q.setParameter("preciominimo", 15);</pre>
+        </div>
+    </div>
+    <p>
+        El tercer paso sería
+        <strong>
+         <span class="destacado_inline">
+          obtener la lista de resultados
+         </span>
+        </strong>
+        ,
+        donde literalmente obtenemos una lista del mismo tipo que hemos indicado antes (List&lt;Producto&gt;)
+        con todas las entidades que coinciden con la condición especificada:
+    </p>
+    <div class="highlighted-code language-java">
+        <div>
+            <pre> List<Producto> r=q.getResultList();</pre>
+        </div>
+    </div>
+    <div class="destacado" style="text-align: center;">
+        <strong>
+         <span>
+          Debes tener en cuenta que cuando hacemos una consulta tipo&nbsp;SELECT las entidades rescatadas tendrán el estado de gestionadas.
+         </span>
+        </strong>
+        <br>
+        <br>
+        <br/><br/></div>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1>
+<div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p align="center" style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por
+                el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la
+                Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>
