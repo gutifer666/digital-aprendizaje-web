@@ -1,10 +1,8 @@
 <h1 class="title">
     Gestión de bases de datos: relacionales y orientadas a objetos.
     Persistencia de objetos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             <br>
@@ -97,10 +95,8 @@
     </p>
 </div><h1 class="title">
     1.- Bases de datos relacionales
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-left license-gnu-gpl" style="width: 200px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             <br>
@@ -133,10 +129,8 @@
     </p>
 </div><h1 class="title">
     1.1.- El desfase objeto-relacional
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         El
         <strong>
@@ -262,10 +256,8 @@
     </div>
 </div><h1 class="title">
     1.2.- JDBC
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-right license-pd" style="width: 200px;">
-    </figure>
+</h1><div class="iDevice_content">
+
     <div>
         <div>
             Ha llegado el momento de profundizar en
@@ -486,23 +478,8 @@
     </div>
 </div><h1 class="title">
     1.3.- Conectores o Drivers
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-right license-pd" style="width: 152px;">
+</h1><div class="iDevice_content">
 
-        <figcaption class="figcaption">
-            Elaboración propia.
-
-
-            (
-
-
-            Dominio público
-
-
-            )
-        </figcaption>
-    </figure>
     <p>
         <br>
         La
@@ -670,7 +647,7 @@
     </p>
     <div class="highlighted-code language-java line-numbers">
         <div>
-         <pre>        //URL de conexión
+         <pre ngNonBindable>        //URL de conexión
         String connectionURL = "jdbc:h2:./minipos.h2db;MODE=MySQL;AUTO_RECONNECT=TRUE";
         //Usuario para conectar a la base de datos (rellenar si es necesario).
         String usuario = "";
@@ -743,10 +720,8 @@
     </p>
 </div><h1 class="title">
     1.4.- Instalación de la base de datos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             María
@@ -839,21 +814,8 @@
     </p>
 </div><h1 class="title">
     1.5.- Creación de las tablas en una base de datos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 200px;">
+</h1><div class="iDevice_content">
 
-        <div class="figcaption">
-           <span class="author">
-            Elaboración propia. (Dominio público)
-           </span>
-            <span class="license">
-            <span>
-             <br>
-            <br/></span>
-           </span>
-        </div>
-    </div>
     <p>
         <strong>
             <br>
@@ -887,10 +849,8 @@
     </p>
 </div><h1 class="title">
     1.5.1.- Lenguaje SQL (I)
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-NC-SA" style="width: 136px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <br>
         ¿Cómo le pedimos al Sistema Gestor de Bases de Datos Relacional (
@@ -1016,10 +976,8 @@
     </p>
 </div><h1 class="title">
     1.5.2.- Lenguaje SQL (II)
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 192px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         La primera fase del trabajo con cualquier base de datos comienza con sentencias
         <abbr title="Data Definition Language.">
@@ -1062,7 +1020,7 @@
     </p>
     <div class="highlighted-code language-sql">
         <div>
-         <pre>CREATE TABLE IF NOT EXISTS PRODUCTO(
+         <pre ngNonBindable>CREATE TABLE IF NOT EXISTS PRODUCTO(
     ID BIGINT NOT NULL PRIMARY KEY auto_increment,
     BARCODE VARCHAR(24) NOT NULL,
     NOMBRE VARCHAR(200) NOT NULL,
@@ -1082,7 +1040,7 @@
     </p>
     <div class="highlighted-code language-sql">
         <div>
-         <pre>CREATE TABLE IF NOT EXISTS TICKET (
+         <pre ngNonBindable>CREATE TABLE IF NOT EXISTS TICKET (
     ID BIGINT NOT NULL PRIMARY KEY auto_increment,
     FECHA DATE NOT NULL,
     HORA TIME NOT NULL,
@@ -1101,7 +1059,7 @@
     </p>
     <div class="highlighted-code language-sql">
         <div>
-         <pre>CREATE TABLE IF NOT EXISTS LINEATICKET(
+         <pre ngNonBindable>CREATE TABLE IF NOT EXISTS LINEATICKET(
     ID BIGINT NOT NULL PRIMARY KEY auto_increment,
     CANTIDAD INTEGER NOT NULL,
     PRECIOVENTA DOUBLE NOT NULL,
@@ -1240,10 +1198,8 @@
     </ul>
 </div><h1 class="title">
     1.6.- Establecimiento de conexiones
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-left license-copyright" style="width: 196px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <br>
         Tanto
@@ -1321,8 +1277,7 @@
     </p>
 </div><h1 class="title">
     1.6.1.- Configurar un conector JDBC en un proyecto NetBeans
-</h1>
-<div class="iDevice_content">
+</h1><div class="iDevice_content">
     <p>
         En la siguiente presentación vamos a ver cómo descargarnos el conector o
         <span lang="en">
@@ -1339,23 +1294,7 @@
         </span>
         añadir el fichero .jar que constituye el conector que necesitamos.
     </p>
-    <div class="exe-figure exe-media position-center" style="width: 550px;">
-        <div class="figcaption header">
-            <strong>
-                Añadir el driver JDBC para MySQL en un proyecto de
-                NetBeans
-            </strong>
-        </div>
-        <span class="external-iframe-src" style="display:none">
-         https://prezi.com/view/s1aBqRhibJDlU34glDRl/embed
-        </span>
-        <iframe allowfullscreen="1" class="external-iframe" height="400" mozallowfullscreen="1"
-                src="https://prezi.com/view/s1aBqRhibJDlU34glDRl/embed"
-                webkitallowfullscreen="1" width="550">
-        </iframe>
-        <br>
 
-        <br/></div>
     <p>
         Recuerda que&nbsp;el conector
         <abbr title="Java Database Connectivity.">
@@ -1386,8 +1325,7 @@
     </p>
 </div><h1 class="title">
     1.6.2.- Registrar el conector JDBC
-</h1>
-<div class="iDevice_content">
+</h1><div class="iDevice_content">
     <div class="elemento_derecha">
         <div class="elemento_centrado">
         </div>
@@ -1483,7 +1421,7 @@
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>boolean driverCargado=false;
+         <pre ngNonBindable>boolean driverCargado=false;
 String driver="com.mysql.cj.jdbc.Driver";
 try &#123;
       Class.forName(driver).newInstance();
@@ -1532,7 +1470,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code code-style-2 language-latex">
         <div>
-            <pre>java -cp UT10_ProyectoBaseMySQL.jar;librerias\mysql-connector-java-8.0.20.jar ejemplo.Aplicacion</pre>
+            <pre ngNonBindable>java -cp UT10_ProyectoBaseMySQL.jar;librerias\mysql-connector-java-8.0.20.jar ejemplo.Aplicacion</pre>
         </div>
     </div>
     <p>
@@ -1577,10 +1515,8 @@ if (driverCargado) &#123;
     </div>
 </div><h1 class="title">
     1.7.- Ejecución de consultas sobre la base de datos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-left license-copyright" style="width: 128px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             <br>
@@ -1638,10 +1574,8 @@ if (driverCargado) &#123;
     </p>
 </div><h1 class="title">
     1.7.1.- Adición de información
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-right license-CC-BY-ND" style="width: 250px;">
-    </figure>
+</h1><div class="iDevice_content">
+
     <p>
         ¿Cómo añadirías un registro a una tabla en la base de datos?
     </p>
@@ -1667,7 +1601,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>String query = "INSERT INTO producto (nombre, barcode, precio) VALUES (?,?,?)";
+         <pre ngNonBindable>String query = "INSERT INTO producto (nombre, barcode, precio) VALUES (?,?,?)";
 </pre>
         </div>
     </div>
@@ -1703,7 +1637,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>public static void nuevoProducto(Connection con, String nombre, String barcode, double precio) &#123;
+         <pre ngNonBindable>public static void nuevoProducto(Connection con, String nombre, String barcode, double precio) &#123;
         String query = "INSERT INTO producto (nombre, barcode, precio) VALUES (?,?,?)";
         if (con != null) &#123;
 
@@ -1714,7 +1648,7 @@ if (driverCargado) &#123;
                 consulta.setDouble(3, precio);
 
                 int registrosAfectados = consulta.executeUpdate();
-                if (registrosAfectados > 0) &#123;
+                if (registrosAfectados &gt; 0) &#123;
                     System.out.println("Producto insertado correctamente.");
                 &#125; else &#123;
                     System.out.println("El producto no ha podido ser insertado.");
@@ -1732,10 +1666,8 @@ if (driverCargado) &#123;
     </p>
 </div><h1 class="title">
     1.7.2.- Recuperación de información (I)
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         Y ahora, ¿cómo rescatamos la información ya almacenada en la base de datos?
     </p>
@@ -1779,7 +1711,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>    public static void mostrarTodosLosProductos(Connection con) &#123;
+         <pre ngNonBindable>    public static void mostrarTodosLosProductos(Connection con) &#123;
         if (con != null) &#123;
             try ( Statement consulta = con.createStatement()) &#123;
                 ResultSet resultados = consulta.executeQuery("SELECT id,nombre,precio FROM producto");
@@ -1853,10 +1785,8 @@ if (driverCargado) &#123;
     </div>
 </div><h1 class="title">
     1.7.1.2.- Recuperación de información (II)
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         ¿Y si necesitas realizar una consulta en la que se seleccione solo los registros que cumplan unas
         determinadas condiciones?
@@ -1868,7 +1798,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>String query="SELECT id,nombre,precio FROM producto WHERE precio>=?";
+         <pre ngNonBindable>String query="SELECT id,nombre,precio FROM producto WHERE precio&gt;=?";
 </pre>
         </div>
     </div>
@@ -1879,9 +1809,9 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>public static void mostrarProductosPrecioMinimo (Connection con, double precioMinimo)
+         <pre ngNonBindable>public static void mostrarProductosPrecioMinimo (Connection con, double precioMinimo)
     &#123;
-        String query="SELECT id,nombre,precio FROM producto WHERE precio>=?";
+        String query="SELECT id,nombre,precio FROM producto WHERE precio&gt;=?";
         if (con!=null) &#123;
          try ( PreparedStatement consulta = con.prepareStatement(query)) &#123;
                 consulta.setDouble(1, precioMinimo);
@@ -1908,10 +1838,8 @@ if (driverCargado) &#123;
     </p>
 </div><h1 class="title">
     1.7.3.- Actualización de información
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-right license-CC-BY-ND" style="width: 250px;">
-    </figure>
+</h1><div class="iDevice_content">
+
     <p>
         Ya sabes cómo insertar registros en la base de datos, y también, cómo rescatarlos. Ahora toca
         otra operación muy común: la actualización de datos. ¿Crees que serías capaz de hacerlo?
@@ -1927,7 +1855,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre>String query = "UPDATE producto SET precio=? WHERE id=?;";</pre>
+            <pre ngNonBindable>String query = "UPDATE producto SET precio=? WHERE id=?;";</pre>
         </div>
     </div>
     <p>
@@ -1935,7 +1863,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>public static void actualizarPrecioProducto(Connection con, long id,double precio) &#123;
+         <pre ngNonBindable>public static void actualizarPrecioProducto(Connection con, long id,double precio) &#123;
         String query = "UPDATE producto SET precio=? WHERE id=?;";
         if (con != null) &#123;
 
@@ -1945,7 +1873,7 @@ if (driverCargado) &#123;
                 consulta.setLong(2, id);
 
                 int registrosAfectados = consulta.executeUpdate();
-                if (registrosAfectados>0)
+                if (registrosAfectados&gt;0)
                 &#123;
                     System.out.println("El precio del producto se ha modificado." + precio);
                 &#125; else &#123;
@@ -1966,10 +1894,8 @@ if (driverCargado) &#123;
     </p>
 </div><h1 class="title">
     1.7.4.- Borrado de información
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         Hay que eliminar información, ¿te atreves?
     </p>
@@ -1990,7 +1916,7 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>String queryDelete = "DELETE FROM producto WHERE id=?";
+         <pre ngNonBindable>String queryDelete = "DELETE FROM producto WHERE id=?";
 </pre>
         </div>
     </div>
@@ -2004,13 +1930,13 @@ if (driverCargado) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>    public static void borrarProducto(Connection con, long id) &#123;
+         <pre ngNonBindable>    public static void borrarProducto(Connection con, long id) &#123;
         String queryDelete = "DELETE FROM producto WHERE id=?";
         if (con != null) &#123;
             try ( PreparedStatement consultaDelete = con.prepareStatement(queryDelete)) &#123;
                 consultaDelete.setLong(1, id);
                 int registrosAfectados = consultaDelete.executeUpdate();
-                if (registrosAfectados > 0) &#123;
+                if (registrosAfectados &gt; 0) &#123;
                     System.out.println("El producto ha sido eliminado correctamente");
                 &#125; else &#123;
                     System.out.println("El producto no ha sido eliminado, porque no existe.");
@@ -2028,22 +1954,20 @@ if (driverCargado) &#123;
     </p>
 </div><h1 class="title">
     1.7.5.- Cierre de conexiones
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-left license-CC-BY-SA" style="width: 250px;">
-    </figure>
-    <p align="justify">
+</h1><div class="iDevice_content">
+
+    <p>
         ¿Crees que es importante cerrar una conexión?
     </p>
-    <p align="justify">
+    <p>
         Las conexiones a una base de datos consumen muchos recursos en el sistema gestor
         de bases de datos y también en la misma memoria del sistema donde se ejecuta la aplicación.
     </p>
-    <p align="justify">
+    <p>
         Si realizamos un programa que realiza múltiples conexiones a la base de datos, y
         luego no las cerramos adecuadamente, estaremos ocupando memoria innecesariamente.
     </p>
-    <p align="justify">
+    <p>
         Por ello, conviene cerrar las conexiones con el método close() siempre que vayan
         a dejar de ser utilizadas, en lugar de esperar a que el recolector de basura de
         <span lang="en">
@@ -2055,18 +1979,18 @@ if (driverCargado) &#123;
         </span>
         ) las elimine.
     </p>
-    <p align="justify">
+    <p>
         Veamos un ejemplo de cómo cerrar una conexión a una base de datos de forma
         adecuada:
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>String url="jdbc:mysql://localhost/proyectobase?serverTimezone=UTC&useUnicode=true&characterEncoding=utf8";
+         <pre ngNonBindable>String url="jdbc:mysql://localhost/proyectobase?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf8";
 String usuario="prueba";
 String password="prueba";
 Connection con = null
 try &#123;
-    con = DriverManager.getConnection(url,usuario,password);         <br/>
+    con = DriverManager.getConnection(url,usuario,password);         &lt;br /&gt;
     /* Consultas a la base de datos. */
 
 &#125; catch (SQLException ex) &#123;
@@ -2077,13 +2001,13 @@ try &#123;
 &#125;</pre>
         </div>
     </div>
-    <p align="justify">
+    <p>
         El código anterior puede ser reemplazado por un try-with-resources, tal y como se
         ha hecho en ejemplos anteriores. Esto tiene una gran ventaja, y es que nos libera de tener que
         invocar el método .close(), dado que esta estructura garantiza el cierre de recursos de forma
         automática y segura.
     </p>
-    <p align="justify">
+    <p>
         También es necesario cerrar las sentencias (Statement y
         <code>
             PreparedStatement
@@ -2096,7 +2020,7 @@ try &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>  Statement consulta=null;
+         <pre ngNonBindable>  Statement consulta=null;
   try &#123;
       consulta = con.createStatement();
       if (consulta.execute("SELECT id,nombre,precio FROM producto")) &#123;
@@ -2116,16 +2040,14 @@ try &#123;
  &#125;</pre>
         </div>
     </div>
-    <p align="justify">
+    <p>
         A veces, incluso es conveniente liberar los resultados (ResultSet). No obstante,
         cuando se cierra la consulta, también se liberan los&nbsp;ResultSet asociados.
     </p>
 </div><h1 class="title">
     1.7.6.- Excepciones en JDBC
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 113px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         En todas las aplicaciones en general, y por tanto en las que acceden a bases de datos en
         particular, nos puede ocurrir con frecuencia que la aplicación no funciona, no muestra los datos
@@ -2219,10 +2141,8 @@ try &#123;
     </p>
 </div><h1 class="title">
     2.- Persistencia de objetos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
            <span>
@@ -2343,8 +2263,7 @@ try &#123;
     </p>
 </div><h1 class="title">
     2.1.- ¿Qué son las bases de datos orientadas a objetos?
-</h1>
-<div class="iDevice_content">
+</h1><div class="iDevice_content">
     <div class="elemento_izquierda">
         <div class="elemento_centrado">
 
@@ -2390,26 +2309,7 @@ try &#123;
         directa (sin un
         mapeo entre distintas representaciones).
     </p>
-    <div class="exe-figure exe-image float-right license-pd" style="width: 188px;">
 
-        <div class="figcaption">
-         <span class="author">
-          Elaboración propia.
-         </span>
-            <span class="license">
-          <span class="sep">
-           (
-          </span>
-          <span>
-           Dominio público
-          </span>
-          <span class="sep">
-           )
-          </span>
-         </span>
-
-        </div>
-    </div>
     <p>
         <strong>
             <br>
@@ -2559,10 +2459,8 @@ try &#123;
     </div>
 </div><h1 class="title">
     2.2.- ¿Qué es el mapeado de objetos?
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-left license-copyright" style="width: 200px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             <br>
@@ -2621,10 +2519,8 @@ try &#123;
     </p>
 </div><h1 class="title">
     2.3.- ¿Cómo empiezo a usar JPA?
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         Seguro que ahora te estás preguntando por dónde empezar si quieres hacer un proyecto que use
         <abbr title="Java Persistence API">
@@ -2793,24 +2689,7 @@ try &#123;
         </span>
         :
     </p>
-    <div class="exe-figure exe-image position-center" style="width: 300px;">
 
-        <div class="figcaption">
-         <span class="title">
-          <em>
-           Elaboración propia. Pasos para incluir
-           <span lang="en">
-            EclipseLink
-           </span>
-           en proyecto
-           <span lang="en">
-            NetBeans
-           </span>
-           .
-          </em>
-         </span>
-        </div>
-    </div>
     <p>
         Como se muestra en la imagen anterior, simplemente hay que ir a las librerías del proyecto,
         seleccionar la opción
@@ -2874,13 +2753,10 @@ try &#123;
     </p>
     <div class="highlighted-code language-markup">
         <div>
-         <pre>
-             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-             &lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
+         <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
 
-            &lt;/persistence&gt;</pre>
+&lt;/persistence&gt;</pre>
         </div>
     </div>
     <p>
@@ -2897,12 +2773,10 @@ try &#123;
     </p>
     <div class="texto_centrado">
         <div style="width: 40%; display: inline-block;">
-            <div class="exe-figure exe-image license-pd position-center" style="width: 268px;">
-            </div>
+
         </div>
         <div style="width: 40%; display: inline-block;">
-            <div class="exe-figure exe-image license-pd position-center" style="width: 254px;">
-            </div>
+
         </div>
     </div>
     <p>
@@ -2924,10 +2798,8 @@ try &#123;
     </div>
 </div><h1 class="title">
     2.4.- Unidades de persistencia (I)
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         Con
         <abbr title="Java Persistence API">
@@ -2990,19 +2862,16 @@ try &#123;
     </p>
     <div class="highlighted-code language-markup">
         <div>
-         <pre>
-             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
-             &lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
-                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
-                  &lt;persistence-unit name="EjemplosJPA" transaction-type="RESOURCE_LOCAL"&gt;
-                    &lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;
-                    &lt;class&gt;minipos.model.LineaTicket&lt;/class&gt;
-                    &lt;class&gt;minipos.model.DireccionEnvio&lt;/class&gt;
-                    &lt;class&gt;minipos.model.Producto&lt;/class&gt;
-                    &lt;class&gt;minipos.model.Ticket&lt;/class&gt;
-                  &lt;/persistence-unit&gt;
-            &lt;/persistence&gt;</pre>
+         <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
+  &lt;persistence-unit name="EjemplosJPA" transaction-type="RESOURCE_LOCAL"&gt;
+    &lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;
+    &lt;class&gt;minipos.model.LineaTicket&lt;/class&gt;
+    &lt;class&gt;minipos.model.DireccionEnvio&lt;/class&gt;
+    &lt;class&gt;minipos.model.Producto&lt;/class&gt;
+    &lt;class&gt;minipos.model.Ticket&lt;/class&gt;
+  &lt;/persistence-unit&gt;
+&lt;/persistence&gt;</pre>
         </div>
     </div>
     <p>
@@ -3113,10 +2982,8 @@ try &#123;
     </p>
 </div><h1 class="title">
     2.4.1.- Unidades de persistencia (II)
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         Ya tenemos nuestro archivo persistence.xml, y ahora tenemos que dar el salto a
         <span lang="en">
@@ -3186,7 +3053,7 @@ try &#123;
     </ul>
     <div class="highlighted-code language-java">
         <div>
-         <pre>Map&lt;String,String&gt; propiedades=new HashMap<>();
+         <pre ngNonBindable>Map&lt;String,String&gt; propiedades=new HashMap&lt;&gt;();
 
 /* driver utilizado en esta conexión */
 propiedades.put("javax.persistence.jdbc.driver", "org.h2.Driver");
@@ -3209,7 +3076,7 @@ propiedades.put("javax.persistence.schema-generation.database.action", "create")
     </ul>
     <div class="highlighted-code language-java">
         <div>
-            <pre>EntityManagerFactory emf=Persistence.createEntityManagerFactory("EjemplosJPA",propiedades);</pre>
+            <pre ngNonBindable>EntityManagerFactory emf=Persistence.createEntityManagerFactory("EjemplosJPA",propiedades);</pre>
         </div>
     </div>
     <ul class="lista_verificacion">
@@ -3220,7 +3087,7 @@ propiedades.put("javax.persistence.schema-generation.database.action", "create")
     </ul>
     <div class="highlighted-code language-java">
         <div>
-         <pre>EntityManager em=emf.createEntityManager();
+         <pre ngNonBindable>EntityManager em=emf.createEntityManager();
 </pre>
         </div>
     </div>
@@ -3235,16 +3102,14 @@ propiedades.put("javax.persistence.schema-generation.database.action", "create")
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>em.close();
+         <pre ngNonBindable>em.close();
 emf.close();</pre>
         </div>
     </div>
 </div><h1 class="title">
     2.5.- Modelo de datos en JPA
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             Juan
@@ -3325,10 +3190,8 @@ emf.close();</pre>
     </p>
 </div><h1 class="title">
     2.5.1.- Entidades
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         Ahora que ya tenemos establecido el modelo de datos que nuestro
         <span lang="en">
@@ -3366,7 +3229,7 @@ emf.close();</pre>
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class Producto implements Serializable &#123;
 
     private static final long serialVersionUID = 99488577171L;
@@ -3384,7 +3247,7 @@ public class Producto implements Serializable &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class Producto implements Serializable &#123;
 
     // ...resto del código...
@@ -3419,7 +3282,7 @@ public class Producto implements Serializable &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class Producto implements Serializable &#123;
 
     // ...resto del código...
@@ -3441,10 +3304,8 @@ public class Producto implements Serializable &#123;
     </p>
 </div><h1 class="title">
     2.5.2.- Atributos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-copyright" style="width: 200px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <br>
         Aunque ya has definido un atributo en el apartado anterior, el identificador, todavía faltan
@@ -3461,24 +3322,24 @@ public class Producto implements Serializable &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
-public class Producto implements Serializable &#123;
+         <pre ngNonBindable>&lt;code class="language-java"&gt;&#64;Entity
+&lt;span class="token keyword"&gt;public&lt;/span&gt; &lt;span class="token keyword"&gt;class&lt;/span&gt; &lt;span class="token class-name"&gt;Producto&lt;/span&gt; &lt;span class="token keyword"&gt;implements&lt;/span&gt; &lt;span class="token class-name"&gt;Serializable&lt;/span&gt; &lt;span class="token punctuation"&gt;&#123;&lt;/span&gt;
 
-    // ...resto del código...
+    &lt;span class="token comment" spellcheck="true"&gt;// ...resto del código...   &lt;/span&gt;
 
     &#64;Id
-    &#64;GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //Clave primaria del producto
+    &#64;&lt;span class="token function"&gt;GeneratedValue&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;strategy &lt;span class="token operator"&gt;=&lt;/span&gt; GenerationType&lt;span class="token punctuation"&gt;.&lt;/span&gt;AUTO&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; Long id&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment" spellcheck="true"&gt;//Clave primaria del producto&lt;/span&gt;
 
-    private String nombre;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; String nombre&lt;span class="token punctuation"&gt;;&lt;/span&gt;
 
-    private Double precio;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; Double precio&lt;span class="token punctuation"&gt;;&lt;/span&gt;
 
-    private String barCode;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; String barCode&lt;span class="token punctuation"&gt;;&lt;/span&gt;
 
-    // ...resto del código...
+    &lt;span class="token comment" spellcheck="true"&gt;// ...resto del código...&lt;/span&gt;
 
-&#125;</pre>
+&lt;span class="token punctuation"&gt;&#125;&lt;/span&gt;&lt;/code&gt;</pre>
         </div>
     </div>
     <p>
@@ -3507,27 +3368,27 @@ public class Producto implements Serializable &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
-public class Producto implements Serializable &#123;
+         <pre ngNonBindable>&lt;code class="language-java"&gt;&#64;Entity
+&lt;span class="token keyword"&gt;public&lt;/span&gt; &lt;span class="token keyword"&gt;class&lt;/span&gt; &lt;span class="token class-name"&gt;Producto&lt;/span&gt; &lt;span class="token keyword"&gt;implements&lt;/span&gt; &lt;span class="token class-name"&gt;Serializable&lt;/span&gt; &lt;span class="token punctuation"&gt;&#123;&lt;/span&gt;
 
-    // ...resto del código...
+    &lt;span class="token comment" spellcheck="true"&gt;// ...resto del código...   &lt;/span&gt;
 
     &#64;Id
-    &#64;GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id; //Clave primaria del producto
+    &#64;&lt;span class="token function"&gt;GeneratedValue&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;strategy &lt;span class="token operator"&gt;=&lt;/span&gt; GenerationType&lt;span class="token punctuation"&gt;.&lt;/span&gt;AUTO&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; Long id&lt;span class="token punctuation"&gt;;&lt;/span&gt; &lt;span class="token comment" spellcheck="true"&gt;//Clave primaria del producto&lt;/span&gt;
 
-    &#64;Column(nullable = false, length = 200)
-    private String nombre;
+    &#64;&lt;span class="token function"&gt;Column&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;nullable &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token boolean"&gt;false&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt; length &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token number"&gt;200&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; String nombre&lt;span class="token punctuation"&gt;;&lt;/span&gt;
 
-    &#64;Column(nullable = false)
-    private Double precio;
+    &#64;&lt;span class="token function"&gt;Column&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;nullable &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token boolean"&gt;false&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; Double precio&lt;span class="token punctuation"&gt;;&lt;/span&gt;
 
-    &#64;Column(nullable = false, length=24)
-    private String barCode;
+    &#64;&lt;span class="token function"&gt;Column&lt;/span&gt;&lt;span class="token punctuation"&gt;(&lt;/span&gt;nullable &lt;span class="token operator"&gt;=&lt;/span&gt; &lt;span class="token boolean"&gt;false&lt;/span&gt;&lt;span class="token punctuation"&gt;,&lt;/span&gt; length&lt;span class="token operator"&gt;=&lt;/span&gt;&lt;span class="token number"&gt;24&lt;/span&gt;&lt;span class="token punctuation"&gt;)&lt;/span&gt;
+    &lt;span class="token keyword"&gt;private&lt;/span&gt; String barCode&lt;span class="token punctuation"&gt;;&lt;/span&gt;
 
-    // ...resto del código...
+    &lt;span class="token comment" spellcheck="true"&gt;// ...resto del código...&lt;/span&gt;
 
-&#125;</pre>
+&lt;span class="token punctuation"&gt;&#125;&lt;/span&gt;&lt;/code&gt;</pre>
         </div>
     </div>
     <p>
@@ -3538,10 +3399,8 @@ public class Producto implements Serializable &#123;
     </p>
 </div><h1 class="title">
     2.5.3.- Relaciones entre entidades
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </figure>
+</h1><div class="iDevice_content">
+
     <p>
         Una de las cosas más engorrosas con las bases de datos es tener en cuenta las relaciones que
         tienen entre sí los datos. En general, existen tres tipos de relaciones fundamentales en
@@ -3640,8 +3499,7 @@ public class Producto implements Serializable &#123;
     </p>
 </div><h1 class="title">
     2.5.4.- Relaciones uno a uno
-</h1>
-<div class="iDevice_content">
+</h1><div class="iDevice_content">
     <p>
         ¿Sabrías indicar la relación uno a uno entre dos entidades?
     </p>
@@ -3652,34 +3510,14 @@ public class Producto implements Serializable &#123;
         entidad&nbsp;Ticket y la entidad DatosDeEntrega. Cada Ticket será único y, además, tendrá sus
         propios valores asociados en la entidad DatosDeEntrega.
     </p>
-    <div class="exe-figure exe-image float-right license-pd" style="width: 200px;">
 
-        <div class="figcaption">
-         <span class="title">
-          <em>
-           Elaboración propia. Relación uno a uno entre Ticket y DatosDeEntrega.
-          </em>
-         </span>
-            <span class="license">
-          <span class="sep">
-           (
-          </span>
-          <span>
-           Dominio público
-          </span>
-          <span class="sep">
-           )
-          </span>
-         </span>
-        </div>
-    </div>
     <p>
         Empecemos por la entidad Ticket. Lo primero que haremos en esta entidad será añadir un atributo
         que serán los datos de entrega, eso lo indicaremos así:
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class Ticket implements Serializable&#123;
     //... resto del código
 
@@ -3705,7 +3543,7 @@ public class Ticket implements Serializable&#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class Ticket implements Serializable&#123;
     //... resto del código
 
@@ -3745,7 +3583,7 @@ public class Ticket implements Serializable&#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class DatosDeEntrega implements Serializable &#123;
 
     //... resto del código
@@ -3771,29 +3609,8 @@ public class DatosDeEntrega implements Serializable &#123;
     </p>
 </div><h1 class="title">
     2.5.5.- Relaciones uno a muchos
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-pd" style="width: 350px;">
+</h1><div class="iDevice_content">
 
-        <div class="figcaption">
-         <span class="title">
-          <em>
-           Elaboración propia.&nbsp;Relación uno a muchos entre Ticket y LineaDeTicket.
-          </em>
-         </span>
-            <span class="license">
-          <span class="sep">
-           (
-          </span>
-          <span>
-           Dominio público
-          </span>
-          <span class="sep">
-           )
-          </span>
-         </span>
-        </div>
-    </div>
     <p>
         Ahora toca la relación más habitual en cualquier modelo de datos. Teniendo en cuenta el apartado
         anterior, ¿cómo crees que se materializará la relación uno a muchos en nuestro modelo de datos
@@ -3835,7 +3652,7 @@ public class DatosDeEntrega implements Serializable &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class LineaDeTicket implements Serializable &#123;
 
     // ... resto del código ...
@@ -3877,13 +3694,13 @@ public class LineaDeTicket implements Serializable &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>&#64;Entity
+         <pre ngNonBindable>&#64;Entity
 public class Ticket implements Serializable&#123;
 
     //... resto del código
 
     &#64;OneToMany(mappedBy = "ticket", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private List&lt;LineaDeTicket&lt; lineas;
+    private List&lt;LineaDeTicket&gt; lineas;
 
     //... resto del código
 
@@ -3975,10 +3792,8 @@ public class Ticket implements Serializable&#123;
     </ul>
 </div><h1 class="title">
     2.6.- Operaciones CRUD con JPA
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             Ada
@@ -4070,10 +3885,8 @@ public class Ticket implements Serializable&#123;
     </p>
 </div><h1 class="title">
     2.6.1.- Persistir y leer
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         La operación de hacer persistente una instancia de entidad consiste, básicamente, en decirle al
         EntityManager que almacene una instancia de entidad recién creada (estado
@@ -4088,7 +3901,7 @@ public class Ticket implements Serializable&#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre>Producto p=new Producto("Cuchara Elegance", 3.49, "8480000145895");</pre>
+            <pre ngNonBindable>Producto p=new Producto("Cuchara Elegance", 3.49, "8480000145895");</pre>
         </div>
     </div>
     <p>
@@ -4133,7 +3946,7 @@ public class Ticket implements Serializable&#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>    public static boolean persistirProducto(EntityManager em, Producto p) &#123;
+         <pre ngNonBindable>    public static boolean persistirProducto(EntityManager em, Producto p) &#123;
         boolean ok = false;
 
         /*1º Iniciamos la transacción.*/
@@ -4190,7 +4003,7 @@ public class Ticket implements Serializable&#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>    public static Producto leerProducto(EntityManager em, long id) &#123;
+         <pre ngNonBindable>    public static Producto leerProducto(EntityManager em, long id) &#123;
         /* 1º Buscamos el producto por Id */
         Producto p=em.find(Producto.class, id);
         /* 2º (opcional, pero recomendable)
@@ -4217,10 +4030,8 @@ public class Ticket implements Serializable&#123;
     </p>
 </div><h1 class="title">
     2.6.2.- Actualizar y borrar instancias
-</h1>
-<div class="iDevice_content">
-    <div class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </div>
+</h1><div class="iDevice_content">
+
     <p>
         ¿Te resultó fácil persistir y leer entidades usando
         <abbr title="Java Persistence API">
@@ -4245,7 +4056,7 @@ public class Ticket implements Serializable&#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>//Cargamos la instancia de entidad. Esta instancia tendrá el estado de gestionada
+         <pre ngNonBindable>//Cargamos la instancia de entidad. Esta instancia tendrá el estado de gestionada
 Producto productoGestionado=em.find(Producto.class, (long)990);
 
 //Realizamos las modificaciones oportunas
@@ -4273,7 +4084,7 @@ em.getTransaction().commit();</pre>
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>//Modificamos los datos de la instancia de entidad no gestionada
+         <pre ngNonBindable>//Modificamos los datos de la instancia de entidad no gestionada
 productoNoGestionado.setNombre("Cuchara Premium");
 //Iniciamos una transacción
 em.getTransaction().begin();
@@ -4299,7 +4110,7 @@ em.getTransaction().commit();
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre>em.detach(productoGestionado);</pre>
+            <pre ngNonBindable>em.detach(productoGestionado);</pre>
         </div>
     </div>
     <h4>
@@ -4316,7 +4127,7 @@ em.getTransaction().commit();
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>Producto productoGestionado=em.find(Producto.class, (long)990);<br/><br/>// ... código ...
+         <pre ngNonBindable>Producto productoGestionado=em.find(Producto.class, (long)990);&lt;br /&gt;&lt;br /&gt;// ... código ...
 
 em.getTransaction().begin();
 em.remove(productoGestionado);
@@ -4342,7 +4153,7 @@ em.getTransaction().commit();</pre>
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>em.getTransaction().begin();
+         <pre ngNonBindable>em.getTransaction().begin();
 Producto productoGestionado=em.merge(productoNoGestionado);
 em.remove(productoGestionado);
 em.getTransaction().commit();</pre>
@@ -4361,10 +4172,8 @@ em.getTransaction().commit();</pre>
     </div>
 </div><h1 class="title">
     2.7.- JPQL (I)
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-left license-CC-BY-SA" style="width: 250px;">
-    </figure>
+</h1><div class="iDevice_content">
+
     <p>
         <strong>
             Juan
@@ -4430,10 +4239,8 @@ em.getTransaction().commit();</pre>
     </p>
 </div><h1 class="title">
     2.7.1.- JPQL (II)
-</h1>
-<div class="iDevice_content">
-    <figure class="exe-figure exe-image float-right license-CC-BY-SA" style="width: 250px;">
-    </figure>
+</h1><div class="iDevice_content">
+
     <p>
         Y ahora seguro que te estarás preguntando, ¿cómo ejecuto una consulta
         <abbr title="Java Persistence Query Language">
@@ -4470,7 +4277,7 @@ em.getTransaction().commit();</pre>
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>EntityManager em=...<br/>Query q=em.createQuery("UPDATE Producto p SET p.precio=:precio where id=:id");
+         <pre ngNonBindable>EntityManager em=...&lt;br /&gt;Query q=em.createQuery("UPDATE Producto p SET p.precio=:precio where id=:id");
 </pre>
         </div>
     </div>
@@ -4489,7 +4296,7 @@ em.getTransaction().commit();</pre>
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>q.setParameter("precio", nuevoPrecio);
+         <pre ngNonBindable>q.setParameter("precio", nuevoPrecio);
 q.setParameter("id", idDelProductoAModificar);
 </pre>
         </div>
@@ -4512,7 +4319,7 @@ q.setParameter("id", idDelProductoAModificar);
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>int result=q.executeUpdate();
+         <pre ngNonBindable>int result=q.executeUpdate();
 </pre>
         </div>
     </div>
@@ -4565,7 +4372,7 @@ q.setParameter("id", idDelProductoAModificar);
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>  TypedQuery&lt;Producto&gt; q=em.createQuery("SELECT p FROM Producto p WHERE p.precio>=:preciominimo",Producto.class);
+         <pre ngNonBindable>  TypedQuery&lt;Producto&gt; q=em.createQuery("SELECT p FROM Producto p WHERE p.precio&gt;=:preciominimo",Producto.class);
 </pre>
         </div>
     </div>
@@ -4588,7 +4395,7 @@ q.setParameter("id", idDelProductoAModificar);
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre>q.setParameter("preciominimo", 15);</pre>
+            <pre ngNonBindable>q.setParameter("preciominimo", 15);</pre>
         </div>
     </div>
     <p>
@@ -4604,7 +4411,7 @@ q.setParameter("id", idDelProductoAModificar);
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre> List&lt;Producto&gt; r=q.getResultList();</pre>
+            <pre ngNonBindable> List&lt;Producto&gt; r=q.getResultList();</pre>
         </div>
     </div>
     <div class="destacado" style="text-align: center;">
@@ -4618,10 +4425,9 @@ q.setParameter("id", idDelProductoAModificar);
         <br/><br/></div>
 </div><h1 class="title">
     Condiciones y términos de uso de los materiales
-</h1>
-<div class="iDevice_content">
+</h1><div class="iDevice_content">
     <div title="Información acerca de la licencia de los materiales">
-        <p align="center" style="margin: 2px 2px;">
+        <p style="margin: 2px 2px;">
             <strong>
                 Materiales desarrollados inicialmente por
                 el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la
@@ -4631,11 +4437,11 @@ q.setParameter("id", idDelProductoAModificar);
                 </abbr>
             </strong>
         </p>
-        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+        <p style="font-size: 0.8em; margin: 2px 2px;">
             <strong>
             </strong>
         </p>
-        <p align="center" style="font-size: 0.8em; margin: 2px 2px;">
+        <p style="font-size: 0.8em; margin: 2px 2px;">
           <span>
            Antes de cualquier uso leer detenidamente el siguente
           </span>
