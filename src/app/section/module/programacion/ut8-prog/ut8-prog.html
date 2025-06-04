@@ -2128,13 +2128,13 @@
     </p>
     <div class="codigo elemento_centrado" style="width: 25.8em;">
         <div class="texto_izquierda">
-         <pre><padre att1="valor" att2="valor">
+         <pre>&lt;padre att1="valor" att2="valor"&gt;
 </pre>
             <pre>   texto 1
 </pre>
-            <pre>   <ethija> texto 2 </ethija>
+            <pre>   &lt;ethija&gt; texto 2 &lt;/ethija&gt;
 </pre>
-            <pre></padre>
+            <pre>&lt;/padre&gt;
 </pre>
         </div>
     </div>
@@ -2156,15 +2156,15 @@
         <div class="texto_izquierda">
          <pre><?xml version="1.0" encoding="ISO-8859-1"?>
 </pre>
-            <pre><pedido>
+            <pre>&lt;pedido&gt;
 </pre>
-            <pre><cliente> texto </cliente>
+            <pre>&lt;cliente&gt; texto &lt;/cliente&gt;
 </pre>
-            <pre><codCliente> texto </codCliente>
+            <pre>&lt;codCliente&gt; texto &lt;/codCliente&gt;
 </pre>
             <pre>...
 </pre>
-            <pre></pedido>
+            <pre>&lt;/pedido&gt;
 </pre>
         </div>
     </div>
@@ -2855,8 +2855,8 @@
 </pre>
             <pre>Element cliente;
 </pre>
-            <pre>if (<code>listaNodos.getLength()==1)&#123; </pre>
-            <pre>     cliente=(Element)<code><code>listaNodos.item(0);</pre>
+            <pre>if (listaNodos.getLength()==1)&#123; </pre>
+            <pre>     cliente=(Element)listaNodos.item(0);</pre>
             <pre>&#125;</pre>
         </div>
     </div>
@@ -2901,7 +2901,7 @@
     <div class="codigo elemento_centrado" style="width: 43.95em;">
         <div class="texto_izquierda">
             <pre>NodeList listaNodos=documento.getDocumentElement().getChildNodes();</pre>
-            <pre>for (int i=0; i<listaNodos.getLength();i++) &#123;</pre>
+            <pre>for (int i=0; i&lt;listaNodos.getLength();i++) &#123;</pre>
             <pre>    Node nodo=listaNodos.item(i);</pre>
             <pre>    switch (nodo.getNodeType())&#123;</pre>
             <pre>        case Node.ELEMENT_NODE: </pre>
@@ -3031,11 +3031,11 @@
         <div class="texto_izquierda">
          <pre>NodeList listaNodos3=documento.getElementsByTagName("DIRECCION_ENTREGA");
 </pre>
-            <pre>for (int i=0;i<<code>listaNodos3.getLength();i++)&#123;
+            <pre>for (int i=0;i&lt;listaNodos3.getLength();i++)&#123;
 </pre>
-            <pre>     Element elemento=(Element) <code>listaNodos3.item(i);
+            <pre>     Element elemento=(Element) listaNodos3.item(i);
 </pre>
-            <pre>     Element padre = (Element)<code>elemento.getParentNode();
+            <pre>     Element padre = (Element)elemento.getParentNode();
 </pre>
             <pre>     padre.removeChild(elemento);
 </pre>

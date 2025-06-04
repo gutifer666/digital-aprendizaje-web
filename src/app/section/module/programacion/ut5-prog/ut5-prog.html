@@ -1124,18 +1124,18 @@ class ClaseEjemplo &#123;
         y tiene la siguiente estructura general:
     </p>
     <div class="highlighted-code language-java">
-        <pre>// Cabecera de la clase
-[modificadores] class  <NombreClase> [herencia][interfaces] &#123;
+        <pre>   // Cabecera de la clase
+                [modificadores] class  < NombreClase> [herencia][interfaces] &#123;
 
-// Cuerpo de la clase
+                // Cuerpo de la clase
+                // Atributos
+                <strong>[Declaración de los atributos]</strong>
 
-  // Atributos
-  <strong>[Declaración de los atributos]</strong>
+                // Métodos
+                <strong>[Declaración de los métodos]</strong>
 
-  // Métodos
-  <strong>[Declaración de los métodos]</strong>
-
-&#125;</pre>
+                &#125;
+        </pre>
     </div>
     <p>
         <strong>
@@ -1778,7 +1778,7 @@ class Vehiculo &#123;
         La sintaxis general para la declaración de un atributo en el interior de una clase es:
     </p>
     <div class="highlighted-code language-java">
-        <pre>[modificadores] <tipo> <nombreAtributo>;</pre>
+        <pre>[modificadores] &lt;tipo&gt; &lt;nombreAtributo&gt;;</pre>
     </div>
     <p>
         Ejemplos:
@@ -2135,7 +2135,7 @@ private final LocalDate fechaInicio, fechaFin;        // Dos atributos de tipo L
             ellos:
         </p>
         <div class="highlighted-code language-java">
-            <pre>[private | protected | public] [static] [final] [transient] [volatile] <tipo> <nombreAtributo>;</pre>
+            <pre>[private | protected | public] [static] [final] [transient] [volatile] &lt;tipo&gt; &lt;nombreAtributo&gt;;</pre>
         </div>
         <p>
             En los siguientes apartados estudiaremos con detalle cada uno de ellos.
@@ -3121,12 +3121,12 @@ public final double MAXIMA_CAPACIDAD_DEPOSITO = 150.0;  // Máxima capacidad pos
         Por tanto, la estructura básica de una clase para que sea inmutable será:
     </p>
     <div class="highlighted-code language-java">
-        <pre>public final class <NombreClase> &#123;
-  private final <tipoAtributo1> nombreAtributo1;
-  private final <tipoAtributo2> nombreAtributo2;
-  private final <tipoAtributo3> nombreAtributo3;
-  ...
-</pre>
+        <pre>public final class &lt;NombreClase&lt; &#123;
+              private final &lt;tipoAtributo1&gt; nombreAtributo1;
+              private final &lt;tipoAtributo2&gt; nombreAtributo2;
+              private final &lt;tipoAtributo3&gt; nombreAtributo3;
+              ...
+        </pre>
     </div>
     <p>
         Todos los atributos&nbsp;final y la propia clase también final.
@@ -4890,13 +4890,13 @@ public LocalDate getFechaMatriculacion () &#123;
     </p>
     <div class="highlighted-code language-java">
         <pre>public void setNombreCompuesto (String ... nombre) &#123; // Número indeterminado de parámetros String
-  String acumuladorNombres= nombre[0];  // Variable local donde iremos concatenando los nombres, empezando por el primero
+            String acumuladorNombres= nombre[0];  // Variable local donde iremos concatenando los nombres, empezando por el primero
 
-  for (int i=1; i<nombre.length; i++) &#123;
-    acumuladorNombres= acumuladorNombres + " " + nombre[i]; // Concatenamos nombres separados por espacios
-  &#125;
-  this.nombre= acumuladorNombres; // Asignamos al atributo la cadena creada con todos los nombres concatenados
-&#125;
+                for (int i=1; i< nombre.length; i++) &#123;
+                    acumuladorNombres= acumuladorNombres + " " + nombre[i]; // Concatenamos nombres separados por espacios
+                &#125;
+                this.nombre= acumuladorNombres; // Asignamos al atributo la cadena creada con todos los nombres concatenados
+            &#125;
 </pre>
     </div>
     <p>
@@ -7259,14 +7259,15 @@ b4.atributoInstancia= 40
     </ul>
     <div class="highlighted-code language-java">
         <div>
-         <pre>/**
-* Chequea si un vector no contiene elementos.
-* &#64;return <code>verdaderosi y solo si este vector no contiene componentes, esto es, su tamaño es cero;
-* falso en cualquier otro caso.
-*/
-public boolean VectorVacio() &#123;
-   return elementCount == 0;
-&#125;</pre>
+         <pre>  /**
+                * Chequea si un vector no contiene elementos.
+                * &#64;return verdaderosi y solo si este vector no contiene componentes, esto es, su tamaño es cero;
+                * falso en cualquier otro caso.
+                */
+                public boolean VectorVacio() &#123;
+                    return elementCount == 0;
+                &#125;
+         </pre>
         </div>
     </div>
     <ul class="lista_verificacion">
@@ -7618,8 +7619,9 @@ public boolean VectorVacio() &#123;
         igual que la declaración de una variable de cualquier tipo:
     </p>
     <div class="highlighted-code language-java">
-        <pre><tipo> nombreVariable;
-</pre>
+        <pre>
+            &lt;tipo&gt; nombreVariable;
+        </pre>
     </div>
     <p>
         En este caso el tipo será alguna clase que ya hayas implementado (Vehiculo,
@@ -7725,8 +7727,9 @@ LocalDate f1, f2;
         con la siguiente sintaxis:
     </p>
     <div class="highlighted-code language-java">
-        <pre>nombreObjeto = new <ConstructorClase> ([listaParametros]);
-</pre>
+        <pre>
+            nombreObjeto = new &lt;ConstructorClase&lt; ([listaParametros]);
+        </pre>
     </div>
     <p>
         El constructor de una clase (&lt;ConstructorClase&gt;) es un método especial que tiene toda
@@ -7982,8 +7985,9 @@ Rectangulo[] arrayRecMuestra= Rectangulo.buildSampleRectangulos();
         title="Punto."&gt;.&lt;/abbr&gt;) del siguiente modo:
     </p>
     <div class="highlighted-code language-java">
-        <pre><nombreObjeto>.<nombreMiembro>
-</pre>
+        <pre>
+            &lt;nombreObjeto&gt;.&lt;nombreMiembro&gt;
+        </pre>
     </div>
     <p>
         Donde &lt;nombreMiembro&gt; será el nombre de algún miembro del objeto (atributo o método) al

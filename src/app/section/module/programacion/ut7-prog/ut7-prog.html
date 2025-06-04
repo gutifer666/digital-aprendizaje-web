@@ -190,7 +190,7 @@
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>public class Util<T> &#123;
+         <pre>public class Util&lt;T&gt; &#123;
     T t1;
     public void invertir(T[] array) &#123;
         for (int i = 0; i < array.length / 2; i++) &#123;
@@ -237,9 +237,9 @@
     <div class="highlighted-code language-java">
         <div>
          <pre>Integer[] numeros=&#123;0,1,2,3,4,5,6,7,8,9&#125;;
-Util<Integer> u= new Util<Integer>();
+Util&lt;Integer&gt; u= new Util&lt;Integer&gt;();
 u.invertir(numeros);
-for (int i=0;i<numeros.length;i++)&#123;
+for (int i=0;i< numeros.length;i++)&#123;
     System.out.println(numeros[i]);
 &#125;</pre>
         </div>
@@ -276,9 +276,9 @@ for (int i=0;i<numeros.length;i++)&#123;
     <div class="highlighted-code language-java">
         <div>
          <pre>Integer[] numeros=&#123;0,1,2,3,4,5,6,7,8,9&#125;;
-Util<Integer> u= new Util<>();  // Sólo a partir de Java 7
+Util&lt;Integer&gt; u= new Util<>();  // Sólo a partir de Java 7
 u.invertir(numeros);
-for (int i=0;i<numeros.length;i++)&#123; <br/>    System.out.println(numeros[i]);<br/>&#125;</pre>
+for (int i=0;i&lt;numeros.length;i++)&#123; <br/>    System.out.println(numeros[i]);<br/>&#125;</pre>
         </div>
     </div>
     <p>
@@ -661,8 +661,8 @@ for (int i=0;i<numeros.length;i++)&#123; <br/>    System.out.println(numeros[i])
             <td>
                 <div class="highlighted-code language-java">
                     <div>
-             <pre>TreeSet <Integer> t;
-t=new TreeSet<Integer>();
+             <pre>TreeSet &lt;Integer&gt; t;
+t=new TreeSet&lt;Integer&gt;();
 t.add(new Integer(4));
 t.add(new Integer(3));
 t.add(new Integer(1));
@@ -676,8 +676,8 @@ for (Integer i:t)&#123;
             <td>
                 <div class="highlighted-code language-java">
                     <div>
-             <pre>LinkedHashSet <Integer> t;
-t=new LinkedHashSet<Integer>();
+             <pre>LinkedHashSet &lt;Integer&gt; t;
+t=new LinkedHashSet&lt;Integer&gt;();
 t.add(new Integer(4));
 t.add(new Integer(3));
 t.add(new Integer(1));
@@ -718,14 +718,14 @@ for (Integer i:t)&#123;
         En los ejemplos anteriores también se podría haber optado por usar una variable tipo Set. Por
         ejemplo, en el caso del TreeSet podría ser como sigue (con el mismo resultado):
     </p>
-    <center>
+
         <div class="highlighted-code language-java" style="width: 70%;">
             <div style="text-align: left;">
-          <pre>Set <Integer> t;
-t=new TreeSet<Integer>();</pre>
+          <pre>Set &lt;Integer&gt; t;
+t=new TreeSet&lt;Integer&gt;();</pre>
             </div>
         </div>
-    </center>
+
 </div><h1 class="title">
     3.3.- Conjuntos (IV). Combinando datos de varias colecciones
 </h1>
@@ -750,10 +750,10 @@ t=new TreeSet<Integer>();</pre>
     </div>
     <div class="highlighted-code language-java">
         <div>
-         <pre>TreeSet<Integer> conjuntoA= new TreeSet<Integer>();
+         <pre>TreeSet&lt;Integer&gt; conjuntoA= new TreeSet&lt;Integer&gt;();
 conjuntoA.add(9); conjuntoA.add(19); conjuntoA.add(5); conjuntoA.add(7); // Elementos del conjunto A: 9, 19, 5 y 7
 
-LinkedHashSet<Integer> conjuntoB= new LinkedHashSet<Integer>();
+LinkedHashSet&lt;Integer&gt; conjuntoB= new LinkedHashSet&lt;Integer&gt;();
 conjuntoB.add(10); conjuntoB.add(20); conjuntoB.add(5); conjuntoB.add(7); // Elementos del conjunto B: 10, 20, 5 y 7</pre>
         </div>
     </div>
@@ -903,7 +903,7 @@ conjuntoB.add(10); conjuntoB.add(20); conjuntoB.add(5); conjuntoB.add(7); // Ele
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>class ComparadorDeObjetos implements Comparator<Objeto> &#123;
+         <pre>class ComparadorDeObjetos implements Comparator&lt;Objeto&gt; &#123;
     public int compare(Objeto objeto1, Objeto objeto2) &#123; ... &#125;
 &#125;</pre>
         </div>
@@ -955,7 +955,7 @@ conjuntoB.add(10); conjuntoB.add(20); conjuntoB.add(5); conjuntoB.add(7); // Ele
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre>Set<Objeto> ts=new TreeSet<Objeto>(new ComparadorDeObjetos());</pre>
+            <pre>Set&lt;Objeto&gt; ts=new TreeSet&lt;Objeto&gt;(new ComparadorDeObjetos());</pre>
         </div>
     </div>
 </div><h1 class="title">
@@ -1028,7 +1028,7 @@ conjuntoB.add(10); conjuntoB.add(20); conjuntoB.add(5); conjuntoB.add(7); // Ele
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>LinkedList<Integer> t=new LinkedList<Integer>(); // Declaración y creación del LinkedList de enteros.
+         <pre>LinkedList&lt;Integer&gt; t=new LinkedList&lt;Integer&gt;(); // Declaración y creación del LinkedList de enteros.
 t.add(1); // Añade un elemento al final de la lista.
 t.add(3); // Añade otro elemento al final de la lista.
 t.add(1,2); // Añade en la posición 1 el elemento 2.
@@ -1060,7 +1060,7 @@ for (Integer i: t) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>ArrayList<Integer> miLista=new ArrayList<Integer>(); // Declaración y creación del ArrayList de enteros.
+         <pre>ArrayList&lt;Integer&gt; miLista=new ArrayList&lt;Integer&gt;(); // Declaración y creación del ArrayList de enteros.
 miLista.add(10);
 miLista.add(11); // Añadimos dos elementos a la lista.
 miLista.set(miLista.indexOf(11), 12); // Sustituimos el 11 por el 12, primero lo buscamos y luego lo reemplazamos.</pre>
@@ -1286,7 +1286,7 @@ miLista.set(miLista.indexOf(11), 12); // Sustituimos el 11 por el 12, primero lo
         <div>
          <pre>Test p1=new Test(11); // Se crea un objeto Test donde el entero que contiene vale 11.
 Test p2=new Test(12); // Se crea otro objeto Test donde el entero que contiene vale 12.
-LinkedList<Test> lista=new LinkedList<>(); // Creamos una lista enlazada para objetos tipo Test.
+LinkedList&lt;Test&gt; lista=new LinkedList<>(); // Creamos una lista enlazada para objetos tipo Test.
 lista.add(p1); // Añadimos el primer objeto test.
 lista.add(p2); // Añadimos el segundo objeto test.
 for (Test p:lista)&#123;
@@ -1474,11 +1474,11 @@ for (Test p:lista)&#123;
             <td>
                 <div class="highlighted-code language-java line-numbers">
                     <div>
-             <pre>ArrayList <Integer> lista=new ArrayList<>();
+             <pre>ArrayList &lt;Integer&gt; lista=new ArrayList<>();
 for (int i=0;i<=10;i++)&#123;
      lista.add(i);
 &#125;
-Iterator<Integer> it=lista.iterator();
+Iterator&lt;Integer&gt; it=lista.iterator();
 while (it.hasNext()) &#123;
     Integer t=it.next();
     if (t%2==0) it.remove();
@@ -1489,7 +1489,7 @@ while (it.hasNext()) &#123;
             <td>
                 <div class="highlighted-code language-java line-numbers hightlight-7">
                     <div>
-             <pre>ArrayList <Integer> lista=new ArrayList<>();
+             <pre>ArrayList &lt;Integer&gt; lista=new ArrayList<>();
 for (int i=0;i<=10;i++)&#123;
     lista.add(i);
 &#125;
@@ -1541,7 +1541,7 @@ while (it.hasNext()) &#123;
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>HashMap<Integer,Integer> mapa=new HashMap<Integer,Integer>();
+         <pre>HashMap&lt;Integer,Integer&gt; mapa=new HashMap&lt;Integer,Integer&gt;();
 for (int i=0;i<10;i++)&#123;
     mapa.put(i, i); // Insertamos datos de prueba en el mapa.
 &#125;
@@ -1688,7 +1688,7 @@ for (Integer llave:mapa.keySet())&#123; // Recorremos el conjunto generado por k
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>class ComparadorArticulos implements Comparator<Articulo>&#123;
+         <pre>class ComparadorArticulos implements Comparator&lt;Articulo&gt;&#123;
     &#64;Override
     public int compare(Articulo articulo1, Articulo articulo2) &#123;
        return articulo1.codigoArticulo.compareTo(articulo2.codigoArticulo);
@@ -1727,7 +1727,7 @@ for (Integer llave:mapa.keySet())&#123; // Recorremos el conjunto generado por k
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>class Articulo implements Comparable<Articulo>&#123;
+         <pre>class Articulo implements Comparable&lt;Articulo&gt;&#123;
     public String codigoArticulo;
     public String descripcion;
     public int cantidad;
@@ -1930,7 +1930,7 @@ Arrays.binarySearch(array, elemento);</pre>
                     <div class="texto_izquierda">
                         <div class="highlighted-code language-java">
                             <div>
-                                <pre>List<Integer>lista = Arrays.asList(array);</pre>
+                                <pre>List&lt;Integer&gt;lista = Arrays.asList(array);</pre>
                             </div>
                         </div>
                     </div>

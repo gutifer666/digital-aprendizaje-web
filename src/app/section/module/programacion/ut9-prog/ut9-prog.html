@@ -272,12 +272,9 @@
     </div>
     <div class="elemento_centrado">
         <p>
-         <span class="external-iframe-src" style="display:none">
-          https://www.youtube.com/embed/a-65124nsQE
-         </span>
             <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen="" class="external-iframe" frameborder="0" height="315"
-                    src="./recopila_files/a-65124nsQE.html" width="560">
+                    src="https://www.youtube.com/embed/a-65124nsQE" width="560">
             </iframe>
         </p>
     </div>
@@ -864,10 +861,10 @@ scene.getStylesheets().add("recursos/css/JMetroLightTheme.css");</pre>
         <br>
         <br>
         Establecer una hoja de estilos
-        <abbr title="">
-            <acronym title="Hoja de estilos en cascada">
+        <abbr title="Hoja de estilos en cascada">
+
                 CSS
-            </acronym>
+
         </abbr>
         <abbr title="Cascading Style Sheets">
         </abbr>
@@ -1764,13 +1761,13 @@ public class VBoxEjemplo extends Application &#123;
                     // Para la etiqueta del nombre establecemos manejadores para que se
                     // haga un zoom, cuando con el ratón nos acerquemos a ella, y se quite
                     // el zoom al alejarnos, al salir de ella.
-                    labelNombre.setOnMouseEntered(new EventHandler<MouseEvent>() &#123;
+                    labelNombre.setOnMouseEntered(new EventHandler&lt;MouseEvent&gt;() &#123;
                         &#64;Override public void handle(MouseEvent e) &#123;
                             labelNombre.setScaleX(1.5);
                             labelNombre.setScaleY(1.5);
                         &#125;
                     &#125;);
-                    labelNombre.setOnMouseExited(new EventHandler<MouseEvent>() &#123;
+                    labelNombre.setOnMouseExited(new EventHandler&lt;MouseEvent&gt;() &#123;
                         &#64;Override public void handle(MouseEvent e) &#123;
                             labelNombre.setScaleX(1);
                             labelNombre.setScaleY(1);
@@ -1909,7 +1906,7 @@ newBtn.setOnAction(new EventHandler&lt;ActionEvent&gt;() &#123;    &#64;Override
 Button cancelBtn = new Button("_Cancelar");
 cancelBtn.setCancelButton(true);
 // Añadir EventHandler al botón
-cancelBtn.setOnAction(new EventHandler<ActionEvent>() &#123;
+cancelBtn.setOnAction(new EventHandler&lt;ActionEvent&gt;() &#123;
    &#64;Override
    public void handle(ActionEvent e) &#123;
        // Establecer el texto de una etiqueta
@@ -2168,7 +2165,7 @@ public class CheckBoxEjemplo extends Application &#123;
         CheckBox checkBox1 = new CheckBox("Estudiante");
 
         // Añadir EventHandler al checkbox
-        checkBox1.setOnAction(new EventHandler<ActionEvent>() &#123;
+        checkBox1.setOnAction(new EventHandler&lt;ActionEvent&gt;() &#123;
             &#64;Override
             public void handle(ActionEvent e) &#123;
                 if (checkBox1.isSelected()) &#123;

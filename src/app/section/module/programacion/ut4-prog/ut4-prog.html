@@ -4673,9 +4673,10 @@ for (int i=0;i&lt;n;i++)
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>int[][] a2d=&#123;&#123;0,1,2&#125;,&#123;3,4,5&#125;,&#123;6,7,8&#125;,&#123;9,10,11&#125;&#125;;
-int[][][] a3d=&#123;&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;,&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;&#125;;
-</pre>
+         <pre ngNonBindable>
+                int&#91;&#93;&#91;&#93; a2d=&#123;&#123;0,1,2&#125;,&#123;3,4,5&#125;,&#123;6,7,8&#125;,&#123;9,10,11&#125;&#125;;
+                int&#91;&#93;&#91;&#93;&#91;&#93; a3d=&#123;&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;,&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;&#125;;
+        </pre>
         </div>
     </div>
     <p>
@@ -4709,8 +4710,9 @@ int[][][] a3d=&#123;&#123;&#123;0,1&#125;,&#123;2,3&#125;&#125;,&#123;&#123;0,1&
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>int[][] i2d = &#123;&#123;0,1&#125;,&#123;0,1,2&#125;,&#123;0,1,2,3&#125;,&#123;0,1,2,3,4&#125;,&#123;0,1,2,3,4,5&#125;&#125;;
-int[][][] i3d = &#123; &#123; &#123;0,1&#125;,&#123;0,2&#125; &#125; , &#123;&#123;0,1,3&#125;&#125; , &#123;&#123;0,3,4&#125;,&#123;0,1,5&#125; &#125; &#125;;</pre>
+         <pre ngNonBindable>
+             int&#91;&#93;&#91;&#93; i2d = &#123;&#123;0,1&#125;,&#123;0,1,2&#125;,&#123;0,1,2,3&#125;,&#123;0,1,2,3,4&#125;,&#123;0,1,2,3,4,5&#125;&#125;;
+             int&#91;&#93;&#91;&#93;&#91;&#93; i3d = &#123; &#123; &#123;0,1&#125;,&#123;0,2&#125; &#125; , &#123;&#123;0,1,3&#125;&#125; , &#123;&#123;0,3,4&#125;,&#123;0,1,5&#125; &#125; &#125;;</pre>
         </div>
     </div>
 </div><h1 class="title">
@@ -4753,12 +4755,13 @@ for (int fila=0; fila&lt;numFilas; fila++) &#123;
         fila (nombreArray[fila].length):
     </p>
     <div class="highlighted-code language-java">
-        <pre>int numFilas= tabla.length;  // Tamaño de la primera dimensión ()
-for (int fila=0; fila<numFilas; fila++) &#123;
-     int numColumnas= tabla[fila].length;  // Tamaño de la segunda dimensión (potencialmente diferente para cada fila)
-     for (int columna=0; columna<numColumnas; columna++) &#123;
-        // Mostramos en elemento colocado en la posición [fila][columna]
-        // o bien vamos concatenando fragmentos en una cadena de resultado final
+        <pre>
+            int numFilas= tabla.length;  // Tamaño de la primera dimensión ()
+            for (int fila=0; fila< numFilas; fila++) &#123;
+            int numColumnas= tabla[fila].length;  // Tamaño de la segunda dimensión (potencialmente diferente para cada fila)
+            for (int columna=0; columna< numColumnas; columna++) &#123;
+            // Mostramos en elemento colocado en la posición [fila][columna]
+            // o bien vamos concatenando fragmentos en una cadena de resultado final
     &#125;
 &#125;</pre>
     </div>

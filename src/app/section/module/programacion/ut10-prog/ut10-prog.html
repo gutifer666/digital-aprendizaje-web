@@ -2874,12 +2874,13 @@ try &#123;
     </p>
     <div class="highlighted-code language-markup">
         <div>
-         <pre><?xml version="1.0" encoding="UTF-8"?>
-             <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+         <pre>
+             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+             &lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
 
-</persistence></pre>
+            &lt;/persistence&gt;</pre>
         </div>
     </div>
     <p>
@@ -2989,18 +2990,19 @@ try &#123;
     </p>
     <div class="highlighted-code language-markup">
         <div>
-         <pre><?xml version="1.0" encoding="UTF-8"?>
-             <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+         <pre>
+             &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+             &lt;persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
                           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-  <persistence-unit name="EjemplosJPA" transaction-type="RESOURCE_LOCAL">
-    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>minipos.model.LineaTicket</class>
-    <class>minipos.model.DireccionEnvio</class>
-    <class>minipos.model.Producto</class>
-    <class>minipos.model.Ticket</class>
-  </persistence-unit>
-</persistence></pre>
+                          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"&gt;
+                  &lt;persistence-unit name="EjemplosJPA" transaction-type="RESOURCE_LOCAL"&gt;
+                    &lt;provider&gt;org.eclipse.persistence.jpa.PersistenceProvider&lt;/provider&gt;
+                    &lt;class&gt;minipos.model.LineaTicket&lt;/class&gt;
+                    &lt;class&gt;minipos.model.DireccionEnvio&lt;/class&gt;
+                    &lt;class&gt;minipos.model.Producto&lt;/class&gt;
+                    &lt;class&gt;minipos.model.Ticket&lt;/class&gt;
+                  &lt;/persistence-unit&gt;
+            &lt;/persistence&gt;</pre>
         </div>
     </div>
     <p>
@@ -3184,7 +3186,7 @@ try &#123;
     </ul>
     <div class="highlighted-code language-java">
         <div>
-         <pre>Map<String,String> propiedades=new HashMap<>();
+         <pre>Map&lt;String,String&gt; propiedades=new HashMap<>();
 
 /* driver utilizado en esta conexión */
 propiedades.put("javax.persistence.jdbc.driver", "org.h2.Driver");
@@ -3881,7 +3883,7 @@ public class Ticket implements Serializable&#123;
     //... resto del código
 
     &#64;OneToMany(mappedBy = "ticket", orphanRemoval = true, cascade = CascadeType.PERSIST)
-    private List<LineaDeTicket> lineas;
+    private List&lt;LineaDeTicket&lt; lineas;
 
     //... resto del código
 
@@ -4563,7 +4565,7 @@ q.setParameter("id", idDelProductoAModificar);
     </p>
     <div class="highlighted-code language-java">
         <div>
-         <pre>  TypedQuery<Producto> q=em.createQuery("SELECT p FROM Producto p WHERE p.precio>=:preciominimo",Producto.class);
+         <pre>  TypedQuery&lt;Producto&gt; q=em.createQuery("SELECT p FROM Producto p WHERE p.precio>=:preciominimo",Producto.class);
 </pre>
         </div>
     </div>
@@ -4602,7 +4604,7 @@ q.setParameter("id", idDelProductoAModificar);
     </p>
     <div class="highlighted-code language-java">
         <div>
-            <pre> List<Producto> r=q.getResultList();</pre>
+            <pre> List&lt;Producto&gt; r=q.getResultList();</pre>
         </div>
     </div>
     <div class="destacado" style="text-align: center;">
