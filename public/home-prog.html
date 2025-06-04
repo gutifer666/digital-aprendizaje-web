@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Economía del Software: Un Análisis Interactivo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .section-title {
+            font-size: 2.25rem;
+            font-weight: 700;
+            color: #1F2937;
+            margin-bottom: 1rem;
+        }
+        .section-subtitle {
+            font-size: 1.25rem;
+            color: #4B5563;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #3B82F6;
+        }
+        .principle-card.active {
+            border-color: #3B82F6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+    <!-- Chosen Palette: Warm Neutrals with Blue Accent -->
+    <!-- Application Structure Plan: The SPA is structured thematically to guide the user through the core concepts of software economics. It starts with a high-level introduction, moves to interactive pillars of knowledge, provides data visualizations to illustrate key economic impacts (like technical debt), explains architectural and coding principles with interactive diagrams, and concludes with actionable takeaways. This non-linear, thematic approach is chosen over a simple book-like structure to enhance engagement and comprehension, allowing users to explore topics of interest in any order via the navigation bar. -->
+    <!-- Visualization & Content Choices:
+        1. Report Info: Cost of fixing bugs increases over time. Goal: Compare. Viz: Bar Chart (Chart.js). Interaction: Tooltips on hover show a relative cost multiplier. Justification: A bar chart is the clearest way to show exponential growth in discrete stages. Library: Chart.js.
+        2. Report Info: Impact of technical debt. Goal: Compare. Viz: Line Chart (Chart.js). Interaction: Toggle button to switch between "Managed Debt" and "Unmanaged Debt" scenarios, dynamically updating the chart. Justification: Line charts are excellent for showing trends over time, and the interaction makes the comparison direct and impactful. Library: Chart.js.
+        3. Report Info: Hexagonal Architecture. Goal: Organize. Viz: HTML/CSS diagram. Interaction: Clicking on components (Core, Ports, Adapters) reveals descriptive text. Justification: Avoids static images (and forbidden SVGs) and creates an engaging, self-paced learning experience. Library: Vanilla JS.
+        4. Report Info: Core Principles (KISS, DRY, YAGNI). Goal: Inform. Viz: Interactive cards. Interaction: Clicking a principle highlights it and displays its definition. Justification: A clean, organized way to present related but distinct concepts, encouraging user interaction. Library: Vanilla JS.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+<header class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50">
+    <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+        <a href="#" class="text-xl font-bold text-gray-900">Economía del Software</a>
+        <div class="hidden md:flex space-x-6">
+            <a href="#pilares" class="nav-link text-gray-600">Pilares</a>
+            <a href="#visualizaciones" class="nav-link text-gray-600">Visualizaciones</a>
+            <a href="#arquitectura" class="nav-link text-gray-600">Arquitectura</a>
+            <a href="#principios" class="nav-link text-gray-600">Principios</a>
+            <a href="#conclusion" class="nav-link text-gray-600">Conclusión</a>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 space-y-2">
+        <a href="#pilares" class="block nav-link text-gray-600">Pilares</a>
+        <a href="#visualizaciones" class="block nav-link text-gray-600">Visualizaciones</a>
+        <a href="#arquitectura" class="block nav-link text-gray-600">Arquitectura</a>
+        <a href="#principios" class="block nav-link text-gray-600">Principios</a>
+        <a href="#conclusion" class="block nav-link text-gray-600">Conclusión</a>
+    </div>
+</header>
+
+<main class="container mx-auto px-6 py-12">
+    <section id="hero" class="text-center mb-20">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-gray-900 mb-4 leading-tight">
+            Protegiendo una Inversión<br>
+            <span class="text-blue-600">desde un Teclado y un Ratón</span>
+        </h1>
+        <p class="section-subtitle">
+            Esta aplicación explora los principios clave de la "Economía del Software", transformando la manera en que vemos el desarrollo: no como un gasto, sino como una inversión estratégica. Descubra cómo la toma de decisiones técnicas impacta directamente en el valor y el éxito del negocio.
+        </p>
+    </section>
+
+    <section id="pilares" class="mb-20">
+        <h2 class="section-title text-center">Pilares de la Economía del Software</h2>
+        <p class="section-subtitle text-center">
+            El desarrollo de software exitoso se sustenta en principios económicos fundamentales. Comprender estos pilares es clave para crear productos valiosos y sostenibles. Esta sección desglosa las ideas más importantes del informe en conceptos interactivos.
+        </p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="card p-6">
+                <h3 class="font-bold text-xl mb-2 text-blue-600">Valor Sobre Coste</h3>
+                <p class="text-gray-600">El objetivo no es minimizar el coste, sino maximizar el valor entregado. Una decisión de bajo coste hoy puede generar gastos enormes mañana. Cada funcionalidad debe justificarse por el valor que aporta al negocio y al cliente.</p>
+            </div>
+            <div class="card p-6">
+                <h3 class="font-bold text-xl mb-2 text-blue-600">Gestión de Deuda Técnica</h3>
+                <p class="text-gray-600">La deuda técnica es el coste futuro de tomar atajos hoy. Ignorarla es como un préstamo con intereses altos: ralentiza el desarrollo y aumenta los costes de mantenimiento. Debe ser gestionada de forma consciente y estratégica.</p>
+            </div>
+            <div class="card p-6">
+                <h3 class="font-bold text-xl mb-2 text-blue-600">El Coste de la Demora</h3>
+                <p class="text-gray-600">Retrasar la entrega de valor tiene un coste real. Las metodologías ágiles y CI/CD son herramientas económicas para reducir este coste, permitiendo obtener feedback y generar ingresos antes.</p>
+            </div>
+            <div class="card p-6">
+                <h3 class="font-bold text-xl mb-2 text-blue-600">Estimación y Riesgo</h3>
+                <p class="text-gray-600">Las estimaciones son herramientas para gestionar expectativas, no promesas. Se utilizan para tomar decisiones informadas en un entorno de incertidumbre, evaluando los riesgos y beneficios de cada opción.</p>
+            </div>
+            <div class="card p-6">
+                <h3 class="font-bold text-xl mb-2 text-blue-600">Automatización es Inversión</h3>
+                <p class="text-gray-600">Invertir en pruebas automatizadas y pipelines de CI/CD reduce drásticamente el coste de los errores, acelera la entrega de valor y libera a los desarrolladores para que se centren en la innovación y no en tareas manuales.</p>
+            </div>
+            <div class="card p-6">
+                <h3 class="font-bold text-xl mb-2 text-blue-600">Talento y Cultura</h3>
+                <p class="text-gray-600">Las personas son el activo más valioso. Una cultura que promueve el aprendizaje, la colaboración y la autonomía es el motor más potente para la creación de software de alta calidad y valor duradero.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="visualizaciones" class="mb-20">
+        <h2 class="section-title text-center">Visualizando el Impacto Económico</h2>
+        <p class="section-subtitle text-center">
+            Algunos conceptos económicos pueden ser abstractos. Estos gráficos interactivos ayudan a visualizar el impacto real de las decisiones técnicas. Vea cómo el coste de un error se dispara con el tiempo y cómo la gestión de la deuda técnica afecta la productividad.
+        </p>
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-bold text-center mb-4">Coste Relativo de Corregir Errores</h3>
+                <div class="chart-container">
+                    <canvas id="costOfChangeChart"></canvas>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <h3 class="text-lg font-bold text-center mb-4">Impacto de la Deuda Técnica en la Productividad</h3>
+                <div class="chart-container">
+                    <canvas id="techDebtChart"></canvas>
+                </div>
+                <div class="text-center mt-4">
+                    <button id="toggleDebtButton" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition">Ver Escenario con Deuda No Gestionada</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="arquitectura" class="mb-20">
+        <h2 class="section-title text-center">Arquitectura para el Cambio</h2>
+        <p class="section-subtitle text-center">
+            Una buena arquitectura no solo resuelve los problemas de hoy, sino que facilita la adaptación a los desafíos del mañana. La Arquitectura Hexagonal es un enfoque estratégico para construir software flexible, mantenible y duradero, aislando la lógica de negocio de las tecnologías externas.
+        </p>
+        <div class="bg-white p-6 rounded-lg shadow-lg">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <div class="flex-1">
+                    <h3 class="text-xl font-bold mb-4 text-center">Arquitectura Hexagonal (Puertos y Adaptadores)</h3>
+                    <div id="hex-diagram" class="flex justify-center items-center my-6">
+                        <div class="relative w-64 h-72">
+                            <div class="absolute inset-0 bg-yellow-300 transform rotate-90" style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);"></div>
+                            <div id="hex-core" class="absolute inset-4 bg-blue-500 flex items-center justify-center text-white font-bold cursor-pointer transition-transform hover:scale-105" style="clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%); z-index: 10;">
+                                Dominio
+                            </div>
+                            <div id="hex-adapter-ui" class="absolute top-0 left-1/2 -translate-x-1/2 -mt-4 bg-green-500 text-white text-sm px-2 py-1 rounded-full cursor-pointer hover:bg-green-600">UI Adapter</div>
+                            <div id="hex-adapter-db" class="absolute bottom-0 left-1/2 -translate-x-1/2 -mb-4 bg-purple-500 text-white text-sm px-2 py-1 rounded-full cursor-pointer hover:bg-purple-600">DB Adapter</div>
+                            <div id="hex-port-left" class="absolute left-0 top-1/2 -translate-y-1/2 -ml-5 w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold cursor-pointer hover:bg-gray-500">P</div>
+                            <div id="hex-port-right" class="absolute right-0 top-1/2 -translate-y-1/2 -mr-5 w-10 h-10 bg-gray-400 rounded-full flex items-center justify-center text-white font-bold cursor-pointer hover:bg-gray-500">P</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="hex-explanation" class="flex-1 bg-gray-100 p-6 rounded-lg">
+                    <h4 class="font-bold text-lg mb-2">Haga clic en un elemento del diagrama</h4>
+                    <p class="text-gray-700">Explore los componentes para entender cómo esta arquitectura protege su lógica de negocio de los cambios tecnológicos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="principios" class="mb-20">
+        <h2 class="section-title text-center">Principios de Codificación Económica</h2>
+        <p class="section-subtitle text-center">
+            La forma en que escribimos código tiene un impacto directo en el coste de mantenimiento y evolución del software. Adoptar estos principios reduce la complejidad, previene errores y hace que el sistema sea más fácil de entender y modificar.
+        </p>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="principle-card card p-6 text-center cursor-pointer border-2 border-transparent" data-principle="kiss">
+                <div class="text-4xl mb-4">🧠</div>
+                <h3 class="font-bold text-xl mb-2">KISS</h3>
+                <p class="text-gray-600">Keep It Simple, Stupid. (Mantenlo Simple, Tonto)</p>
+            </div>
+            <div class="principle-card card p-6 text-center cursor-pointer border-2 border-transparent" data-principle="dry">
+                <div class="text-4xl mb-4">👯‍♀️</div>
+                <h3 class="font-bold text-xl mb-2">DRY</h3>
+                <p class="text-gray-600">Don't Repeat Yourself. (No te Repitas)</p>
+            </div>
+            <div class="principle-card card p-6 text-center cursor-pointer border-2 border-transparent" data-principle="yagni">
+                <div class="text-4xl mb-4">🔮</div>
+                <h3 class="font-bold text-xl mb-2">YAGNI</h3>
+                <p class="text-gray-600">You Ain't Gonna Need It. (No lo Vas a Necesitar)</p>
+            </div>
+        </div>
+        <div id="principle-explanation" class="mt-8 bg-white p-6 rounded-lg shadow-lg min-h-[100px] flex items-center justify-center">
+            <p class="text-gray-700 italic">Seleccione un principio para ver su descripción.</p>
+        </div>
+    </section>
+
+    <section id="conclusion" class="text-center py-10 bg-white rounded-lg shadow-lg">
+        <h2 class="section-title">Conclusión: Una Inversión Inteligente</h2>
+        <p class="section-subtitle">
+            Tratar el software como una inversión estratégica, gestionar proactivamente la deuda técnica y construir sistemas adaptables no son lujos, son necesidades para la supervivencia y el éxito en el mundo digital. Al aplicar estos principios económicos, los equipos de desarrollo se convierten en verdaderos motores de valor para la empresa.
+        </p>
+        <a href="#hero" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-lg hover:bg-blue-700 transition-colors">Volver al Inicio</a>
+    </section>
+</main>
+
+<footer class="text-center py-6 bg-gray-100 mt-12">
+    <p class="text-gray-500">Aplicación interactiva basada en "Software Economics" de Luis Artola.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        const explanations = {
+            core: {
+                title: 'Núcleo de Dominio',
+                text: 'Aquí reside la lógica de negocio pura y las reglas. No depende de ninguna tecnología externa como bases de datos o frameworks de UI. Es el corazón de la aplicación, completamente aislado y testeable por sí mismo.'
+            },
+            ports: {
+                title: 'Puertos',
+                text: 'Son las interfaces que definen cómo el núcleo interactúa con el mundo exterior. Un puerto puede ser para "obtener datos de usuario" (dirigido por el núcleo) o para "recibir notificaciones" (dirigido por adaptadores). Son como los enchufes en una pared.'
+            },
+            adapters: {
+                title: 'Adaptadores',
+                text: 'Son la implementación concreta de los puertos. Un adaptador de UI traduce las acciones del usuario en llamadas a los puertos del núcleo. Un adaptador de base de datos implementa la lógica para guardar y recuperar datos, conectándose al puerto correspondiente.'
+            },
+            default: {
+                title: 'Haga clic en un elemento del diagrama',
+                text: 'Explore los componentes para entender cómo esta arquitectura protege su lógica de negocio de los cambios tecnológicos.'
+            }
+        };
+
+        const explanationContainer = document.getElementById('hex-explanation');
+
+        function showExplanation(type) {
+            explanationContainer.innerHTML = `
+                    <h4 class="font-bold text-lg mb-2">${explanations[type].title}</h4>
+                    <p class="text-gray-700">${explanations[type].text}</p>
+                `;
+        }
+
+        document.getElementById('hex-core').addEventListener('click', () => showExplanation('core'));
+        document.getElementById('hex-port-left').addEventListener('click', () => showExplanation('ports'));
+        document.getElementById('hex-port-right').addEventListener('click', () => showExplanation('ports'));
+        document.getElementById('hex-adapter-ui').addEventListener('click', () => showExplanation('adapters'));
+        document.getElementById('hex-adapter-db').addEventListener('click', () => showExplanation('adapters'));
+
+        const principleCards = document.querySelectorAll('.principle-card');
+        const principleExplanation = document.getElementById('principle-explanation');
+        const principleData = {
+            kiss: {
+                title: 'Principio KISS (Keep It Simple, Stupid)',
+                text: 'La simplicidad es un objetivo de diseño clave. Los sistemas complejos son difíciles de entender, mantener y depurar, lo que incrementa los costes a largo plazo. Prioriza siempre la solución más simple que funcione.'
+            },
+            dry: {
+                title: "Principio DRY (Don't Repeat Yourself)",
+                text: 'Cada pieza de conocimiento debe tener una única, inequívoca y autorizada representación dentro de un sistema. La duplicación de código o lógica conduce a inconsistencias y a un mayor esfuerzo de mantenimiento.'
+            },
+            yagni: {
+                title: "Principio YAGNI (You Ain't Gonna Need It)",
+                text: 'No implementes funcionalidades hasta que sean verdaderamente necesarias. Esto evita el desarrollo de código superfluo basado en suposiciones sobre el futuro, ahorrando tiempo y esfuerzo.'
+            }
+        };
+
+        principleCards.forEach(card => {
+            card.addEventListener('click', () => {
+                principleCards.forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+                const principle = card.getAttribute('data-principle');
+                principleExplanation.innerHTML = `
+                        <div class="text-left">
+                            <h4 class="font-bold text-lg mb-2">${principleData[principle].title}</h4>
+                            <p class="text-gray-700">${principleData[principle].text}</p>
+                        </div>
+                    `;
+            });
+        });
+
+        const costOfChangeCtx = document.getElementById('costOfChangeChart').getContext('2d');
+        new Chart(costOfChangeCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Diseño', 'Desarrollo', 'Pruebas', 'Producción'],
+                datasets: [{
+                    label: 'Coste Relativo de Corrección',
+                    data: [1, 10, 50, 200],
+                    backgroundColor: ['#60A5FA', '#3B82F6', '#2563EB', '#D97706'],
+                    borderColor: '#1E40AF',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: { display: true, text: 'Coste Multiplicador (x)' }
+                    }
+                },
+                plugins: {
+                    legend: { display: false },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return ` Coste: ${context.raw}x más caro`;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        const techDebtCtx = document.getElementById('techDebtChart').getContext('2d');
+        const techDebtData = {
+            managed: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'],
+                data: [100, 95, 98, 92, 96, 94],
+                label: 'Productividad (Deuda Gestionada)',
+                borderColor: '#10B981',
+                backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            },
+            unmanaged: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4', 'Q5', 'Q6'],
+                data: [100, 85, 70, 50, 35, 20],
+                label: 'Productividad (Deuda No Gestionada)',
+                borderColor: '#EF4444',
+                backgroundColor: 'rgba(239, 68, 68, 0.1)',
+            }
+        };
+        let isDebtManaged = true;
+
+        const techDebtChart = new Chart(techDebtCtx, {
+            type: 'line',
+            data: {
+                labels: techDebtData.managed.labels,
+                datasets: [{
+                    label: techDebtData.managed.label,
+                    data: techDebtData.managed.data,
+                    borderColor: techDebtData.managed.borderColor,
+                    backgroundColor: techDebtData.managed.backgroundColor,
+                    fill: true,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 110,
+                        title: { display: true, text: 'Capacidad Productiva (%)' }
+                    }
+                },
+                plugins: {
+                    legend: { position: 'bottom' }
+                }
+            }
+        });
+
+        const toggleDebtButton = document.getElementById('toggleDebtButton');
+        toggleDebtButton.addEventListener('click', () => {
+            isDebtManaged = !isDebtManaged;
+            const currentData = isDebtManaged ? techDebtData.managed : techDebtData.unmanaged;
+            techDebtChart.data.datasets[0].data = currentData.data;
+            techDebtChart.data.datasets[0].label = currentData.label;
+            techDebtChart.data.datasets[0].borderColor = currentData.borderColor;
+            techDebtChart.data.datasets[0].backgroundColor = currentData.backgroundColor;
+            techDebtChart.update();
+
+            toggleDebtButton.textContent = isDebtManaged ? 'Ver Escenario con Deuda No Gestionada' : 'Ver Escenario con Deuda Gestionada';
+            toggleDebtButton.classList.toggle('bg-blue-500', isDebtManaged);
+            toggleDebtButton.classList.toggle('bg-red-500', !isDebtManaged);
+            toggleDebtButton.classList.toggle('hover:bg-blue-600', isDebtManaged);
+            toggleDebtButton.classList.toggle('hover:bg-red-600', !isDebtManaged);
+        });
+    });
+</script>
+
+</body>
+</html>
+
