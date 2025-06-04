@@ -1,14 +1,3 @@
- /* Estilo base para el documento */
-body {
-    font-family: Arial, sans-serif;
-    font-size: 18px; /* Tamaño de letra más grande para facilitar la lectura */
-    line-height: 1.6; /* Espaciado agradable entre líneas */
-    color: #333; /* Texto oscuro para mejor contraste */
-    background-color: #f9f9f9; /* Fondo claro para mayor legibilidad */
-    margin: 0;
-    padding: 20px; /* Espaciado alrededor del contenido */
-}
-
 /* Estilo para los títulos */
 h1.title {
     font-size: 2rem;
