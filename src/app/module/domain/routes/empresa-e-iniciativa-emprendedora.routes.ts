@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import {Ut1Prog} from '../../../section/module/programacion/ut1-prog/ut1-prog';
 import {Programacion} from '../../../section/module/programacion/programacion';
 import {Ut1Eie} from '../../../section/module/empresa-e-iniciativa-emprendedora/ut1-eie/ut1-eie';
 import {Ut2Eie} from '../../../section/module/empresa-e-iniciativa-emprendedora/ut2-eie/ut2-eie';
