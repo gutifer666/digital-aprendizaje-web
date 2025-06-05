@@ -1,0 +1,2970 @@
+<h1 class="title">
+    Diseño orientado a objetos. Elaboración de diagramas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En BK Programación continúan inmersos en el mundo de
+        <abbr title="Unified Modeling Language.">
+            UML
+        </abbr>
+        . A pesar de que han trabajado duro y han aprendido bastante acerca de este lenguaje de especificación, Ada se ha dado cuenta de que apenas han empezado a arañar la superficie de todas las posibilidades que les ofrece. De momento ya saben como crear un diagrama de clases bastante completo y como analizar un problema propuesto, sin embargo hay muchos aspectos del problema que no pueden modelar todavía, por ejemplo con solo el diagrama de clases no pueden saber qué se espera del sistema que van a construir, o en qué se deben basar para codificar los métodos, o simplemente, ¿Cómo colaboran los objetos de las clases que han creado para hacer alguna tarea que sea útil?
+    </p>
+    <p>
+        Ada decide que no pueden parar ahora, y que hay que hacer un esfuerzo final para que los conocimientos del equipo sean globales y puedan enfrentarse a cualquier desarrollo software con solvencia.
+    </p>
+    <p>
+        Al momento, Ada pone a su equipo manos a la obra.
+    </p>
+</div><h1 class="title">
+    1.- Introducción a la orientación a objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.- Conceptos de Orientación a Objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.1.- Ventajas de la orientación a objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+</div><h1 class="title">
+    2.2.- Clases, atributos y métodos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.3.- Visibilidad.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.4.- Objetos. Instanciación.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.- UML.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        está interesada, sobre todo, en que sean capaces de representar las clases de los proyectos que están desarrollando y como se relacionan entre ellas. Para ello decide comenzar comentando las características de un lenguaje de modelado de sistemas orientados a objetos llamado
+        <abbr title="Unified Modeling Language.">
+            UML
+        </abbr>
+        . Este lenguaje permite construir una serie de modelos, a través de diagramas de diferentes visiones de un proyecto.
+    </p>
+    <p>
+        —Es importante apreciar como estos modelos, nos van a permitir poner nuestras ideas en común utilizando un lenguaje específico, facilitarán la comunicación, que como sabéis, es algo esencial para que nuestro trabajo en la empresa sea de calidad.
+    </p>
+</div><h1 class="title">
+    3.1.- Tipos de diagramas UML.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Cuando
+        <strong>
+            María
+        </strong>
+        estudió el ciclo formativo no llegó a ver estas tecnologías con tanto detenimiento, así que está asimilándolo todo poco a poco:
+    </p>
+    <p>
+        —De acuerdo, UML describe el sistema mediante una serie de modelos que ofrecen diferentes puntos de vista. Pero ¿qué tenemos que hacer para representar un modelo?, ¿en que consiste exactamente?
+    </p>
+    <p>
+        —Utilizaremos diagramas, que son unos
+        grafos
+
+
+        Grafo
+
+        Deriva del griego, significa trazar. Objeto combinatorio formado por un conjunto de nodos y un subconjunto de líneas seleccionadas del conjunto de líneas que unen cada par de nodos entre si, denominadas arcos. Cuando dos nodos del grafo están unidos por un arco se dice que existe una relación entre
+        en los que los nodos definen los elementos del diagrama, y los arcos las relaciones entre ellos.
+    </p>
+</div><h1 class="title">
+    3.2.- Herramientas para la elaboración de diagramas UML.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.2.1.- Visual Paradigm.
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         Para realizar el ejemplo de desarrollo de diagramas de clases que veremos a continuación se ha determinado usar la herramienta
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         Visual Paradigm for
+        </span>
+        <span style="font-size: 1em;">
+         UML por los siguientes motivos:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Incluye una versión para uso no comercial, aunque se debe aclarar que viene con funcionalidad limitada, que se distribuye bajo licencia
+            <abbr title=" Lesser General Public License">
+                LGPL
+            </abbr>
+            . Es posible solicitar una licencia de prueba para treinta días que utilizaremos cuando veamos la parte de ingeniería directa e inversa y generación de código.
+        </li>
+        <li>
+            Es multiplataforma.
+        </li>
+        <li>
+            Compatible con UML 2.0.
+        </li>
+        <li>
+            Admite la generación de informes en formatos
+            <abbr title="portable document format.">
+                PDF
+            </abbr>
+            ,
+            <abbr title=" HyperText Markup Language.">
+                HTML
+            </abbr>
+            y otros.
+        </li>
+        <li>
+            Incluye un módulo para integrarse con
+            <span lang="en">
+          NetBeans
+         </span>
+            .
+        </li>
+        <li>
+            Permite realizar actividades de ingeniería inversa y directa. Esto junto con la consideración anterior permite generar código en un proyecto
+            <span lang="en">
+          NetBeans
+         </span>
+            directamente a partir del diseño de clases, ahorrándonos trabajo.
+        </li>
+    </ul>
+</div><h1 class="title">
+    4.- Diagramas estructurales
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En la empresa ya han instalado
+        <span lang="en">
+           Visual Paradigm
+          </span>
+        ,
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        están empezando a investigar su funcionamiento, y como utilizarlo desde un proyecto de
+        <span lang="en">
+           NetBeans
+          </span>
+        .
+    </p>
+    <p>
+        —Empecemos por los diagramas estructurales.
+    </p>
+</div><h1 class="title">
+    4.1.- Diagramas de clases.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        han detectado que entre
+        <span style="font-size: 1em;">
+           los diagramas estructurales el más importante es el diagrama de clases.
+          </span>
+    </p>
+    <p>
+          <span style="font-size: 1em;">
+           <span>
+            — F
+           </span>
+           íjate, el diagrama de clases representa la estructura estática del sistema y las relaciones entre las clases.
+          </span>
+    </p>
+</div><h1 class="title">
+    4.1.1.- Creación de clases.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Una clase se representa en el diagrama como un rectángulo divido en tres filas, arriba aparece el nombre de la clase, a continuación los atributos con su visibilidad y después los métodos con su visibilidad que está representada por el signo menos "–" para los atributos (privados) y por el signo más "+" para los métodos (públicos).
+        <br/></p>
+</div><h1 class="title">
+    4.1.2.- Atributos.
+</h1><div class="iDevice_content">
+    <p>
+        Forman la parte estática de la clase. Son un conjunto de variables para las que es preciso definir:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Su
+            <strong>
+                nombre
+            </strong>
+            .
+        </li>
+        <li>
+            Su
+            <strong>
+                tipo
+            </strong>
+            , puede ser un tipo simple, que coincidirá con el tipo de dato que se seleccione en el lenguaje de programación final a usar, o compuesto, pudiendo incluir otra clase.
+        </li>
+    </ul>
+    <p>
+        Además se pueden indicar otros datos como un valor inicial o su visibilidad. La visibilidad de un atributo se puede definir como:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Público
+            </strong>
+            : Se pueden acceder desde cualquier clase y cualquier parte del programa.
+        </li>
+        <li>
+            <strong>
+                Privado
+            </strong>
+            : Sólo se pueden acceder desde operaciones de la clase.
+        </li>
+        <li>
+            <strong>
+                Protegido
+            </strong>
+            : Sólo se pueden acceder desde operaciones de la clase o de clases derivadas en cualquier nivel.
+        </li>
+        <li>
+            <strong>
+                Paquete
+            </strong>
+            : Se puede acceder desde las operaciones de las clases que pertenecen al mismo paquete que la clase que estamos definiendo. Se usa cuando el lenguaje de implementación es Java.
+        </li>
+    </ul>
+</div><h1 class="title">
+    4.1.3.- Métodos.
+</h1><div class="iDevice_content">
+    <p>
+        Representan la funcionalidad de la clase, es decir, qué puede hacer. Para definir un método hay que indicar como mínimo su nombre, parámetros, el tipo que devuelve y su visibilidad. También se debe incluir una descripción del método que aparecerá en la documentación que se genere del proyecto.
+    </p>
+</div><h1 class="title">
+    4.2.- Relaciones entre clases.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.2.1.- Cardinalidad o multiplicidad de la relación
+</h1><div class="iDevice_content">
+    <p>
+        Un concepto muy importante es la
+        <strong>
+            cardinalidad de una relación
+        </strong>
+        , representa cuantos objetos de una clase se van a relacionar con objetos de otra clase. En una relación hay dos cardinalidades, una para cada extremo de la relación y pueden tener los siguientes valores:
+    </p>
+    <table class="tabla">
+        <caption>
+            Significado de las cardinalidades.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Cardinalidad
+            </th>
+            <th scope="col">
+                Significado
+            </th>
+        </tr>
+        <tr>
+            <th scope="row">
+                1
+            </th>
+            <td>
+                Uno y sólo uno
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                0..1
+            </th>
+            <td>
+                Cero o uno
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                N..M
+            </th>
+            <td>
+                Desde N hasta M
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                *
+            </th>
+            <td>
+                Varios
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                0..*
+            </th>
+            <td>
+                Cero o varios
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                1..*
+            </th>
+            <td>
+                Uno o varios (al menos uno)
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        Por ejemplo, si tengo la siguiente relación:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        quiere decir que los alumnos se matriculan en los módulos, en concreto, que un alumno se puede matricular en uno a más módulos y que un módulo puede tener ningún alumno, uno o varios.
+    </p>
+    <p>
+        O esta otra:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        en la que un profesor puede impartir uno o varios módulos, mientras que un módulo es impartido sólo por un profesor.
+    </p>
+</div><h1 class="title">
+    4.2.2.- Relación de herencia.
+</h1><div class="iDevice_content">
+    La
+    <strong>
+        herencia
+    </strong>
+    es una propiedad que permite a los objetos ser construidos a partir de otros objetos, es decir,  la capacidad de un objeto para utilizar estructuras de datos y métodos presentes en sus antepasados.
+</div><h1 class="title">
+    4.2.3.- Agregación y composición.
+</h1><div class="iDevice_content">
+    Muchas veces una determinada entidad existe como un conjunto de otras entidades. En este tipo de relaciones un objeto componente se integra en un objeto compuesto. La orientación a objetos recoge este tipo de relaciones como dos conceptos: la agregación y la composición.
+</div><h1 class="title">
+    4.2.4.- Atributos de enlace.
+</h1><div class="iDevice_content">
+    <p>
+        Es posible que tengamos alguna relación en la que sea necesario añadir algún tipo de información que la complete de alguna manera. Cuando esto ocurre podemos añadir atributos a la relación.
+    </p>
+</div><h1 class="title">
+    4.3.- Paso de los requisitos de un sistema al diagrama de clases.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        —Las reservas se utilizan para relacionar los clientes y las habitaciones, eso es sencillo de ver, pero si tenemos un enunciado un poco más largo, puede no ser tan obvio. Quizá podrías darme algún consejo sobre cómo pasar de los requisitos iniciales de una aplicación a un primer diagrama de clases.
+    </p>
+    <p>
+        —Es verdad, la cosa se complica un poco cuando tenemos más requisitos, pero la clave está en analizar el texto para obtener nombres y continuar el desarrollo a partir de ahí.
+    </p>
+</div><h1 class="title">
+    4.3.1.- Obtención de atributos y operaciones.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Definen al objeto en el contexto del sistema, es decir, el mismo objeto en sistemas diferentes tendría diferentes atributos, por lo que debemos buscar en el enunciado o en nuestro propio conocimiento, características que tengan sentido para el objeto en el contexto que se analiza. Deben contestar a la pregunta "
+        <em>
+            ¿Qué elementos (compuestos y/o simples) definen completamente al objeto en el contexto del problema actual?
+        </em>
+        "
+    </p>
+    <p>
+        <strong>
+            Operaciones
+        </strong>
+    </p>
+    <p>
+        Describen el comportamiento del objeto y modifican sus características de alguna de estas formas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Manipulan los datos.
+        </li>
+        <li>
+            Realizan algún cálculo.
+        </li>
+        <li>
+            Monitorizan un objeto frente a la ocurrencia de un suceso de control.
+        </li>
+    </ul>
+    <p>
+        Se obtienen analizando verbos en el enunciado del problema.
+    </p>
+    <p>
+        <strong>
+            Relaciones
+        </strong>
+    </p>
+    <p>
+        Por último habrá que estudiar de nuevo el enunciado para obtener cómo los objetos que finalmente hemos descrito se relacionan entre sí. Para facilitar el trabajo podemos buscar mensajes que se pasen entre objetos y las relaciones de composición y agregación. Las relaciones de herencia se suelen encontrar al comparar objetos semejantes entre sí, y constatar que tengan atributos y métodos comunes.
+    </p>
+    <p>
+        Cuando se ha realizado este procedimiento no está todo el trabajo hecho, es necesario revisar el diagrama obtenido y ver si todo cumple con las especificaciones. No obstante siempre se puede refinar el diagrama completando aspectos del ámbito del problema que no aparezcan en la descripción recurriendo a entrevistas con los clientes o a nuestros conocimientos de la materia.
+    </p>
+</div><h1 class="title">
+    4.4.-  Generación de código a partir del diagrama de clases.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        —Pues sí, pero aún no lo sabes todo, el diagrama de clases aún te va a dar más facilidades...
+    </p>
+</div><h1 class="title">
+    4.4.1.- Elección del lenguaje de programación. Orientaciones para el lenguaje java.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        El lenguaje final de implementación de la aplicación influyen en algunas decisiones a tomar cuando estamos creando el diagrama ya que el proceso de traducción es inmediato. Si existe algún problema en los nombres de clases, atributos o tipos de datos porque no puedan ser utilizados en el lenguaje final o no existan la generación dará un fallo y no se realizará. Por ejemplo, si queremos utilizar la herramienta de generación de código tendremos que asegurarnos de utilizar tipos de datos simples apropiados, es decir, si usamos Java el tipo de dato para las cadenas de caracteres será
+        <span lang="en">
+         String
+        </span>
+        en lugar de
+        <span lang="en">
+         string
+        </span>
+        o char*.
+    </p>
+    <p>
+        Podemos definir el lenguaje de programación final desde el menú
+        <strong>
+            Herramientas.
+        </strong>
+    </p>
+</div><h1 class="title">
+    4.5.- Generación de la documentación.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.- Diagramas de comportamiento.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.- Diagramas de casos de uso.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.1.- Actores.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.2.- Casos de uso.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.3.- Relaciones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.3.1.- Interacción o asociación.
+</h1><div class="iDevice_content">
+    <p>
+        Hay
+        una asociación entre un actor y un caso de uso si el actor
+        interactúa con el sistema para llevar a cabo el caso de uso o para
+        iniciarlo.
+    </p>
+    <p>
+        Una
+        asociación se representa mediante un linea continua que une un actor
+        con un caso de uso. Por ejemplo, un usuario de un sistema de venta
+        por Internet puede hacer un pedido, lo que se representa del
+        siguiente modo:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+</div><h1 class="title">
+    5.1.3.2.- Generalización.
+</h1><div class="iDevice_content">
+    <p>
+        Es
+        posible que, igual que con los diagramas de clases, existan casos de
+        uso que tengan comportamientos semejantes a otros que los modifican o
+        completan de alguna manera. El caso base se define de forma abstracta
+        y los hijos heredan sus características añadiendo sus propios pasos
+        o modificando alguno. Normalmente la herencia se utiliza menos en
+        diagramas de casos de uso que en diagramas de clases.
+    </p>
+    <p>
+        Por
+        ejemplo, el usuario del sistema de venta por Internet puede a su vez
+        darse de alta en la página web para que tengan sus datos registrados
+        a la hora de hacer el pedido, en este caso el usuario es la
+        generalización del socio. Ambos actores pueden hacer un pedido, pero
+        solo el socio puede modificar sus datos en el sistema.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+</div><h1 class="title">
+    5.1.3.3.- Extensión.
+</h1><div class="iDevice_content">
+    <p class="destacado">
+        Se
+        utiliza una relación entre dos casos de uso de tipo "
+        <strong>
+         <span lang="en">
+          extends
+         </span>
+        </strong>
+        "
+        cuando se desea especificar que el comportamiento de un caso de uso
+        es diferente dependiendo de ciertas circunstancias.
+    </p>
+    <p>
+        La
+        principal función de esta relación es simplificar el flujo de casos
+        de uso complejos. Se utiliza cuando  existe una parte del caso de uso
+        que se ejecuta sólo en determinadas ocasiones, pero no es
+        imprescindible para su completa ejecución. Cuando un caso de uso
+        extendido se ejecuta, se indica en la especificación del caso de uso
+        como un
+        <strong>
+            punto de extensión
+        </strong>
+        .
+        Los puntos de extensión se pueden mostrar en el diagrama de casos de
+        uso.
+    </p>
+    <p>
+        Por
+        ejemplo, cuando un usuario hace un pedido si no es socio se le ofrece
+        la posibilidad de darse de alta en el sistema en ese momento, pero
+        puede realizar el pedido aunque no lo sea.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+</div><h1 class="title">
+    5.1.3.4.- Inclusión.
+</h1><div class="iDevice_content">
+    <p class="destacado">
+        Se
+        incluye una relación entre dos casos de uso de tipo "
+        <strong>
+         <span lang="en">
+          include
+         </span>
+        </strong>
+        "
+        cuando la ejecución del caso de uso incluido se da en la rutina
+        normal del caso que lo incluye.
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Esta
+        relación es muy útil cuando se desea especificar algún
+        comportamiento común en dos o más casos de uso, aunque es frecuente
+        cometer el error de utilizar esta técnica para hacer subdivisión de
+        funciones, por lo que se debe tener mucho cuidado cuando se utilice.
+    </p>
+    <p>
+        Por
+        ejemplo, a la hora de hacer un pedido se debe buscar la información
+        de los artículos para obtener el precio, es un proceso que
+        necesariamente forma parte del caso de uso, sin embargo también
+        forma parte de otros, como son el que visualiza el catálogo de
+        productos y la búsqueda de un artículo concreto, y dado que tiene
+        entidad por sí solo se separa del resto de casos de uso y se incluye
+        en los otros tres.
+    </p>
+    <p>
+        Las
+        ventajas de esta asociación son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Las
+            descripciones de los casos de uso son más cortas y se entienden
+            mejor.
+        </li>
+        <li>
+            La
+            identificación de funcionalidad común puede ayudar a descubrir el
+            posible uso de componentes ya existentes en la implementación.
+        </li>
+    </ul>
+    <p>
+        Las
+        desventajas son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La
+            inclusión de estas relaciones hace que los diagramas sean más
+            difíciles de leer, sobre todo para los clientes.
+        </li>
+    </ul>
+    <p class="destacado">
+        Cuando usamos relaciones de inclusión o extensión
+        no podemos olvidar que los casos de uso extendidos o incluidos deben
+        cumplir con las características propias de un caso de uso, es decir,
+        deben representar un flujo de actividad completo desde el punto de
+        vista de lo que un actor espera que el sistema haga por él, así
+        como no utilizar estas herramientas sólo para descomponer un caso de
+        uso de envergadura en otros más pequeños, piedra angular del diseño
+        estructurado y no del orientado a objetos.
+    </p>
+</div><h1 class="title">
+    5.1.4.- Elaboración de casos de uso.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.5.- Escenarios.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.2.- Diagramas de secuencia.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        María se ha dado cuenta de que los casos de uso permiten, de una manera sencilla, añadir información sobre qué hace el sistema, sin embargo por completa que se la descripción de la secuencia de eventos no permite incluir información útil, como los objetos que intervienen en las tareas, y como se comunican.
+    </p>
+    <p>
+        -Tendríamos que buscar la forma de representar como circula la información, que objetos participan en los casos de uso, qué mensajes envían, y en que momento, esto nos ayudaría mucho a completar después el diagrama de clases.
+    </p>
+    <p>
+        Como siempre, Ada tiene una solución.
+    </p>
+    <p>
+        -Tendremos que investigar los diagramas de secuencia.
+    </p>
+</div><h1 class="title">
+    5.2.1.- Representación de objetos, línea de vida y paso de mensajes.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.2.2.- Elaboración de un diagrama de secuencia.
+</h1><div class="iDevice_content">
+    <p>
+        Vamos
+        a generar el diagrama de secuencia para el caso de uso
+        <strong>
+            Hacer
+            pedido
+        </strong>
+        . En el se establece la secuencia de operaciones que se
+        llevarán a cabo entre los  diferentes objetos que intervienen en el
+        caso de uso.
+    </p>
+    <p>
+        Este
+        es el diagrama ya terminado, en el se han incluido todas las
+        entidades (actores, objetos y sistema) que participan en el diagrama,
+        y se han descrito todas las operaciones, incluidos los casos
+        especiales, como es el registro de usuarios o la gestión de los
+        datos bancarios. También incluye el modelado de acciones en bucle,
+        como es la selección de artículos y de acciones regidas por
+        condición, como es la posibilidad de cancelar el pedido si hay
+        problemas con la tarjeta de crédito.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+
+</div><h1 class="title">
+    5.3.- Diagramas de colaboración.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.3.1.- Representación de objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.3.2.- Paso de mensajes.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.3.3.- Elaboración de un diagrama de colaboración.
+</h1><div class="iDevice_content">
+    <p>
+        Este
+        es el diagrama de colaboración del caso de uso
+        <strong>
+            Hacer pedido
+        </strong>
+        ,
+        se ha creado siguiendo el diagrama de secuencia, por lo que no te
+        debe ser muy difícil seguirlo, de hecho algunas aplicaciones para la
+        creación de estos diagramas permiten la obtención de uno a partir
+        de otro. Debes tener en cuenta que la aplicación modifica un poco la
+        signatura de los mensajes, el valor devuelto se representa al final
+        precedido de dos puntos.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+
+    <p>
+        Los
+        aspectos más destacados son los siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Las
+            actividades que se repiten o pueden repetirse se marcan con un
+            asterisco y su condición.
+        </li>
+        <li>
+            Las
+            condiciones de guarda se escriben en el mismo nombre del mensaje.
+        </li>
+        <li>
+            El
+            flujo alternativo de eventos según si el usuario cancela el pedido
+            o no, obliga a modificar los números de secuencia de los mensajes 5
+            y 6, pasando a tener los mensajes 5a y 6a y 5b y 6b, según la
+            condición. Puedes modificar el número se secuencia de los mensajes
+            abriendo la especificación del diagrama, y seleccionando la pestaña
+            Mensajes, donde puedes editar los números de secuencia haciendo
+            doble clic sobre ellos.
+        </li>
+        <li>
+            Al
+            objeto "sistema" se le ha asignado el estereotipo
+            <span lang="en">
+          system
+         </span>
+            .
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.4.- Diagramas de actividad.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.4.1.- Elementos del diagrama de actividad.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.4.2.- Elaboración de un diagrama de actividad.
+</h1><div class="iDevice_content">
+    <p>
+        El
+        siguiente diagrama de actividad representa el caso de uso hacer
+        pedido, en el aparecen los elementos que hemos visto en las secciones
+        anteriores.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            En
+            las bifurcaciones se ha añadido la condición que indica si se pasa
+            a una acción o a otra.
+        </li>
+        <li>
+            Las
+            acciones Seleccionar artículo y Seleccionar cantidad se han
+            considerado concurrentes.
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+
+    <p>
+        En
+        este otro diagrama se simplifican las acciones a realizar y se
+        eliminan los objetos para facilitar la inclusión de calles que
+        indican quien realiza cada acción:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        <strong>
+            Nota
+        </strong>
+        :
+        Para añadir las calles en
+        <span lang="en">
+         Visual Paradigm
+        </span>
+        se utiliza la herramienta del panel "
+        <span lang="en">
+         Vertical Swimlane
+        </span>
+        ".
+    </p>
+</div><h1 class="title">
+    5.5.- Diagramas de estados.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.5.1.- Estados y eventos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.5.2.- Transiciones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.5.3.- Creación de un diagrama de estados.
+</h1><div class="iDevice_content">
+    <p>
+        Para ejemplificar la
+        creación de un diagrama de estados vamos a ver el que se asocia al
+        objeto pedido, que cumple con las condiciones que hemos visto al
+        principio, tiene un comportamiento significativo en tiempo real, ya
+        que su situación tanto física, como el sistema, va evolucionando
+        conforme pasa el tiempo, y participa en varios casos de uso (como
+        Hacer pedido y Cumplimentar pedido).
+    </p>
+    <p>
+        Los diferentes estados en
+        los que puede estar un pedido son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                En creación
+            </strong>
+            :
+            es cuando se están seleccionando los productos que formará el
+            pedido.
+        </li>
+        <li>
+            <strong>
+                Pendiente
+            </strong>
+            :
+            está en este estado desde que se confirma el pedido hasta que se
+            selecciona para preparar su envío.
+        </li>
+        <li>
+            <strong>
+                En almacén
+            </strong>
+            :
+            está en este estado cuando es elaborado el paquete y se ha asignado
+            a una ruta, hasta que se envía a través de la ruta que le
+            corresponde.
+        </li>
+        <li>
+            <strong>
+                Servido
+            </strong>
+            :
+            Cuando el pedido es enviado. En este caso se envía una señal
+            física desde el almacén cuando el transporte abandona el almacén.
+        </li>
+        <li>
+            <strong>
+                Cancelado
+            </strong>
+            :
+            puede llegarse a esta situación por dos motivos, o bien se cancela
+            mientras se está haciendo por problemas con la tarjeta de crédito,
+            o bien porque, una vez pendiente de su gestión el usuario decide
+            cancelarlo, la diferencia fundamental entre ambos es que en el
+            segundo caso hay que devolver el importe pagado por el pedido al
+            socio que lo ha comprado.
+        </li>
+    </ul>
+    <p>
+        Las transiciones entre
+        estados se producen por llamadas a procedimientos en todos los casos,
+        no intervienen cambios de estado o el tiempo, ni señales.
+    </p>
+    <p>
+        El diagrama quedaría de
+        la siguiente manera:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+
+    <p>
+        En las
+        <strong>
+            transiciones
+        </strong>
+        se ha incluido el nombre de la transición, el evento que la dispara
+        (normalmente hacer clic en algún botón de la interfaz), si existe
+        condición de guarda se pone entre corchetes y la acción a realizar
+        para llegar al siguiente estado junto al símbolo /. En todos los
+        casos el evento de disparo es de tipo llamada (incluye la llamada a
+        una función o pulsar un botón de la interfaz), salvo en el caso de
+        pedido enviado que se controla por una señal que se envía cuando el
+        transporte abandona el almacén.
+    </p>
+    <p>
+        A los
+        <strong>
+            estados
+        </strong>
+        se
+        les ha añadido la acción a realizar, apartado do/ y en algunos
+        casos la acción de entrada, por ejemplo en el caso del estado
+        pendiente, se debe revisar que los artículos a enviar tengan
+        disponibilidad y la de salida, en el ejemplo disminuir el stock.
+    </p>
+    <p>
+        <strong>
+            Nota
+        </strong>
+        : para incluir
+        las condiciones de guarda en el diagrama debes rellenar el apartado
+        "
+        <span lang="en">
+         Guard
+        </span>
+        "
+        de la especificación, si necesitas añadir alguna acción puedes
+        hacerlo rellenando el apartado "
+        <span lang="en">
+         Effect
+        </span>
+        ".
+        Los eventos de disparo.
+    </p>
+</div><h1 class="title">
+    6.- Ingeniería inversa.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+</div><h1 class="title">
+    7.- Enlaces de refuerzo y ampliación.
+</h1><div class="iDevice_content">
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Tutorial sobre Diagramas de Casos de uso en la herramienta case Visual Paradigm I
+            </strong>
+            :
+            https://www.visual-paradigm.com/VPGallery/usecase/index.html
+        </li>
+        <li>
+            <strong>
+                Tutorial sobre Diagramas de Casos de uso en la herramienta case Visual Paradigm II
+            </strong>
+            :
+            <span style="font-size: 1em;">
+            https://www.visual-paradigm.com/VPGallery/diagrams/UseCase.html
+           </span>
+        </li>
+        <li>
+           <span style="font-size: 1em;">
+            <strong>
+             Tutorial sobre Diagramas de Secuencia en la herramienta case Visual Paradigm:
+            </strong>
+           </span>
+            https://www.visual-paradigm.com/VPGallery/diagrams/Sequence.html
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Descarga e instalación de Visual Paradigm.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        <strong>
+            Descarga e instalación de
+            <span lang="en">
+          Visual Paradigm
+         </span>
+        </strong>
+    </p>
+    <p>
+        Obtenemos los archivos desde:
+    </p>
+    <p class="enlace_centrado">
+        Página de
+
+        Visual Paradigm
+    </p>
+    <p>
+        Ofrece dos versiones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+          <span lang="en">
+           Visual Paradigm for UML
+          </span>
+                (VP-UML)
+            </strong>
+            , versión de 30 dias sin Registro
+        </li>
+        <li>
+            <strong>
+          <span lang="en">
+           Versión Community-Edition
+          </span>
+            </strong>
+            , para uso no comercial (gratuito).
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        La versión
+        <strong>
+         <span lang="en">
+          Community-Edition
+         </span>
+        </strong>
+        incluye algunas de las funcionalidades de la versión completa, entre las que no se encuentra la generación de código ni la ingeniería inversa.
+    </p>
+    <p>
+        Para la siguiente unidad también usaremos VP-UML, de modo que si fuera necesario tendríamos que conseguir un nuevo código de activación, esta vez de tipo
+        <span lang="en">
+         Community-Edition.
+        </span>
+    </p>
+    <p>
+        <strong>
+            Proceso de instalación
+        </strong>
+    </p>
+    <p>
+        Ejecutaremos el archivo de instalación, que tendrá diferente extensión si es para Windows o para Linux. En nuestro caso suponemos que lo hacemos en un equipo con Ubuntu
+        <span lang="en">
+         Desktop
+        </span>
+        10.10. Se debe tener en cuenta que en el nombre se incluye la versión y la fecha en la que apareció, por lo que estos datos pueden cambiar con el tiempo. Si hacemos la instalación en Windows bastará con hacer doble clic sobre el archivo .exe.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda" style="margin-bottom: 20px;">
+         <pre ngNonBindable>usuario&#64;equipo:~/VP/ chmod +x VP_Suite_Linux_5_2_20110611.sh
+</pre>
+            <pre ngNonBindable>usuario&#64;equipo:~/VP/sudo  ./VP_Suite_Linux_5_2_20110611.sh
+</pre>
+        </div>
+    </div>
+    <p>
+        Mostramos a continuación la instalación sobre un entorno Windows.
+    </p>
+    <p>
+        Ejecutamos el .exe que hemos descargado desde el enlace anterior.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Iniciar
+            <span lang="en">
+          Visual Paradigm
+         </span>
+        </strong>
+    </p>
+    <p>
+        Una vez realizada la instalación tendremos una entrada en el menú
+        <strong>
+            Aplicaciones
+        </strong>
+        llamada
+        <strong>
+            Otras
+        </strong>
+        , si trabajamos con Linux o bien una entrada de menú en el botón Inicio para
+        <span lang="en">
+         Visual Paradigm
+        </span>
+        , si es que trabajamos en Windows. En cualquiera de los casos para abrir la herramienta buscamos la opción
+        <span lang="en">
+         Visual Paradigm 12
+        </span>
+    </p>
+    <p>
+        Tras la instalación elegiremos el tipo de licencia que queremos disfrutar durante 30 dias, que en nuestro caso será la Enterprise
+    </p>
+
+    <p>
+        <span style="font-size: 1em;">
+        </span>
+    </p>
+    <p>
+        A continuación tendremos que indicar el WorkSpace que queremos utilizar.
+    </p>
+
+    <p>
+        <strong style="font-size: 1em;">
+            Integrar con Netbeans.
+        </strong>
+    </p>
+    <p>
+        <strong>
+            <br>
+            <br/></strong>
+        Tras instalar Visual Paradigm hemos de realizar la integración con Netbeans.
+    </p>
+    <p>
+        Para ello elegimos en la pestaña Windows, la subpestaña
+        <strong>
+            Integration
+        </strong>
+        , y la opción
+        <strong>
+            Integration IDE.
+        </strong>
+    </p>
+
+    <p>
+        <span style="font-size: 1em;">
+        </span>
+    </p>
+    <p>
+        Tras ello, elegimos el IDE correspondiente, en nuestro caso
+        <strong>
+            Netbeans
+        </strong>
+        .
+    </p>
+
+    <p>
+        <br>
+        <br>
+        <br/><br/></p>
+    <p>
+        Se puede dar el problema de que indique que no se tienen permisos para la realización de la integración. Esto se soluciona ejecutando VP como administradores.
+    </p>
+    <p>
+        Al pulsar el siguiente nos indicará el directorio de Instalación de Netbeans, y, si estamos de acuerdo podremos comenzar la integración.
+    </p>
+    <p>
+        Cuando finalice la instalación, ya tenemos integrado VP en nuestro IDE Netbeans.
+    </p>
+    <p>
+    </p>
+    <p>
+        Ahora, en el menú emergente que nos ofrece para cada proyecto, dentro de Tools (Herramientas) disponemos de las Opciones de Visual Paradigm
+    </p>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+    </div>
+    <p>
+        Los proyectos de
+        <span lang="en">
+         Visual Paradigm
+        </span>
+        se podrán almacenar en el directorio por defecto, que se denomina vpproject y cuelga del directorio principal del proyecto
+        <span lang="en">
+         NetBeans
+        </span>
+        , o en otra ubicación. Nosotros nos quedaremos con la opción por defecto.
+    </p>
+    <p>
+        También podemos importar un proyecto VP-UML que tengamos ya creado seleccionándolo al crear el proyecto existente.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez creado o importado el proyecto, tendremos una serie de botones en la zona superior derecha que nos permitirán crear los diferentes diagramas de
+        <abbr title="Unified Modeling Lenguaje">
+            UML
+        </abbr>
+        , y que queden asociados al proyecto
+        <span lang="en">
+         NetBeans
+        </span>
+        .
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    Anexo II.- Generación del diagrama de clases de un problema dado.
+</h1><div class="iDevice_content">
+
+    <strong>
+        Descripción del problema
+    </strong>
+    <p>
+        El Ministerio de  Educación ha encargado a
+        <strong>
+            BK Programación
+        </strong>
+        que desarrolle una  plataforma de aprendizaje electrónico para que los alumnos de ciclos  formativos a distancia tengan acceso a los materiales y puedan  comunicarse con sus profesores. Para que los chicos puedan empezar a  crear los primeros diagramas de la aplicación Ada les pasa la  siguiente descripción del ámbito del problema:
+    </p>
+    <p>
+        “Los alumnos y alumnas  de Ciclos Formativos a Distancia se matriculan de varios módulos  formativos al año. Los módulos formativos son impartidos por  profesores y profesoras que pondrán los contenidos del módulo a  disposición de los alumnos y alumnas. Para superar un módulo hay  que hacer una tarea y un examen que se calificarán de uno a diez, y  sacar en ambos casos una puntuación superior a cinco. Los exámenes  se componen de 30 preguntas que se eligen y ordenan al azar. Las  preguntas tienen un enunciado y cuatro posibles respuestas, sólo una  de ellas válida. Un ciclo formativo se compone de una serie de  competencias profesionales, que tienen una descripción y que, a su  vez, están formadas por uno o varios módulos, que tienen un nombre,  y un número de horas. Cuando un alumno o alumna supera los módulos  correspondientes a una capacidad se le certifica esa capacidad.  Cuando se han superado todos los módulos (y por tanto se han  adquirido todas las competencias profesionales) se aprueba el ciclo.  Cuando un alumno o alumna finaliza el ciclo se emite un certificado  de competencias a su nombre donde aparece la descripción de las  competencias que forman el ciclo y la nota media obtenida. Si un  alumno o alumna no termina de cursar el ciclo completo puede pedir un  certificado que acredite las competencias que sí tenga adquiridas.  El alumnado y el profesorado se identifican con un alias en el  sistema y se comunican a través de correo electrónico. Por motivos  administrativos es necesario conocer el nombre y apellidos, dirección  completa y teléfono de todas las personas que participan en el  sistema, sea como profesores o como alumnos. Para el profesorado,  además, se debe conocer su número de registro personal (
+        <abbr title="Número de registro Personal">
+            NRP
+        </abbr>
+        )”
+    </p>
+    <p>
+        <strong>
+            <em>
+                Extracción de los sustantivos de la descripción  del problema
+            </em>
+            .
+        </strong>
+    </p>
+    <p>
+        Primero subrayamos los  sustantivos de la descripción del problema (sin repeticiones) y los  pasamos a una tabla: (usaremos sólo alumnos y sólo profesores para  simplificar el diseño)
+    </p>
+    <p>
+        Los
+        <u>
+            alumnos
+        </u>
+        de
+        <u>
+            Ciclos Formativos a Distancia
+        </u>
+        se matriculan de varios
+        <u>
+            módulos  formativos
+        </u>
+        al
+        <u>
+            año
+        </u>
+        . Los módulos formativos son impartidos  por
+        <u>
+            profesores
+        </u>
+        que pondrán los
+        <u>
+            contenidos
+        </u>
+        del módulo  a disposición de los alumnos. Para superar un módulo hay que hacer  una
+        <u>
+            tarea
+        </u>
+        y un
+        <u>
+            examen
+        </u>
+        que se calificarán de
+        <u>
+            uno
+        </u>
+        a
+        <u>
+            diez
+        </u>
+        , y sacar en ambos casos una puntuación superior a  cinco. Los exámenes se componen de 30
+        <u>
+            preguntas
+        </u>
+        que se eligen  y ordenan al azar. Las preguntas tienen un
+        <u>
+            enunciado
+        </u>
+        y cuatro  posibles
+        <u>
+            respuestas
+        </u>
+        , sólo una de ellas válida. Un ciclo  formativo se compone de una serie de
+        <u>
+            competencias profesionales
+        </u>
+        ,  que tienen una
+        <u>
+            descripción
+        </u>
+        y que, a su vez, están formadas  por uno o varios módulos, que tienen un
+        <u>
+            nombre
+        </u>
+        , y un número  de
+        <u>
+            horas
+        </u>
+        . Al sumar las horas de un ciclo obtenemos las horas  del módulo. Cuando un alumno supera los módulos correspondientes a  una competencia se le certifica esa competencia. Cuando se han  superado todos los módulos (y por tanto se han adquirido todas las  competencias profesionales) se aprueba el ciclo. Cuando un alumno  finaliza el ciclo se emite un
+        <u>
+            certificado de competencias
+        </u>
+        a su
+        <u>
+            nombre
+        </u>
+        donde aparece la descripción de las competencias que  forman el ciclo y la
+        <u>
+            nota media
+        </u>
+        obtenida. Si un alumno no  termina de cursar el ciclo completo puede pedir un certificado que  acredite las competencias que si tenga adquiridas. Los alumnos y  profesores se identifican con un
+        <u>
+            alias
+        </u>
+        en el
+        <u>
+            sistema
+        </u>
+        y  se comunican a través de
+        <u>
+            correo electrónico
+        </u>
+        . Por
+        <u>
+            motivos
+        </u>
+        administrativos es necesario conocer el
+        <u>
+            nombre
+        </u>
+        y
+        <u>
+            apellidos
+        </u>
+        ,
+        <u>
+            dirección
+        </u>
+        completa y
+        <u>
+            teléfono
+        </u>
+        de  todas las
+        <u>
+            personas
+        </u>
+        que participan en el sistema, sea como  profesores o como alumnos. Para los profesores, además, se debe  conocer su
+        <u>
+            número de registro personal (NRP).
+        </u>
+    </p>
+    <table class="tabla">
+        <caption>
+            Tabla de sustantivos
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Clase/objeto potencial
+            </th>
+            <th scope="col">
+                Categoría
+            </th>
+        </tr>
+        <tr>
+            <th scope="row">
+                Alumno
+            </th>
+            <td>
+                Entidad externa o rol
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Ciclo Formativo a Distancia
+            </th>
+            <td>
+                Unidad organizacional
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Modulo Formativo
+            </th>
+            <td>
+                Unidad organizacional
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Año
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Profesor
+            </th>
+            <td>
+                Entidad externa o rol
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Contenidos
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Tarea
+            </th>
+            <td>
+                Cosa
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Examen
+            </th>
+            <td>
+                Cosa
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Uno
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Diez
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Pregunta
+            </th>
+            <td>
+                Cosa
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Enunciado
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Respuesta
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Competencia Profesional
+            </th>
+            <td>
+                Unidad organizacional
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Descripción
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Horas
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Certificado de competencias
+            </th>
+            <td>
+                Cosa
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Nombre
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Nota media
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Alias
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Sistema
+            </th>
+            <td>
+                Estructura
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Nombre
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Dirección
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Teléfono
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Persona
+            </th>
+            <td>
+                Rol o entidad externa
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Número de registro personal
+            </th>
+            <td>
+                Atributo
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        <strong>
+            <em>
+                Selección de sustantivos como objetos/clases del sistema
+            </em>
+        </strong>
+    </p>
+    <p>
+        Ahora aplicamos los criterios de selección de objetos. En este apartado es necesario destacar que aunque algunos de los sustantivos que tenemos en el anunciado podrían llegar a convertirse en clases y objetos, como los contenidos de un módulo formativo, se descartan en esta fase porque el enunciado no da suficiente información. El proceso de creación de diagramas no es inmediato, sino que está sujeto a revisiones, cambios y adaptaciones hasta tener un resultado final completo.
+    </p>
+    <table class="tabla">
+        <caption>
+            Tabla de elección de sustantivos como objetos o clases del sistema.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Clase/objeto potencial
+            </th>
+            <th scope="col">
+                Criterios aplicables
+            </th>
+        </tr>
+        <tr>
+            <th scope="row">
+                Alumno
+            </th>
+            <td>
+                2,3,4
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Ciclo Formativo a Distancia
+            </th>
+            <td>
+                1,2,3
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Módulo Formativo
+            </th>
+            <td>
+                1,2,3
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Profesor
+            </th>
+            <td>
+                2,3,4
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Tarea
+            </th>
+            <td>
+                1,2,3
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Examen
+            </th>
+            <td>
+                1,2,3
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Competencia Profesional
+            </th>
+            <td>
+                1,2,3
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Pregunta
+            </th>
+            <td>
+                1,2,3
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Certificado de competencias
+            </th>
+            <td>
+                Falla 2,3 rechazado
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Sistema
+            </th>
+            <td>
+                Falla 1,2,3,4 rechazado
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Persona
+            </th>
+            <td>
+                2,3,4
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        <em>
+            <strong>
+                Obtención de los atributos de los objetos
+            </strong>
+        </em>
+        .
+    </p>
+    <p>
+        Buscamos responder a la pregunta ¿Qué elementos (compuestos y/o simples) definen completamente al objeto en el contexto del problema actual?
+    </p>
+    <table class="tabla">
+        <caption>
+            Tabla de relación de las clases u objetos con sus atributos.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Clase/objeto potencial
+            </th>
+            <th scope="col">
+                Atributos
+            </th>
+        </tr>
+        <tr>
+            <th scope="row">
+                Alumno
+            </th>
+            <td>
+                Nombre, dirección, teléfono, alias, correo electrónico.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Ciclo Formativo a Distancia
+            </th>
+            <td>
+                Nombre, descripción, horas.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Módulo Formativo
+            </th>
+            <td>
+                Modulo Formativo
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Profesor
+            </th>
+            <td>
+                Nombre, dirección, teléfono, alias, correo electrónico , NRP.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Tarea
+            </th>
+            <td>
+                Descripción, calificación.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Examen
+            </th>
+            <td>
+                Descripción, calificación.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Competencia Profesional
+            </th>
+            <td>
+                Nombre, descripción.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Pregunta
+            </th>
+            <td>
+                Enunciado, respuestas, respuesta válida.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Persona
+            </th>
+            <td>
+                Nombre, dirección, teléfono, alias, correo electrónico.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        <strong>
+            <em>
+                Obtención de los métodos
+            </em>
+        </strong>
+    </p>
+    <p>
+        Buscamos o inferimos en el enunciado verbos, y actividades en general que describan el comportamiento de los objetos o modifiquen su estado.
+    </p>
+    <table class="tabla">
+        <caption>
+            Tabla de clases u objetos del sistema con sus posibles métodos.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Clase/objeto potencial
+            </th>
+            <th scope="col">
+                Métodos
+            </th>
+        </tr>
+        <tr>
+            <th scope="row">
+                Alumno
+            </th>
+            <td>
+                <p>
+                    CalcularNotaMedia() : void
+                </p>
+                <p>
+                    emitirCertificado() : void
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Ciclo Formativo a Distancia
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Módulo Formativo
+            </th>
+            <td>
+                <p>
+                    Matricular(Alumno : alumno) : void
+                </p>
+                <p>
+                    asignarDuracion(horas: int) : void
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Profesor
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Tarea
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Examen
+            </th>
+            <td>
+                <p>
+                    Calificar()
+                </p>
+                <p>
+                    añadirPregunta()
+                </p>
+                <p>
+                    ordenarPreguntas()
+                </p>
+                <p>
+                    crearExamen()
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Competencia Profesional
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Pregunta
+            </th>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Persona
+            </th>
+            <td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        <strong>
+            Obtener relaciones
+        </strong>
+    </p>
+    <p>
+        Con las clases ya extraídas y parcialmente definidas (aún faltan por añadir métodos y atributos inferidos de posteriores refinamientos y de nuestro conocimiento) podemos empezar a construir relaciones entre ellas.
+    </p>
+    <p>
+        Comenzaremos por las clases que hacen referencia a la estructura de los Ciclos, cada Ciclo se compone de una o más competencias profesionales, que no tienen la capacidad de existir por si mismas, es decir, la competencia no tiene sentido sin su ciclo, por lo que vamos a crear una relación entre ambas clases de composición. De igual manera una competencia profesional se compone de un conjunto de módulos formativos (1 o más) por lo que relacionaremos ambas, también mediante composición.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Un módulo formativo a su vez, contiene un examen y una tarea, que tampoco tienen sentido por si mismos, de modo que también los vamos a relacionarlos mediante composición. El examen por su parte se compone de 30 preguntas, pero éstas pueden tener sentido por si mismas, y pertenecer a diferentes exámenes, además, el hecho de eliminar un examen no va a dar lugar a que las preguntas que lo forman se borren necesariamente, si leemos con atención el enunciado, podemos deducir que las preguntas se seleccionan de un repositorio del que pueden seguir formando parte [... [Los exámenes se componen de 30 preguntas que se eligen y ordenan al azar...], así que en este caso usaremos la relación de agregación para unirlos.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Por otra parte alumnos y profesores comparten ciertas características, por necesidad del sistema, como son los datos personales, o el correo electrónico, esto induce a pensar que podemos crear una abstracción con los datos comunes, que de hecho, ya hemos obtenido del enunciado en la clase persona, que recoge las coincidencias entre alumnos y profesores y añadir una relación de herencia de la siguiente manera:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Por último queda relacionar a alumnos y profesores con los módulos formativos. Un alumno se matricula de un conjunto de módulos formativos, y un profesor puede impartir uno o varios módulos formativos.
+    </p>
+    <p>
+        Más concretamente, de cara a la cardinalidad, un alumno puede estar matriculado en uno o varios módulos, mientras que un módulo puede tener, uno o varios alumnos matriculados. Por su parte un profesor puede impartir uno o varios módulos, aunque un módulo es impartido por un profesor.
+    </p>
+    <p>
+        Éste análisis da como resultado lo siguiente:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        <strong>
+            <em>
+                Añadir
+                <span lang="en">
+           Getters, Setters
+          </span>
+                y constructores
+            </em>
+        </strong>
+    </p>
+    <p>
+        Por último añadimos los métodos que permiten crear los objetos de las clases (constructores) así como los que permiten establecer los valores de los atributos no calculados y leerlos (
+        <span lang="en">
+         getters
+        </span>
+        y
+        <span lang="en">
+         setters
+        </span>
+        ), recuerda que para tener éstos métodos completos es necesario que el atributo tenga establecido su tipo, para que sea tenido en cuenta.
+    </p>
+    <p>
+        Para añadir los
+        <span lang="en">
+         getters
+        </span>
+        y
+        <span lang="en">
+         setters
+        </span>
+        en
+        <span lang="en">
+         Visual Paradigm
+        </span>
+        , basta con desplegar el menú contextual del atributo y seleccionar la opción
+        <span lang="en">
+         Create Getter and Setter
+        </span>
+        .
+    </p>
+    <p>
+        También hay que añadir los métodos que no se infieren de la lectura del enunciado, por ejemplo los que permiten añadir módulos a las competencias, o competencias a los ciclos. Para comprobar estos métodos puedes descargar el diagrama de clases en un proyecto VP-UML un poco más adelante.
+    </p>
+    <p>
+        <strong>
+            <em>
+                Añadir documentación
+            </em>
+        </strong>
+    </p>
+    <p>
+        Por último se debe rellenar la documentación de cada clase, atributo y método con una descripción de los mismos que será necesaria para la generación de informes posterior. A continuación se listan las clases con su documentación:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Persona
+            </strong>
+            : Generalización para agrupar las características comunes de alumnos y profesores como personas que interactúan con el sistema. De una persona interesa conocer su nombre, dirección, teléfono, alias y correo electrónico.
+        </li>
+        <li>
+            <strong>
+                Alumno
+            </strong>
+            : Es un tipo de persona. Representa a las personas que se matriculan de un ciclo formativo. Un alumno puede estar matriculado durante varios años en un ciclo. Está matriculado de un ciclo siempre que está matriculado en algún módulo que forme parte del ciclo. Para aprobar un Ciclo hay que superar todos los módulos que lo componen. Para superar un módulo hay que realizar la tarea y aprobar el examen, que está compuesto de 30 preguntas de tipo test, con cuatro respuestas posibles una de las cuales es la correcta. De un alumno interesa almacenar su nota media.
+        </li>
+        <li>
+            <strong>
+                Profesor
+            </strong>
+            : Es un tipo de persona. Representa a las personas que imparten los módulos formativos. Evalúan las tareas  que realizan los alumnos y se encargan de poner los contenidos a disposición de los alumnos. De un profesor interesa almacenar su número de registro personal.
+        </li>
+        <li>
+            <strong>
+                Ciclo Formativo a Distancia
+            </strong>
+            : Es uno de los núcleos centrales del sistema. Representa los estudios que se pueden realizar a distancia. Un ciclo formativo se compone de un conjunto de competencias profesionales que se componen a su vez de módulos formativos. Se aprueba un ciclo formativo cuando se adquieren todas las competencias que lo forman. De un ciclo formativos se almacena su nombre, descripción y horas totales.
+        </li>
+        <li>
+            <strong>
+                Competencia Profesional
+            </strong>
+            : Representan el conjunto de conocimientos generales que se adquieren cuando se completa un ciclo formativo.  Se componen de módulos profesionales y se adquiere una competencia cuando se superan los módulos que la componen. De una competencia se almacena su descripción.
+        </li>
+        <li>
+            <strong>
+                Módulo Formativo
+            </strong>
+            : Unidades formativas que cursa un alumno. Un módulo formativo tiene una serie de contenidos que el alumno debe estudiar, y una tarea y un examen que el alumno debe hacer. Cuando se aprueban la tarea y el examen se supera el módulo. De un módulo se almacena su nombre, duración y contenidos.
+        </li>
+        <li>
+            <strong>
+                Tarea
+            </strong>
+            : Actividad relacionada con los contenidos de un módulo que debe realizar un alumno. Tiene una puntuación de uno a diez y es evaluada por el profesor. La nota se asigna a cada alumno para la matrícula del módulo al que pertenece la tarea. De una tarea se almacena su descripción.
+        </li>
+        <li>
+            <strong>
+                Examen
+            </strong>
+            : Conjunto de treinta preguntas que se evalúa de uno a diez. Un examen puede desordenarse y calificarse calculando cuantas preguntas son correctas.
+        </li>
+        <li>
+            <strong>
+                Pregunta
+            </strong>
+            : Forman los exámenes de un módulo. Se compone del enunciado y cuatro posibles respuestas de las cuales sólo una es válida.
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo III.- Generación de la documentación de un caso de uso
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        Como se indicaba en los contenidos del apartado 5.1.2, lo más importante en la elaboración de un diagrama de casos de uso, no es el diagrama en sí, sino la documentación de los casos de uso que es lo que permitirá desarrollar otros diagramas que ayuden en la codificación del sistema, y la elaboración de los casos de prueba de caja negra.
+    </p>
+    <p>
+        A modo de ejemplo vamos a desarrollar la documentación del caso de uso
+        <strong>
+            Hacer Pedido
+        </strong>
+        , ya que, por su complejidad abarca todos los apartados que hemos visto. El ejemplo se hará con la herramienta
+        <span lang="en">
+         Visual Paradigm for
+        </span>
+        <abbr title="Unified Modeling Language.">
+            UML
+        </abbr>
+        , aunque tu puedes usar la herramienta que consideres más oportuna. Recordamos el aspecto del caso de uso:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Los datos que debemos incluir para elaborar la documentación del caso de uso, el contrato, eran:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Nombre:
+            </strong>
+            nombre del caso de uso.
+        </li>
+        <li>
+            <strong>
+                Actores
+            </strong>
+            : aquellos que interactúan con el sistema a través del caso de uso.
+        </li>
+        <li>
+            <strong>
+                Propósito
+            </strong>
+            : breve descripción de lo que se espera que haga.
+        </li>
+        <li>
+            <strong>
+                Precondiciones
+            </strong>
+            : aquellas que deben cumplirse para que pueda llevarse a cabo el caso de uso.
+        </li>
+        <li>
+            <strong>
+                Flujo normal
+            </strong>
+            : flujo normal de eventos que deben cumplirse para ejecutar el caso de uso exitosamente.
+        </li>
+        <li>
+            <strong>
+                Flujo alternativo
+            </strong>
+            : flujo de eventos que se llevan a cabo cuando se producen casos inesperados o poco frecuentes. No se deben incluir aquí errores como escribir un tipo de dato incorrecto o la omisión de un parámetro necesario.
+        </li>
+        <li>
+            <strong>
+                Postcondiciones
+            </strong>
+            : las que se cumplen una vez que se ha realizado el caso de uso.
+        </li>
+    </ul>
+    <p>
+        Para incluir el nombre, actores, propósito, precondiciones y postcondiciones abrimos la especificación del caso de uso. Esto da lugar a la aparición de una ventana con un conjunto de pestañas que podemos rellenar:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            En la pestaña "
+            <strong>
+                General
+            </strong>
+            " rellenamos el nombre "
+            <strong>
+                Hacer pedido
+            </strong>
+            ", y tenemos un espacio para escribir una breve descripción del caso de uso, por ejemplo:
+            <p>
+                "
+                <em>
+                    El cliente visualiza los productos que están a la venta, que se pueden seleccionar para añadirlos al pedido. Puede añadir tantos artículos como desee, cada artículo añadido modifica el total a pagar según su precio y la cantidad seleccionada.
+                </em>
+            </p>
+            <p>
+                <em>
+                    Cuando el cliente ha rellenado todos los productos que quiere comprar debe formalizar el pedido.
+                </em>
+            </p>
+            <p>
+                <em>
+                    En caso de que el cliente no sea socio de la empresa antes de formalizar la compra se le indica que puede hacerse socio, si el cliente acepta se abre el formulario de alta, en caso contrario se cancela el pedido.
+                </em>
+            </p>
+            <p>
+                <em>
+                    En caso de que se produzca algún problema con los datos bancarios se ofrecerá la posibilidad se volver a introducirlos.
+                </em>
+            </p>
+            <p>
+                <em>
+                    Al finalizar un pedido se añade al sistema con el estado
+                </em>
+                pendiente.
+                <em>
+                    "
+                </em>
+            </p>
+        </li>
+        <li>
+            En la pestaña "
+            <strong>
+                Valores etiquetados
+            </strong>
+            " encontramos un conjunto de campos predefinidos, entre los que se encuentran el autor, precondiciones y postcondiciones, que podemos rellenar de la siguiente manera:
+            <p>
+                <em>
+                    <strong>
+                        Autor
+                    </strong>
+                    : usuario.
+                </em>
+            </p>
+            <p>
+                <em>
+                    <strong>
+                        Precondiciones
+                    </strong>
+                    : Existe una campaña abierta con productos de la temporada actual a la venta.
+                </em>
+            </p>
+            <p>
+                <em>
+                    <strong>
+                        Postcondiciones
+                    </strong>
+                    : Se ha añadido un pedido con un conjunto de productos para servir con el estado "pendiente" que deberá ser revisado.
+                </em>
+            </p>
+            <p>
+                También se pueden incluir otros datos como la complejidad, el estado de realización del caso de uso la complejidad que no hemos visto en esta unidad.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Para incluir el resto de los datos en el caso de uso hacemos clic en la opción "
+        <strong>
+         <span lang="en">
+          Open Use Case Details...
+         </span>
+        </strong>
+        " del menú contextual, lo que da lugar a la aparición de una ventana con una serie de pestañas. En ellas se recupera la información de la especificación que hemos rellenado antes, además, podemos rellenar el flujo de eventos del caso de uso, en condiciones normales usaríamos la pestaña "
+        <span lang="en">
+         Flow of events
+        </span>
+        ", sin embargo como esta opción solo está disponible en la versión profesional, utilizaremos la pestaña "
+        <strong>
+            Descripción
+        </strong>
+        ", que está disponible en la versión
+        <span lang="en">
+         community
+        </span>
+        . Para activarla pulsamos el botón "
+        <strong>
+         <span lang="en">
+          Create/Open Description
+         </span>
+        </strong>
+        ".
+    </p>
+    <p>
+        Podemos añadir varias descripciones de diferentes tipos, pulsando el botón "
+        <strong>
+            Nuevo
+        </strong>
+        ". Para añadir filas al flujo de eventos pinchamos en el botón. En principio añadimos la descripción principal, luego añadiremos otras alternativas.
+    </p>
+    <p>
+        Esta es la descripción principal, en ella se describe el flujo normal de eventos que se producen cuando se ejecuta el caso de uso sin ningún problema.
+    </p>
+    <table class="tabla">
+        <caption>
+            Flujo de eventos normal para el caso de uso Hacer Pedido.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+           <span lang="en">
+            Use Case
+           </span>
+            </th>
+            <td colspan="3">
+                Hacer pedido
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Author
+           </span>
+            </th>
+            <td colspan="3">
+                usuario
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Date
+           </span>
+            </th>
+            <td colspan="3">
+                26-ago-2011 13:56:56
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Brief Description
+           </span>
+            </th>
+            <td colspan="3">
+                EL usuario selecciona un conjunto de artículos, junto con la cantidad de los mismos, para crear el pedido. Cuando se formaliza se comprueba que el usuario sea socio. A continuación se comprueban los datos bancarios, se realiza el cobro y se crea el pedido.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Preconditions
+           </span>
+            </th>
+            <td colspan="3">
+                <p>
+                    Existe un catálogo de productos disponibles para pedir.
+                </p>
+                <p>
+                    El usuario está registrado.
+                </p>
+                <p>
+                    Los datos bancarios son correctos.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Post-conditions
+           </span>
+            </th>
+            <td colspan="3">
+                <p>
+                    Se crea un pedido con los datos del usuario que lo realiza y los artículos solicitados.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th id="FLOW" rowspan="13">
+           <span lang="en">
+            Flow of Events
+           </span>
+            </th>
+            <td headers="FLOW">
+            </td>
+            <th headers="FLOW" id="ACT">
+           <span lang="en">
+            Actor Input
+           </span>
+            </th>
+            <th headers="FLOW" id="SYS">
+           <span lang="en">
+            System Response
+           </span>
+            </th>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_1">
+                1
+            </th>
+            <td headers="ACT FIL_1">
+                Inicia el pedido.
+            </td>
+            <td headers="SYS FIL_1">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_2">
+                2
+            </th>
+            <td headers="ACT FIL_2">
+            </td>
+            <td headers="SYS FIL_2">
+                Se crea un pedido en estado "en construcción".
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_3">
+                3
+            </th>
+            <td headers="ACT FIL_3">
+                Selecciona un artículo.
+            </td>
+            <td headers="SYS FIL_3">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_4">
+                4
+            </th>
+            <td headers="ACT FIL_4">
+                Selecciona una cantidad.
+            </td>
+            <td headers="SYS FIL_4">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_5">
+                5
+            </th>
+            <td headers="ACT FIL_5">
+            </td>
+            <td headers="SYS FIL_5">
+                Recupera la información del artículo para obtener el precio y modifica el precio total del pedido.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_6">
+                6
+            </th>
+            <td headers="ACT FIL_6">
+                El proceso se repite hasta completar la lista de artículos.
+            </td>
+            <td headers="SYS FIL_6">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_7">
+                7
+            </th>
+            <td headers="ACT FIL_7">
+                Se acepta el pedido.
+            </td>
+            <td headers="SYS FIL_7">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_8">
+                8
+            </th>
+            <td headers="ACT FIL_8">
+            </td>
+            <td headers="SYS FIL_8">
+                Se comprueba si el usuario es socio, si no lo es se le muestra un aviso para que se registre en el sitio.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_9">
+                9
+            </th>
+            <td headers="ACT FIL_9">
+            </td>
+            <td headers="SYS FIL_9">
+                Se comprueban los datos bancarios con una entidad externa.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_10">
+                10
+            </th>
+            <td headers="ACT FIL_10">
+            </td>
+            <td headers="SYS FIL_10">
+                Se genera: calcula el total, sumando los gastos de envío.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_11">
+                11
+            </th>
+            <td headers="ACT FIL_11">
+            </td>
+            <td headers="SYS FIL_11">
+                Se realiza el pago a través de la entidad externa.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW" id="FIL_12">
+                12
+            </th>
+            <td headers="ACT FIL_12">
+            </td>
+            <td headers="SYS FIL_12">
+                Se almacena la información del pedido con el estado "pendiente".
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p>
+        Añadimos un par de descripciones alternativas para indicar que hacer cuando el usuario no es socio y cuando los datos bancarios no son correctos:
+    </p>
+    <table class="tabla">
+        <caption>
+            Flujo alternativo para el caso de uso Hacer Pedido cuando el usuario no está registrado.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Author
+           </span>
+            </th>
+            <td colspan="3">
+                usuario
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Date
+           </span>
+            </th>
+            <td colspan="3">
+                26-ago-2011 17:56:35
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Brief Description
+           </span>
+            </th>
+            <td colspan="3">
+                Cuando el usuario hace un pedido si no está registrado se abre la opción de registro para que se dé de alta.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Preconditions
+           </span>
+            </th>
+            <td colspan="3">
+                <p>
+                    El usuario no está registrado.
+                </p>
+                <p>
+                    Existe un catálogo de artículos para hacer pedido.
+                </p>
+                <p>
+                    Los datos bancarios son correctos.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Post-conditions
+           </span>
+            </th>
+            <td colspan="3">
+                <p>
+                    El usuario queda registrado.
+                </p>
+                <p>
+                    Se crea un pedido con los datos del usuario que lo realiza y los artículos solicitados.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th id="FLOW_2" rowspan="15">
+           <span lang="en">
+            Flow of Events
+           </span>
+            </th>
+            <td headers="FLOW_2">
+            </td>
+            <th headers="FLOW_2" id="ACT_2">
+           <span lang="en">
+            Actor Input
+           </span>
+            </th>
+            <th headers="FLOW_2" id="SYS_2">
+           <span lang="en">
+            System Response
+           </span>
+            </th>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_1_a">
+                1
+            </th>
+            <td headers="ACT_2 FIL_1_a">
+                Inicia el pedido.
+            </td>
+            <td headers="SYS_2 FIL_1_a">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_2_a">
+                2
+            </th>
+            <td headers="ACT_2 FIL_2_a">
+            </td>
+            <td headers="SYS_2 FIL_2_a">
+                Se crea un pedido en estado "en construcción".
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_3_a">
+                3
+            </th>
+            <td headers="ACT_2 FIL_3_a">
+                Selecciona un artículo.
+            </td>
+            <td headers="SYS_2 FIL_3_a">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_4_a">
+                4
+            </th>
+            <td headers="ACT_2 FIL_4_a">
+                Selecciona la cantidad.
+            </td>
+            <td headers="SYS_2 FIL_4_a">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_5_a">
+                5
+            </th>
+            <td headers="ACT_2 FIL_5_a">
+            </td>
+            <td headers="SYS_2 FIL_5_a">
+                Recupera la información del artículo para obtener su precio y modifica el precio total a pagar por el pedido.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_6_a">
+                6
+            </th>
+            <td headers="ACT_2 FIL_6_a">
+            </td>
+            <td headers="SYS_2 FIL_6_a">
+                Añade la información al pedido en creación.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_7_a">
+                7
+            </th>
+            <td headers="ACT_2 FIL_7_a">
+                EL proceso se repite hasta completar la lista de artículos del pedido.
+            </td>
+            <td headers="SYS_2 FIL_7_a">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_8_a">
+                8
+            </th>
+            <td headers="ACT_2 FIL_8_a">
+                Acepta el pedido.
+            </td>
+            <td headers="SYS_2 FIL_8_a">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_9_a">
+                9
+            </th>
+            <td headers="ACT_2 FIL_9_a">
+            </td>
+            <td headers="SYS_2 FIL_9_a">
+                Se comprueba si el usuario es socio.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_10_a">
+                10
+            </th>
+            <td headers="ACT_2 FIL_10_a">
+            </td>
+            <td headers="SYS_2 FIL_10_a">
+                Se invoca el registro de usuario.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_11_a">
+                11
+            </th>
+            <td headers="ACT_2 FIL_11_a">
+            </td>
+            <td headers="SYS_2 FIL_11_a">
+                Se comprueban los datos bancarios con una entidad externa.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_12_a">
+                12
+            </th>
+            <td headers="ACT_2 FIL_12_a">
+            </td>
+            <td headers="SYS_2 FIL_12_a">
+                Se genera: calcula el total, sumando los gastos de envío.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_13_a">
+                13
+            </th>
+            <td headers="ACT_2 FIL_13_a">
+            </td>
+            <td headers="SYS_2 FIL_13_a">
+                Se realiza el pago a través de la entidad externa.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_2" id="FIL_14_a">
+                14
+            </th>
+            <td headers="ACT_2 FIL_14_a">
+            </td>
+            <td headers="SYS_2 FIL_14_a">
+                El pedido queda almacenado con el estado "pendiente".
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="tabla">
+        <caption>
+            Flujo alternativo para hacer pedido cuando los datos bancarios no son correctos.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Author
+           </span>
+            </th>
+            <td colspan="3">
+                usuario
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Date
+           </span>
+            </th>
+            <td colspan="3">
+                26-ago-2011 18:14:35
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Brief Description
+           </span>
+            </th>
+            <td colspan="3">
+                Una vez que se han seleccionado los artículos y se han introducido los datos del socio, al hacer la comprobación de los datos bancarios con la entidad externa se produce algún error, se da la posibilidad al usuario de modificar los datos o de cancelar el pedido.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Preconditions
+           </span>
+            </th>
+            <td colspan="3">
+                <p>
+                    Existe un catálogo de productos disponibles para pedir.
+                </p>
+                <p>
+                    El usuario está registrado.
+                </p>
+                <p>
+                    Los datos bancarios no son correctos.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            Post-conditions
+           </span>
+            </th>
+            <td colspan="3">
+                <p>
+                    Se crea un pedido con los datos del usuario que lo realiza y los artículos solicitados.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th id="FLOW_3" rowspan="16">
+           <span lang="en">
+            Flow of Events
+           </span>
+            </th>
+            <td headers="FLOW_3">
+            </td>
+            <th headers="FLOW_3" id="ACT_3">
+           <span lang="en">
+            Actor Input
+           </span>
+            </th>
+            <th headers="FLOW_3" id="SYS_3">
+           <span lang="en">
+            System Response
+           </span>
+            </th>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_1_b">
+                1
+            </th>
+            <td headers="ACT_3 FIL_1_b">
+                Inicia el pedido.
+            </td>
+            <td headers="SYS_3 FIL_1_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_2_b">
+                2
+            </th>
+            <td headers="ACT_3 FIL_2_b">
+            </td>
+            <td headers="SYS_3 FIL_2_b">
+                Se crea un pedido en estado "en construcción".
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_3_b">
+                3
+            </th>
+            <td headers="ACT_3 FIL_3_b">
+                Selecciona un artículo.
+            </td>
+            <td headers="SYS_3 FIL_3_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_4_b">
+                4
+            </th>
+            <td headers="ACT_3 FIL_4_b">
+                Selecciona una cantidad.
+            </td>
+            <td headers="SYS_3 FIL_4_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_5_b">
+                5
+            </th>
+            <td headers="ACT_3 FIL_5_b">
+            </td>
+            <td headers="SYS_3 FIL_5_b">
+                Recupera la información del artículo para obtener el precio y modifica el precio total del pedido.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_6_b">
+                6
+            </th>
+            <td headers="ACT_3 FIL_6_b">
+                El proceso se repite hasta completar la lista de artículos.
+            </td>
+            <td headers="SYS_3 FIL_6_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_7_b">
+                7
+            </th>
+            <td headers="ACT_3 FIL_7_b">
+                Se acepta el pedido.
+            </td>
+            <td headers="SYS_3 FIL_7_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_8_b">
+                8
+            </th>
+            <td headers="ACT_3 FIL_8_b">
+                Acepta el pedido.
+            </td>
+            <td headers="SYS_3 FIL_8_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_9_b">
+                9
+            </th>
+            <td headers="ACT_3 FIL_9_b">
+            </td>
+            <td headers="SYS_3 FIL_9_b">
+                Se comprueban los datos bancarios con una entidad externa, fallando la comprobación.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_10_b">
+                10
+            </th>
+            <td headers="ACT_3 FIL_10_b">
+            </td>
+            <td headers="SYS_3 FIL_10_b">
+                Se solicitan los datos de nuevo.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_11_b">
+                11
+            </th>
+            <td headers="ACT_3 FIL_11_b">
+                Introduce los datos de nuevo.
+            </td>
+            <td headers="SYS_3 FIL_11_b">
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_12_b">
+                12
+            </th>
+            <td headers="ACT_3 FIL_12_b">
+            </td>
+            <td headers="SYS_3 FIL_12_b">
+                Se repite el proceso hasta que se acepten los datos bancarios o se cancele la operación.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_13_b">
+                13
+            </th>
+            <td headers="ACT_3 FIL_13_b">
+            </td>
+            <td headers="SYS_3 FIL_13_b">
+                Se genera: calcula el total, sumando los gastos de envío.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_14_b">
+                14
+            </th>
+            <td headers="ACT_3 FIL_14_b">
+            </td>
+            <td headers="SYS_3 FIL_14_b">
+                Se realiza el pago a través de la entidad externa.
+            </td>
+        </tr>
+        <tr>
+            <th headers="FLOW_3" id="FIL_15_b">
+                15
+            </th>
+            <td headers="ACT_3 FIL_15_b">
+            </td>
+            <td headers="SYS_3 FIL_15_b">
+                Se almacena la información del pedido con el estado "pendiente".
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <p>
+        El resto de casos se uso se documentan de forma similar hasta completar la descripción formal de la funcionalidad del sistema.
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>

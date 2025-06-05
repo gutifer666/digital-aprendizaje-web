@@ -1,0 +1,1776 @@
+<h1 class="title">
+    Desarrollo de software.
+</h1><div class="iDevice_content">
+    <p>
+        En BK Programación todos han vuelto ya de sus vacaciones.
+    </p>
+    <p>
+        Les espera un septiembre agitado, pues acaban de recibir una petición por parte de
+        una cadena hotelera para desarrollar un proyecto
+        <span lang="en">
+           software
+          </span>
+        .
+    </p>
+    <p>
+        Ada, la supervisora de proyectos de BK Programación, se reúne con Juan y María
+        (trabajadores de la empresa) para empezar a planificar el proyecto.
+    </p>
+    <p>
+        Ana, cuya especialidad es el diseño gráfico de páginas web, acaba de terminar el
+        Ciclo de Grado Medio en Sistemas Microinformáticos y Redes y realizó la
+        <abbr title="Formación en Centros de Trabajo">
+            FCT
+        </abbr>
+        en BK Programación.
+        Trabaja en la empresa ayudando en los diseños, y aunque está contenta con su
+        trabajo, le gustaría participar activamente en todas las fases en el proyecto. El
+        problema es que carece de los conocimientos necesarios.
+    </p>
+    <p>
+        Antonio se ha enterado de la posibilidad de estudiar el nuevo Ciclo de Grado
+        Superior de Diseño de Aplicaciones Multiplataforma a distancia, y está dispuesta a
+        hacerlo. (No tendría que dejar el trabajo).
+    </p>
+    <p>
+        Le comenta sus planes a su amigo Antonio (que tiene conocimientos básicos de
+        informática), y éste se une a ella.
+    </p>
+    <p>
+        Después de todo… ¿qué pueden perder?
+    </p>
+    <div style="width: 100%">
+        <div style="width: 50%; float: left">
+            <div class="elemento_centrado">
+            </div>
+        </div>
+        <div style="width: 50%; float: right">
+            <div class="elemento_centrado">
+            </div>
+        </div>
+    </div>
+    <div style="clear: both">
+    </div>
+</div><h1 class="title">
+    1.- Software y programa. Tipos de software.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.- Relación hardware-software.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Después de saber diferenciar los distintos tipos de
+        <span lang="en">
+           software
+          </span>
+        ,
+        a Ana se le plantea otra cuestión: El
+        <span lang="en">
+           software
+          </span>
+        , sea del tipo
+        que sea, se ejecuta sobre los dispositivos físicos del ordenador, ¿pero qué relación
+        hay entre ellos?
+    </p>
+</div><h1 class="title">
+    3.- Desarrollo de software.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.1.- Ciclos de vida del software.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Ya hemos visto que la serie de pasos a seguir para desarrollar un programa es lo que se
+        conoce como Ciclo de Vida del
+        <span lang="en">
+         Software
+        </span>
+        .
+    </p>
+    <p>
+        Cada etapa vendrá explicada con más detalle en el punto de la presente unidad dedicado a las
+        fases del desarrollo y ejecución del
+        <span lang="en">
+         software
+        </span>
+        .
+    </p>
+    <p class="iDevice_destacadofpd">
+        <strong>
+            Siempre se debe aplicar un modelo de ciclo de vida al
+            desarrollo de cualquier proyecto
+            <span lang="en">
+          software
+         </span>
+            .
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Diversos autores han planteado distintos modelos de ciclos de vida, pero los más conocidos y
+        utilizados son los que aparecen a continuación:
+    </p>
+    <ol class="lista_esquema">
+        <li>
+            <strong>
+                Modelo en Cascada
+            </strong>
+            <p>
+                Es el modelo de vida clásico del
+                <span lang="en">
+           software
+          </span>
+                .
+            </p>
+            <p>
+                Es prácticamente imposible que se pueda utilizar, ya que requiere conocer de antemano
+                todos los requisitos del sistema. Sólo es aplicable a pequeños desarrollos, ya que
+                las etapas pasan de una a otra sin retorno posible (se presupone que no habrá
+                errores ni variaciones del
+                <span lang="en">
+           software
+          </span>
+                ).
+                <br>
+                <br>
+                <br/><br/></p>
+        </li>
+        <li>
+            <strong>
+                Modelo en Cascada con Realimentación
+            </strong>
+            <p>
+                Es uno de los modelos más utilizados. Proviene del modelo anterior, pero se introduce
+                una realimentación entre etapas, de forma que podamos volver atrás en cualquier
+                momento para corregir, modificar o depurar algún aspecto. No obstante, si se prevén
+                muchos cambios durante el desarrollo no es el modelo más idóneo.
+            </p>
+            <p>
+                Es el modelo perfecto si el proyecto es rígido (pocos cambios, poco evolutivo) y los
+                requisitos están claros.
+                <br>
+                <br>
+                <br/><br/></p>
+        </li>
+        <li>
+            <strong>
+                Modelos Evolutivos
+            </strong>
+            <p>
+                Son más modernos que los anteriores. Tienen en cuenta la naturaleza cambiante y
+                evolutiva del
+                <span lang="en">
+           software
+          </span>
+                .
+            </p>
+            <p>
+                Distinguimos dos variantes:
+            </p>
+            <ol>
+                <li>
+                    <strong>
+                        Modelo Iterativo Incremental
+                    </strong>
+                    <p>
+                        Está basado en el modelo en cascada con realimentación, donde las fases se
+                        repiten y refinan, y van propagando su mejora a las fases
+                        siguientes.&nbsp;El proyecto se desarrolla en pequeñas porciones
+                        (incremental) en sucesivas iteraciones (sprints), al final de las cuales se
+                        puede ver lo que se ha desarrollado, y antes de comenzar la siguiente
+                        iteración (sprint) se pueden ver los requerimientos que no se conocían o
+                        estaban mal interpretados, o incluso introducir nuevos requerimientos
+                        (adaptativo). Cada&nbsp;sprint&nbsp;debe proporcionar un resultado completo
+                        (un incremento de producto final) preparado para entregárselo al
+                        cliente.
+                        <br>
+                        <br>
+                        <br/><br/></p>
+                </li>
+                <li>
+                    <strong>
+                        Modelo en Espiral
+                    </strong>
+                    <p>
+                        Es una combinación del modelo anterior con el modelo en cascada. En él, el
+                        <span lang="en">
+             software
+            </span>
+                        se va construyendo repetidamente en forma de
+                        versiones que son cada vez mejores, debido a que incrementan la
+                        funcionalidad en cada versión. Es un modelo bastante complejo.
+                    </p>
+                </li>
+            </ol>
+        </li>
+    </ol>
+</div><h1 class="title">
+    3.2.- Herramientas de apoyo al desarrollo del software.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En la práctica, para llevar a cabo varias de las etapas vistas en el punto anterior contamos
+        con herramientas informáticas, cuya finalidad principal es automatizar las tareas y ganar
+        fiabilidad y tiempo.
+    </p>
+    <p>
+        Esto nos va a permitir centrarnos en los requerimientos del sistema y el análisis del mismo,
+        que son las causas principales de los fallos del
+        <span lang="en">
+         software
+        </span>
+        .
+    </p>
+    <p>
+        Las herramientas
+        <strong>
+            <abbr title="Computer Aided Software Engineering. Significa: Ingeniería de Software Asistida por Computadora.">
+                CASE
+            </abbr>
+        </strong>
+        son un conjunto de aplicaciones que se utilizan en
+        el desarrollo de
+        <span lang="en">
+         software
+        </span>
+        con el objetivo de reducir costes y tiempo
+        del proceso, mejorando por tanto la productividad del proceso.
+    </p>
+    <p>
+        ¿En qué fases del proceso nos pueden ayudar? En el diseño del proyecto, en la codificación de
+        nuestro diseño a partir de su apariencia visual, detección de errores…
+    </p>
+    <p>
+        El desarrollo rápido de aplicaciones o
+        <abbr title="Rapid Application Development. Significa: Desarrollo Rápido de Aplicaciones.">
+            <strong>
+                RAD
+            </strong>
+        </abbr>
+        es un proceso de desarrollo de
+        <span lang="en">
+         software
+        </span>
+        que comprende el desarrollo iterativo, la construcción de
+        prototipos y el uso de utilidades CASE. Hoy en día se suele utilizar para referirnos al
+        desarrollo rápido de interfaces gráficas de usuario o entornos de desarrollo integrado
+        completos.
+    </p>
+    <p>
+        La tecnología CASE trata de automatizar las fases del desarrollo de
+        <span lang="en">
+         software
+        </span>
+        para que mejore la calidad del proceso y del resultado final.
+        En concreto, estas herramientas permiten:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Mejorar la planificación del proyecto.
+        </li>
+        <li>
+            Darle agilidad al proceso.
+        </li>
+        <li>
+            Poder reutilizar partes del
+            <span lang="en">
+          software
+         </span>
+            en proyectos futuros.
+        </li>
+        <li>
+            Hacer que las aplicaciones respondan a estándares.
+        </li>
+        <li>
+            Mejorar la tarea del mantenimiento de los programas.
+        </li>
+        <li>
+            Mejorar el proceso de desarrollo, al permitir visualizar las fases de forma gráfica.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <span style="text-decoration: underline;">
+         <strong>
+          CLASIFICACIÓN
+         </strong>
+        </span>
+    </p>
+    <p>
+        Normalmente, las herramientas
+        <abbr title="Computer Aided Software Engineering">
+            CASE
+        </abbr>
+        se clasifican en función de las fases del ciclo de vida del
+        <span lang="en">
+         software
+        </span>
+        en la que ofrecen ayuda:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <abbr title="Upper CASE. Significa CASE al principio.">
+                <strong>
+                    U-CASE
+                </strong>
+            </abbr>
+            : ofrece ayuda en las fases de
+            planificación y análisis de requisitos.
+        </li>
+        <li>
+            <abbr title="Middle CASE. Significa CASE en el medio.">
+                <strong>
+                    M-CASE
+                </strong>
+            </abbr>
+            : ofrece ayuda en análisis y diseño.
+        </li>
+        <li>
+            <abbr title="Lower CASE. Significa CASE al final.">
+                <strong>
+                    L-CASE
+                </strong>
+            </abbr>
+            : ofrece ayuda en la programación del
+            <span lang="en">
+          software
+         </span>
+            , detección de errores del código, depuración de
+            programas y pruebas, y en la generación de la documentación del proyecto.
+        </li>
+    </ul>
+    <p>
+        Por funcionalidad se pueden diferenciar algunas como:
+    </p>
+    <ul>
+        <li>
+            Herramientas de generación semiautomática de código.
+        </li>
+        <li>
+            Editores UML.
+        </li>
+        <li>
+            Herramientas de&nbsp;refactorización&nbsp;de código.
+        </li>
+        <li>
+            Herramientas de mantenimiento como los&nbsp;sistemas de control de versiones·
+        </li>
+    </ul>
+    <p>
+        Ejemplos de herramientas
+        <strong>
+            <abbr title="Computer Aided Software Engineering">
+                CASE
+            </abbr>
+            libres
+        </strong>
+        son:
+        <span lang="en">
+         ArgoUML, Use Case
+								Maker, ObjectBuilder…
+        </span>
+    </p>
+</div><h1 class="title">
+    4.- Lenguajes de programación.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Una de los aspectos del proyecto que más preocupa a Ada es la elección del lenguaje
+        de programación a utilizar.
+    </p>
+    <p>
+        Necesita tener muy claros los requerimientos del cliente para enfocar correctamente
+        la elección, pues según sean éstos, serán unos lenguajes más efectivos que otros.
+    </p>
+</div><h1 class="title">
+    4.1.- Concepto y características.
+</h1><div class="iDevice_content">
+    <p>
+        Ya sabemos que los lenguajes de programación han evolucionado, y siguen haciéndolo, siempre
+        hacia la mayor usabilidad de los mismos (que el mayor número posible de usuarios lo utilicen
+        y exploten).
+    </p>
+    <p class="iDevice_destacadofpd">
+        <strong>
+            La elección del lenguaje de programación para codificar
+            un programa dependerá de las características del problema a resolver.
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <span style="text-decoration: underline;">
+         <strong>
+          CONCEPTO
+         </strong>
+        </span>
+    </p>
+    <p>
+        Un lenguaje de programación es el conjunto de:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Alfabeto
+            </strong>
+            : conjunto de símbolos permitidos.
+        </li>
+        <li>
+            <strong>
+                Sintaxis
+            </strong>
+            : normas de construcción permitidas de los símbolos del
+            lenguaje.
+        </li>
+        <li>
+            <strong>
+                Semántica
+            </strong>
+            : significado de las construcciones para hacer acciones
+            válidas.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <strong>
+         <span style="text-decoration: underline;">
+          CARACTERÍSTICAS
+         </span>
+        </strong>
+    </p>
+    <p>
+        Podemos clasificar los distintos tipos de Lenguajes de Programación en base a distintas
+        características:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Según lo cerca que esté del lenguaje humano
+            </strong>
+            <ul>
+                <li>
+                    Lenguajes de Programación De alto nivel: por su esencia, están más próximos al
+                    razonamiento humano.
+                </li>
+                <li>
+                    Lenguajes de Programación De bajo nivel: están más próximos al funcionamiento
+                    interno de la computadora:
+                    <ul>
+                        <li>
+                            Lenguaje Ensamblador.
+                        </li>
+                        <li>
+                            Lenguaje Máquina.
+                            <br>
+                            <br>
+                            <br/><br/></li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Según la técnica de programación utilizad
+            </strong>
+            a:
+            <ul>
+                <li>
+                    Lenguajes de Programación Estructurados: Usan la técnica de programación
+                    estructurada. Ejemplos: Pascal, C, etc.
+                </li>
+                <li>
+                    Lenguajes de Programación Orientados a Objetos: Usan la técnica de programación
+                    orientada a objetos. Ejemplos:
+                    <abbr title="C plus plus">
+                        C++
+                    </abbr>
+                    ,
+                    <span lang="en">
+            Java, Ada, Delphi
+           </span>
+                    , etc.
+                </li>
+                <li>
+                    Lenguajes de Programación Visuales: Basados en las técnicas anteriores, permiten
+                    programar gráficamente, siendo el código correspondiente generado de forma
+                    automática. Ejemplos:
+                    <span lang="en">
+            Visual Basic.Net, Borland Delphi
+           </span>
+                    ,
+                    etc.
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    4.2.- Lenguajes de programación estructurados.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.3.- Lenguajes de programación orientados a objetos.
+</h1><div class="iDevice_content">
+    <p>
+        Después de comprender que la programación estructurada no es útil cuando los programas se
+        hacen muy largos, es necesaria otra técnica de programación que solucione este
+        inconveniente. Nace así la Programación Orientada a Objetos (en adelante,
+        <abbr title="Programación Orientada a Objetos.">
+            P.O.O.
+        </abbr>
+        ).
+    </p>
+    <p>
+        Los lenguajes de programación orientados a objetos tratan a los programas no como un conjunto
+        ordenado de instrucciones (tal como sucedía en la programación estructurada), sino como un
+        conjunto de objetos que colaboran entre ellos para realizar acciones.
+    </p>
+</div><h1 class="title">
+    5.- Fases en el desarrollo y ejecución del software.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En la reunión de BK acerca del nuevo proyecto Ada, la supervisora, dejó bien claro
+        que lo primero y más importante es tener claro qué queremos que haga el
+        <span lang="en">
+           software
+          </span>
+        y con qué herramientas contamos: lo demás vendría
+        después, ya que si esto no está bien planteado, ese error se propagará a todas las
+        fases del proyecto.
+    </p>
+    <p>
+        — ¿Por dónde empezamos? — pregunta Juan.
+    </p>
+    <p>
+        — ANÁLISIS de REQUISITOS — contesta Ada.
+    </p>
+</div><h1 class="title">
+    5.1.- Análisis.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Esta es la primera fase del proyecto. Una vez finalizada, pasamos a la siguiente (diseño).
+    </p>
+    <p>
+        Es la fase de mayor importancia en el desarrollo del proyecto y todo lo demás dependerá de lo
+        bien detallada que esté. También es la más complicada, ya que no está automatizada y depende
+        en gran medida del analista que la realice.
+    </p>
+    <p class="iDevice_destacadofpd">
+        <span class="destacado_inline">
+         <strong>
+          Es la primera etapa del
+									proyecto, la más complicada y la que más depende de la capacidad del
+									analista.
+         </strong>
+        </span>
+    </p>
+    <p>
+        <br>
+        ¿Qué se hace en esta fase? Se especifican y analizan los requisitos funcionales y no
+        funcionales del sistema.
+        <br/></p>
+    <p>
+        <strong>
+            Requisitos:
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Funcionales
+            </strong>
+            : Qué funciones tendrá que realizar la aplicación. Qué
+            respuesta dará la aplicación ante todas las entradas. Cómo se comportará la aplicación
+            en situaciones inesperadas.
+        </li>
+        <li>
+            <strong>
+                No funcionales
+            </strong>
+            : Tiempos de respuesta del programa, legislación
+            aplicable, tratamiento ante la simultaneidad de peticiones, etc.
+            <br>
+            <br>
+            <br/><br/></li>
+    </ul>
+    <p class="iDevice_destacadofpd">
+        <strong>
+            Lo fundamental es la buena comunicación entre el
+            analista y el cliente para que la aplicación que se va a desarrollar cumpla con sus
+            expectativas.
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        La culminación de esta fase es el
+        <strong>
+            documento
+            <abbr title="Especificación de Requisitos Software.">
+                ERS
+            </abbr>
+        </strong>
+        (Especificación de Requisitos
+        <span lang="en">
+         Software
+        </span>
+        ). En este documento quedan
+        especificados:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La planificación de las reuniones que van a tener lugar.
+        </li>
+        <li>
+            Relación de los objetivos del usuario cliente y del sistema.
+        </li>
+        <li>
+            Relación de los requisitos funcionales y no funcionales del sistema.
+        </li>
+        <li>
+            Relación de objetivos prioritarios y temporización.
+        </li>
+        <li>
+            Reconocimiento de requisitos mal planteados o que conllevan contradicciones, etc.
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.2.- Diseño.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Juan está agobiado por el proyecto. Ya ha mantenido comunicaciones con el cliente y
+        sabe perfectamente qué debe hacer la aplicación. También tiene una lista de las
+        características
+        <span lang="en">
+           hardware
+          </span>
+        de los equipos de su cliente y todos
+        los requisitos. Tiene tanta información que no sabe por dónde empezar.
+    </p>
+    <p>
+        Decide hablar con Ada. Su supervisora, amable como siempre, le sugiere que empiece a
+        dividir el problema en las partes implicadas.
+    </p>
+    <p>
+        —Vale Ada, ¿pero cómo lo divido?
+    </p>
+</div><h1 class="title">
+    5.3.- Codificación. Tipos de código.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En BK, ya tienen el proyecto dividido en partes.
+    </p>
+    <p>
+        Ahora llega una parte clave: codificar los pasos y acciones a seguir para que el
+        ordenador los ejecute. En otras palabras, programar la aplicación. Saben que no será
+        fácil, pero afortunadamente cuentan con herramientas CASE que les van a ser de gran
+        ayuda. A Ana le gustaría participar, pero cuando se habla de "código fuente",
+        "ejecutable", etc., sabe que no tiene ni idea y que no tendrá más remedio que
+        estudiarlo si quiere colaborar en esta fase del proyecto.
+    </p>
+</div><h1 class="title">
+    5.4.- Fases en la obtención de código.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.4.1.- Fuente.
+</h1><div class="iDevice_content">
+    <p>
+        El código fuente es el conjunto de instrucciones que la computadora deberá realizar, escritas
+        por los programadores en algún lenguaje de alto nivel. Este conjunto de instrucciones no es
+        directamente ejecutable por la máquina, sino que deberá ser traducido al lenguaje máquina,
+        que la computadora será capaz de entender y ejecutar.
+    </p>
+    <p>
+        Un aspecto muy importante en esta fase es la elaboración previa de un algoritmo, que lo
+        definimos como un conjunto de pasos a seguir para obtener la solución del problema. El
+        algoritmo lo diseñamos en
+        pseudocódigo
+
+
+        Pseudocódigo
+
+        Expresión
+        de ideas en un lenguaje a medio camino entre el humano y el de
+        programación.
+        y con él, la codificación posterior a algún lenguaje de
+        programación determinado será más rápida y directa.
+    </p>
+    <p>
+        Para obtener el código fuente de una aplicación informática:
+    </p>
+    <ol>
+        <li>
+            Se debe partir de las etapas anteriores de análisis y diseño.
+        </li>
+        <li>
+            Se diseñará un
+            algoritmo
+
+
+            Algoritmo
+
+            Conjunto
+            ordenado de pasos a seguir para la resolución de un problema.
+            que
+            simbolice los pasos a seguir para la resolución del problema.
+        </li>
+        <li>
+            Se elegirá un lenguajes de programación de alto nivel apropiado para las características
+            del
+            <span lang="en">
+          software
+         </span>
+            que se quiere codificar.
+        </li>
+        <li>
+            Se procederá a la codificación del algoritmo antes diseñado.
+        </li>
+    </ol>
+    <p>
+        La culminación de la obtención del código fuente es un documento con la codificación de todos
+        los
+        módulos
+
+
+        Módulo
+
+        Cada parte, con una
+        funcionalidad concreta, en que se divide una aplicación.
+        ,
+        funciones
+
+
+        Función
+
+        Parte de código
+        muy pequeña con una finalidad muy concreta.
+        , bibliotecas y
+        procedimientos
+
+
+        Procedimiento
+
+        Igual
+        que las funciones, pero al ejecutarse no devuelven ningún valor.
+        necesarios para codificar la aplicación. Puesto que, como hemos dicho antes, este código es
+        inteligible por la máquina, habrá que TRADUCIRLO, obteniendo así un código equivalente pero
+        ya traducido a código binario que se llama código objeto. Que no será directamente
+        ejecutable por la computadora si éste ha sido compilado.
+    </p>
+    <p>
+        Un aspecto importante a tener en cuenta es su licencia. Así, en base a ella, podemos
+        distinguir dos tipos de código fuente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Código fuente abierto. Es aquel que está disponible para que cualquier usuario pueda
+            estudiarlo, modificarlo o reutilizarlo.
+        </li>
+        <li>
+            Código fuente cerrado. Es aquel que no tenemos permiso para editarlo.
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.4.2.- Objeto.
+</h1><div class="iDevice_content">
+    <p>
+        El código objeto es un código intermedio. Es el resultado de traducir código fuente a un
+        código equivalente formado por unos y ceros que aún no puede ser ejecutado directamente por
+        la computadora. Es decir, es el código resultante de la compilación del código fuente.
+        Consiste en un
+        bytecode
+
+
+        Bytecode
+
+        Código binario
+        resultante de la traducción de código de alto nivel que aún no puede ser
+        ejecutado.
+        (código binario) que está distribuido en varios archivos, cada
+        uno de los cuales corresponde a cada programa fuente compilado.
+    </p>
+    <p class="iDevice_destacadofpd">
+        <span class="destacado_inline">
+         <strong>
+          Sólo se genera código
+									objeto una vez que el código fuente está libre de errores sintácticos y
+									semánticos.
+         </strong>
+        </span>
+    </p>
+    <p>
+    </p>
+    <p>
+        El proceso de traducción de código fuente a código objeto puede realizarse de dos formas:
+    </p>
+    <ol type="a">
+        <li>
+            <strong>
+                Compilación
+            </strong>
+            : El proceso de traducción se realiza sobre la totalidad del
+            código fuente, en un solo paso. Se crea código objeto que habrá que enlazar. El
+            <span lang="en">
+          software
+         </span>
+            responsable se llama
+            compilador
+
+
+            Compilador
+
+            Software
+            que traduce, de una sola vez, un programa escrito en un lenguaje de programación
+            de alto nivel en su equivalente en lenguaje máqui
+            .
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            <strong>
+                Interpretación
+            </strong>
+            : El proceso de traducción del código fuente se realiza
+            línea a línea y se ejecuta simultáneamente. No existe código objeto intermedio. El
+            <span lang="en">
+          software
+         </span>
+            responsable se llama
+            intérprete
+
+
+            Intérprete
+
+            Software
+            que traduce, instrucción a instrucción, un programa escrito en un lenguaje de
+            alto nivel en su equivalente en lenguaje máquina.
+            . El proceso de
+            traducción es más lento que en el caso de la compilación, pero es recomendable cuando el
+            programador es inexperto, ya que da la detección de errores es más detallada.
+        </li>
+    </ol>
+</div><h1 class="title">
+    5.4.3.- Ejecutable.
+</h1><div class="iDevice_content">
+    <p>
+        El código ejecutable, resultado de enlazar los archivos de código objeto, consta de un único
+        archivo que puede ser directamente ejecutado por la computadora. No necesita ninguna
+        aplicación externa. Este archivo es ejecutado y controlado por el sistema operativo.
+    </p>
+    <p>
+        Para obtener un sólo archivo ejecutable, habrá que enlazar todos los archivos de código
+        objeto, a través de un
+        <span lang="en">
+         software
+        </span>
+        llamado
+        linker
+
+
+        Linker
+
+        Pequeño software
+        encargado de unir archivos para generar un programa ejecutable.
+        (enlazador) y obtener así un único archivo que ya sí es ejecutable directamente por la
+        computadora.
+    </p>
+</div><h1 class="title">
+    5.5.- Máquinas virtuales.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Una máquina virtual es un tipo especial de
+        <span lang="en">
+         software
+        </span>
+        cuya misión es
+        separar el funcionamiento del ordenador de los componentes
+        <span lang="en">
+         hardware
+        </span>
+        instalados. Esta capa de
+        <span lang="en">
+         software
+        </span>
+        desempeña un papel muy importante
+        en el funcionamiento de los lenguajes de programación, tanto compilados como interpretados.
+    </p>
+    <p>
+        Con el uso de máquinas virtuales podremos desarrollar y ejecutar una aplicación sobre
+        cualquier equipo, independientemente de las características concretas de los componentes
+        físicos instalados. Esto garantiza la
+        portabilidad
+
+
+        Portabilidad
+
+        Capacidad
+        de un programa para ser ejecutado en cualquier arquitectura física de un
+        equipo.
+        de las aplicaciones.
+    </p>
+    <p>
+    </p>
+    <p>
+        Las
+        <strong>
+            funciones principales
+        </strong>
+        de una máquina virtual son las siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Conseguir que las aplicaciones sean portables.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Reservar memoria para los objetos que se crean y liberar la memoria no
+            utilizada.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Comunicarse con el sistema donde se instala la aplicación (huésped), para el control de
+            los dispositivos
+            <span lang="en">
+          hardware
+         </span>
+            implicados en los procesos.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Cumplimiento de las normas de seguridad de las aplicaciones.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Características
+        </strong>
+        de las máquinas virtuales:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La máquina virtual aísla la aplicación de los detalles físicos del equipo en cuestión.
+            Cuando el código fuente se compila se obtiene código objeto (
+            <span lang="en">
+          bytecode
+         </span>
+            , código intermedio). Para ejecutarlo en cualquier máquina
+            se requiere tener independencia respecto al
+            <span lang="en">
+          hardware
+         </span>
+            concreto que
+            se vaya a utilizar. La máquina virtual funciona como una capa de
+            <span lang="en">
+          software
+         </span>
+            de bajo nivel y actúa como puente entre el
+            <span lang="en">
+          bytecode
+         </span>
+            de la aplicación y los dispositivos físicos del
+            sistema.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            La máquina virtual verifica todo el
+            <span lang="en">
+          bytecode
+         </span>
+            antes de
+            ejecutarlo.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            La máquina virtual protege direcciones de memoria.
+        </li>
+    </ul>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.5.1.- Frameworks.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Un
+        framework
+
+
+        Framework
+
+        Plataforma,
+        entorno, marco de trabajo del desarrollo rápido de aplicaciones.
+        es una
+        estructura de ayuda al programador, en base a la cual podemos desarrollar proyectos sin
+        partir desde cero. Se trata de una plataforma
+        <span lang="en">
+         software
+        </span>
+        donde están
+        definidos programas soporte, bibliotecas, lenguaje interpretado, etc., que ayuda a
+        desarrollar y unir los diferentes módulos o partes de un proyecto.
+    </p>
+    <p>
+        Con el uso de
+        <span lang="en">
+         framework
+        </span>
+        podemos pasar más tiempo analizando los
+        requerimientos del sistema y las especificaciones técnicas de nuestra aplicación, ya que la
+        tarea laboriosa de los detalles de programación queda resuelta.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Ventajas de utilizar un
+            <span lang="en">
+          framework
+         </span>
+            :
+            <ul>
+                <li>
+                    <strong>
+                        Desarrollo rápido
+                    </strong>
+                    de
+                    <span lang="en">
+            software
+           </span>
+                    .
+                </li>
+                <li>
+                    <strong>
+                        Reutilización
+                    </strong>
+                    de partes de código para otras aplicaciones.
+                </li>
+                <li>
+                    <strong>
+                        Diseño
+                    </strong>
+                    uniforme del
+                    <span lang="en">
+            software
+           </span>
+                    .
+                </li>
+                <li>
+                    <strong>
+                        Portabilidad
+                    </strong>
+                    de aplicaciones de un computador a otro, ya que
+                    los
+                    <span lang="en">
+            bytecodes
+           </span>
+                    que se generan a partir del lenguaje fuente
+                    podrán ser ejecutados sobre cualquier máquina virtual.
+                    <br>
+                    <br>
+                    <br/><br/></li>
+            </ul>
+        </li>
+        <li>
+            Inconvenientes:
+            <ul>
+                <li>
+                    Gran dependencia del código respecto al
+                    <span lang="en">
+            framework
+           </span>
+                    utilizado (sin cambiamos de
+                    <span lang="en">
+            framework
+           </span>
+                    , habrá que
+                    reescribir gran parte de la aplicación).
+                </li>
+                <li>
+                    La instalación e implementación del
+                    <span lang="en">
+            framework
+           </span>
+                    en nuestro
+                    equipo consume bastantes recursos del sistema.
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.5.2.- Entornos de ejecución.
+</h1><div class="iDevice_content">
+    <p>
+        Un entorno de ejecución es un servicio de máquina virtual que sirve como base
+        <span lang="en">
+         software
+        </span>
+        para la ejecución de programas. En ocasiones pertenece al
+        propio sistema operativo, pero también se puede instalar como
+        <span lang="en">
+         software
+        </span>
+        independiente que funcionará por debajo de la aplicación. Es
+        decir, es un conjunto de utilidades que permiten la ejecución de programas.
+    </p>
+    <p class="iDevice_destacadofpd">
+        <strong>
+            Se denomina
+            <span lang="en" title="Tiempo de ejecución.">
+          runtime
+         </span>
+            al tiempo que tarda un programa en ejecutarse en la
+            computadora.
+        </strong>
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Durante la ejecución, los entornos se encargarán de:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Configurar la memoria principal disponible en el sistema.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Enlazar los archivos del programa con las bibliotecas existentes y con los subprogramas
+            creados. Considerando que las bibliotecas son el conjunto de subprogramas que sirven
+            para desarrollar o comunicar componentes
+            <span lang="en">
+          software
+         </span>
+            pero que ya
+            existen previamente y los subprogramas serán aquellos que hemos creado a propósito para
+            el programa.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Depurar los programas: comprobar la existencia (o no existencia) de errores semánticos
+            del lenguaje (los sintácticos ya se detectaron en la compilación).
+            <br>
+            <br>
+            <br>
+            <br/><br/><br/></li>
+    </ul>
+    <p>
+        <strong>
+            Funcionamiento
+        </strong>
+        del entorno de ejecución
+        <strong>
+            :
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El entorno de ejecución está formado por la máquina virtual y los API's (bibliotecas de
+            clases estándar, necesarias para que la aplicación, escrita en algún Lenguaje de
+            Programación, pueda ser ejecutada). Estos dos componentes se suelen distribuir
+            conjuntamente, porque necesitan ser compatibles entre sí.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            El entorno funciona como intermediario entre el lenguaje fuente y el sistema operativo,
+            y consigue ejecutar aplicaciones.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Sin embargo, si lo que queremos es desarrollar nuevas aplicaciones, no es suficiente con
+            el entorno de ejecución.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Adelantándonos a lo que veremos en la próxima unidad, para desarrollar aplicaciones
+            necesitamos algo más. Ese "algo más" se llama entorno de desarrollo.
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.5.3.- Java runtime environment.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        En esta sección se va a explicar el funcionamiento, instalación, configuración y primeros
+        pasos del
+        <span lang="en" title="Entornos de ejecución.">
+         Runtime Environment
+        </span>
+        del
+        lenguaje Java (se hace extensible a los demás lenguajes de programación).
+    </p>
+    <p>
+    </p>
+    <p>
+        <span style="text-decoration: underline;">
+         <strong>
+          Concepto
+         </strong>
+        </span>
+    </p>
+    <p>
+        Se denomina JRE al Java Runtime Environment (entorno en tiempo de ejecución Java).
+    </p>
+    <p>
+        El JRE se compone de un conjunto de utilidades que permitirá la ejecución de programas java
+        sobre cualquier tipo de plataforma.
+    </p>
+    <p>
+    </p>
+    <p>
+        <span style="text-decoration: underline;">
+         <strong>
+          Componentes
+         </strong>
+        </span>
+    </p>
+    <p>
+        <abbr title="Java Runtime Environment.">
+            JRE
+        </abbr>
+        está formado por:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Una máquina virtual Java (JMV o
+            <abbr title="Java Virtual Machine.">
+                JVM
+            </abbr>
+            si consideramos las siglas en inglés), que es el programa
+            que interpreta el código de la aplicación escrito en Java.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Bibliotecas de clase estándar que implementan el API de Java.
+            <br>
+            <br>
+            <br/><br/></li>
+        <li>
+            Las dos: JMV y API de Java son consistentes entre sí, por ello son distribuidas
+            conjuntamente.
+            <br>
+            <br>
+            <br>
+            <br/><br/><br/></li>
+    </ul>
+    <p>
+        Lo primero es descargarnos el programa JRE (Java2 Runtime Environment). Java es
+        <span lang="en">
+         software
+        </span>
+        libre, por lo que podemos descargarnos la aplicación
+        libremente. Una vez descargado, comienza el proceso de instalación, siguiendo los pasos del
+        asistente.
+    </p>
+</div><h1 class="title">
+    5.6.- Pruebas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.7.- Documentación.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.8.- Explotación.
+</h1><div class="iDevice_content">
+    <p>
+        Llega el día de la cita con la cadena hotelera. Ada y Juan se dirigen al hotel donde
+        se va a instalar y configurar la aplicación. Si todo va bien, se irá implementando
+        en los demás hoteles de la cadena.
+    </p>
+    <p>
+        Ada no quiere que se le pase ni un detalle: lleva consigo la guía de uso y la guía de
+        instalación.
+    </p>
+</div><h1 class="title">
+    5.9.- Mantenimiento.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Ada reúne por última vez durante estas semanas a su equipo. Todos celebran que el
+        proyecto se ha implementado con éxito y que sus clientes han quedado satisfechos.
+    </p>
+    <p>
+        —Esto aún no ha terminado —comenta Ada—, nos quedan muchas cosas por hacer. Esta
+        tarde me reúno con los clientes. ¿Cómo vamos a gestionar el mantenimiento de la
+        aplicación?
+    </p>
+</div><h1 class="title">
+    6.- Entornos de desarrollo.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        BK están recibiendo más peticiones de creación de software que nunca.&nbsp;Ana y
+        Antonio piensan que este es un buen momento para participar activamente en los
+        proyectos, pues a sus compañeros no les vendría nada mal un poco de ayuda.
+    </p>
+    <p>
+        Ada confía en ellos, pero aún es pronto. Por lo menos, ya conocen las fases por las
+        que tiene que pasar todo el desarrollo de aplicaciones, pero eso no será suficiente.
+    </p>
+    <p>
+        María, sin embargo, no piensa lo mismo y decide darles una oportunidad trabajando en
+        la fase de codificación de un nuevo proyecto de la empresa.
+    </p>
+    <p>
+        Ana se muestra muy ilusionada y no piensa desperdiciar esta gran oportunidad. Sabe
+        que tiene a su disposición los llamados entornos de desarrollo que le facilitarán su
+        futura tarea.
+    </p>
+    <p>
+          <span style="font-size: 1em;">
+           La fase de codificación es compleja, pero Ana y Antonio
+										están aprendiendo a dominar los llamados entornos integrados de desarrollo de
+										software.
+          </span>
+    </p>
+    <p>
+        Todos en la empresa están sorprendidos del entusiasmo de Ana ante los nuevos
+        proyectos que BK programación tiene por delante. Juan, que acabó el Ciclo Superior
+        de Desarrollo de Aplicaciones Informáticas (
+        <abbr title="Desarrollo de Aplicaciones  Informáticas.">
+            DAI
+        </abbr>
+        ) hace algunos
+        años, se muestra inquieto porque es consciente de que en sólo unos cuatro años han
+        salido muchas herramientas nuevas en el mercado y necesita reciclarse. Escucha a Ana
+        decir que está estudiando los entornos de desarrollo.
+    </p>
+    <p>
+        —Yo también debería ponerme al día —piensa Juan.
+    </p>
+</div><h1 class="title">
+    6.1.- Evolución Histórica.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        En las décadas de utilización de la
+        tarjeta perforada
+
+
+        tarjeta
+        perforadora
+
+        Tarjeta que almacenaba información que era leída por un lector
+        específico.
+        como sistema de almacenamiento el concepto de
+        <strong>
+            Entorno de Desarrollo Integrado
+        </strong>
+        sencillamente no tenía sentido.
+    </p>
+    <p>
+        Los programas estaban escritos con
+        diagramas de flujo
+
+
+        diagramas de
+        flujo
+
+        Gráfico donde se plasma las entradas y salidas de las variables de un
+        programa.
+        y entraban al sistema a través de las
+        <strong>
+            tarjetas
+            perforadas
+        </strong>
+        . Posteriormente, eran compilados.
+    </p>
+    <p>
+        El primer lenguaje de programación que utilizó un IDE fue el
+        <abbr title="Beginner's All-purpose Symbolic Instruction  Code">
+            BASIC
+        </abbr>
+        (que fue
+        el primero en abandonar también las tarjetas perforadas o las cintas de papel).
+    </p>
+    <p>
+        Éste primer IDE estaba basado en consola de comandos exclusivamente (normal por otro lado, si
+        tenemos en cuenta que hasta la década de los 90 no entran en el mercado los sistemas
+        operativos con interfaz gráfica). Sin embargo, el uso que hace de la gestión de archivos,
+        compilación y depuración; es perfectamente compatible con los IDE actuales.
+    </p>
+    <p>
+        A nivel popular, el primer IDE puede considerarse que fue el IDE llamado
+        <strong>
+            Maestro
+        </strong>
+        . Nació a principios de los 70 y fue instalado por unos 22.000
+        programadores en todo el mundo. Lideró este campo durante los años 70 y 80.
+    </p>
+    <p>
+        El uso de los entornos integrados de desarrollo se ratifica y afianza en los 90 y hoy en día
+        contamos con infinidad de IDE, tanto de licencia libre como no.
+    </p>
+    <table class="tabla">
+        <caption>
+            Tipos de entornos de desarrollo más relevantes en la actualidad.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Entorno de desarrollo
+            </th>
+            <th scope="col">
+                Lenguajes que soporta
+            </th>
+            <th scope="col">
+                Tipo de licencia
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+           <span lang="en">
+            NetBeans
+           </span>
+                .
+            </td>
+            <td>
+                C/
+                <abbr title="C orientado a objetos">
+                    C++
+                </abbr>
+                , Java,
+                <span lang="en">
+            JavaScript
+           </span>
+                , PHP,
+                <span lang="en">
+            Python
+           </span>
+                .
+            </td>
+            <td>
+                De uso público.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Eclipse.
+            </td>
+            <td>
+                Ada, C/C++, Java,
+                <span lang="en">
+            JavaScript
+           </span>
+                ,
+                <abbr title="Hypertext Pre-processor ">
+                    PHP
+                </abbr>
+                .
+            </td>
+            <td>
+                De uso público.
+            </td>
+        </tr>
+        <tr>
+            <td>
+           <span lang="en">
+            Microsoft Visual Studio
+           </span>
+                .
+            </td>
+            <td>
+                Basic, C/C++,
+                <abbr title="C sharp">
+                    C#
+                </abbr>
+                .
+            </td>
+            <td>
+                Propietario.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                C++
+                <span lang="en">
+            Builder
+           </span>
+                .
+            </td>
+            <td>
+                C/C++.
+            </td>
+            <td>
+                Propietario.
+            </td>
+        </tr>
+        <tr>
+            <td>
+           <span lang="en">
+            JBuilder
+           </span>
+                .
+            </td>
+            <td>
+                Java.
+            </td>
+            <td>
+                Propietario.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p class="destacado">
+        <strong>
+            No hay unos entornos de desarrollo más importantes que otros. La
+            elección del IDE más adecuado dependerá del lenguaje de programación que vayamos a
+            utilizar para la codificación de las aplicaciones y el tipo de licencia con la que
+            queramos trabajar.
+        </strong>
+    </p>
+</div><h1 class="title">
+    6.2.- Funciones de un entorno de desarrollo.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.3.- Entornos integrados libres y propietarios.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.4.- Estructura de entornos de desarrollo.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    7.- Enlaces de refuerzo y ampliación
+</h1><div class="iDevice_content">
+    <ul class="lista_verificacion">
+        <li>
+           <span style="text-decoration: underline;">
+            <strong>
+             Ciclos de vida clásico,
+												iterativo y ágil
+            </strong>
+           </span>
+            :
+            https://www.itmplatform.com/es/blog/ciclos-de-vida-clasico-iterativo-y-agil/
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+           <span style="text-decoration: underline;">
+            <strong>
+             7 Roles en Software que Debes
+												Tener en Cuenta – y cómo distinguirlos
+            </strong>
+           </span>
+            :
+            https://blog.catenon.com/es/roles-software-atraer/
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+           <span style="text-decoration: underline;">
+            <strong>
+             Roles en el desarrollo de
+												software
+            </strong>
+           </span>
+            :
+            http://profayadira.yolasite.com/resources/Roles_desarrollo_software.pdf
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Sentencias de control de la programación estructurada.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            SENTENCIAS SECUENCIALES
+        </strong>
+    </p>
+    <p>
+        Las sentencias secuenciales son aquellas que se ejecutan una detrás de la otra, según el
+        orden en que hayan sido escritas.
+    </p>
+    <p>
+        <em>
+            Ejemplo en lenguaje C:
+        </em>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>printf (“declaración de variables”);
+</pre>
+            <pre ngNonBindable>int numero_entero;
+</pre>
+            <pre ngNonBindable>espacio=espacio_inicio + veloc*tiempo;
+</pre>
+        </div>
+    </div>
+    <p>
+        <strong>
+            SENTENCIAS SELECTIVAS (CONDICIONALES)
+        </strong>
+    </p>
+    <p>
+        Son aquellas en las que se evalúa una condición. Si el resultado de la condición es verdad
+        es ejecutan una serie de acción o acciones y si es falso se ejecutan otras.
+    </p>
+    <p>
+        <strong>
+            if
+        </strong>
+        → señala la condición que se va a evaluar
+    </p>
+    <p>
+        &lt;strong&gt;then&lt;/strong&gt; → Todas las acciones que se encuentren tras esta palabra
+        reservada se ejecutarán si la condición del
+        <strong>
+            if
+        </strong>
+        es cierta (en C, se omite
+        esta palabra).
+    </p>
+    <p>
+        &lt;strong&gt;else&lt;/strong&gt; → Todas las acciones que se encuentren tras esta otra
+        palabra reservada se ejecutarán si la condición de
+        <strong>
+            if
+        </strong>
+        es falsa.
+    </p>
+    <p>
+        <em>
+            Ejemplo en lenguaje C:
+        </em>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 12.05em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>if (a &gt;= b)
+</pre>
+            <pre ngNonBindable>c= a-b;
+</pre>
+            <pre ngNonBindable>else
+</pre>
+            <pre ngNonBindable>c=a+b;
+</pre>
+        </div>
+    </div>
+    <p>
+        <strong>
+            SENTENCIAS REPETITIVAS (ITERACIONES O BUCLES)
+        </strong>
+    </p>
+    <p>
+        Un bucle iterativo de una serie de acciones harán que éstas se repitan mientras o hasta que
+        una determinada condición sea falsa (o verdadera).
+    </p>
+    <p>
+        <strong>
+            while
+        </strong>
+        → marca el comienzo del bucle y va seguido de la condición de parada
+        del mismo.
+    </p>
+    <p>
+        <strong>
+            do
+        </strong>
+        → a partir de esta palabra reservada, se encontrarán todas las acciones
+        a ejecutar mientras se ejecute el bucle (en C, se omite esta palabra).
+    </p>
+    <p>
+        <strong>
+            done
+        </strong>
+        → marca el fin de las acciones que se van a repetir mientras estemos
+        dentro del bucle (en C, se omite esta palabra).
+    </p>
+    <p>
+        <em>
+            Ejemplo en lenguaje C:
+        </em>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 38.45em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>int num;
+</pre>
+            <pre ngNonBindable>num = 0;
+</pre>
+            <pre ngNonBindable>while (num&lt;=10) &#123; printf("Repetición numero %d
+", num);
+</pre>
+            <pre ngNonBindable>num = num + 1;
+</pre>
+            <pre ngNonBindable>&#125;;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+										uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

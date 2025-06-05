@@ -1,0 +1,1064 @@
+<h1 class="title">
+    Optimización y documentación.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.- Refactorización.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.1.- Concepto.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.2.- Limitaciones.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        se muestra muy interesada por conocer esta técnicas avanzadas de programación, sin embargo
+        <strong>
+            Juan
+        </strong>
+        le pone los pies en el suelo, explicándole que son técnicas con muchas limitaciones y poca documentación en la que basarse.
+    </p>
+</div><h1 class="title">
+    1.3.- Patrones de refactorización más habituales.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.4.- Analizadores de código.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.4.1.- Uso.
+</h1><div class="iDevice_content">
+    <p>
+        Los analizadores de código estático, se suelen integrar en los Entornos de Desarrollo, aunque en algunos casos, hay que instalarlos como
+        plug-in
+
+
+        Plugin
+
+        Complemento en castellano, es una aplicación que se relaciona con otra para aportarle una función nueva y generalmente muy especifica.
+        , tras instalar el
+        <abbr title="Integrated development environment.">
+            IDE
+        </abbr>
+        . En el caso de
+        <span lang="en">
+         Netbeans
+        </span>
+        , vamos a instalar el
+        <span lang="en">
+         plug-in
+        </span>
+        para easyPMD. Para ello lo descargamos de
+        <span lang="en">
+         la página de plugins de Oracle
+        </span>
+        . Se descomprime el
+        <span lang="en">
+         plug-in
+        </span>
+        para
+        <span lang="en">
+         Netbeans
+        </span>
+        y se añade a los complementos de nuestro entorno de desarrollo. Para ello podemos utilizar el siguiente enlace:
+    </p>
+    <p class="enlace_centrado">
+        Descarga de EasyPMD.
+    </p>
+    <div class="elemento_centrado">
+    </div>
+    <p>
+        Como se indicó en el apartado anterior, EasyPMD es un analizador de código estático, capaz de detectar automáticamente un amplio rango de defectos y de inseguridades en el código. EasyPMD se centra en detectar defectos de forma preventiva.
+    </p>
+    <p>
+        Una vez que tenemos desarrollado nuestro código, si queremos analizarlo con EasyPMD, y obtener el informe del análisis, pulsamos el botón derecho del ratón sobre el directorio que contiene los ficheros de código, en la vista de proyectos y elegimos: Herramientas - Ejecutar PMD.
+    </p>
+    <p>
+        Mientras se analiza el código, el
+        <span lang="en">
+         plug-in
+        </span>
+        mostrará una barra de progreso en la esquina inferior derecha. El informe producido contiene la localización, el nombre de la regla que no se cumple y la recomendación de cómo se resuelve el problema.
+    </p>
+    <p>
+        El informe PMD, nos permite navegar por el fichero de clases y en la línea donde se ha detectado el problema. En el número de línea, veremos una marca PMD. Si se posiciona el ratón encima de ella, veremos un
+        <span lang="en">
+         tooltip
+        </span>
+        con la descripción del error.
+    </p>
+</div><h1 class="title">
+    1.4.2.- Configuración.
+</h1><div class="iDevice_content">
+    <p>
+        La configuración de los analizadores de código, nos va a permitir definir nuestras propias reglas, añadiéndolas a las que el analizador nos proporciona por defecto.
+    </p>
+    <p>
+        En el caso del analizador de código easyPMD, lo configuramos accediendo a Herramientas - Opciones - Varios - easyPMD
+    </p>
+    <p>
+        En la pestaña
+        <strong>
+            Rulestet
+        </strong>
+        podemos ver las reglas existentes y añadir nuevas reglas
+        <strong>
+            Add standard,
+        </strong>
+        y personalizar reglas
+        <strong>
+            Add custom.
+        </strong>
+    </p>
+    <p>
+        En la pestaña
+        <strong>
+            Reporting
+        </strong>
+        se pueden establecer que tipos de información visualizar.
+    </p>
+    <p>
+        Si seleccionamos el nombre de una regla, podemos ver una descripción del problema y un ejemplo de aplicación.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si lo que queremos es introducir nuestras propias reglas, hacemos clic sobre
+            <strong>
+          <span lang="en">
+           Manage Rulesets
+          </span>
+                .
+            </strong>
+            Se nos mostrará una nuevo formulario donde podemos importar un fichero
+            XML
+
+
+            XML
+
+            (eXtension Markup Language) Lenguaje de Marcas Extensible, es un conjunto de reglas para codificar documentos en formato que pueda se entendido por el ordenador. El objetivo del diseño de XML es la simplicidad, generalidad y usabilidad sobre Internet. Es ampliamente utilizado para representar documentos, estructuras de datos y servicios web.
+            o
+            JAR
+
+
+            JAR
+
+            Es un tipo de archivo que permite distribuir y ejecutar aplicaciones escritas en lenguaje Java.
+            con reglas.
+        </li>
+    </ul>
+    <p>
+        Para crear ficheros XML con conjuntos de reglas, podemos obtener información en la siguiente página web.
+    </p>
+    <p class="enlace_centrado">
+        Creación de reglas para PMD, en inglés.
+    </p>
+    <div style="width: 100%;">
+        <div style="width: 50%; float: left;">
+            <div class="elemento_centrado">
+                <div>
+                    <div class="elemento_centrado">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="width: 50%; float: right;">
+            <div class="elemento_centrado">
+                <div>
+                    <div class="elemento_centrado">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">
+    </div>
+    <div style="clear: both;">
+        Podéis visitar la página que nos indica la pestaña
+        <strong>
+            about
+        </strong>
+        en Herramientas-opciones-EasyPMD para conocer más acerca de esta utilidad.
+    </div>
+</div><h1 class="title">
+    1.5.- Refactorización y pruebas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.6.- Herramientas de ayuda a  la refactorización.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.- Control de versiones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.1.- Estructura de herramientas de control de versiones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.2.- Repositorio.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.3.- Herramientas de control de versiones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.4.- Planificación de la gestión de configuraciones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.5.- Gestión del  cambio.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.6.- Gestión de versiones y entregas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.7.- Herramientas CASE para la gestión de configuraciones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.8.- Clientes de control de versiones integrados en el entorno de desarrollo.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.- Documentación.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.1.- Uso de comentarios.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.2.- Alternativas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.3.- Documentación de clases.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.4.- Herramientas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.- Enlaces de refuerzo y ampliación.
+</h1><div class="iDevice_content">
+    <p style="text-align: center;">
+        <b>
+            Optimización y documentación en Java con las herramientas de refactorización de NetBeans, control de versiones con GIT y documentación mediante JavaDoc
+        </b>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Sencillo tutorial sobre las opciones de refactorización en Netbeans
+            </strong>
+            :
+            https://jadcode.wordpress.com/2014/06/25/refactorizacion/
+        </li>
+        <li>
+            <strong>
+                Analizadores de código estático "FindBugs and NetBeans Java Hintsen" en NetBeans
+            </strong>
+            :
+            https://netbeans.org/kb/docs/java/code-inspect.html
+        </li>
+        <li>
+            <strong>
+                Tutorial de GIT con NETBEANS con un ejemplo con HTML y CSS
+            </strong>
+            :
+            http://www.jc-mouse.net/php/control-de-versiones-con-git-y-netbeans
+        </li>
+        <li>
+            <strong>
+                Tutorial de GITHUB con NETBEANS con un ejemplo
+            </strong>
+            :
+            http://www.jc-mouse.net/proyectos/guia-basica-trabajando-con-github-y-netbeans
+        </li>
+        <li>
+            <strong>
+                Tutorial generación de documentación con JavaDoc
+            </strong>
+            :
+            http://tutorialesjavase.blogspot.com.es/2015/07/tutorial-05-comentarios-en-el-codigo.html
+
+        </li>
+    </ul>
+    <p style="text-align: center;">
+        <strong>
+            Optimización y documentación en JavaScript con la extensión "rename" en Brackets, control de versiones con GIT y documentación añadiendo la extensión&nbsp;FuncDocr al editor Brackets para comentarios tipo jsDoc
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    Añadir extensión rename en Brackets para refacotrizar código JS:
+                </strong>
+                https://github.com/asgerf/bracket-rename
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    <strong>
+                        Añadir extensión brackets-git para realizar control de versiones con
+                    </strong>
+                    Git en Brackets
+                </strong>
+                :
+                https://github.com/zaggino/brackets-git
+            </p>
+        </li>
+        <li>
+            <strong>
+                Añadir extensión FuncDocr a Brackets para trabajar con comentarios tipo JsDoc para la generacion de documentacion:
+            </strong>
+            https://github.com/Wikunia/brackets-FuncDocr
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Repositorio CVS.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        <strong>
+            Conectar con un repositorio.
+        </strong>
+    </p>
+    <p>
+        Si queremos conectar con un repositorio remoto desde el
+        <abbr title="Integrated development environment.">
+            IDE
+        </abbr>
+        , entonces chequearemos los ficheros e inmediatamente comenzará a trabajar con ellos. Se hace de la siguiente forma:
+    </p>
+    <ol>
+        <li>
+            En el
+            <abbr title="Integrated development environment.">
+                IDE
+            </abbr>
+            <span lang="en">
+          NetBeans
+         </span>
+            elegimos Team -
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            - Checkout. El asistente para extraer el modulo se nos abrirá.
+        </li>
+        <li>
+            En el primer panel del asistente, se introduce la localización del repositorio definido con
+            <p>
+                CVSROOT. El
+                <span lang="en" title="Integrated development environment.">
+           IDE
+          </span>
+                soporta diferentes formatos de CVSROOT, dependiendo de si el repositorio es local o remoto, y del método utilizado para conectarnos a él.
+            </p>
+            <table class="tabla">
+                <caption>
+                    Métodos de conexión a CVSROOT
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        <p>
+                            Método
+                        </p>
+                    </th>
+                    <th scope="col">
+                        <p>
+                            Descripción
+                        </p>
+                    </th>
+                    <th scope="col">
+                        <p>
+                            Ejemplo
+                        </p>
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">
+                        <p>
+                            pserver
+                        </p>
+                    </th>
+                    <td>
+                        <p>
+                            Contraseña de servidor remoto.
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            :pserser:username&#64;hotsname:/repository_path
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <p>
+                            ext
+                        </p>
+                    </th>
+                    <td>
+                        <p>
+                            Acceso usando
+                            <span lang="en">
+               Remote Shell
+              </span>
+                            (
+                            <abbr title="Remote Shell.">
+                                RSH
+                            </abbr>
+                            ) o
+                            <span lang="en">
+               Secure Shell
+              </span>
+                            (
+                            <abbr title="Secure Shell.">
+                                SSH
+                            </abbr>
+                            ).
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            :ext:username&#64;hostname:/repository_path
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <p>
+                            local
+                        </p>
+                    </th>
+                    <td>
+                        <p>
+                            Acceso a un repositorio local.
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            :local:/repository_path
+                        </p>
+                        <p>
+                            (requiere un &lt;acronym lang="en" title="Concurrent Versions System."&gt;CVS&lt;/acronym&gt; externo ejecutable)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">
+                        <p>
+                            fork
+                        </p>
+                    </th>
+                    <td>
+                        <p>
+                            Acceso a un repositorio local usando un protocolo remoto.
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            :fork:/repository_path
+                        </p>
+                        <p>
+                            (requiere un &lt;acronym lang="en" title="Concurrent Versions System."&gt;CVS&lt;/acronym&gt; externo ejecutable)
+                        </p>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            En el panel de Módulos a extraer del asistente, especificamos el módulo que queremos extraer, en el campo
+            <strong>
+                Módulo
+            </strong>
+            . Si no sabemos el nombre del módulo, podemos extraerlo haciendo clic en el botón Examinar. Si lo que queremos es conectar a un repositorio remoto desde el
+            <abbr title="Integrated development environment.">
+                IDE
+            </abbr>
+            , debemos extraer los ficheros e inmediatamente trabajar con ellos, se hace de la siguiente forma:
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            En el campo de texto, ponemos el nombre del Módulo que queremos extraer. Podemos usar el botón
+            <strong>
+                Examinar
+            </strong>
+            , para buscar aquellos módulos disponibles.
+        </li>
+        <li>
+            En el campo
+            <strong>
+                Carpeta local
+            </strong>
+            , pondremos la ruta de nuestro ordenador donde queremos extraer los archivos. Pulsaremos el botón
+            <strong>
+                Terminar
+            </strong>
+            para que el proceso comience.
+        </li>
+    </ol>
+    <p>
+        <strong>
+            Importar archivos hacia un repositorio.
+        </strong>
+    </p>
+    <p>
+        Alternativamente, podemos importar un proyecto en el que estemos trabajando en el
+        <abbr title="Integrated development environment.">
+            IDE
+        </abbr>
+        hacia un repositorio remoto, seguiremos trabajando en el
+        <abbr title="Integrated development environment.">
+            IDE
+        </abbr>
+        después de que haya sido versionado con el repositorio
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        .
+    </p>
+    <p>
+        Para importar un proyecto a un repositorio:
+    </p>
+    <ol>
+        <li>
+            Desde la ventana de proyectos, seleccionamos un proyecto que no este versionado, y elegimos Equipo -
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            - Importar al depósito. Se abrirá el asistente de importación
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            .
+        </li>
+        <li>
+            En el panel Raíz
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            del asistente, se especifica la localización del repositorio definido como CVSROOT. Dependiendo del método usado, necesitaremos utilizar más información, como la contraseña o configuración del
+            <span lang="en">
+          proxy
+         </span>
+            , para conectarnos a un repositorio remoto.
+        </li>
+        <li>
+            En
+            <strong>
+                Carpeta a importar
+            </strong>
+            , se especifica el directorio local donde queremos colocar el repositorio.
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+
+                </div>
+            </div>
+        </li>
+        <li>
+            En el área de texto
+            <strong>
+                Importar mensaje
+            </strong>
+            , pondremos una descripción del proyecto que estamos importando.
+        </li>
+        <li>
+            Se especifica la localización del repositorio donde queremos importar el proyecto, escribiendo la ruta en
+            <strong>
+                Carpeta del depósito
+            </strong>
+            . De forma alternativa, se puede hacer clic en el botón
+            <strong>
+                Examinar
+            </strong>
+            para ir a una localización especifica en el repositorio. Al hacer clic en el botón
+            <strong>
+                Terminar
+            </strong>
+            se inicia la importación. El
+            <abbr title="Integrated development environment.">
+                IDE
+            </abbr>
+            copiara los ficheros del proyecto en el repositorio.
+        </li>
+    </ol>
+</div><h1 class="title">
+    Anexo II.- Clientes de Control de Versiones en Netbeans.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        El entorno de desarrollo integrado
+        <span lang="en">
+         NetBeans
+        </span>
+        8.1., incorpora tres clientes de control de versiones. Estos tres clientes son GIT
+        <span lang="en">
+         Subversion
+        </span>
+        y
+        <span lang="en">
+         Mercurial
+        </span>
+        . Las versiones anteriores incluían CVS, es posible incluir este herramienta instalando el plugin correspondiente que se encuentra entre los plugins disponibles.
+    </p>
+    <p>
+        Cuando estemos desarrollando una aplicación, si queremos gestionar el control de versiones, podemos utilizar cualquiera de los cuatro, aunque nosotros nos vamos a centrar en los más conocidos: CSV,
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        <strong style="font-size: 1em;">
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+        </strong>
+    </p>
+    <p>
+        En el caso del
+        <abbr title="Integrated Development Environment.">
+            IDE
+        </abbr>
+        <span lang="en">
+         NetBeans
+        </span>
+        , es importante su uso para mantener de forma segura, tanto los programas como las pruebas, en un repositorio de código. La configuración de
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        puede suponer unos cinco minutos, que dentro del tiempo de desarrollo de una aplicación, es un tiempo despreciable. Sin embargo, el uso de
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        en
+        <span lang="en">
+         NetBeans
+        </span>
+        , nos va a gestionar las distintas versiones del código que se desarrollen y nos va a evitar pérdidas de datos y de código.
+    </p>
+    <p>
+        Para utilizar
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        , es necesario la instalación de un cliente
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        , sin embargo,
+        <span lang="en">
+         NetBeans
+        </span>
+        nos va a evitar esta instalación, ya que incorpora un cliente
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        en Java.
+    </p>
+    <p>
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        se puede utilizar con
+        <span lang="en">
+         NetBeans
+        </span>
+        de tres formas:
+    </p>
+    <ol>
+        <li>
+            Desde la línea de comando
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            , donde se escribirán los comandos
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            y de esta forma se interactuará con el repositorio.
+        </li>
+        <li>
+            Si
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            está incorporado a
+            <span lang="en">
+          NetBeans
+         </span>
+            , dispondremos de un conjunto de clases Java que imitan los comandos clásicos de
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            .
+        </li>
+        <li>
+            Con fórmulas de línea de comandos
+            <abbr title="Concurrent Versions System.">
+                CVS
+            </abbr>
+            genéricas basadas en plantillas proporcionadas por el usuario, que son pasadas al
+            <span lang="en">
+          shell
+         </span>
+            del sistema operativo.
+        </li>
+    </ol>
+    <p>
+        En los casos anteriores, donde se utilizan plantillas, las plantillas están parametrizadas, con la lógica
+        <span lang="en">
+         NetBeans
+        </span>
+        , que sustituye los operadores
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        por variables. Esto quiere decir, que
+        <span lang="en">
+         NetBeans
+        </span>
+        se va a encargar de decidir el nombre de los ficheros, que datos se importan o exportan del repositorio, sin que el usuario deba conocer toda la lógica interna de
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        . Nos evitamos tener que conocer todos los parámetros y opciones necesarias para realizar las operaciones con
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        .
+    </p>
+    <p>
+        <strong>
+         <span lang="en">
+          SUBVERSION
+         </span>
+        </strong>
+    </p>
+    <p>
+        <strong>
+         <span lang="en">
+          Subversion
+         </span>
+        </strong>
+        <strong>
+        </strong>
+        es un sistema de control de versiones de software libre, que se ha convertido en el sustituto natural de
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        . A diferencia de
+        <abbr title="Concurrent Versions System.">
+            CVS
+        </abbr>
+        , los archivos que se versionan no tienen un número de versión independiente, todo el repositorio tiene un único número de versión que identifica un estado común de todos los archivos del repositorio en un instante determinado.
+    </p>
+    <p>
+        <span lang="en">
+         Subversion
+        </span>
+        puede acceder al repositorio a través de redes. Esto implica que varias personas pueden acceder, modificar y administrar el mismo conjunto de datos, con lo que se va a fomentar la colaboración. Se puede progresar más rápidamente sin un único conducto por el cual deban pasar todas las modificaciones. Y puesto que el trabajo se encuentra bajo el control de versiones, no se compromete la calidad del software que se desarrolla.
+    </p>
+    <p>
+        Recuerda visitar la guía de
+        <span lang="en">
+         Subversion
+        </span>
+        que te sugerimos en la unidad de trabajo.
+    </p>
+    <p>
+        <strong>
+         <span lang="en">
+          MERCURIAL
+         </span>
+        </strong>
+    </p>
+    <p>
+        <strong>
+         <span lang="en">
+          Mercurial
+         </span>
+        </strong>
+        <strong>
+        </strong>
+        es un sistema de control de versiones que utiliza sobre todo la línea de comandos. Todas las operaciones de Mercurial se invocan como opciones dadas a su motor
+        <span title="hg es el nombre del motor, en alusión al símbolo químico del mercurio.">
+         hg
+        </span>
+        . Las principales metas de
+        <span lang="en">
+         Mercurial
+        </span>
+        incluyen un gran rendimiento y escalabilidad, desarrollo completamente distribuido, sin necesidad de un servidor, gestión robusta de archivos de texto y binarios, y capacidades avanzadas de ramificación e integración.
+    </p>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Gnome.org.
+                </p>
+                <p>
+                    Licencia: GNU.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de gnome.org.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright cita.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Netbeans.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>
