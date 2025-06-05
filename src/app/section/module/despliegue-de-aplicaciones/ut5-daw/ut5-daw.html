@@ -1,0 +1,2287 @@
+<h1 class="title">
+    Documentación y control de versiones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.- Documentación de aplicaciones web.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Todos los proyectos
+        <span lang="en">
+           software
+          </span>
+        deben disponer de una documentación consistente, de forma que en cualquier etapa de su ciclo de vida, empezando en su fase de análisis y diseño, pasando por su fase de codificación o
+        implementación
+
+
+        Implementación
+
+        En desarrollo de sistemas informáticos, la implementación es la etapa donde, efectivamente, se programa el sistema. La implementación es la programación de un determinado algoritmo en un lenguaje de programación específico. Por ejemplo, un algoritmo en pseudocódigo se implementa en forma de código
+        en un lenguaje de programación determinado e, incluso, en la fase de explotación, debe haber una documentación robusta con la finalidad de suministrar información relevante acerca del código, funcionalidades de la aplicación o, incluso, limitaciones de la misma, para que la aplicación pueda ser explotada en su total amplitud y para que su mantenimiento resulte cómodo.
+    </p>
+    <p>
+        En
+        <strong>
+            BK programación
+        </strong>
+        , Juan está estudiando diversas herramientas que ayuden a automatizar el proceso de documentación de las aplicaciones, entre las que destaca
+        <strong>
+           <span lang="en">
+            phpDocumentor
+           </span>
+        </strong>
+        y
+        <strong>
+           <span lang="en">
+            JavaDoc
+           </span>
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    2.- PhpDocumentor.
+</h1><div class="iDevice_content">
+    Una de las herramientas que la empresa
+    <strong>
+          <span lang="en">
+           BK programación
+          </span>
+    </strong>
+    ha decidido someter a estudio, con la finalidad de ayudar a documentar el
+    <span lang="en">
+          software
+         </span>
+    desarrollado en
+    <span lang="en">
+          PHP
+         </span>
+    , y así decidir su implantación, es
+    <span lang="en">
+          <strong>
+           phpDocumentor
+          </strong>
+         </span>
+    . Para ello Juan ha empezado a documentarse sobre dicha herramienta.
+</div><h1 class="title">
+    2.1.- Funcionamiento de phpDocumentor.
+</h1><div class="iDevice_content">
+    <p>
+        En
+        <strong>
+         <span lang="en">
+          phpDocumentor
+         </span>
+        </strong>
+        la documentación se distribuye en bloques "
+        <em lang="en">
+            DocBlock
+        </em>
+        ". Estos bloques siempre se colocan justo antes del elemento al que documentan y su formato es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>/**
+</pre>
+            <pre ngNonBindable>* Descripción breve (una línea)
+</pre>
+            <pre ngNonBindable>*
+</pre>
+            <pre ngNonBindable>* Descripción extensa. Todas las líneas que
+</pre>
+            <pre ngNonBindable>* sean necesarias
+</pre>
+            <pre ngNonBindable>* Todas las líneas comienzan con *
+</pre>
+            <pre ngNonBindable>&lt;- Esta línea es ignorada
+</pre>
+            <pre ngNonBindable>*
+</pre>
+            <pre ngNonBindable>* Este DocBlock documenta la función suma()
+</pre>
+            <pre ngNonBindable>*/
+</pre>
+            <pre ngNonBindable>function suma()
+</pre>
+            <pre ngNonBindable>&#123;
+</pre>
+            <pre ngNonBindable>...
+</pre>
+            <pre ngNonBindable>&#125;
+</pre>
+        </div>
+    </div>
+    Los elementos que pueden ser documentados son:
+</div><h1 class="title">
+    2.2.- Instalación de phpDocumentor.
+</h1><div class="iDevice_content">
+    <p>
+        Para  proceder a la instalación de
+        <strong>
+         <span lang="en">
+          phpDocumentor
+         </span>
+        </strong>
+        vamos a partir de una máquina en la que tenemos instalado la distribución
+        <strong>
+         <span lang="en">
+          Debian 6.0.1Squeeze
+         </span>
+        </strong>
+        .
+    </p>
+    <p>
+        Como requisito previo probaremos si
+        <strong>
+         <span lang="en">
+          php
+         </span>
+        </strong>
+        y
+        <strong>
+         <span lang="en">
+          apache
+         </span>
+        </strong>
+        están funcionando correctamente; lo podemos establecer con las siguientes pruebas:
+    </p>
+    <ol>
+        <li>
+            Para probar si
+            <span lang="en">
+          Apache
+         </span>
+            sirve peticiones, abrimos un navegador e introducimos la siguiente URL
+            <strong>
+                http://localhost
+            </strong>
+            y debería aparecer una página con el mensaje "
+            <span lang="en">
+          It works!
+         </span>
+            "
+        </li>
+        <li>
+            Probar que funciona
+            <span lang="en">
+          PHP
+         </span>
+            , lo podemos hacer del siguiente modo, ejecutamos desde línea de comandos: echo "" | php y deberíamos ver como resultado "10"
+        </li>
+        <li>
+            Probar que Apache ejecuta código
+            <span lang="en">
+          PHP
+         </span>
+            , para ello en la carpeta donde
+            <span lang="en">
+          Apache
+         </span>
+            busca las páginas
+            <span lang="en">
+          web
+         </span>
+            , es decir en donde se encuentra la página
+            <span lang="en">
+          index.html
+         </span>
+            (la encargada de mostrar el mensaje "
+            <span lang="en">
+          It works
+         </span>
+            "), en nuestro caso la carpeta
+            <em>
+                /var/www
+            </em>
+            , creamos un archivo al que vamos a llamar "
+            <em>
+          <span lang="en">
+           phpinfo
+          </span>
+                .php
+            </em>
+            " con el siguiente contenido :
+            <div class="codigo elemento_centrado" style="width: 11.5em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>&lt;?php
+</pre>
+                    <pre ngNonBindable>phpinfo();
+</pre>
+                    <pre ngNonBindable>?&gt;
+</pre>
+                </div>
+            </div>
+            <p>
+                posteriormente tecleamos en el navegador la siguiente
+                <span lang="en">
+           URL
+          </span>
+                <strong>
+                    http://localhost/phpinfo.php
+                </strong>
+                y deberíamos encontrar información similar a la de la imagen, en donde vemos parte de las características de
+                <span lang="en">
+           Apache
+          </span>
+                y
+                <span lang="en">
+           PHP
+          </span>
+                de nuestro equipo.
+            </p>
+            <div class="elemento_derecha">
+
+            </div>
+            <p>
+            </p>
+        </li>
+    </ol>
+    <p>
+        Una vez que probamos que las pruebas anteriores han confirmado el correcto funcionamiento de
+        <span lang="en">
+         Apache
+        </span>
+        y
+        <span lang="en">
+         PHP
+        </span>
+        , comenzamos la instalación de
+        <strong>
+         <span lang="en">
+          phpDocumentor
+         </span>
+        </strong>
+        . Lo primero será instalar el paquete &lt;span lang="en"&gt;php-pear&lt;/span&gt;, que es un entorno de desarrollo y sistema de distribución para componentes de código
+        <span lang="en">
+         PHP
+        </span>
+        . Para instalarlo podemos hacerlo mediante el gestor de paquetes apt:
+    </p>
+    #apt-get install php-pear
+    <p>
+        Por defecto
+        <span lang="en">
+         Apache
+        </span>
+        busca en el directorio
+        <em>
+            /var/www
+        </em>
+        para el contenido
+        <span lang="en">
+         web
+        </span>
+        , con lo cual antes de la instalación de
+        <span lang="en">
+         phpDocumentor
+        </span>
+        deberíamos decirle a pear que es aquí donde queremos que
+        <span lang="en">
+         phpDocumentor
+        </span>
+        debe trabajar, se puede configurar este u otro directorio, siempre y cuando sea accesible por el servidor
+        <span lang="en">
+         web
+        </span>
+        :
+    </p>
+    #pear config-set data_dir /var/www
+    <p>
+        ahora podemos instalar
+        <span lang="en">
+         phpDocumentor
+        </span>
+        y también sus dependencias:
+    </p>
+    #pear install --alldeps PhpDocumentor
+    <p>
+        o también directamente podemos descargar el paquete mediante:
+    </p>
+    #wget sourceforge.net/projects/phpdocu/files/PhpDoc/phpDocumentor-1.4.3/PhpDocumentor-1.4.3.tgz
+    y luego descomprimirlo.
+    <p>
+        Una vez terminado el proceso de instalación necesitamos crear un directorio de salida para
+        <span lang="en">
+         phpDocumentor
+        </span>
+        , y cambiar el propietario de dicho directorio a www-data, de forma que pueda trabajar en esta carpeta sin ninguna limitación; por ejemplo podemos realizar lo siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 22.5em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#mkdir /var/www/docs
+</pre>
+            <pre ngNonBindable>#chown www-data /var/www/docs/
+</pre>
+        </div>
+    </div>
+    <p>
+        Si desde un navegador tecleamos
+        <strong>
+            http://localhost/PhpDocumentor/
+        </strong>
+        deberíamos comprobar que la instalación ha sido correcta y tenemos
+        <span lang="en">
+         phpDocumentor
+        </span>
+        listo para funcionar.
+    </p>
+</div><h1 class="title">
+    2.3.- Configuración de phpDocumentor.
+</h1><div class="iDevice_content">
+    <p>
+        Una vez hemos instalado
+        <strong>
+         <span lang="en">
+          phpDocumentor
+         </span>
+        </strong>
+        se puede trabajar con él de dos modos para generar automáticamente la documentación de nuestros proyectos
+        <span lang="en">
+         PHP
+        </span>
+        ; se puede trabajar desde línea de comandos,  mediante:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 90.7em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#phpdoc -o [formato_de_la_documentacion_generada] -d [carpeta_donde_estan_los_proyectos_php] -t [carpeta_donde_se_almacenan_los_archivos_de_documentacion]
+</pre>
+        </div>
+    </div>
+    <p>
+        por ejemplo:
+    </p>
+    <p>
+        #phpdoc -o HTML:frames:phpedit -d /var/www/ -t /var/www/docs/ en este caso estamos indicando que se genere la documentación en formato
+        <span lang="en">
+         HTML
+        </span>
+        (también es posible en formato
+        <span lang="en">
+         PDF
+        </span>
+        ,
+        <abbr title="Compiled Help Module.">
+            CHM
+        </abbr>
+        ) de los proyectos de la carpeta
+        <em>
+            /var/www
+        </em>
+        y se almacene dicha documentación en la carpeta
+        <em>
+            /var/www/docs/
+        </em>
+        ; aunque existen un gran número de parámetros para adaptar el formato de la documentación que
+        <strong>
+         <span lang="en">
+          phpdoc
+         </span>
+        </strong>
+        genere al formato que más nos interese, para ello podemos obtener información ejecutando:
+    </p>
+    #phpdoc -h
+    <p>
+        Por otra parte también es posible trabajar desde el entorno
+        <span lang="en">
+         web
+        </span>
+        que
+        <strong>
+         <span lang="en">
+          phpDocumentor
+         </span>
+        </strong>
+        ofrece; para lo que es recomendable establecer la configuración necesaria de donde
+        <span lang="en">
+         phpDocumentor
+        </span>
+        debe recoger los proyectos y a donde enviar la documentación generada; para ello podemos establecer la configuración del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <div class="elemento_derecha">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+            <p>
+                En la ruta donde hemos instalado
+                <span lang="en">
+           phpDocumentor
+          </span>
+                accedemos a la ruta:
+                <em>
+                    PhpDocumentor/user
+                </em>
+                y duplicamos el archivo default.ini poniéndole un nombre distinto; por ejemplo: "
+                <em>
+                    mi_proyecto.ini
+                </em>
+                ".
+            </p>
+        </li>
+        <li>
+            <p>
+                Editamos el archivo que acabamos de crear y modificamos lo siguiente:
+            </p>
+            <ul>
+                <li>
+                    Para establecer la ruta donde guardar la documentación generada cambiamos la línea con el contenido: target = /you-MUST/change-me/to-fit/your-environment estableciendo la ruta que nos interese, por ejemplo: target = /var/www/Documentacion_de_mi_proyecto.
+                </li>
+                <li>
+                    Para establecer la ruta donde se encuentran los archivos del proyecto cambiamos la línea con el contenido: directory = /you-MUST/also-change-me/to-fit/your-environment estableciendo la ruta que nos interese, por ejemplo: directory = /var/www/proyectos y guardamos los cambios realizados.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Ya para crear la documentación de nuestros proyectos entraremos en la aplicación de
+            <span lang="en">
+          PhpDocumentor
+         </span>
+            desde el navegador tecleando
+            <strong>
+                http://localhost/PhpDocumentor/
+            </strong>
+            y en el Menú elegimos la opción
+            <span lang="en">
+          Config
+         </span>
+            , a continuación, en la lista debemos elegir la configuración y seleccionar "
+            <em>
+                mi_proyecto.ini
+            </em>
+            ", para luego presionar
+            <strong>
+                Go
+            </strong>
+            , en esos momentos comenzará a crearse la documentación en el directorio elegido.
+        </li>
+    </ul>
+    <p>
+        Para acceder a la documentación generada deberíamos seleccionar el documento "
+        <em>
+            index.html
+        </em>
+        " de la carpeta donde se almacenan los documentos generados y veríamos la página principal de la documentación.
+    </p>
+    <p>
+        <strong>
+         <span lang="en">
+          PhpDocumentor
+         </span>
+        </strong>
+        puede crear su propia documentación. Los ficheros fuente de esta documentación están en una subcarpeta "
+        <em>
+         <span lang="en">
+          tutorials
+         </span>
+        </em>
+        ". Sin embargo, se debe especificar el directorio raíz de
+        <span lang="en">
+         phpDocumentor
+        </span>
+        como directorio de entrada a
+        <span lang="en">
+         phpdoc
+        </span>
+        para que se compilen estos tutoriales (
+        <span lang="en">
+         phpDocumentor
+        </span>
+        no procesa documentación en "
+        <em lang="en">
+            tutorials
+        </em>
+        " que no esté vinculada a algún código fuente, es decir, no es posible compilar sólo tutoriales). En este caso como proyecto se debe especificar "
+        <em>
+         <span lang="en">
+          phpDocumentor
+         </span>
+        </em>
+        " .
+    </p>
+</div><h1 class="title">
+    3.- JavaDoc.
+</h1><div class="iDevice_content">
+    De igual forma que en
+    <strong>
+          <span lang="en">
+           BK
+          </span>
+        <span lang="en">
+           programación
+          </span>
+    </strong>
+    se ha decidido someter a estudio la aplicación
+    <strong>
+          <span lang="en">
+           phpDocumentor
+          </span>
+    </strong>
+    para así poder decidir su implantación, lo mismo ha ocurrido con
+    <strong>
+          <span lang="en">
+           JavaDoc
+          </span>
+    </strong>
+    . De esta manera se está investigando el funcionamiento, configuración, limitaciones, etc. de
+    <span lang="en">
+          JavaDoc
+         </span>
+    , que nos permitirá desarrollar documentación de forma automatizada de los programas Java que en la empresa se desarrollen.
+</div><h1 class="title">
+    3.1.- Instalación de Javadoc.
+</h1><div class="iDevice_content">
+    <p>
+        Para  proceder a la instalación de
+        <strong>
+         <span lang="en">
+          Javadoc
+         </span>
+        </strong>
+        vamos a partir de una máquina en la que tenemos instalado la distribución
+        <span lang="en">
+         <strong>
+          <span lang="en">
+           Debian 6.0.1Squeeze
+          </span>
+         </strong>
+        </span>
+        , igual que hemos hecho en el caso del
+        <span lang="en">
+         phpDocumentor
+        </span>
+        .
+    </p>
+    <p>
+        Previamente a la instalación de
+        <strong>
+         <span lang="en">
+          Javadoc
+         </span>
+        </strong>
+        , tendremos en cuenta que estamos realizando la programación
+        <span lang="en">
+         Java
+        </span>
+        desde una herramienta
+        <span lang="en">
+         IDE
+        </span>
+        como puede ser
+        <strong>
+         <span lang="en">
+          Eclipse
+         </span>
+        </strong>
+        o
+        <strong>
+         <span lang="en">
+          NetBeans
+         </span>
+        </strong>
+        ; sin duda son los dos entornos de desarrollo integrados que más han crecido en los últimos tiempos. Su comunidad de desarrolladores sirve como pilar para su crecimiento y evolución constante. El avance de las nuevas tecnologías, nuevos lenguajes y metodologías en el desarrollo del software hacen que lo nuevo quede viejo en poco tiempo. Esto presiona a los programadores a trabajar de manera más intensa agregando nuevas funcionalidades y perfeccionando sus productos en una competencia por ser el mejor
+        <span lang="en">
+         IDE
+        </span>
+        .
+    </p>
+    <p>
+        Para realizar la instalación de
+        <strong>
+         <span lang="en">
+          Eclipse
+         </span>
+        </strong>
+        únicamente ejecutamos desde un terminal:
+    </p>
+    # apt-get install eclipse
+    <p>
+        En el caso de querer realizar la instalación de
+        <strong>
+         <span lang="en">
+          NetBeans
+         </span>
+            ,
+        </strong>
+        accedemos a la página de
+        <span lang="en">
+         NetBeans
+        </span>
+        para realizar la descarga, previamente debemos seleccionar idioma del
+        <span lang="en">
+         IDE
+        </span>
+        y plataforma, en este caso español y
+        <span lang="en">
+         Linux
+        </span>
+        (x86/x64) respectivamente:
+    </p>
+    <p class="enlace_centrado">
+        NetBeans.
+    </p>
+    <p>
+        Una vez descargado el paquete procedemos del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Creamos una carpeta para la instalación, tal como /usr/
+            <span lang="en">
+          NetBeans69
+         </span>
+            , para ello:
+            <div class="codigo elemento_centrado" style="width: 18.65em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># mkdir /usr/NetBeans69
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Damos permisos de propietario al usuario:
+            <div class="elemento_derecha">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+            <div class="codigo elemento_centrado" style="width: 24.15em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># chown -R alumno /usr/NetBeans69
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Copiamos el archivo bajado (
+            <span lang="en">
+          NetBeans
+         </span>
+            -6.9-ml-
+            <span lang="en">
+          linux
+         </span>
+            .sh ) a la carpeta creada:
+        </li>
+        <li>
+            Asignamos permisos de ejecución:
+            <div class="codigo elemento_centrado" style="width: 50.55em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># chmod a+x /usr/NetBeans69/&lt;span lang="en"&gt;NetBeans&lt;/span&gt;-6.9-ml-linux.sh
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Instalamos el binario:
+            <div class="codigo elemento_centrado" style="width: 22.5em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># sh NetBeans-6.9-ml-linux.sh
+</pre>
+                </div>
+            </div>
+            y una vez aceptada la licencia aparece un "
+            <span lang="en">
+          wizard
+         </span>
+            " donde vamos seleccionando la configuración de nuestra instalación.
+        </li>
+    </ul>
+    <p>
+        Tanto
+        <span lang="en">
+         Eclipse
+        </span>
+        como
+        <span lang="en">
+         NetBeans
+        </span>
+        disponen entre sus opciones la de generar
+        <span lang="en">
+         javadoc
+        </span>
+        y mediante diversas ventanas que ofrecen se pueden seleccionar las opciones para
+        <strong>
+         <span lang="en">
+          javadoc
+         </span>
+        </strong>
+        . Pero no sólo eso, sino también ofrecen el completado de código
+        <span lang="en">
+         javadoc
+        </span>
+        .
+    </p>
+    <p>
+        Por ejemplo, en el caso de
+        <span lang="en">
+         Eclipse
+        </span>
+        , si disponemos del siguiente código (típico ejemplo "
+        <em>
+            hola mundo
+        </em>
+        "):
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.75em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>public class holamundo &#123;
+</pre>
+            <pre ngNonBindable>     /**
+</pre>
+            <pre ngNonBindable>      * &#64;param args
+</pre>
+            <pre ngNonBindable>      */
+</pre>
+            <pre ngNonBindable>     public static void main(String[] args) &#123;
+</pre>
+            <pre ngNonBindable>          // TODO Auto-generated method stub
+</pre>
+            <pre ngNonBindable>          System.out.println("Hola mundo!");
+</pre>
+            <pre ngNonBindable>     &#125;
+</pre>
+            <pre ngNonBindable>&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+        ahora si accedemos a la opción de menú "
+        <span lang="en">
+         Project
+        </span>
+        " observamos una opción en la que podemos seleccionar "
+        <span lang="en">
+         Generate Javadoc
+        </span>
+        ..." donde nos permite seleccionar el proyecto del que generar la documentación y también la ruta de la carpeta donde generarla; una vez establecidos dichos parámetros se genera la documentación, que podremos consultar accediendo desde un navegador a los documentos
+        <span lang="en">
+         html
+        </span>
+        generados; existe un "
+        <em>
+            index.html
+        </em>
+        " desde el que podremos iniciar la navegación e ir accediendo a la documentación generada.
+    </p>
+    <p>
+        La mayor parte de los entornos de desarrollo incluyen un botón para llamar a
+        <strong>
+         <span lang="en">
+          javadoc
+         </span>
+        </strong>
+        así como opciones de configuración; no obstante, siempre se puede ir al directorio donde se instaló el
+        <abbr title="Java Development Kit.">
+            JDK
+        </abbr>
+        y ejecutar javadoc directamente sobre el código fuente
+        <span lang="en">
+         Java
+        </span>
+        .
+        # javadoc ejemplo.java
+    </p>
+</div><h1 class="title">
+    3.2.- Documentando con JavaDoc.
+</h1><div class="iDevice_content">
+    <p>
+        Los comentarios
+        <strong>
+         <span lang="en">
+          JavaDoc
+         </span>
+        </strong>
+        están destinados a describir, principalmente, clases y métodos. Como están pensados para que otro programador los lea y utilice la clase (o método) correspondiente, se decidió fijar, al menos parcialmente, un formato común, de forma que los comentarios escritos por un programador resultaran legibles por otro. Para ello los comentarios
+        <span lang="en">
+         JavaDoc
+        </span>
+        deben incluir unos indicadores especiales, que comienzan siempre por '&#64;' y se suelen colocar al comienzo de línea. Veamos cómo se introducen los comentarios para Javadoc en la siguiente clase de ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 33.5em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>     /**
+</pre>
+            <pre ngNonBindable>      * Una clase para empezar a programar en Java
+</pre>
+            <pre ngNonBindable>      * el típico ejemplo de HolaMundo
+</pre>
+            <pre ngNonBindable>      * &#64;version 1.2.0, 24/07/11
+</pre>
+            <pre ngNonBindable>      * &#64;author Paco Programador Java
+</pre>
+            <pre ngNonBindable>      */
+</pre>
+            <pre ngNonBindable>public class holamundo &#123;
+</pre>
+            <pre ngNonBindable>   /**
+</pre>
+            <pre ngNonBindable>   * Muestra el mensaje de Hola Mundo
+</pre>
+            <pre ngNonBindable>   */
+</pre>
+            <pre ngNonBindable>     public static void main(String[] args) &#123;
+</pre>
+            <pre ngNonBindable>          // TODO Auto-generated method stub
+</pre>
+            <pre ngNonBindable>          System.out.println("Hola mundo!");
+</pre>
+            <pre ngNonBindable>     &#125;
+</pre>
+            <pre ngNonBindable>&#125;
+</pre>
+        </div>
+    </div>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Como se ve, y esto es usual en
+        <strong>
+         <span lang="en">
+          JavaDoc
+         </span>
+        </strong>
+        , la descripción de la clase o del método no va precedida de ningún indicador. Se usan indicadores para el número de versión (&#64;version), el autor (&#64;author) y otros. Es importante observar que los indicadores no son obligatorios; por ejemplo, en un método sin parámetros no se incluye obviamente el indicador &#64;param. También puede darse que un comentario incluya un indicador más de una vez, por ejemplo varios indicadores &#64;param porque el método tiene varios parámetros. Resumiendo, los  indicadores más usuales:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            &#64;author nombreDelAutor descripción.
+            <p>
+                Indica quién escribió el código al que se refiere el comentario. Si son varias personas se escriben los nombres separados por comas o se repite el indicador, según se prefiera. Es normal incluir este indicador en el comentario de la clase y no repetirlo para cada método, a no ser que algún método haya sido escrito por otra persona.
+            </p>
+        </li>
+        <li>
+            &#64;version númeroVersión descripción.
+            <p>
+                Si se quiere indicar la versión. Normalmente se usa para clases, pero en ocasiones también para métodos.
+            </p>
+        </li>
+        <li>
+            &#64;param nombreParámetro descripción.
+            <p>
+                Para describir un parámetro de un método.
+            </p>
+        </li>
+        <li>
+            &#64;return descripción.
+            <p>
+                Describe el valor de salida de un método.
+            </p>
+        </li>
+        <li>
+            &#64;see nombre descripción.
+            <p>
+                Cuando el trozo de código comentado se encuentra relacionada con otra clase o método, cuyo     	nombre se indica en nombre.
+            </p>
+        </li>
+        <li>
+            &#64;throws nombreClaseExcepción descripción.
+            <p>
+                Cuando un método puede lanzar una excepción ("romperse" si se da alguna circunstancia) se    	indica así.
+            </p>
+        </li>
+        <li>
+            &#64;deprecated descripción.
+            <p>
+                Indica que el método (es más raro encontrarlos para una clase) ya no se usa y se ha sustituido  	por otro.
+            </p>
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.3.- Creación y uso de plantillas de código.
+</h1><div class="iDevice_content">
+    <p>
+        Si se usan ciertas convenciones en el código fuente
+        <span lang="en">
+         Java
+        </span>
+        (como comenzar un comentario con /** y terminarlo con */),
+        <strong>
+         <span lang="en">
+          javadoc
+         </span>
+        </strong>
+        puede fácilmente generar páginas
+        <span lang="en">
+         HTML
+        </span>
+        con el contenido de esos comentarios, que pueden visualizarse en cualquier navegador. La documentación del
+        <span lang="en">
+         API
+        </span>
+        de
+        <span lang="en">
+         Java
+        </span>
+        ha sido creada de este modo. Esto hace que el trabajo de documentar el código de nuevas clases
+        <span lang="en">
+         Java
+        </span>
+        sea trivial.
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Las plantillas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Son sugerencias de código asociadas a palabras clave.
+        </li>
+        <li>
+            Se hallan definidas en
+            <span lang="en">
+          Preferences
+         </span>
+            &gt;
+            <span lang="en">
+          Java
+         </span>
+            &gt;
+            <span lang="en">
+          Editor
+         </span>
+            &gt;
+            <span lang="en">
+          Templates
+         </span>
+            .
+        </li>
+        <li>
+            Es aconsejable examinar todas, ya que pueden ahorrar mucho trabajo.
+        </li>
+        <li>
+            Muchas de ellas utilizan nombres similares a las construcciones Java que encapsulan (&lt;span lang="en"&gt;try&lt;/span&gt;, &lt;span lang="en"&gt;for&lt;/span&gt;, &lt;span lang="en"&gt;while&lt;/span&gt;, &lt;span lang="en"&gt;if&lt;/span&gt;,...).
+        </li>
+        <li>
+            Podemos definir y crear nuestras propias plantillas.
+        </li>
+        <li>
+            Además existen plantillas
+            <span lang="en">
+          Javadoc
+         </span>
+            predefinidas.
+        </li>
+    </ul>
+    <p>
+        Una plantilla se compone de:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            un nombre,
+        </li>
+        <li>
+            una descripción,
+        </li>
+        <li>
+            un contexto en función del lenguaje (en
+            <span lang="en">
+          java
+         </span>
+            , si estamos en el código, en el
+            <span lang="en">
+          javadoc
+         </span>
+            ,...) y
+        </li>
+        <li>
+            un
+            <span lang="en">
+          pattern
+         </span>
+            , que es el código de la plantilla. Dentro del código de la plantilla podemos usar texto fijo o una serie de variables predefinidas, por ejemplo:
+            <ul>
+                <li>
+                    $&#123;cursor&#125;: posición en la que se establecerá el cursor de texto tras desplegar el código de la plantilla.
+                </li>
+                <li>
+                    $&#123;enclosing_type&#125;: tipo de la clase en la que nos encontramos.
+                </li>
+                <li>
+                    $&#123;enclosing_method&#125;: nombre del método en el que nos encontramos.
+                </li>
+                <li>
+                    $&#123;year&#125;: año en curso.
+                </li>
+                <li>
+                    $&#123;time&#125;: hora en curso.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Estas plantillas se mostrarán como sugerencias en el código tras comenzar a escribir su nombre y pulsar
+        <abbr title="Control.">
+            CTRL
+        </abbr>
+        + espacio.
+        Lo más interesante es que nosotros podemos crearnos nuestras propias plantillas, además de modificar las existentes. Para ello no tenemos más que añadir una nueva desde la opción de "
+        <span lang="en">
+         Templates
+        </span>
+        ", asignarle un nombre, descripción y elegir el código que queremos que se muestre al seleccionar la misma.
+    </p>
+</div><h1 class="title">
+    4.- Sistemas de control de versiones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.1.- Conceptos básicos de sistemas de control de versiones.
+</h1><div class="iDevice_content">
+    <p>
+        Existen una serie de conceptos necesarios para comprender el funcionamiento de los sistemas de control de versiones, entre los cuales destacamos los siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Revisión
+            </strong>
+            : Es una visión estática en el tiempo del estado de un grupo de archivos y directorios. Posee una etiqueta que la identifica. Suele tener asociado
+            metadatos
+
+
+            Metadato
+
+            No existe una definición única. Según la definición más difundida de metadatos es que son "datos sobre datos". También hay muchas declaraciones como "informaciones sobre datos".
+            como pueden ser:
+            <ul>
+                <li>
+                    Identidad de quién hizo las modificaciones.
+                </li>
+                <li>
+                    Fecha y hora en la cual se almacenaron los cambios.
+                </li>
+                <li>
+                    Razón para los cambios.
+                </li>
+                <li>
+                    De qué revisión y/o rama se deriva la revisión.
+                </li>
+                <li>
+                    Palabras o términos clave asociados a la revisión.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Copia de trabajo
+            </strong>
+            : También llamado "
+            <em>
+                Árbol de trabajo
+            </em>
+            ", es el conjunto de directorios y archivos controlados por el sistema de control de versiones, y que se encuentran en edición activa. Está asociado a una rama de trabajo concreta.
+        </li>
+        <li>
+            <strong>
+                Rama de trabajo(o desarrollo)
+            </strong>
+            : En el más sencillo de los casos, una rama es un conjunto ordenado de revisiones. La revisión más reciente se denomina principal (
+            <span lang="en">
+          main
+         </span>
+            ) o cabeza. Las ramas se pueden separar y juntar según como sea necesario, formando un grafo de revisión.
+        </li>
+        <li>
+            <strong>
+                Repositorio
+            </strong>
+            : Lugar en donde se almacenan las revisiones. Físicamente puede ser un archivo, colección de archivos, base de datos, etc.; y puede estar almacenado en local o en remoto (servidor).
+        </li>
+        <li>
+            <strong>
+                Conflicto
+            </strong>
+            : Ocurre cuando varias personas han hecho cambios contradictorios en un mismo documento (o grupo de documentos); los sistemas de control de versiones solamente alertan de la existencia del conflicto. El proceso de solucionar un conflicto se denomina
+            <strong>
+                resolución
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Cambio
+            </strong>
+            : Modificación en un archivo bajo control de revisiones. Cuando se unen los cambios en un archivo (o varios), generando una revisión unificada, se dice que se ha hecho una
+            <strong>
+                combinación
+            </strong>
+            o integración.
+        </li>
+        <li>
+            <strong>
+                Parche
+            </strong>
+            : Lista de cambios generada al comparar revisiones, y que puede usarse para reproducir automáticamente las modificaciones hechas en el código.
+        </li>
+    </ul>
+    <p>
+        Con el empleo de los sistemas de control de versiones se consigue mantener un repositorio con la información actualizada. La forma habitual de trabajar consiste en mantener una copia en local y modificarla. Después actualizarla en el repositorio. Como ventaja tenemos que no es necesario el acceso continuo al repositorio.
+    </p>
+    <p>
+        Algunos sistemas de control de versiones permiten trabajar directamente contra el repositorio; en este caso tenemos como ventaja un aumento de la transparencia, a pesar de que como desventaja existe el bloqueo de ficheros.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+</div><h1 class="title">
+    4.2.- Procedimiento de uso habitual de un sistema de control de versiones.
+</h1><div class="iDevice_content">
+    <p>
+        El funcionamiento general de un sistema de control de versiones sigue el siguiente ciclo de operaciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Descarga de ficheros inicial (
+            <span lang="en">
+          Checkout
+         </span>
+            ):
+            <ul>
+                <li>
+                    El primer paso es bajarse los ficheros del repositorio.
+                </li>
+                <li>
+                    El "
+                    <span lang="en">
+            checkout
+           </span>
+                    " sólo se hace la primera vez que se usan esos ficheros.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Ciclo de trabajo habitual:
+            <ul>
+                <li>
+                    Modificación de los ficheros, para aplicar los cambios oportunos como resultado de la aportación de cada una de las personas encargadas de manipular el código de los ficheros.
+                </li>
+                <li>
+                    Actualización de ficheros en local (
+                    <span lang="en">
+            Update
+           </span>
+                    ): Los ficheros son modificados en local y, posteriormente, se sincronizan con los ficheros existentes en el repositorio.
+                </li>
+                <li>
+                    Resolución de conflictos (si los hay): Como resultado de la operación anterior es cuando el sistema de control de versiones detectará si existen conflictos, en cuyo caso informa de ello y siendo los usuarios implicados en la manipulación del código afectado por el conflicto, los encargados de solucionarlo.
+                </li>
+                <li>
+                    Actualización de ficheros en repositorio (
+                    <span lang="en">
+            Commit
+           </span>
+                    ): Consiste en la modificación de los ficheros en el repositorio; el sistema de control de versiones comprueba que las versiones que se suben estén actualizadas.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Como conclusión, vemos que los sistemas de control de versiones permiten las siguientes funciones:
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            Varios clientes pueden sacar copias del proyecto al mismo tiempo.
+        </li>
+        <li>
+            Realizar cambios a los ficheros manteniendo un histórico de los cambios:
+            <ul>
+                <li>
+                    Deshacer los cambios hechos en un momento dado.
+                </li>
+                <li>
+                    Recuperar versiones pasadas.
+                </li>
+                <li>
+                    Ver históricos de cambios y comentarios.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Los clientes pueden también comparar diferentes versiones de archivos.
+        </li>
+        <li>
+            Unir cambios realizados por diferentes usuarios sobre los mismos ficheros.
+        </li>
+        <li>
+            Sacar una "foto" histórica del proyecto tal como se encontraba en un momento determinado.
+        </li>
+        <li>
+            Actualizar una copia local con la última versión que se encuentra en el servidor. Esto elimina la necesidad de repetir las descargas del proyecto completo.
+        </li>
+        <li>
+            Mantener distintas ramas de un proyecto.
+        </li>
+    </ul>
+    <p>
+        Debido a la amplitud de operaciones que el sistema de control de versiones permite aplicar sobre los proyectos que administra, muchos de los sistemas de control de versiones ofrecen establecer algún método de autorización, es decir, la posibilidad por la cual a ciertas personas se les permite, o no, realizar cambios en áreas específicas del repositorio.
+    </p>
+    <p>
+        Algunos proyectos utilizan un sistema basado en el honor: cuando a una persona se le permite la posibilidad de realizar cambios, aunque sea a una pequeña área del repositorio, lo que reciben es una contraseña que le permite realizar cambios en cualquier otro sitio del repositorio y sólo se les pide que mantenga sus cambios en su área. Hay que recordar que no existe ningún peligro aquí; de todas formas, en un proyecto activo, todos los cambios son revisados. Si alguien hace un cambio donde no debía, alguien más se dará cuenta y dirá algo. Es muy sencillo, si un cambio debe ser rectificado todo está bajo el control de versiones de todas formas, así que sólo hay que volver atrás.
+    </p>
+</div><h1 class="title">
+    4.3.- Sistemas de control de versiones centralizados y distribuidos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.4.- Git como sistema de control de versiones.
+</h1><div class="iDevice_content">
+    <p>
+        El núcleo de
+        <span lang="en">
+         Linux
+        </span>
+        es un proyecto de
+        <span lang="en">
+         software
+        </span>
+        de código abierto con un alcance bastante grande. Durante la mayor parte del mantenimiento del núcleo de
+        <span lang="en">
+         Linux
+        </span>
+        (1991-2002), los cambios en el
+        <span lang="en">
+         software
+        </span>
+        se pasaron en forma de parches y archivos. En 2002, el proyecto del núcleo de
+        <span lang="en">
+         Linux
+        </span>
+        empezó a usar un
+        <span lang="en">
+         DVCS
+        </span>
+        propietario llamado
+        <span lang="en">
+         BitKeeper
+        </span>
+        .
+    </p>
+    <p>
+        En 2005, la relación entre la comunidad que desarrollaba el núcleo de
+        <span lang="en">
+         Linux
+        </span>
+        y la compañía que desarrollaba
+        <span lang="en">
+         BitKeeper
+        </span>
+        se vino abajo, y la herramienta dejó de ser ofrecida gratuitamente. Esto impulsó a la comunidad de desarrollo de
+        <span lang="en">
+         Linux
+        </span>
+        (y en particular a
+        <span lang="en">
+         Linus Torvalds
+        </span>
+        , el creador de
+        <span lang="en">
+         Linux
+        </span>
+        ) a desarrollar su propia herramienta basada en algunas de las lecciones que aprendieron durante el uso de
+        <span lang="en">
+         BitKeeper
+        </span>
+        . Algunos de los objetivos del nuevo sistema fueron los siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Velocidad.
+        </li>
+        <li>
+            Diseño sencillo.
+        </li>
+        <li>
+            Fuerte apoyo al desarrollo no lineal (miles de ramas paralelas).
+        </li>
+        <li>
+            Completamente distribuido.
+        </li>
+        <li>
+            Capaz de manejar grandes proyectos como el núcleo de
+            <span lang="en">
+          Linux
+         </span>
+            de manera eficiente (velocidad y tamaño de los datos).
+        </li>
+    </ul>
+    <p>
+        <span lang="en">
+         Git
+        </span>
+        es un sistema rápido de control de versiones, está escrito en C y se ha hecho popular sobre todo a raíz de ser el elegido para el
+        <span lang="en">
+         kernel
+        </span>
+        de
+        <span lang="en">
+         linux
+        </span>
+        .
+    </p>
+    <p>
+        Desde su nacimiento en 2005,
+        <strong lang="es">
+            Git
+        </strong>
+        ha evolucionado y madurado para ser fácil de usar y. aún así. conservar estas cualidades iniciales. Es tremendamente rápido, muy eficiente con grandes proyectos, y tiene un increíble sistema de ramificación (
+        <span lang="en">
+         branching
+        </span>
+        ) para desarrollo no lineal.
+    </p>
+    <p>
+        La principal diferencia entre
+        <strong>
+            Git
+        </strong>
+        y cualquier otro
+        <span lang="en">
+         VCS
+        </span>
+        (
+        <span lang="en">
+         Subversion
+        </span>
+        y compañía incluidos) es cómo
+        <span lang="en">
+         Git
+        </span>
+        modela sus datos. Conceptualmente, la mayoría de los demás sistemas almacenan la información como una lista de cambios en los archivos. Estos sistemas (
+        <span lang="en">
+         CVS
+        </span>
+        ,
+        <span lang="en">
+         Subversion
+        </span>
+        ,
+        <span lang="en">
+         Perforce
+        </span>
+        ,
+        <span lang="en">
+         Bazaar
+        </span>
+        , etc.) modelan la información que almacenan como un conjunto de archivos y las modificaciones hechas sobre cada uno de ellos a lo largo del tiempo.
+    </p>
+    <p>
+        <strong>
+            Git
+        </strong>
+        no modela ni almacena sus datos de este modo, modela sus datos más como un conjunto de instantáneas de un mini sistema de archivos. Cada vez que confirmas un cambio, o guardas el estado de tu proyecto en Git, él básicamente hace una "
+        <em>
+            foto
+        </em>
+        " del aspecto de todos tus archivos en ese momento, y guarda una referencia a esa instantánea. Para ser eficiente, si los archivos no se han modificado, Git no almacena el archivo de nuevo, sólo un enlace al archivo anterior idéntico que ya tiene almacenado.
+    </p>
+    <p>
+    </p>
+    <p>
+        Aparte de todo lo anterior,
+        <strong lang="en">
+            Git
+        </strong>
+        posee integridad debido a que todo es verificado mediante una suma de comprobación antes de ser almacenado, y es identificado a partir de ese momento mediante dicha suma. Esto significa que es imposible cambiar los contenidos de cualquier archivo o directorio sin que
+        <span lang="en">
+         Git
+        </span>
+        lo detecte. Como consecuencia de ello es imposible perder información durante su transmisión o sufrir corrupción de archivos sin que
+        <strong lang="en">
+            Git
+        </strong>
+        sea capaz de detectarlo.
+    </p>
+</div><h1 class="title">
+    4.5.- Funcionamiento de Git.
+</h1><div class="iDevice_content">
+    <p>
+        <span lang="en">
+         Git
+        </span>
+        tiene tres estados principales en los que se pueden encontrar los archivos: confirmado (
+        <span lang="en">
+         committed
+        </span>
+        ), modificado (
+        <span lang="en">
+         modified
+        </span>
+        ) y preparado (
+        <span lang="en">
+         staged
+        </span>
+        ).
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Confirmado
+            </strong>
+            significa que los datos están almacenados de manera segura en la base de datos local.
+        </li>
+        <li>
+            <strong>
+                Modificado
+            </strong>
+            estado en el que se ha modificado el archivo pero todavía no se ha confirmado a la base de datos.
+        </li>
+        <li>
+            <strong>
+                Preparado
+            </strong>
+            significa que se ha marcado un archivo modificado en su versión actual para que vaya en la próxima confirmación.
+        </li>
+    </ul>
+    <p>
+        Esto nos lleva a las tres secciones principales de un proyecto de
+        <strong lang="en">
+            Git
+        </strong>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El
+            <strong lang="en">
+                directorio de Git
+            </strong>
+            (
+            <span lang="en">
+          Git
+         </span>
+            <span lang="en">
+          directory
+         </span>
+            ): Almacena los metadatos y la base de datos de objetos para tu proyecto. Es la parte más importante de
+            <span lang="en">
+          Git
+         </span>
+            , y es lo que se copia cuando se clona un repositorio desde otro ordenador.
+        </li>
+        <li>
+            El
+            <strong>
+                directorio de trabajo
+            </strong>
+            (
+            <span lang="en">
+          working directory
+         </span>
+            ): Es una copia de una versión del proyecto. Estos archivos se sacan de la base de datos comprimida en el directorio de
+            <span lang="en">
+          Git
+         </span>
+            , y se colocan en disco para que se  pueda usar o modificar.
+        </li>
+        <li>
+            El
+            <strong>
+                área de preparación
+            </strong>
+            (
+            <span lang="en">
+          staging area
+         </span>
+            ):  es un sencillo archivo, generalmente contenido en tu directorio de
+            <span lang="en">
+          Git
+         </span>
+            , que almacena información acerca de lo que va a ir en la próxima confirmación. A veces se denomina el índice, pero se está convirtiendo en estándar el referirse a ello como el área de preparación.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <ol>
+        <li>
+            Modificar una serie de archivos en el directorio de trabajo.
+        </li>
+        <li>
+            Preparar los archivos, añadiendo instantáneas de ellos al área de preparación.
+        </li>
+        <li>
+            Confirmar los cambios, lo que toma los archivos tal y como están en el área de preparación, y almacena esa instantánea de manera permanente en el directorio de
+            <span lang="en">
+          Git
+         </span>
+            .
+        </li>
+    </ol>
+    <p>
+        Si una versión concreta de un archivo está en el directorio de
+        <span lang="en">
+         Git
+        </span>
+        , se considera
+        <strong>
+            confirmada
+        </strong>
+        (
+        <span lang="en">
+         committed
+        </span>
+        ). Si ha sufrido cambios desde que se obtuvo del repositorio, pero ha sido añadida al área de preparación, está
+        <strong>
+            preparada
+        </strong>
+        (
+        <span lang="en">
+         staged
+        </span>
+        ). Y si ha sufrido cambios desde que se obtuvo del repositorio, pero no se ha preparado, está
+        <strong>
+            modificada
+        </strong>
+        (
+        <span lang="en">
+         modified
+        </span>
+        ).
+    </p>
+</div><h1 class="title">
+    4.6.- Instalación de Git.
+</h1><div class="iDevice_content">
+    <p>
+        Procederemos a instalar
+        <span lang="en">
+         Git
+        </span>
+        en una máquina con
+        <span lang="en">
+         Debian 6.0.1Squeeze.
+        </span>
+    </p>
+    <p>
+        Suele ser útil instalar
+        <span lang="en">
+         Git
+        </span>
+        desde código fuente, porque obtendremos la versión más reciente. Cada versión de
+        <span lang="en">
+         Git
+        </span>
+        tiende a incluir útiles mejoras en la interfaz de usuario, por lo que utilizar la última versión es a menudo el camino más adecuado, realizando para ello la compilación de
+        <span lang="en">
+         software
+        </span>
+        desde código fuente.
+    </p>
+    <p>
+        Para instalar
+        <span lang="en">
+         Git
+        </span>
+        , es necesario disponer de las siguientes librerías de las que
+        <span lang="en">
+         Git
+        </span>
+        depende:
+        <em>
+            curl, zlib, openssl, expat y libiconv
+        </em>
+        ; para instalarlas podemos ejecutar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#apt-get install libcurl4-gnutls-dev libexpat1-dev gettext libz-dev
+</pre>
+        </div>
+    </div>
+    <p>
+        Una vez instaladas las librerías anteriores procederemos a realizar la descarga de
+        <span lang="en">
+         Git
+        </span>
+        desde su página, pudiendo emplear para ello:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.1em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#wget http://kernel.org/pub/software/scm/git/git-1.7.6.tar.bz2
+</pre>
+        </div>
+    </div>
+    siendo la versión 1.7.6 la más reciente en este momento; una vez haya finalizado la descarga procederemos a la compilación e instalación del paquete, podemos seguir los siguientes pasos:
+</div><h1 class="title">
+    4.7.- Configuración de Git (I).
+</h1><div class="iDevice_content">
+    <p>
+        Las opciones de configuración reconocidas por
+        <strong lang="en">
+            Git
+        </strong>
+        pueden distribuirse en dos grandes categorías: las del lado cliente y las del lado servidor. La mayoría de las opciones que permiten configurar las preferencias personales de trabajo están en el lado cliente. Aunque hay multitud de ellas, aquí vamos a ver solamente unas pocas, nos centraremos en las más comúnmente utilizadas y en las que afectan significativamente a la forma personal de trabajar. Para consultar una lista completa con todas las opciones contempladas en la versión instalada de
+        <span lang="en">
+         Git
+        </span>
+        , se puede emplear el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git config –help
+</pre>
+        </div>
+    </div>
+    <p>
+        <span lang="en">
+         Git
+        </span>
+        trae una herramienta llamada git config que permite obtener y establecer variables de configuración que controlan el aspecto y funcionamiento de
+        <strong lang="en">
+            Git
+        </strong>
+        .
+    </p>
+    <p>
+        Lo primero que se debe hacer cuando se instala
+        <strong lang="en">
+            Git
+        </strong>
+        es establecer el nombre de usuario y dirección de correo electrónico. Esto es importante porque las confirmaciones de cambios (
+        <span lang="en">
+         commits
+        </span>
+        ) en
+        <span lang="en">
+         Git
+        </span>
+        usan esta información, y es introducida de manera inmutable en los
+        <span lang="en">
+         commits
+        </span>
+        que el usuario va a enviar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 34.05em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git config --global user.name "alumno"
+</pre>
+            <pre ngNonBindable>$ git config --global user.email alumno&#64;example.com
+</pre>
+        </div>
+    </div>
+    <p>
+        Solamente se necesita hacer esto una vez si se especifica la opción
+        <em>
+            --global
+        </em>
+        , ya que
+        <span lang="en">
+         Git
+        </span>
+        siempre usará esta información para todo lo que se haga en ese sistema. En el caso de querer sobrescribir esta información con otro nombre o dirección de correo para proyectos específicos, puedes ejecutar el mismo comando sin la opción --global cuando estemos en el proyecto concreto.
+    </p>
+    <p>
+        Una vez que la identidad está configurada, podemos elegir el editor de texto por defecto que se utilizará cuando
+        <span lang="en">
+         Git
+        </span>
+        necesite que introduzcamos un mensaje. Si no se indica nada,
+        <span lang="en">
+         Git
+        </span>
+        usa el editor por defecto del sistema que, generalmente, es
+        <strong>
+            Vi
+        </strong>
+        o
+        <strong>
+            Vim
+        </strong>
+        . En el caso de querer usar otro editor de texto, como
+        <strong>
+            emacs
+        </strong>
+        , puedemos hacer lo siguiente:
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 27.45em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git config --global core.editor emacs
+</pre>
+        </div>
+    </div>
+    <p>
+        Otra opción útil que puede ser interesante configurar es la herramienta de diferencias por defecto, usada para resolver conflictos de unión (
+        <span lang="en">
+         merge
+        </span>
+        ). Supongamos que quisiéramos usar vimdiff:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git config --global merge.tool vimdiff
+</pre>
+        </div>
+    </div>
+    <p>
+        <span lang="en">
+         Git
+        </span>
+        acepta
+        <em>
+            kdiff3, tkdiff, meld, xxdiff, emerge, vimdiff, gvimdiff, ecmerge y opendiff
+        </em>
+        como herramientas válidas.
+        En cualquier momento podremos comprobar la configuración que tenemos mediante el comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git config --list
+</pre>
+        </div>
+    </div>
+    <p>
+        Cuando necesitemos ayuda utilizando
+        <span lang="en">
+         Git
+        </span>
+        tenemos tres modos de conseguir ver su página del manual (
+        <span lang="en">
+         manpage
+        </span>
+        ) para cualquier comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git help &lt;comando&gt;
+</pre>
+            <pre ngNonBindable>$ git &lt;comando&gt; --help
+</pre>
+            <pre ngNonBindable>$ man git-&lt;comando&gt;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.7.1.- Configuración de Git (II).
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.8.- Trabajando con Git (I).
+</h1><div class="iDevice_content">
+    <p>
+        Lo siguiente que debemos hacer es crear la carpeta del proyecto:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># cd /var/cache/git/
+</pre>
+            <pre ngNonBindable># mkdir proyecto.git
+</pre>
+            <pre ngNonBindable># cd proyecto.git
+</pre>
+        </div>
+    </div>
+    <p>
+        Luego, iniciamos un repositorio para nuestro nuevo proyecto y lo configuramos de acuerdo a nuestras necesidades:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 11.5em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># git init
+</pre>
+        </div>
+    </div>
+    <p>
+        al ejecutar el comando anterior nos devuelve un mensaje similar a "
+        <span lang="en">
+         Initialized empty
+        </span>
+        <span lang="en">
+         Git
+        </span>
+        <span lang="en">
+         repository in
+        </span>
+        <em>
+            /var/cache/git/proyecto.git/.git/
+        </em>
+        ", podemos comprobar que en el directorio .
+        <span lang="en">
+         git
+        </span>
+        hay  una serie  de  archivos asociados al proyecto que se ha creado automáticamente.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.1em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># echo "Una breve descripcion del proyecto" &gt; .git/description
+</pre>
+            <pre ngNonBindable># git config –global user.name "Tu nombre"
+</pre>
+            <pre ngNonBindable># git config –global user.email "tu&#64;correo.com"
+</pre>
+        </div>
+    </div>
+    <p>
+        si hemos creado documentos nuevos en nuestro proyecto antes de hacer el "
+        <span lang="en">
+         commit
+        </span>
+        ", ejecutamos el siguiente comando para que los archivos presentes en la carpeta del proyecto sean añadidos al repositorio:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 11.5em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#git add .
+</pre>
+        </div>
+    </div>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    Una vez incorporados los ficheros nuevos realizamos el "
+    <span lang="en">
+        commit
+       </span>
+    ":
+    <div class="codigo elemento_centrado" style="width: 14.25em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># git commit -a
+</pre>
+        </div>
+    </div>
+    <p>
+        Para marcar un repositorio como exportado se usa el archivo
+        <em>
+            git-daemon-export-ok
+        </em>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.15em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># cd /var/cache/git/proyecto.git
+</pre>
+            <pre ngNonBindable># touch .git/git-daemon-export-ok
+</pre>
+        </div>
+    </div>
+    <p>
+        Para iniciar el servicio de
+        <span lang="en">
+         Git
+        </span>
+        que ejecuta un servidor para hacer público nuestro repositorio, ejecutamos el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.3em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># git daemon –base-path=/var/cache/git –detach –syslog –export-all
+</pre>
+        </div>
+    </div>
+    <p>
+        Ahora el repositorio se encuentra corriendo en el puerto 9418 de nuestro computador; podemos comprobarlo ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.3em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#netstat -nautp | grep git
+</pre>
+        </div>
+    </div>
+    <p>
+        Por último, le daremos permisos de escritura a un usuario que no sea
+        <span lang="en">
+         root
+        </span>
+        , de tal manera que con dicho usuario se puedan hacer cambios remotos en el repositorio:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39.55em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># adduser usuariogit
+</pre>
+            <pre ngNonBindable># passwd usuariogit
+</pre>
+            <pre ngNonBindable># chown -Rv usuariogit:usuariogit /var/cache/git/proyecto.git
+</pre>
+        </div>
+    </div>
+    <p>
+        Para acceder al repositorio podemos hacerlo de la manera convencional, basta con ejecutar el comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 31.85em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#git clone git://servidor/proyecto.git proyecto
+</pre>
+        </div>
+    </div>
+    <p>
+        O, también, podemos acceder vía web; mediante la
+        <strong>
+            http://localhost/git/
+        </strong>
+
+    </p>
+    <p>
+        El comando git commit sólo seguirá la pista de los archivos que estaban presentes la primera vez que se ejecutó git add. Si son añadidos nuevos archivos o subdirectorios, debe indicarse al
+        <span lang="en">
+         Git
+        </span>
+        mediante el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git add ARCHIVOSNUEVOS
+</pre>
+        </div>
+    </div>
+    <p>
+        De manera similar, si queremos que
+        <span lang="en">
+         Git
+        </span>
+        se olvide de determinados archivos, porque (por ejemplo) han sido borrados:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.65em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git rm ARCHIVOSVIEJOS
+</pre>
+        </div>
+    </div>
+    <p>
+        Renombrar un archivo es lo mismo que eliminar el nombre anterior y agregar el nuevo. También puedes usar git mv que tiene la misma sintaxis que el comando mv. Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.7em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ git mv ARCHIVOVIEJO ARCHIVONUEVO
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.8.1.- Trabajando con Git (II).
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.9.- Seguridad documentación en Git.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        <span lang="en">
+         Git
+        </span>
+        se encuadra en la categoría de los sistemas de gestión de código fuente distribuido. Con
+        <span lang="en">
+         Git
+        </span>
+        , cada directorio de trabajo local es un repositorio completo no dependiente, de acceso a un servidor o a la red. El acceso a cada respositorio se realiza a través del protocolo de
+        <span lang="en">
+         Git
+        </span>
+        , montado sobre
+        <span lang="en">
+         ssh
+        </span>
+        , o usando
+        <span lang="en">
+         HTTP
+        </span>
+        , aunque no es necesario ningún servidor
+        <span lang="en">
+         web
+        </span>
+        para poder publicar el repositorio en la red.
+    </p>
+    <p>
+        En el flujo de trabajo que hemos dibujado hasta el momento, los desarrolladores no subían directamente cambios al repositorio público, sino que era el responsable del mismo quien aceptaba los cambios y los incorporaba después de revisarlos. Sin embargo,
+        <span lang="en">
+         Git
+        </span>
+        también soporta que los desarrolladores puedan subir sus modificaciones directamente a un repositorio centralizado al más puro estilo
+        <span lang="en">
+         CVS
+        </span>
+        o
+        <span lang="en">
+         Subversion
+        </span>
+        (eliminando el papel de responsable del repositorio público).
+    </p>
+    <p>
+        Para que un repositorio público pueda ser utilizado de esta forma, es necesario permitir la ejecución del comando
+        <span lang="en">
+         push
+        </span>
+        . En primer lugar deberemos crear el repositorio público (tal y como hemos visto en secciones anteriores) y habilitar alguno de los siguientes accesos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Acceso directo por sistema de ficheros con permisos de escritura para el usuario sobre el directorio del repositorio.
+        </li>
+        <li>
+            Acceso remoto vía
+            <span lang="en">
+          SSH
+         </span>
+            (consultar man git-shell) y permisos de escritura para el usuario sobre el directorio del repositorio.
+        </li>
+        <li>
+            Acceso
+            <span lang="en">
+          HTTP
+         </span>
+            con
+            <span lang="en">
+          WebDav
+         </span>
+            debidamente configurado.
+        </li>
+        <li>
+            Acceso mediante protocolo
+            <span lang="en">
+          Git
+         </span>
+            con el servicio "
+            <span lang="en">
+          receive-pack
+         </span>
+            " activado en el git &lt;span lang="en"&gt;daemon&lt;/span&gt;.
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo.- Licencia Recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: betacontinua.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/betacontinua/2551029543/sizes/m/in/photostream/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: JaulaDeArdilla.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-nd/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/jauladeardilla/2285620559/sizes/l/in/photostream/
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Mskadu.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa-2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/mskadu/1227675663/sizes/o/in/photostream/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: nicksieger.
+                </p>
+                <p>
+                    Licencia: CC-by-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/nicksieger/368608554/sizes/o/in/photostream/
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: spiritquest.
+                </p>
+                <p>
+                    Licencia: CC-by/2.0.
+                </p>
+                <p>
+                    Procedencia: Montaje sobre http://www.flickr.com/photos/spiritquest/4486613880/sizes/l/in/photostream/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Fenng(dbanotes).
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: Montaje sobre http://www.flickr.com/photos/fenng/3340416618/sizes/o/in/photostream/
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: boirax.
+                </p>
+                <p>
+                    Licencia: CC-by/2.0.
+                </p>
+                <p>
+                    Procedencia: Montaje sobre http://www.flickr.com/photos/9565570&#64;N06/5699979378/sizes/m/in/photostream/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Treviño.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/trevi55/575665048/sizes/z/in/photostream/
+                    Presentación
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Tim Morgan.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/timothymorgan/5183815688/sizes/t/in/photostream/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Treviño.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/trevi55/643428879/sizes/t/in/photostream/
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: andrew sardone.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/andrewsardone/5105837705/sizes/z/in/photostream/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: ginatrapani.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-sa/2.0.
+                </p>
+                <p>
+                    Procedencia: Montaje sobre http://www.flickr.com/photos/ginatrapani/4702060815/sizes/t/in/photostream/
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Morydd.
+                </p>
+                <p>
+                    Licencia: CC-by-nc-nd/2.0.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/morydd/3248728722/sizes/t/in/photostream/
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>

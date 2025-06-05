@@ -1,0 +1,3117 @@
+<h1 class="title">
+    Instalación y administración de servidores FTP.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        La empresa BK Programación se ha dedicado últimamente a la creación de entornos web en servidores dedicados y compartidos. Siempre se ha decantado para la instalación, administración y configuración de servidores de
+        <span lang="en">
+           software
+          </span>
+        libre. Y es por ello que varias empresas se han puesto en contacto con BK Programación para contratarles sus servicios. Una de estas empresas con las que trabaja BK Programación tuvo un problema subiendo un archivo a su
+        dominio
+
+
+        Dominio
+
+        Nombre por el cual se reconoce a un grupo de dispositivos o equipos conectados a la red. Éstos pueden ser nombres locales, no existentes en Internet, pero, en general, son utilizados para su uso en Internet, por ejemplo: debian.org.
+        , por lo cual se ha recibido una llamada dirigida a soporte técnico en BK Programación. En ésta se mantuvo la siguiente conversación:
+    </p>
+    <p>
+        - Hola, buenos días. BK Programación, ¿en qué puedo ayudarle?
+    </p>
+    <p>
+        - Hola, buenos días. Tengo un problema en el servidor de nuestra página, no puedo subir un archivo de vídeo.
+    </p>
+    <p>
+        - ¿No le aparece la opción de subida o, en medio del proceso, se le corta la conexión?
+    </p>
+    <p>
+        - Sí, soy capaz de empezar a subir el archivo pero, pasado un tiempo, el proceso se corta.
+    </p>
+    <p>
+        - ¿Cuánto pesa el archivo? Es decir, ¿qué tamaño posee?
+    </p>
+    <p>
+        - No sé, espere un momento... —pasado un tiempo—, sí..., mire, el archivo ocupa 300
+        <abbr title="Mega Bytes.">
+            MB
+        </abbr>
+        .
+    </p>
+    <p>
+        - Vale, parece claro, tal como está procediendo hasta ahora no podrá subir el archivo, debido a la limitación establecida en el servidor
+        <span lang="en">
+           web
+          </span>
+        para la subida de archivos, por lo tanto debe utilizar su cuenta
+        <abbr title="File Transfer Protocol.">
+            ftp
+        </abbr>
+        para la transferencia de archivos.
+    </p>
+    <p>
+        - Y eso, ¿cómo procedo?¿está estipulado en el contrato?
+    </p>
+    <p>
+        - Sí, no se preocupe. El contrato estándar ya establece una cuenta
+        <span lang="en">
+           ftp
+          </span>
+        por dominio, pero eso sí, dependiendo del contrato poseerá una cuota de disco u otra. En cuanto al método para proceder, aparece explicado en nuestra página
+        <span lang="en">
+           web
+          </span>
+        , paso por paso, en la documentación que podrá encontrar en la pestaña descargas.
+    </p>
+    <p>
+        - Pues, poseo el contrato estándar.
+    </p>
+    <p>
+        - Bien, entonces posee una cuota de 2
+        <abbr title="Giga Byte.">
+            GB
+        </abbr>
+        .
+    </p>
+    <p>
+        - Vale, gracias, entonces ¿cuándo podré contar con la cuenta
+        <span lang="en">
+           ftp
+          </span>
+        para subir el archivo?
+    </p>
+    <p>
+        - Ya la tiene operativa, solamente debe seguir los pasos del documento que le he comentado. Si tiene cualquier problema no dude en contactar de nuevo con nosotros.
+    </p>
+    <p>
+        - De acuerdo, muchas gracias. Hasta luego.
+    </p>
+    <p>
+        - Hasta luego.
+    </p>
+    <p>
+        Este tipo de incidencias son típicas en BK Programación, por lo cual Ada, la directora de BK Programación ha establecido un protocolo de actuación según el tipo de incidencia. Las incidencias primero serán atendidas por una unidad de servicio telefónico, en caso de que no se encuentre la solución dentro de las posibles será escalada a su correspondiente área técnica, así las incidencias de servidores serán escaladas a María, las de programación a Juan y éstos derivarán la incidencia a un técnico de la empresa. En el caso de la incidencia por llamada telefónica anterior la solución ya existía dentro de las posibles con lo cual la incidencia no fue escalada.
+    </p>
+    <p>
+        Las posibles soluciones fueron proporcionadas por el personal responsable para cada área. Así como la incidencia que hablamos era sobre servidores fue propuesta la solución por María. Además, en este caso, María había estudiado varios servidores
+        <span lang="en">
+           ftp
+          </span>
+        y se decantó por la versatilidad, funcionalidad y seguridad del servidor
+        <span lang="en">
+           ftp ProFTPD
+          </span>
+        .
+    </p>
+</div><h1 class="title">
+    1.- Servicio de transferencia de ficheros.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        María, sabía que, llegado el momento, las empresas a las que darían soporte
+        <span lang="en">
+           web
+          </span>
+        necesitarían subir archivos a sus dominios, por lo cual necesitarían una alternativa a la aplicación
+        <span lang="en">
+           web
+          </span>
+        destinada para tal fin: un servicio
+        <span lang="en">
+           ftp
+          </span>
+        . Así realizó un estudio sobre servidores
+        <span lang="en">
+           ftp
+          </span>
+        y se decantó por la versatilidad, funcionalidad y seguridad del servidor
+        <span lang="en">
+           ftp
+          </span>
+        <strong lang="en">
+            ProFTPD
+        </strong>
+        . En ese estudio quería llegar a saber del servidor
+        <span lang="en">
+           ftp
+          </span>
+        lo siguiente:
+    </p>
+    <ol>
+        <li>
+            ¿Cómo funciona?
+        </li>
+        <li>
+            Posibilidades de autenticación y control de acceso.
+        </li>
+        <li>
+            Seguridad. ¿Es posible cifrar la transferencia de archivos?
+        </li>
+        <li>
+            ¿Permite cuotas de disco?
+        </li>
+        <li>
+            ¿Permite cuotas de subida y bajada de archivos?
+        </li>
+        <li>
+            ¿Qué clientes
+            <span lang="en">
+            ftp
+           </span>
+            soporta?
+        </li>
+    </ol>
+    <p>
+        Pero antes de ponerlo en producción necesitaba probarlo, es por eso que construyó el siguiente escenario de pruebas, similar al escenario de producción para una empresa que ofrezca sus servicios
+        <span lang="en">
+           web
+          </span>
+        por medio de la infraestructura proporcionada por BK Programación y totalmente transparente al cliente final:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Sistema Operativo:
+            <span lang="en">
+            Debian
+            <abbr title="Gnu No es Unix.">
+             GNU
+            </abbr>
+           </span>
+            /Linux 6.0
+        </li>
+        <li>
+            Servidor
+            <span lang="en">
+            FTP
+           </span>
+            :
+            <span lang="en">
+            ProFTPD
+           </span>
+        </li>
+        <li>
+            Configuración de Red:
+            <ul>
+                <li>
+                    Servidor
+                    <span lang="en">
+              FTP
+             </span>
+                    : 192.168.200.250
+                </li>
+                <li>
+                    Cliente de pruebas, desde donde se lanza el cliente
+                    <span lang="en">
+              ftp
+             </span>
+                    : 192.168.200.100
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    1.1.- ¿Cómo funciona?
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+            <div class="elemento_centrado">
+
+            </div>
+
+        </div>
+    </div>
+    <p>
+        El protocolo
+        <span lang="en">
+         FTP
+        </span>
+        emplea una arquitectura cliente/servidor, siendo el cliente
+        <span lang="en">
+         ftp
+        </span>
+        quien solicita la transferencia de archivos y el servidor
+        <span lang="en">
+         ftp
+        </span>
+        quien ofrece los archivos. Pertenece a la familia de protocolos de red
+        TCP
+
+
+        TCP
+
+        Es uno de los protocolos fundamentales en Internet. Garantiza que los datos serán entregados en su destino sin errores y, una vez recogidos, puestos en el mismo orden en que se transmitieron.
+        y por lo tanto es un protocolo orientado a conexión, esto es, el cliente
+        <span lang="en">
+         ftp
+        </span>
+        necesita establecer una conexión con el servidor para empezar la transferencia de ficheros. Si no se establece la conexión ésta no tiene lugar.
+    </p>
+    <p>
+        Puesto que
+        <span lang="en">
+         FTP
+        </span>
+        es un protocolo que no utiliza una autenticación de usuarios y contraseña cifrada, se considera un protocolo inseguro y no se debería utilizar a menos que sea absolutamente necesario. Verás que existen otras alternativas al
+        <span lang="en">
+         FTP
+        </span>
+        , como por ejemplo el protocolo
+        <span lang="en">
+         FTPS
+        </span>
+        , para mantener comunicaciones cifradas. Aún así, el protocolo
+        <span lang="en">
+         FTP
+        </span>
+        está muy extendido en
+        <span lang="en">
+         Internet
+        </span>
+        ya que a menudo los usuarios necesitan transferir archivos entre máquinas sin importar la seguridad.
+    </p>
+    <p>
+        El protocolo
+        <span lang="en">
+         FTP
+        </span>
+        requiere de dos
+        puertos
+
+
+        Puertos
+
+        Números utilizados en las comunicaciones cliente/servidor, en transmisiones TCP o UDP comprendidos entre 1 y 65535, que indican por donde tiene lugar la conexión con un servidor. Están estandarizados, esto es, un servidor suele estar activo siempre por definición en un puerto determinado, pero éste
+        <span lang="en">
+         TCP
+        </span>
+        en el servidor para su funcionamiento, a diferencia de la mayoría de los protocolos utilizados en Internet que solamente requieren un puerto en el servidor. Un puerto es necesario para establecer el control de la conexión y otro se utiliza para el control de la transmisión, es decir, un puerto se utiliza para establecer la conexión entre el cliente y el servidor y otro para la transferencia de datos.
+    </p>
+    <p>
+        Los puertos
+        <span lang="en">
+         TCP
+        </span>
+        del servidor en cuestión, suelen ser el 21 para el control de la conexión y otro a determinar según el modo de conexión: podría ser el 20 o incluso uno mayor de 1024. Hay que tener en cuenta que estos puertos pueden ser modificados en la configuración del servidor, así no es obligatorio que los puertos 21 y 20 sean los asignados al servidor
+        <span lang="en">
+         FTP
+        </span>
+        , pero sí son los que éste maneja por defecto. El puerto 21 también es conocido como puerto de comandos y el puerto 20 como puerto de datos.
+    </p>
+    <p>
+        La ventaja que supone utilizar el protocolo
+        <span lang="en">
+         FTP
+        </span>
+        se basa en su alto rendimiento y sencillez, que lo hacen una opción conveniente para la transferencia de archivos a través de
+        <span lang="en">
+         Internet
+        </span>
+        .
+    </p>
+</div><h1 class="title">
+    1.2.- Cliente FTP.
+</h1><div class="iDevice_content">
+    <blockquote>
+        Lo importante es no dejar de hacerse preguntas.
+        <cite class="elemento_derecha" lang="de">
+            Albert Einstein
+        </cite>
+    </blockquote>
+</div><h1 class="title">
+    1.3.- Tipos de usuarios.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+            <div class="elemento_centrado">
+
+            </div>
+
+        </div>
+    </div>
+    <p>
+        ¿Qué usuarios se pueden conectar al servidor
+        <span lang="en">
+         ftp
+        </span>
+        ? ¿cualquiera? ¿sólo los usuarios del sistema?
+    </p>
+    <p>
+        Bien, típicamente existen dos tipos de usuarios:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Usuarios anónimos: usuarios que tienen acceso y permisos limitados por el sistema de archivos. Al conectarse al servidor
+            <span lang="en">
+          FTP
+         </span>
+            sólo deben introducir una contraseña simbólica, normalmente cualquier dirección de correo -real o ficticia-, por ejemplo: a&#64; .
+        </li>
+        <li>
+            Usuarios del sistema: aquellos que disponen de una cuenta en la máquina que ofrece el servicio
+            <span lang="en">
+          FTP
+         </span>
+            . Al conectarse al servidor
+            <span lang="en">
+          FTP
+         </span>
+            deben introducir su contraseña de sistema.
+        </li>
+    </ul>
+    <p>
+        Pero en ciertos servidores, como el servidor
+        <span lang="en">
+         ProFTPD
+        </span>
+        , existe una tercera posibilidad muy interesante: usuarios virtuales. Los usuarios virtuales poseen acceso y permisos al servidor
+        <span lang="en">
+         FTP
+        </span>
+        sin necesidad de ser usuarios del sistema, por lo tanto si un usuario virtual quisiera acceder al sistema operativo como si fuese un usuario del sistema, ya sea de forma local o remota no podría, pues su cuenta de usuario no existe en el sistema. Los usuarios virtuales tienen definida una contraseña propia y pueden estar definidos en ficheros de autenticación (de texto) con el mismo formato que los del sistema operativo
+        <span lang="en">
+         GNU
+        </span>
+        /Linux /etc/
+        <abbr lang="en">
+            passwd
+        </abbr>
+        , directorios
+        LDAP
+
+
+        LDAP
+
+        LDAP es un protocolo de acceso unificado a un conjunto de información sobre una red.
+        , bases de datos
+        SQL
+
+
+        SQL
+
+        El lenguaje de consulta estructurado es un lenguaje declarativo de acceso a bases de datos relacionales que permite especificar diversos tipos de operaciones en éstas. Una de sus características es el manejo del álgebra y el cálculo relacional permitiendo efectuar consultas con el fin de recuperar -
+        y servidores
+        RADIUS
+
+
+        RADIUS
+
+        Es un protocolo de autenticación y autorización para aplicaciones de acceso a la red o movilidad IP. Una de las características más importantes del protocolo RADIUS es su capacidad de manejar sesiones, notificando cuando comienza y termina una conexión.
+        .
+    </p>
+    <p>
+        Dependiendo del servidor
+        <span lang="en">
+         ftp
+        </span>
+        , podrás tener unos métodos de autenticación de usuarios u otros, por ejemplo en el servidor
+        <span lang="en">
+         ftp
+        </span>
+        <span lang="en">
+         ProFTPD
+        </span>
+        se permite los siguientes métodos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Ficheros de autenticación del sistema operativo: /etc/
+            <span lang="en">
+          passwd
+         </span>
+            y /etc/
+            <span lang="en">
+          shadow
+         </span>
+            : Para ello usa las directivas AuthUserFile y
+            <code>
+                AuthGroupFile
+            </code>
+            .
+            <p class="enlace_centrado">
+                Howto AuthFiles.
+            </p>
+        </li>
+        <li>
+            Usuarios virtuales definidos mediante ficheros de autenticación (de texto) propios, distintos de los del sistema operativo: para ello también usa las directivas AuthUserFile y
+            <code>
+                AuthGroupFile
+            </code>
+            .
+        </li>
+        <li>
+            Autenticación
+            PAM
+
+
+            PAM
+
+            Es un mecanismo de autenticación flexible que permite abstraer las aplicaciones y otro software del proceso de identificación. También permite construir políticas diferentes de autenticación para cada servicio.
+            : Es necesario establecer la directiva AuthPAMAuthorative a 'on'.
+            <p class="enlace_centrado">
+                Directiva
+
+                AuthPAMAuthorative
+
+                .
+            </p>
+        </li>
+        <li>
+            Bases de datos
+            <span lang="en">
+          SQL
+         </span>
+            , tales como
+            <span lang="en">
+          MySQL
+         </span>
+            o Postgres. Para ello emplea el módulo mod_sql; más información sobre el uso de mod_sql lo puedes encontrar en el
+            <span lang="en">
+          HowTo SQL
+         </span>
+            <p class="enlace_centrado">
+                Howto SQL.
+            </p>
+        </li>
+        <li>
+         <span lang="en">
+          LDAP
+         </span>
+            : Para ello emplea el módulo mod_ldap.
+        </li>
+        <li>
+         <span lang="en">
+          RADIUS
+         </span>
+            : Para ello emplea el módulo mod_radius.
+        </li>
+    </ul>
+</div><h1 class="title">
+    1.4.- Modos de conexión del cliente.
+</h1><div class="iDevice_content">
+    <p>
+        Si en una transferencia de archivos mediante el protocolo
+        <span lang="en">
+           FTP
+          </span>
+        el cliente posee un cortafuegos configurado para impedir acceso local a puertos
+        <span lang="en">
+           TCP
+          </span>
+        menores de 1024, ¿es posible la transferencia?
+    </p>
+</div><h1 class="title">
+    1.5.- Tipos de transferencia de archivos.
+</h1><div class="iDevice_content">
+    <p>
+        ¿Es lo mismo descargar/subir mediante
+        <span lang="en">
+           FTP
+          </span>
+        un archivo de vídeo, que uno de texto o uno ejecutable?
+    </p>
+</div><h1 class="title">
+    1.6.-  Establecer permisos en ftp.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+            <div class="elemento_centrado">
+            </div>
+
+        </div>
+    </div>
+    <p>
+        El protocolo
+        <span lang="en">
+         FTP
+        </span>
+        sigue los permisos establecidos en entornos de tipo
+        <span lang="en">
+         UNIX
+        </span>
+        y sus similares
+        <span lang="en">
+         GNU
+        </span>
+        /Linux, con lo cual existen tres grupos de permisos en el siguiente orden: propietario, grupo y otros:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Propietario(
+                <span lang="en">
+           user
+          </span>
+                =u):
+            </strong>
+            El creador o el que ha subido el archivo al servidor
+            <span lang="en">
+          FTP
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                Grupo(
+                <span lang="en">
+           group
+          </span>
+                =g):
+            </strong>
+            Se refiere a un grupo de usuarios que posee la propiedad del archivo, al que probablemente pertenece el propietario.
+        </li>
+        <li>
+            <strong>
+                Otros(
+                <span lang="en">
+           others
+          </span>
+                =o):
+            </strong>
+            Son el resto de usuarios no propietarios o que no pertenecen al grupo indicado. Son el resto del mundo.
+        </li>
+    </ul>
+    <p>
+        Cada grupo a su vez puede tener tres permisos en el siguiente orden: lectura, escritura y ejecución identificados respectivamente por una 'r', una 'w' y una 'x'. La ausencia de permiso es identificada con el carácter '-'. Cada permiso tiene un equivalente numérico, así: r=4, w=2, x=1 y -=0. Por ejemplo: rw- identifica permiso de lectura y escritura o lo que es lo mismo 4+2+0=6
+    </p>
+    <p>
+        En un sistema operativo tipo GNU/Linux mediante el comando 'ls -l' puedes ver los permisos asignados a ficheros y directorios, por ejemplo si la salida del anterior comando es:
+    </p>
+    <p class="elemento_centrado">
+        -rw-r--r-- 1 alumno clase 0 jun 20 01:15 prueba1.txt
+    </p>
+    <p>
+        significa que,
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                prueba1.txt
+            </strong>
+            es un fichero ya que
+            <strong>
+                -rw-r--r--
+            </strong>
+            comienza con '-', si fuese un directorio aparecería un 'd'
+        </li>
+        <li>
+            <strong>
+                rw-r--r--
+            </strong>
+            identifica los permisos del fichero prueba1.txt, que divididos 3 a 3 representan de izquierda a derecha: propietario, grupo, otros.
+        </li>
+        <li>
+            <strong>
+                rw-
+            </strong>
+            identifican los permisos del usuario propietario, en este caso
+            <strong>
+                alumno
+            </strong>
+            . Por lo tanto alumno posee los permisos de
+            <strong>
+                lectura
+            </strong>
+            y
+            <strong>
+                escritura
+            </strong>
+            sobre el fichero prueba1.txt o lo que es lo mismo 4+2+0=6
+        </li>
+        <li>
+            <strong>
+                r--
+            </strong>
+            identifican los permisos del grupo propietario, en este caso
+            <strong>
+                clase
+            </strong>
+            . Por lo tanto clase posee solamente el permiso de
+            <strong>
+                lectura
+            </strong>
+            o lo que es lo mismo
+            <strong>
+                4+0+0=4
+            </strong>
+        </li>
+        <li>
+            <strong>
+                r--
+            </strong>
+            identifican los permisos de los
+            <strong>
+                otros
+            </strong>
+            (resto del mundo). Por lo tanto todos los usuarios que no son alumno y aquellos que no pertenecen al grupo clase poseen solamente el permiso de
+            <strong>
+                lectura
+            </strong>
+            o lo que es lo mismo
+            <strong>
+                4+0+0=4
+            </strong>
+        </li>
+    </ul>
+    <p>
+        Por lo tanto los permisos
+        <strong>
+            rw-r- -r- -
+        </strong>
+        equivalen a
+        <strong>
+            644
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    1.7.- Servicio de transferencia de archivos en modo texto.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Como se comentó anteriormente, existen varios tipos de clientes
+        <span lang="en">
+         ftp
+        </span>
+        , entre los cuales los clientes en modo texto desde siempre estuvieron incorporados en las distribuciones
+        <span lang="en">
+         GNU
+        </span>
+        /Linux.
+    </p>
+    <p>
+        De entre los clientes tipo texto cabe destacar dos: el cliente en modo texto
+        <strong lang="en">
+            ftp
+        </strong>
+        y el cliente en modo texto
+        <strong lang="en">
+            lftp
+        </strong>
+        . En
+        <span lang="en">
+         GNU
+        </span>
+        /Linux Debian 6 se dispone del cliente modo
+        <span lang="en">
+         ftp
+        </span>
+        en una instalación básica. Para poder utilizarlo en el sistema simplemente hay que ejecutarlo como comando: el comando
+        <span lang="en">
+         ftp
+        </span>
+        .
+    </p>
+    <p>
+        Vamos a ver, a continuación, el comportamiento del cliente en modo texto
+        <span lang="en">
+         ftp
+        </span>
+        en la conexión al servidor
+        <span lang="en">
+         ftp
+        </span>
+        ftp.rediris.es:
+    </p>
+    <ol>
+        <li>
+            Básicamente la sintaxis es la siguiente:
+            <p>
+                ftp [-pinegvd] [host [port]]
+            </p>
+            <p>
+                donde
+            </p>
+            <ul class="lista_verificacion">
+                <li>
+                    host identifica el servidor
+                    <span lang="en">
+            ftp
+           </span>
+                </li>
+                <li>
+                    port identifica el puerto, por defecto 21, por lo cual si conectas a un servidor
+                    <span lang="en">
+            ftp
+           </span>
+                    configurado en ese puerto no es necesario escribirlo, ya se considera.
+                </li>
+            </ul>
+        </li>
+    </ol>
+</div><h1 class="title">
+    1.7.1.- Comandos ftp.
+</h1><div class="iDevice_content">
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+            <div class="elemento_derecha">
+                <div class="elemento_centrado">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <p>
+        En la consola
+        <span lang="en">
+         ftp
+        </span>
+        pueden estar disponibles múltiples comandos, algunos de los más empleados son los recogidos en la siguiente tabla:
+    </p>
+    <p>
+    </p>
+    <table class="tabla">
+        <caption>
+            Comandos FTP
+        </caption>
+        <tbody>
+        <tr>
+            <th colspan="2" id="abrir_cerrar_conexion">
+                ABRIR/CERRAR CONEXIÓN
+            </th>
+        </tr>
+        <tr>
+            <th headers="abrir_cerrar_conexion" id="CyA1">
+                COMANDO/S Y ARGUMENTOS
+            </th>
+            <th headers="abrir_cerrar_conexion" id="E1">
+                EXPLICACIÓN
+            </th>
+        </tr>
+        <tr>
+            <td headers="CyA1">
+                open servidor
+            </td>
+            <td headers="E1">
+                Inicia conexión remota con un servidor
+                <span lang="en">
+            ftp
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA1">
+                close / disconnect
+            </td>
+            <td headers="E1">
+                Finalizan la sesión
+                <span lang="en">
+            ftp
+           </span>
+                sin cerrar la consola
+                <span lang="en">
+            ftp
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA1">
+                bye / quit / exit
+            </td>
+            <td headers="E1">
+                Terminan la sesión
+                <span lang="en">
+            ftp
+           </span>
+                y salen de la consola
+                <span lang="en">
+            ftp
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA1">
+                !
+            </td>
+            <td headers="E1">
+                Sale a línea de comandos del sistema operativo temporalmente sin cortar la conexión. Para volver, teclea exit en la línea de comandos.
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" id="ayuda">
+                AYUDA
+            </th>
+        </tr>
+        <tr>
+            <th headers="ayuda" id="CyA2">
+                COMANDO/S Y ARGUMENTOS
+            </th>
+            <th headers="ayuda" id="E2">
+                EXPLICACIÓN
+            </th>
+        </tr>
+        <tr>
+            <td headers="CyA2">
+                ? / help
+            </td>
+            <td headers="E2">
+                Muestra una lista de los comandos disponibles.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA2">
+                ? comando / help comando
+            </td>
+            <td headers="E2">
+                Muestra la información relativa al comando.
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" id="trabajar_con_directorios">
+                TRABAJAR CON DIRECTORIOS
+            </th>
+        </tr>
+        <tr>
+            <th headers="trabajar_con_directorios" id="CyA3">
+                COMANDO/S Y ARGUMENTOS
+            </th>
+            <th headers="trabajar_con_directorios" id="E3">
+                EXPLICACIÓN
+            </th>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                cd directorio
+            </td>
+            <td headers="E3">
+                Cambia de directorio en el servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                lcd directorio
+            </td>
+            <td headers="E3">
+                Cambiarse de directorio en el equipo local (cliente
+                <span lang="en">
+            ftp
+           </span>
+                ).
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                dir directorio / ls directorio
+            </td>
+            <td headers="E3">
+                Listan el contenido del directorio remoto actual.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                pwd
+            </td>
+            <td headers="E3">
+                Muestra el directorio activo en el servidor.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                lpwd
+            </td>
+            <td headers="E3">
+                Muestra el directorio activo en el equipo local (cliente
+                <span lang="en">
+            ftp
+           </span>
+                ).
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                rmdir directorio
+            </td>
+            <td headers="E3">
+                Elimina un directorio vacío en el servidor.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA3">
+                mkdir directorio
+            </td>
+            <td headers="E3">
+                Crea un directorio en el servidor.Crea un directorio en el servidor.
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" id="trabajar_con_ficheros">
+                TRABAJAR CON FICHEROS
+            </th>
+        </tr>
+        <tr>
+            <th headers="trabajar_con_ficheros" id="CyA4">
+                COMANDO/S Y ARGUMENTOS
+            </th>
+            <th headers="trabajar_con_ficheros" id="E4">
+                EXPLICACIÓN
+            </th>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                delete archivo
+            </td>
+            <td headers="E4">
+                Borrar un archivo en el servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                mdelete patrón
+            </td>
+            <td headers="E4">
+                Borrar varios archivos según un patrón.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                get archivo
+            </td>
+            <td headers="E4">
+                Obtiene archivo en el equipo cliente desde el servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                mget archivos
+            </td>
+            <td headers="E4">
+                Obtiene varios archivos desde el servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                put archivo
+            </td>
+            <td headers="E4">
+                Envía un archivo al servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                mput archivos
+            </td>
+            <td headers="E4">
+                Envía varios archivos al servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                rename archivo
+            </td>
+            <td headers="E4">
+                Cambia el nombre a un archivo en el servidor.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                ascii
+            </td>
+            <td headers="E4">
+                Para configurar y transferir archivos tipo
+                <span lang="en">
+            ascii
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                binary
+            </td>
+            <td headers="E4">
+                Para configurar y transferir archivos tipo binario.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA4">
+                less archivo
+            </td>
+            <td headers="E4">
+                Leer contenido de archivo mediante el comando
+                <span lang="en">
+            less
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" id="trabajar_con_permisos">
+                TRABAJAR CON PERMISOS
+            </th>
+        </tr>
+        <tr>
+            <th headers="trabajar_con_permisos" id="CyA5">
+                COMANDO/S Y ARGUMENTOS
+            </th>
+            <th headers="trabajar_con_permisos" id="E5">
+                EXPLICACIÓN
+            </th>
+        </tr>
+        <tr>
+            <td headers="CyA5">
+                chmod
+            </td>
+            <td headers="E5">
+                Cambio de permisos en el servidor remoto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="CyA5">
+                umask
+            </td>
+            <td headers="E5">
+                Configura el sistema de permisos en el lado remoto.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    1.8.-  Servicio de transferencia de archivos en modo gráfico.
+</h1><div class="iDevice_content">
+    <p>
+        El servicio de transferencia de ficheros está bien, pero obliga a entender el funcionamiento de un servidor
+        <span lang="en">
+         ftp
+        </span>
+        mediante el uso de sus comandos. La verdad, es que no es muy interactivo, ¿entonces..., no existe la posibilidad de trabajar de otro modo más interactivo? Pues si, mediante clientes
+        <span lang="en">
+         ftp
+        </span>
+        de modo gráfico o mediante el navegador, ya que éste incorpora su propio cliente
+        <span lang="en">
+         ftp
+        </span>
+        .
+    </p>
+    <p>
+        Típicamente los clientes gráficos se comportan todos igual, esto es, tienen una interfaz parecida, básicamente presentan una ventana partida en dos secciones: la de la izquierda suele representar el equipo cliente
+        <span lang="en">
+         ftp
+        </span>
+        -desde donde se intenta establecer la conexión- y la de la derecha suele representar el equipo servidor
+        <span lang="en">
+         ftp
+        </span>
+        -quién recibe la conexión-. Luego suelen existir, en alguna zona determinada de la ventana: en el centro entre las dos secciones, arriba de las dos secciones, etc una serie de botones, usualmente representados como flechas que indican la posibilidad de subir o descargar archivos. Incluso dependiendo del cliente en modo gráfico es posible guardar los datos de las conexiones como plantillas, de tal forma que la próxima vez que intentes establecer la conexión con un mismo servidor
+        <span lang="en">
+         ftp
+        </span>
+        en vez de tener que rellenar los campos referentes a la conexión puedes hacerlo a través de la plantilla que ya posee el valor de esos campos.
+    </p>
+    <p>
+        Dentro de los clientes
+        <span lang="en">
+         ftp
+        </span>
+        en modo gráfico cabe destacar dos:
+        <strong lang="en">
+            gftp
+        </strong>
+        y
+        <strong lang="en">
+            filezilla
+        </strong>
+        . A continuación puedes ver un ejemplo de como utilizarlos para establecer una conexión con un servidor
+        <span lang="en">
+         ftp
+        </span>
+        , el servidor ftp.rediris.es :
+    </p>
+    <ol>
+        <li>
+            Cliente en modo gráfico
+            <strong lang="en">
+                gftp
+            </strong>
+            .
+            <ul class="lista_verificacion">
+                <li>
+                    <strong>
+                        Servidor
+                    </strong>
+                    : Escribe aquí el nombre o
+                    <span lang="en">
+            IP
+           </span>
+                    del servidor
+                    <span lang="en">
+            FTP
+           </span>
+                    : ftp.rediris.es
+                </li>
+                <li>
+                    <strong>
+                        Puerto
+                    </strong>
+                    : Escribe aquí el puerto
+                    <span lang="en">
+            TCP
+           </span>
+                    de la conexión de control, por defecto: 21. Puedes omitirlo siempre y cuando sea el 21.
+                </li>
+                <li>
+                    <strong>
+                        Usuario
+                    </strong>
+                    : Escribe aquí el usuario con permisos de conexión en el servidor
+                    <span lang="en">
+            ftp
+           </span>
+                    . En la imagen puedes ver que no se ha escrito nada, esto es debido que el servidor ftp.rediris.es permite la entrada a cualquier usuario y el cliente gráfico
+                    <span lang="en">
+            gftp
+           </span>
+                    al intentar conectar te pedirá un usuario que tenga permisos para la conexión. Pulsas en cancelar y
+                    <span lang="en">
+            gftp
+           </span>
+                    cubrirá los campos usuario y contraseña, entrando al servidor
+                    <span lang="en">
+            ftp
+           </span>
+                    .
+                </li>
+                <li>
+                    <strong>
+                        Contraseña
+                    </strong>
+                    : Escribe aquí la contraseña del usuario con permisos de conexión en el servidor
+                    <span lang="en">
+            ftp
+           </span>
+                    . En la imagen puedes ver que no se ha escrito nada, esto es debido a la misma causa que en el campo Usuario.
+                    <div class="elemento_centrado">
+                        <div class="elemento_centrado">
+                            <div class="elemento_centrado">
+
+                            </div>
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            Cliente en modo gráfico filezilla.
+            <ul class="lista_verificacion">
+                <li>
+                    <strong>
+                        Servidor
+                    </strong>
+                    : Escribe aquí el nombre o
+                    <span lang="en">
+            IP
+           </span>
+                    del servidor
+                    <span lang="en">
+            FTP
+           </span>
+                    : ftp.rediris.es
+                </li>
+                <li>
+                    <strong>
+                        Nombre de usuario
+                    </strong>
+                    : Escribe aquí el usuario con permisos de conexión en el servidor
+                    <span lang="en">
+            ftp
+           </span>
+                    .
+                    <span lang="en">
+            Filezilla
+           </span>
+                    , al contrario que
+                    <span lang="en">
+            gftp
+           </span>
+                    , no cubre los datos usuario y contraseña si tú no escribes nada en los campos, entonces debes escribir un nombre de usuario, por ejemplo
+                    <span lang="en">
+            anonymous
+           </span>
+                    , y una contraseña -cualquier secuencia de caracteres-.
+                </li>
+                <li>
+                    <strong>
+                        Contraseña
+                    </strong>
+                    : Escribe aquí la contraseña del usuario con permisos de conexión en el servidor
+                    <span lang="en">
+            ftp
+           </span>
+                    . En la imagen puedes ver que se ha escrito una secuencia de caracteres punto, lo que significa que a la hora de escribir caracteres en ese campo no se muestra su valor por seguridad. Es necesario escribir una contraseña por lo comentado en el campo anterior: Nombre de usuario.
+                </li>
+                <li>
+                    <strong>
+                        Puerto
+                    </strong>
+                    : Escribe aquí el puerto
+                    <span lang="en">
+            TCP
+           </span>
+                    de la conexión de control, por defecto: 21. Puedes omitirlo siempre y cuando sea el 21.
+                    <div class="elemento_centrado">
+                        <div class="elemento_centrado">
+                            <div class="elemento_centrado">
+                                <div class="elemento_centrado">
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ol>
+</div><h1 class="title">
+    1.9.- Servicio de transferencia de archivos desde el navegador.
+</h1><div class="iDevice_content">
+    <p>
+        El navegador
+        <span lang="en">
+         web
+        </span>
+        también puede ejercer de cliente
+        <span lang="en">
+         ftp
+        </span>
+        y, puesto que la mayoría de los sistemas operativos cuentan con un navegador en su instalación, es una de las herramientas más usadas para transferencia de archivos.
+    </p>
+    <p>
+        Para poder usar el navegador como cliente
+        <span lang="en">
+         ftp
+        </span>
+        solamente debes escribir en la barra de dirección una
+        dirección URL
+
+
+        Dirección URL
+
+        Dirección de Internet de un recurso válida para su posible utilización a través de Internet, la cual permite que el navegador la encuentre y la muestre de forma adecuada, por ejemplo: http://www.debian.org
+        tipo, como la siguiente:
+    </p>
+    <p class="elemento_centrado">
+        ftp://nombre_servidor_ftp:puerto
+    </p>
+    <p>
+        donde,
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                ftp://
+            </strong>
+            indica que el protocolo que deseas que interprete el navegador sea el
+            <span lang="en">
+          ftp
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                nombre_servidor_ftp
+            </strong>
+            representa el nombre o la
+            <span lang="en">
+          IP
+         </span>
+            del servidor
+            <span lang="en">
+          ftp
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                puerto
+            </strong>
+            indica el puerto
+            <span lang="en">
+          TCP
+         </span>
+            , por defecto 21. Puedes omitirlo siempre y cuando sea el 21.
+        </li>
+    </ul>
+    <p>
+        Si el servidor
+        <span lang="en">
+         ftp
+        </span>
+        permite la conexión a un usuario anónimo, al ejecutar
+        <strong>
+            ftp://nombre_servidor_ftp:puerto
+        </strong>
+        entrarás directamente al servidor
+        <span lang="en">
+         ftp
+        </span>
+        , esto es, el navegador no preguntará qué usuario y contraseña necesitas para establecer la conexión.
+    </p>
+    <p>
+        En la siguiente imagen puedes ver como puedes acceder al servidor
+        <span lang="en">
+         ftp
+        </span>
+        de rediris utilizando el navegador:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <p>
+        Así, lo único que tienes que hacer es escribir en la dirección
+        <span lang="en">
+         URL
+        </span>
+        :
+        <strong>
+            ftp://ftp.rediris.es
+        </strong>
+        y pulsar
+        <strong lang="en">
+            Enter
+        </strong>
+        , con lo cual, automáticamente, conectas con el servidor
+        <span lang="en">
+         ftp
+        </span>
+        , pudiendo visitar las carpetas y ver los ficheros como si de un explorador de archivos se tratará.
+    </p>
+    <p>
+        Para descargar las carpetas o archivos simplemente debes pulsar con el botón derecho del ratón sobre ellos y elegir la opción
+        <strong>
+            Guardar enlace como…
+        </strong>
+        -que aparece en
+        <span lang="en">
+         Firefox
+        </span>
+        y es similar en otros navegadores-.
+    </p>
+    <p>
+        Pero no todo van a ser ventajas al utilizar el navegador como cliente
+        <span lang="en">
+         ftp
+        </span>
+        , puesto que otros clientes tienen la posibilidad de continuar las descargas cuando estás sufrieron algún tipo de interrupción, cosa que no pasa con el cliente
+        <span lang="en">
+         ftp
+        </span>
+        del navegador, como por ejemplo el cliente gráfico
+        <span lang="en">
+         FileZilla
+        </span>
+        que soporta y reanuda la transferencia de archivos de gran tamaño(&gt; 4
+        <span lang="en">
+         GB
+        </span>
+        ).
+    </p>
+</div><h1 class="title">
+    1.10.- Asegurando el servicio de transferencia de archivos.
+</h1><div class="iDevice_content">
+    <p>
+        Bien, pero ¿qué pasa con los datos en la transferencia? ¿viajan cifrados? ¿no? Pues empleando el protocolo
+        <span lang="en">
+         ftp
+        </span>
+        cualquiera que tenga acceso al canal de transmisión podrá ver en texto claro todo lo que se transmite, esto es, los datos no se cifran. Esto puede carecer de importancia, o no, según el contexto de la transmisión. Así, puede que a un organismo público no le importe compartir información a través de
+        <span lang="en">
+         ftp
+        </span>
+        y que los datos en la transferencia viajen sin cifrar y, sin embargo, a una empresa si le interese que los datos viajen cifrados.
+    </p>
+    <p>
+        Entonces, cuando interese asegurar el servicio de transferencia de archivos debes descartar el protocolo
+        <span lang="en">
+         ftp
+        </span>
+        y empezar a pensar en otras alternativas, como:
+        <strong lang="en">
+            ftps
+        </strong>
+        o
+        <strong lang="en">
+            sftp
+        </strong>
+        .
+    </p>
+    <p>
+        <span lang="en">
+         FTPS
+        </span>
+        es una extensión del protocolo
+        <span lang="en">
+         FTP
+        </span>
+        que asegura el cifrado en la transferencia mediante los protocolos
+        <span lang="en">
+         SSL/TLS
+        </span>
+        . Permite tres tipos de funcionamiento:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+         <span lang="en">
+          SSL
+         </span>
+            Implícito:
+            <ul>
+                <li>
+                    Como conexiones
+                    HTTPS
+
+
+                    HTTPS
+
+                    Protocolo basado en el protocolo HTTP, destinado a la transferencia segura de datos mediante cifrado, es decir, es la versión segura de HTTP.
+                    .
+                </li>
+                <li>
+                    Usa los puertos 990 y 989.
+                </li>
+            </ul>
+        </li>
+        <li>
+         <span lang="en">
+          SSL
+         </span>
+            Explícito
+            <ul>
+                <li>
+                    El cliente usa los mismos puertos estándar FTP: 20 y 21 pero se efectúa el cifrado en ellos.
+                </li>
+                <li>
+                    Usa
+                    <abbr title="Authentication/Security Mechanism.">
+                        AUTH SSL
+                    </abbr>
+                    .
+                </li>
+            </ul>
+        </li>
+        <li>
+         <span lang="en">
+          TLS
+         </span>
+            Explícito:
+            <ul>
+                <li>
+                    Similar a SSL Explícito pero usa
+                    <abbr title="FTPS Explicito.">
+                        AUTH TLS
+                    </abbr>
+                    .
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        El cifrado al que nos referimos es el
+        cifrado de clave pública o asimétrico
+        <strong>
+            clave pública(
+            <abbr lang="en" title="Key Public.">
+                kpub
+            </abbr>
+            )
+        </strong>
+        y
+        <strong>
+            clave privada(
+            <abbr lang="en" title="Key Private.">
+                kpriv
+            </abbr>
+            )
+        </strong>
+        . La
+        <strong>
+            kpub
+        </strong>
+        interesa publicarla para que llegue a ser conocida por cualquiera, la
+        <strong lang="en">
+            kpriv
+        </strong>
+        no interesa que nadie la posea, solo el propietario de la misma. Ambas son necesarias para que la comunicación sea posible, una sin la otra no tienen sentido, así una información cifrada mediante la
+        <strong lang="en">
+            kpub
+        </strong>
+        solamente puede ser descifrada mediante la
+        <strong lang="en">
+            kpriv
+        </strong>
+        y una información cifrada mediante la
+        <strong lang="en">
+            kpriv
+        </strong>
+        sólo puede ser descifrada mediante la
+        <strong lang="en">
+            kpub
+        </strong>
+        .
+    </p>
+    <p>
+        En el cifrado asimétrico podemos estar hablando de individuos o de máquinas, en nuestro caso hablamos de máquinas y de flujo de información entre el
+        <strong>
+            cliente
+            <span lang="en">
+          ftp
+         </span>
+            (A)
+        </strong>
+        y el
+        <strong>
+            servidor
+            <span lang="en">
+          ftp
+         </span>
+            (B)
+        </strong>
+        . Ver la siguiente tabla como ejemplo de funcionamiento del cifrado asimétrico:
+    </p>
+    <table class="tabla">
+        <caption>
+            Funcionamiento del cifrado asimétrico.
+        </caption>
+        <thead>
+        <tr>
+            <th colspan="2" id="fun">
+                Funcionamiento del cifrado asimétrico
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td colspan="2" headers="fun">
+                <div style="width: 100%;">
+                    <div style="width: 50%; float: left;">
+                        <div class="elemento_centrado">
+                            <div class="elemento_centrado">
+                                <div class="elemento_centrado">
+                                    <div class="elemento_izquierda">
+                                        <div class="elemento_centrado">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="width: 50%; float: right;">
+                        <div class="elemento_centrado">
+                            <div class="elemento_centrado">
+                                <div class="elemento_centrado">
+                                    <div class="elemento_derecha">
+                                        <div class="elemento_centrado">
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                </div>
+                <p class="elemento_centrado">
+                    A(inf) → inf cifrada → B [descifrar inf] → B(inf) = A(inf)
+                </p>
+                <p class="elemento_centrado">
+                    A(inf) → inf cifrada = [(inf)]kpubB → B [inf. cifrada]kprivB → B(inf) = A(inf)
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="2" id="ide">
+                Identificación
+            </th>
+        </tr>
+        <tr>
+            <th headers="ide" scope="row">
+                A
+            </th>
+            <td headers="ide">
+                Cliente
+                <span lang="en">
+            ftp
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th headers="ide" scope="row">
+                inf cifrada = [(inf)]kpubB
+            </th>
+            <td headers="ide">
+                Información cifrada mediante la clave pública de B obtenida a través de un certificado digital.
+            </td>
+        </tr>
+        <tr>
+            <th headers="ide" scope="row">
+                [inf. cifrada]kprivB
+            </th>
+            <td headers="ide">
+                Información descifrada mediante la clave privada de B.
+            </td>
+        </tr>
+        <tr>
+            <th headers="ide" scope="row">
+                B
+            </th>
+            <td headers="ide">
+                Servidor
+                <span lang="en">
+            ftp
+           </span>
+                .
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    1.11.- El servicio de transferencia de archivos en el proceso de despliegue de una aplicación Web.
+</h1><div class="iDevice_content">
+    <p>
+        ¿Cómo actualizas una página
+        <span lang="en">
+           web
+          </span>
+        de forma remota? ¿Qué servicios suelen ofrecer las empresas de alojamiento
+        <span lang="en">
+           web
+          </span>
+        para que puedas subir archivos a tus aplicaciones?¿Cuánto tiempo se mantiene la conexión subiendo un archivo?
+    </p>
+</div><h1 class="title">
+    2.- Instalación del servidor proftpd.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Bien —pensó María— ya es la hora, una vez configurado el servidor
+        <span lang="en">
+           web
+          </span>
+        , alojada la página y comprobada su visibilidad a través de Internet, toca permitir la subida de archivos de gran tamaño a la carpeta
+        <span lang="en">
+           upload
+          </span>
+        preparada para tal fin. Así que, déjame pensar, María, ¿qué debo hacer?:
+    </p>
+    <ol>
+        <li>
+            Esta empresa maneja archivos de gran tamaño, por lo que habrá que configurar un servidor
+            <span lang="en">
+            ftp
+           </span>
+            para que en la subida de archivos la conexión no se corte, que es lo más probable que ocurra a través de la subida de archivos mediante la propia aplicación
+            <span lang="en">
+            web
+           </span>
+            .
+        </li>
+        <li>
+            Mirar qué servicio han contratado, puesto que el nivel de cuota en disco puede variar según el servicio.
+        </li>
+        <li>
+            Crear un usuario virtual para que pueda subir archivos, —¿cómo lo haré? ¿mediante base de datos
+            <span lang="en">
+            SQL
+           </span>
+            ? —Uhm..., creo que lo mejor será crear un usuario virtual y, como solamente se trata de un usuario, pues lo crearé mediante un archivo de autenticación.
+        </li>
+        <li>
+            Si se necesita crear otro usuario, pues otro en el archivo de autenticación y listo. ¿Y si necesito crear grupos? Pues lo mismo, en un archivo de autenticación de grupos.
+        </li>
+        <li>
+            Se necesita que la comunicación sea cifrada, con lo cual se debe emplear el protocolo
+            <span lang="en">
+            SSL
+           </span>
+            . —¿Uhm...? Mejor el protocolo
+            <span lang="en">
+            TLS
+           </span>
+            , que es el sucesor de
+            <span lang="en">
+            SSL
+           </span>
+            . Pero, claro, si empleo cifrado voy a tener que utilizar otros puertos
+            <span lang="en">
+            TCP
+           </span>
+            distintos del servidor
+            <span lang="en">
+            ftp
+           </span>
+            que maneja por defecto: el 21 para la conexión de control y el 20 para la conexión de datos.
+        </li>
+        <li>
+            Ya está, mejor empleo
+            <span lang="en">
+            TLS
+           </span>
+            Explícito, de tal forma que puedo seguir utilizando los mismos puertos 20 y 21 para el cifrado.
+        </li>
+        <li>
+            Y todo esto no debe modificar la configuración ya realizada para otras empresas.
+        </li>
+    </ol>
+    <p>
+        Pues clarísimo, lo que tengo que hacer es utilizar el servidor
+        <strong lang="en">
+            ProFTPD
+        </strong>
+        .
+    </p>
+    <p>
+        Entonces:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Primero, comprobar si en este servidor dedicado está instalado y, si no lo está, instalarlo.
+        </li>
+        <li>
+            Segundo, configurar el servidor
+            <span lang="en">
+            proftpd
+           </span>
+            de la siguiente forma:
+            <ul>
+                <li>
+                    Configuración independiente para esta empresa.
+                </li>
+                <li>
+                    Usuario virtual en un archivo de autenticación.
+                </li>
+                <li>
+                    Cifrado
+                    <span lang="en">
+              TLS
+             </span>
+                    Explícito para asegurar el cifrado.
+                </li>
+                <li>
+                    Cuota de disco.
+                </li>
+                <li>
+                    Permisos de subida en la carpeta upload correspondiente.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Pues, manos a la obra María, que se va haciendo tarde.
+    </p>
+</div><h1 class="title">
+    2.1.- Configuración de proftpd.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Su configuración es similar a la configuración del Servidor Apache, con lo cual si posees conocimientos sobre Apache tendrás mucho ganado, así tiene:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Un fichero de configuración principal
+            /etc/protftpd/proftpd.conf
+        </li>
+        <li>
+            La posibilidad de configurar
+            hosts virtuales
+
+
+            Host virtual
+
+            Dominio independiente que se puede alojar en un mismo servidor ftp.
+            o
+            virtualhosts
+
+
+            Virtualhost
+
+            Dominio independiente que se puede alojar en un mismo servidor ftp.
+            , de tal forma que un mismo servidor
+            <span lang="en">
+          ftp
+         </span>
+            puede alojar múltiples dominios con sus configuraciones correspondientes, y todo lo que no esté incluido en la definición de cada
+            <span lang="en">
+          virtualhost
+         </span>
+            se heredará de la configuración principal.
+        </li>
+        <li>
+            Configuración a través de directivas.
+        </li>
+        <li>
+            Contextos de configuración: global, directorio,
+            <span lang="en">
+          virtualhost
+         </span>
+            ,
+            <span lang="en">
+          anonymous
+         </span>
+            .
+        </li>
+        <li>
+            Modularización. Al igual que Apache se pueden activar/desactivar funcionalidades a través de módulos.
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.2.- Configurar el servidor como ftp privado.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Una vez instalado el servidor
+        <span lang="en">
+         proftpd
+        </span>
+        , en
+        <span lang="en">
+         Debian
+        </span>
+        6 (
+        <span lang="en">
+         squeeze
+        </span>
+        ), disponemos de un archivo de configuración
+        /etc/proftpd/proftpd.conf
+        <span class="tamano">
+         (0.01 MB)
+        </span>
+    </p>
+    <p>
+        Como has podido comprobar en la sección anterior, posee una configuración tipo por defecto. Ésta ya permite la conexión a tu servidor. ¿Con qué usuarios? Con cualquier usuario del sistema que posea una consola de comandos activa definida en /etc/shells.
+    </p>
+    <p>
+        ¿Cómo? Pues simplemente ejecutando cualquier cliente
+        <span lang="en">
+         ftp
+        </span>
+        que establezca una conexión con el puerto
+        <span lang="en">
+         TCP
+        </span>
+        21 a tu servidor
+        <span lang="en">
+         ftp
+        </span>
+        . Por ejemplo utilizando el cliente de comandos
+        <span lang="en">
+         ftp
+        </span>
+        sería:
+    </p>
+    <p class="elemento_centrado">
+        ftp usuario_del_sistema&#64;servidor_ftp
+    </p>
+    <p>
+        donde,
+    </p>
+    <p>
+        <strong>
+            servidor_ftp:
+        </strong>
+        puede ser el nombre de tu servidor
+        <span lang="en">
+         ftp
+        </span>
+        en /etc/hosts o resuelto por
+        DNS
+
+
+        DNS
+
+        Sistema de nomenclatura jerárquica para computadoras, servicios o cualquier recurso conectado a Internet o a una red privada, por ejemplo: apache.org determina un dominio org (organización) y un subdominio que identifica en este caso la máquina o conjunto de máquinas de nombre apache.
+        , o la
+        <span lang="en">
+         IP
+        </span>
+        de tu servidor
+        <span lang="en">
+         ftp
+        </span>
+    </p>
+    <p>
+        Si no eres capaz de conectar revisa la configuración de tu cortafuegos y la sección 1.6 donde se exponen soluciones a problema típicos en conexiones
+        <span lang="en">
+         ftp
+        </span>
+        .
+    </p>
+</div><h1 class="title">
+    2.3.- Configurar el servidor como ftp privado y anónimo.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Igual te interesa contar en la configuración de tu servidor ftp con un usuario anónimo, el cual establecerá la conexión con cualquier contraseña y tendrá permisos diferentes a los usuarios del sistema (privados). Normalmente los permisos del usuario anónimo en un servidor ftp se establecerán para que solamente pueda moverse por los directorios y descargar archivos, nunca subirlos, esto es, normalmente el usuario anónimo no podrá crear ni eliminar ficheros y directorios.
+    </p>
+    <p>
+        Para hacer que proftpd permita conexiones mediante usuarios del sistema y usuarios anónimos debes modificar el fichero
+        /etc/proftpd/proftpd.conf
+        <span class="tamano">
+         (0.01 MB)
+        </span>
+    </p>
+    <p>
+        La modificación consiste en retocar su configuración activando a mayores la conexión mediante usuarios anónimos, puesto que los usuarios del sistema por defecto ya poseen acceso mediante ftp y se conectan con la misma contraseña del sistema.
+    </p>
+    <p>
+        Por lo tanto, al final del fichero incorpora las siguientes líneas:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 73.1em; margin-top: 25px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># Inicio de la configuración Anonymous
+</pre>
+            <pre ngNonBindable>     # Usuario anónimo que entrará en el directorio ~ftp, esto es, en la variable $HOME del usuario ftp
+</pre>
+            <pre ngNonBindable>     # En Debian 6 (squeeze) ~ftp=/home/ftp . Este directorio será la raíz de los directorios en la conexión
+</pre>
+            <pre ngNonBindable>     # ftp, esto es, /home/ftp estará enjaulado (chroot) de tal forma que aunque el usuario anónimo ftp
+</pre>
+            <pre ngNonBindable>     # quisiera acceder a otros directorios situados fuera de /home/ftp no podrá acceder.
+</pre>
+            <pre ngNonBindable>     &lt;Anonymous ~ftp&gt;
+</pre>
+            <pre ngNonBindable>     # Después de hacer login anónimo mediante ftp el servidor se ejecuta con el usuario ftp y con el grupo
+</pre>
+            <pre ngNonBindable>     # nogroup
+</pre>
+            <pre ngNonBindable>     User     ftp
+</pre>
+            <pre ngNonBindable>     Group     nogroup
+</pre>
+            <pre ngNonBindable>     # La siguiente línea permite hacer login con el usuario “anonymous” igual que si fuera el usuario “ftp”
+</pre>
+            <pre ngNonBindable>     UserAlias     anonymous ftp
+</pre>
+            <pre ngNonBindable>     # Cambios de apariencia, todos los ficheros parecerán pertenecer al usuario y grupo ftp
+</pre>
+            <pre ngNonBindable>     DirFakeUser     on ftp
+</pre>
+            <pre ngNonBindable>     DirFakeGroup     on ftp
+</pre>
+            <pre ngNonBindable>     # No es necesario tener una shell en /etc/shells
+</pre>
+            <pre ngNonBindable>     RequireValidShell     off
+</pre>
+            <pre ngNonBindable>     # Limitar el máximo número de logins anónimos concurrentes a 10
+</pre>
+            <pre ngNonBindable>     MaxClients     10
+</pre>
+            <pre ngNonBindable>     # Mensaje de conexión en el fichero welcome.msg
+</pre>
+            <pre ngNonBindable>     DisplayLogin     welcome.msg
+</pre>
+            <pre ngNonBindable>     # No permitir ESCRITURA en cualquier directorio al usuario anonymous, alias del usuario ftp
+</pre>
+            <pre ngNonBindable>     &lt;Directory *&gt;
+</pre>
+            <pre ngNonBindable>      &lt;Limit WRITE&gt;
+</pre>
+            <pre ngNonBindable>      DenyAll
+</pre>
+            <pre ngNonBindable>      &lt;/Limit&gt;
+</pre>
+            <pre ngNonBindable>     &lt;/Directory&gt;
+</pre>
+            <pre ngNonBindable>     # Fin de la configuración Anonymous
+</pre>
+            <pre ngNonBindable>     &lt;/Anonymous&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        No olvides recargar la nueva configuración para que los cambios tengan efecto, ejecutando el comando:
+    </p>
+    <p>
+        /etc/init.d/proftpd restart ó
+        <code>
+            /etc/init.d/proftpd reload
+        </code>
+        .
+    </p>
+</div><h1 class="title">
+    2.4.- Configurar el servidor como ftp anónimo.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Puedes configurar
+        <span lang="en">
+         proftpd
+        </span>
+        para que permita conexiones mediante usuarios anónimos obligando a conectar sin poseer una contraseña del sistema, esto es, conectando con una contraseña cualquiera. Para ello debes modificar de nuevo el fichero
+        /etc/proftpd/proftpd.conf
+        <span class="tamano">
+         (0.01 MB)
+        </span>
+    </p>
+    <p>
+        Por lo tanto, cambia la configuración del usuario
+        <span lang="en">
+         anonymous
+        </span>
+        <span lang="en">
+         ftp
+        </span>
+        de tal forma que al final del fichero aparezcan las siguientes líneas:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;Anonymous ~ftp&gt;
+</pre>
+            <pre ngNonBindable>      User     ftp
+</pre>
+            <pre ngNonBindable>      Group     nobody
+</pre>
+            <pre ngNonBindable>     # No es necesario tener una shell en /etc/shells
+</pre>
+            <pre ngNonBindable>      RequireValidShell     off
+</pre>
+            <pre ngNonBindable>     # No se requiere contraseña en la conexión
+</pre>
+            <pre ngNonBindable>      AnonRequirePassword     off
+</pre>
+            <pre ngNonBindable>     # No permitir ESCRITURA en cualquier directorio al usuario ftp
+</pre>
+            <pre ngNonBindable>     &lt;Directory *&gt;
+</pre>
+            <pre ngNonBindable>      &lt;Limit WRITE&gt;
+</pre>
+            <pre ngNonBindable>      DenyAll
+</pre>
+            <pre ngNonBindable>      &lt;/Limit&gt;
+</pre>
+            <pre ngNonBindable>     &lt;/Directory&gt;
+</pre>
+            <pre ngNonBindable>     &lt;/Anonymous&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Puedes crear un usuario anónimo con carácter privado, esto es, que requiera contraseña para establecer la conexión. Por ejemplo, en la configuración siguiente se convierte el usuario del sistema 'invitado', para el servidor
+        <span lang="en">
+         ftp
+        </span>
+        , en un usuario anónimo que requiere contraseña para establecer la conexión. Además, solamente tendrá permisos de escritura desde cualquier equipo que conecte mediante la dirección de red 192.168.200.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 80.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;Anonymous ~invitado&gt;
+</pre>
+            <pre ngNonBindable>     User      invitado
+</pre>
+            <pre ngNonBindable>     Group     nobody
+</pre>
+            <pre ngNonBindable>     # Se requiere la contraseña de sistema del usuario invitado en la conexión
+</pre>
+            <pre ngNonBindable>     AnonRequirePassword on
+</pre>
+            <pre ngNonBindable>     # No permitir ESCRITURA en cualquier directorio al usuario invitado a no ser que establezca conexión
+</pre>
+            <pre ngNonBindable>     # de la red 192.168.200.
+</pre>
+            <pre ngNonBindable>     &lt;Directory *&gt;
+</pre>
+            <pre ngNonBindable>      &lt;Limit WRITE&gt;
+</pre>
+            <pre ngNonBindable>      Order allow, deny
+</pre>
+            <pre ngNonBindable>      Allow from 192.168.200.
+</pre>
+            <pre ngNonBindable>      Deny from all
+</pre>
+            <pre ngNonBindable>      &lt;/Limit&gt;
+</pre>
+            <pre ngNonBindable>     &lt;/Directory&gt;
+</pre>
+            <pre ngNonBindable>     &lt;/Anonymous&gt;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.5.- Configurar el servidor ftp con múltiples dominios.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+            <div class="elemento_centrado">
+
+            </div>
+
+        </div>
+    </div>
+    <p>
+        Anteriormente hemos visto cómo poder configurar el servidor
+        <span lang="en">
+         ftp
+        </span>
+        con múltiples usuarios, pero todos pertenecientes al mismo sitio/dominio, entonces, ¿no se puede configurar usuarios pertenecientes a distintos dominios en el mismo servidor
+        <span lang="en">
+         ftp
+        </span>
+        ? La respuesta es que sí, sí se puede, ¿cómo?, mediante la configuración de
+        <span lang="en">
+         hosts
+        </span>
+        virtuales o
+        <span lang="en">
+         virtualhosts
+        </span>
+        . Éstos básicamente lo que hacen es permitir que un mismo servidor
+        <span lang="en">
+         ftp
+        </span>
+        pueda alojar múltiples dominios, así configurando
+        <span lang="en">
+         hosts
+        </span>
+        virtuales podemos alojar:
+        <strong>
+            empresa1.com
+        </strong>
+        ,
+        <strong>
+            empresa2.com
+        </strong>
+        ,…,
+        <strong>
+            empresaN.com
+        </strong>
+        en el mismo servidor
+        <span lang="en">
+         ftp
+        </span>
+        . Cada empresa tendrá su
+        <span lang="en">
+         virtualhost
+        </span>
+        único e independiente de los demás.
+    </p>
+    <p>
+        Aunque como se ha comentado anteriormente cada
+        <span lang="en">
+         virtualhost
+        </span>
+        es único e independiente de los demás, todo aquello que no esté incluido en la definición de cada
+        <span lang="en">
+         virtualhost
+        </span>
+        se heredará de la configuración principal:
+        <strong>
+            proftpd.conf (/etc/proftpd/proftpd.conf)
+        </strong>
+        . Así, si quieres definir una directiva común en todos los
+        <span lang="en">
+         virtualhost
+        </span>
+        no debes modificar cada uno de los
+        <span lang="en">
+         virtualhost
+        </span>
+        introduciendo esa directiva sino que debes definir esa directiva en la configuración principal del servidor
+        <span lang="en">
+         ftp
+        </span>
+        <span lang="en">
+         ProFTPD
+        </span>
+        , de tal forma que todos los
+        <span lang="en">
+         virtualhost
+        </span>
+        heredarán esa directiva, por ejemplo en proftpd.conf puedes encontrar la directiva TimeoutIdle 1200, que establece la directiva TimeoutIdle igual a 1200 segundos, esto es, indica el número máximo de segundos que puede estar un usuario sin hacer nada, pasado ese tiempo se cierra la conexión
+        <span lang="en">
+         ftp
+        </span>
+        .
+    </p>
+    <p>
+        En la definición de la directiva
+        <span lang="en">
+         VirtualHost
+        </span>
+        podemos poner la
+        <span lang="en">
+         IP
+        </span>
+        del servidor
+        <span lang="en">
+         FTP
+        </span>
+        ó bien el nombre
+        <span lang="en">
+         DNS
+        </span>
+        correspondiente. En nuestro escenario, la IP_Servidor_FTP=192.168.200.250,
+        <strong>
+            ftp.empresa1.com
+        </strong>
+        y
+        <strong>
+            ftp.empresa2.com
+        </strong>
+        identifican a la misma máquina.
+    </p>
+</div><h1 class="title">
+    2.6.- Virtualhosts basados en nombre.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En la definición de la directiva VirtualHost podemos poner la
+        <span lang="en">
+         IP
+        </span>
+        del servidor
+        <span lang="en">
+         FTP
+        </span>
+        ó bien el nombre
+        <span lang="en">
+         DNS
+        </span>
+        correspondiente. En nuestro escenario, la IP_Servidor_FTP=192.168.200.250,
+        <strong>
+            ftp.empresa1.com
+        </strong>
+        y
+        <strong>
+            ftp.empresa2.com
+        </strong>
+        identifican a la misma máquina y a la misma
+        <span lang="en">
+         IP
+        </span>
+        . Ahora si, cada
+        <span lang="en">
+         virtualhost
+        </span>
+        , así como el servidor principal, deben servir en un puerto
+        <span lang="en">
+         TCP
+        </span>
+        distinto.
+    </p>
+    <p>
+        ¿Cómo lo haces? Sigues el procedimiento:
+    </p>
+    <ol>
+        <li style="margin-bottom: 20px;">
+            En la configuración de
+            <span lang="en">
+          ProFTPD
+         </span>
+            (/etc/proftpd/proftpd.conf) debes activar la configuración del fichero
+            <strong>
+                virtuals.conf
+            </strong>
+            descomentando la línea:
+            <div class="codigo elemento_centrado" style="width: 24.7em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>Include /etc/proftpd/virtuals.conf
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Agrega la configuración
+            <span lang="en">
+          virtualhost
+         </span>
+            para empresa1 en el fichero
+            <strong>
+                /etc/proftpd/virtuals.conf
+            </strong>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>&lt;VirtualHost 192.168.200.250&gt;
+</pre>
+                    <pre ngNonBindable>Port 2121
+</pre>
+                    <pre ngNonBindable>ServerName "Servidor FTP empresa1"
+</pre>
+                    <pre ngNonBindable>AuthUserFile /etc/passwd.usuarios.virtuales
+</pre>
+                    <pre ngNonBindable>DefaultRoot /var/ftp/empresa1/
+</pre>
+                    <pre ngNonBindable>RequireValidShell off
+</pre>
+                    <pre ngNonBindable>&lt;/VirtualHost&gt;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Agrega la configuración
+            <span lang="en">
+          virtualhost
+         </span>
+            para empresa2 en el fichero
+            <strong>
+                /etc/proftpd/virtuals.conf
+            </strong>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>&lt;VirtualHost ftp.empresa2.com&gt;
+</pre>
+                    <pre ngNonBindable>Port 2122
+</pre>
+                    <pre ngNonBindable>AuthUserFile /etc/passwd.usuarios.virtuales
+</pre>
+                    <pre ngNonBindable>ServerName "Servidor FTP empresa2"
+</pre>
+                    <pre ngNonBindable>DefaultRoot /var/ftp/empresa2/
+</pre>
+                    <pre ngNonBindable>RequireValidShell off
+</pre>
+                    <pre ngNonBindable>&lt;/VirtualHost&gt;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Configura permisos en las carpetas /var/ftp/empresa1/ y /var/ftp/empresa2/ para los usuarios virtuales:
+            <div class="codigo elemento_centrado" style="width: 32.4em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>chown ftp /var/ftp/empresa1/ /var/ftp/empresa2/
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Recarga la configuración del servidor.
+            <div class="codigo elemento_centrado" style="width: 20.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>/etc/init.d/proftpd restart
+</pre>
+                </div>
+            </div>
+        </li>
+    </ol>
+    <p>
+        Explicación fichero
+        <span lang="en">
+         virtualhost
+        </span>
+        :
+    </p>
+    <p>
+        &lt;VirtualHost IP_Servidor_FTP&gt; → Inicio etiqueta virtualhost: define la
+        <span lang="en">
+         IP
+        </span>
+        del servidor
+        <span lang="en">
+         ftp
+        </span>
+        . También puede ser &lt;VirtualHost Nombre_DNS_Servidor_FTP&gt;
+    </p>
+    <p>
+        Port numero → Identifica el puerto
+        <span lang="en">
+         TCP
+        </span>
+        por el que espera la conexión el servidor
+        <span lang="en">
+         FTP
+        </span>
+    </p>
+    <p>
+        ServerName "Servidor FTP empresaX"→ Configura el nombre que se muestra en la conexión de los usuarios.
+    </p>
+    <p>
+        DefaultRoot /var/ftp/empresaX/ → Definición de la ruta que sirve
+        <span lang="en">
+         ProFTPFD
+        </span>
+        , en este caso: /var/ftp/empresaX/ mediante la directiva DefaultRoot, esto es, indica que los usuarios cuando conecten con el servidor
+        <span lang="en">
+         ftp
+        </span>
+        estarán enjaulados en la ruta /var/ftp/empresaX/, con lo cual no podrán acceder a otro directorio que no esté contenido dentro de éste.
+    </p>
+    <p>
+        RequireValidShell off → No es necesario tener una
+        <span lang="en">
+         shell
+        </span>
+        declarada en el fichero /etc/shells
+    </p>
+    <p>
+        &lt;&lt;VirtualHost&gt; → Fin de la etiqueta VirtualHost: fin de la definición de este
+        <span lang="en">
+         virtualhost
+        </span>
+        para la empresa1.
+    </p>
+</div><h1 class="title">
+    2.7.- Virtualhosts basados en IP.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+            <div class="elemento_centrado">
+
+            </div>
+
+        </div>
+    </div>
+    <p>
+        En la definición de la directiva VirtualHost podemos poner la
+        <span lang="en">
+         IP
+        </span>
+        del servidor
+        <span lang="en">
+         FTP
+        </span>
+        o bien el nombre
+        <span lang="en">
+         DNS
+        </span>
+        correspondiente. En nuestro escenario, la IP_Servidor_FTP=192.168.200.250,
+        <strong>
+            ftp.empresa1.com
+        </strong>
+        y
+        <strong>
+            ftp.empresa2.com
+        </strong>
+        identifican a la misma máquina y a distintas
+        <span lang="en">
+         IP
+        </span>
+        . Ahora es indiferente el puerto
+        <span lang="en">
+         TCP
+        </span>
+        en el que sirve cada
+        <span lang="en">
+         virtualhost
+        </span>
+        , así como el servidor principal, esto es, puede ser el mismo o no ya que ahora cada puerto está relacionado con una
+        <span lang="en">
+         IP
+        </span>
+        distinta.
+    </p>
+    <p>
+        La
+        <span lang="en">
+         IP
+        </span>
+        que debemos poner ahora en la definición de la directiva Virtualhost cambia, cada
+        <span lang="en">
+         IP
+        </span>
+        corresponde a una interfaz de red del servidor
+        <span lang="en">
+         FTP
+        </span>
+        , en nuestro escenario: IP_Servidor_FTP=192.168.200.250,
+        <strong>
+            ftp.empresa1.com
+        </strong>
+        se identifica con 192.168.200.251 y
+        <strong>
+            ftp.empresa2.com
+        </strong>
+        con 192.168.200.252
+    </p>
+    <p>
+        Este método no aporta ventajas sobre el anterior, es más, aún puede ser más difícil de mantener si las
+        <span lang="en">
+         IP
+        </span>
+        del servidor
+        <span lang="en">
+         FTP
+        </span>
+        se modifican con cierta frecuencia.
+    </p>
+    <p>
+        ¿Cómo lo haces? Sigues el mismo procedimiento usado para los
+        <span lang="en">
+         virtualhost
+        </span>
+        basados en nombre, únicamente se diferencia en la configuración de los
+        <span lang="en">
+         virtualhost
+        </span>
+        , así:
+    </p>
+    <ol>
+        <li style="margin-bottom: 20px;">
+            Modifica la configuración
+            <span lang="en">
+          virtualhost
+         </span>
+            para empresa1 en el fichero
+            <strong>
+                /etc/proftpd/virtuals.conf
+            </strong>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>&lt;VirtualHost 192.168.200.251&gt;
+</pre>
+                    <pre ngNonBindable>ServerName "Servidor FTP empresa1"
+</pre>
+                    <pre ngNonBindable>AuthUserFile /etc/passwd.usuarios.virtuales
+</pre>
+                    <pre ngNonBindable>DefaultRoot /var/ftp/empresa1/
+</pre>
+                    <pre ngNonBindable>RequireValidShell off
+</pre>
+                    <pre ngNonBindable>&lt;/VirtualHost&gt;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Agrega la configuración
+            <span lang="en">
+          virtualhost
+         </span>
+            para empresa2 en el fichero
+            <strong>
+                /etc/proftpd/virtuals.conf
+            </strong>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>&lt;VirtualHost ftp.empresa2.com&gt;
+</pre>
+                    <pre ngNonBindable>AuthUserFile /etc/passwd.usuarios.virtuales
+</pre>
+                    <pre ngNonBindable>ServerName "Servidor FTP empresa2"
+</pre>
+                    <pre ngNonBindable>DefaultRoot /var/ftp/empresa2/
+</pre>
+                    <pre ngNonBindable>RequireValidShell off
+</pre>
+                    <pre ngNonBindable>&lt;/VirtualHost&gt;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Configura permisos en las carpetas /var/ftp/empresa1/ y /var/ftp/empresa2/ para los usuarios virtuales:
+            <div class="codigo elemento_centrado" style="width: 31.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>chown ftp /var/ftp/empresa1/ /var/ftp/empresa2/
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Recarga la configuración del servidor.
+            <div class="codigo elemento_centrado" style="width: 20.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>/etc/init.d/proftpd restart
+</pre>
+                </div>
+            </div>
+        </li>
+    </ol>
+    <p>
+        Explicación fichero
+        <span lang="en">
+         virtualhost
+        </span>
+        :
+    </p>
+    <p>
+        &lt;VirtualHost IP_Servidor_FTP&gt; → Inicio etiqueta
+        <span lang="en">
+         virtualhost
+        </span>
+        : define la
+        <span lang="en">
+         IP
+        </span>
+        del servidor
+        <span lang="en">
+         ftp
+        </span>
+        . También puede ser &lt;VirtualHost Nombre_DNS_Servidor_FTP&gt;
+    </p>
+    <p>
+        ServerName "Servidor FTP empresaX"→ Configura el nombre que se muestra en la conexión de los usuarios.
+    </p>
+    <p>
+        DefaultRoot /var/ftp/empresaX/ → Definición de la ruta que sirve
+        <span lang="en">
+         ProFTPFD
+        </span>
+        , en este caso: /var/ftp/empresaX/ mediante la directiva DefaultRoot, esto es, indica que los usuarios cuando conecten con el servidor
+        <span lang="en">
+         ftp
+        </span>
+        , estarán enjaulados en la ruta /var/ftp/empresaX/, con lo cual no podrán acceder a otro directorio que no esté contenido dentro de éste.
+    </p>
+    <p>
+        RequireValidShell off → No es necesario tener una
+        <span lang="en">
+         shell
+        </span>
+        declarada en el fichero /etc/shells .
+    </p>
+    <p>
+        &lt;/VirtualHost&gt;→ Fin de la etiqueta VirtualHost: fin de la definición de este
+        <span lang="en">
+         virtualhost
+        </span>
+        para la empresa1.
+    </p>
+</div><h1 class="title">
+    2.8.- Cuotas de disco para los usuarios (I).
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        La capacidad de almacenamiento no es infinita, por lo tanto será interesante saber cómo crear cuotas de disco para los usuarios y ya puestos para los usuarios en los
+        <span lang="en">
+         virtualhosts
+        </span>
+        .
+    </p>
+    <p>
+        El archivo
+        <strong>
+            /etc/proftpd/proftpd.conf
+        </strong>
+        llama mediante la directiva Include al archivo
+        <strong>
+            /etc/proftpd/modules.conf
+        </strong>
+        en el que están activadas las cuotas (LoadModule mod_quotatab.c, LoadModule mod_quotatab_file.c), luego para activarlas tienes que sustituir en el archivo
+        <strong>
+            /etc/proftpd/proftpd.conf
+        </strong>
+        el código:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;IfModule mod_quotatab.c&gt;
+</pre>
+            <pre ngNonBindable>QuotaEngine off
+</pre>
+            <pre ngNonBindable>&lt;/IfModule&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        por el código siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;IfModule mod_quotatab.c&gt;
+</pre>
+            <pre ngNonBindable> QuotaEngine on
+</pre>
+            <pre ngNonBindable> QuotaLog /var/log/proftpd/quota.log
+</pre>
+            <pre ngNonBindable> &lt;IfModule mod_quotatab_file.c&gt;
+</pre>
+            <pre ngNonBindable> QuotaLimitTable file:/etc/proftpd/ftpquota.limittab
+</pre>
+            <pre ngNonBindable> QuotaTallyTable file:/etc/proftpd/ftpquota.tallytab
+</pre>
+            <pre ngNonBindable> &lt;/IfModule&gt;
+</pre>
+            <pre ngNonBindable>&lt;/IfModule&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        donde,
+    </p>
+    <p>
+        &lt;IfModule mod_quotatab.c&gt; … &lt;/IfModule&gt; → Indica que si el módulo mod_quotatab.c está cargado en el archivo /etc/proftpd/modules.conf se realizarán las directivas que contengan.
+    </p>
+    <p>
+        QuotaEngine on → Activa las cuotas.
+    </p>
+    <p>
+        QuotaLog /var/log/proftpd/quota.log → Indica el archivo de registro sobre cuotas.
+    </p>
+    <p>
+        &lt;IfModule mod_quotatab_file.c&gt; … &lt;/IfModule&gt; → Indica que si el módulo mod_quotatab_file.c está cargado en el archivo /etc/proftpd/modules.conf se realizarán las directivas que contengan.
+    </p>
+    <p>
+        QuotaLimitTable file:/etc/proftpd/ftpquota.limittab → Indica el archivo sobre el límite de cuotas Limit.
+    </p>
+    <p>
+        QuotaTallyTable file:/etc/proftpd/ftpquota.tallytab → Indica el archivo sobre el límite de cuotas Tally.
+    </p>
+    <p>
+        Para
+        <span lang="en">
+         ProtFTPD
+        </span>
+        existen básicamente dos tipos de cuotas: limit y
+        <code>
+            tally
+        </code>
+        .
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Limit: Es la cuota que te interesa si estás pensando en restringir el espacio en disco a los usuarios. Éste puede ser soft, cuando existe un espacio de gracia(tamaño en
+            <span lang="en">
+          bytes
+         </span>
+            ) que puede sobrepasar el límite, o hard cuando no existe un espacio de gracia.
+        </li>
+        <li>
+            Tally: Utilizado cuando quieres limitar el número de ficheros que se utilizan.
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.8.1.- Cuotas de disco para los usuarios (II).
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Bien, pero, ¿cómo verificar el funcionamiento de las cuotas?. Y si quisieras comprobar la cuota de un usuario, ¿es posible? ¿Y si quisieras actualizarla?¿Y desactivarlas para algún usuario?¿Y borrarlas?
+    </p>
+    <p>
+        Pues, utilizas el comando ftpquota como sigue:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            Para ver los registros de cuotas, esto es, a quién se le está ejerciendo las cuotas:
+        </li>
+    </ul>
+    <p style="margin-bottom: 20px;">
+    </p>
+    <div class="codigo elemento_centrado" style="width: 51.65em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># ftpquota --show-records --type=limit --table-path=/etc/proftpd/ftpquota.limittab </pre>
+            <pre ngNonBindable>------------------------------------------- </pre>
+            <pre ngNonBindable> Name: user-empresa1</pre>
+            <pre ngNonBindable> Quota Type: User </pre>
+            <pre ngNonBindable> Per Session: False </pre>
+            <pre ngNonBindable> Limit Type: Hard </pre>
+            <pre ngNonBindable> Uploaded bytes: 4294967296.00 </pre>
+            <pre ngNonBindable> Downloaded bytes: unlimited </pre>
+            <pre ngNonBindable> Transferred bytes: unlimited </pre>
+            <pre ngNonBindable> Uploaded files: unlimited </pre>
+            <pre ngNonBindable> Downloaded files: unlimited </pre>
+            <pre ngNonBindable> Transferred files: unlimited </pre>
+            <pre ngNonBindable>&lt;br /&gt;
+	&lt;br /&gt;
+	&lt;br /&gt;
+	&lt;br /&gt;
+	&lt;br /&gt;
+	&lt;br /&gt;
+	&lt;br /&gt;
+	&lt;br /&gt;
+	</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            Para actualizar la cuota de un usuario, por ejemplo, user-empresa1:
+            <div class="codigo elemento_centrado" style="width: 50.55em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># ftpquota --update-record --type=limit --name=user-empresa1 --quota-type=user \ </pre>
+                    <pre ngNonBindable> --bytes-upload=2300 --units=Mb --table-path=/etc/proftpd/ftpquota.limittab </pre>
+                </div>
+            </div>
+            <p style="margin-top: 20px;">
+                con lo cual, si compruebas de nuevo los registros, verás que los cambios surgieron efecto:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 51.65em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># ftpquota --show-records --type=limit --table-path=/etc/proftpd/ftpquota.limittab </pre>
+                    <pre ngNonBindable>------------------------------------------- </pre>
+                    <pre ngNonBindable> Name: user-empresa1</pre>
+                    <pre ngNonBindable> Quota Type: User </pre>
+                    <pre ngNonBindable> Per Session: False </pre>
+                    <pre ngNonBindable> Limit Type: Hard </pre>
+                    <pre ngNonBindable> Uploaded bytes: 2411724800.00 </pre>
+                    <pre ngNonBindable> Downloaded bytes: unlimited </pre>
+                    <pre ngNonBindable> Transferred bytes: unlimited </pre>
+                    <pre ngNonBindable> Uploaded files: unlimited </pre>
+                    <pre ngNonBindable> Downloaded files: unlimited </pre>
+                    <pre ngNonBindable> Transferred files: unlimited </pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Para desactivar la cuota de un usuario debes borrar el registro, por ejemplo, user-empresa1:
+            <div class="codigo elemento_centrado" style="width: 48.9em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># ftpquota --delete-record --type=limit --name=user-empresa1 --quota-type=user</pre>
+                </div>
+            </div>
+            <p style="margin-top: 20px;">
+                con lo cual, si compruebas de nuevo los registros, verás que los cambios surgieron efecto:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 51.65em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># ftpquota --show-records --type=limit --table-path=/etc/proftpd/ftpquota.limittab </pre>
+                    <pre ngNonBindable>ftpquota: (empty table)</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.9.- Acceso seguro mediante TLS.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En
+        <span lang="en">
+         Debian
+        </span>
+        6 (squeeze) al instalar el paquete
+        <span lang="en">
+         proftpd
+        </span>
+        ya se puede establecer la conexión por
+        <span lang="en">
+         TLS
+        </span>
+        , siempre y cuando se configure el archivo
+        <strong>
+            /etc/proftpd/tls.conf
+        </strong>
+        y procedas como sigue:
+    </p>
+    <ol>
+        <li style="margin-bottom: 20px;">
+            Edita el archivo
+            <strong>
+                /etc/proftpd/proftpd.conf
+            </strong>
+            y descomenta la línea:
+            <div class="codigo elemento_centrado" style="width: 22.5em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>Include /etc/proftpd/tls.conf
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Crea las claves, pública y privada, para la conexión cifrada:
+            <ul class="lista_verificacion">
+                <li style="margin-bottom: 20px;">
+                    Método 1: Instalación del paquete
+                    openssl
+
+
+                    OpenSSL
+
+                    Paquete de herramientas de administración y bibliotecas relacionadas con la criptografía, que suministran funciones criptográficas, entre otros a navegadores web, para acceso seguro a sitios mediante el protocolo HTTPS.
+                    y ejecución del comando openssl.
+                    <div class="codigo elemento_centrado" style="width: 50.55em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable># apt-get install openssl
+</pre>
+                            <pre ngNonBindable># openssl req -x509 -newkey rsa:1024 -keyout /etc/ssl/private/proftpd.key -out \
+</pre>
+                            <pre ngNonBindable> /etc/ssl/certs/proftpd.crt -nodes -days 3650
+</pre>
+                            <pre ngNonBindable>Generating a 1024 bit RSA private key
+</pre>
+                            <pre ngNonBindable>..++++++
+</pre>
+                            <pre ngNonBindable>.................................++++++
+</pre>
+                            <pre ngNonBindable>writing new private key to '/etc/ssl/private/proftpd.key'
+</pre>
+                            <pre ngNonBindable>-----
+</pre>
+                            <pre ngNonBindable>You are about to be asked to enter information that will be incorporated
+</pre>
+                            <pre ngNonBindable>into your certificate request.
+</pre>
+                            <pre ngNonBindable>What you are about to enter is what is called a Distinguished Name or a DN.
+</pre>
+                            <pre ngNonBindable>There are quite a few fields but you can leave some blank
+</pre>
+                            <pre ngNonBindable>For some fields there will be a default value,
+</pre>
+                            <pre ngNonBindable>If you enter '.', the field will be left blank.
+</pre>
+                            <pre ngNonBindable>-----
+</pre>
+                            <pre ngNonBindable>Country Name (2 letter code) [AU]:ES
+</pre>
+                            <pre ngNonBindable>State or Province Name (full name) [Some-State]:Madrid
+</pre>
+                            <pre ngNonBindable>Locality Name (eg, city) []:
+</pre>
+                            <pre ngNonBindable>Organization Name (eg, company) [Internet Widgits Pty Ltd]:EMPRESA1
+</pre>
+                            <pre ngNonBindable>Organizational Unit Name (eg, section) []:
+</pre>
+                            <pre ngNonBindable>Common Name (eg, YOUR name) []: ftp.empresa1.com
+</pre>
+                            <pre ngNonBindable>Email Address []:
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li style="margin-bottom: 20px;">
+                    Método 2: Comando proftpd-gencert. Los dos comandos anteriores se resumen en uno, con la salvedad que el certificado será válido solamente durante 1 año y no 10:
+                    <div class="codigo elemento_centrado" style="width: 15.35em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable># proftpd-gencert
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Modifica los permisos:
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># mv /etc/ssl/private/proftpd.key /etc/ssl/
+</pre>
+                    <pre ngNonBindable># chmod 0600 /etc/ssl/proftpd.key
+</pre>
+                    <pre ngNonBindable># chmod 0644 /etc/ssl/certs/proftpd.crt
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Modifica el fichero
+            <strong>
+                /etc/proftpd/tls.conf
+            </strong>
+            como se indica en el fichero ejemplo
+            tls.conf
+            <span class="tamano">
+          (0.01 MB)
+         </span>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Recarga la configuración del servidor
+            <span lang="en">
+          ProFTPD
+         </span>
+            :
+            <div class="codigo elemento_centrado" style="width: 21.95em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># /etc/init.d/proftpd restart
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Comprueba la configuración mediante el usuario del servidor
+            <span lang="en">
+          ftp
+         </span>
+            <strong>
+                invitado
+            </strong>
+            , creado anteriormente, con un cliente
+            <span lang="en">
+          FTPES
+         </span>
+            , es decir, un cliente
+            <span lang="en">
+          ftp
+         </span>
+            que permita la conexión por
+            <span lang="en">
+          TLS
+         </span>
+            como
+            <span lang="en">
+          FileZilla
+         </span>
+            .
+        </li>
+    </ol>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>

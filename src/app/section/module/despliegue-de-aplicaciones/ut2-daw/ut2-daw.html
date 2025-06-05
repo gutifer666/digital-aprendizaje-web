@@ -1,0 +1,4311 @@
+<h1 class="title">
+    Configuración y administración de servidores de aplicaciones.
+</h1><div class="iDevice_content">
+    <p style="text-align: center;">
+    </p>
+    <p>
+        En la empresa
+        <strong>
+            BK programación
+        </strong>
+        ,
+        <strong>
+            Ada
+        </strong>
+        , junto con sus
+        empleados
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        se ha reunido para evaluar
+        la posibilidad de configurar uno o dos servidores de aplicaciones para instalar en
+        ellos demos, o
+        versiones
+        beta
+        ,&nbsp;de las aplicaciones que desarrollan, de esta manera los clientes,
+        o potenciales clientes, podrían probar los productos de
+        <strong>
+            BK
+            programación
+        </strong>
+        antes de adquirirlos.
+    </p>
+    <p>
+        Como resultado de dicha reunión han concluido que, previo paso a la instalación y
+        puesta en funcionamiento de los servidores de aplicaciones, sería muy importante
+        evaluar el software a instalar y los parámetros que afectarían al correcto
+        funcionamiento de los servidores. Entre las cosas a evaluar caben destacar las
+        siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Servidores de aplicaciones disponibles en el mercado y características
+            específicas de los mismos (
+            <span lang="en">
+            Tomcat
+           </span>
+            ,
+            <span lang="en-EN">
+            WildFly
+           </span>
+            ,
+            <abbr title="Etcétera.">
+                etc
+            </abbr>
+            .).
+        </li>
+        <li>
+            Necesidades de instalación, configuración y mantenimiento del servidor de
+            aplicaciones elegido.
+        </li>
+        <li>
+            Proceso de despliegue de una aplicación web o empresarial en el servidor y
+            herramientas se habría que utilizar.
+        </li>
+        <li>
+            Flexibilidad para la administración remota, lo cual implica la configuración de
+            la conexión remota a los mismos.
+        </li>
+        <li>
+            Herramientas que pueden utilizarse para la automatización de tareas en el
+            servidor (como por ejemplo
+            <span lang="en">
+            Ant
+           </span>
+            ).
+        </li>
+        <li>
+            Medidas de seguridad a implementar en el servidor de aplicaciones para evitar
+            posibles ataques o intrusiones.
+        </li>
+    </ul>
+    <p>
+        Debido a la cantidad de ítems que hay que considerar para poner en funcionamiento un
+        servidor de aplicaciones,
+        <strong>
+            Ada
+        </strong>
+        ha decidido que sus empleados se
+        documenten apropiadamente. Además, está evaluando la posibilidad de que estos
+        realicen algún curso de formación sobre la administración de servidores de
+        aplicaciones.
+    </p>
+    <div class="exe-tooltip-text" id="tf371cecb-5345-bff8-4dcc-1a1285c1ad7b">
+        <p>
+            También denominado "betatest", indica un periodo en el que un software está
+            técnicamente acabado, lo cual significa que no se le añadirán de momento más
+            funciones, y presumiblemente será lo suficientemente estable para trabajar con
+            normalidad. En contraste, la versión alfa, versión anterior a la beta, es más
+            inestable y no está completa.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.- Introducción a las aplicaciones Web y servidores de aplicaciones.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Por eso, en la
+        <span lang="en">
+           wiki
+          </span>
+        que está construyendo,
+        <strong>
+            Juan
+        </strong>
+        ha decidido dedicar dos apartados a dos conceptos de vital
+        importancia:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Aplicaciones web
+            </strong>
+            y
+        </li>
+        <li>
+            <strong>
+                Servidor de Aplicaciones
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        sabe que ambos conceptos están estrechamente
+        relacionados.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.- Introducción a las aplicaciones Web basadas en Java EE.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            <br>
+            Juan
+            <br/></strong>
+        empieza a entender que un servidor de aplicaciones es
+        diferente a un servidor web, pero no termina de ver que aporta un servidor
+        aplicaciones frente a un servidor web.
+        <strong>
+            María
+        </strong>
+        le pregunta como lleva
+        su misión:
+    </p>
+    <p>
+        - ¿Cómo lo llevas
+        <strong>
+            Juan
+        </strong>
+        con la wiki? Esto de los servidores de
+        aplicaciones es para mí un mundo nuevo y apasionante - comenta
+        <strong>
+            María
+        </strong>
+        .
+    </p>
+    <p>
+        - ¿Sí? - le responde
+        <strong>
+            Juan
+        </strong>
+        - Pues yo no termino de verlo. No termino
+        de ver que tiene de especial un servidor de aplicaciones. Solo veo un montón de
+        terminología compleja, por ejemplo, ¿qué demonios es un
+        <span lang="en">
+           servlet
+          </span>
+        ?
+    </p>
+</div><h1 class="title">
+    2.1.- Servlets y JSP.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+        </strong>
+        se interesa por como llevan
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        la tarea encomendada.
+        <strong>
+            Juan
+        </strong>
+        se muestra un poco más tranquilo que al principio, lo cual
+        tranquiliza también a
+        <strong>
+            Ada
+        </strong>
+        .
+    </p>
+    <p>
+        -
+        <strong>
+            Juan
+        </strong>
+        , como van esos servidores de aplicaciones -
+        comenta
+        <strong>
+            Ada
+        </strong>
+        de forma chistosa.
+    </p>
+    <p>
+        - Más o menos bien, ya voy pillando el concepto, ahora estoy
+        investigando sobre los componentes web - comenta
+        <strong>
+            Juan
+        </strong>
+        con un gesto
+        de preocupación.
+        <abbr title="etcétera.">
+        </abbr>
+    </p>
+    <p style="text-align: left;">
+        <strong>
+            Ada
+        </strong>
+        nota que
+        <strong>
+            Juan
+        </strong>
+        está haciendo avances y que simplemente es cuestión de tiempo.
+        Así que le da ánimo y lo deja para que siga con su tarea.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.2.- Estructura de una aplicación WEB.
+</h1><div class="iDevice_content">
+
+    <p>
+        Como ya se ha comentado, una aplicación web está compuesta de una serie de
+        elementos que componen la aplicación, tales como
+        <span lang="en">
+         servlets
+        </span>
+        , páginas
+        <abbr title="Java Server Pages">
+            JSP
+        </abbr>
+        , clases,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        , y una serie de recursos estáticos, tales como: archivos
+        <abbr title="HyperText Markup Language">
+            HTML
+        </abbr>
+        , imágenes, ficheros de
+        sonidos, texto,
+        <abbr title="etcétera.">
+            etc.
+        </abbr>
+    </p>
+    <p>
+        Todos estos elementos y recursos se disponen en una estructura de directorios
+        estándar, definida en la especificación Java
+        <abbr title="Enterprise Edition">
+            EE
+        </abbr>
+        . En este apartado, vamos a conocer como es esa estructura,
+        conocida como "
+        <strong>
+            exploded directory format
+        </strong>
+        " (que podría traducirse como
+        formato de directorio expandido o desempaquetado).
+    </p>
+    <p>
+        En el apartado siguiente, veremos como la estructura de directorios se pueden
+        empaquetar en un archivo
+        <abbr title="Web application ARchive">
+            WAR
+        </abbr>
+        ,
+        para facilitar el despliegue en un contenedor web.
+    </p>
+    <p class="destacado">
+        Una aplicación web Java
+        <abbr title="Enterprise Edition">
+            EE
+        </abbr>
+        puede desplegarse en un contenedor web usando el formato
+        expandido o empaquetado como
+        <abbr title="Web application ARchive">
+            WAR
+        </abbr>
+        .
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         La aplicación web comienza en un directorio,
+                                conocido como directorio raíz, que debería tener el nombre de la aplicación (o acorde al
+                                mismo).
+         <strong>
+          Este directorio es la raíz de documentos para
+         </strong>
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         <strong>
+          la aplicación web
+         </strong>
+         . Por
+                                ejemplo:
+         <br>
+        <br/></span>
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>&lt;strong&gt;ejemplo/&lt;/strong&gt;</pre>
+        </div>
+    </div>
+    <p>
+        <span lang="en" style="font-size: 1em;">
+         Todos los recursos estáticos
+                                (
+         <abbr title="HyperText Markup Language">
+          HTML
+         </abbr>
+         , imágenes,
+         <abbr title="Cascading Style Sheets">
+          CSS
+         </abbr>
+         , JavaScript) y los archivos
+         <abbr title="JavaServer Pages">
+          JSP
+         </abbr>
+         se crearán dentro de la raíz
+                                de documentos, o en subcarpetas dentro de dicha raíz. Por ejemplo:
+        </span>
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>ejemplo/index.jsp
+ejemplo/images/logo.jpg
+ejemplo/css/main.css
+ejemplo/js/index.js</pre>
+        </div>
+    </div>
+    <p>
+        <span lang="en" style="font-size: 1em;">
+         Si desplegamos la aplicación anterior
+                                en un servidor de aplicaciones local (accesible a través de&nbsp;http://localhost/ o
+         <code>
+          http://localhost:8080/
+         </code>
+         ), los recursos anteriores serían accesibles con las
+                                siguientes
+         <abbr title="Uniform Resource Locator">
+          URL
+         </abbr>
+         s:
+         <br>
+        <br/></span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            http://localhost/ejemplo/index.jsp&nbsp;para el archivo
+            ejemplo/index.jsp.
+        </li>
+        <li>
+            http://localhost/ejemplo/images/logo.jpg&nbsp;para el archivo
+            ejemplo/images/logo.jpg.
+        </li>
+        <li>
+            http://localhost/ejemplo/css/main.css&nbsp;para el archivo
+            ejemplo/css/main.css.
+        </li>
+        <li>
+            http://localhost/ejemplo/js/index.js&nbsp;para el archivo
+            ejemplo/js/index.js.
+        </li>
+    </ul>
+    <p>
+        <span lang="en" style="font-size: 1em;">
+         Fácil, ¿no? Sin embargo, en esta
+                                estructura se pueden crear dos directorios especiales. Se trata de los directorios
+                                META-INF&nbsp;y
+         <code>
+          WEB-INF
+         </code>
+         .
+         <br>
+        <br/></span>
+    </p>
+    <p class="destacado">
+        <strong>
+            Los archivos situados en estas carpetas no son
+            servidos directamente al cliente como los recursos situados directamente en el
+            directorio raíz, dado que su propósito es otro
+        </strong>
+        .
+    </p>
+    <p>
+        En la carpeta&nbsp;WEB-INF podríamos encontrar lo siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+         <span lang="en" style="font-size: 1em;">
+          <strong>
+           Descriptor de
+                                        despliegue
+          </strong>
+          . En el ejemplo anterior el descriptor de despliegue
+                                    podríamos encontrarlo en la ruta ejemplo/WEB-INF/web.xml.
+         </span>
+        </li>
+        <li>
+            <strong>
+                Clases necesarias para nuestra aplicación web (archivos
+                .class)
+            </strong>
+            . Esto incluye a todo el conjunto de clases que componen nuestra
+            aplicación web y a los
+            <span lang="en">
+          servlets
+         </span>
+            (que son una clase más). Estos
+            archivos se sitúan dentro de la carpeta WEB-INF/classes. Por ejemplo:
+            <br>
+            <ul class="lista_verificacion">
+                <li>
+                    ejemplo/WEB-INF/classes/agenda/Agenda.class
+                </li>
+                <li>
+                    ejemplo/WEB-INF/classes/servlets/ExportarLista.class
+                </li>
+            </ul>
+            <br/></li>
+        <li>
+            <strong>
+                Librerías.
+            </strong>
+            Se trata de archivos
+            <abbr title="Java ARchive">
+                JAR
+            </abbr>
+            que contienen librerías que pueden ser
+            utilizadas por nuestra aplicación. Ejemplos de estas librerías podrían ser
+            <span lang="en">
+          drivers
+         </span>
+            <abbr title="Java Database Connectivity">
+                JDBC
+            </abbr>
+            para conectar a bases de datos o librerías para generar
+            archivos
+            <abbr title="Portable Document Format">
+                PDF
+            </abbr>
+            . Estas
+            librerías se sitúan en la carpeta WEB-INF/lib/, por ejemplo:
+            <br>
+            <ul class="lista_verificacion">
+                <li>
+                    ejemplo/WEB-INF/lib/libreria.jar
+                </li>
+            </ul>
+            <br/></li>
+        <li>
+            Otros archivos y recursos internos de nuestra aplicación.
+        </li>
+    </ul>
+    <p class="destacado">
+        Todos los archivos privados, al igual que los
+        ficheros&nbsp;.class de los
+        <span lang="en">
+         servlets
+        </span>
+        , deberían almacenarse dentro del
+        directorio WEB-INF.
+    </p>
+    <p>
+        En la carpeta META-INF podemos encontrar lo siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Archivos de configuración adicionales, dependientes del servidor Java
+            <abbr title="Enterprise Edition">
+                EE
+            </abbr>
+            usado. Por ejemplo,
+            <span lang="en">
+          Tomcat
+         </span>
+            permite incluir aquí el archivo context.xml, el cuál permite
+            al equipo de administración configurar como se integra la aplicación web en un ambiente
+            concreto.
+        </li>
+        <li>
+            MANIFEST.MF: archivo típico de los paquetes
+            <abbr title="Java ARchive">
+                JAR
+            </abbr>
+            que contiene información sobre el
+            paquete en si mismo, y que también se utiliza cuando se empaqueta una aplicación web en
+            un archivo
+            <abbr title="Web application ARchive">
+                WAR
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        Veamos un ejemplo completo de una estructura de directorios de una aplicación
+        web:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>.
+├── index.html
+├── index.jsp
+├── META-INF
+│&nbsp;&nbsp; └── MANIFEST.MF
+└── WEB-INF
+    ├── classes
+    │&nbsp;&nbsp; ├── agenda
+    │&nbsp;&nbsp; │&nbsp;&nbsp; ├── Agenda.class
+    │&nbsp;&nbsp; │&nbsp;&nbsp; └── Cita.class
+    │&nbsp;&nbsp; └── servlets
+    │&nbsp;&nbsp;     └── ExportarLista.class
+    └── web.xml
+</pre>
+        </div>
+    </div>
+    <p>
+        Durante la etapa de desarrollo de una aplicación web se emplea esta
+        estructura de directorios (directorio expandido o desempaquetado). Luego, en la etapa de
+        producción, la aplicación se suele empaquetar en un archivo&nbsp;.war.
+    </p>
+</div><h1 class="title">
+    2.3.- Empaquetado WAR de aplicaciones web.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+</div><h1 class="title">
+    2.4.- El descriptor de despliegue.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        ¿Qué es exactamente un descriptor de despliegue? Un
+        <strong>
+            descriptor de
+            despliegue
+        </strong>
+        es un documento
+        <abbr title="eXtensible Markup Language">
+            XML
+        </abbr>
+        que describe las características
+        de despliegue de una aplicación, un módulo o un componente. Por esto, la información del
+        descriptor de despliegue es declarativa, y ésta puede ser cambiada sin la necesidad de
+        modificar el código fuente, aunque hay que tener en cuenta que hoy en día, parte de la
+        configuración que se indica en el descriptor de despliegue se suele poner como anotaciones
+        dentro del mismo código fuente.
+        <br/></p>
+    <p>
+        Hoy en día, no es obligatorio que una aplicación
+        <strong>
+        </strong>
+        aplicación
+        web aporte un descriptor de despliegue, pero si se incluye este tiene que estar en la
+        carpeta WEB-INF y debe llamarse&nbsp;web.xml (
+        <code>
+            WEB-INF/web.xml
+        </code>
+        ). Dependiendo de
+        la plataforma donde vayamos a desplegar nuestra aplicación web, podremos tener descriptores
+        de despliegue adicionales con información específica para la plataforma.
+    </p>
+    <p>
+        Generalmente todos los contenedores web incluyen un descriptor de despliegue
+        por defecto, que contiene una configuración aplicable a todas las aplicaciones web bajo su
+        mando. Por ejemplo, en el caso concreto de
+        <span lang="en">
+         Tomcat, existe un
+                                archivo&nbsp;web.xml en la carpeta de configuración (
+        </span>
+        conf/web.xml) con la
+        configuración general para todas las aplicaciones web. Este descriptor por defecto
+        generalmente no se modifica nunca, dado que cada aplicación web puede disponer de su propio
+        descriptor para complementar a este descriptor por defecto.
+    </p>
+    <div class="destacado">
+        <p style="text-align: center;">
+            <strong>
+                El descriptor de despliegue por
+                defecto del contenedor web no debe incluir una configuración específica para una
+                aplicación concreta.
+            </strong>
+        </p>
+    </div>
+    <p>
+        Un ejemplo de descriptor de despliegue de una aplicación web concreta puede ser
+        el siguiente archivo&nbsp;web.xml:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #007020;"&gt;&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;/span&gt;
+&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;web-app&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;version="3.1"&lt;/span&gt;
+         &lt;span style="color: #4070a0;"&gt;xmlns="http://xmlns.jcp.org/xml/ns/javaee"&lt;/span&gt;
+         &lt;span style="color: #4070a0;"&gt;xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&lt;/span&gt;
+         &lt;span style="color: #4070a0;"&gt;xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;display-name&gt;&lt;/span&gt;Ejemplo&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/display-name&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;description&gt;&lt;/span&gt;Descriptor web de ejemplo.&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/description&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-name&gt;&lt;/span&gt;ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-name&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-class&gt;&lt;/span&gt;servlets.ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-class&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-mapping&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-name&gt;&lt;/span&gt;ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-name&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;url-pattern&gt;&lt;/span&gt;/ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/url-pattern&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-mapping&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;session-config&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;session-timeout&gt;&lt;/span&gt;
+            30
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/session-timeout&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/session-config&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;welcome-file-list&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;welcome-file&gt;&lt;/span&gt;index.jsp&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/welcome-file&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/welcome-file-list&gt;&lt;/span&gt;
+&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/web-app&gt;&lt;/span&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        Situadas entre las etiquetas&nbsp;&lt;web-app&gt;&nbsp;y &lt;/web-app&gt; se
+        encuentra la información de despliegue. Por ejemplo, hay información de mapeado de los
+        <span lang="en">
+         servlets
+        </span>
+        , que permite indicar que ruta en la
+        <abbr title="Unified Resource Locator">
+            URL
+        </abbr>
+        dará acceso a un
+        <span lang="en">
+         servlet
+        </span>
+        concreto:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;    &lt;servlet&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-name&gt;&lt;/span&gt;ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-name&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-class&gt;&lt;/span&gt;servlets.ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-class&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-mapping&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;servlet-name&gt;&lt;/span&gt;ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-name&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;url-pattern&gt;&lt;/span&gt;/ExportarLista&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/url-pattern&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/servlet-mapping&gt;&lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En el caso anterior, cuando en la
+        <abbr title="Unified Resource Locator">
+            URL
+        </abbr>
+        incluya la ruta&nbsp;/ExportarLista se accederá al
+        <span lang="en">
+         servlet
+        </span>
+        indicado. Por ejemplo, si la aplicación web es accesible a
+        través de la ruta http://localhost:8080/ejemplo/, el servlet&nbsp;ExportarLista sería
+        accesible a través de la ruta siguiente http://localhost:8080/ejemplo/ExportarLista. Otro
+        ejemplo de información incluida aquí, podría ser la página de inicio de la aplicación web
+        (también llamada página de bienvenida):
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;welcome-file-list&gt;&lt;/span&gt;
+        &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;welcome-file&gt;&lt;/span&gt;index.jsp&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/welcome-file&gt;&lt;/span&gt;
+    &lt;span style="color: #062873; font-weight: bold;"&gt;&lt;/welcome-file-list&gt;&lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Con la configuración anterior, si la aplicación web es accesible a través de
+        la
+        <abbr title="Uniform Resource Locator">
+            URL
+        </abbr>
+        http://localhost:8080/ejemplo/ y el usuario la teclea directamente en la barra de
+        direcciones, el servidor de aplicaciones enviará al cliente web la página&nbsp;
+        http://localhost:8080/ejemplo/index.jsp aunque no se indique index.jsp en la
+        <abbr title="Uniform Resource Locator">
+            URL
+        </abbr>
+        .
+    </p>
+    <p>
+        El objetivo de este apartado es que tengas una visión global de lo que es un
+        descriptor de despliegue. No profundizaremos más en este aspecto, porque el objetivo de esta
+        unidad no es hacer aplicaciones web, sino saber desplegar una aplicación web ya realizada.
+    </p>
+</div><h1 class="title">
+    3.- El servidor de aplicaciones Tomcat.
+</h1><div class="iDevice_content">
+    <p>
+        Mientras
+        <strong>
+            Juan
+        </strong>
+        sigue investigando e investigando, a
+        la empresa
+        <strong>
+            BK programación
+        </strong>
+        le ha surgido un nuevo proyecto: una
+        aplicación web para gestionar las citas de una clínica médica; y
+        <strong>
+            Ada
+        </strong>
+        , sabiendo que
+        <strong>
+            María
+        </strong>
+        es muy capaz, decide
+        encargarle que evalúe las necesidades técnicas del nuevo proyecto. María enseguida
+        ve que es necesario contar con un servidor de aplicaciones y decide tratarlo con
+        <strong>
+            Juan
+        </strong>
+        . Después de hablarlo detenidamente con él, y después de haber
+        estudiado las posibles opciones, ambos han concluido que lo mejor es
+        <strong>
+            instalar un servidor
+            <span lang="en">
+            Tomcat
+           </span>
+            .
+            <br>
+            <br/></strong>
+    </p>
+    <p>
+        Sin embargo,
+        <strong>
+            María
+        </strong>
+        no para de darle vueltas. Aunque
+        parece claro que el servidor
+        <span lang="en">
+           Tomcat
+          </span>
+        será suficiente para el
+        proyecto, decide instalarlo y hacer pruebas con el mismo antes de informar a
+        <strong>
+            Ada
+        </strong>
+        .
+    </p>
+    <p style="text-align: center;">
+        <strong>
+        </strong>
+    </p>
+</div><h1 class="title">
+    3.1.- Instalación.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            <strong>
+            </strong>
+            María
+        </strong>
+        está en proceso de hacer una instalación para hacer pruebas con
+        <span lang="en">
+           Tomcat
+          </span>
+        . Una consulta rápida por Internet le ha proporcionado un
+        montón de enlaces sobre diferentes métodos y formas de instalación. ¿Cuál será el
+        mejor método de instalación? No quiere perder demasiado el tiempo.
+    </p>
+    <p>
+        Después de investigar un poco más, concluye que, entre las innumerables
+        configuraciones que podría haber, existen tres configuraciones que se repiten
+        bastante, pero todavía no sabe cuál es la mejor para llevar a cabo sus pruebas.
+    </p>
+</div><h1 class="title">
+    3.1.1.- Instalación desde repositorio.
+</h1><div class="iDevice_content">
+
+    <p>
+        La instalación desde repositorio es algo muy habitual en sistemas operativos basados en
+        Linux. En este caso vamos a describir como se podría hacer la instalación de
+        <span lang="en">
+         Tomcat
+        </span>
+        en Ubuntu 17.10 desde el repositorio, es decir, descargando los
+        paquetes desde el repositorio de aplicaciones de la propia distribución Ubuntu, pero el
+        proceso es extensible a casi todas las distribuciones actuales basadas en
+        <span lang="en">
+         Debian
+        </span>
+        (como es el caso de Ubuntu). Lo primero que deberíamos pensar es
+        en actualizar el repositorio de paquetes y instalar las posibles actualizaciones:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;ubuntu:~$ &lt;strong&gt;sudo apt-get update&lt;/strong&gt;
+...
+usuario&#64;ubuntu:~$ &lt;strong&gt;sudo apt-get upgrade&lt;/strong&gt;
+...</pre>
+        </div>
+    </div>
+    <p>
+        Después tenemos que comprobar es si existen los paquetes de
+        <span lang="en">
+         Tomcat
+        </span>
+        en
+        el repositorio y que versión hay disponible. Para ello podemos comprobar los paquetes
+        existentes ejecutando el comando apt-cache search tomcat en un terminal:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;ubuntu:~$ &lt;strong&gt;apt-cache search tomcat&lt;/strong&gt; -n
+tomcat8 - Apache Tomcat 8 - Servlet and JSP engine
+tomcat8-admin - Apache Tomcat 8 - Servlet and JSP engine -- admin web applications
+tomcat8-common - Apache Tomcat 8 - Servlet and JSP engine -- common files
+tomcat8-docs - Apache Tomcat 8 - Servlet and JSP engine -- documentation
+tomcat8-examples - Apache Tomcat 8 - Servlet and JSP engine -- example web applications</pre>
+        </div>
+    </div>
+    <p>
+        La opción&nbsp;-n limita la búsqueda, buscando paquetes cuyo nombre contenga la cadena
+        tomcat, lo cual reduce los resultados. Como se puede ver en el ejemplo anterior, en el
+        repositorio de aplicaciones está disponible
+        <span lang="en">
+         Tomcat
+        </span>
+        8, y además, su
+        instalación estaría dividida en varios paquetes. Esto puede variar de una distribución de
+        linux a otra, en este caso, los paquetes serían:
+    </p>
+    <ul class="lista_verificacion">
+        <li class="lista_verificacion">
+            Paquetes de la instalación principal, que son tomcat8 y
+            <code>
+                tomcat8-common
+            </code>
+            .
+        </li>
+        <li class="lista_verificacion">
+            Gestor de aplicaciones de
+            <span class="lista_verificacion" lang="en">
+          Tomcat
+         </span>
+            , que corresponde con el paquete tomcat8-admin.
+        </li>
+        <li class="lista_verificacion">
+            Documentación de
+            <span class="lista_verificacion" lang="en">
+          Tomcat
+         </span>
+            , que corresponde con el paquete tomcat8-docs.
+        </li>
+        <li class="lista_verificacion">
+            Y un conjunto de aplicaciones web de ejemplo, que corresponde
+            con el paquete tomcat8-examples.
+        </li>
+    </ul>
+    <p>
+        Como ya sabes,
+        <span lang="en">
+         Tomcat
+        </span>
+        8 depende de Java, por lo que tendrá que
+        instalarse Java sin más remedio. No te preocupes por esto, si lo instalas desde repositorio
+        se instalarán las dependencias de forma automática. Para saber de que paquetes depende
+        <span lang="en">
+         Tomcat
+        </span>
+        puedes ejecutar el comando apt-cache depends tomcat8
+        tomcat8-common :
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>salva&#64;LAPTOP-N0LINDHE:~$ apt-cache depends tomcat8 tomcat8-common
+tomcat8
+  Depends: adduser
+  Depends: tomcat8-common
+  Depends: ucf
+ |Depends: debconf
+  Depends: &lt;debconf-2.0&gt;
+    cdebconf
+    debconf
+  Recommends: authbind
+  Suggests: libtcnative-1
+  Suggests: tomcat8-admin
+  Suggests: tomcat8-docs
+  Suggests: tomcat8-examples
+  Suggests: tomcat8-user
+tomcat8-common
+ |Depends: default-jre-headless
+ |Depends: &lt;&lt;strong&gt;java7-runtime-headless&lt;/strong&gt;&gt;
+    &lt;strong&gt;default-jre-headless&lt;/strong&gt;
+    openjdk-8-jre-headless
+    openjdk-9-jre-headless
+  Depends: &lt;java7-runtime&gt;
+    default-jre
+    openjdk-8-jre
+    openjdk-9-jre
+  Depends: libtomcat8-java</pre>
+        </div>
+    </div>
+    <p>
+        Como puedes comprobar, al instalar
+        <span lang="en">
+         Tomcat
+        </span>
+        8 instalará los paquetes de
+        los que depende y hará una instalación del
+        <abbr title="Java Runtime Environment">
+            JRE
+        </abbr>
+        (entorno de ejecución de java)
+        proporcionado por
+        <abbr title="Open Java Development Kit">
+            OpenJDK
+        </abbr>
+        ,
+        que es un proyecto abierto y libre que implementa Java en su plenitud, y que está apoyado
+        por
+        <span lang="en">
+         Oracle
+        </span>
+        . No obstante, aunque la instalación anterior sería válida,
+        es mejor instalar el kit de desarrollo para Java (Java Development Kit,
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        ) y no solamente el entorno de
+        ejecución, dado que con él podremos compilar código Java, mientras que con el entorno de
+        ejecución solo podremos ejecutar programas Java. Además, cualquier
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        siempre incluye el
+        <abbr title="Java Runtime Environment">
+            JRE
+        </abbr>
+        . En Ubuntu 17.10, para instalar el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        , puedes proceder a instalar el
+        paquete default-jdk o
+        <code>
+            default-jdk-headless
+        </code>
+        :
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;ubuntu~$ apt-cache depends default-jdk-headless&lt;br /&gt;default-jdk-headless&lt;br /&gt;&nbsp; Depends: default-jre-headless&lt;br /&gt;&nbsp; Depends: openjdk-8-jdk-headless&lt;br /&gt;usuario&#64;ubuntu:~$ sudo apt-get install default-jdk-headless</pre>
+        </div>
+    </div>
+    <p>
+        En este caso, el paquete que mejor se adapta a nuestras necesidades es default-jdk-headless,
+        que es el paquete pensado para ejecución en un servidor remoto, donde no hay monitor ni
+        teclado a mano, ni un entorno gráfico para administrarlo directamente, sino que hay que
+        conectarse remotamente. Como se muestra en el ejemplo anterior, al instalar
+        default-jdk-headless, se instalará el paquete openjdk-8-jdk-headless, que en este caso es
+        justo el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        que necesitamos.
+    </p>
+    <p>
+        Una vez instalado el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        , procedemos
+        a instalar
+        <span lang="en">
+         Tomcat
+        </span>
+        desde repositorio:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;ubuntu:~$ sudo apt-get install tomcat8 tomcat8-common tomcat8-admin tomcat8-docs</pre>
+        </div>
+    </div>
+    <p>
+        Con esto, ya tenemos instalado
+        <span lang="en">
+         Tomcat
+        </span>
+        y listo para ejecutarse. No hay
+        que hacer nada más, no obstante, hay varias cosas que debes saber después de instalarlo. La
+        primera es,
+        <strong>
+            ¿dónde se ha instalado el
+            <abbr title="Java Delopment Kit">
+                JDK
+            </abbr>
+            ?
+        </strong>
+        Para ello podemos recurrir al comando dpkg -L al
+        que le pasamos como parámetro el paquete del que queremos saber sus archivos (en este caso
+        openjdk-8-jdk-headless):
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;ubuntu:~$ sudo dpkg -L openjdk-8-jdk-headless</pre>
+        </div>
+    </div>
+    <p>
+        En este caso, se mostrará la lista de archivos que contiene el paquete anterior, y podemos
+        ver que el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        se ha instalado
+        en la carpeta base /usr/lib/jvm/java-8-openjdk-amd64. Si fuese necesario, la variable de
+        entorno JAVA_HOME, que debe contener la carpeta de instalación del
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        , debería apuntar a dicha carpeta. En
+        este caso no es necesario.
+    </p>
+    <p>
+        Otra cosa importante es saber,
+        <strong>
+            ¿dónde está instalado
+        </strong>
+        <span lang="en">
+         <strong>
+          Tomcat
+         </strong>
+        </span>
+        ? Para ello podemos también usar el comando
+        anterior y estudiar la estructura de carpetas de los paquetes relacionados con
+        <span lang="en">
+         Tomcat
+        </span>
+        . En este caso, lo más normal es que tengamos las siguientes
+        carpetas importantes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            /var/lib/tomcat8: carpeta principal de
+            <span lang="en">
+          Tomcat
+         </span>
+            .
+        </li>
+        <li>
+            /etc/tomcat8: carpeta está la configuración de
+            <span lang="en">
+          Tomcat
+         </span>
+            . Esta
+            carpeta también está enlazada en la carpeta principal anterior y será usada para
+            configurar muchos aspectos de este servidor.
+        </li>
+        <li>
+            /var/log/tomcat8: carpeta que contiene los
+            <span lang="en">
+          logs
+         </span>
+            del servidor
+            <span lang="en">
+          Tomcat
+         </span>
+            .
+        </li>
+        <li>
+            /var/lib/tomcat8/webapps: carpeta que contiene las aplicaciones web en formato
+            expandido, aquí será donde instalaremos nuestras aplicaciones web.
+        </li>
+        <li>
+            /usr/share/tomcat8/bin: carpeta que contiene los
+            <span lang="en">
+          scripts
+         </span>
+            para
+            iniciar, parar, comprobar la configuración,
+            <abbr title="etcétera">
+                etc.
+            </abbr>
+            de
+            <span lang="en">
+          Tomcat
+         </span>
+            .
+        </li>
+    </ul>
+    <p>
+        En otro tipo de instalaciones, como la instalación manual, es necesario configurar las
+        variable de entorno CATALINA_BASE y
+        <code>
+            CATALINA_HOME
+        </code>
+        , pero en este caso, de
+        momento, no es necesario.
+    </p>
+    <p>
+        Y la tercera cosa a saber es,
+        <strong>
+            ¿cómo se sabe si se está ejecutando Tomcat? ¿Cómo puedo
+            arrancarlo o detenerlo?
+        </strong>
+        Esta pregunta puedes responderla de varias formas. Una
+        de ellas es con el comando service:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;ubuntu:~$ service tomcat8 status
+● tomcat8.service - LSB: Start Tomcat.
+   Loaded: loaded (/etc/init.d/tomcat8; generated; vendor preset: enabled)
+   Active: active (running) since Wed 2018-05-09 17:21:23 CEST; 1min 56s ago
+...</pre>
+        </div>
+    </div>
+    <p>
+        El comando anterior te permitirá saber el estado del servicio (activo en este caso). Asociado
+        al comando anterior, tenemos una lista de comandos para operar con el servicio (iniciarlo,
+        detenerlo,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        ). Como aquí la lista de comandos puede
+        ser bastante larga, vamos a verlos de forma resumida:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Comandos para comprobar el estado de
+            <span lang="en">
+          Tomcat
+         </span>
+            :
+            <ul class="lista_verificacion">
+                <li>
+                    service tomcat8 status: nos dirá si se está ejecutando o no.
+                </li>
+                <li>
+                    sudo /etc/init.d/tomcat8 status: es equivalente al comando anterior.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Comandos para arrancar
+            <span lang="en">
+          Tomcat
+         </span>
+            (se puede usar cualquiera de
+            ellos):
+            <ul class="lista_verificacion">
+                <li>
+                    service tomcat8 start
+                </li>
+                <li>
+                    sudo /etc/init.d/tomcat8 start
+                </li>
+            </ul>
+        </li>
+        <li>
+            Comandos para detener
+            <span lang="en">
+          Tomcat
+         </span>
+            (se puede usar cualquiera de ellos):
+            <ul class="lista_verificacion">
+                <li>
+                    service tomcat8 stop
+                </li>
+                <li>
+                    sudo /etc/init.d/tomcat8 stop
+                </li>
+            </ul>
+        </li>
+        <li>
+            Comandos que permiten comprobar el puerto que está escuchando
+            <span lang="en">
+          Tomcat
+                                    para aceptar peticiones
+          <abbr title="HyperText Transfer Protocol">
+           HTTP
+          </abbr>
+         </span>
+            :
+            <ul class="lista_verificacion">
+                <li>
+                    sudo ss -tpl
+                </li>
+                <li>
+                    sudo netstat -tpl
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Veamos, a modo de ejemplo, el comando ss en acción:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;ubuntu:~$ sudo ss -tlp
+
+LISTEN     0      5      127.0.0.1:ipp                      *:*                     users:(("cupsd",pid=1726,fd=7))
+LISTEN     0      128        *:hostmon                  *:*                     users:(("systemd-resolve",pid=622,fd=12))
+&lt;strong&gt;LISTEN     0      100       :::http-alt                :::*                     users:(("java",pid=3436,fd=57))&lt;/strong&gt;
+LISTEN     0      5        ::1:ipp                     :::*                     users:(("cupsd",pid=1726,fd=6))
+&lt;strong&gt;LISTEN     0      1       ::ffff:127.0.0.1:8005                    :::*                     users:(("java",pid=3436,fd=70))&lt;/strong&gt;
+LISTEN     0      128       :::hostmon                 :::*                     users:(("systemd-resolve",pid=622,fd=14))
+</pre>
+        </div>
+    </div>
+    <p>
+        Como se puede ver en el esquema anterior, el servidor Tomcat está escuchando en los puertos
+        8005 y
+        <code>
+            8080
+        </code>
+        (http-alt significa puerto
+        <abbr title="Hypertext Transfer Protocol">
+            HTTP
+        </abbr>
+        alternativo).
+    </p>
+    <p class="destacado">
+        En este apartado se ha descrito la instalación desde repositorio en Ubuntu
+        17.10.
+        <strong>
+            La instalación en otros sistemas derivados de la distribución Debian (como es
+            el caso de Ubuntu) es similar, aunque pueden variar ligeramente las carpetas de
+            instalación y los nombres de los servicios en función de la versión (en vez de ser
+            tomcat8 puede ser tomcat9, por ejemplo).
+        </strong>
+    </p>
+    <div class="destacado">
+        <p>
+            Después de arrancar el servicio
+            <span lang="en">
+          Tomcat, puedes acceder a la página web
+                                    por defecto usando un simple navegador
+         </span>
+            . Para ello, puedes poner la
+            <abbr title="Uniform Resource Locator">
+                URL
+            </abbr>
+            http://localhost:8080 en la barra de
+            direcciones del navegador (si estás accediendo desde el mismo equipo donde has instalado
+            <span lang="en">
+          Tomcat
+         </span>
+            ), o bien la URL&nbsp;http://DIRECCION_IP:8080
+            donde&nbsp;DIRECCION_IP es la dirección
+            <abbr title="Internet Protocol.">
+                IP
+            </abbr>
+            del equipo donde has hecho la instalación.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.1.2.- Instalación manual.
+</h1><div class="iDevice_content">
+
+    <p>
+        En este apartado vamos a proceder a instalar todos los archivos necesarios manualmente. Esto
+        nos permitirá un grado mayor de control, pero puede ser ligeramente más complicado.
+    </p>
+    <p>
+        En primer lugar, como en el caso anterior, tendremos que instalar el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        . En esta ocasión, en vez de usar
+        <abbr title="Open Java Development Kit">
+            OpenJDK
+        </abbr>
+        , recurriremos al
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        de
+        <span lang="en">
+         Oracle
+        </span>
+        que podemos descargar de la siguiente página:
+    </p>
+    <p style="text-align: center;">
+        <span>
+         Descargar Java
+                                    SE Development Kit de Oracle
+        </span>
+    </p>
+    <p>
+        Aquí tendremos que tener cuidado, porque deberemos elegir la versión del
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        que necesita la versión de
+        <span lang="en">
+         Tomcat
+        </span>
+        que deseamos instalar. En este caso instalaremos
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        8, para luego instalar
+        <span lang="en">
+         Tomcat
+        </span>
+        9. Para instalarlo procedemos a descargar la versión
+        correspondiente a nuestra plataforma (en este caso escogeremos la versión Linux
+        <abbr title="para plataforma de 64 bits">
+            x64
+        </abbr>
+        empaquetada como archivo .tar.gz).
+    </p>
+    <p>
+        Aquí vamos a mostrar como se realizaría la instalación en Ubuntu 17.10, aunque el
+        procedimiento de instalación es similar en otros entornos Linux. Para empezar, usaremos la
+        carpeta /opt para realizar toda la instalación, lo cual es una opción muy habitual, dado que
+        esa carpeta se suele usar para instalar
+        <span lang="en">
+         software
+        </span>
+        que no se incluye en
+        la instalación por defecto. Veamos como sería el proceso:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;ubuntu:~$ sudo su -
+[sudo] password for usuario:
+root&#64;usuario-VirtualBox:~# cd /opt
+root&#64;usuario-VirtualBox:/opt# tar zvfz jdk-8u171-linux-x64.tar.gz &lt;br /&gt;...</pre>
+        </div>
+    </div>
+    <p>
+        En el proceso anterior se da por sentado que el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        se habrá descargado comprimido como .tar.gz, y que se habrá
+        descargado en la carpeta de sistema&nbsp;/opt (si no está en dicha carpeta, habrá que
+        copiarlo). Si dicha carpeta no existe, podemos crearla manualmente. Una vez realizada la
+        descompresión, tendremos el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        descomprimido en una carpeta como sigue: /opt/jdk1.8.0_171 (esta carpeta puede cambiar
+        dependiendo de la versión del
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        instalada).
+    </p>
+    <p>
+        Después de descomprimir el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        debemos configurar una serie de variables de entorno. De cara a esta configuración tenemos
+        varias opciones, entre las que podemos destacar:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Añadir las variables de entorno en el archivo /etc/environment. Este archivo contiene
+            las variables de entorno globales para todo el sistema y quizás es un buen lugar para
+            configurarlas.
+        </li>
+        <li>
+            Añadir las variables de entorno al final del archivo /etc/profile. Esta es una
+            alternativa muy utilizada.
+        </li>
+        <li>
+            Y la opción más elegante, es crear un
+            <span lang="en">
+          script
+         </span>
+            en la
+            carpeta&nbsp;/etc/profile.d/ que se ejecutará al iniciar sesión y cargará las variables
+            de entorno. El
+            <span lang="en">
+          script
+         </span>
+            podría llamarse, por ejemplo,&nbsp;jdk.sh y
+            podría contener el siguiente código:
+        </li>
+    </ul>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #888888;"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span style="color: #888888;"&gt;#Establece la variable JAVA_HOME a la raiz de la instalación del JDK&lt;/span&gt;
+&lt;span style="color: #996633;"&gt;JAVA_HOME&lt;/span&gt;&lt;span style="color: #333333;"&gt;=&lt;/span&gt;/opt/jdk1.8.0_171
+
+&lt;span style="color: #888888;"&gt;#Modifica el path para poder ejecutar los comandos de Java&lt;/span&gt;
+&lt;span style="color: #996633;"&gt;PATH&lt;/span&gt;&lt;span style="color: #333333;"&gt;=&lt;/span&gt;&lt;span style="color: #996633;"&gt;$PATH&lt;/span&gt;:&lt;span style="color: #996633;"&gt;$JAVA_HOME&lt;/span&gt;/bin
+
+&lt;span style="color: #888888;"&gt;#Exporta las variables para hacerlas variables de entorno&lt;/span&gt;
+&lt;span style="color: #007020;"&gt;export &lt;/span&gt;JAVA_HOME
+&lt;span style="color: #007020;"&gt;export &lt;/span&gt;PATH</pre>
+        </div>
+    </div>
+    <p>
+        Estos archivos y carpetas pueden cambiar dependiendo de la distribución de Linux que usemos,
+        estamos hablando del caso concreto de Ubuntu. El código anterior podríamos ejecutarlo de la
+        siguiente forma, aunque al reiniciar la sesión ya estaría disponible:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>root&#64;ubuntu:~# source /etc/profile.d/jdk.sh </pre>
+        </div>
+    </div>
+    <p>
+        Una vez instalado el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        correspondiente, debemos instalar
+        <span lang="en">
+         Tomcat
+        </span>
+        y configurar sus respectivas
+        variables de entorno de forma similar a como hemos hecho con el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        . Para descargar
+        <span lang="en">
+         Tomcat
+        </span>
+        siempre recurrimos a la página oficial, en este caso,
+        instalaremos
+        <span lang="en">
+         Tomcat
+        </span>
+        9:
+    </p>
+    <p style="text-align: center;">
+        Descargar Tomcat 9.0.8 de la página oficial.
+    </p>
+    <p>
+        De todos los archivos disponibles descargaremos la distribución binaria (
+        <span lang="en">
+         binary distribution
+        </span>
+        ) del núcleo (
+        <span lang="en">
+         core
+        </span>
+        ),
+        empaquetada como un archivo .tar.gz. Procedemos a copiarla a la carpeta&nbsp;/opt y la
+        descomprimimos con el mismo comando usado para descomprimir el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        anterior:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>root&#64;ubuntu:/opt# cp /home/usuario/Descargas/apache-tomcat-9.0.8.tar.gz .
+root&#64;ubuntu:/opt# tar xfz apache-tomcat-9.0.8.tar.gz
+root&#64;ubntu:/opt# ls&lt;br /&gt;apache-tomcat-9.0.8&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; jdk1.8.0_171&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Una vez descomprimido, se creará una carpeta con nuestro
+        <span lang="en">
+         Tomcat
+        </span>
+        (en
+        este caso /opt/apache-tomcat-9.0.8, aunque el nombre de esta carpeta variará en función de
+        la versión descargada). Dentro de esa carpeta, que será la carpeta principal de
+        <span lang="en">
+         Tomcat
+        </span>
+        , encontraremos varias carpetas importantes (X.Y.Z hace
+        referencia a que puede ser cualquier versión del servidor):
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            /opt/apache-tomcat-X.Y.Z/bin: carpeta donde encontrarás los ejecutables de
+            <span lang="en">
+          Tomcat
+         </span>
+            (como el
+            <span lang="en">
+          script
+         </span>
+            catalina.sh
+            usado para arrancar y detener el servidor).
+        </li>
+        <li>
+            /opt/apache-tomcat-X.Y.Z/conf: carpeta donde encontrarás los archivos de configuración
+            de
+            <span lang="en">
+          Tomcat
+         </span>
+            .
+        </li>
+        <li>
+            /opt/apache-tomcat-X.Y.Z/webapps: carpeta que contiene las aplicaciones web en formato
+            expandido, aquí será donde instalaremos nuestras aplicaciones web.
+        </li>
+        <li>
+            /opt/apache-tomcat-X.Y.Z/logs: carpeta donde se guadarán los logs del servidor.
+        </li>
+    </ul>
+    <p>
+        Lo más normal ahora es configurar la variable de entorno&nbsp;CATALINA_HOME para que apunte a
+        la carpeta base de Tomcat y la variable&nbsp;PATH para que pueda accederse fácilmente a los
+        <span lang="en">
+         scripts
+        </span>
+        de arranque de
+        <span lang="en">
+         Tomcat
+        </span>
+        (situado en la
+        carpeta&nbsp;bin anterior). Para ello optaremos por crear un archivo llamado&nbsp;tomcat.sh
+        en la carpeta /etc/profile.d/:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #888888;"&gt;#!/bin/bash&lt;/span&gt;
+
+&lt;span style="color: #888888;"&gt;#Establece la variable CATALINA_HOME a la raiz de la instalación de Tomcat&lt;/span&gt;
+&lt;span style="color: #996633;"&gt;CATALINA_HOME&lt;/span&gt;&lt;span style="color: #333333;"&gt;=&lt;/span&gt;/opt/apache-tomcat-9.0.8
+&lt;span style="color: #888888;"&gt;#Modifica el path para poder ejecutar los scripts de arranque de Tomcat&lt;/span&gt;
+&lt;span style="color: #996633;"&gt;PATH&lt;/span&gt;&lt;span style="color: #333333;"&gt;=&lt;/span&gt;&lt;span style="color: #996633;"&gt;$PATH&lt;/span&gt;:&lt;span style="color: #996633;"&gt;$CATALINA_HOME&lt;/span&gt;/bin
+&lt;span style="color: #888888;"&gt;#Exporta las variables para hacerlas variables de entorno&lt;/span&gt;
+&lt;span style="color: #007020;"&gt;export &lt;/span&gt;CATALINA_HOME
+&lt;span style="color: #007020;"&gt;export &lt;/span&gt;PATH</pre>
+        </div>
+    </div>
+    <p>
+        Como ocurría con el
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        , el código
+        anterior se ejecutará en el próximo inicio de sesión, aunque podemos activarlo en este
+        momento ejecutando el siguiente comando:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>root&#64;ubuntu:~# source /etc/profile.d/tomcat.sh</pre>
+        </div>
+    </div>
+    <p>
+        Una vez que hemos realizado todo esto, podemos iniciar y detener
+        <span lang="en">
+         Tomcat
+        </span>
+        a través del
+        <span lang="en">
+         script
+        </span>
+        catalina.sh que
+        ya viene incluido en nuestra instalación de
+        <span lang="en">
+         Tomcat
+        </span>
+        . El parámetro
+        start iniciará
+        <span lang="en">
+         Tomcat
+        </span>
+        :
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;ubuntu:~$ sudo -i catalina.sh start
+Using CATALINA_BASE:   /opt/apache-tomcat-9.0.8
+Using CATALINA_HOME:   /opt/apache-tomcat-9.0.8
+Using CATALINA_TMPDIR: /opt/apache-tomcat-9.0.8/temp
+Using JRE_HOME:        /opt/jdk1.8.0_171
+Using CLASSPATH:       /opt/apache-tomcat-9.0.8/bin/bootstrap.jar:/opt/apache-tomcat-9.0.8/bin/tomcat-juli.jar
+Tomcat started.
+usuario&#64;ubuntu:~$ </pre>
+        </div>
+    </div>
+    <p>
+        Aquí es importante ejecutar&nbsp;sudo con "-i" para que cargue las variables de entorno.
+    </p>
+    <div class="destacado">
+        <p>
+            Ahora podremos acceder al servidor
+            <span lang="en">
+          Tomcat
+         </span>
+            usando un simple
+            navegador web. Para ello, podemos poner la
+            <abbr title="Uniform Resource Locator">
+                URL
+            </abbr>
+            http://localhost:8080 en la barra de
+            direcciones del navegador (si estás accediendo desde el mismo equipo donde has instalado
+            <span lang="en">
+          Tomcat
+         </span>
+            ), o bien la URL&nbsp;http://DIRECCION_IP:8080
+            donde&nbsp;DIRECCION_IP es la dirección
+            <abbr title="Internet Protocol.">
+                IP
+            </abbr>
+            del equipo donde has hecho la instalación.
+        </p>
+        <p>
+            Esta URL te mostrará la característica página de inicio de Tomcat.
+        </p>
+    </div>
+    <p>
+        Para detenerlo simplemente ejecutamos el comando catalina.sh, pasándole como argumento stop:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;ubuntu:~$ sudo -i catalina.sh stop</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.2.- Arquitectura de Tomcat.
+</h1><div class="iDevice_content">
+    <p>
+        No fue fácil, pero
+        <strong>
+            María
+        </strong>
+        consiguió instalar
+        <span lang="en">
+           Tomcat
+          </span>
+        antes de lo que pensaba. Después de instalarlo se ha
+        puesto a indagar en los directorios y esta intentando ver que archivos hay por aquí
+        y por allí. Localiza el directorio donde van las aplicaciones web, el directorio
+        donde van los archivos de configuración,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        Después de verlo, piensa, ¿cómo funciona todo esto? Habla con
+        <strong>
+            Juan
+        </strong>
+        sobre el tema y entre ambos, investigando un poco, logran entender como funciona a
+        un nivel general.
+    </p>
+</div><h1 class="title">
+    3.3.- Configuración básica de Tomcat.
+</h1><div class="iDevice_content">
+    <p>
+        La siguiente pregunta a responder ahora, es,
+        <strong>
+            ¿dónde se configura Tomcat?
+        </strong>
+        Tomcat dispone de varios archivos de configuración que podemos modificar para adaptar el
+        funcionamiento de
+        <span lang="en">
+         Tomcat
+        </span>
+        a nuestras necesidades. Estos archivos
+        podemos encontrarlos en la carpeta de configuración de
+        <span lang="en">
+         Tomcat
+        </span>
+        ,
+        dependiente del mecanismo de instalación que hayamos elegido. Todos ellos, tienen formato
+        <abbr title="eXtensible Markup Language">
+            XML
+        </abbr>
+        , por lo que es necesario
+        que respetes la estructura y sintaxis de este tipo de documentos (con una configuración
+        errónea,
+        <span lang="en">
+         Tomcat
+        </span>
+        no arrancará). Los archivos de configuración
+        disponibles son los siguientes (conf/ hace referencia a la carpeta de configuración):
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            conf/server.xml: es el archivo de configuración principal, donde encontraremos
+            configurados los diferentes componentes de
+            <span lang="en">
+          Tomcat
+         </span>
+            ( servidor,
+            servicios, conectores, motor,
+            <span lang="en">
+          hosts
+         </span>
+            ,
+            <abbr title="etcétera">
+                etc.
+            </abbr>
+            ). Aquí es importante tener en cuenta como se anidan
+            unos componentes dentro de otros (por ejemplo, un conector solo puede configurarse
+            dentro de un servicio).
+        </li>
+        <li>
+            conf/context.xml: es el archivo de configuración del contexto base de todas las
+            aplicaciones web que se ejecutan en
+            <span lang="en">
+          Tomcat
+         </span>
+            . Este archivo no debe
+            modificarse. Cada aplicación web puede tener su propio contexto de ejecución que
+            complementan al principal, pero para ello hay que usar otros archivos (como el archivo
+            META-INF/context.xml dentro de la aplicación web desplegada).
+        </li>
+        <li>
+            conf/web.xml: este archivo contiene el descriptor de despliegue usado por defecto para
+            las aplicaciones web desplegadas en
+            <span lang="en">
+          Tomcat
+         </span>
+            . Dentro de una
+            aplicación web, los valores de esta configuración se pueden complementar a través del
+            archivo WEB-INF/web.xml (el cuál no es obligatorio y se crea en tiempo de desarrollo),
+            pero no debes eliminar ni modificar el archivo conf/web.xml.
+        </li>
+        <li>
+            conf/tomcat-users.xml: este archivo contiene, entre otras cosas, la configuración de los
+            usuarios que podrán usar el gestor de aplicaciones web de Tomcat. Este gestor, descrito
+            más adelante, permite desplegar aplicaciones cómodamente desde un entorno web.
+        </li>
+    </ul>
+    <p>
+        De los cuatro archivos anteriores, el más importante es el archivo server.xml y es el que
+        vamos a describir a continuación de forma general. La idea es que conozcas su estructura
+        para luego poder añadir o quitar elementos de configuración. Este archivo comienza con un
+        conjunto de etiquetas
+        <abbr title="eXtensible Markup Language">
+            XML
+        </abbr>
+        que definen el servidor en su conjunto:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;server&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8005"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;shutdown="SHUTDOWN"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+...
+&lt;span style="color: #062873; font-weight: bold;"/&gt;&lt;/server&lt;&gt;&lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Dentro de esas etiquetas encontraremos definidos uno o más servicios (el atributo name define
+        el nombre del servicio, donde no puede haber dos servicios con el mismo nombre):
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;server&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8005"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;shutdown="SHUTDOWN"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+...
+	&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;service&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="Catalina"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+	...
+	&lt;span style="color: #062873; font-weight: bold;"/&gt;
+...
+&lt;span style="color: #062873; font-weight: bold;"/&gt;&lt;/service&lt;&gt;&lt;/span&gt;&lt;/server&lt;&gt;&lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Dentro de un servicio podrá haber uno o más conectores. Como se puede observar a continuación
+        cada conector define entre otras cosas el puerto donde se escucharán las peticiones y el
+        protocolo aceptado en dicho puerto:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;server&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8005"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;shutdown="SHUTDOWN"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+...
+	&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;service&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="Catalina"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+		&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;connector&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8080"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;protocol="HTTP/1.1"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;connectionTimeout="20000"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;redirectPort="8443"&lt;/span&gt; &lt;span style="color: #062873; font-weight: bold;"&gt;/&gt;&lt;/span&gt;
+	...
+	&lt;span style="color: #062873; font-weight: bold;"/&gt;
+...
+&lt;span style="color: #062873; font-weight: bold;"/&gt;&lt;/connector&lt;&gt;&lt;/span&gt;&lt;/service&lt;&gt;&lt;/span&gt;&lt;/server&lt;&gt;&lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Además, dentro del servicio habrá un único motor, al que se reenviarán las peticiones
+        recibidas por los conectores:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"/&gt;&lt;span style="color: #062873; font-weight: bold;"/&gt;</pre>
+            <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;server&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8005"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;shutdown="SHUTDOWN"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+...
+	&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;service&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="Catalina"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+		&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;connector&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8080"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;protocol="HTTP/1.1"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;connectionTimeout="20000"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;redirectPort="8443"&lt;/span&gt; &lt;span style="color: #062873; font-weight: bold;"&gt;/&gt;&lt;/span&gt;
+		...
+		&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;engine&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="Catalina"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;defaultHost="localhost"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+			...
+		&lt;span style="color: #062873; font-weight: bold;"/&gt;
+	&lt;span style="color: #062873; font-weight: bold;"/&gt;
+...
+&lt;span style="color: #062873; font-weight: bold;"/&gt;&lt;/engine&lt;&gt;&lt;/span&gt;&lt;/connector&lt;&gt;&lt;/span&gt;&lt;/service&lt;&gt;&lt;/span&gt;&lt;/server&lt;&gt;&lt;/span&gt;</pre>
+            <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;&nbsp;&lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En un motor (
+        <span lang="en">
+         engine
+        </span>
+        ) podemos especificar bastantes atributos de
+        configuración, entre ellos tenemos: name que será el nombre del motor (el cual no se puede
+        repetir en otro motor) y defaultHost, que corresponderá al
+        <span lang="en">
+         host
+        </span>
+        por
+        defecto que atenderá las peticiones cuando no se haya configurado ningún
+        <span lang="en">
+         host
+        </span>
+        específico para un nombre de equipo concreto.&nbsp; Como aquí se
+        ha especificado que el defaultHost será localhost, deberá existir un
+        <span lang="en">
+         host
+        </span>
+        configurado con dicho nombre. Veamos:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;server&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8005"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;shutdown="SHUTDOWN"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+...
+	&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;service&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="Catalina"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+		&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;connector&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;port="8080"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;protocol="HTTP/1.1"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;connectionTimeout="20000"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;redirectPort="8443"&lt;/span&gt; &lt;span style="color: #062873; font-weight: bold;"&gt;/&gt;&lt;/span&gt;
+		...
+		&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;engine&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="Catalina"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;defaultHost="localhost"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+			...
+			&lt;span style="color: #062873; font-weight: bold;"&gt;&lt;host&lt; span=""&gt; &lt;span style="color: #4070a0;"&gt;name="localhost"&lt;/span&gt;  &lt;span style="color: #4070a0;"&gt;appBase="webapps"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;unpackWARs="true"&lt;/span&gt; &lt;span style="color: #4070a0;"&gt;autoDeploy="true"&lt;/span&gt;&lt;span style="color: #062873; font-weight: bold;"&gt;&gt;&lt;/span&gt;
+			...
+			&lt;span style="color: #062873; font-weight: bold;"/&gt;
+		&lt;span style="color: #062873; font-weight: bold;"/&gt;
+	&lt;span style="color: #062873; font-weight: bold;"/&gt;
+...
+&lt;span style="color: #062873; font-weight: bold;"/&gt;&lt;/host&lt;&gt;&lt;/span&gt;&lt;/engine&lt;&gt;&lt;/span&gt;&lt;/connector&lt;&gt;&lt;/span&gt;&lt;/service&lt;&gt;&lt;/span&gt;&lt;/server&lt;&gt;&lt;/span&gt;</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+        </div>
+    </div>
+    <p>
+        La etiqueta &lt;Host&gt; permitirá configurar un
+        <span lang="en">
+         host
+        </span>
+        dentro del
+        motor. Esta etiqueta tiene muchos atributos de configuración, pero el atributo name aquí es
+        importante, dado que permite indicar cual será el nombre
+        <abbr title="Domain Name System">
+            DNS
+        </abbr>
+        del equipo. La posibilidad de tener
+        varios&nbsp;&lt;Host&gt; dentro de un &lt;Engine&gt;, permite que nuestro servidor
+        <span lang="en">
+         Tomcat
+        </span>
+        pueda ejecutar diferentes aplicaciones webs asociadas a
+        diferentes nombres
+        <abbr title="Domain Name System">
+            DNS
+        </abbr>
+        . Es la misma idea que
+        los
+        <span lang="en">
+         Virtual Hosts
+        </span>
+        del servidor web Apache. De los otros atributos,
+        cabe destacar los siguientes: appBase indica cual será el directorio que contendrá las
+        aplicaciones web para un&nbsp;&lt;Host&gt; concreto, y autoDeploy indica que las
+        aplicaciones bajo el directorio&nbsp;appBase se desplegarán y pondrán en marcha
+        automáticamente.
+    </p>
+    <p>
+        Ahora es un buen momento para que le eches un vistazo al archivo&nbsp;server.xml incluido en
+        tu instalación de
+        <span lang="en">
+         Tomcat
+        </span>
+        , y que localices los elementos explicados
+        antes. Verás que hay otros elementos de configuración no explicados (cuidado, las
+        etiquetas&nbsp;&lt;!-- --&gt; son comentarios), pero con lo visto aquí es suficiente por
+        ahora.
+    </p>
+</div><h1 class="title">
+    3.4.- Servir una aplicación web con Tomcat.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+</div><h1 class="title">
+    3.4.1.- Despliegue de una aplicación web.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <p>
+          <span>
+           <strong>
+            Juan
+           </strong>
+           ha completado con éxito su primer despliegue, y se ha
+                                        puesto a documentar el proceso. Después de consultar la documentación y diversas
+                                        fuentes de Internet ha visto que existen diferentes alternativas de despliegue,
+                                        y no está seguro de cual será la mejor.
+          </span>
+    </p>
+    <p>
+          <span>
+           Lo habla con
+           <strong>
+            Ada
+           </strong>
+           , y después de la conversación
+           <strong>
+            Ada
+           </strong>
+           le da un poco más de tiempo para investigar, y documentar
+                                        el proceso.
+           <br>
+          <br/></span>
+    </p>
+</div><h1 class="title">
+    3.4.2.- Implementar el registro de acceso.
+</h1><div class="iDevice_content">
+
+    <p>
+        Las aplicaciones
+        <span lang="en">
+           web
+          </span>
+        que están siendo desarrolladas por la
+        empresa
+        <strong>
+            BK programación
+        </strong>
+        comienzan a ser probadas por los clientes
+        en el servidor
+        <span lang="en">
+           Tomcat
+          </span>
+        de prueba.
+        <strong>
+            Ada
+        </strong>
+        quiere,
+        de algún modo, realizar de algún seguimiento sobre estas aplicaciones, de manera que
+        se puedan comprobar los accesos que han tenido, en qué momento han ocurrido, y qué
+        recursos son los más demandados. Para ello
+        <strong>
+            Ada
+        </strong>
+        ha encomendado a
+        <strong>
+            Juan
+        </strong>
+        y a
+        <strong>
+            María
+        </strong>
+        ,&nbsp; configurar el servidor
+        <span lang="en">
+           Tomcat
+          </span>
+        para poder adaptar los
+        <span lang="en">
+           logs
+          </span>
+        , de
+        manera que puedan facilitar más información sobre los accesos a las aplicaciones
+        web.
+    </p>
+</div><h1 class="title">
+    3.4.3.- Sesiones persistentes.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+        </div>
+
+    </div>
+    <p>
+        Después de analizar los registros de acceso,
+        <strong>
+            Ada
+        </strong>
+        está preocupada
+        sobre el rendimiento de algunas aplicaciones web que se van a ejecutar en el
+        servidor de aplicaciones, en especial aquellas que hacen un uso intensivo de
+        sesiones, y que tienen mucha demanda, es decir, que tienen muchos usuarios. En este
+        tipo de aplicaciones, el servidor de aplicaciones debe gestionar las sesiones de
+        forma eficiente, o el rendimiento caerá empicado al aumentar el número de usuarios.
+        Como sabe que
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        están enfrascados en la
+        instalación y configuración de los servidores
+        <span lang="en">
+           Tomcat
+          </span>
+        , les
+        habla sobre el tema:
+    </p>
+    <p>
+        - Necesito que busquéis la forma de mejorar la gestión de las sesiones en
+        <span lang="en">
+           Tomcat
+          </span>
+        , vamos a tener una aplicación web que es posible que sea
+        usada por en torno a 100 usuarios simultáneamente, con gran cantidad de información
+        de sesión - comenta
+        <strong>
+            Ada
+        </strong>
+        .
+    </p>
+    <p>
+        - Vale
+        <strong>
+            Ada
+        </strong>
+        , nos ponemos con ello -comenta
+        <strong>
+            María
+        </strong>
+        -,
+        justamente estaba leyendo sobre ello.
+    </p>
+    <p>
+        - Perfecto -dice
+        <strong>
+            Ada
+        </strong>
+        -, lo dejo en vuestras manos.
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        no saben muy bien que es una sesión, y
+        <strong>
+            María
+        </strong>
+        simplemente ha empezado a leer del tema, así que, a pesar de
+        haberle dicho a
+        <strong>
+            Ada
+        </strong>
+        que se harían cargo, estaban un poco
+        preocupados. ¿Qué van a hacer?
+    </p>
+</div><h1 class="title">
+    3.4.4.- Autenticación de usuarios.
+</h1><div class="iDevice_content">
+    <p>
+        Es normal hoy día que muchas aplicaciones web necesiten de un control de acceso, para evitar
+        accesos no autorizados al servicio. El equipo de desarrollo, en base a unas especificaciones
+        previamente dadas, establecerá las necesidades de autenticación de la aplicación web. Para
+        ello, la especificación
+        <span lang="en">
+         Servlet
+        </span>
+        establece un mecanismo estándar que
+        permite, a través del descriptor de despliegue (WEB-INF/web.xml), indicar las necesidades de
+        autenticación de su aplicación. Este mecanismo permite autenticar diferentes componentes de
+        la aplicación web en lo que se denominan diferentes reinos (Realm).
+    </p>
+    <p>
+        Veamos un ejemplo de la configuración incluida en el descriptor de despliegue para la
+        autenticación. En primer lugar, debemos indicar los roles que nuestra aplicación soporta,
+        esto permitirá hacer que una parte de la aplicación sea accesible por unos roles y otras
+        partes por otros roles diferentes:
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>&lt;security-role&gt;
+        &lt;description&gt;Usuario normal de la aplicación&lt;/description&gt;
+        &lt;role-name&gt;usuario&lt;/role-name&gt;
+&lt;/security-role&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Recuerda que esta información es propia de la aplicación web
+        <span>
+         (
+        </span>
+        WEB-INF/web.xml
+        <span>
+         )
+        </span>
+        . Además de la información anterior, en la que se
+        define un único rol llamado usuario, hay que indicar como se negociará la autenticación con
+        el navegador web. Aquí tenemos muchos métodos, vamos a escoger el método BASIC, que seguro
+        que te suena del tema anterior:
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>    &lt;login-config&gt;
+        &lt;auth-method&gt;BASIC&lt;/auth-method&gt;
+        &lt;realm-name&gt;EjemploWebApp&lt;/realm-name&gt;
+    &lt;/login-config&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En el caso anterior, se ha especificado cuál es el nombre del reino
+        (&lt;realm-name&gt;EjemploWebApp&lt;/realm-name&gt;), éste solamente se usa para preguntar
+        al usuario por el usuario y la contraseña:
+    </p>
+
+    <p>
+        Por último, en el descriptor de despliegue de la aplicación web, habría que incluir que
+        recursos están limitados por el control de acceso. Se pueden especificar solo aquellos
+        recursos y componentes web que necesitemos, pero en este caso, vamos a limitar el acceso a
+        toda la aplicación web:
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>   &lt;security-constraint&gt;
+        &lt;display-name/&gt;
+        &lt;web-resource-collection&gt;
+            &lt;web-resource-name&gt;Aplicación completa&lt;/web-resource-name&gt;
+            &lt;description/&gt;
+            &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+        &lt;/web-resource-collection&gt;
+        &lt;auth-constraint&gt;
+            &lt;description/&gt;
+            &lt;role-name&gt;usuario&lt;/role-name&gt;
+        &lt;/auth-constraint&gt;
+    &lt;/security-constraint&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Con esto estamos limitando el acceso a todos los recursos y componentes web de nuestra
+        aplicación web (< url-pattern &gt;/*&lt; /url-pattern &gt;) solo a aquellos usuarios con el
+        rol&nbsp;usuario (
+        < code >
+            &lt;role-name&gt;
+            usuario
+            &lt;role-name&gt;
+        < code >
+        ), pero, ¿qué usuarios podrán
+        acceder a la aplicación web? ¿Dónde indico los usuarios y las respectivas contraseñas de
+        acceso?
+    </p>
+    <p>
+        Hasta ahora el trabajo de configurar como la aplicación limita el acceso es trabajo del
+        equipo de desarrollo, y es lo que encontraremos en la aplicación a desplegar (en caso de
+        haber sido diseñada así). El siguiente paso es integrar la aplicación web en un servidor
+        <span lang="en">
+         Tomcat
+        </span>
+        . Como parte del proceso de integración tendremos que
+        configurar en
+        <span lang="en">
+         Tomcat
+        </span>
+        un elemento
+        <code>
+
+        </code>
+        donde se ubicarán los usuarios reales que podrán usar la
+        aplicación.
+    </p>
+    <p>
+        Este componente se puede ubicar en tres niveles diferentes: dentro del motor
+        (&lt;Engine&gt;), dentro del
+        <span lang="en">
+         Host
+        </span>
+        y dentro del contexto
+        (&lt;Context&gt;) de una aplicación concreta. Es algo parecido a lo que ocurría con las
+        válvulas descritas en apartados anteriores, por lo que podemos configurarlo en dos archivos
+        diferentes: el archivo&nbsp;server.xml y el archivo&nbsp;META-INF/context.xml propio de la
+        aplicación web; dependiendo del ámbito donde deseemos que se aplique la configuración.
+    </p>
+    <p>
+        Veamos un ejemplo de esta configuración en el archivo META-INF/context.xml de la aplicación
+        web:
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;Context&gt;
+        &lt;Realm className="org.apache.catalina.realm.UserDatabaseRealm"
+               resourceName="UserDatabase"/&gt;
+&lt;/Context&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Con la configuración anterior estamos definiendo un componente&nbsp;Realm en el contexto de
+        la aplicación. Este tipo de Realm (
+        <code>
+            UserDatabaseRealm
+        </code>
+        ), permite usar un archivo
+        <abbr title="Extensible Markup Language">
+            XML
+        </abbr>
+        para almacenar la
+        información de los usuarios (nombre de usuario, contraseña y roles que poseen). Aquí se hace
+        referencia a un recurso llamado
+        UserDatabase&nbsp;(
+        <code>
+            resourceName="UserDatabase"
+        </code>
+        ), en el cual están definidos los
+        usuarios y sus contraseñas. Un mismo recurso puede ser usado por varias aplicaciones web,
+        compartiendo todas la misma fuente de datos de usuario.
+    </p>
+    <p>
+        ¿Cuál es el recurso UserDatabase? ¿Habría que añadir más configuración? Pues en este caso es
+        una configuración que ya va definida en las siguientes líneas del archivo&nbsp;server.xml
+        (ya viene creado en
+        <span lang="en">
+         Tomcat
+        </span>
+        , no hay tenemos que incluirlo nosotros):
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>&lt;!-- Recursos globales --&gt;
+&lt;GlobalNamingResources&gt;
+    &lt;!-- Datos de los usuarios y sus contraseñas --&gt;
+    &lt;Resource name="UserDatabase" auth="Container"
+              type="org.apache.catalina.UserDatabase"
+              description="User database that can be updated and saved"
+              factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
+              pathname="conf/tomcat-users.xml" /&gt;
+  &lt;/GlobalNamingResources&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En el fragmento de configuración anterior se define un archivo que contendrá la información
+        de los usuarios, que concretamente será el archivo conf/tomcat-users.xml&nbsp;(ubicado en la
+        carpeta de configuración de
+        <span lang="en">
+         Tomcat
+        </span>
+        ). Si quisiéramos usar otro
+        archivo, el mecanismo es fácil, simplemente se duplica el&nbsp;&lt;Resource&gt; anterior,
+        cambiando la ruta (pathname) y el nombre (name), aunque también tendríamos que cambiar el
+        nombre del recurso (resourceName) en el&nbsp;&lt;Realm&gt; anterior (declarado en el
+        contexto de la aplicación). Ahora podemos insertar nuestros usuarios y contraseñas en el
+        archivo conf/tomcat-users.xml de forma relativamente sencilla, teniendo en cuenta que el rol
+        de los usuarios que tendrá nuestra aplicación es usuario:
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0"&gt;
+  &lt;!-- Declaración del rol --&gt;
+  &lt;role rolename="usuario"/&gt;
+  &lt;!-- Declaración del usuario, su contraseña y los roles a los que pertenece (separados por comas si fuese necesario) --&gt;
+  &lt;user username="ejemplo" password="ejemplo" roles="usuario"/&gt;
+&lt;/tomcat-users&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        <strong>
+            Cuando cambiamos este archivo de usuarios, o la configuración de
+            <span lang="en">
+          Tomcat
+         </span>
+            , es necesario reiniciar el servidor para que cargue los
+            cambios.
+        </strong>
+    </p>
+    <p>
+        Este es uno de los mecanismos que incluye
+        <span lang="en">
+         Tomcat
+        </span>
+        para almacenar la
+        información de autenticación de los usuarios, el más sencillo con diferencia. Existen otros
+        mecanismo más complejos y eficientes, como por ejemplo, usar un servidor de bases de datos.
+    </p>
+</div><h1 class="title">
+    3.5.- Integración de Tomcat con Apache.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+        </div>
+
+    </div>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        acaba de recibir una buena noticia por parte de uno de sus
+        equipos de trabajo. ¡¡Han terminado un proyecto antes de tiempo!! Se trata de una
+        aplicación web basada en Java
+        <abbr title="Enterprise Edition">
+            EE
+        </abbr>
+        que
+        se tiene que integrar con un servidor web Apache ya existente. En ese servidor web
+        Apache se están ejecutando otras aplicaciones web basadas en
+        <abbr title="PHP HyperText Preprocesor">
+            PHP
+        </abbr>
+        de la misma empresa, y la
+        empresa quieren que todas sean accesibles desde el mismo servidor web, no quieren
+        tener que acceder a través de un nombre de equipo
+        <abbr title="Domain Name System">
+            DNS
+        </abbr>
+        diferente o a través de un
+        puerto diferente.
+    </p>
+    <p>
+        <strong>
+        </strong>
+        Para resolver este problema
+        <strong>
+            Ada
+        </strong>
+        pregunta a
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        , y ambos se ponen a investigar como
+        realizar la integración, aunque no saben si será posible.
+    </p>
+</div><h1 class="title">
+    3.6.- Seguridad.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+        </strong>
+        En
+        <strong>
+            BK Programación
+        </strong>
+        van a
+        tener visita. Durante unos días, aproximadamente un mes, un pequeño equipo de
+        trabajo de una empresa colaboradora va a trabajar de forma conjunta en un proyecto
+        con un equipo de
+        <strong>
+            BK Programación
+        </strong>
+        .
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        , aunque está siguiendo de cerca dicha colaboración, no quiere
+        que el equipo de trabajo visitante tenga acceso a los otros proyectos que la empresa
+        tiene en marcha. Para ello, necesita que
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        estudien que medidas de seguridad se pueden implementar en el
+        servidor Tomcat para limitar el acceso a esos otros proyectos.
+        <strong>
+            Ada
+        </strong>
+        les explica la situación y ambos se ponen manos a la obra.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    4.- El gestor de aplicaciones Web de Tomcat.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En la empresa
+        <strong>
+            BK programación
+        </strong>
+        han puesto en marcha un servidor de
+        aplicaciones secundario basado en
+        <span lang="en">
+           Tomcat
+          </span>
+        . La idea es que se
+        use en el proyecto conjunto que tienen con el equipo de trabajo visitante.
+    </p>
+    <p>
+        Por ello,
+        <strong>
+            Ada
+        </strong>
+        ha pedido a
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        que expliquen al equipo de trabajo visitante como usar el
+        gestor de aplicaciones de
+        <span lang="en">
+           Tomcat
+          </span>
+        para subir la aplicación web
+        que están desarrollando.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        se encargará de configurar un usuario para poder acceder y
+        <strong>
+            Juan
+        </strong>
+        va a preparar una minipresentación para explicarles como
+        funciona.
+    </p>
+</div><h1 class="title">
+    4.1.- Configuración del gestor de aplicaciones.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Lo primero que tiene que hacer
+        <strong>
+            María
+        </strong>
+        es crear un nuevo usuario
+        para que el jefe de equipo del equipo visitante pueda acceder al gestor de
+        aplicaciones. Pero antes de hacerlo, quiere revisar toda la documentación para ver
+        que medidas de seguridad tiene que tomar, ¡
+        <strong>
+            Ada
+        </strong>
+        es muy exigente! Si
+        no lo hace ahora, sabe que
+        <strong>
+            Ada
+        </strong>
+        se lo va a pedir después.
+        <br/></p>
+</div><h1 class="title">
+    4.2.- Uso del gestor de aplicaciones de Tomcat.
+</h1><div class="iDevice_content">
+    <p>
+        El gestor de aplicaciones de
+        <span lang="en">
+         Tomcat
+        </span>
+        (
+        <span lang="en">
+         Tomcat
+         <span lang="en">
+          Manager
+         </span>
+        </span>
+        <span lang="en">
+         ) dispone de una interfaz muy
+                                sencilla de utilizar. Después de entrar en la misma, usando por ejemplo la
+         <abbr title="Uniform Resource Locator">
+          URL
+         </abbr>
+         http://localhost:8080/manager, lo primero que podemos ver es un listado de las
+                                aplicaciones desplegadas en nuestro servidor, en una tabla fácil de identificar. Veamos
+                                un ejemplo:
+         <br>
+        <br/></span>
+    </p>
+
+    <p>
+        Cada aplicación web se muestra en una fila de la tabla, y para cada aplicación web es posible
+        hacer las siguientes operaciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li class="lista_verificacion">
+            Botones
+            <strong>
+                Parar
+            </strong>
+            y
+            <strong>
+                Arrancar
+            </strong>
+            :
+            haciendo clic en el botón
+            <strong>
+                Parar
+            </strong>
+            la aplicación web dejará de ejecutarse
+            en el servidor
+            <span class="lista_verificacion" lang="en">
+          Tomcat
+         </span>
+            y no será
+            accesible. Como resultado de esta operación la columna etiquetada como
+            "
+            <strong>
+                Ejecutándose
+            </strong>
+            " se pondrá a&nbsp;false para la aplicación en cuestión, y
+            se activará el botón
+            <strong>
+                Arrancar
+            </strong>
+            . La aplicación podrá reanudarse
+            nuevamente haciendo clic en el botón
+            <strong>
+                Arrancar
+            </strong>
+            .
+        </li>
+        <li class="lista_verificacion">
+            Botón
+            <strong>
+                Recargar
+            </strong>
+            : este botón elimina de
+            memoria la aplicación web y la vuelve a cargar desde disco, activando posibles cambios
+            que se hayan podido producir en los archivos que componen la aplicación Web.
+        </li>
+        <li class="lista_verificacion">
+            Botón
+            <strong>
+                Replegar
+            </strong>
+            : este botón detiene y
+            desinstala la aplicación web. Si queremos volver a ejecutarla tendremos que volver a
+            despegarla nuevamente.
+        </li>
+        <li class="lista_verificacion">
+            Botón
+            <strong>
+                Expirar Sesiones
+            </strong>
+            : este botón borra las
+            sesiones que no hayan expirado de una determinada aplicación web. Como se puede ver en
+            la imagen, el mismo gestor de aplicaciones tiene una sesión iniciada, que fue la sesión
+            utilizada para realizar la captura de pantalla anterior. Al lado de este botón, hay una
+            pequeña caja de texto que permite indicar la antigüedad, en minutos, de las sesiones a
+            expirar.
+        </li>
+    </ul>
+    <p>
+        En la misma página, bajando un poco más abajo, encontraremos una pequeña interfaz para
+        desplegar una nueva aplicación web:
+    </p>
+
+    <p>
+        El gestor de aplicaciones de
+        <span lang="en">
+         Tomcat
+        </span>
+        facilita dos métodos para
+        desplegar una aplicación web:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Desplegar una aplicación web desde un directorio del servidor. Para esto debemos subir
+            previamente la aplicación web al servidor como archivo
+            <abbr title="Web application ARchive">
+                WAR
+            </abbr>
+            , o en formato expandido o
+            desempaquetado. Para realizar la subida podemos usar el protocolo
+            <abbr title="File Transfer Protocol">
+                FTP
+            </abbr>
+            .
+        </li>
+        <li>
+            Desplegar una aplicación web subiendo un archivo
+            <abbr title="Web application ARchive">
+                WAR
+            </abbr>
+            a través del mismo gestor de
+            aplicaciones.
+        </li>
+    </ul>
+    <p>
+        El primer método requiere que seamos capaces de conectarnos al servidor web usando un
+        protocolo de transferencia de archivos, y que subamos la aplicación web a un directorio del
+        servidor concreto (por ejemplo, al directorio /var/local/webapps/). Este proceso requiere:
+    </p>
+
+    <ul class="lista_verificacion">
+        <li>
+            Subir la aplicación al directorio designado (el directorio elegido puede ser cualquiera,
+            pero el usuario bajo el que se ejecute el servidor
+            <span lang="en">
+          Tomcat
+         </span>
+            deberá
+            tener acceso). Imaginemos para que el directorio donde hemos subido la aplicación web es
+            /var/local/ejemplo.
+        </li>
+        <li>
+            Indicar en el gestor de aplicaciones
+            <strong>
+                la trayectoria del contexto
+            </strong>
+            , que
+            permite indicar que ruta hay que poner en la
+            <abbr title="Uniform Resource Locator">
+                URL
+            </abbr>
+            para acceder a la aplicación web. Si deseamos, por ejemplo,
+            que la aplicación anterior sea accesible a través
+            de&nbsp;http://localhost:8080/nuevoejemplo la trayectoria de contexto debería ser
+            /nuevoejemplo.
+        </li>
+        <li>
+            Indicar en el gestor de aplicaciones la
+            <strong>
+                <abbr title="Uniform Resource Locator">
+                    URL
+                </abbr>
+                del
+                <abbr title="Web application ARchive">
+                    WAR
+                </abbr>
+                o directorio
+            </strong>
+            dentro del servidor que contiene la aplicación web. Imaginemos que se trata de la
+            aplicación web en formato extendido, tendríamos que indicar el directorio de la
+            siguiente forma: file:/var/local/ejemplo.
+        </li>
+        <li>
+            Indicar, si es necesario, la
+            <strong>
+                <abbr title="Uniform Resource Locator">
+                    URL
+                </abbr>
+                del archivo de configuración
+                <abbr title="Extensible Markup Language.">
+                    XML
+                </abbr>
+            </strong>
+            . Este
+            archivo contiene la información de contexto, pero no tiene que llamarse obligatoriamente
+            context.xml. Imagina que dicho archivo lo has puesto en la ruta /var/local/ejemplo.xml,
+            pues en ese caso habría que indicar la ruta al archivo de la siguiente forma:
+            file:/var/local/ejemplo.xml.
+        </li>
+    </ul>
+    <p>
+        Una vez realizado este proceso, podremos desplegar la aplicación web que se ha subido de
+        forma manual al servidor.
+    </p>
+    <div class="destacado">
+        <p>
+            Realizar el despliegue siguiendo el segundo método, subiendo una archivo&nbsp;.war
+            directamente, es mucho más sencillo, dado que solo requiere elegir el archivo
+            <abbr title="Web application ARchive">
+                WAR
+            </abbr>
+            a desplegar y hacer clic en
+            el botón desplegar. En este caso, la ruta a la aplicación web dependerá del nombre del
+            archivo .war. Si por ejemplo, el archivo
+            <abbr title="Web application ARchive">
+                WAR
+            </abbr>
+            es otroejemplo.war, la ruta a la aplicación será&nbsp;
+            http://localhost:8080/otroejemplo (si accedemos desde el mismo equipo donde se instaló
+            el servidor
+            <span lang="en">
+          Tomcat
+         </span>
+            ).
+        </p>
+    </div>
+    <p>
+        El gestor de aplicaciones web también proporciona una página para ver el estado del servidor
+        web, esta página es accesible a través de las rutas /manager/status y
+        <code>
+            /manager/status/all
+        </code>
+        (en esta última se puede ver una mayor cantidad de
+        información). Por ejemplo, accediendo desde la misma máquina en la que hemos instalado el
+        servidor
+        <span lang="en">
+         Tomcat
+        </span>
+        , podríamos ver el estado del servidor a través de la
+        <abbr title="Uniform Resource Locator">
+            URL
+        </abbr>
+        :
+        http://localhost:8080/manager/status.
+    </p>
+</div><h1 class="title">
+    5.- El servidor de aplicaciones WildFly.
+</h1><div class="iDevice_content">
+
+    <p>
+        Durante el desayuno, los empleados de
+        <strong>
+            BK programación
+        </strong>
+        están hablando
+        de algo que
+        <strong>
+            María
+        </strong>
+        desconoce, así que se lanza a preguntarles: "¿Qué
+        es
+        <span lang="en">
+           WildFly
+          </span>
+        ?"
+    </p>
+    <p>
+        Sus compañeros y compañeras le explican que se trata de un servidor gratuito y de
+        código abierto orientado a aplicaciones
+        <span>
+           empresariales. También le comentan que
+                                        es uno de los servidores de aplicaciones principales de hoy día, y que
+          </span>
+        tiene, desde hace tiempo, una gran importancia en el mercado, tanto para
+        particulares como para grandes empresas.
+    </p>
+    <p>
+        A
+        <strong>
+            María
+        </strong>
+        le despierta la curiosidad y decide que es buen momento para
+        estudiarlo.
+    </p>
+</div><h1 class="title">
+    5.1.- Instalación y configuración básica.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        La variedad de plataformas donde se puede instalar
+        <span lang="en">
+         WildFly
+        </span>
+        es enorme.
+        En este caso vamos a describir como se realizaría la instalación en la distribución de Linux
+        Ubuntu (concretamente la versión 17.04), aunque el proceso es similar en otras
+        distribuciones de Linux basadas en
+        <span lang="en">
+         Debian
+        </span>
+        .
+    </p>
+    <p>
+        Para instalar
+        <span lang="en">
+         WildFly
+        </span>
+        , al igual que ocurre en
+        <span lang="en">
+         Tomcat
+        </span>
+        , es imprescindible instalar el
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        . Sea cual sea el
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        que instalemos, es importante que
+        la versión del
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        sea la
+        adecuada para la versión de
+        <span lang="en">
+         WildFly
+        </span>
+        que vamos a instalar. Por
+        ejemplo,
+        <span lang="en">
+         WildFly
+        </span>
+        13 necesita la versión 8 del
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        . Para descargar
+        <span lang="en">
+         WildFly
+        </span>
+        puedes utilizar la página oficial, que es la siguiente:
+    </p>
+    <p style="text-align: center;">
+        Descargar
+        WildFly de la página oficial.
+    </p>
+    <p>
+        <strong>
+            El primer paso es instalar el
+            <abbr title="Java Development Kit">
+                JDK
+            </abbr>
+            .
+        </strong>
+        El proceso de instalación del
+        <abbr title="Java Development Kit">
+            JDK
+        </abbr>
+        es el mismo que el que se explicó
+        en apartados anteriores, puedes seguir el procedimiento del apartado 3.1.1 o el del 3.1.2,
+        así que vamos a obviar esa parte. Sea cual sea el proceso de instalación que hayas seguido
+        (manual o desde repositorio), no olvides tener en cuenta la versión instalada del mismo.
+    </p>
+    <p>
+        <strong>
+            En segundo lugar, vamos a instalar
+            <span lang="en">
+          WildFly
+         </span>
+            .
+        </strong>
+        Para
+        realizar esta instalación vamos a optar por hacer una instalación típica de un servidor de
+        producción, donde no es conveniente que el
+        <span lang="en">
+         software
+        </span>
+        de servidor se
+        ejecute con un usuario con permisos de administración, como puede ser root. Si existe algún
+        problema en el
+        <span lang="en">
+         software
+        </span>
+        , este puede causar verdaderos estragos en
+        todo el sistema, mientras que si se ejecuta con un usuario diferente, el problema queda
+        aislado.
+    </p>
+    <p>
+        Para proceder a la instalación vamos a copiar el archivo comprimido con la distribución de
+        <span lang="en">
+         WildFly
+        </span>
+        en la carpeta donde queramos instalarlo (en el ejemplo será
+        la carpeta /opt), y después, lo descomprimiremos. El proceso de descompresión podría ser
+        como el siguiente:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;Ubuntu:/opt$ sudo tar xvfz wildfly-13.0.0.Final.tar.gz
+</pre>
+        </div>
+    </div>
+    <p>
+        En el caso del ejemplo anterior, la carpeta con
+        <span lang="en">
+         WildFly
+        </span>
+        será
+        /opt/wildfly-13.0.0.Final, aunque esto variará obviamente en función de la versión elegida.
+        Normalmente, lo que hace a continuación (no es obligatorio), es crear un enlace simbólico de
+        la carpeta anterior a la carpeta /opt/wildfly, de tal manera que se pueda acceder más
+        cómodamente a
+        <span lang="en">
+         WildFly
+        </span>
+        :
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;Ubuntu:/opt$ sudo ln -s /opt/wildfly-13.0.0.Final /opt/wildfly
+</pre>
+        </div>
+    </div>
+    <p>
+        <strong>
+            En tercer lugar, vamos a crear un usuario que será el que ejecutará
+        </strong>
+        <span lang="en">
+         <strong>
+          WildFly
+         </strong>
+        </span>
+        . Para crear el usuario (lo llamaremos wildfly
+        en este caso), podemos ejecutar el comando adduser. Veamos un ejemplo:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;Ubuntu:/opt$ sudo adduser --no-create-home --disabled-password --disabled-login wildfly&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Las opciones aplicadas al comando&nbsp;adduser anterior, crean un usuario que básicamente
+        estará destinado a ejecutar
+        <span lang="en">
+         WildFly
+        </span>
+        y no podrá hacer ninguna otra
+        cosa (no se podrá iniciar sesión con dicho usuario, y por lo tanto, no tiene sentido que
+        tenga un directorio con sus archivos). Después, habría que cambiar el propietario de la
+        carpeta que contiene
+        <span lang="en">
+         WildFly
+        </span>
+        , para que dicha carpeta pertenezca al
+        usuario antes creado (wildfly en este caso). Esto se puede hacer con el comando chmod:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;Ubuntu:/opt$ sudo chown wildfly:wildfly /opt/wildfly-13.0.0.Final --recursive&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <p>
+        <strong>
+            En cuarto lugar, tendremos que configurar las variables de entorno.
+        </strong>
+        Para
+        realizar esto podemos seguir el procedimiento descrito en el punto 3.1.2, siguiendo un
+        modelo similar al que se explicó para
+        <span lang="en">
+         Tomcat
+        </span>
+        . Podemos modificar el
+        archivo /etc/environment, o bien el archivo, /etc/profile, aunque lo recomendado es crear
+        nuestro propio
+        <span lang="en">
+         script
+        </span>
+        (llamado por ejemplo wildfly.sh) en la carpeta
+        /etc/profile.d/. Recuerda que este proceso es específico de Ubuntu y de otras distribuciones
+        basadas en
+        <span lang="en">
+         Debian
+        </span>
+        . Un ejemplo de como podría ser el
+        <span lang="en">
+         script
+        </span>
+        wildfly.sh sería el siguiente:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>export WILDFLY_HOME=/opt/wildfly-13.0.0.Final
+export PATH=$PATH:$WILDFLY_HOME/bin
+</pre>
+        </div>
+    </div>
+    <p>
+        En el código anterior crearía una variable de entorno llamada&nbsp;WILDFLY_HOME (que contiene
+        la ruta al servidor
+        <span lang="en">
+         WildFly
+        </span>
+        ) y modificaría la ruta la variable PATH.
+    </p>
+    <p>
+        <strong>
+            En quinto lugar, podríamos ejecutar nuestro servidor
+            <span lang="en">
+          WildFly
+         </span>
+            .
+        </strong>
+        Ahora ya podemos ejecutar de forma manual nuestro
+        servidor
+        <span lang="en">
+         WildFly
+        </span>
+        de la siguiente forma:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable># Si no has reiniciado la sesión, primero habría que cargar las variables de entorno:&lt;br /&gt;usuario&#64;Ubuntu:~$ source /etc/profile.d/wildfly.sh &lt;br /&gt;&lt;br /&gt;# Después podemos arrancar el servidor así:
+usuario&#64;Ubuntu:~$ sudo -u wildfly -i standalone.sh
+</pre>
+        </div>
+    </div>
+    <p>
+        Con el comando anterior estamos ejecutando el comando&nbsp;standalone.sh (que inicia
+        <span lang="en">
+         WildFly
+        </span>
+        como servidor independiente) con el usuario&nbsp;wildfly
+        (
+        <code>
+            -u wildfly
+        </code>
+        ). La opción -i, usada con anterioridad, simplemente hace que
+        se mantengan las variables de sistema al ejecutar el comando con un nivel de privilegios
+        mayor (comando sudo).
+    </p>
+    <div class="destacado">
+        <p>
+            Ahora, si consultamos la URL&nbsp;http://localhost:8080/ desde el equipo donde hemos
+            hecho la instalación podremos acceder a nuestro
+            <span lang="en">
+          WildFly
+         </span>
+            .
+        </p>
+    </div>
+    <p>
+        <strong>
+            En sexto lugar, de forma opcional, podemos instalar
+            <span lang="en">
+          WildFly
+         </span>
+            como un servicio
+        </strong>
+        . Aunque la instalación anterior es perfectamente válida,
+        instalar WildFly como un servicio es muy conveniente, puesto que permite que
+        <span lang="en">
+         WildFly
+        </span>
+        se arranque de forma automática cuando se inicie el servidor.
+    </p>
+    <p>
+        La idea es la siguiente,
+        <span lang="en">
+         WildFly
+        </span>
+        proporciona unos
+        <span lang="en">
+         scripts
+        </span>
+        para este objetivo. Suelen tener el nombre
+        de&nbsp;wildfly-init-&lt;distribucion&gt;.sh donde&nbsp;&lt;distribucion&gt; sería el nombre
+        de la distribución de Linux donde se podrían usar. Además, estos
+        <span lang="en">
+         scripts
+        </span>
+        van acompañados de un archivo de configuración, que también
+        tendremos que poner en nuestro sistema (llamado wildfly.conf). Veamos como podríamos
+        localizarlos:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;Ubuntu:/opt/&lt;code&gt;wildfly-13.0.0.Final$ find -name *init*.sh
+./docs/contrib/scripts/init.d/wildfly-init-debian.sh
+./docs/contrib/scripts/init.d/wildfly-init-redhat.sh&lt;br&gt;usuario&#64;Ubuntu:/opt/wildfly-13.0.0.Final$ find -name wildfly.conf&lt;br&gt;./docs/contrib/scripts/init.d/wildfly.conf&lt;br&gt;./docs/contrib/scripts/systemd/wildfly.conf
+&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En el caso de ejemplo, los archivos que nos convendrían son el archivo
+        ./docs/contrib/scripts/init.d/wildfly-init-debian.sh, dado que Ubuntu se basa en
+        <span lang="en">
+         Debian
+        </span>
+        , y el archivo&nbsp;./docs/contrib/scripts/init.d/wildfly.conf.
+        El proceso ahora sería copiar el archivo&nbsp;wildfly-init-debian.sh a la
+        carpeta&nbsp;/etc/profile.d/init.d con el nombre wildfly, y el archivo wildfly.conf a la
+        carpeta&nbsp;/etc/default con el nombre wildfly. Un ejemplo podría ser el siguiente:
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;Ubuntu:~$ sudo cp /opt/wildfly-13.0.0.Final/docs/contrib/scripts/init.d/wildfly-init-debian.sh /etc/init.d/&lt;strong&gt;wildfly&lt;br /&gt;&lt;/strong&gt;&lt;code&gt;usuario&#64;Ubuntu:~$ sudo cp /opt/wildfly-13.0.0.Final/docs/contrib/scripts/init.d/wildfly.conf /etc/default/wildfly&lt;br/&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Después, habría que configurar el archivo&nbsp;/etc/default/wildfly indicando la información
+        necesaria para ejecutar
+        <span lang="en">
+         WildFly
+        </span>
+        . Un ejemplo de esta configuración
+        podría ser el siguiente:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>## Location of JDK
+JAVA_HOME="/opt/jdk1.8.0_171/"
+
+## Location of WildFly
+JBOSS_HOME="/opt/wildfly-13.0.0.Final"
+
+## The username who should own the process.
+JBOSS_USER=wildfly
+
+## The mode WildFly should start, standalone or domain
+JBOSS_MODE=standalone
+
+## Configuration for standalone mode
+JBOSS_CONFIG=standalone.xml
+</pre>
+        </div>
+    </div>
+    <p>
+        En la configuración anterior se establece:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La carpeta base de la instalación del
+            <abbr title="Java Delopment Kit">
+                JDK
+            </abbr>
+            (JAVA_HOME).
+        </li>
+        <li>
+            La carpeta base de la instalación de
+            <span lang="en">
+          WildFly
+         </span>
+            (JBOSS_HOME).
+        </li>
+        <li>
+            El nombre de usuario con el que se ejecutará
+            <span lang="en">
+          WildFly
+         </span>
+            (JBOSS_USER).
+        </li>
+        <li>
+            El modo de ejecución (JBOSS_MODE) y el archivo de configuración para dicho modo de
+            ejecución (JBOSS_CONFIG).
+        </li>
+    </ul>
+    <p>
+        Una vez realizado esto, ya solamente queda decirle a Ubuntu que instale el
+        <span lang="en">
+         script
+        </span>
+        de arranque de
+        <span lang="en">
+         WildFly
+        </span>
+        :
+    </p>
+    <div class="pre-code">
+        <div>
+            <pre ngNonBindable>usuario&#64;Ubuntu:~$ sudo update-rc.d wildfly defaults</pre>
+        </div>
+    </div>
+    <p>
+        Al estar instalado como servicio,
+        <span lang="en">
+         WildFly
+        </span>
+        se iniciará al arrancar el
+        sistema, pero además:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Podremos arrancarlo ejecutando:
+            <ul class="lista_verificacion">
+                <li>
+                    sudo service wildfly start
+                </li>
+            </ul>
+        </li>
+        <li>
+            Podremos detenerlo ejecutando:
+            <ul class="lista_verificacion">
+                <li>
+                    sudo service wildfly stop
+                </li>
+            </ul>
+        </li>
+        <li>
+            Podremos saber su estado ejecutando:
+            <ul class="lista_verificacion">
+                <li>
+                    sudo service wildfly status
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="destacado">
+        <p>
+            Recuerda que podremos acceder vía web al servidor
+            <span lang="en">
+          WildFly
+         </span>
+            usando
+            la URL http://localhost:8080/ desde el equipo donde se hizo la instalación.
+        </p>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.2.- Aplicaciones empresariales.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            <strong>
+                <strong>
+                </strong>
+            </strong>
+            María
+        </strong>
+        ha realizado una
+        instalación de prueba de
+        <span lang="en">
+           WildFly
+          </span>
+        , y ha visto que, a
+        diferencia de
+        <span lang="en">
+           Tomcat
+          </span>
+        , en éste se pueden instalar aplicaciones
+        empresariales.
+    </p>
+    <p>
+        Después de ojear un poco por Internet, no termina de tener claro que es una
+        aplicación empresarial y que diferencia hay con una aplicación web. Decide
+        preguntarle a
+        <strong>
+            Juan
+        </strong>
+        a ver si él sabe algo.
+    </p>
+</div><h1 class="title">
+    5.3.- Despliegue de aplicaciones empresariales y aplicaciones Web en WildFly.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En el punto anterior se describía como instalar
+        <span lang="en">
+         WildFly
+        </span>
+        , en este
+        apartado vamos a describir como usar su interfaz web de administración para desplegar una
+        aplicación web, y si fuese necesario, una aplicación empresarial (el procedimiento es
+        básicamente el mismo). Para poder usar la conocida&nbsp; consola de administración de
+        <span lang="en">
+         WildFly
+        </span>
+        , debemos añadir un usuario usando el
+        <span lang="en">
+         script
+        </span>
+        add-user.sh incluido en
+        <span lang="en">
+         WildFly
+        </span>
+        .
+    </p>
+    <p>
+        Al crear el usuario nos preguntará que tipo de usuario deseamos añadir. Deberemos elegir un
+        usuario de gestión (
+        <span lang="en">
+         Management User
+        </span>
+        ), que será un usuario dentro del
+        reino (
+        <strong>
+        </strong>
+        <span lang="en">
+         <strong>
+          realm
+         </strong>
+        </span>
+        ) conocido como
+        ManagementRealm. Veamos como podría ser el proceso:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>salva&#64;salva-VirtualBox:~$ sudo -i -u wildfly /opt/wildfly-13.0.0.Final/bin/add-user.sh
+
+What type of user do you wish to add?
+ a) Management User (mgmt-users.properties)
+ b) Application User (application-users.properties)
+(a): a
+
+Enter the details of the new user to add.
+Using realm 'ManagementRealm' as discovered from the existing property files.
+Username : administrador
+...
+Password :
+...</pre>
+        </div>
+    </div>
+    <p>
+        En el proceso anterior, aparte de preguntarnos por el tipo de usuario, el nombre de usuario
+        (administrador en el caso anterior) y la contraseña, se realizan varias preguntas a la
+        podemos responder con yes (si). Una vez creado el usuario, ya podremos acceder a la consola
+        de administración usando la
+        <abbr title="Uniform Resource Locator">
+            URL
+        </abbr>
+        siguiente: http://localhost:8080/console; accediendo desde un
+        navegador en el mismo equipo en el que hemos instalado
+        <span lang="en">
+         WildFly
+        </span>
+        .&nbsp;
+        Al entrar, nos pedirá el usuario y la contraseña que hemos configurado en el paso anterior,
+        y después, veremos una interfaz sencilla de utilizar:
+    </p>
+
+    <p>
+        Como se puede ver en la imagen, en la consola de administración podremos llevar a cabo muchas
+        tareas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Añadir y gestionar las aplicaciones desplegadas.
+        </li>
+        <li>
+            Monitorizar el estado del servidor.
+        </li>
+        <li>
+            Configurar los diferentes subsistemas que conforman
+            <span lang="en">
+          WildFly
+         </span>
+            .
+        </li>
+        <li>
+            <abbr title="etcétera">
+                Etc
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        En este caso, vamos a centrarnos en como desplegar y replegar una aplicación. Si entras en la
+        sección "
+        <strong>
+         <span lang="en">
+          Deployments
+         </span>
+        </strong>
+        ", podrás ver la lista de
+        aplicaciones desplegadas:
+    </p>
+
+    <p>
+        Una vez dentro de la sección "
+        <strong>
+         <span lang="en">
+          Deployments
+         </span>
+        </strong>
+        ", haciendo
+        clic encima del símbolo de suma ("
+        <abbr title="mas">
+            +
+        </abbr>
+        "), podrás desplegar una
+        aplicación:
+    </p>
+
+    <p>
+    </p>
+    <p>
+        Para subir una aplicación web o una aplicación empresarial (como archivo
+        <abbr title="Web application ARchive">
+            WAR
+        </abbr>
+        o
+        <abbr title="Enterprise ARchive">
+            EAR
+        </abbr>
+        ), deberás seleccionar la opción
+        "
+        <strong>
+        </strong>
+        <span lang="en">
+         <strong>
+          Upload Deployment
+         </strong>
+        </span>
+        ". Después de
+        hacer clic en esa opción, saldrá la siguiente interfaz:
+    </p>
+
+    <p>
+        <br>
+        En la interfaz anterior simplemente tendremos que arrastrar o seleccionar la aplicación
+        web o aplicación empresarial a desplegar, y esta se subirá al servidor de aplicaciones. En
+        este caso vamos a proceder a desplegar una aplicación web. Para continuar, haremos clic en
+        siguiente, donde aparecerá la siguiente interfaz:
+        <br/></p>
+
+    <p>
+        En la interfaz anterior se puede configurar el nombre que tendrá la aplicación web en tiempo
+        de ejecución (
+        <strong>
+         <span lang="en">
+          Runtime Name
+         </span>
+        </strong>
+        ), lo cual permitirá
+        indicar una ruta de acceso diferente para la aplicación web (en vez
+        de&nbsp;http://localhost:8080/ejemplo podríamos tener&nbsp;http://localhost:8080/otroejemplo
+        si ponemos en esta configuración otroejemplo.war), y también un botón que permitirá
+        habilitar la aplicación web. Si no se selecciona la opción de habilitar aplicación, la
+        aplicación no se ejecutará, y aparecerá en la lista como se muestra a continuación:
+    </p>
+
+    <p>
+        Seleccionando la aplicación de la lista y haciendo clic en "
+        <strong>
+        </strong>
+        <span lang="en">
+         <strong>
+          enable
+         </strong>
+        </span>
+        ", podemos habilitar la aplicación web
+        fácilmente. Desde esta misma interfaz es relativamente sencillo volver a desplegar otra
+        aplicación web, replegar una aplicación existente o deshabilitar temporalmente la aplicación
+        que nos interese.
+    </p>
+</div><h1 class="title">
+    6.- Construcción y despliegue automático con Ant.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        En la empresa
+        <strong>
+            BK Programación
+        </strong>
+        , para agilizar el proceso de
+        construcción de aplicaciones
+        <span lang="en">
+           web
+          </span>
+        , han pensado en la
+        automatización del proceso con la ayuda de la herramienta
+        <strong>
+           <span lang="en">
+            Ant
+           </span>
+        </strong>
+        que se emplea para la realización de tareas
+        mecánicas y repetitivas, normalmente durante la fase de compilación y construcción.
+    </p>
+    <p>
+        A la hora de implantar dicha herramienta se han propuesto, además, documentar el
+        procedimiento de instalación, configuración y puesta en funcionamiento de dicha
+        herramienta.
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        se están encargando de
+        ello.
+    </p>
+</div><h1 class="title">
+    6.1.- Instalación y configuración de Ant.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        <span lang="en">
+         Ant
+        </span>
+        se puede instalar en cualquier sistema operativo, dado que está
+        desarrollado en Java, y por lo tanto, es multiplataforma. No obstante, para el propósito de
+        esta unidad, vamos instalar
+        <span lang="en">
+         Ant
+        </span>
+        en un ordenador con una distribución
+        Ubuntu reciente. El proceso para instalarlo en cualquier otra distribución de Linux basada
+        en
+        <span lang="en">
+         Debian
+        </span>
+        es similar.
+    </p>
+    <p>
+        Para poder realizar la instalación, primero debemos instalar un
+        <abbr title="Java Delopment Kit">
+            JDK
+        </abbr>
+        <span lang="en">
+        </span>
+        1.4 o superior. Para
+        instalarlo puedes seguir cualquiera de los dos procesos explicados en los apartados 3.1.1 o
+        3.1.2. Para comprobar que versión de Java tienes instalada puedes usar el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 13.7em; margin-bottom: 15px; margin-top: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#java -version
+</pre>
+        </div>
+    </div>
+    <p>
+        Posteriormente procederemos a la descarga del paquete binario de
+        <span lang="en">
+         Ant
+        </span>
+        ,
+        el cuál podemos descargarlo de la siguiente página:
+    </p>
+    <p style="text-align: center;">
+        Página
+        de descarga de la distribución binaria de Ant.
+    </p>
+    <p>
+        También podemos descargarlo directamente desde un terminal, ejecutando el comando wget:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em; margin-bottom: 15px; margin-top: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#wget http://apache.rediris.es/ant/binaries/apache-ant-1.10.3-bin.tar.gz
+</pre>
+        </div>
+    </div>
+    <p>
+        Una vez hemos descargado el archivo, lo podemos descomprimir empleando la instrucción
+        siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em; margin-bottom: 15px; margin-top: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#tar -zxvf apache-ant-1.10.3-bin.tar.gz
+</pre>
+        </div>
+    </div>
+    <p>
+        Después, es buena idea mover la carpeta creada tras descomprimir a otro directorio, como por
+        ejemplo&nbsp;/usr/local o
+        <code>
+            /opt
+        </code>
+        . Esta operación podríamos hacerla con el
+        siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em; margin-bottom: 15px; margin-top: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#sudo mv apache-ant-1.10.3 /opt
+</pre>
+        </div>
+    </div>
+    <p>
+        Lo único que falta ahora es crear la variable de entorno&nbsp;ANT_HOME y actualizar la
+        variable PATH. Veamos que contiene cada una de estas variables:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ANT_HOME: contiene la ruta al directorio raíz de la instalación de
+            <span lang="en">
+          Ant
+         </span>
+            . Para el ejemplo anterior, dicha ruta sería:
+            &lt;code&gt;/opt/apache-ant-1.10.3.
+        </li>
+        <li>
+            PATH: contiene las rutas de acceso a los archivos ejecutables (programas) del sistema;
+            la modificación de esta variable permitirá acceder a los ejecutables de
+            <span lang="en">
+          Ant
+         </span>
+            desde cualquier otro directorio sin tener que poner la ruta
+            completa.
+        </li>
+    </ul>
+    <p>
+        Esta configuración podemos hacerla en varios archivos, tal y como se explicó con
+        anterioridad: en el archivo /etc/environment, en el archivo /etc/profile, o en un
+        <span lang="en">
+         script
+        </span>
+        propio dentro de la carpeta /etc/profile.d, que podría llamarse
+        por ejemplo /etc/profile.d/ant.sh. El contenido de dicho
+        <span lang="en">
+         script
+        </span>
+        podría ser el siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.35em; margin-bottom: 15px; margin-top: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ANT_HOME=/opt/apache-ant-1.10.3
+</pre>
+            <pre ngNonBindable>PATH=$PATH:$ANT_HOME/bin
+</pre>
+        </div>
+    </div>
+    <p>
+        Después, para que el sistema recoja los cambios realizados deberemos reiniciar sesión. Pero
+        si no queremos reiniciar la sesión en ese momento podemos emplear el comando: #source
+        /etc/profile.
+    </p>
+    <p>
+        Para comprobar que
+        <span lang="en">
+         Ant
+        </span>
+        se ha instalado correctamente, podemos ejecutar
+        el comando&nbsp;ant desde un terminal. Al ejecutarlo deberíamos obtener un mensaje similar
+        al siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em; margin-bottom: 15px; margin-top: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#ant&lt;br /&gt;Buildfile: build.xml does not exist!
+</pre>
+            <pre ngNonBindable>Build failed
+</pre>
+        </div>
+    </div>
+    <p>
+        Con esto la herramienta&nbsp;ant ya estaría correctamente instalada y configurada para
+        desempeñar su función en nuestra máquina.
+    </p>
+</div><h1 class="title">
+    6.2.- El archivo build.xml.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Como ya se ha comentado con anterioridad,
+        <strong lang="en">
+            Ant
+        </strong>
+        utiliza ficheros
+        <abbr title="Extensible Markup Language">
+         <span lang="en">
+          XML
+         </span>
+        </abbr>
+        .
+        Normalmente configuramos las tareas a automatizar con
+        <span lang="en">
+         Ant
+        </span>
+        a través de
+        un fichero llamado build.xml, por lo que vamos a ver algunas de las etiquetas que podemos
+        incluir en dicho archivo.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                project
+            </strong>
+            : Este es el elemento raíz del fichero
+            <abbr title="eXtensible Markup Language">
+          <span lang="en">
+           XML
+          </span>
+            </abbr>
+            y,
+            como tal, solamente puede haber uno en todo el fichero, el que se corresponde a nuestra
+            aplicación
+            <span lang="en">
+          Java
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                target
+            </strong>
+            : Un target u objetivo es un conjunto de tareas que queremos
+            aplicar a nuestra aplicación en algún momento. Se puede hacer que unos objetivos
+            dependan de otros, de forma que eso lo trate
+            <span lang="en">
+          Ant
+         </span>
+            automáticamente.
+        </li>
+        <li>
+            <strong>
+                task
+            </strong>
+            : Un task o tarea es un código ejecutable que aplicaremos a nuestra
+            aplicación, y que puede contener distintas propiedades (como por ejemplo el classpath).
+            <strong>
+            </strong>
+            <span lang="en">
+          <strong>
+           Ant
+          </strong>
+         </span>
+            incluye ya muchas tareas
+            básicas, como compilación y eliminación de ficheros temporales, pero podemos extender
+            este mecanismo si nos hace falta. Luego veremos algunas de las disponibles.
+        </li>
+        <li>
+            <strong>
+                property
+            </strong>
+            : Una propiedad o property es, simplemente, algún parámetro (en
+            forma de par nombre-valor) que necesitamos para procesar nuestra aplicación, como el
+            nombre del compilador,
+            <abbr title="etcétera">
+                etc.
+            </abbr>
+            <span style="background-color: #ffff99;">
+         </span>
+        </li>
+    </ul>
+    <p>
+        Veamos un ejemplo simple de archivo build.xml:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.3em; margin-bottom: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;?xml version="1.0"?&gt;
+</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+            <pre ngNonBindable>&lt;project name="ProbandoAnt" default="compilar" basedir="."&gt;
+</pre>
+            <pre ngNonBindable>  &lt;!-- propiedades globales del proyecto --&gt;
+</pre>
+            <pre ngNonBindable>       &lt;property name="fuente" value="." /&gt;
+</pre>
+            <pre ngNonBindable>     &lt;property name="destino" value="classes" /&gt;
+</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+            <pre ngNonBindable>       &lt;target name="compilar"&gt;
+</pre>
+            <pre ngNonBindable>              &lt;javac srcdir="$&#123;fuente&#125;" destdir="$&#123;destino&#125;" /&gt;
+</pre>
+            <pre ngNonBindable>       &lt;/target&gt;
+</pre>
+            <pre ngNonBindable>&lt;/project&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        La estructura de este archivo es bastante simple. Por un lado, declaramos el proyecto
+        (&lt;project&gt;), indicando la acción a realizar por defecto (default="compilar"), y el
+        directorio base sobre el que se realizarán las tareas configuradas a continuación
+        (basedir="."). Cuando el directorio base es solo un punto ("."), quiere decir que el
+        directorio base es el directorio donde está el archivo build.xml.
+    </p>
+    <p>
+        Después en el archivo de configuración aparecen etiquetas property, que contienen los
+        directorios de origen y de destino (&lt;property name="fuente" value="."/&gt; y &lt;property
+        name="destino" value="classes"/&gt;).
+    </p>
+    <p>
+        Por último, se puede ver un target (objetivo) llamado compilar (name="compilar"), que es el
+        que hemos declarado como objetivo por defecto en la declaración del proyecto. En este
+        objetivo tenemos una única tarea, la de compilación javac, a la que por medio de los
+        atributos srcdir y
+        <code>
+            destdir
+        </code>
+        le indicamos los directorios fuente y destino, que
+        recogemos de las propiedades anteriormente declaradas con $&#123;fuente&#125; y
+        <code>
+            $&#123;destino&#125;
+        </code>
+        .
+    </p>
+    <p>
+        Lo único que nos queda ahora es usar este archivo build.xml. Para ello, estando situados en
+        el directorio donde tenemos nuestro build.xml, desde la consola de
+        <span lang="en">
+         Windows
+        </span>
+        o el terminal
+        <abbr title="Gnu No es Unix.">
+            GNU
+        </abbr>
+        /
+        <span lang="en">
+         Linux
+        </span>
+        , podemos ejecutar lo
+        siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.35em; margin-bottom: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#ant
+</pre>
+        </div>
+    </div>
+    <p>
+        Esto llevaría a cabo el objetivo declarado como objetivo por defecto en el proyecto
+        (compilar, en este caso). Si el objetivo a ejecutar fuera otro, podríamos ejecutar
+        <span lang="en">
+         Ant
+        </span>
+        de la siguiente forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#ant nombre_objetivo
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.3.- Empaquetar una aplicación con Ant.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        están sacando mucho partido de esta
+        herramienta. Gracias a ella están aprendiendo un montón, aunque están atascados en
+        un punto: no saben como generar un paquete
+        <abbr title="Web ARchive">
+            WAR
+        </abbr>
+        usando
+        <span lang="en">
+           Ant
+          </span>
+        .
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        empiezan a pensar que no es posible, pero
+        <strong>
+            Ada
+        </strong>
+        ha visto por Internet que si que es posible, y se lo ha
+        comentado por correo electrónico.
+    </p>
+</div><h1 class="title">
+    6.4.- Desplegar en Tomcat usando Ant.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Como ya se comento en apartados anteriores, una aplicación
+        <span lang="en">
+         web
+        </span>
+        puede
+        ser empaquetada en un archivo
+        <abbr title="Web ARchive">
+         <span lang="en">
+          WAR
+         </span>
+        </abbr>
+        para facilitar su despliegue y distribución entre
+        clientes. Como ya sabrás, para empaquetar la aplicación web se puede emplear el comando jar,
+        también se puede emplear la tarea&nbsp;&lt;jar&gt; de
+        <span lang="en">
+         Ant
+        </span>
+        , e incluso
+        se puede utilizar un
+        <abbr title="Integrated Development Environment">
+            IDE
+        </abbr>
+        como
+        <span lang="en">
+         NetBeans
+        </span>
+        o
+        <span lang="en">
+         Eclipse
+        </span>
+        .
+    </p>
+    <p>
+        La novedad ahora es que para desplegar un paquete
+        <abbr title="Web ARchive">
+         <span lang="en">
+          WAR
+         </span>
+        </abbr>
+        en un servidor de aplicaciones podemos
+        también utilizar
+        <span lang="en">
+         Ant
+        </span>
+        . Existen una serie de tareas para Ant (no
+        incluidas por defecto), que podemos utilizar para la gestión de las aplicaciones desplegadas
+        en un servidor de aplicaciones, entre las cuales destacamos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                &lt;deploy&gt;
+            </strong>
+            : despliega una aplicación
+            <span lang="en">
+          web
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                &lt;start&gt;
+            </strong>
+            : inicia una aplicación
+            <span lang="en">
+          web
+         </span>
+            .
+        </li>
+        <li>
+            <strong>
+                &lt;stop&gt;
+            </strong>
+            : para una aplicación.
+        </li>
+        <li>
+            <strong>
+                &lt;undeploy&gt;
+            </strong>
+            : repliega (desinstala) una
+            aplicación&lt;strong&gt;.&lt;/strong&gt;
+        </li>
+    </ul>
+    <p>
+        Pero, ¿cómo podemos desplegar con
+        <span lang="en">
+         Ant
+        </span>
+        una aplicación web en
+        <span lang="en">
+         Tomcat?
+        </span>
+        <span lang="en">
+         Ant
+        </span>
+        es por fortuna una herramienta
+        ampliable, esto quiere decir que se pueden ampliar las tareas que se pueden realizar desde
+        un archivo build.xml programando el código adecuado. Y por suerte,
+        <span lang="en">
+         Tomcat
+        </span>
+        incluye una librería que permite automatizar el despliegue y
+        repliegue desde
+        <span lang="en">
+         Ant
+        </span>
+        , entre otras cosas.
+    </p>
+    <p>
+        <strong>
+            Veamos cual sería el primer paso.
+        </strong>
+        Para integrar las dos herramientas
+        anteriores podemos seguir las siguientes operaciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Instalar
+            <span lang="en">
+          Ant
+         </span>
+            como se describió con anterioridad.
+        </li>
+        <li>
+            Copiar el fichero&nbsp;lib/catalina-ant.jar ubicado en la carpeta de instalación de
+            <span lang="en">
+          Tomcat
+         </span>
+            , en la carpeta&nbsp;./lib de la instalación de
+            <span lang="en">
+          Ant
+         </span>
+            .
+        </li>
+        <li>
+            Cambiar los permisos del archivo copiado anterior
+            <span lang="en">
+         </span>
+            , de forma que
+            cualquier usuario pueda leerlo.
+        </li>
+    </ul>
+    <p>
+        Veamos un ejemplo de como podría ser el proceso:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>#Copiamos el archivo catalina-ant.jar a otra carpeta
+usuario&#64;Ubuntu:~$ sudo cp /opt/apache-tomcat-9.0.8/&lt;strong&gt;lib/catalina-ant.jar&lt;/strong&gt; /opt/apache-ant-1.10.3/&lt;strong&gt;lib/&lt;/strong&gt;
+#Cambiamos los permisos del archivo
+usuario&#64;Ubuntu:~$ sudo chmod o+r /opt/apache-ant-1.10.3/&lt;strong&gt;lib/catalina-ant.jar &lt;/strong&gt;</pre>
+        </div>
+    </div>
+    <p>
+        El proceso anterior presupone que tanto
+        <span lang="en">
+         Tomcat
+        </span>
+        como
+        <span lang="en">
+         Ant
+        </span>
+        han sido instalados de forma manual (ten en cuenta que en función
+        de la versión de
+        <span lang="en">
+         Ant
+        </span>
+        y
+        <span lang="en">
+         Tomcat
+        </span>
+        que hayas
+        instalado, la carpeta de instalación sería otra). Si tienes dificultades para encontrar el
+        archivo catalina-ant.jar, puedes ejecutar el siguiente comando:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;Ubuntu:~$ locate catalina-ant.jar
+/usr/share/java/tomcat8-catalina-ant.jar
+/usr/share/tomcat8/lib/catalina-ant.jar</pre>
+        </div>
+    </div>
+    <p>
+        <strong>
+            El segundo paso sería subir la aplicación al servidor, normalmente, en formato
+            <abbr title="Web application ARchive">
+                WAR
+            </abbr>
+            .
+        </strong>
+        Para este
+        paso es conveniente tener preparada una estructura de directorios en el servidor, donde se
+        subirán las aplicaciones a servir, por ejemplo, podríamos ubicarlas aquí:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>srv/
+└── webapps
+    └── Ejemplo.war
+</pre>
+        </div>
+    </div>
+    <p>
+        Para subir la aplicación web al servidor puedes usar el protocolo
+        <abbr title="File Transfer Protocol">
+            FTP
+        </abbr>
+        u otro similar. Este proceso
+        también se puede realizar sin subir la aplicación al servidor, es decir, usando
+        <span lang="en">
+         Ant
+        </span>
+        para que la aplicación se suba como parte del proceso, pero
+        desplegar la aplicación de esta forma funciona mejor.
+    </p>
+    <p>
+        <strong>
+            El tercer paso sería configurar
+            <span lang="en">
+          Tomcat
+         </span>
+            .
+        </strong>
+        Para poder
+        hacer esta tarea es necesario que instales en
+        <span lang="en">
+         Tomcat
+        </span>
+        el gestor de
+        aplicaciones (
+        <span lang="en">
+         Tomcat Manager
+        </span>
+        ), si no lo tienes ya, dado que la tarea
+        de despliegue y repliegue que vamos a realizar a continuación requiere que
+        <span lang="en">
+         Ant
+        </span>
+        se conecte a dicho gestor.
+    </p>
+    <p>
+        Para realizar estas tareas, se usará una interfaz web que posee el gestor de aplicaciones que
+        podríamos denominar "modo comando" o "modo
+        <span lang="en">
+         script
+        </span>
+        ". Es una interfaz
+        que no hemos visto y que está destinada principalmente a automatizar este tipo de procesos.
+        Para poder usarla, tendremos que añadir un nuevo usuario en el archivo conf/tomcat-users.xml
+        con el rol manager-script, que seguro que te suena de apartados anteriores:
+    </p>
+    <div class="highlighted-code language-markup line-numbers hightlight-7">
+        <div>
+         <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0"&gt;
+  &lt;user username="admin" password="admin" roles="admin-gui, manager-gui" /&gt;
+  &lt;user username="sadmin" password="sadmin" roles="manager-script" /&gt;
+&lt;/tomcat-users&gt;</pre>
+        </div>
+    </div>
+    <p>
+        El usuario añadido en el ejemplo anterior es el llamado sadmin. Usaremos este usuario para
+        conectar desde
+        <span lang="en">
+         Ant
+        </span>
+        al gestor de aplicaciones.
+    </p>
+    <p>
+        <strong>
+            El cuarto paso sería crear un archivo
+        </strong>
+        build.xml para que
+        <span lang="en">
+         Ant
+        </span>
+        se conecte con el gestor de aplicaciones de
+        <span lang="en">
+         Tomcat
+        </span>
+        y realize el proceso de despliegue. Este paso puede realizarse
+        desde otro equipo diferente al servidor, no es necesario estar en físicamente en el mismo
+        equipo. Veamos como podría ser este archivo y después, lo comentaremos:
+    </p>
+    <div class="highlighted-code language-markup line-numbers">
+        <div>
+         <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;project name="Ejemplo" default="default" basedir="."&gt;
+
+   &lt;taskdef name="deploy" classname="org.apache.catalina.ant.DeployTask"/&gt;
+
+   &lt;target name="deploy"&gt;
+ 	&lt;deploy url="http://localhost:8080/manager/text/"
+                username="sadmin"
+                password="sadmin"
+                path="/ejemplo"
+		update="true"
+                localWar="/srv/webapps/Ejemplo.war" /&gt;
+    &lt;/target&gt;
+
+&lt;/project&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En el ejemplo anterior podemos destacar los siguientes aspectos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            A través del elemento&nbsp;&lt;taskdef&gt; se carga, desde la librería proporcionada por
+            <span lang="en">
+          Tomcat
+         </span>
+            , la tarea &lt;deploy&gt;.
+        </li>
+        <li>
+            En la tarea&nbsp;&lt;deploy&gt; a través de sus diferentes atributos, se especifica:
+            <ul class="lista_verificacion">
+                <li>
+                    <abbr title="Unified Resource Locator">
+                        URL
+                    </abbr>
+                    del gestor de
+                    aplicaciones de
+                    <span lang="en">
+            Tomcat
+           </span>
+                    (fíjate que termina en /text).
+                </li>
+                <li>
+                    Nombre del usuario con el rol&nbsp;manager-script que se usará para conectar
+                    (username="sadmin").
+                </li>
+                <li>
+                    Contraseña utilizada para conectar (password="sadmin").
+                </li>
+                <li>
+                    Ruta a través de la que será accesible la aplicación web (path="/ejemplo").
+                </li>
+                <li>
+                    En caso de existir, se actualizará la aplicación ya desplegada (update="true").
+                </li>
+                <li>
+                    Archivo
+                    <abbr title="Web application ARchive">
+                        WAR
+                    </abbr>
+                    a desplegar en
+                    <span lang="en">
+            Tomcat
+           </span>
+                    (localWar="/srv/webapps/Ejemplo.war").
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        <strong>
+            El quinto paso sería desplegar a aplicación
+        </strong>
+        usando
+        <span lang="en">
+         Ant
+        </span>
+        con el objetivo antes configurado:
+    </p>
+    <div class="pre-code">
+        <div>
+         <pre ngNonBindable>usuario&#64;Ubuntu:~/Ejemplo$ ant deploy&lt;br /&gt;Buildfile: /home/usuario/Ejemplo/build.xml&lt;br /&gt;&lt;br /&gt;deploy:&lt;br /&gt;&nbsp;&nbsp; [deploy] OK - Desplegada aplicación en trayectoria de contexto [/ejemplo]&lt;br /&gt;&lt;br /&gt;BUILD SUCCESSFUL&lt;br /&gt;Total time: 0 seconds
+</pre>
+        </div>
+    </div>
+    <p>
+        La ventaja de este proceso es que se permite cierto grado de automatización, de tal manera
+        que cualquier cambio en la aplicación web se puede poner en producción rápidamente.
+    </p>
+</div><h1 class="title">
+    7.- Seguridad en aplicaciones web.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_derecha">
+        </div>
+
+    </div>
+    <p>
+        Una de las primeras preocupaciones que se encuentran los administradores de
+        servidores es la seguridad y protección de los mismos frente a posibles ataques o
+        accesos incontrolados, por dicha causa,
+        <strong>
+            María
+        </strong>
+        se ha puesto a
+        investigar las opciones a configurar, y herramientas a utilizar, para bloquear las
+        posibles vulnerabilidades de los servidores
+        <span lang="en">
+           web
+          </span>
+        junto con los
+        problemas de seguridad en las aplicaciones
+        <span lang="en">
+           web
+          </span>
+        .
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+                                        uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

@@ -1,0 +1,5261 @@
+<h1 class="title">
+    Servicios de red implicados en el despliegue de una aplicación web
+</h1><div class="iDevice_content">
+
+    <p>
+          <span style="font-size: 1em;">
+           En
+          </span>
+        <span lang="en" style="font-size: 1em;">
+           BK
+          </span>
+        <span style="font-size: 1em;">
+           Programación, como cada lunes, tiene lugar una reunión entre
+          </span>
+        <strong style="font-size: 1em;">
+            Ada
+        </strong>
+        <span style="font-size: 1em;">
+           , la directora,
+          </span>
+        <strong style="font-size: 1em;">
+            María
+        </strong>
+        <span style="font-size: 1em;">
+           , la responsable del Área de Sistemas y
+          </span>
+        <strong style="font-size: 1em;">
+            Juan
+        </strong>
+        <span style="font-size: 1em;">
+           , el responsable del Área de Desarrollo, en la que se evalúan el estado actual de los proyectos en desarrollo o a desarrollar. En esta caso, la reunión fue la siguiente:
+          </span>
+    </p>
+    <p>
+        —He estado viendo las tareas relativas al proyecto en la aplicación de proyectos
+        <span lang="en">
+           Redmine
+          </span>
+        y veo que llevamos adelanto sobre lo previsto.
+    </p>
+    <p>
+        —Sí,
+        <strong>
+            Ada
+        </strong>
+        —dijo
+        <strong>
+            María
+        </strong>
+        —, ya tenemos el proyecto encauzado, solamente quedan por resolver dos tareas: configurar la visibilidad a través de Internet para la aplicación web y la autentificación de usuarios. La verdad es que ha sido todo un acierto el empleo de
+        <span lang="en">
+           Redmine
+          </span>
+        para llevar a buen fin el proyecto. Se deja manejar muy bien y permite coordinarse. Ahora la verdad es que tenemos un control exhaustivo sobre el proyecto.
+    </p>
+    <p>
+        —Sí —reafirmó
+        <strong>
+            Juan
+        </strong>
+        —. La verdad es que poder monitorizar las tareas y ver su ciclo de vida es todo un acierto. A todo esto, entonces, ¿cuándo podemos empezar con las pruebas en el servidor definitivo?
+    </p>
+    <p>
+        —Pues, pronto —dijo
+        <strong>
+            María
+        </strong>
+        —. Tan pronto como tengamos realizada la primera de las dos tareas, esto es, tan pronto como hayamos configurado la redirección
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        de la aplicación web al servidor destinado al proyecto.
+    </p>
+    <p>
+        —Bien, —dijo
+        <strong>
+            Juan
+        </strong>
+        —. Entonces iré ya creando las tareas respectivas en el
+        <span lang="en">
+           Redmine
+          </span>
+        , asignándolas a los responsables correspondientes, para las pruebas.
+    </p>
+    <p>
+        —Sí, estaría bien, ya que lo que nos estaba reteniendo en la tarea relativa al
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        era la elección del dominio
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        por parte del cliente, puesto que no lo tenía claro. Una vez resuelto, solamente debemos configurar el servidor
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        para apuntar el nombre de dominio
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        a la
+        <abbr title="Internet Protocol. Protocolo de Internet.">
+            IP
+        </abbr>
+        del servidor destinado al proyecto y verificar que la configuración se replica en el servidor esclavo. Por lo tanto a configurar el servidor
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        BIND
+        y listo.
+    </p>
+    <p>
+        —Por cierto, ¿cuál es el sistema de autenticación elegido por el cliente? —preguntó
+        <strong>
+            Juan
+        </strong>
+        —.
+    </p>
+    <p>
+        —Ha elegido autentificación por
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        —dijo
+        <strong>
+            María—
+        </strong>
+        . Al final se ha decidido por el montaje de un servidor
+        LDAP
+        frente a la otra opción considerada: una base de datos
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        . Así que lo configuraremos con
+        OpenLDAP
+        .
+    </p>
+    <p>
+        —Muy bien —dijo
+        <strong>
+            Ada
+        </strong>
+        —, veo que el proyecto va viento en popa, esperemos que continúe.
+    </p>
+    <p>
+        —Por mi parte —dijo
+        <strong>
+            María—
+        </strong>
+        , lo único que podría ralentizar el proyecto sería el envío de usuarios para darlos de alta en
+        <span lang="en">
+           OpenLDAP
+          </span>
+        , por lo demás...
+    </p>
+    <p>
+        —Bien, si hasta ahora el cliente ha sido efectivo en plazos no hay porque suponer que no siga continuando siéndolo. En fin, manos a la obra. Volvemos a quedar la próxima semana a la misma hora, la sala ya está reservada, y comentamos de nuevo.
+    </p>
+    <p>
+        —Vale, adiós —dijo
+        <strong>
+            María
+        </strong>
+        —.
+    </p>
+    <p>
+        —Hasta luego —dijo
+        <strong>
+            Juan
+        </strong>
+        —.
+    </p>
+    <div class="exe-tooltip-text" id="t8df79816-18fe-5238-d647-f63873b9ac66">
+        <p>
+           <span tabindex="en">
+            Lightweight Directory Access Protocol. En español se traduciría como
+           </span>
+            Directorio de Protocolo de Acceso Ligero.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.- Introducción
+</h1><div class="iDevice_content">
+    <p>
+        ¿Te has preguntado alguna vez dónde y de qué manera se almacenan y&nbsp;procesan los datos o ficheros que utilizamos cuando consultamos una página web?
+    </p>
+    <p>
+        Las Aplicaciones Web son las relacionadas con esta gestión de datos en servidores o en "la nube". Estas aplicaciones reciben este nombre porque se ejecutan desde Internet y no necesitan una instalación previa.
+    </p>
+
+    <p>
+        <span style="font-size: 1em;">
+         En este tema vamos a ver los distintos servicios de red implicados en el despliegue de una aplicación web, desglosado en:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Servicios de nombre de dominio
+            </strong>
+            , cuyas siglas son
+            <strong>
+                <abbr title="Domain Name System. ">
+                    DNS
+                </abbr>
+            </strong>
+            . Vamos a ver su funcionamiento, tipos de servidores y registros.
+        </li>
+        <li>
+            <strong>
+                Servicio de Directorio
+            </strong>
+            , principalmente en la organización
+            <strong>
+                <abbr title="Lightweight Directory Access Protocol.">
+                    LDAP
+                </abbr>
+            </strong>
+            tipo árbol. Además realizaremos la instalación y configuración de OpenLDAP.
+        </li>
+        <li>
+            Monitorización de los sistemas, a través de herramientas específicas de los servicios web y otras mas avanzadas, pero muy interesante conocer.
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.- Servidores de nombres de dominio
+</h1><div class="iDevice_content">
+
+    <p>
+          <span style="font-size: 1em;">
+           Para poder llevar a buen fin el proyecto,
+          </span>
+        <strong style="font-size: 1em;">
+            María
+        </strong>
+        <span style="font-size: 1em;">
+           se puso manos a la obra y determinó el siguiente escenario de trabajo para la realización de las dos últimas tareas del proyecto:
+          </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Sistema Operativo Servidor: Debian
+            <abbr title="GNU is Not Unix. ">
+                GNU
+            </abbr>
+            /
+            <span lang="en">
+            Linux
+           </span>
+            6.0.
+        </li>
+        <li>
+            Servidor Web: Apache (apache2).
+        </li>
+        <li>
+            Servidor
+            <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+            Primario (Maestro):
+            <abbr title="Berkeley Internet Name Domain.">
+                BIND
+            </abbr>
+            (
+            <span lang="en">
+            BIND
+           </span>
+            9).
+        </li>
+        <li>
+            Servidor
+            <span lang="en">
+            <abbr lang="en" title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+            Secundario (Esclavo):
+            <abbr title="Berkeley Internet Name Domain.">
+                BIND
+            </abbr>
+            (
+            <span lang="en">
+            BIND
+           </span>
+            9).
+        </li>
+        <li>
+            Servidor
+            <span lang="en">
+            <abbr title="Lightweight Directory Access Protocol.">
+             LDAP
+            </abbr>
+           </span>
+            :
+            <span lang="en">
+            OpenLDAP
+           </span>
+            .
+        </li>
+        <li>
+            Configuración de Red:
+            <ul>
+                <li>
+                    Servidor Web: 192.168.200.250.
+                </li>
+                <li>
+                    Cliente de pruebas (desde donde se lanza el navegador): 192.168.200.100.
+                </li>
+                <li>
+                    Servidor
+                    <span lang="en">
+              <abbr lang="en" title="Domain Name System. ">
+               DNS
+              </abbr>
+             </span>
+                    Maestro: 192.168.200.250.
+                </li>
+                <li>
+                    Servidor
+                    <span lang="en">
+              <abbr lang="en" title="Domain Name System. ">
+               DNS
+              </abbr>
+             </span>
+                    Esclavo: 192.168.200.249.
+                </li>
+                <li>
+                    Servidor
+                    <span lang="en">
+              OpenLDAP
+             </span>
+                    : 192.168.200.248.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        <strong>
+            María
+        </strong>
+        , debe garantizar el correcto funcionamiento de la resolución
+        <span lang="en">
+           <abbr lang="en" title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        , por lo tanto, como con otros proyectos, prevé la redundancia del servicio mediante dos servidores
+        <span lang="en">
+           <abbr lang="en" title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        , uno actuando de primario y otro de secundario, y debido a sus características se ha decantado por el servidor
+        <span lang="en">
+           <abbr lang="en" title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        <abbr title="Berkeley Internet Name Domain.">
+            BIND
+        </abbr>
+        .
+    </p>
+    <p>
+        Para la autentificación de usuarios, el cliente tras explicarle las alternativas se ha decantado por
+        <span lang="en">
+           <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+           </abbr>
+          </span>
+        , por lo cual
+        <strong>
+            María
+        </strong>
+        configurará el servicio mediante
+        <span lang="en">
+           OpenLDAP
+          </span>
+        debido a sus características.
+    </p>
+</div><h1 class="title">
+    2.1.-  Sistema de nombres de dominio
+</h1><div class="iDevice_content">
+    <p>
+        ¿Cuántos servidores
+        <span lang="en">
+           <abbr title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        existen?
+    </p>
+    <p>
+        ¿Cuántas redirecciones
+        <span lang="en">
+           <abbr title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        son posibles?
+    </p>
+    <p>
+        ¿Existe un servidor
+        <span lang="en">
+           <abbr title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        donde se guarden todos los dominios
+        <span lang="en">
+           <abbr title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        posibles en Internet?
+    </p>
+    <p>
+        ¿Qué son los servidores
+        <span lang="en">
+           <abbr title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+        Raíz?
+    </p>
+</div><h1 class="title">
+    2.1.1.- ¿Cómo es un nombre de dominio?
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+
+    </div>
+    <p>
+        ¿Qué es lo que sueles escribir en la barra de direcciones
+        <span lang="en">
+         <abbr title="Uniform Resource Locator">
+          URL
+         </abbr>
+        </span>
+        del navegador? Normalmente algo similar a: www.debian.org. Entonces, vienen siendo unos caracteres separados por puntos. ¿Qué es lo que significan esos puntos? ¿Qué dividen? Además, en el ejemplo expuesto, al escribir www.debian.org el navegador autocomplementa esta petición a http://www.debian.org,&nbsp; pero, ¿por qué?
+    </p>
+    <p>
+        Todas estas preguntas tienen respuesta, así que vamos a por ellas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Primero: Los puntos separan dominios y subdominios, empezando de derecha a izquierda tendrás dominios de primer nivel y dominios de segundo, tercer, …, n-ésimo nivel, denominados subdominios. Así:
+            <ul class="lista_verificacion">
+                <li>
+                    <strong>
+                        org
+                    </strong>
+                    es el dominio de primer nivel que identifica a organizaciones.
+                </li>
+                <li>
+           <span lang="en">
+            <strong>
+             debian
+            </strong>
+           </span>
+                    es un subdominio, en este caso dominio de segundo nivel bajo org, que identifica al nombre de la organización o al nombre de la empresa, sucursal,
+                    <abbr title="etcétera">
+                        etc.
+                    </abbr>
+                </li>
+                <li>
+                    <abbr title="World Wide Web. Red informática mundial.">
+                        <strong>
+                            www
+                        </strong>
+                    </abbr>
+                    es un subdominio, en este caso dominio de tercer nivel bajo debian, que identifica al equipo donde está colgada la página web, esto es, identifica el servidor web que aloja la página web. Es el dominio www que el servidor
+                    <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                    redirecciona a la
+                    <span lang="en">
+            <abbr title="Internet Protocol">
+             IP
+            </abbr>
+           </span>
+                    del servidor web.
+                </li>
+            </ul>
+        </li>
+        <li>
+            Segundo: http:// es el protocolo de hypertexto que permite la correcta visualización de la página web en el navegador. Es lo que el navegador autocomplementa en caso de no estipular uno propio en la barra de direcciones
+            <abbr title="Uniform Resource Locator">
+                URL
+            </abbr>
+            con en nombre de dominio.
+        </li>
+    </ul>
+    <p>
+        Los dominios de primer nivel identifican el tipo de página web que solicitas o bien la localización de la misma, por ejemplo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                net
+            </strong>
+            identifica redes.
+        </li>
+        <li>
+            <strong>
+                com
+            </strong>
+            identifica comercio.
+        </li>
+        <li>
+            <strong>
+                es
+            </strong>
+            identifica localización España.
+        </li>
+        <li>
+            <strong>
+                tk
+            </strong>
+            identifica localización Tokelau.
+        </li>
+    </ul>
+    <p>
+        Esto suele ser lo común, pero no es obligatorio, es decir, si una empresa posee un dominio
+        <strong>
+            com
+        </strong>
+        puede dedicarse al sector de redes de comunicaciones y no poseer el dominio
+        <strong>
+            net
+        </strong>
+        , así como puede ser una empresa localizada en España y no poseer el dominio
+        <strong>
+            es
+        </strong>
+        .
+    </p>
+    <p>
+        A nivel gramatical los dominios deben cumplir una serie de requisitos. Por ejemplo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Sólo pueden estar compuestos de letras (alfabeto inglés), números y guiones ("-").
+        </li>
+        <li>
+            No pueden empezar o terminar por guiones.
+        </li>
+        <li>
+            Tienen que tener menos de 63 caracteres sin incluir la extensión, y más de uno o dos dependiendo del dominio de primer nivel.
+        </li>
+    </ul>
+    <p>
+        Ahora bien, hoy día ya es posible registrar dominios con caracteres de otras lenguas no inglesas, como la ñ o la ç. Estos dominios se denominan
+        <strong>
+            multilingües
+        </strong>
+        .
+    </p>
+    <p>
+        La sintaxis de los nombres de dominio se discute en varios
+        RFC
+
+
+        RFC
+
+        Serie de documentos en los que se detalla prácticamente todo lo relacionado con la tecnología de la que se sirve Internet: protocolos, recomendaciones, comunicaciones...
+        <abbr title="Request For Comments. Solicitud De Comentarios.">
+        </abbr>
+        (
+        <span lang="en">
+         Request for Comments
+        </span>
+        ):
+    </p>
+    <p style="text-align: center;">
+        RFC 1035
+    </p>
+    <p style="text-align: center;">
+        RFC 1123
+    </p>
+    <p style="text-align: center;">
+        RFC 2181
+    </p>
+</div><h1 class="title">
+    2.1.2.- Jerarquía de nombres de dominio
+</h1><div class="iDevice_content">
+    <p>
+        El espacio de nombres de dominio (el universo de todos los nombres de dominio) está organizado de forma jerárquica. El nivel más alto en la jerarquía es el
+        <strong>
+            dominio raíz
+        </strong>
+        , que se representa como un punto (".") y el siguiente nivel en la jerarquía se llama
+        <strong>
+            Dominio de Nivel Superior
+        </strong>
+        (
+        <abbr title="Top-Level Domain.">
+            TLD
+        </abbr>
+        ). Sólo hay un dominio raíz, pero hay muchos
+        <abbr title="Top Level Domain">
+            TLD
+        </abbr>
+        y cada
+        <abbr title="Top Level Domain">
+            TLD
+        </abbr>
+        se llama
+        <strong>
+            dominio secundario del dominio raíz
+        </strong>
+        . En este contexto, el dominio raíz es el dominio principal, ya que está un nivel por encima de un
+        <abbr title="Top Level Domain">
+            TLD
+        </abbr>
+        y cada
+        <abbr title="Top Level Domain">
+            TLD
+        </abbr>
+        , a su vez, pueden tener muchos dominios hijos. Los hijos de los dominios de nivel superior se llaman de segundo nivel, los del segundo nivel se llaman de tercer nivel, los del tercer nivel de cuarto, y así sucesivamente.
+    </p>
+    <p>
+        Por lo tanto el
+        <abbr title="Domain Name System. ">
+            DNS
+        </abbr>
+        , organiza los nombres de máquina (hostname) en una jerarquía de dominios separados por el carácter punto '.'
+    </p>
+    <p>
+        Un
+        <strong>
+            dominio
+        </strong>
+        es una colección de nodos relacionados de alguna forma, porque están en la misma red, tal como los nodos de una empresa. Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>rrhh.departamento.empresa.org
+</pre>
+            <pre ngNonBindable>marketing.departamento.empresa.org
+</pre>
+            <pre ngNonBindable>contabilidad.consultas.empresa.org
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La empresa agrupa sus nodos en el dominio de primer nivel "org". Éste es un
+            <span lang="en">
+          <abbr title="Top Level Domain">
+           TLD
+          </abbr>
+         </span>
+            .
+        </li>
+        <li>
+            La empresa tiene un subdominio, dominio de segundo nivel "empresa" bajo "org". Así "empresa" es un dominio de segundo nivel, hijo del
+            <span lang="en">
+          <abbr title="Top Level Domain">
+           TLD
+          </abbr>
+         </span>
+            "org".
+        </li>
+        <li>
+            A su vez puedes encontrar nuevos subdominios dentro, en este caso: "departamento" y "consultas". Es decir, dominios de tercer nivel, hijos a su vez del dominio de segundo nivel "empresa".
+        </li>
+        <li>
+            Finalmente, un nodo que tendrá un nombre completo conocido como totalmente cualificado o
+            <abbr title="Fully Qualified Domain Name.">
+                FQDN
+            </abbr>
+            , que es la concatenación de:
+            <span lang="en">
+          <abbr title="Top Level Domain">
+           TLD
+          </abbr>
+         </span>
+            , dominio de segundo nivel, dominio de tercer nivel,
+            <abbr title="etcétera">
+                etc.
+            </abbr>
+            , tal como:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 62.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>rrhh.departamento.empresa.org, marketing.departamento.empresa.org, contabilidad.consultas.empresa.org.
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.2.- Ventajas del DNS
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc" lang="es">
+        <p>
+            ¿Qué sabe el pez del agua donde nada toda su vida?
+        </p>
+        <cite lang="de">
+            Albert Einstein
+        </cite>
+    </blockquote>
+</div><h1 class="title">
+    2.3.- Funcionamiento del DNS
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+
+    </div>
+    <p>
+        La imagen animada que acompaña a este texto presenta gráficamente el funcionamiento del
+        <span lang="en">
+         <abbr lang="en" title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        , tomando como ejemplo la página web
+        www.debian.org
+
+        y considerando que la información de la petición del dominio a buscar no se encuentra en tu ordenador o en un servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        local existente en tu red o en tu ordenador.
+    </p>
+    <ol>
+        <li>
+            A través de tu navegador quieres consultar la página
+            <span lang="en">
+          web
+         </span>
+            oficial de Debian escribiendo en la barra de direcciones la
+            <span lang="en">
+          <abbr title="Uniform Resource Locator">
+           URL
+          </abbr>
+         </span>
+            http://www.debian.org
+            .
+        </li>
+        <li>
+            El navegador busca la información de las
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            del dominio debian.org.
+        </li>
+        <li>
+            Internet está ordenada en forma de árbol invertido, si no encuentra la información en tu ordenador, irá a buscarla a los servidores
+            <span lang="en">
+          DNS
+         </span>
+            que posees en la configuración de red de tu ordenador, típicamente los proporcionados por tu
+            <strong>
+                Proveedor de Servicios a Internet
+            </strong>
+            (
+            <abbr title="Internet Service Provider. ">
+                ISP
+            </abbr>
+            ):
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            Primario (3a) o
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            Secundario (3b). De no estar, seguirá buscándola a niveles superiores y, en último lugar, lo encontrará en el Servidor de Nombres Raíz:
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            Raíz (3n).
+        </li>
+        <li>
+            La información buscada: las
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            correspondientes al servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            que gobierna el dominio debian.org, llega a tu ordenador:
+            <span lang="en">
+          DNS
+         </span>
+            1→ 206.12.19.7 y
+            <span lang="en">
+          DNS
+         </span>
+            2→ 128.31.0.51. Suelen ser dos porque las especificaciones de diseño de
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            recomiendan que, como mínimo, deben existir dos servidores
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            para alojar cada zona, a la que pertenece cada dominio. Tu ordenador ahora intentará conectar con el servidor
+            <span lang="en" style="font-size: 1em;">
+          DNS
+         </span>
+            <span style="font-size: 1em;">
+          1 (5a) o ante cualquier problema de conexión con éste lo intentará con el servidor
+         </span>
+            <span lang="en" style="font-size: 1em;">
+          DNS
+         </span>
+            <span style="font-size: 1em;">
+          2 (5b). Éstos son los servidores de nombres donde se encuentra información acerca de dónde se puede buscar la página web (servidor de la web), una dirección de correo electrónico (servidor de correo),
+          <abbr title="etcétera">
+           etc.
+          </abbr>
+         </span>
+        </li>
+        <li>
+            Tu ordenador recibirá la información acerca de la localización de la página web, o sea, la dirección
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            del servidor web donde está alojada la página.
+        </li>
+        <li>
+            Tu ordenador se dirigirá luego al servidor web y buscará la página web en él.
+        </li>
+        <li>
+            Por último, el servidor web devuelve la información pedida y tú recibes la página web, visualizándola en el navegador.
+        </li>
+    </ol>
+    <p>
+        Pero, y si vuelves a consultar la página web oficial de Debian escribiendo en la barra de direcciones la
+        <abbr title="Uniform Resource Locator">
+            URL
+        </abbr>
+        http://www.debian.org, ¿se repetirá de nuevo todo el proceso? Para contestar esta pregunta hay que establecer dos situaciones:
+    </p>
+    <ol>
+        <li>
+            <strong>
+                El
+                <span lang="en">
+           host
+          </span>
+                desde el que vuelves a realizar la consulta es el mismo
+            </strong>
+            : si no lo es, antes de repetir todo el proceso se intentaría con lo expuesto en el siguiente punto, pero si es el mismo, al haber hecho la consulta desde este host, la resolución dominio-
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            se guarda durante algún tiempo en la memoria caché del mismo, por lo cual no será necesario repetir todo el proceso de nuevo. Si el tiempo en el que la memoria caché guarda la resolución ha expirado se volverá a repetir el proceso de nuevo.
+        </li>
+        <li>
+            <strong>
+                Existe un servidor
+                <span lang="en">
+           <abbr title="Domain Name System. ">
+            DNS
+           </abbr>
+          </span>
+                caché en tu red o en tu
+                <span lang="en">
+           host
+          </span>
+                :
+            </strong>
+            por lo tanto, si un segundo cliente, que tiene configurado este servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            , vuelve a realizar la misma petición, como este servidor tiene la respuesta almacenada en su memoria caché, responderá inmediatamente sin tener que cursar la petición a ningún servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            de Internet. Si el tiempo en el que la memoria caché guarda la resolución ha expirado se volverá a repetir el proceso de nuevo.
+        </li>
+    </ol>
+</div><h1 class="title">
+    2.4.- DNS Dinámico
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         ¿Es posible si dispones de una conexión a Internet con
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        <span style="font-size: 1em;">
+         dinámica ofrecer servicios en Internet?
+        </span>
+    </p>
+    <p>
+        Parece claro que si dispones de una
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        estática de conexión a Internet, previo pago de un plus por disponer siempre de una misma
+        <span>
+        </span>
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        <span>
+        </span>
+        para tu conexión a Internet, simplemente deberías enrutar las peticiones de los servicios que ofreces a los
+        <span lang="en">
+         hosts
+        </span>
+        que esperan la conexión a esos servicios. Si además, posees nombres de dominios puedes redireccionar esos nombres a las
+        <span lang="en">
+         IP
+        </span>
+        de tus
+        <span lang="en">
+         hosts
+        </span>
+        a través del servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        .
+    </p>
+    <p>
+        Pero, volviendo a la pregunta, ¿qué es lo que pasa si quieres hacer lo mismo y no dispones de
+        <span>
+        </span>
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        <span>
+        </span>
+        estática?&nbsp; Esto es, cada vez que te conectas a Internet tu
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        , aunque a veces sea la misma, no siempre es la misma. Pues sí, sí es posible. ¿Cómo? A priori, si lo piensas un poco, lo único que necesitarías sería:
+    </p>
+    <ol>
+        <li>
+            Recoger la
+            <span>
+         </span>
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            <span>
+         </span>
+            de tu conexión cada vez que te conectas en Internet.
+        </li>
+        <li>
+            Una vez recogida tu
+            <span>
+         </span>
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            <span>
+         </span>
+            difundirla en Internet. Para difundirla, o bien lo haces de forma estática, y cada vez que la recoges te preocupas de hacer los cambios necesarios para difundirla, o bien de forma dinámica configuras un programa para que automáticamente recoja la
+            <span>
+         </span>
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            <span>
+         </span>
+            y la difunda.
+        </li>
+    </ol>
+    <p>
+        Está claro, que la mejor opción es difundirla de forma dinámica, para ello puedes aprovecharte de servicios ofrecidos, incluso de forma gratuita, por
+        DynDNS
+        ,
+        No-IP
+        y
+        FreeDNS
+        . De hecho, hoy en día, los
+        <span lang="en">
+         routers
+        </span>
+        que los
+        <span lang="en">
+         <abbr title="Internet Service Provider. ">
+          ISP
+         </abbr>
+        </span>
+        suelen montar ya poseen la opción de configuración por
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        dinámica.
+    </p>
+    <p>
+        Entonces, el
+        <strong>
+         <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            dinámico
+        </strong>
+        es un sistema que permite la actualización en tiempo real de la información sobre nombres de dominio situados en un servidor de nombres, siendo usado, mayoritariamente, para asignar un nombre de dominio de Internet a un ordenador con dirección
+        <span>
+        </span>
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        <span>
+        </span>
+        variable (dinámica).
+    </p>
+    <p>
+        El
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        dinámico, así, puede ofrecer servicios en Internet en
+        <span lang="en">
+         hosts
+        </span>
+        que posean conexión con dirección
+        <span>
+        </span>
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        <span>
+        </span>
+        dinámica, la típica configuración que los
+        <abbr title="Internet Service Provider. ">
+            ISP
+        </abbr>
+        ofrecen para conectarse a Internet.
+    </p>
+    <p>
+        De todos modos, aunque existe la posibilidad de ofrecer servicios en Internet desde tu propia casa, debes tener en cuenta que, usualmente, la infraestructura técnica y la electrónica de red que poseas no se pueda comparar con los servidores ofrecidos por empresas de
+        <span lang="en">
+         Hosting
+        </span>
+        , así:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            ¿Posees balanceadores de carga?
+        </li>
+        <li class="lista_verificacion">
+            ¿Redundancia en caso de fallos?
+        </li>
+        <li class="lista_verificacion">
+            ¿Generadores eléctricos que garanticen conexión eléctrica permanente a pesar de caída eléctrica?
+        </li>
+        <li class="lista_verificacion">
+            Y sobre todo, ¿dispones del ancho de banda necesario para permitir múltiples conexiones concurrentes sin perjudicar el servicio ofrecido?
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.5.- Tipos de servidores DNS
+</h1><div class="iDevice_content">
+    <p>
+        Como puedes comprobar en la imagen de la derecha, existen varios tipos de servidores
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        que describiremos a continuación.
+    </p>
+
+    <p>
+        Dependiendo de la configuración y funcionamiento de los servidores, éstos pueden desempeñar distintos papeles:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Servidores primarios
+            </strong>
+            (
+            <span lang="en">
+          primary name servers
+         </span>
+            ). Estos servidores almacenan la información de su zona en una base de datos local. Son los responsables de mantener la información actualizada y cualquier cambio debe ser notificado a este servidor.
+        </li>
+        <li>
+            <strong>
+                Servidores secundarios
+            </strong>
+            (
+            <span lang="en">
+          secundary name servers
+         </span>
+            ). También denominados
+            <em>
+                esclavos
+            </em>
+            , aunque a su vez pueden ser
+            <em>
+                maestros
+            </em>
+            de otros servidores secundarios. Son aquellos que obtienen los datos de su zona desde otro servidor que tenga autoridad para esa zona. El proceso de copia de la información se denomina
+            <em>
+                transferencia de zona
+            </em>
+            .
+        </li>
+        <li>
+            <strong>
+                Servidores maestros
+            </strong>
+            (
+            <span lang="en">
+          master name servers
+         </span>
+            ). Los servidores maestros son los que transfieren las zonas a los servidores secundarios. Cuando un servidor secundario arranca busca un servidor maestro y realiza la transferencia de zona. Un servidor maestro para una zona puede ser a la vez un servidor primario o secundario de esa zona. Así, se evita que los servidores secundarios sobrecarguen al servidor primario con transferencias de zonas. Por ejemplo, en la imagen el servidor
+            <span lang="en">
+          DNS
+         </span>
+            3 pide la zona al servidor
+            <span lang="en">
+          DNS
+         </span>
+            2 y no al servidor
+            <span lang="en">
+          DNS
+         </span>
+            1, con lo cual se evita la sobrecarga del servidor
+            <span lang="en">
+          DNS
+         </span>
+            1. Los servidores maestros extraen la información desde el servidor primario de la zona.
+        </li>
+        <li>
+            <strong>
+                Servidores sólo caché
+            </strong>
+            (
+            <span lang="en">
+          caching-only servers
+         </span>
+            ). Los servidores sólo caché no tienen autoridad sobre ningún dominio: se limitan a contactar con otros servidores para resolver las peticiones de los clientes
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            . Estos servidores mantienen una memoria caché con las últimas preguntas contestadas. Cada vez que un cliente
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            le formula una pregunta, primero consulta en su memoria caché. Si encuentra la dirección
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            solicitada, se la devuelve al cliente; si no, consulta a otros servidores, apunta la respuesta en su memoria caché y le comunica la respuesta al cliente. Disponer de un servidor caché
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            en nuestra red local aumenta la velocidad de la conexión a Internet pues cuando navegamos por diferentes lugares, continuamente se están realizando peticiones
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            . Si nuestro caché
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            almacena la gran mayoría de peticiones que se realizan desde la red local, las respuestas de los clientes se satisfarán prácticamente de forma instantánea proporcionando al usuario una sensación de velocidad en la conexión. Muchos
+            <span lang="en">
+          routers
+         </span>
+            <abbr title="Asymmetric Digital Subscriber Line">
+                ADSL
+            </abbr>
+            ofrecen ya este servicio de caché, tan solo hay que activarlo y configurar una o dos
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            de servidores
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            en Internet. En los equipos de nuestra red local podríamos poner como
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            primario la
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            de nuestro router y como
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            secundario una
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            de un
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            de Internet.
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.6.- Servidores raíz
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La organización que gestiona globalmente los servidores raíz por concesión del gobierno estadounidense es la
+        <abbr title="Internet Corporation for Assigned Names and Numbers">
+            ICANN
+        </abbr>
+        (Corporación para la Asignación de Nombres y Números de Internet),&nbsp;la cual es una organización sin ánimo de lucro que opera a nivel internacional, responsable de asignar espacio de direcciones numéricas de protocolo de Internet (
+        <span lang="en">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        ), identificadores de protocolo y de las funciones de gestión [o administración] del sistema de nombres de dominio de primer nivel genéricos (
+        <span lang="en">
+         <abbr title="Generic Top-Level Domain.">
+          gTLD
+         </abbr>
+        </span>
+        ) y de códigos de países (
+        <span lang="en">
+         <abbr title="Country Code Top-Level Domain.">
+          ccTLD
+         </abbr>
+        </span>
+        ), así como de la administración del sistema de servidores raíz. Aunque en un principio estos servicios los desempeñaba
+        <abbr title="Internet Assigned Numbers Authority. ">
+            IANA
+        </abbr>
+        (Autoridad de Números Asignados de Internet) y otras entidades bajo contrato con el gobierno de
+        <abbr title="Estados Unidos.">
+            EE.UU.
+        </abbr>
+        , actualmente son responsabilidad de
+        <span lang="en">
+         <abbr title="Internet Corporation for Assigned Names and Numbers">
+          ICANN
+         </abbr>
+        </span>
+        .
+    </p>
+    <p>
+        <span lang="en">
+         <abbr title="Internet Corporation for Assigned Names and Numbers">
+          ICANN
+         </abbr>
+        </span>
+        es responsable de la coordinación de la administración de los elementos técnicos del
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        para garantizar una resolución unívoca de los nombres, de manera que los usuarios de Internet puedan encontrar todas las direcciones válidas. Para ello, se encarga de supervisar la distribución de los identificadores técnicos únicos usados en las operaciones de Internet, y delegar los nombres de dominios de primer nivel, como: com,
+        <code>
+            info
+        </code>
+        ,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+    </p>
+    <p>
+        Otros asuntos que preocupan a los usuarios de Internet, como reglamentación para transacciones financieras, control del contenido de Internet, correo electrónico de publicidad no solicitada (
+        <span lang="en">
+         SPAM
+        </span>
+        ) y protección de datos, están fuera del alcance de la misión de coordinación técnica de
+        <span lang="en">
+         <abbr title="Internet Corporation for Assigned Names and Numbers">
+          ICANN
+         </abbr>
+        </span>
+        .
+    </p>
+</div><h1 class="title">
+    2.7.- Tipos de registros DNS
+</h1><div class="iDevice_content">
+    <p>
+        Una base de datos
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        se compone de uno o varios archivos de zonas utilizados por el servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        . Cada zona mantiene un conjunto de
+        <strong>
+            registros de recursos estructurados
+        </strong>
+        .
+    </p>
+    <p>
+        Todos los Registros de Recursos (
+        <abbr title=" Resource Records. ">
+            RR
+        </abbr>
+        ) tienen un formato definido que utiliza los mismos campos de nivel superior, según se describe en la tabla siguiente:
+    </p>
+    <table class="tabla">
+        <caption>
+            Formato de los registros de recursos
+            <abbr title="Domain Name System. ">
+                DNS
+            </abbr>
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Campo
+            </th>
+            <th scope="col">
+                Descripción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                Propietario
+            </th>
+            <td>
+                Indica el nombre de dominio
+                <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                que posee un registro de recursos. Este nombre es el mismo que el del nodo del árbol de la consola donde se encuentra un registro de recursos.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Tiempo de vida (
+                <abbr title="Time To Last.">
+                    TTL
+                </abbr>
+                )
+            </th>
+            <td>
+                Para la mayor parte de los registros de recursos, este campo es opcional. Indica el espacio de tiempo utilizado por otros servidores
+                <span>
+           </span>
+                <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                <span>
+           </span>
+                para determinar cuánto tarda la información en caché en caducar un registro y descartarlo. Por ejemplo, la mayor parte de los registros de recursos que crea el servicio del servidor
+                <span>
+           </span>
+                <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                <span>
+           </span>
+                heredan el
+                <span lang="en">
+            <abbr title="Time To Last.">
+             TTL
+            </abbr>
+           </span>
+                mínimo (predeterminado) de 1 hora desde el registro de recurso de inicio de autoridad (
+                <abbr title="Start Of Authority. ">
+                    SOA
+                </abbr>
+                ) que evita que otros servidores
+                <span>
+           </span>
+                <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                <span>
+           </span>
+                almacenen en caché durante demasiado tiempo. En un registro de recursos individual, puede especificar un
+                <span lang="en">
+            <abbr title="Time To Last.">
+             TTL
+            </abbr>
+           </span>
+                específico para el registro que suplante el
+                <span lang="en">
+            <abbr title="Time To Last.">
+             TTL
+            </abbr>
+           </span>
+                mínimo (predeterminado) heredado del registro de recursos de inicio de autoridad. También se puede utilizar el valor cero (0) para el
+                <span lang="en">
+            <abbr title="Time To Last.">
+             TTL
+            </abbr>
+           </span>
+                en los registros de recursos que contengan datos volátiles que no estén en la memoria caché para su uso posterior una vez se complete la consulta
+                <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                en curso.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Clase
+            </th>
+            <td>
+                Contiene texto nemotécnico estándar que indica la clase del registro de recursos. Por ejemplo, el valor "
+                <strong>
+                    IN
+                </strong>
+                " indica que el registro de recursos pertenece a la clase Internet. Este campo es
+                <em>
+                    obligatorio
+                </em>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Tipo
+            </th>
+            <td>
+                Contiene texto nemotécnico estándar que indica el tipo de registro de recursos. Por ejemplo, el texto nemotécnico "
+                <strong>
+                    A
+                </strong>
+                " indica que el registro de recursos almacena información de direcciones de
+                <span lang="en">
+            host
+           </span>
+                . Este campo es
+                <em>
+                    obligatorio
+                </em>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Datos específicos del registro
+            </th>
+            <td>
+                Un campo de longitud variable y
+                <em>
+                    obligatorio
+                </em>
+                con información que describe el recurso. El formato de esta información varía según el tipo y clase del registro de recursos.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        En la siguiente tabla se muestran los registros
+        <span>
+        </span>
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        <span>
+        </span>
+        más utilizados:
+    </p>
+    <p>
+        <strong>
+            Nota:
+        </strong>
+        en los siguientes ejemplos de registros de recurso, el campo
+        <span lang="en">
+         <abbr title="Time To Last.">
+          TTL
+         </abbr>
+        </span>
+        se omite en caso de ser opcional. El campo
+        <span lang="en">
+         <abbr title="Time To Last.">
+          TTL
+         </abbr>
+        </span>
+        se ha incluido en la sintaxis de cada registro para indicar dónde puede agregarse.
+    </p>
+    <table class="tabla">
+        <caption>
+            Tipos de registros
+            <abbr title="Domain Name System. ">
+                DNS
+            </abbr>
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Registro
+            </th>
+            <th scope="col">
+                Descripción, sintaxis y ejemplo
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                A
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Address
+            </span>
+                    (Dirección). Este registro se usa para traducir nombres de
+                    <span lang="en">
+             hosts
+            </span>
+                    a direcciones
+                    <span lang="en">
+             <abbr title="Internet Protocol">
+              IP
+             </abbr>
+            </span>
+                    versión 4.
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario clase ttl&lt;/em&gt; &lt;strong&gt;A&lt;/strong&gt; &lt;em&gt;IP_version4&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;host1.ejemplo.com IN A 127.0.0.1&lt;/strong&gt;.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                AAAA
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Address
+            </span>
+                    (Dirección). Este registro se usa para traducir nombres de hosts a direcciones
+                    <span lang="en">
+             <abbr title="Internet Protocol">
+              IP
+             </abbr>
+            </span>
+                    versión 6.
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario clase ttl&lt;/em&gt; &lt;strong&gt;AAAA&lt;/strong&gt; &lt;em&gt;IP_version6&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;host1ipv6.ejemplo.com. IN AAAA 1234:0:1:2:3:4:567:89ab&lt;/strong&gt;.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <abbr title="Canonical Name.">
+                    CNAME
+                </abbr>
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Canonical Name
+            </span>
+                    (Nombre Canónico). Se usa para crear nombres de hosts adicionales, o alias. Hay que tener en cuenta que el nombre de
+                    <span lang="en">
+             host
+            </span>
+                    al que el alias referencia debe haber sido definido previamente como registro tipo "
+                    <strong>
+                        A
+                    </strong>
+                    ". Comúnmente usado cuando un servidor con una sola dirección
+                    <span lang="en">
+             <abbr title="Internet Protocol">
+              IP
+             </abbr>
+            </span>
+                    ejecuta varios servicios, como:
+                    <abbr title="File Transfer Protocol. ">
+                        ftp
+                    </abbr>
+                    , web... y cada servicio tiene su propia entrada
+                    <span>
+            </span>
+                    <span lang="en">
+             <abbr title="Domain Name System. ">
+              DNS
+             </abbr>
+            </span>
+                    . También es utilizado cuando el servidor web aloja distintos dominios en una misma
+                    <span lang="en">
+             <abbr title="Internet Protocol">
+              IP
+             </abbr>
+            </span>
+                    (
+                    virtualhosts
+
+
+                    Virtualhost
+
+                    También llamado host virtual. Dominios independientes que se pueden alojar en un mismo servidor web.
+                    ).
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario ttl clase&lt;/em&gt; &lt;strong&gt;CNAME&lt;/strong&gt; &lt;em&gt;nombreCanónico&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;nombrealias.ejemplo.com CNAME nombreverdadero.ejemplo.com&lt;/strong&gt;.
+                </p>
+                <p>
+                    Como se ha comentado anteriormente &lt;strong&gt;nombreverdadero.ejemplo.com&lt;/strong&gt; previamente debe estar definido como registro tipo &lt;strong&gt;A&lt;/strong&gt;.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <abbr title="Name Server. ">
+                    NS
+                </abbr>
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Name Server
+            </span>
+                    (Servidor de Nombres). Indica qué servidores de nombres tienen total autoridad sobre un dominio concreto. Cada dominio se puede asociar a una cantidad cualquiera de servidores de nombres.
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario ttl IN&lt;/em&gt; &lt;strong&gt;NS&lt;/strong&gt; &lt;em&gt;nombreServidorNombreDominio&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;ejemplo.com. IN NS nombreservidor1.ejemplo.com&lt;/strong&gt;.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <abbr title="Mail eXchange. ">
+                    MX
+                </abbr>
+            </th>
+            <td>
+                <strong>
+                    Descripción
+                </strong>
+                :
+                <span lang="en">
+            Mail eXchange
+           </span>
+                (Registro de Intercambio de Correo). Asocia un nombre de dominio a una lista de servidores de intercambio de correo para ese dominio.
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario ttl clase&lt;/em&gt; &lt;strong&gt;MX&lt;/strong&gt; &lt;em&gt;preferencia hostIntercambiadorDeCorreo&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;ejemplo.com. MX 10 servidorcorreo1.ejemplo.com&lt;/strong&gt;.
+                </p>
+                <p>
+                    El número, en este caso 10, indica la preferencia, y tiene sentido en caso de existir varios servidores de correo. A menor número mayor preferencia.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <abbr title="Pointer. ">
+                    PTR
+                </abbr>
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Pointer
+            </span>
+                    (Indicador). Traduce direcciones
+                    <abbr title="Internet Protocol">
+                        IP
+                    </abbr>
+                    en nombres de dominio. También conocido como 'registro inverso', ya que funciona a la inversa del registro "
+                    <strong>
+                        A
+                    </strong>
+                    ".
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario ttl clase&lt;/em&gt; &lt;strong&gt;PTR&lt;/strong&gt; &lt;em&gt;nombreDominioDestino&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;1.0.0.10.in-addr.arpa. PTR host.ejemplo.com&lt;/strong&gt;.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+           <span lang="en">
+            <abbr title="Start Of Authority. ">
+             SOA
+            </abbr>
+           </span>
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Start Of Authority
+            </span>
+                    (Autoridad de la zona). Proporciona información sobre el servidor
+                    <span lang="en">
+             <abbr title="Domain Name System. ">
+              DNS
+             </abbr>
+            </span>
+                    primario de la zona.
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario clase&lt;/em&gt; &lt;strong&gt;SOA&lt;/strong&gt; &lt;em&gt;servidorNombres personaResponsable (numeroSerie intervaloActualización intervaloReintento caducidad tiempoDeVidaMínimo)&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo:
+                    </strong>
+                </p>
+                <div class="codigo elemento_centrado" style="width: 40.1em;">
+                    <div class="texto_izquierda">
+             <pre ngNonBindable>&#64; IN SOA nombreServidor.ejemplo.com. postmaster.ejemplo.com. (
+</pre>
+                        <pre ngNonBindable> 1 ; número de serie
+</pre>
+                        <pre ngNonBindable> 3600 ; actualizar [1h]
+</pre>
+                        <pre ngNonBindable> 600 ; reintentar [10m]
+</pre>
+                        <pre ngNonBindable> 86400 ; caducar [1d]
+</pre>
+                        <pre ngNonBindable> 3600 ) ; TTL mínimo [1h]
+</pre>
+                    </div>
+                </div>
+                <p>
+                </p>
+                <p>
+                    El propietario (servidor
+                    <span lang="en">
+             <abbr title="Domain Name System. ">
+              DNS
+             </abbr>
+            </span>
+                    principal) se especifica como "
+                    <strong>
+                        &#64;
+                    </strong>
+                    " porque el nombre de dominio es el mismo que el origen de todos los datos de la zona (ejemplo.com). Se trata de una convención de nomenclatura estándar para registros de recursos y se utiliza más a menudo en los registros
+                    <span lang="en">
+             <abbr title="Start Of Authority. ">
+              SOA
+             </abbr>
+            </span>
+                    . El número de serie es el número de versión de esta base de datos. Debes incrementar este número cada vez que modificas la base de datos.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <abbr title="Text. ">
+                    TXT
+                </abbr>
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             TeXT
+            </span>
+                    (Información textual). Permite a los dominios identificarse de modos arbitrarios.
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario ttl clase&lt;/em&gt; &lt;strong&gt;TXT&lt;/strong&gt; &lt;em&gt;cadenaDeTexto&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    :
+                    <strong>
+                        ejemplo.com. TXT "Ejemplo de información de nombre de dominio adicional."
+                    </strong>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <abbr title="Sender Policy Framework.">
+                    SPF
+                </abbr>
+            </th>
+            <td>
+                <p>
+                    <strong>
+                        Descripción
+                    </strong>
+                    :
+                    <span lang="en">
+             Sender Policy Framework.
+            </span>
+                    Es un registro de tipo
+                    <span lang="en">
+             <abbr title="Texto">
+              TXT
+             </abbr>
+            </span>
+                    que va creado en una zona directa del
+                    <span lang="en">
+             <abbr title="Domain Name System. ">
+              DNS
+             </abbr>
+            </span>
+                    , en la cual se ponen las informaciones del propio servidor de correo con la sintaxis
+                    <span lang="en">
+             <abbr title="Sender Policy Framework.">
+              SPF
+             </abbr>
+            </span>
+                    . Se utiliza para evitar el envío de correos suplantando identidades. Por lo tanto, ayuda a combatir el
+                    <span lang="en">
+             SPAM
+            </span>
+                    , ya que, en este registro se especifica qué
+                    <span lang="en">
+             hosts
+            </span>
+                    están autorizados a enviar correo desde el dominio dado. El servidor que recibe, consulta el
+                    <abbr title="Domain Name System. ">
+                        DNS
+                    </abbr>
+                    para comparar la
+                    <span lang="en">
+             <abbr title="Internet Protocol">
+              IP
+             </abbr>
+            </span>
+                    desde la cual le llega, con los datos de este registro.
+                </p>
+                <p>
+                    <strong>
+                        Sintaxis
+                    </strong>
+                    : &lt;em&gt;propietario ttl clase&lt;/em&gt; &lt;strong&gt;IN SPF&lt;/strong&gt; &lt;em&gt;cadenaDeTexto&lt;/em&gt;.
+                </p>
+                <p>
+                    <strong>
+                        Ejemplo
+                    </strong>
+                    : &lt;strong&gt;ejemplo.com IN SPF "v=spf1 a:mail.ejemplo.com -all"&lt;/strong&gt;.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.8.- Funcionamiento del cliente DNS
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            Los sabios son los que buscan la sabiduría; los necios piensan ya haberla encontrado.
+        </p>
+        <cite>
+            Napoleón Bonaparte
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.8.1.- Consultas recursivas
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            Daría todo lo que sé por la mitad de lo que ignoro.
+        </p>
+        <cite lang="fr">
+            René Descartes
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.8.2.- Consultas iterativas
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            Yo no procuro conocer las preguntas; procuro conocer las respuestas.
+        </p>
+        <cite>
+            Confucio.
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.8.3.- Consultas inversas
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            El modo de dar una vez en el clavo es dar cien veces en la herradura.
+        </p>
+        <cite>
+            Miguel de Unamuno.
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.9.- Cómo funcionan los DNS preferidos y alternativos
+</h1><div class="iDevice_content">
+
+    <p>
+        El servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferido es aquel con el que el cliente prueba en primer lugar. También es el servidor en el que el cliente
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        actualiza sus registros de recursos. Si el servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferido falla, el cliente prueba con el servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        alternativo.
+    </p>
+    <p>
+        Opcionalmente, puedes especificar una lista completa de servidores
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        alternativos. Los servidores
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferidos y alternativos especificados se consultan en el orden que aparezcan en la lista.
+    </p>
+    <p>
+        Sin un servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferido, el cliente
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        no puede consultar un servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        . Sin un
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        alternativo, las consultas no se resolverán si el servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferido falla.
+    </p>
+    <p>
+        Los pasos siguientes indican el proceso para entrar en contacto con servidores
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferidos y alternativos:
+    </p>
+    <ol>
+        <li>
+            El servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            preferido responde primero a una consulta
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            o a una actualización
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            .
+        </li>
+        <li>
+            Si el servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            preferido no responde a una consulta
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            o a una actualización
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            , la consulta o actualización se redirige al servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            alternativo.
+        </li>
+        <li>
+            Si el servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            alternativo no responde y el cliente
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            está configurado con las direcciones
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            adicionales de servidores
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            , el cliente
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            envía la consulta o actualización al siguiente servidor
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            de la lista.
+        </li>
+        <li>
+            Si alguno de los servidores
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            (un servidor preferido, un servidor alternativo o cualquier otro de la lista) no responde, dicho servidor se quita temporalmente de la lista.
+        </li>
+        <li>
+            Si ninguno de los servidores
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            responden, la consulta o actualización del cliente
+            <span lang="en">
+          <abbr title="Domain Name System. ">
+           DNS
+          </abbr>
+         </span>
+            no se realiza.
+        </li>
+    </ol>
+    <p>
+        En los equipos tipo
+        <span lang="en">
+         <abbr title="GNU is Not Unix. ">
+          GNU
+         </abbr>
+        </span>
+        /
+        <span lang="en">
+        </span>
+        <span lang="en">
+         <span lang="en">
+          Linux
+         </span>
+        </span>
+        puedes configurar estos servidores en el archivo /etc/resolv.conf e incluso puedes realizar balanceo de carga entre ellos, así como la modificación del tiempo de espera efectuado desde que un servidor falla hasta que se prueba con otro.
+    </p>
+    <p>
+        La configuración sería algo así:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>nameserver 8.8.8.8
+</pre>
+            <pre ngNonBindable>nameserver 8.8.4.4
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En este caso si 8.8.8.8 falla la resolución se realizará a través de 8.8.4.4. El problema es que por defecto el valor de tiempo de espera (timeout) asignado es 5 segundos, por lo que tardará un tiempo en detectar que tiene que utilizar el segundo
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        y todo irá muy lento. Para solucionarlo, tienes que usar la directiva "options" y modificar el timeout. Así, puedes poner 1 segundo como se demuestra en el siguiente ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>nameserver 8.8.8.8
+</pre>
+            <pre ngNonBindable>nameserver 8.8.4.4
+</pre>
+            <pre ngNonBindable>options timeout:1
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Otra opción también interesante es "rotate", que permite distribuir la carga entre todos los servidores listados y evitar que todas las peticiones vayan siempre al primero:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>nameserver 8.8.8.8
+</pre>
+            <pre ngNonBindable>nameserver 8.8.4.4
+</pre>
+            <pre ngNonBindable>options timeout:1 rotate attempts:1
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Configurando estas opciones aseguramos que en caso del fallo del servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        preferido el rendimiento de la máquina no se degrade.
+    </p>
+</div><h1 class="title">
+    2.10.- Comandos (I)
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        A la hora de saber si tienes conectividad con alguna máquina en Internet, o en red local, se suele utilizar el
+        <strong>
+            comando
+        </strong>
+        &lt;strong&gt;ping&lt;/strong&gt;, el cual indica, según su respuesta, si posees conectividad con la máquina en cuestión. El comando ping lo puedes utilizar para consultar direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        o nombres de dominios.
+    </p>
+    <p>
+        Por lo tanto, el comando &lt;strong&gt;ping&lt;/strong&gt; debe ser capaz de consultar información sobre el sistema de nombres de dominio; es un
+        <span lang="en">
+         resolutor
+        </span>
+        , un programa cliente capaz de consultar información sobre el sistema de nombres de dominio. Normalmente, un resolutor trabaja discretamente en segundo plano y los usuarios no conocen su presencia, es decir, que toda consulta de un cliente
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        a su servidor suele realizarla el programa que invocamos (ping,
+        <code>
+            ftp
+        </code>
+        , telnet,
+        <code>
+            mail
+        </code>
+        , navegador web,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        ). Por ejemplo, si solicitas una conexión
+        <span lang="en">
+         <abbr title="File Transfer Protocol. ">
+          ftp
+         </abbr>
+        </span>
+        a &lt;strong&gt;ftp.rediris.es&lt;/strong&gt;, la aplicación
+        <abbr title="File Transfer Protocol. ">
+            ftp
+        </abbr>
+        que emplees llama a un programa resolutor local que busca la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        de ese ordenador &lt;strong&gt;130.206.1.5&lt;/strong&gt; sin que tengas conciencia de ello, esto es, para ti el proceso es transparente. Además de este trabajo en segundo plano, el usuario puede conectarse directamente al programa resolutor enviando consultas y resolviendo respuestas. Comandos resolutores típicos en sistemas operativos
+        <span lang="en">
+         <abbr title="GNU is Not Unix. ">
+          GNU
+         </abbr>
+        </span>
+        /
+        <span lang="en">
+         Linux
+        </span>
+        son: nslookup,
+        <code>
+            host
+        </code>
+        y dig.
+    </p>
+    <p>
+        El comando &lt;strong&gt;nslookup&lt;/strong&gt;, en algunas distribuciones
+        <span lang="en">
+         <abbr title="GNU is Not Unix. ">
+          GNU
+         </abbr>
+        </span>
+        /
+        <span lang="en">
+         Linux
+        </span>
+        ya no está soportado pues está obsoleto (
+        <span lang="en">
+         deprecated
+        </span>
+        ). Por lo tanto, hoy en día, se suelen utilizar el comando&nbsp;host para consulta de direcciones
+        <span lang="en" title="Internet Protocol">
+         <abbr title="Internet Protocol">
+          IP
+         </abbr>
+        </span>
+        y el comando &lt;strong&gt;dig&lt;/strong&gt; para consulta de servidores
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        activos.
+    </p>
+    <p>
+        ¿Cómo funcionan todos estos comandos? Veamos:
+    </p>
+    <p>
+        <strong>
+            Ejemplos de resolución directa: Resolución de nombre a
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            .
+        </strong>
+    </p>
+    <ol>
+        <li>
+            <strong>
+                Comando nslookup:
+            </strong>
+            <p>
+                Para consultar la dirección
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                del ordenador ftp.rediris.es, basta con ejecutar:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 35.7em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>nslookup ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>alumno&#64;servidor-fp:~$ nslookup ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>Server:          8.8.8.8
+</pre>
+                    <pre ngNonBindable>Address:     8.8.8.8#53
+</pre>
+                    <pre ngNonBindable>Non-authoritative answer:
+</pre>
+                    <pre ngNonBindable>ftp.rediris.es     canonical name = zeppo.rediris.es.
+</pre>
+                    <pre ngNonBindable>Name:     zeppo.rediris.es
+</pre>
+                    <pre ngNonBindable>Address: 130.206.1.5
+</pre>
+                </div>
+            </div>
+            <p>
+                Donde puedes ver que ftp.rediris.es es un alias (CNAME) de zeppo.rediris.es cuya dirección
+                <span lang="en">
+           IP
+          </span>
+                es 130.206.1.5
+            </p>
+        </li>
+        <li>
+            <strong>
+                Comando host:
+            </strong>
+            <p>
+                Para consultar la dirección
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                del ordenador ftp.rediris.es, basta con ejecutar:
+            </p>
+            <div class="codigo elemento_centrado" style="margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>host ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>alumno&#64;servidor-ftp:~$ host ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>ftp.rediris.es is an alias for zeppo.rediris.es.
+</pre>
+                    <pre ngNonBindable>zeppo.rediris.es has address 130.206.1.5
+</pre>
+                </div>
+            </div>
+            <p>
+                Donde puedes ver que&nbsp;ftp.rediris.es es un alias (CNAME) de zeppo.rediris.es cuya dirección
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                es 130.206.1.5
+            </p>
+        </li>
+        <li>
+            <strong>
+                Comando dig:
+            </strong>
+            <p>
+                Para consultar la dirección
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                del ordenador ftp.rediris.es, basta con ejecutar:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 43.95em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>dig ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>alumno&#64;servidor-ftp:~$ dig ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>; &lt;&lt;&gt;&gt; DiG 9.7.3 &lt;&lt;&gt;&gt; ftp.rediris.es
+</pre>
+                    <pre ngNonBindable>;; global options: +cmd
+</pre>
+                    <pre ngNonBindable>;; Got answer:
+</pre>
+                    <pre ngNonBindable>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 31214
+</pre>
+                    <pre ngNonBindable>;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 0
+</pre>
+                    <pre ngNonBindable>;; QUESTION SECTION:
+</pre>
+                    <pre ngNonBindable>;ftp.rediris.es.               IN     A
+</pre>
+                    <pre ngNonBindable>;; ANSWER SECTION:
+</pre>
+                    <pre ngNonBindable>ftp.rediris.es.          7200     IN     CNAME     zeppo.rediris.es.
+</pre>
+                    <pre ngNonBindable>zeppo.rediris.es.     5195     IN     A     130.206.1.5
+</pre>
+                    <pre ngNonBindable>;; Query time: 76 msec
+</pre>
+                    <pre ngNonBindable>;; SERVER: 8.8.8.8#53(8.8.8.8)
+</pre>
+                    <pre ngNonBindable>;; WHEN: Fri Jul 29 11:13:44 2011
+</pre>
+                    <pre ngNonBindable>;; MSG SIZE rcvd: 68
+</pre>
+                </div>
+            </div>
+            <p>
+                Donde puedes ver que ftp.rediris.es es un alias (CNAME) de zeppo.rediris.es cuya dirección
+                <span lang="en">
+           IP
+          </span>
+                es 130.206.1.5
+            </p>
+        </li>
+    </ol>
+</div><h1 class="title">
+    2.10.1.- Comandos (II)
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong style="font-size: 1em;">
+            Ejemplos de resolución inversa: Resolución de
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            a nombre.
+        </strong>
+    </p>
+    <ol>
+        <li>
+            <strong>
+                Comando nslookup:
+            </strong>
+            <p>
+                Para consultar el nombre de la
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                130.206.1.5, basta con ejecutar:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 35.7em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>nslookup 130.206.1.5
+</pre>
+                    <pre ngNonBindable>alumno&#64;servidor-fp:~$ nslookup 130.206.1.5
+</pre>
+                    <pre ngNonBindable>Server:          80.58.61.254
+</pre>
+                    <pre ngNonBindable>Address:     80.58.61.254#53
+</pre>
+                    <pre ngNonBindable>Non-authoritative answer:
+</pre>
+                    <pre ngNonBindable>5.1.206.130.in-addr.arpa     name = zeppo.rediris.es.
+</pre>
+                    <pre ngNonBindable>Authoritative answers can be found from:
+</pre>
+                </div>
+            </div>
+            <p>
+                Donde puedes ver que la
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                130.206.1.5 corresponde con el nombre de dominio zeppo.rediris.es
+            </p>
+        </li>
+        <li>
+            <strong>
+                Comando host:
+            </strong>
+            <p>
+                Para consultar el nombre de la
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                130.206.1.5, basta con ejecutar:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 40.1em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>host 130.206.1.5
+</pre>
+                    <pre ngNonBindable>     alumno&#64;servidor-ftp:~$ host 130.206.1.5
+</pre>
+                    <pre ngNonBindable>5.1.206.130.in-addr.arpa domain name pointer zeppo.rediris.es.
+</pre>
+                </div>
+            </div>
+            <p>
+                Donde puedes ver que la
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                130.206.1.5 corresponde con el nombre de dominio zeppo.rediris.es
+            </p>
+        </li>
+        <li>
+            <strong>
+                Comando dig:
+            </strong>
+            <p>
+                Para consultar el nombre de la
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                130.206.1.5, basta con ejecutar:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 43.95em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>dig -x 130.206.1.5
+</pre>
+                    <pre ngNonBindable>alumno&#64;servidor-fp:~$ dig -x 130.206.1.5
+</pre>
+                    <pre ngNonBindable>; &lt;&lt;&gt;&gt; DiG 9.7.3 &lt;&lt;&gt;&gt; -x 130.206.1.5
+</pre>
+                    <pre ngNonBindable>;; global options: +cmd
+</pre>
+                    <pre ngNonBindable>;; Got answer:
+</pre>
+                    <pre ngNonBindable>;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 38384
+</pre>
+                    <pre ngNonBindable>;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 0
+</pre>
+                    <pre ngNonBindable>;; QUESTION SECTION:
+</pre>
+                    <pre ngNonBindable>;5.1.206.130.in-addr.arpa.     IN     PTR
+</pre>
+                    <pre ngNonBindable>;; ANSWER SECTION:
+</pre>
+                    <pre ngNonBindable>5.1.206.130.in-addr.arpa. 7200     IN     PTR     zeppo.rediris.es.
+</pre>
+                    <pre ngNonBindable>;; Query time: 73 msec
+</pre>
+                    <pre ngNonBindable>;; SERVER: 8.8.8.8#53(8.8.8.8)
+</pre>
+                    <pre ngNonBindable>;; WHEN: Fri Jul 29 12:03:30 2011
+</pre>
+                    <pre ngNonBindable>;; MSG SIZE rcvd: 72
+</pre>
+                </div>
+            </div>
+            <p>
+                Donde puedes ver que la
+                <span lang="en">
+           <abbr title="Internet Protocol">
+            IP
+           </abbr>
+          </span>
+                130.206.1.5 corresponde con el nombre de dominio zeppo.rediris.es, e incluso el registro de recursos empleado: PTR.
+            </p>
+        </li>
+    </ol>
+</div><h1 class="title">
+    2.11.- Instalación del servidor DNS BIND
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Para una instalación del servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        <span lang="en">
+         <abbr title="Berkeley Internet Name Domain">
+          BIND
+         </abbr>
+        </span>
+        en
+        <span lang="en">
+        </span>
+        <span lang="en">
+         <span lang="en">
+          Debian
+         </span>
+         6 (
+         <span lang="en">
+          Squeeze
+         </span>
+        </span>
+        <span lang="en">
+        </span>
+        ) realiza el siguiente procedimiento como usuario root, teniendo en cuenta que el servidor está identificado como sigue:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+         <span lang="en">
+          Hostname
+         </span>
+            : debian-servidor-fp
+            <strong>
+                .
+            </strong>
+        </li>
+        <li>
+         <span lang="en">
+          IP
+         </span>
+            : 192.168.200.250
+            <strong>
+                .
+            </strong>
+        </li>
+    </ul>
+    <ol class="lista_esquema">
+        <li>
+            Actualiza los repositorios del sistema operativo.
+            <div class="codigo elemento_centrado" style="width: 29.1em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get update
+</pre>
+                </div>
+            </div>
+            <p>
+                NOTA: es necesario para el buen funcionamiento del comando que tengas configurada correctamente la conexión a Internet.
+            </p>
+        </li>
+        <li>
+            Actualiza el sistema operativo.
+            <div class="codigo elemento_centrado" style="width: 29.65em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get upgrade
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Instala los paquetes necesarios para el funcionamiento de
+            <span lang="en">
+          <abbr title="Berkeley Internet Name Domain">
+           BIND
+          </abbr>
+         </span>
+            (
+            <span lang="en">
+          bind9
+         </span>
+            ).
+            <div class="codigo elemento_centrado" style="width: 38.45em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get install bind9 bind9utils
+</pre>
+                </div>
+            </div>
+            <p>
+                NOTA: La instalación crea el usuario
+                <strong>
+                    bind
+                </strong>
+                que ejecuta el servicio
+                <abbr title="Domain Name System. ">
+                    dns
+                </abbr>
+                denominado
+                <strong lang="en">
+                    named
+                </strong>
+                .
+            </p>
+        </li>
+        <li>
+            Verifica que el servidor
+            <span lang="en">
+          <strong>
+           bind9
+          </strong>
+         </span>
+            está activo.
+            <div class="codigo elemento_centrado" style="width: 34.6em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 status
+</pre>
+                    <pre ngNonBindable>bind9 is running.
+</pre>
+                    <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9 status
+</pre>
+                    <pre ngNonBindable>bind9 is running.
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Verifica en qué
+            puertos
+
+
+            Puerto
+
+            Número utilizado en las comunicaciones cliente/servidor, en transmisiones TCP o UDP, comprendido entre 1 y 65535, que indica por dónde tiene lugar la conexión con un servidor.
+            <span lang="en">
+          <abbr title="Transfer Control Protocol ">
+           TCP
+          </abbr>
+         </span>
+            y
+            <abbr title="User Datagram Protocol. ">
+                UDP
+            </abbr>
+            está activo el servidor
+            <span lang="en">
+          <strong>
+           bind9
+          </strong>
+         </span>
+            , para ello comprueba el servicio
+            <span lang="en">
+          <strong>
+           named
+          </strong>
+         </span>
+            :
+            <div class="codigo elemento_centrado" style="width: 36.25em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# netstat -natp | grep named
+</pre>
+                    <pre ngNonBindable>tcp 0 0 192.168.200.250:53 0.0.0.0:* LISTEN 1442/named
+</pre>
+                    <pre ngNonBindable>tcp 0 0 127.0.0.1:53 0.0.0.0:* LISTEN 1442/named
+</pre>
+                    <pre ngNonBindable>tcp 0 0 127.0.0.1:953 0.0.0.0:* LISTEN 1442/named
+</pre>
+                    <pre ngNonBindable>tcp6 0 0 :::53 :::* LISTEN 1442/named
+</pre>
+                    <pre ngNonBindable>tcp6 0 0 ::1:953 :::* LISTEN 1442/named
+</pre>
+                    <pre ngNonBindable>root&#64;debian-servidor-fp:~# netstat -naup | grep named
+</pre>
+                    <pre ngNonBindable>udp 0 0 192.168.200.250:53 0.0.0.0:* 1442/named
+</pre>
+                    <pre ngNonBindable>udp 0 0 127.0.0.1:53 0.0.0.0:* 1442/named
+</pre>
+                    <pre ngNonBindable>udp6 0 0 :::53 :::* 1442/named
+</pre>
+                </div>
+            </div>
+        </li>
+    </ol>
+</div><h1 class="title">
+    2.11.1.- Archivos de configuración del servidor DNS
+</h1><div class="iDevice_content">
+    <p>
+        Tras la instalación del servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        <span lang="en">
+         <abbr title="Berkeley Internet Name Domain">
+          BIND
+         </abbr>
+        </span>
+        (bind9) existe la ruta
+        <strong>
+            /etc/bind
+        </strong>
+        , la cual contiene sus ficheros de configuración. Una estructura tipo de /etc/bind que puedes encontrar al instalar
+        <abbr title="Berkeley Internet Name Domain">
+            bind
+        </abbr>
+        sería similar a la que se muestra en la siguiente imagen:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El servidor
+        <span lang="en">
+         <abbr title="Domain Name System. ">
+          DNS
+         </abbr>
+        </span>
+        <span lang="en">
+         <abbr title="Berkeley Internet Name Domain">
+          BIND
+         </abbr>
+        </span>
+        (bind9) posee por defecto en su instalación el fichero
+        etc/bind/named.conf
+        <span class="tamano">
+         (conf - 463
+         <abbr lang="en" title="Bytes">
+          B
+         </abbr>
+         )
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.75em; margin-bottom: 15px;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>include "/etc/bind/named.conf.options";
+</pre>
+            <pre ngNonBindable>include "/etc/bind/named.conf.local";
+</pre>
+            <pre ngNonBindable>include "/etc/bind/named.conf.default-zones";
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde,
+    </p>
+    <p>
+        /etc/bind/named.conf.options: hace referencia al archivo de configuración que posee opciones genéricas.
+    </p>
+    <p>
+        /etc/bind/named.conf.local: hace referencia al archivo de configuración para opciones particulares.
+    </p>
+    <p>
+        /etc/bind/named.conf.default-zones: hace referencia al archivo de configuración de zonas.
+    </p>
+    <p>
+        Dentro de cada uno de estos archivos encontrarás partes de código agrupadas entre llaves que finalizan con el carácter punto y coma (;), conocidos como
+        <strong>
+            declaraciones
+        </strong>
+        , las cuales indicarán
+        <strong>
+            secciones de ejecución
+        </strong>
+        . Cualquier código en un archivo de configuración que comience con los caracteres doble barra (//), almohadilla (#) o aparezca encerrado entre barra asterisco (/*) y asterisco barra (*/) son considerados comentarios y por lo tanto no se ejecuta.
+    </p>
+    <p>
+        Puedes modificar los ficheros de configuración a tu antojo. Así, puedes crear incluso nuevos ficheros de configuración que sean llamados desde otros mediante la directiva include.
+    </p>
+</div><h1 class="title">
+    2.11.2.- Arranque y parada del servidor DNS
+</h1><div class="iDevice_content">
+    <p>
+        En un sistema operativo
+        <span lang="en">
+         Debian
+        </span>
+        6.0 (
+        <span lang="en">
+         Squeeze
+        </span>
+        ) puedes comprobar el estado del servicio
+        <abbr title="Berkeley Internet Name Domain">
+            bind
+        </abbr>
+        mediante el comando&nbsp;service o mediante el comando &lt;strong&gt;/etc/init.d/bind&lt;/strong&gt;:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Comando service:
+            </strong>
+            <ol class="lista_esquema">
+                <li>
+                    Comprobar las opciones del comando:
+                    <div class="codigo elemento_centrado" style="width: 46.15em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9
+</pre>
+                            <pre ngNonBindable>Usage: /etc/init.d/bind9 &#123;start|stop|reload|restart|force-reload|status&#125;.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Donde:
+                    </p>
+                    <p>
+                        start → opción que permite arrancar el servicio.
+                    </p>
+                    <p>
+                        stop → opción que permite apagar el servicio.
+                    </p>
+                    <p>
+                        reload → opción que permite recargar la configuración del servicio sin tener que reiniciarlo.
+                    </p>
+                    <p>
+                        restart → opción que permite reiniciar el servicio.
+                    </p>
+                    <p>
+                        force-reload → opción que permite forzar la recarga de configuración del servicio.
+                    </p>
+                    <p>
+                        status → opción que permite comprobar si el servicio está activo o inactivo.
+                    </p>
+                </li>
+                <li>
+                    Arrancar el servidor
+                    <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                    :
+                    <div class="codigo elemento_centrado" style="width: 31.85em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 start
+</pre>
+                            <pre ngNonBindable>Starting domain name service...: bind9.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Parar el servidor
+                    <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                    :
+                    <div class="codigo elemento_centrado" style="width: 43.4em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 stop
+</pre>
+                            <pre ngNonBindable>Stopping domain name service...: bind9 waiting for pid 1989 to die.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Comprobar el estado activo/inactivo del servicio:
+                    <div class="codigo elemento_centrado" style="width: 32.4em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 status
+</pre>
+                            <pre ngNonBindable>could not access PID file for bind9 ... failed!
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Como puedes comprobar la salida del comando determina que el servicio está inactivo, entonces lo arrancamos:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 31.85em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 start
+</pre>
+                            <pre ngNonBindable>Starting domain name service...: bind9.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Se vuelve a lanzar el comando para comprobar de nuevo el estado:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 32.4em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 status
+</pre>
+                            <pre ngNonBindable>bind9 is running.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Ahora puedes comprobar que la salida del comando determina que el servicio está activo.
+                    </p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <strong>
+                Comando /etc/init.d/bind9:
+            </strong>
+            <ol class="lista_esquema">
+                <li>
+                    Comprobar las opciones del comando:
+                    <div class="codigo elemento_centrado" style="width: 46.7em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9
+</pre>
+                            <pre ngNonBindable>Usage: /etc/init.d/bind9 &#123;start|stop|reload|restart|force-reload|status&#125;.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Arrancar el servidor
+                    <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                    :
+                    <div class="codigo elemento_centrado" style="width: 34.05em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9 start
+</pre>
+                            <pre ngNonBindable>Starting domain name service...: bind9.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Parar el servidor
+                    <span lang="en">
+            <abbr title="Domain Name System. ">
+             DNS
+            </abbr>
+           </span>
+                    :
+                    <div class="codigo elemento_centrado" style="width: 43.4em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9 stop
+</pre>
+                            <pre ngNonBindable>Stopping domain name service...: bind9 waiting for pid 2061 to die.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Comprobar el estado activo/inactivo del servicio:
+                    <div class="codigo elemento_centrado" style="width: 34.6em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9 status
+</pre>
+                            <pre ngNonBindable>could not access PID file for bind9 ... failed!
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Como puedes comprobar la salida del comando determina que el servicio está inactivo, entonces lo arrancamos:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 34.05em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9 start
+</pre>
+                            <pre ngNonBindable>Starting domain name service...: bind9.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Se vuelve a lanzar el comando para comprobar de nuevo el estado:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 34.6em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/bind9 status
+</pre>
+                            <pre ngNonBindable>bind9 is running.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Ahora puedes comprobar que la salida del comando determina que el servicio está activo.
+                    </p>
+                </li>
+            </ol>
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.11.3.- Configuración como caché DNS
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            Buena memoria es la escritura, pues para siempre dura.
+        </p>
+        <cite>
+            Refranero español
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.11.4.- Configuración como DNS maestro
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            El maestro sabe lo que hace.
+        </p>
+        <cite>
+            Proverbio español.
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.11.5.- Configuración como DNS esclavo
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            Hace mal quien lo secundario hace principal.
+        </p>
+        <cite>
+            Proverbio español.
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.- Servicio de directorio
+</h1><div class="iDevice_content">
+
+    <p>
+          <span style="font-size: 1em;">
+           A BK Programación, una empresa, con la que ya han trabajado anteriormente en proyectos asignados a
+          </span>
+        <strong style="font-size: 1em;">
+            Juan
+        </strong>
+        <span style="font-size: 1em;">
+           , le han encargado un proyecto con las siguientes especificaciones para el departamento de atención al cliente:
+          </span>
+    </p>
+    <ol>
+        <li>
+            Controlar el acceso de usuarios a los equipos de la empresa, de tal forma que, independientemente del ordenador con el que trabajen en la empresa, mediante autenticación de usuario y contraseña, puedan tener acceso al mismo.
+        </li>
+        <li>
+            Controlar el acceso de usuarios a la herramienta de gestión de incidencias y proyectos.
+        </li>
+    </ol>
+    <p>
+        Para ello BK Programación ha determinado realizar una autenticación por
+        <span lang="en">
+           <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+           </abbr>
+          </span>
+        mediante
+        <span lang="en">
+           OpenLDAP
+          </span>
+        , puesto que aunque la configuración y el tiempo empleado va a ser más costoso que empleando otras alternativas, determina que la empresa necesita una centralización de esa base de datos de usuarios para que la aplicación de gestión de incidencias y proyectos, y los equipos ofrecidos por la empresa a sus trabajadores, puedan beber de la misma fuente: la base de datos de
+        <span lang="en">
+           OpenLDAP
+          </span>
+        .
+    </p>
+</div><h1 class="title">
+    3.1.- ¿Para qué usar un servicio de directorio?
+</h1><div class="iDevice_content">
+    <blockquote class="exe-quote-cite styled-qc">
+        <p>
+            Siempre deseé que mi computadora fuera tan fácil de usar como mi teléfono. Mi deseo se ha hecho realidad: ya no sé usar mi teléfono.
+        </p>
+        <cite lang="da">
+            Bjarne Stroustrup
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.2.- Directorio vs DNS
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Tanto un servicio de directorio como un servicio
+        <abbr title="Domain Name System. ">
+         <span lang="en">
+          DNS
+         </span>
+        </abbr>
+        proporcionan acceso a una base de datos jerárquica, pero difieren en:
+    </p>
+    <ol>
+        <li>
+            Los servidores de directorio no están particularizados a una acción concreta sino orientados de forma más general, mientras que el servicio
+            <abbr title="Domain Name System. ">
+          <span lang="en">
+           DNS
+          </span>
+            </abbr>
+            está dedicado a la traducción de nombres de dominios a direcciones
+            <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            .
+        </li>
+        <li>
+            La información almacenada en el servicio de directorio no es fija, mientras que en el servicio
+            <abbr title="Domain Name System. ">
+          <span lang="en">
+           DNS
+          </span>
+            </abbr>
+            tiene una estructura fija.
+        </li>
+        <li>
+            El servicio de directorio permite actualizaciones, mientras que el servicio
+            <abbr title="Domain Name System. ">
+          <span lang="en">
+           DNS
+          </span>
+            </abbr>
+            no las permite, ¿o puedes actualizar a tu antojo los servidores raíz
+            <abbr title="Domain Name System. ">
+          <span lang="en">
+           DNS
+          </span>
+            </abbr>
+            ?
+        </li>
+        <li>
+            Los servicios de directorio suelen utilizar protocolos orientados a conexión (
+            <span lang="en">
+          <abbr title="Transfer Control Protocol ">
+           TCP
+          </abbr>
+         </span>
+            ), mientras que el servicio
+            <abbr title="Domain Name System. ">
+          <span lang="en">
+           DNS
+          </span>
+            </abbr>
+            opera con protocolos no orientados a conexión (
+            <span lang="en">
+          <abbr title="User Datagram Protocol. ">
+           UDP
+          </abbr>
+         </span>
+            ).
+        </li>
+    </ol>
+    <p>
+        Pero, no por ello, poseen el impedimento de trabajar juntos, es más, usualmente los encontrarás unidos de la mano en aplicaciones web con distintas funcionalidades, como: servidores de correo, gestión de proyectos e incidencias, servidores
+        <span lang="en">
+         <abbr title="Remote Authentication Dial-In User Service">
+          RADIUS
+         </abbr>
+        </span>
+        ,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        Así, suele ser necesario acceder a las
+        <span lang="en">
+         <abbr title="Uniform Resource Locator">
+          URL
+         </abbr>
+        </span>
+        de las aplicaciones web mediante nombres de dominio
+        <abbr title="Domain Name System. ">
+         <span lang="en">
+          DNS
+         </span>
+        </abbr>
+        y una vez en ellas autenticarse por medio de
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        .
+    </p>
+</div><h1 class="title">
+    3.3.- Organización del directorio LDAP
+</h1><div class="iDevice_content">
+
+    <p>
+        El servicio de directorio puede estar centralizado o distribuido:
+    </p>
+    <ul class="lista_verificacion">
+        <ul class="lista_verificacion">
+            <li>
+                <strong>
+                    Centralizado
+                </strong>
+                : en este caso un único servidor ofrece todo el servicio de directorio respondiendo a todas las consultas de los clientes.
+            </li>
+            <li>
+                <strong style="font-size: 1em;">
+                    Distribuido
+                </strong>
+                <span style="font-size: 1em;">
+           : Varios servidores proporcionan el servicio de directorio. Cuando está distribuido, los datos pueden estar fraccionados y/o replicados:
+          </span>
+            </li>
+            <ul class="lista_verificacion">
+                <li>
+                    Cuando la información está
+                    <strong>
+                        fraccionada
+                    </strong>
+                    , cada servidor de directorio almacena un subconjunto único y no solapado de la información, es decir, una entrada es almacenada en un solo servidor.
+                </li>
+                <li>
+                    Cuando la información está
+                    <strong>
+                        replicada
+                    </strong>
+                    , una entrada puede estar almacenada en varios servidores.
+                </li>
+            </ul>
+        </ul>
+    </ul>
+    <p>
+        Generalmente cuando el servicio de directorio es distribuido, parte de la información está fraccionada y parte está replicada.
+    </p>
+    <p>
+        En 1988, la
+        <abbr title="Comite Consultatif International Telegraphique et Telephonique. ">
+            CCITT
+        </abbr>
+        (Comité Consultivo Internacional de Telégrafos y Teléfonos), ahora
+        <abbr title="International Communication Union. ">
+            ITU-T
+        </abbr>
+        (Unión Internacional de la Comunicación) creó el estándar
+        X.500
+        sobre servicios de directorio, el cual organiza las entradas en el directorio de manera jerárquica, capaz de almacenar gran cantidad de datos, con grandes capacidades de búsqueda y fácilmente escalable. X.500 especifica que la comunicación entre el cliente y el servidor de directorio debe emplear el protocolo
+        <abbr title="Directory Access Protocol. ">
+            DAP
+        </abbr>
+        , pero
+        <span lang="en">
+         <abbr title="Directory Access Protocol. ">
+          DAP
+         </abbr>
+        </span>
+        es un protocolo a nivel de aplicación, por lo que, tanto al cliente como el servidor debían implementar completamente la torre de protocolos
+        <abbr title="Open Systems Interconnection.">
+            OSI
+        </abbr>
+        (Interconexión de Sistemas Abierta).
+    </p>
+    <p>
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        surge como una alternativa a
+        <abbr title="Directory Access Protocol. ">
+            DAP
+        </abbr>
+        . Las claves del éxito de
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        en comparación con
+        <span lang="en">
+         <abbr title="Directory Access Protocol. ">
+          DAP
+         </abbr>
+        </span>
+        de X.500 son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El modelo funcional de
+            <span lang="en">
+          <abbr title="Lightweight Directory Access Protocol.">
+           LDAP
+          </abbr>
+         </span>
+            es más simple y ha eliminado opciones raramente utilizadas en X.500, siendo más fácil de comprender e implementar.
+        </li>
+        <li>
+         <span lang="en">
+          <abbr title="Lightweight Directory Access Protocol.">
+           LDAP
+          </abbr>
+         </span>
+            representa la información mediante cadenas de caracteres en lugar de complicadas estructuras
+            <abbr title="Abstract Syntax Notation One.">
+                ASN.1
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        El directorio
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        tiene una estructura en forma de árbol denominado
+        <abbr title=" Directory Information Tree.">
+            <strong>
+                DIT
+            </strong>
+        </abbr>
+        (Árbol de Directorios de la Información). Cada entrada del directorio describe un
+        <strong>
+            objeto
+        </strong>
+        : persona, impresora,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+        La ruta completa a una entrada la identifica de modo inequívoco y se conoce como
+        <abbr title="Distinguished Name. ">
+            <strong>
+                DN
+            </strong>
+        </abbr>
+        (Nombre "distinguible" o Completo) y está compuesto por una secuencia de partes más pequeñas llamadas
+        <abbr title="Relative Distinguished Name. ">
+            <strong>
+                RDN
+            </strong>
+        </abbr>
+        (Nombre Completo Relativo), de forma similar a como el nombre de un fichero consiste en un camino de directorios en muchos sistemas operativos.
+    </p>
+    <p>
+        Una
+        <strong>
+            clase de objeto (objectClass)
+        </strong>
+        es una descripción general de un tipo de objeto. Todos los objetos de
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        deben tener el atributo &lt;strong&gt;objectClass&lt;/strong&gt;. La definición de &lt;strong&gt;objectClass&lt;/strong&gt; especifica qué atributos requiere un objeto
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        , así como las clases de objetos que pueden existir. Los valores de este atributo los pueden modificar los clientes, pero el atributo &lt;strong&gt;objectClass&lt;/strong&gt; en sí no puede eliminarse.
+    </p>
+    <p>
+        Un
+        <strong>
+            esquema (schema)
+        </strong>
+        define qué clases de objetos se pueden almacenar en el directorio, qué atributos deben contener, qué atributos son opcionales y el formato de los atributos.
+    </p>
+    <p>
+        Por lo general, existen dos tipos de objetos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Contenedor
+            </strong>
+            : este tipo de objeto puede contener a su vez otros objetos. Algunos ejemplos de estos elementos son: Root (elemento raíz del árbol de directorios que no existe en realidad), c (
+            <span lang="en">
+          country
+         </span>
+            ), ou (
+            <span lang="en">
+          OrganizationalUnit
+         </span>
+            ) y dc (
+            <span lang="en">
+          domainComponent
+         </span>
+            ).
+            <p>
+                La figura análoga al contenedor es el directorio (carpeta) de un sistema de archivos.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Hoja
+            </strong>
+            : este tipo de objeto se encuentra al final de una rama y carece de objetos subordinados. Algunos ejemplos son: Person/InetOrgPerson o
+            <code>
+                groupOfNames
+            </code>
+            .
+        </li>
+    </ul>
+    <p>
+        En la cúspide de la jerarquía del directorio se encuentra el elemento raíz Root. A este elemento le puede seguir en un nivel inferior c (
+        <span lang="en">
+         country
+        </span>
+        ), dc (
+        <span lang="en">
+         domainComponent
+        </span>
+        ) u&nbsp;o (
+        <span lang="en">
+         organization
+        </span>
+        ).
+    </p>
+    <p>
+        La siguiente imagen ilustra las relaciones jerárquicas dentro de un árbol de directorios
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        :
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La figura representa un
+        <span lang="en">
+         <abbr title="Directory Information Tree.">
+          DIT
+         </abbr>
+        </span>
+        ficticio con entradas en cuatro niveles. Cada entrada se corresponde con una casilla en la figura. En este caso, el nombre válido completo
+        <span lang="en">
+         <abbr title="Distinguished Name. ">
+          DN
+         </abbr>
+        </span>
+        del empleado ficticio upruebas es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>dn: uid=upruebas,ou=People,dc=ejemplo,dc=com
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        La definición global de qué tipo de objetos han de guardarse en el
+        <span lang="en">
+         <abbr title="Directory Information Tree.">
+          DIT
+         </abbr>
+        </span>
+        se realiza mediante un
+        <strong>
+            <em>
+                esquema
+            </em>
+        </strong>
+        . El tipo de objeto se determina mediante la
+        <strong>
+            <em>
+                clase de objeto
+            </em>
+        </strong>
+        . La clase de objeto especifica qué atributos
+        <strong>
+            <em>
+                deben
+            </em>
+        </strong>
+        o
+        <strong>
+            <em>
+                pueden
+            </em>
+        </strong>
+        ser asignados a un objeto determinado. Por lo tanto, un esquema debe contener definiciones de todas las clases de objetos y atributos que van a utilizarse en el escenario de aplicación. Existen algunos esquemas de uso extendido (véase
+        <strong>
+            RFC
+
+            2252
+        </strong>
+        y
+        <strong>
+            RFC
+
+            2256
+        </strong>
+        ). No obstante, si el entorno en el que va a utilizarse el servidor
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        lo requiere, también pueden crearse nuevos esquemas en función del usuario o pueden combinarse varios esquemas entre sí.
+    </p>
+</div><h1 class="title">
+    3.4.- Integración del servicio de directorio con otros servicios
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        De lo expuesto anteriormente puede deducirse que el servicio de directorio es importante en sí mismo, pero es fundamental para aglutinar información que puede ser la base para desplegar nuevos servicios basados en la cooperación entre las distintas aplicaciones y el servicio de directorio.
+    </p>
+    <p>
+        Así, el servicio de directorio puede actuar como
+        <strong>
+            servidor de autenticación
+        </strong>
+        , proporcionando el servicio de contraseña única. Además puede contener información necesaria para que los distintos servidores puedan decidir si un usuario puede acceder a determinada información.
+    </p>
+    <p>
+        Puedes utilizar el servicio de directorio como
+        <strong>
+            repositorio
+        </strong>
+        en el cual almacenar la información que varios servidores deben compartir, por ejemplo: la configuración, información sobre el control de acceso,
+        <abbr title="etcétera">
+            etc.
+        </abbr>
+    </p>
+    <p>
+        Además, el directorio proporciona un
+        <strong>
+            protocolo estándar para gestionar toda la información
+        </strong>
+        contenida en él evitando la necesidad de desarrollar dicho protocolo.
+    </p>
+    <p>
+        Otra utilidad que puede resultar interesante es la de emplear el servicio de directorio para
+        <strong>
+            indexar la documentación
+        </strong>
+        almacenada en el servidor Web, con la precisión que otras herramientas no pueden generar.
+    </p>
+    <p>
+        Debido a
+        <abbr title="Extensible Markup Language.">
+            XML
+        </abbr>
+        , los documentos contarán con metainformación, es decir, información sobre la información que contienen, lo cual hará más fácil y eficaz la labor de indexación de los contenidos del servidor Web. Aquí es donde el servicio de directorio puede jugar un papel importante, ya que proporciona un
+        <strong>
+            acceso uniforme a la información
+        </strong>
+        contenida en él.
+    </p>
+    <p>
+        Esta última puede ser una de las mayores utilidades de los directorios, ya que permiten separar la operación de localización de la información del servidor que la contiene.
+    </p>
+</div><h1 class="title">
+    3.5.- El formato de intercambio de datos LDIF
+</h1><div class="iDevice_content">
+    <p>
+        El formato
+        <abbr title="Data Interchange Format. ">
+            LDIF
+        </abbr>
+        (Formato de Intercambio de Datos), es el estándar para representar entradas del directorio en formato texto
+        <abbr title="American Standard Code for Information Interchange">
+            ASCII
+        </abbr>
+        que posee la siguiente sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 23.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>dn: &lt;nombre distinguido&gt;
+</pre>
+            <pre ngNonBindable>&lt;nombre_atributo&gt;: &lt;valor&gt;
+</pre>
+            <pre ngNonBindable>&lt;nombre_atributo&gt;: &lt;valor&gt;
+</pre>
+            <pre ngNonBindable>&lt;nombre_atributo&gt;: &lt;valor&gt;
+</pre>
+        </div>
+    </div>
+
+    <p>
+        <span style="font-size: 1em;">
+         <br>
+         Una entrada del directorio en formato de intercambio de datos
+         <abbr title="Data Interchange Format. ">
+          LDIF
+         </abbr>
+        <br/></span>
+        <span style="font-size: 1em;">
+         consiste en dos partes:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El
+            <span lang="en">
+          <abbr title="Distinguished Name. ">
+           DN
+          </abbr>
+         </span>
+            que debe figurar en la primera línea de la entrada y que se compone de la cadena dn: seguida del nombre distinguido (DN) de la entrada.
+        </li>
+        <li>
+            La segunda parte son los atributos de la entrada. Cada atributo se compone de un nombre de atributo, seguido del carácter dos puntos ':' y el valor del atributo. Si hay atributos multivaluados deben ponerse seguidos.
+            <p>
+                No existe ningún orden preestablecido para la colocación de los atributos, pero es conveniente listar primero el atributo &lt;strong&gt;objectclass&lt;/strong&gt;, para mejorar la legibilidad de la entrada.
+            </p>
+        </li>
+    </ul>
+    <p>
+        En un archivo
+        <abbr title="Data Interchange Format. ">
+            LDIF
+        </abbr>
+        puede haber más de una entrada definida. Cada entrada se separa de las demás por una línea en blanco. A su vez, cada entrada puede tener una cantidad arbitraria de pares &lt;nombre_atributo&gt;: &lt;valor&gt;.
+    </p>
+    <p>
+        Este formato es útil tanto para realizar copias de seguridad de los datos de un servidor
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        , como para importar pequeños cambios que se necesiten realizar manualmente en los datos, siempre manteniendo la independencia de la implementación
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        y de la plataforma donde esté instalada.
+    </p>
+    <p>
+        A continuación puedes observar un ejemplo de una entrada para describir una cuenta de usuario en un servidor:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>dn: uid=upruebas,ou=People,dc=ejemplo,dc=com
+</pre>
+            <pre ngNonBindable>objectclass: account
+</pre>
+            <pre ngNonBindable>objectclass: posixAccount
+</pre>
+            <pre ngNonBindable>objectclass: topuid: upruebas
+</pre>
+            <pre ngNonBindable>cn: Usuario Pruebas
+</pre>
+            <pre ngNonBindable>loginshell: /bin/bash
+</pre>
+            <pre ngNonBindable>uidnumber: 512
+</pre>
+            <pre ngNonBindable>gidnumber: 300
+</pre>
+            <pre ngNonBindable>homedirectory: /home/upruebas
+</pre>
+            <pre ngNonBindable>gecos: Usuario Pruebas
+</pre>
+            <pre ngNonBindable>userpassword: 123456
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.6.- Instalación de OpenLDAP
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         El proceso de instalación de
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         OpenLDAP
+        </span>
+        <span style="font-size: 1em;">
+         en un sistema basado en
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         Debian
+        </span>
+        <span style="font-size: 1em;">
+         es sencillo, aunque la configuración, no tanto.
+        </span>
+    </p>
+    <p>
+        Para una instalación de
+        <span lang="en">
+         OpenLDAP
+        </span>
+        en
+        <span lang="en">
+         Debian
+        </span>
+        6 (
+        <span lang="en">
+         S
+         <span lang="en">
+          queeze
+         </span>
+        </span>
+        <span lang="en">
+        </span>
+        ) realiza el siguiente procedimiento como usuario root, teniendo en cuenta que el servidor está identificado como sigue:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+         <span lang="en">
+          Hostname
+         </span>
+            :&nbsp;debian-servidor-fp
+        </li>
+        <li>
+         <span lang="en">
+          <abbr title="Internet Protocol">
+           IP
+          </abbr>
+         </span>
+            :&nbsp;192.168.200.250
+        </li>
+    </ul>
+    <ol>
+        <li>
+            Actualiza los repositorios del sistema operativo.
+            <div class="codigo elemento_centrado" style="width: 29.1em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get update
+</pre>
+                </div>
+            </div>
+            <p>
+                <strong>
+                    NOTA:
+                </strong>
+                es necesario para el buen funcionamiento del comando que tengas configurada correctamente la conexión a Internet.
+            </p>
+        </li>
+        <li>
+            Actualiza el sistema operativo.
+            <div class="codigo elemento_centrado" style="width: 29.65em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get upgrade
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Instala los paquetes necesarios para el funcionamiento de
+            <span lang="en">
+          OpenLDAP
+         </span>
+            . La instalación te pedirá una contraseña, como puedes ver a continuación.
+            <div class="codigo elemento_centrado" style="width: 39em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get install slapd ldap-utils
+</pre>
+                    <pre ngNonBindable>Contraseña del administrador: admin
+</pre>
+                    <pre ngNonBindable>Verificación de la contraseña: admin
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Verifica que el servidor
+            <span lang="en">
+          OpenLDAP
+         </span>
+            está activo, por defecto, en el puerto
+            <span lang="en">
+          <abbr title="Transfer Control Protocol ">
+           TCP
+          </abbr>
+         </span>
+            389.
+            <div class="codigo elemento_centrado" style="width: 34.6em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# netstat -natp | grep 389
+</pre>
+                    <pre ngNonBindable>tcp 0 0 0.0.0.0:389 0.0.0.0:* LISTEN 1955/slapd
+</pre>
+                    <pre ngNonBindable>tcp6 0 0 :::389 :::* LISTEN 1955/slapd
+</pre>
+                </div>
+            </div>
+        </li>
+    </ol>
+</div><h1 class="title">
+    3.6.1.- Configuración de OpenLDAP
+</h1><div class="iDevice_content">
+
+    <p>
+        Una de las principales novedades de la versión 2.4 de
+        <span lang="en">
+         OpenLDAP
+        </span>
+        es que se incluye toda la configuración del servidor slapd en un directorio de base cn=config, (
+        <code>
+            /etc/ldap/slapd.d/cn=config
+        </code>
+        ), en lugar del habitual fichero /etc/ldap/slapd.conf. Esto tiene la ventaja de que las modificaciones de configuración se pueden hacer sin tener que reiniciar el servicio.
+    </p>
+    <p>
+        Dentro del directorio /etc/ldap/slapd.d/cn=config, en una instalación limpia, puedes observar el objeto cn=schema, donde se encuentran los cuatro esquemas instalados por defecto: core,
+        <code>
+            cosine
+        </code>
+        , nis e
+        <code>
+            inetorgperson
+        </code>
+        .
+    </p>
+</div><h1 class="title">
+    3.6.2.- Arranque y parada del servidor LDAP
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         En un sistema operativo
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         Debian
+        </span>
+        <span style="font-size: 1em;">
+         6.0 (
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         Squeeze
+        </span>
+        <span style="font-size: 1em;">
+         ) puedes comprobar el estado del servicio
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         OpenLDAP
+        </span>
+        <span style="font-size: 1em;">
+         mediante el comando service
+        </span>
+        <span style="font-size: 1em;">
+         o mediante el comando
+        </span>
+        &lt;strong&gt;/etc/init.d/slapd&lt;/strong&gt;
+        <span style="font-size: 1em;">
+         :
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Comando
+            </strong>
+            &lt;strong&gt;service&lt;/strong&gt;:
+            <ol class="lista_esquema">
+                <li>
+                    Comprobar las opciones del comando:
+                    <div class="codigo elemento_centrado" style="width: 46.7em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service slapd
+</pre>
+                            <pre ngNonBindable>Usage: /etc/init.d/slapd &#123;start|stop|reload|restart|force-reload|status&#125;.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Donde:
+                    </p>
+                    <p>
+                        start → opción que permite arrancar el servicio.
+                    </p>
+                    <p>
+                        stop → opción que permite apagar el servicio.
+                    </p>
+                    <p>
+                        reload → opción que permite recargar la configuración del servicio sin tener que reiniciarlo.
+                    </p>
+                    <p>
+                        restart → opción que permite reiniciar el servicio.
+                    </p>
+                    <p>
+                        force-reload → opción que permite forzar la recarga de configuración del servicio.
+                    </p>
+                    <p>
+                        status → opción que permite comprobar si el servicio está activo o inactivo.
+                    </p>
+                </li>
+                <li>
+                    Arrancar el servidor
+                    <span lang="en">
+            OpenLDAP
+           </span>
+                    :
+                    <div class="codigo elemento_centrado" style="width: 31.85em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service slapd start
+</pre>
+                            <pre ngNonBindable>Starting OpenLDAP: slapd.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Parar el servidor
+                    <span lang="en">
+            OpenLDAP
+           </span>
+                    :
+                    <div class="codigo elemento_centrado" style="width: 31.3em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service bind9 stop
+</pre>
+                            <pre ngNonBindable>Stopping OpenLDAP: slapd.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Comprobar el estado activo/inactivo del servicio:
+                    <div class="codigo elemento_centrado" style="width: 32.4em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service slapd status
+</pre>
+                            <pre ngNonBindable>could not access PID file for slapd ... failed!
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Como puedes comprobar la salida del comando determina que el servicio está inactivo, entonces lo arrancamos:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 31.85em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service slapd start
+</pre>
+                            <pre ngNonBindable>Starting OpenLDAP: slapd.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Se vuelve a lanzar el comando para comprobar de nuevo el estado:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 32.4em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# service slapd status
+</pre>
+                            <pre ngNonBindable>slapd is running.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Ahora puedes comprobar que la salida del comando determina que el servicio está activo.
+                    </p>
+                </li>
+            </ol>
+        </li>
+        <li>
+            Comando /etc/init.d/slapd:
+            <ol class="lista_esquema">
+                <li>
+                    Comprobar las opciones del comando:
+                    <div class="codigo elemento_centrado" style="width: 46.7em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/slapd
+</pre>
+                            <pre ngNonBindable>Usage: /etc/init.d/slapd &#123;start|stop|reload|restart|force-reload|status&#125;.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Arrancar el servidor OpenLDAP:
+                    <div class="codigo elemento_centrado" style="width: 34.05em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/slapd start
+</pre>
+                            <pre ngNonBindable>Starting OpenLDAP: slapd.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Parar el servidor OpenLDAP:
+                    <div class="codigo elemento_centrado" style="width: 33.5em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/slapd stop
+</pre>
+                            <pre ngNonBindable>Stopping OpenLDAP: slapd.
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Comprobar el estado activo/inactivo del servicio:
+                    <div class="codigo elemento_centrado" style="width: 34.6em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/slapd status
+</pre>
+                            <pre ngNonBindable>could not access PID file for slapd ... failed!
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Como puedes comprobar la salida del comando determina que el servicio está inactivo, entonces lo arrancamos:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 34.05em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/slapd start
+</pre>
+                            <pre ngNonBindable>Starting OpenLDAP: slapd.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Se vuelve a lanzar el comando para comprobar de nuevo el estado:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 34.6em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# /etc/init.d/slapd status
+</pre>
+                            <pre ngNonBindable>slapd is running.
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Ahora puedes comprobar que la salida del comando determina que el servicio está activo.
+                    </p>
+                </li>
+            </ol>
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.6.3.- Administrando un servidor LDAP
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+         <span lang="en" style="font-size: 1em;">
+          OpenLDAP
+         </span>
+            <span style="font-size: 1em;">
+          ofrece una serie de comandos para la administración de datos en el directorio
+         </span>
+            <span lang="en" style="font-size: 1em;">
+          <abbr title="Lightweight Directory Access Protocol.">
+           LDAP
+          </abbr>
+         </span>
+            <span style="font-size: 1em;">
+          , contenidos en el paquete
+         </span>
+            ldap-utils
+            <span style="font-size: 1em;">
+          . Los cuatro comandos más importantes para añadir, modificar, buscar y eliminar son explicados a continuación.
+         </span>
+        </strong>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+            <strong>
+                <iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" frameborder="0" height="315" src="./recopila_files/vhRth4qvQOU.html" width="560">
+                </iframe>
+            </strong>
+        </div>
+
+    </div>
+    <ol>
+        <li>
+            <strong>
+                Añadir entradas:
+            </strong>
+            comando ldapadd.
+            <ol style="list-style-type: lower-alpha;">
+                <li>
+                    Crea la estructura básica del dominio
+                    <span lang="en">
+            <abbr title="Lightweight Directory Access Protocol.">
+             LDAP
+            </abbr>
+           </span>
+                    mediante la ejecución de un fichero
+                    estructura_basica.ldif
+                    <span class="exe-link-data file-size">
+            (ldif - 0.39
+            <abbr lang="en" title="MegaBytes">
+             MB
+            </abbr>
+            )
+           </span>
+                    <span class="tamano">
+            <br>
+           <br/></span>
+                    <div class="codigo elemento_centrado" style="width: 68.7em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# ldapadd -x -D cn=admin,dc=proyecto-empresa,dc=local -w admin -f estructura_basica.ldif
+</pre>
+                            <pre ngNonBindable>adding new entry "dc=proyecto-empresa,dc=local"
+</pre>
+                            <pre ngNonBindable>adding new entry "ou=usuarios,dc=proyecto-empresa,dc=local"
+</pre>
+                            <pre ngNonBindable>adding new entry "ou=grupos,dc=proyecto-empresa,dc=local"
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Añade un usuario a
+                    <abbr title="Lightweight Directory Access Protocol.">
+            <span lang="en">
+             LDAP
+            </span>
+                    </abbr>
+                    de nombre&nbsp;'upruebas'&nbsp;y contraseña&nbsp;'123456' mediante el archivo
+                    usuario.ldif
+                    <span class="exe-link-data file-size">
+            (ldif - 0.31
+            <abbr lang="en" title="MegaBytes">
+             MB
+            </abbr>
+            )
+           </span>
+                    <span class="tamano">
+            <br>
+           <br/></span>
+                    <div class="codigo elemento_centrado" style="width: 63.2em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# ldapadd -x -D cn=admin,dc=proyecto-empresa,dc=local -w admin -f usuario.ldif
+</pre>
+                            <pre ngNonBindable>adding new entry "uid=upruebas,ou=usuarios,dc=proyecto-empresa,dc=local"
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+        <li>
+            <strong>
+                Modificar entradas:
+            </strong>
+            comando ldapmodify.
+            <ol style="list-style-type: lower-alpha;">
+                <li>
+                    Modificar la contraseña del usuario anterior&nbsp;'upruebas' mediante la ejecución del archivo
+                    cambiar_usuario.ldif
+                    <span class="exe-link-data file-size">
+            (ldif - 0.14
+            <abbr lang="en" title="MegaBytes">
+             MB
+            </abbr>
+            )
+           </span>
+                    <br>
+                    <div class="codigo elemento_centrado" style="width: 69.25em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# ldapmodify -x -D cn=admin,dc=proyecto-empresa,dc=local -w admin -f cambiar_usuario.ldif
+</pre>
+                            <pre ngNonBindable>modifying entry "uid=upruebas,ou=usuarios,dc=proyecto-empresa,dc=local"
+</pre>
+                        </div>
+                    </div>
+                    <br/></li>
+            </ol>
+        </li>
+        <li>
+            <strong>
+                Buscar entradas:
+            </strong>
+            comando ldapsearch.
+            <ol style="list-style-type: lower-alpha;">
+                <li>
+                    Buscar todos los usuarios cuyo nombre contenga los caracteres 'pru':
+                    <div class="codigo elemento_centrado" style="width: 52.75em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# ldapsearch -x -b dc=proyecto-empresa,dc=local "(cn=*pru*)"
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Buscar todos los usuarios cuyo nombre contenga los caracteres&nbsp;'pru'y cuyo correo electrónico contengan los caracteres 'daw05':
+                    <div class="codigo elemento_centrado" style="width: 62.65em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# ldapsearch -x -b dc=proyecto-empresa,dc=local "(&amp;(cn=*pru*)(mail=*daw05*))"
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+        <li>
+            Eliminar entradas: comando ldapdelete.
+            <ol style="list-style-type: lower-alpha;">
+                <li>
+                    Eliminar el usuario 'upruebas':
+                    <div class="codigo elemento_centrado" style="width: 85.75em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# ldapdelete -x -D cn=admin,dc=proyecto-empresa,dc=local -w admin uid=upruebas,ou=usuarios,dc=proyecto-empresa,dc=local
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </li>
+    </ol>
+</div><h1 class="title">
+    3.6.4.- Configuración de los clientes. Instalación de librerías de autentificación
+</h1><div class="iDevice_content">
+
+    <p>
+        Como ya hemos comentado anteriormente, una de las utilidades más importantes de un servidor
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        es la de servidor de autentificación. Autentificarse suele ser lo común y necesario para entrar en un sistema
+        <abbr title="GNU is Not Unix. ">
+            GNU
+        </abbr>
+        /
+        <span lang="en">
+         Linux
+        </span>
+        . También para acceder a algunos servicios como un servidor
+        <abbr title="File Transfer Protocol. ">
+            FTP
+        </abbr>
+        o a páginas privadas en un servidor web.
+    </p>
+    <p>
+        A continuación verás las modificaciones que hay que realizar en un sistema
+        <abbr title="GNU is Not Unix. ">
+            GNU
+        </abbr>
+        /
+        <span lang="en">
+         Linux
+        </span>
+        <span lang="en">
+         Debian
+        </span>
+        6.0 (
+        <span lang="en">
+         Squeeze
+        </span>
+        ) para que autentifique a los usuarios en un servidor
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        , esto es, verás los pasos a seguir para configurar un equipo como cliente
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        . Así, el equipo en lugar de utilizar los clásicos archivos /etc/passwd,
+        <code>
+            /etc/group
+        </code>
+        y /etc/shadow, tomará los usuarios y grupos del servidor
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        , autentificando los usuarios que inicien sesión validándose contra el servidor
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        .
+    </p>
+    <p>
+        Esta configuración debe ser replicada en todos los clientes
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        pertenecientes al dominio, incluido el propio servidor
+        <abbr title="Lightweight Directory Access Protocol.">
+            LDAP
+        </abbr>
+        , si se quiere que los clientes accedan al mismo.
+    </p>
+    <p>
+        Para ello realiza el siguiente procedimiento:
+    </p>
+    <ol>
+        <li>
+            Instala y configura los paquetes
+            <div class="codigo elemento_centrado" style="width: 60.45em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>libnss-ldap, libpam-ldap y nscd
+</pre>
+                    <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get install libnss-ldap libpam-ldap nscd
+</pre>
+                    <pre ngNonBindable>URI del servidor de LDAP: ldap://192.168.200.250
+</pre>
+                    <pre ngNonBindable>El nombre distintivo (DN) de la base de búsquedas: dc=proyecto-empresa,dc=local
+</pre>
+                    <pre ngNonBindable>Versión de LDAP a utilizar: 3
+</pre>
+                    <pre ngNonBindable>Cuenta LDAP para root: cn=admin,dc=proyecto-empresa,dc=local
+</pre>
+                    <pre ngNonBindable>Contraseña para la cuenta LDAP de root: admin
+</pre>
+                    <pre ngNonBindable>nsswitch.conf no se gestiona automáticamente
+</pre>
+                    <pre ngNonBindable>Debe modificar su fichero &lt;&lt;/etc/nsswitch.conf&gt;&gt; … Aceptar
+</pre>
+                    <pre ngNonBindable>¿Desea permitir que la cuenta del administrador de LDAP se comporte como el administrador local? Sí
+</pre>
+                    <pre ngNonBindable>¿Hacer falta un usuario para acceder a la base de datos de LDAP? No
+</pre>
+                    <pre ngNonBindable>Cuenta del administrador de LDAP: cn=admin,dc=proyecto-empresa,dc=local
+</pre>
+                    <pre ngNonBindable>Contraseña del administrador de LDAP: admin
+</pre>
+                </div>
+            </div>
+            <p>
+                Toda esta configuración se ha guardado en el fichero /etc/libnss-ldap.conf
+            </p>
+        </li>
+        <li>
+            Modifica en el archivo /etc/nsswitch.conf:
+            <div class="codigo elemento_centrado" style="width: 18.65em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>2. /etc/nsswitch.conf::
+</pre>
+                    <pre ngNonBindable>passwd: files ldap
+</pre>
+                    <pre ngNonBindable>group: files ldap
+</pre>
+                    <pre ngNonBindable>shadow: files ldap
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Reinicia el servicio nscd&nbsp;para que se activen los cambios efectuados en el paso anterior, esto es, para que el sistema operativo recoja los usuarios en primer lugar de los ficheros locales de usuarios y grupos y a continuación del servidor
+            <span lang="en">
+          <abbr title="Lightweight Directory Access Protocol.">
+           LDAP
+          </abbr>
+         </span>
+            .
+            <div class="codigo elemento_centrado" style="width: 31.85em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# service nscd restart
+</pre>
+                    <pre ngNonBindable>Restarting Name Service Cache Daemon: nscd.
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Revisa mediante el comando pam-auth-update que los servicios:
+            <span lang="en">
+         </span>
+            <strong>
+          <span lang="en">
+           <span lang="en">
+            Unix
+           </span>
+           <span lang="en">
+            authentication
+           </span>
+          </span>
+            </strong>
+            <span lang="en">
+         </span>
+            y
+            <span lang="en">
+          <abbr title="Lightweight Directory Access Protocol.">
+          </abbr>
+         </span>
+            <strong>
+          <span lang="en">
+           <span lang="en">
+            <abbr title="Lightweight Directory Access Protocol.">
+             LDAP
+            </abbr>
+           </span>
+           <span lang="en">
+            Authentication
+           </span>
+          </span>
+            </strong>
+            <span lang="en">
+         </span>
+            , que el sistema operativo usa para autenticar los usuarios, están activados.
+            <div class="codigo elemento_centrado" style="width: 29.1em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pam-auth-update
+</pre>
+                    <pre ngNonBindable>Perfiles PAM a habilitar:
+</pre>
+                    <pre ngNonBindable>[*] Unix authentication
+</pre>
+                    <pre ngNonBindable>[*] LDAP Authentication
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Por último, prueba que la configuración del cliente es correcta:
+            <ol>
+                <li>
+                    Mediante el comando getent passwd, que proporciona todos los usuarios del sistema operativo, en este caso los de
+                    <strong>
+            <span lang="en">
+             Unix authentication
+            </span>
+                    </strong>
+                    y
+                    <strong>
+            <span lang="en">
+             <abbr title="Lightweight Directory Access Protocol.">
+              LDAP
+             </abbr>
+             Authentication
+            </span>
+                    </strong>
+                    .
+                    <div class="codigo elemento_centrado" style="width: 39.55em; margin-bottom: 15px;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root&#64;debian-servidor-fp:~# getent passwd | grep uprueba
+</pre>
+                            <pre ngNonBindable>upruebas:*:10001:10001:Pruebas DAW05:/home/upruebas:/bin/bash
+</pre>
+                            <pre ngNonBindable>upruebas2:*:10002:10001:upruebas2:/home/upruebas2:/bin/bash
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    Iniciar sesión en un consola de texto en el equipo cliente con un usuario del
+                    <span lang="en">
+            <abbr title="Lightweight Directory Access Protocol.">
+             LDAP
+            </abbr>
+           </span>
+                    . En esta caso, con el usuario upruebas o el usuario upruebas2.
+                </li>
+            </ol>
+        </li>
+    </ol>
+</div><h1 class="title">
+    3.6.5.- Probar la autenticación con pamtest
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         Ahora que la autentificación de usuarios por
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        <span style="font-size: 1em;">
+         está activada en el sistema operativo, es recomendable que efectúes algunas pruebas con la nueva configuración para comprobar si todo funciona correctamente.
+        </span>
+    </p>
+    <p>
+        El comando&nbsp;pamtest puede ayudarte a realizar estas pruebas. La instalación del mismo se efectúa realizando el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>root&#64;debian-servidor-fp:~# apt-get install libpam-dotfile
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El comando pamtest acepta dos parámetros: el primero es el
+        <strong>
+            nombre del servicio
+        </strong>
+        al cual se va a conectar para realizar la autentificación y el segundo es el
+        <strong>
+            nombre del usuario
+        </strong>
+        que se va a autentificar sobre dicho servicio. Veamos unos ejemplos:
+    </p>
+    <ol>
+        <li>
+            Intentar autentificar al usuario upruebas2 en el servicio&nbsp;passwd mediante una clave correcta:
+            <div class="codigo elemento_centrado" style="width: 40.1em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pamtest passwd upruebas2
+</pre>
+                    <pre ngNonBindable>Trying to authenticate &lt;upruebas2&gt; for service &lt;passwd&gt;.
+</pre>
+                    <pre ngNonBindable>Password:
+</pre>
+                    <pre ngNonBindable>Authentication successful.
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Intentar autentificar al usuario upruebas2 en el servicio passwd mediante una clave incorrecta:
+            <div class="codigo elemento_centrado" style="width: 40.1em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pamtest passwd upruebas2
+</pre>
+                    <pre ngNonBindable>Trying to authenticate &lt;upruebas2&gt; for service &lt;passwd&gt;.
+</pre>
+                    <pre ngNonBindable>Password:
+</pre>
+                    <pre ngNonBindable>Failed to authenticate: Authentication failure
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Intentar autentificar al usuario upruebas2 en el servicio ssh mediante una clave correcta:
+            <div class="codigo elemento_centrado" style="width: 38.45em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pamtest ssh upruebas2
+</pre>
+                    <pre ngNonBindable>Trying to authenticate &lt;upruebas2&gt; for service &lt;ssh&gt;.
+</pre>
+                    <pre ngNonBindable>Password:
+</pre>
+                    <pre ngNonBindable>Authentication successful.
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Intentar autentificar al usuario upruebas2 en el servicio ssh mediante una clave incorrecta:
+            <div class="codigo elemento_centrado" style="width: 38.45em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pamtest ssh upruebas2
+</pre>
+                    <pre ngNonBindable>Trying to authenticate &lt;upruebas2&gt; for service &lt;ssh&gt;.
+</pre>
+                    <pre ngNonBindable>Password:
+</pre>
+                    <pre ngNonBindable>Failed to authenticate: Authentication failure
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Intentar autentificar al usuario upruebas2 en el servicio ftp mediante una clave correcta:
+            <div class="codigo elemento_centrado" style="width: 38.45em; margin-bottom: 15px;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pamtest ftp upruebas2
+</pre>
+                    <pre ngNonBindable>Trying to authenticate &lt;upruebas2&gt; for service &lt;ftp&gt;.
+</pre>
+                    <pre ngNonBindable>Password:
+</pre>
+                    <pre ngNonBindable>Authentication successful.
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Intentar autentificar al usuario upruebas2 en el servicio ftp mediante una clave incorrecta:
+            <div class="codigo elemento_centrado" style="width: 38.45em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>root&#64;debian-servidor-fp:~# pamtest ftp upruebas2
+</pre>
+                    <pre ngNonBindable>Trying to authenticate &lt;upruebas2&gt; for service &lt;ftp&gt;.
+</pre>
+                    <pre ngNonBindable>Password:
+</pre>
+                    <pre ngNonBindable>Failed to authenticate: Authentication failure
+</pre>
+                </div>
+            </div>
+        </li>
+    </ol>
+    <p>
+        Una vez se ha llegado a este punto, el sistema ya está preparado para autentificar a los usuarios a través de
+        <span lang="en">
+         <abbr title="Lightweight Directory Access Protocol.">
+          LDAP
+         </abbr>
+        </span>
+        .
+    </p>
+</div><h1 class="title">
+    4.- Servicios de red implicados en la monitorización de sistemas
+</h1><div class="iDevice_content">
+    <p>
+        En la actualidad, es totalmente necesario el uso de herramientas de monitorización ante el gran crecimiento de las tecnologías, para conseguir así un buen funcionamiento de los diferentes servicios y equipos.
+    </p>
+    <p>
+        Las herramientas de monitorización son las encargadas de realizar continuamente una supervisión de los diferente recursos y servicios garantizando una disponibilidad y ante errores o fallos del sistema poder tener constancia para que las personas responsables sean capaces de solventarlo.
+    </p>
+    <p>
+        A continuación, podemos observar la evolución de un incidente del sistema:
+    </p>
+
+    <p>
+        Las principales ventajas u objetivos de la monitorización son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Minimizar el tiempo del servicio detenido
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Mayor disponibilidad del servicio
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Supervisión y análisis de las distintas fases en un sistema
+            </strong>
+            .
+        </li>
+    </ul>
+</div><h1 class="title">
+    4.1.- Herramientas de monitorización específicas para servicios web
+</h1><div class="iDevice_content">
+    <p>
+        Existen numerosas herramientas gratuitas y de pago para monitorizar nuestros servicios web. Medir el rendimiento de nuestro servidor web de Apache es muy sencillo con herramientas como
+        ApacheBench
+        <strong>
+        </strong>
+        que es gratuita.
+    </p>
+
+    <p>
+        <strong>
+            ApacheBench
+            <abbr title="ApacheBench">
+                (ab)
+            </abbr>
+        </strong>
+        es un programa utilizado para monitorizar el rendimiento de nuestro servidor Web
+        <abbr title="Hypertext Transfer Protocol">
+            HTTP
+        </abbr>
+        o
+        <abbr title="Hypertext Transfer Protocol Secure">
+            HTTPS
+        </abbr>
+        a través de líneas de&nbsp;comandos, mostrándote las peticiones que es capaz de servir, rechazar e incluso no ser capaz de procesar por segundo nuestro servidor Web.
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         A continuación vamos a:
+        </span>
+    </p>
+    <p>
+        Instalarlo,&nbsp; lanzar un test de rendimiento y mostrar los resultados, también de una manera gráfica.
+    </p>
+    <p>
+        <strong>
+            Todas estas funciones a través de nuestro terminal.
+        </strong>
+    </p>
+
+    <div class="exe-tooltip-text" id="tc7407208-d5c2-6ad4-3969-5f5f5d525795">
+        <p>
+            Programa utilizado para monitorizar el rendimiento de nuestro servidor web
+            <abbr title="HiperText Transfer Protocol">
+                HTTP
+            </abbr>
+            o
+            <abbr title=" Hypertext Transfer Protocol Secure ">
+                HTTPS
+            </abbr>
+            a través de líneas de comandos.
+        </p>
+    </div>
+</div><h1 class="title">
+    4.1.1.- Instalación y utilización de ApacheBench
+</h1><div class="iDevice_content">
+    <p>
+          <span>
+          </span>
+    </p>
+    <blockquote>
+        <p style="text-align: center;">
+        </p>
+    </blockquote>
+    <blockquote class="exe-quote-cite styled-qc" lang="es">
+        <p>
+            Solo podrás tomar decisiones acertadas si sabes cómo analizar e interpretar los datos.
+        </p>
+        <cite lang="ru">
+            Avinash Kaushik
+        </cite>
+    </blockquote>
+    <p>
+    </p>
+    <p style="text-align: right;">
+    </p>
+</div><h1 class="title">
+    4.1.2.- Visualización Gráfica con GNuplot
+</h1><div class="iDevice_content">
+    <p>
+        Para que sea más visual, podemos contar con la opción de poder ver nuestro resultado del test de una forma gráfica. Para ello debemos instalar una herramienta denominada
+        <strong>
+            GNuplo
+            t
+            <br>
+            <br/></strong>
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;a href="https://educacionadistancia.juntadeandalucia.es/formacionprofesional/pluginfile.php/56079/mod_scorm/content/0/mailto:root&#64;servidor-fp:~$"&gt;root&#64;servidor-fp:~$&lt;/a&gt; sudo apt-get install gnuplot</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez instalada la herramienta, vamos a mostrar gráficamente el test realizado con
+        <span lang="en">
+         ApacheBench
+        </span>
+        . Para ello en primer lugar, lanzaremos nuevamente el test y lo guardaremos, lanzando el siguiente comando, en un fichero con extensión&nbsp;.tsv
+        <em>
+        </em>
+        (
+        <em>
+         <span lang="en">
+          Tab Separated Values
+         </span>
+        </em>
+        - Valores separados por comas).
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;a href="https://educacionadistancia.juntadeandalucia.es/formacionprofesional/pluginfile.php/56079/mod_scorm/content/0/mailto:root&#64;servidor-fp:~$"&gt;root&#64;servidor-fp:~$&lt;/a&gt; ab -n 1000 -c 50 -f ALL -g resultados.tsv &lt;code&gt;https://educacionadistancia.juntadeandalucia.es/cursos/login/index.php/&lt;/code&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Ahora debemos crear un fichero gnuplot de configuración, el cual podemos llamar por ejemplo "gnuplot1.p
+        <em>
+            "
+        </em>
+        . Se recomienda realizarlo en el mismo directorio que resultados&nbsp;.tsv
+        <em>
+        </em>
+        .
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;a href="https://educacionadistancia.juntadeandalucia.es/formacionprofesional/pluginfile.php/56079/mod_scorm/content/0/mailto:root&#64;servidor-fp:~$"&gt;root&#64;servidor-fp:~$&lt;/a&gt; touch gnuplot1.p</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El contenido del fichero debe ser:
+    </p>
+
+    <p>
+        A continuación, ya sólo nos quedaría lanzar gnuplot y así se generará el fichero gráfico.
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;a href="https://educacionadistancia.juntadeandalucia.es/formacionprofesional/pluginfile.php/56079/mod_scorm/content/0/mailto:root&#64;servidor-fp:~$"&gt;root&#64;servidor-fp:~$&lt;/a&gt; gnuplot gnuplot1.p</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        La gráfica sería la siguiente:
+    </p>
+
+</div><h1 class="title">
+    4.2.- Herramientas de monitorización avanzadas (nagios y centreon)
+</h1><div class="iDevice_content">
+    <p>
+        En esta unidad vamos a trabajar con herramientas de monitorización más avanzadas como son
+        <strong>
+            Nagios
+        </strong>
+        o
+        <strong>
+            Centreon
+        </strong>
+        . Estas herramientas monitorizan el sistema de una forma automática, y en el caso de que existan fallos nos avisan para solucionar el problema.
+    </p>
+    <p>
+        <strong>
+            Nagios
+        </strong>
+        nos permite monitorizar los diferentes servicios de una red y&nbsp; dispositivos, llegando hasta el mínimo detalle de éstos, avisando de la existencia de algún fallo, si se da el caso. Se instala en una máquina
+        <abbr title="GNU is Not Unix. ">
+            GNU
+        </abbr>
+        /
+        <span lang="en">
+         Linux
+        </span>
+        y obtiene la información de los clientes conectados en red, trabajando así en una arquitectura cliente/servidor. Puede trabajar con cualquier dispositivo con protocolo
+        <abbr lang="en" title="Simple Network Management Protocol">
+            SNMP.
+        </abbr>
+    </p>
+
+</div><h1 class="title">
+    4.2.1.- Instalación de Nagios
+</h1><div class="iDevice_content">
+    <p>
+        En primer lugar, antes de iniciar la instalación de Nagios, debemos realizar la instalación de una serie de paquetes necesarios para ello. La distribución utilizada es en
+        <strong>
+            Fedora
+        </strong>
+        .
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>#yum install httpd php&lt;br&gt;#yum install gcc&lt;br&gt;#yum install glibc glibc-common&lt;br&gt;#yum install gd gd-devel&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Procedemos a la instalación automática:
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>#yum install nagios&lt;br&gt;#yum install nagios-plugins-all&lt;br&gt;#yum install nrpe&lt;br&gt;#yum install nagios-plugins-nrpe&lt;br&gt;#yum install ndoutils ndoutils-mysql&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Ahora vamos a iniciar el sistema de Nagios, pero antes debemos revisar los archivos de configuración:
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>// Revisión archivos de Configuración:&lt;br&gt;# nagios -v /etc/nagios/nagios.conf&lt;br&gt;&lt;br&gt;// Iniciamos Nagios:&lt;br&gt;#service nagios start&lt;br&gt;#service nrpe start&lt;br&gt;#service ndo2db start&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez instalado, nos queda configurar la interfaz web. Para ello se crea el siguiente fichero de configuración en apache&nbsp;/etc/http/conf.d/nagios
+        <i>
+            .
+        </i>
+        Es necesario que lo tengamos para que se pueda acceder desde cualquier
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        , por lo tanto, debe quedar de la siguiente manera:
+    </p>
+    <div class="codigo elemento_centrado">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>ScriptAlias /nagios/cgi-bin/ /usr/lib64/nagios/cgi-bin/&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&lt;directory cgi-bin="" lib64="" nagios="" usr=""&gt;&lt;o:p/&gt;&lt;/directory&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; Options ExecCGI&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; Order deny,allow&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; AuthType Basic&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; AuthUserFile /etc/nagios/passwd&lt;o:p/&gt;&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; AuthName "nagios"&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; require valid-user&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>Alias /nagios/ /usr/share/nagios/html/&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&lt;directory html="" nagios="" share="" usr=""&gt;&lt;o:p/&gt;&lt;/directory&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; Options None&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; DirectoryIndex&nbsp;&nbsp;&nbsp; index.php&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; Order deny,allow&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; AuthType Basic&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; AuthUserFile /etc/nagios/passwd&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; AuthName "nagios"&lt;o:p/&gt;</pre>
+            <pre ngNonBindable>&nbsp;&nbsp; require valid-user&lt;o:p/&gt;</pre>
+        </div>
+    </div>
+    <pre ngNonBindable>
+       &lt;p&gt;
+       &lt;/p&gt;
+       &lt;p&gt;
+        Es necesario crear un usuario y darlo de alta en el fichero&nbsp;admin. Puesto que la web de nagios tiene un acceso limitado a los usuarios autentificados que se encuentran dentro en el fichero&nbsp;/etc/nagios/passwd&lt;code&gt;
+        &lt;i&gt;
+         .
+        &lt;/i&gt;
+       &lt;/p&gt;
+       &lt;div class="codigo elemento_centrado"&gt;
+        &lt;div class="texto_izquierda"&gt;
+         &lt;pre&gt;// Ejecutamos el siguiente comando:&lt;br&gt;# htpsswd -c /etc/nagios/passwd admin&lt;br&gt;&lt;br&gt;// Establecemos los permisos correctamente:&lt;br&gt;chmod 750 /usr/lib64/nagios/cgi-bin/-R&lt;br&gt;chown apache /usr/lib64/nagios/cgi-bin/-R&lt;br&gt;chgrp apache /usr/lib64/nagios/cgi-bin/-R&lt;br&gt;&lt;br/&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+    <pre ngNonBindable>chmod 750 /usr/share/nagios/html -R&lt;br&gt;chown apache /usr/share/nagios/html -R&lt;/br&gt;</pre>
+    <pre ngNonBindable>chgrp apache /usr/share/nagios/html -R</pre>
+</div>
+<p>
+</p>
+<p>
+    Reiniciamos nuestro servidor y ya podremos acceder a Nagios a través de un navegador web mediante la dirección
+    http://localhost/nagios
+
+    e introducimos usuario y contraseña.
+</p>
+<div class="codigo elemento_centrado">
+    <div class="texto_izquierda">
+        <pre ngNonBindable>#service httpd restart</pre>
+    </div>
+</div>
+
+<h1 class="title">
+    4.2.2.- Herramienta Web Centreon
+</h1><div class="iDevice_content">
+    <p>
+        Existen distintos proyectos libres con el objetivo de mejorar la interfaz web y facilitar la configuración de Nagios directamente desde la web. Para ello, el más utilizado es
+        <em>
+            <strong>
+                Centreon
+            </strong>
+        </em>
+        . Por lo tanto, podemos definir
+        <em>
+            Centreon
+        </em>
+        como una herramienta web utilizada por Nagios para la simplificación de su configuración así como una mayor funcionalidad.
+    </p>
+
+    <p>
+        La interfaz de Centreon es intuitiva y resulta fácil de usar. Si vas navegando por las distintas pestañas que te proporciona podrás ver:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong lang="en" title="Página de inicio">
+                Home
+            </strong>
+            : página de inicio, donde puedes ver el estado de los equipos y servicios que se están monitorizando.
+        </li>
+        <li>
+            <strong lang="en" title="Monitorización">
+                Monitoring:
+            </strong>
+            podemos observar un listado detallado de todos los servicios asociados a cada equipo. Mostrando su estado, el tiempo que lleva el servicio monitorizado, el último chequeo y la información de salida
+        </li>
+        <li>
+            <strong lang="en" title="Informes">
+                Reporting:
+            </strong>
+            tendrás distintas opciones de informes y gráficas para ver los resultados.
+        </li>
+        <li>
+            <strong title="Configuración">
+                Configuration
+            </strong>
+            : lugar donde podemos configurar todos los equipos y servicios que monitoriza N
+            <em>
+                agios.
+            </em>
+        </li>
+        <li>
+            <strong lang="en" title="Administración">
+                Administration:
+            </strong>
+            podremos configurar todas las opciones que presenta
+            <em>
+                Centreon.
+            </em>
+        </li>
+    </ul>
+
+
+
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>
