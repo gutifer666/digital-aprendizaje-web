@@ -43,18 +43,71 @@
     </div>
     <div style="clear: both">
     </div>
-</div><h1 class="title">
+</div>
+<h1 class="title">
     1.- Introducción.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        ¿Te has preguntado alguna vez dónde y de qué manera se almacenan y gestionan los datos que utilizamos diariamente? Si pensamos en cualquier acción de nuestra vida cotidiana, o si analizamos la mayoría de los ámbitos de actividad, nos encontramos que la utilización de las bases de datos está ampliamente extendida. Éstas, y los datos contenidos en ellas, serán imprescindibles para llevar a cabo multitud de acciones.
+
+        ¿Crees que no es para tanto? Piensa en las siguientes situaciones:
+
+        Cuando seleccionamos nuestro canal favorito en la TDT.
+        Al utilizar la agenda del móvil para realizar una llamada telefónica.
+        Cuando operamos en el cajero automático.
+        Al solicitar un certificado en un organismo público.
+        Cuando acudimos a la consulta del médico.
+        Al inscribirnos en un curso, plataforma OnLine, etc.
+        Si utilizas un GPS.
+        Cuando reservamos unas localidades para un evento deportivo o espectáculo.
+        Si consumimos ocio digital.
+        Cuando consultamos cualquier información en Internet. (Bibliotecas, enciclopedias, museos, etc.)
+        Al registrarte en una página de juegos OnLine, redes sociales o foros.
+        Incluso, si tienes coche, puede ser que éste incorpore alguna base de datos.
+        Suponemos que no es necesario que continuemos más para darnos cuenta de que casi todo lo que nos rodea, en alguna medida, está relacionado con los datos, su almacenamiento y su gestión. El gran volumen de datos que actualmente manejamos y sus innumerables posibilidades requieren de la existencia de técnicos perfectamente formados y capaces de trabajar con ellos.
+
+        Este módulo profesional se centra en el estudio de las Bases de Datos y su uso en el desarrollo de aplicaciones. En esta primera unidad comenzaremos conociendo los primeros sistemas basados en ficheros para el almacenamiento y gestión de la información. Seguidamente, se desarrollarán los conceptos y definiciones básicas relacionadas con las bases de datos, posteriormente analizaremos sus modelos y tipos, un poco más adelante, podremos conocer las características y capacidades de los sistemas gestores de bases de datos y finalmente, identificaremos las herramientas reales con las que llevar a cabo la gestión dichas bases.
+    </p>
+</div>
+<h1 class="title">
     2.- Los ficheros de información.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        Juan le cuenta a María que hace poco visitó un museo en el que había una exposición sobre historia de la informática y que pudo ver soportes antiguos para almacenamiento de información: tarjetas perforadas, cintas magnéticas, tambores magnéticos, discos de diferentes tamaños y otros dispositivos de la época.
+
+        -Todo ha evolucionado muchísimo, la cantidad de datos y archivos que hoy podemos transportar en los modernos sistemas de almacenamiento y la velocidad a la que podemos acceder a ellos es sorprendente -comenta María.
+
+        Ada, mientras, prepara un DVD para realizar una copia de seguridad de los archivos de su portátil, destaca que gracias a las mejoras en el modo de organización de ficheros y soportes de información, se ha abierto un sin fin de posibilidades para la aplicación de las TIC en cualquier ámbito.
+    </p>
+</div>
+<h1 class="title">
     2.1.- ¿Qué es un fichero?
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        En la década de los setenta, los procesos básicos que se llevaban a cabo en una empresa se centraban en cuestiones relacionadas con contabilidad y facturación. Las necesidades de almacenamiento y gestión de información podían satisfacerse utilizando un número relativamente reducido de archivos en papel agrupados y ordenados, los típicos ficheros clásicos.
+
+        Al llevar a cabo una primera informatización, se pasó de tener los datos en formato papel a poder acceder a ellos de manera mucho más rápida a través del ordenador. En ese momento, la informática adaptó sus herramientas para que los elementos que el usuario maneja en el ordenador se parezcan a los que utilizaba manualmente. Así en informática se sigue hablado de ficheros, formularios, carpetas, directorios,...
+
+        La información debía ser trasladada desde el papel al formato digital y por lo general, era necesario almacenarla para su posterior recuperación, consulta y procesamiento. De este modo, para llevar a cabo un tratamiento eficiente de ésta era necesario establecer métodos adecuados para su almacenamiento. El elemento que permitió llevar a cabo el almacenamiento de datos de forma permanente en dispositivos de memoria masiva fue el fichero o archivo.
+
+        Fichero o archivo: conjunto de información relacionada, tratada como un todo y organizada de forma estructurada. Es una secuencia de dígitos binarios que organiza información relacionada con un mismo aspecto.
+
+        Los ficheros están formados por registros lógicos que contienen datos relativos a un mismo elemento u objeto (por ejemplo, los datos de usuarios de una plataforma educativa). A su vez, los registros están divididos en campos que contienen cada una de las informaciones elementales que forman un registro (por ejemplo, el nombre del usuario o su dirección de correo electrónico).
+
+        Hemos de resaltar que los datos están almacenados de tal forma que se puedan añadir, suprimir, actualizar o consultar individualmente en cualquier momento.
+
+        Como los ficheros suelen ser muy voluminosos, solo se pueden llevar a la memoria principal partes de ellos para poder procesarlos. La cantidad de información que es transferida entre el soporte en el que se almacena el fichero, y la memoria principal del ordenador, en una sola operación de lectura/grabación, recibe el nombre de registro físico o bloque.
+
+        Normalmente en cada operación de lectura/grabación se transfieren varios registros del fichero, es decir un bloque suele contener varios registros lógicos. Al número de registros que entran en un bloque se le conoce con el nombre de factor de blocaje, y a esta operación de agrupar varios registros en un bloque se le llama bloqueo de registros.
+    </p>
+</div>
+<h1 class="title">
     2.2.- Tipos de ficheros.
-</h1><div class="iDevice_content">
+</h1>
+<div class="iDevice_content">
     <p>
         Según la función
         que vaya a desempeñar los ficheros, éstos pueden ser clasificados
@@ -147,11 +200,41 @@
     </ol>
 </div><h1 class="title">
     2.3.- Los soportes de información.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        Los ficheros se almacenan en soportes de información manejados por dispositivos periféricos del ordenador, que permiten leer y grabar datos en el soporte. Los soportes más utilizados para almacenar los ficheros son las cintas magnéticas y los discos (magnéticos, ópticos, o magneto-ópticos). Dentro de estos dos tipos de soporte existen en el mercado una gran variedad de modelos.
+
+        Inicialmente, los primeros sistemas de almacenamiento físico eran tambores de cinta magnética. Tenían unas dimensiones parecidas a los discos de vinilo. Estos tambores funcionaban de manera similar a los antiguos casetes, pero sus mayores dimensiones les permitían almacenar gran cantidad de datos en formato digital, es decir en ceros y unos, en orden secuencial.
+
+        Posteriormente, los sistemas de almacenamiento de información comenzaron a cambiar de la mano de los avances en el hardware, en concreto con la aparición del disquete y del disco duro. Eran dispositivos de acceso aleatorio, no siendo necesario en ellos pasar por todos los datos desde el inicio hasta la zona donde se encuentra la información que nos interesa.
+
+        Por tanto, se distinguen dos tipos de soportes para el almacenamiento de datos:
+
+        Soportes de Acceso Directo a los datos (Por ejemplo: discos). Son los más empleados y el acceso a los datos puede hacerse de forma directa, pudiendo colocarnos en la posición que nos interesa y leer a partir de ella.
+        Soportes de Acceso Secuencial (Por ejemplo: cintas magnéticas). Se suelen usar en copias de seguridad y si deseamos leer un dato que está en la mitad de la cinta, tendremos que leer todo lo que hay hasta llegar a esa posición.
+    </p>
+</div>
+<h1 class="title">
     2.4.- Métodos de acceso.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        A medida que la tecnología ha ido evolucionando, atendiendo principalmente a los avances hardware, el acceso a la información contenida en los diferentes tipos de ficheros ha variado mucho.
+
+        Los objetivos fundamentales de estas modificaciones pueden resumirse en los siguientes puntos:
+
+        Proporcionar un acceso rápido a los registros.
+        Conseguir economizar el almacenamiento.
+        Facilitar la actualización de los registros.
+        Permitir que la estructura refleje la organización real de la información.
+        Las distintas formas de organizar un fichero en un soporte de memoria o, lo que se conoce también por métodos de acceso a los ficheros se detallan en el siguiente gráfico.
+
+        Esquema en el que se detallan los diferentes métodos de acceso a los ficheros. Aparecen: el secuencial, una variación de éste, el secuencial encadenado. El secuencial indexado y el método directo que puede dividirse en acceso directo, acceso indexado y acceso calculado.
+        Las organizaciones secuencial, de acceso aleatorio o directo y de acceso indexado son las más comunes. En los siguientes epígrafes se detallarán las características de cada uno de los métodos de acceso a los ficheros.
+    </p>
+</div>
+<h1 class="title">
     2.5.- Ficheros secuenciales.
 </h1><div class="iDevice_content">
     <p>
@@ -642,13 +725,52 @@
             </p>
         </li>
     </ol>
-</div><h1 class="title">
+</div>
+<h1 class="title">
     2.9.- Parámetros de utilización.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        En función del uso que se vaya a dar al fichero, serán adecuados unos tipos u otros de organización. Mediante la utilización de parámetros de referencia, podremos determinar el uso de un fichero. Estos parámetros son:
+
+        Capacidad o volumen: es el espacio, en caracteres, que ocupa el fichero. La capacidad podrá calcularse multiplicando el número previsto de registros por la longitud media de cada registro.
+        Actividad: permite conocer la cantidad de consultas y modificaciones que se realizan en el fichero. Para poder especificar la actividad se deben tener en cuenta:
+        Tasa de consulta o modificación: que es el porcentaje de registros consultados o modificados en cada tratamiento del fichero, respecto al número total de registros contenidos en él.
+        Frecuencia de consulta o modificación: número de veces que se accede al fichero para hacer una consulta o modificación en un periodo de tiempo fijo.
+        Volatilidad: mide la cantidad de inserciones y borrados que se efectúan en un fichero. Para determinar la volatilidad es necesario conocer:
+        Tasa de renovación: es el tanto por ciento de registros renovados en cada tratamiento del fichero, respecto al número total de registros contenidos en él.
+        Frecuencia de renovación: es el número de veces que se accede al fichero para renovarlo en un periodo de tiempo fijo.
+        Crecimiento: es la variación de la capacidad del fichero y se mide con la tasa de crecimiento, que es el porcentaje de registros en que aumenta el fichero en cada tratamiento.
+    </p>
+</div>
+<h1 class="title">
     3.- Bases de datos.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        Caso práctico
+        Varios miembros de una empresa reunidos entorno a una mesa con documentación sobre ella y un vaso lleno.
+        Ada, Juan y María, se han reunido para aclarar ideas sobre qué sistema de gestión de información van a utilizar.
+
+        -Bases de datos, está claro. Pero, hay de varios tipos ¿no? -pregunta Juan.
+
+        Ada, asiente con la cabeza y confirma a sus dos compañeros que la práctica totalidad de los sistemas de información actuales utilizan acceso a bases de datos.
+
+        Continúa Ada: -Sé que todos conocemos lo que son las bases de datos, pero es necesario afianzar y aclarar muchos conceptos fundamentales que nos van hacer falta para plantear, diseñar y construir las bases de datos que nuestras aplicaciones utilizarán.
+
+        Si BK Programación va a desarrollar aplicaciones para diferentes ámbitos, deberá documentarse adecuadamente para poder seleccionar qué sistema de base de datos debe utilizar en cada situación. Para ello, todos sus miembros tendrán que recordar, actualizar o aprender gran cantidad de interesantes conocimientos relacionados con este campo de la informática.
+    </p>
+    <p>
+        Como hemos visto anteriormente, los ficheros permiten organizar y memorizar conjuntos de datos del mismo tipo o naturaleza con una determinada estructura, siendo un medio para el almacenamiento de los datos o resultados de una aplicación específica. Pero si las aplicaciones, al ser diseñadas, deben depender directamente de sus ficheros o archivos, se pierde independencia y surgen serios inconvenientes: como información duplicada, incoherencia de datos, fallos de seguridad, etc.
+
+        Estos problemas debían ser solucionados, es cuando aparece el concepto de base de datos. Una base de datos permitirá reunir toda la información relacionada en un único sistema de almacenamiento, pudiendo cualquier aplicación utilizarla de manera independiente y ofreciendo una mejora en el tratamiento de la información, así como una evolución para el desarrollo de aplicaciones.
+
+        La gestión de las bases de datos ha experimentado gran cantidad de cambios, partiendo de aplicaciones especializadas hasta llegar a convertirse en el núcleo de los entornos informáticos modernos. Con la llegada de Internet en los noventa, el número de usuarios de bases de datos creció exponencialmente, y aunque muchos de ellos no sean conscientes de ello, el acceso a dichas bases forma parte de la vida cotidiana de muchos de nosotros.
+
+        Conocer los sistemas que gestionan las bases de datos, sus conceptos fundamentales, el diseño, lenguajes y la implementación de éstas, podemos considerarlo imprescindible para alguien que se está formando en el campo de la informática.
+    </p>
+</div>
+<h1 class="title">
     3.1.- Conceptos.
 </h1><div class="iDevice_content">
     <p>
@@ -1871,13 +1993,48 @@
             </p>
         </li>
     </ol>
-</div><h1 class="title">
+</div>
+<h1 class="title">
     5.- Tipos de bases de datos.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+
+</div>
+<h1 class="title">
     6.- Sistemas gestores de base de datos.
-</h1><div class="iDevice_content">
-</div><h1 class="title">
+</h1>
+<div class="iDevice_content">
+    <p>
+        Ada explica a Juan y María que la elección de un buen Sistema Gestor de Base de Datos es fundamental. A través de esta herramienta podrán definir, construir y manejar las bases de datos con las que sus aplicaciones informáticas han de trabajar. Conocer sus funciones, componentes y tipos será la base fundamental para llevar a cabo una elección adecuada.
+
+        Juan dice: -Yo he utilizado varios sistemas gestores diferentes, cada uno tiene sus ventajas e inconvenientes, pero en general todos se parecen un poco. Eso sí, facilitan mucho el trabajo, son fiables y ahorran tiempo.
+    </p>
+    <p>
+        Para poder tratar la información contenida en las bases de datos se utilizan los sistemas gestores de bases de datos o SGBD, también llamados DBMS (DataBase Management System), que ofrecen un conjunto de programas que permiten acceder y gestionar dichos datos.
+
+        El objetivo fundamental de los SGBD es proporcionar eficiencia y seguridad a la hora de recuperar o insertar información en las bases de datos. Estos sistemas están diseñados para la manipulación de grandes bloques de información.
+
+        Sistema Gestor de Base de Datos: Conjunto coordinado de programas, procedimientos, lenguajes, etc., que suministra, tanto a los usuarios no informáticos, como a los analistas programadores, o al administrador, los medios necesarios para describir y manipular los datos contenidos en la base de datos, manteniendo su integridad, confidencialidad y seguridad.
+
+        El SGBD permite a los usuarios la creación y el mantenimiento de una base de datos, facilitando la definición, construcción y manipulación de la información contenida en éstas. Definir una base de datos consistirá en especificar los tipos de datos, las estructuras y las restricciones que los datos han de cumplir a la hora de almacenarse en dicha base. Por otro lado, la construcción de la base será el proceso de almacenamiento de datos concretos en algún medio o soporte de almacenamiento que esté supervisado por el SGBD. Finalmente, la manipulación de la base de datos incluirá la posibilidad de realización de consultas para recuperar información específica, la actualización de los datos y la generación de informes a partir de su contenido.
+
+        Las ventajas del uso de SGBD son:
+
+        Esquema en el que se muestra en qué lugar interactúa el SGBD con el resto del sistema.
+        Proporcionan al usuario una visión abstracta de los datos, ocultando parte de la complejidad relacionada con cómo se almacenan y mantienen los datos.
+        Ofrecen Independencia física, es decir, la visión que tiene de la información el usuario, y la manipulación de los datos almacenados en la Base de Datos, es independiente de cómo estén almacenados físicamente.
+        Disminuyen la redundancia y la inconsistencia de datos.
+        Aseguran la integridadde los datos.
+        Facilitan el acceso a los datos, aportando rapidez y evitando la pérdida de datos.
+        Aumentan la seguridad y privacidad de los datos.
+        Mejoran la eficiencia.
+        Permiten compartir datos y accesos concurrentes.
+        Facilitan el intercambio de datos entre distintos sistemas.
+        Incorporan mecanismos de copias de seguridad y recuperación para restablecer la información en caso de fallos en el sistema.
+        El SGBD interacciona con otros elementos software existentes en el sistema, concretamente con el sistema operativo (SO). Los datos almacenados de forma estructurada en la base de datos son utilizados indistintamente por otras aplicaciones, será el SGBD quien ofrecerá una serie de facilidades a éstas para el acceso y manipulación de la información, basándose en las funciones y métodos propios del sistema operativo.
+    </p>
+</div>
+<h1 class="title">
     6.1.- Funciones.
 </h1><div class="iDevice_content">
     <p>
@@ -2568,6 +2725,121 @@
 </div><h1 class="title">
     7.- SGBD comerciales.
 </h1><div class="iDevice_content">
+    <p>
+        ─¿Conocéis la multinacional Oracle? ¿Y su sistema de gestión de bases de datos Oracle 10g? ─Pregunta Ada.
+
+        Juan, que está terminando de instalar un nuevo disco duro en su equipo le responde: ─Por supuesto Ada, es el número uno en el mundo de las bases de datos y sus productos tienen una gran aceptación en el mercado. Según conozco, sus posibilidades y fiabilidad son impresionantes, aunque hay que pagar una licencia.
+
+        BK Programación ha de tener en cuenta que sus aplicaciones deben estar sustentadas en un sistema que ofrezca garantías, pero que se ajuste a sus necesidades, dimensiones y presupuesto. Es el momento de pensar su próxima jugada.
+    </p>
+    <p>
+        Actualmente, en el mercado de software existen multitud de sistemas gestores de bases de datos comerciales. En este epígrafe se desglosan las características fundamentales de los más importantes y extendidos hasta la fecha. Pero, como podrás observar, la elección de un SGBD es una decisión muy importante a la hora de desarrollar proyectos. A veces, el sistema más avanzado, "el mejor" según los entendidos, puede no serlo para el tipo de proyecto que estemos desarrollando. Hemos de tener en cuenta qué volumen de carga debe soportar la base de datos, qué sistema operativo utilizaremos como soporte, cuál es nuestro presupuesto, plazos de entrega, etc.
+
+        A través de la siguiente tabla se exponen los SGBD comerciales más utilizados y sus características más relevantes:
+    </p>
+
+        <table class="tabla">
+            <caption>Sistemas Gestores de Bases de Datos Comerciales.</caption>
+            <thead>
+            <tr>
+                <th scope="col">
+                    <p >SGBD</p>
+                </th>
+                <th scope="col">
+                    <p >Descripción</p>
+                </th>
+                <th scope="col">
+                    <p >URL</p>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">
+                    <p>ORACLE</p>
+                </th>
+                <td>
+                    <p>Reconocido como uno de los mejores a nivel mundial. Es multiplataforma,
+                        confiable y seguro. Es Cliente/Servidor. Basado en el modelo de datos
+                        Relacional. De gran potencia, aunque con un precio elevado hace que sólo se
+                        vea en empresas muy grandes y multinacionales. Ofrece una versión gratuita
+                        <strong>Oracle Database Express Edition 11</strong><em>g</em><strong>
+                            Release 2.<br></strong>
+                    </p>
+                </td>
+                <td>
+                    <p ><a title="Acceder a página sobre ¿Qué versión de Oracle me interesa? (en Inglés)." href="http://www.oracle.com/us/products/database/product-editions-066501.html?ssSourceSiteId=ocomes">Oracle</a>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <p>MYSQL</p>
+                </th>
+                <td>
+                    <p>Sistema muy extendido que se ofrece bajo dos tipos de licencia, comercial o
+                        libre. Para aquellas empresas que deseen incorporarlo en productos
+                        privativos, deben comprar una licencia específica. Es Relacional, <a class="glosario" href="./recopila_files/saved_resource">Multihilo,<span><em>Multihilo</em>Un
+                                                        hilo de ejecución o subproceso es una característica que permite a
+                                                        una aplicación realizar varias tareas a la vez (concurrentemente).
+                                                        Los distintos hilos de ejecución comparten una serie de recursos
+                                                        tales como el espacio de memoria, los archivos abiertos, situación
+                                                        de autenticación, etc.</span></a> Multiusuario y Multiplataforma. Su
+                        gran velocidad lo hace ideal para consulta de bases de datos y plataformas
+                        web.</p>
+                </td>
+                <td>
+                    <p ><a title="Acceder a Web oficial MySQL" href="http://www.mysql.com/">MySQL</a></p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <p>DB2</p>
+                </th>
+                <td>
+                    <p>Multiplataforma, el motor de base de datos relacional integra de manera nativa, lo que ha
+                        llamado pureXML, que permite almacenar documentos completos para realizar
+                        operaciones y búsquedas de manera jerárquica dentro de éste, e integrarlo
+                        con búsquedas relacionales.</p>
+                </td>
+                <td>
+                    <div class="enlace_centrado"><a title="Acceder a página sobre DB2 express edition de IBM." href="http://www.ibm.com/developerworks/ssa/downloads/im/udbexp/">DB2</a>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <p>Microsoft SQL SERVER</p>
+                </th>
+                <td>
+                    <p>Sistema Gestor de Base de Datos producido por Microsoft. Es relacional, sólo
+                        funciona bajo Microsoft Windows, utiliza arquitectura Cliente/Servidor.
+                        Constituye la alternativa a otros potentes SGBD como son Oracle, PostgreSQL
+                        o MySQL.</p>
+                </td>
+                <td>
+                    <p ><a title="Acceder a página sobre Microsoft SQL Server 2008." href="http://www.microsoft.com/es-es/download/details.aspx?id=1695">Microsoft
+                        SQL Server 2008</a></p>
+                </td>
+            </tr>
+            <tr>
+                <th scope="row">
+                    <p>SYBASE</p>
+                </th>
+                <td>
+                    <p>Un DBMS con bastantes años en el mercado, tiene 3 versiones para ajustarse a
+                        las necesidades reales de cada empresa. Es un sistema relacional, altamente
+                        escalable, de alto rendimiento, con soporte a grandes volúmenes de datos,
+                        transacciones y usuarios, y de bajo costo.</p>
+                </td>
+                <td>
+                    <div class="enlace_centrado"><a title="Acceder a página sobre Sybase." href="http://www.sybase.es/products/databasemanagement/adaptiveserverenterprise">Sybase</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
 </div><h1 class="title">
     8.- SGBD libres.
 </h1><div class="iDevice_content">
