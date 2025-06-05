@@ -1,0 +1,3713 @@
+<h1 class="title">
+    Implementación de Bases de Datos Relacionales.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ada
+        </strong>
+        está analizando la manera en la que
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            María
+        </strong>
+        han comenzando a construir la base de
+        datos que sustentará el sitio web de juegos
+        <span lang="en">
+           online
+          </span>
+        . Parece
+        que la aplicación del modelo relacional está marchando correctamente, aunque le
+        interesa que el proceso se realice siguiendo un método lo más estandarizado posible
+        y que les ofrezca independencia del
+        <abbr title="Sistema Gestor de Bases de Datos.">
+            SGBD
+        </abbr>
+        que escojan.
+    </p>
+    <p>
+        De este modo, podrán planificar el desarrollo de cada una de las
+        fases y ajustar mejor los tiempos dedicados a cada una de ellas.
+    </p>
+    <p>
+        Como en BK programación trabajan sobre todo con Oracle y MySQL, la implementación de
+        la base de datos se realizará en estos dos SGBD.
+    </p>
+</div><h1 class="title">
+    1.- Modelo de datos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Una vez realizado el diagrama E- R y su posterior paso a tablas, Juan y Ana deben de
+        seguir trabajando. El siguiente paso sería implementar las tablas obtenidas en los
+        SGBD de Oracle y MySQL pero para hacerlo correctamente es necesario que conozcan
+        todas las caracteristicas del modelo de datos relacional, que es el en que se van a
+        basar para construir las tablas.
+    </p>
+    <p>
+        Antes de que sigan trabajando, Ada les pregunta si tienen claro lo que es un Modelo
+        de Datos.
+    </p>
+</div><h1 class="title">
+    2.- Terminología del modelo relacional.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ana ya tiene claro lo que es un modelo de datos pero se pregunta por qué el modelo de
+        datos que más se utiliza es el modelo Relacional. Ada le responde que el modelo más
+        empleado es el modelo relacional, por su gran versatilidad, potencia y su base
+        matemática.
+    </p>
+</div><h1 class="title">
+    2.1.- Relación o tabla. Tuplas. Dominios.
+</h1><div class="iDevice_content">
+    Pero... ¿qué es eso de “relación”? Hemos dicho que el modelo relacional se basa en el concepto
+    matemático de relación, ya que Codd, que era un experto matemático, utilizó una terminología
+    perteneciente a las matemáticas, en concreto a la teoría de conjuntos y a la lógica de
+    predicados.
+</div><h1 class="title">
+    2.2.- Grado. Cardinalidad.
+</h1><div class="iDevice_content">
+    <div class="elemento_izquierda">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Ya hemos visto que una relación es una tabla con filas y columnas. Pero
+        ¿hasta cuántas columnas puede contener? ¿Cuántos atributos podemos guardar en una tabla?
+    </p>
+    <p>
+        Llamaremos
+        <strong>
+            grado
+        </strong>
+        al tamaño de una tabla en base a su número
+        de atributos (columnas). Mientras mayor sea el grado, mayor será su complejidad para
+        trabajar con ella.
+    </p>
+    <p>
+        ¿Y cuántas tuplas (filas o registros) puede tener?
+    </p>
+    <p>
+        Llamaremos
+        <strong>
+            cardinalidad
+        </strong>
+        al número de tuplas o filas de una
+        relación o tabla.
+    </p>
+    <p >
+        Vamos a verlo con un ejemplo. Relación de grado 3, sobre los dominios.
+        <span class="conjunto">A = &#123;Carlos, María&#125;</span>
+        <span class="conjunto">B = &#123;Matemáticas, Lengua, Inglés&#125;</span>
+        <span class="conjunto">C = &#123;Aprobado, Suspenso&#125;</span>
+    </p>
+    <p>
+        Las posibles relaciones que obtenemos al realizar el producto cartesiano
+        <span title="A multiplicado por B multiplicado por C.">
+         AxBxC
+        </span>
+        es el siguiente:
+    </p>
+    <table class="tabla">
+        <caption>
+            Producto Cartesiano AxBxC.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                <p>
+                    A=&#123;Carlos, María&#125;
+                </p>
+            </th>
+            <th scope="col">
+                <p>
+                    B=&#123;Matemáticas, Lengua&#125;
+                </p>
+            </th>
+            <th scope="col">
+                <p>
+                    C=&#123;Aprobado, Suspenso&#125;
+                </p>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    MATEMÁTICAS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    MATEMÁTICAS
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    LENGUA
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    LENGUA
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    INGLÉS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    INGLÉS
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    MATEMÁTICAS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    MATEMÁTICAS
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    LENGUA
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    LENGUA
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    INGLÉS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    INGLÉS
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+        Si cogemos un subconjunto de ésta con 5 filas, tendríamos una relación de cardinalidad 5:
+    </p>
+    <table class="tabla">
+        <caption>
+            Subconjunto del Producto Cartesiano AxBxC con cardinalidad 5.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                <p>
+                    A=&#123;Carlos, María&#125;
+                </p>
+            </th>
+            <th scope="col">
+                <p>
+                    B=&#123;Matemáticas, Lengua&#125;
+                </p>
+            </th>
+            <th scope="col">
+                <p>
+                    C=&#123;Aprobado, Suspenso&#125;
+                </p>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    MATEMÁTICAS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    LENGUA
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    CARLOS
+                </p>
+            </th>
+            <td>
+                <p>
+                    INGLÉS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    MATEMÁTICAS
+                </p>
+            </td>
+            <td>
+                <p>
+                    APROBADO
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <p>
+                    MARÍA
+                </p>
+            </th>
+            <td>
+                <p>
+                    INGLÉS
+                </p>
+            </td>
+            <td>
+                <p>
+                    SUSPENSO
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.3.- Sinónimos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.- Relaciones. Características de una relación (tabla).
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.1.- Tipos de relaciones (tablas).
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.- Tipos de datos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Juan le ha pedido a Ana que repase cada una de las relaciones y en función de los
+        datos que contenga cada atributo, elegir el tipo de datos más adecuado. Más adelante
+        habrá que restringir esos valores para que al introducir datos no se produzcan
+        errores. Los tipos de datos ocupan espacio en el disco duro del
+        servidor
+
+
+        Servidor
+
+        Computadora que, formando parte de una red, provee
+        servicios a otras computadoras denominadas clientes.
+        donde se
+        guarde y eso significa un gasto para la empresa, así que hay que optimizar.
+    </p>
+    <p>
+        Además, Ana todavía recuerda aquella vez que tuvo que entregar una práctica en la
+        facultad sobre base de datos. Guardó el teléfono con un formato de número y cuando
+        fue a imprimir un informe... ¡no quiere ni acordarse! Le salieron unos números de
+        teléfonos que nada tenían que ver con los datos introducidos.
+    </p>
+</div><h1 class="title">
+    5.- Claves.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.- Clave candidata. Clave primaria. Clave alternativa.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.2.- Clave externa, ajena o secundaria.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.- Índices. Características.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    7.- El valor NULL. Operaciones con este valor.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    8.- Vistas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    9.- Usuarios. Roles. Privilegios
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    10.- SQL.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    10.1.- Elementos del lenguaje. Normas de escritura.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Imagínate que cada programador utilizara sus propias reglas para escribir. Esto sería un
+        caos. Es muy importante establecer los elementos con los que vamos a trabajar y unas normas
+        que seguir.
+    </p>
+    <p>
+        El lenguaje SQL está compuesto por comandos, cláusulas, operadores, funciones y literales .
+        Todos estos elementos se combinan en las instrucciones y se utilizan para crear, actualizar
+        y manipular bases de datos. Estos conceptos son bastante amplios por eso será mejor que
+        vayamos por partes.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                COMANDOS
+            </strong>
+            : Van a ser las instrucciones que se pueden crear en SQL. Se
+            pueden distinguir en tres grupos que veremos con más detenimiento a lo largo de las
+            siguientes unidades:
+            <ul>
+                <li>
+                    De definición de datos (DDL,
+                    <span lang="en">
+            Data Definition Language
+           </span>
+                    ),
+                    que permiten crear y definir nuevas bases de datos, tablas, campos, etc.
+                </li>
+                <li>
+                    De manipulación de datos (DML,
+                    <span lang="en">
+            Data Manipulation
+											Language
+           </span>
+                    ), que permiten generar consultas para ordenar, filtrar y
+                    extraer datos de la base de datos.
+                </li>
+                <li>
+                    De control y seguridad de datos (
+                    <abbr title="Data Control Language.">
+                        DCL
+                    </abbr>
+                    ,
+                    <span lang="en">
+            Data Control Language
+           </span>
+                    ), que
+                    administran los derechos y restricciones de los usuarios.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                CLÁUSULAS:
+            </strong>
+            Llamadas también condiciones o criterios, son palabras
+            especiales que permiten modificar el funcionamiento de un comando.
+        </li>
+        <li>
+            <strong>
+                OPERADORES
+            </strong>
+            : Permiten crear expresiones complejas. Pueden ser
+            aritméticos (+, -, *, /, ...) o lógicos (&lt; , &gt;, , &lt; &gt;,
+            <span lang="en">
+          And,
+									Or
+         </span>
+            , etc.).
+        </li>
+        <li>
+            <strong>
+                FUNCIONES:
+            </strong>
+            Para conseguir valores complejos. Por ejemplo, la función
+            promedio para obtener la media de un salario.
+        </li>
+        <li>
+            <strong>
+                LITERALES
+            </strong>
+            : Les podemos llamar también constantes y serán valores
+            concretos, como por ejemplo un número, una fecha, un conjunto de caracteres, etc.
+        </li>
+    </ul>
+    <p>
+        Y tendremos que seguir unas normas sencillas pero primordiales:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Todas las instrucciones
+            <strong>
+                terminan con un signo de punto y coma
+            </strong>
+            .
+        </li>
+        <li>
+            No se distingue entre mayúsculas y minúsculas.
+        </li>
+        <li>
+            Cualquier comando puede separse con saltos de línea o espacios para facilitar su lectura
+            y comprensión.
+        </li>
+        <li>
+            Los comentarios comienzan por /* y terminan con */ (excepto en algunos SGBD).
+        </li>
+        <li>
+            Se pueden tabular líneas para facilitar la lectura si fuera necesario.
+        </li>
+    </ul>
+    <p>
+        Juan le ha dicho a Ana que es hora de ponerse a trabajar con la aplicación. Para aprender
+        mejor le ha pedido permiso a Juan para instalar Oracle y MySQL en su ordenador y así ir
+        probando todo sobre la marcha para no cometer errores. El SQL estándar y el SQL de Oracle y
+        MySQL son bastante parecidos, pero con algunas diferencias.
+    </p>
+</div><h1 class="title">
+    11.- Lenguaje de descripción de datos (DDL).
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    11.1.- Creación y borrado de bases de datos. Objetos de la base de datos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Básicamente, la creación de la base de datos consiste en crear las tablas que la componen.
+        Aunque antes de ésto, dependiendo del
+        <abbr title="Sistema Gestor de Bases de Datos">
+            SGBD
+        </abbr>
+        , tendríamos que definir un
+        espacio de nombres separado para cada conjunto de tablas. Es lo que antes hemos llamado
+        <strong>
+            esquemas
+        </strong>
+        o
+        <strong>
+            usuarios
+        </strong>
+        .
+    </p>
+    <p>
+        Crear una base de datos implica indicar los archivos y ubicaciones que se van a utilizar
+        además de otras indicaciones técnicas y administrativas. Es obvio que todo esto sólo lo
+        puede realizar si se tiene privilegio de Administrador.
+    </p>
+    <p>
+        Con el estándar de SQL la instrucción a usar sería Create Database, pero cada SGBD tiene un
+        procedimiento para crear las bases de datos. Crearíamos una base de datos con el nombre que
+        se indique a continuación.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE DATABASE NombredemiBasedeDatos;
+</pre>
+        </div>
+    </div>
+    <p>
+        En el caso de
+        <strong>
+            MySQL
+        </strong>
+        la sintaxis a utilizar sería la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.900000000000006em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE &#123;DATABASE | SCHEMA&#125; [IF NOT EXISTS] NombredemiBaseDatos</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Obligatoriamente se debe poner bien SCHEMA o bien DATABASE,
+        </li>
+        <li>
+            Opcionalmente se puede incluir IF NOT EXISTS. Si lo incluimos, al crear la base de datos
+            de nombre NombredemiBaseDatos, si no existe una base dedatos con ese nombre, la crea, si
+            ya existe, no intentará crearla ni dará error.
+        </li>
+    </ul>
+    <p>
+        Por ejemplo, a la base de datos que están creando Juan y Ana se le va a llamar RyMjuegos,
+        entonces nos quedaría:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.3em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE DATABASE RyMjuegos;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por otro lado la instrucción más utilizada para
+        <strong>
+            borrar
+        </strong>
+        bases de datos es
+        <strong>
+            Drop Database
+        </strong>
+        . En MySQL el comando se acompaña con el nombre de la base de
+        datos a eliminar. En el caso de querer eliminar la base de datos RyMjuegos pondríamos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.200000000000003em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DROP DATABASE RyMjuegos;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Hemos estado hablando de objetos de la base de datos, ahora veremos a qué nos referimos.
+    </p>
+    <p>
+        Según los estándares,
+        <strong>
+            una base de datos es un conjunto de objetos que nos servirán
+            para gestionar los datos
+        </strong>
+        . Estos objetos están contenidos en esquemas y éstos a
+        su vez suelen estar asociados a un usuario. De ahí que antes dijéramos que cada base de
+        datos tiene un esquema que está asociado a un usuario.
+    </p>
+</div><h1 class="title">
+    11.2.- Creación de tablas.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        ¿Qué necesitamos para poder guardar los datos? Lo primero será definir los objetos donde
+        vamos a agrupar esos datos. Los objetos básicos con los que trabaja SQL son las tablas, que
+        como ya sabemos es un conjunto de filas y columnas cuya intersección se llama celda. Es ahí
+        donde se almacenarán los elementos de información, los datos que queremos recoger.
+    </p>
+    <p>
+        Antes de crear la tabla es conveniente planificar algunos detalles:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Qué nombre
+            </strong>
+            le vamos a dar
+            <strong>
+                a la tabla
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Qué nombre
+            </strong>
+            le vamos a dar a cada una de las
+            <strong>
+                columnas
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Qué tipo y tamaño de datos
+            </strong>
+            vamos a almacenar en cada columna.
+        </li>
+        <li>
+            <strong>
+                Qué restricciones
+            </strong>
+            tenemos sobre los datos.
+        </li>
+        <li>
+            Alguna otra
+            <strong>
+                información adicional
+            </strong>
+            que necesitemos.
+        </li>
+    </ul>
+    <p>
+        Y debemos tener en cuenta otras
+        <strong>
+            reglas
+        </strong>
+        que se deben cumplir
+        <strong>
+            para los
+            nombres de las tablas
+        </strong>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            No podemos tener nombres de tablas duplicados en un mismo esquema (usuario).
+        </li>
+        <li>
+            Deben comenzar por un carácter alfabético.
+        </li>
+        <li>
+            Su longitud máxima es de 30 caracteres.
+        </li>
+        <li>
+            Solo se permiten letras del alfabeto inglés, dígitos o el signo de guión bajo.
+        </li>
+        <li>
+            No puede coincidir con las palabras reservadas de SQL (por ejemplo, no podemos llamar a
+            una tabla
+            <span lang="en">
+          WHERE
+         </span>
+            ).
+        </li>
+        <li>
+            No se distingue entre mayúsculas y minúsculas.
+        </li>
+        <li>
+            En el caso de que el nombre tenga espacios en blanco o caracteres nacionales (permitido
+            sólo en algunas bases de datos), entonces se suele entrecomillar con comillas dobles. En
+            el estándar SQL99 (respetado por Oracle) se pueden utilizar comillas dobles al poner el
+            nombre de la tabla a fin de hacerla sensible a las mayúsculas (se diferenciará entre
+            "USUARIOS"y "Usuarios").
+        </li>
+    </ul>
+    <p>
+        La sintaxis básica del comando que permite crear una tabla es la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE [esquema.] nombredeTabla (
+</pre>
+            <pre ngNonBindable>	columna1 Tipo_Dato,
+</pre>
+            <pre ngNonBindable>	columna2 Tipo_Dato,
+</pre>
+            <pre ngNonBindable>	...
+</pre>
+            <pre ngNonBindable>	columnaN Tipo_Dato );
+</pre>
+        </div>
+    </div>
+    <p>
+        donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            columna1, columna2, ..., columnaN son los nombres de las columna que contendrá la tabla.
+        </li>
+        <li>
+            Tipo_Dato indica el tipo de dato de cada columna.
+        </li>
+    </ul>
+    <p>
+        Si nos centramos en
+        <strong>
+            MySQL
+        </strong>
+        , la sintaxis para crear una tabla sería la
+        siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE TABLE  [IF NOT EXISTS] [esquema].nombretabla(    &lt;br /&gt;Columna1 TipoDato [restricciones de columna]    &lt;br /&gt;Columna2 TipoDato [restricciones de columna]&lt;br /&gt;…………………………….   </pre>
+            <pre ngNonBindable>[restricciones de tabla] ) &lt;br /&gt;[ &#123;ENGINE | TYPE&#125; = Tipo_Tabla]; </pre>
+        </div>
+    </div>
+    <p>
+        donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                nombretabla
+            </strong>
+            : nombre de la tabla (identificador válido según las reglas
+            soportadas por el gestor de bases de datos).
+        </li>
+        <li>
+            I
+            <strong>
+                F NOT EXISTS
+            </strong>
+            : la tabla se creará si no existe ya una con ese nombre.
+        </li>
+        <li>
+            <strong>
+                ColumnaN
+            </strong>
+            : nombre de la columna (identificador válido según las reglas
+            soportadas por el gestor de bases de datos).
+        </li>
+        <li>
+            <strong>
+                TipoDato
+            </strong>
+            : Tipo de dato para la columna (por ejemplo: INT, VARCHAR,
+            CHAR, DATE,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            .)
+        </li>
+        <li>
+            <strong>
+                ENGINE
+            </strong>
+            : indica el tipo de almacenamiento para la tabla mediante
+            Tipo_Tabla. En la misma
+            <abbr title="Base de Datos">
+                BD
+            </abbr>
+            puede haber tablas
+            con diferente tipo de almacenamiento, como por ejemplo son las tablas MyISAM y las
+            tablas InnoDB. (Los tipos de almacenamiento de tablas permitidos en nuestra
+            <abbr title="Sistema Gestor de Bases de Datos">
+                SGBD
+            </abbr>
+            los podemos ver con la
+            sentencia: SHOW ENGINES;)
+        </li>
+    </ul>
+    <p>
+        ¿Qué son las restricciones?
+    </p>
+    <p>
+        Una
+        <strong>
+            restricción
+        </strong>
+        es una condición que una o varias columnas deben cumplir
+        obligatoriamente. (En el siguiente apartado las veremos en detalle)
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Restricciones de columna
+            </strong>
+            : Afectan solo a esa columna (clave primaria,
+            no nulo, etc.)
+        </li>
+        <li>
+            <strong>
+                Restricciones de tabla
+            </strong>
+            : se indican después de especificar todas las
+            columnas, se les puede asignar un nombre y pueden afectar a varias columnas.
+            <br>
+            <br>
+            <br/><br/></li>
+    </ul>
+    <p>
+        Ana va a crear la primera tabla llamada USUARIOS con un solo campo de tipo VARCHAR:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (Nombre VARCHAR(25));
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Recuerda
+        </strong>
+        que solo podrás crear tablas si posees los permisos necesarios para
+        ello.
+    </p>
+</div><h1 class="title">
+    11.3.- Restricciones.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Hay veces que necesitamos que un dato se incluya en una tabla de manera obligatoria, otras
+        veces necesitaremos definir uno de los campos como llave primaria o ajena. Todo esto
+        podremos hacerlo cuando definamos la tabla, además de otras opciones.
+    </p>
+    <p>
+        Una
+        <strong>
+            restricción
+        </strong>
+        es una condición que una o varias columnas deben cumplir
+        obligatoriamente.
+    </p>
+    <p>
+        Cada restricción que creemos llevará un nombre, si no se lo ponemos nosotros lo hará Oracle,
+        MySQL o el SGBD que estemos utilizando. Es conveniente que le pongamos un nombre que nos
+        ayude a identificarla y que sea único para cada esquema (usuario). Es buena idea incluir de
+        algún modo el nombre de la tabla, los campos involucrados y el tipo de restricción en el
+        nombre de la misma. La sintaxis en SQL estándar, para indicar las
+        <strong>
+            restricciones a
+            nivel de columna
+        </strong>
+        , es la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE NOMBRETABLA (
+</pre>
+            <pre ngNonBindable>     Columna1 Tipo_Dato
+</pre>
+            <pre ngNonBindable>          [CONSTRAINT nombredelarestricción]
+</pre>
+            <pre ngNonBindable>          [NOT NULL]
+</pre>
+            <pre ngNonBindable>          [UNIQUE]</pre>
+            <pre ngNonBindable>          [DEFAULT valor]</pre>
+            <pre ngNonBindable>          [CHECK condición]</pre>
+            <pre ngNonBindable>          [PRIMARY KEY]
+</pre>
+            <pre ngNonBindable>          [FOREIGN KEY]
+</pre>
+            <pre ngNonBindable>          [REFERENCES nombreTabla [(columna [, columna ])]
+</pre>
+            <pre ngNonBindable>          [ON DELETE CASCADE]],
+</pre>
+            <pre ngNonBindable>     Columna2 Tipo_Dato
+</pre>
+            <pre ngNonBindable>          [CONSTRAINT nombredelarestricción]
+</pre>
+            <pre ngNonBindable>          [NOT NULL]
+</pre>
+            <pre ngNonBindable>          [UNIQUE]</pre>
+            <pre ngNonBindable>          [DEFAULT valor]</pre>
+            <pre ngNonBindable>          [CHECK condición]</pre>
+            <pre ngNonBindable>          [PRIMARY KEY]
+</pre>
+            <pre ngNonBindable>          [FOREIGN KEY]
+</pre>
+            <pre ngNonBindable>          [REFERENCES nombreTabla [(columna [, columna ])]
+</pre>
+            <pre ngNonBindable>          [ON DELETE CASCADE]]
+</pre>
+            <pre ngNonBindable>          [CHECK condición],...);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Veamos un ejemplo en
+        <strong>
+            Oracle
+        </strong>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 36.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR(15) CONSTRAINT usu_log_PK PRIMARY KEY,
+</pre>
+            <pre ngNonBindable>    Password VARCHAR (8) NOT NULL,
+</pre>
+            <pre ngNonBindable>    Fecha_Ingreso DATE DEFAULT SYSDATE);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El mismo ejemplo en
+        <strong>
+            MySQL
+        </strong>
+        , sería:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 36.800000000000004em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE TABLE USUARIOS2 ( </pre>
+            <pre ngNonBindable>    Login VARCHAR(15) PRIMARY KEY, </pre>
+            <pre ngNonBindable>    Password VARCHAR(8) NOT NULL, </pre>
+            <pre ngNonBindable>    Fecha_Ingreso  TIMESTAMP DEFAULT CURRENT_TIMESTAMP);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Otra restricción a nivel de columna es [AUTO_INCREMENT].
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Con [AUTO_INCREMENT] MySQL permite asignar un identificador único a cada fila, generando
+            secuencias de números de forma automática, comenzando usualemnte desde el 1.
+        </li>
+    </ul>
+    <p>
+        Otra opción es definir las columnas de la tabla y después especificar las restricciones,
+        <strong>
+            restricciones a nivel de tabla
+        </strong>
+        , de este modo podrás referir varias columnas
+        en una única restricción.
+    </p>
+    <p>
+        En los siguientes apartados veremos cada una de las restricciones, su significado y su uso.
+    </p>
+</div><h1 class="title">
+    11.3.1.- Restricción NOT NULL.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Con esta restricción obligaremos a que esa columna tenga un valor o lo que es lo mismo,
+        prohíbe los valores nulos para una columna en una determinada tabla.
+    </p>
+    <p>
+        Podremos ponerlo cuando creamos o modificamos el campo añadiendo la palabra NOT NULL después
+        de poner el tipo de dato.
+    </p>
+    <p>
+        Si en la tabla USUARIOS queremos que el campo "F_Nacimiento" sea obligatorio ponerlo, nos
+        quedaría así:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 23.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable> CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    F_Nacimiento DATE NOT NULL);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En
+        <strong>
+            Oracle
+        </strong>
+        también se podría nombrar la restricción. Podría ser:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 36.25em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE TABLE USUARIOS</pre>
+            <pre ngNonBindable>    F_Nacimiento DATE CONSTRAINT Usu_Fnac_NN NOT NULL);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <pre ngNonBindable> </pre>
+    <pre ngNonBindable> </pre>
+    <p>
+    </p>
+</div><h1 class="title">
+    11.3.2.- Restricción UNIQUE.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Habrá ocasiones en la que nos interese que no se puedan repetir valores en la columna, en
+        estos casos utilizaremos la restricción UNIQUE. Oracle crea un índice automáticamente cuando
+        se habilita esta restricción y lo borra al deshabilitarla.
+    </p>
+    <p>
+        También para esta restricción tenemos dos posibles formas de ponerla, veámoslo con un
+        ejemplo. Supongamos que el campo
+        <span lang="en">
+         Login
+        </span>
+        de nuestra tabla va a ser
+        único. Lo incluiremos en la tabla que estamos creando.
+    </p>
+    <p>
+        En
+        <strong>
+            Oracle
+        </strong>
+        podría ser:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR(25)
+</pre>
+            <pre ngNonBindable>        CONSTRAINT Usu_Log_UK UNIQUE);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Y tanto en
+        <strong>
+            Oracle
+        </strong>
+        como en
+        <strong>
+            MySQL
+        </strong>
+        podría ser:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 23.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR(25) UNIQUE);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        También podemos poner esta restricción a varios campos a la vez, por ejemplo, si queremos que
+        <span lang="en">
+         Login
+        </span>
+        y correo electrónico sean únicos podemos ponerlo así:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR (25),
+</pre>
+            <pre ngNonBindable>    Correo VARCHAR (25),
+</pre>
+            <pre ngNonBindable>        CONSTRAINT Usuario_UK UNIQUE (Login, Correo));
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si te fijas, detrás del tipo de datos de Correo hay una coma, eso es así porque la
+        restricción es independiente de ese campo y común a varios. Por eso después de UNIQUE hemos
+        puesto entre paréntesis los nombres de los campos a los que afecta la restricción.
+    </p>
+</div><h1 class="title">
+    11.3.3.- Restricción PRIMARY KEY.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En el modelo relacional las tablas deben tener una clave primaria. Es evidente que cuando
+        creamos la tabla tendremos que indicar a quién corresponde.
+    </p>
+    <p>
+        Sólo puede haber una clave primaria por tabla pero ésta puede estar formada por varios
+        campos. Dicha clave podrá ser referenciada como clave ajena en otras tablas.
+    </p>
+    <p>
+        La clave primaria hace que los campos que forman sean NOT NULL y que los valores de los
+        campos sean de tipo UNIQUE.
+    </p>
+    <p>
+        Veamos como quedaría la si la clave fuese el campo
+        <span lang="en">
+         Login
+        </span>
+        :
+    </p>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si la clave la forma un único campo:
+            <strong>
+                (Oracle y MySQL
+            </strong>
+            )
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 24.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>	Login VARCHAR (25) PRIMARY KEY);
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            O bien poniendo un nombre a la restricción: (
+            <strong>
+                Oracle
+            </strong>
+            )
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 30.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>     Login VARCHAR (25)
+</pre>
+            <pre ngNonBindable>          CONSTRAINT Usu_log_PK PRIMARY KEY);
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            Si la clave está formada por más de un campo, por ejemplo Nombre, Apellidos y Fecha de
+            Nacimiento, entonces, obligatoriamente hay que ponerlo como restricción de tabla,
+            después de haber declarado las columnas correspondientes: (
+            <strong>
+                Oracle y
+                MySQL
+            </strong>
+            )
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 41.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>	Nombre VARCHAR (25),
+</pre>
+            <pre ngNonBindable>	Apellidos VARCHAR (30),
+</pre>
+            <pre ngNonBindable>	F_Nacimiento DATE,
+</pre>
+            <pre ngNonBindable>	CONSTRAINT Usu_PK PRIMARY KEY(Nombre, Apellidos, F_Nacimiento));
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    11.3.4.- Restricción REFERENCES. FOREIGN KEY.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Ya vimos que las claves ajenas, secundarias o foráneas eran campos de una tabla que se
+        relacionaban con la clave primaria (o incluso con la clave candidata) de otra tabla.
+    </p>
+    <p>
+        Cuando creemos la tabla tendremos que indicar de alguna forma quién es clave ajena. Lo
+        haremos "haciendo referencia" a la tabla y los campos de donde procede.
+    </p>
+    <p>
+        En nuestra tabla vamos a tener una clave ajena procedente de la tabla PARTIDAS que será su
+        Cod_Partida, por tanto tendremos que hacer referencia a éste. En
+        <strong>
+            Oracle
+        </strong>
+        se
+        puede poner&nbsp; la restricción junto al campo que va a ser la clave ajena:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable> CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR (25) PRIMARY KEY, </pre>
+            <pre ngNonBindable>       Cod_PartidaINTEGER(8)  </pre>
+            <pre ngNonBindable>       CONSTRAINT Cod_Part_FK  </pre>
+            <pre ngNonBindable>       REFERENCES PARTIDAS(Cod_Partida));  </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        También, si el campo al que hace referencia es clave principal en su tabla no es necesario
+        indicar el nombre del campo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 22.5em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE TABLE USUARIOS ( </pre>
+            <pre ngNonBindable>       Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;       Cod_Partida INTEGER(8) </pre>
+            <pre ngNonBindable>       CONSTRAINT Cod_Part_FK </pre>
+            <pre ngNonBindable>       REFERENCES PARTIDAS); </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En
+        <strong>
+            MySQL
+        </strong>
+        al igual que con las restricciones anteriores la clave ajena se
+        pone al final. En este caso tendremos que colocar el texto FOREIGN KEY para especificar a
+        qué campo se está refiriendo. (También se podría hacer así en Oracle)
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;    Cod_Partida INTEGER(8), </pre>
+            <pre ngNonBindable>    F_Partida DATE, </pre>
+            <pre ngNonBindable>    CONSTRAINT Partida_Cod_F_FK FOREIGN KEY (Cod_Partida) </pre>
+            <pre ngNonBindable>    REFERENCES PARTIDAS(Cod_Partida)); </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Vamos a verlo en el caso en que la clave ajena estuviera formada por Cod_Partida y Fecha de
+        la partida de la tabla PARTIDAS:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;    Cod_Partida INTEGER(8),  </pre>
+            <pre ngNonBindable>    F_Partida DATE, </pre>
+            <pre ngNonBindable>    CONSTRAINT Partida_Cod_F_FK FOREIGN KEY (Cod_Partida, F_Partida)  </pre>
+            <pre ngNonBindable>    REFERENCES PARTIDAS(Cod_Partida, F_Partida)); </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Al relacionar campos necesitamos que el dato del campo que es clave ajena en una tabla (que
+        llamaremos secundaria) previamente haya sido incluido en su tabla de procedencia donde es
+        clave primaria o candidata. En nuestro ejemplo, cualquier código de partida que incluyamos
+        en la tabla USUARIO, debería estar previamente en la tabla de la que procede, es decir, en
+        la tabla PARTIDAS.
+        <strong>
+            A esto se le llama Integridad Referencial.
+        </strong>
+    </p>
+    <p>
+        Esto puede crear algunos errores, pues puede ocurrir lo siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si hacemos referencia a una tabla que no está creada: tanto Oracle como MySQL buscarán
+            la tabla referenciada y al no encontrarla dará fallo. Esto se soluciona creando en
+            primer lugar las tablas que no tengan claves ajenas.
+        </li>
+        <li>
+            Si queremos borrar las tablas tendremos que proceder al contrario, borraremos las tablas
+            que tengan claves ajenas antes.
+        </li>
+    </ul>
+    <p>
+        Tenemos otras soluciones y es añadir tras la cláusula REFERENCE:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ON DELETE CASCADE: te permitirá borrar todos los registros cuya clave ajena sea igual a
+            la clave del registro borrado.
+        </li>
+        <li>
+            ON DELETE SET NULL: colocará el valor NULL en todas las claves ajenas relacionadas con
+            la borrada.
+        </li>
+        <li>
+            ON DELETE RESTRICT: (igual que NO ACTON en MySQL) no te permitirá borrar el registro
+            principal, si hay registros asociados con ese valor en su clave ajena.
+        </li>
+    </ul>
+    <p>
+        Otras cláusulas, para mantener la Integridad Referencial, que van tras REFERENCE y permiten
+        cambiar de forma automática el valor de las claves ajenas en función de la modificación
+        hecha en el valor de la clave principal son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ON UPDATE CASCADE: te permitirá modificar el valor de la clave ajena de todos los
+            registros cuya clave ajena sea igual a la clave del registro modificado.
+        </li>
+        <li>
+            ON UPDATE SET NULL: colocará el valor NULL en todas las claves ajenas relacionadas con
+            la modificada.
+        </li>
+        <li>
+            ON UPDATE RESTRICT: (igual que NO ACTON en MySQL) no te permitirá modificar la clave
+            primaria el registro principal, si hay registros asociados con ese valor en su clave
+            ajena.
+        </li>
+    </ul>
+    <p>
+        Por defecto, en
+        <strong>
+            MySQL
+        </strong>
+        , si no se indica nada, las opciones son:
+    </p>
+    <p>
+        ON DELETE RESTRICT
+    </p>
+    <p>
+        ON UPDATE RESTRICT
+    </p>
+    <p>
+        Por ejemplo si queremos que al borrar una partida de la tabla PARTIDAS se borren todos los
+        usuarios de la tabla USUARIOS que hayan jugado esa partida. Pondríamos:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;    Cod_Partida INTEGER(8), </pre>
+            <pre ngNonBindable>    F_Partida DATE, </pre>
+            <pre ngNonBindable>    CONSTRAINT Partida_Cod_F_FK FOREIGN KEY (Cod_Partida)</pre>
+            <pre ngNonBindable>    REFERENCES PARTIDAS(Cod_Partida) ON DELETE CASCADE); </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    11.3.5.- Restricción DEFAULT Y VALIDACIÓN.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        A veces es muy tedioso insertar siempre lo mismo en un campo. Imagínate que casi todos los
+        jugadores fuesen de España y tenemos un campo País. ¿No sería cómodo asignarle un valor por
+        defecto? Eso es lo que hace la restricción DEFAULT.
+    </p>
+    <p>
+        En nuestro ejemplo vamos a añadir a la tabla USUARIOS el campo País y le daremos por defecto
+        el valor "España".
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>     Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;     Pais VARCHAR (20) DEFAULT ' España ' );
+
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En las especificaciones de DEFAULT vamos a poder añadir distintas expresiones: constantes,
+        funciones SQL y variables.
+    </p>
+    <p>
+        Si queremos incluir en un campo la fecha actual, independientemente del día en el que
+        estemos, podremos utilizar la función SYSDATE como valor por defecto, en caso de
+        <strong>
+            Oracle
+        </strong>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Login VARCHAR (25) PRIMARY KEY,  &lt;br /&gt;    Fecha_ingreso DATE DEFAULT SYSDATE);
+
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En
+        <strong>
+            MySQL
+        </strong>
+        no se pueden incluir expresiones o funciones SQL, excepto para el
+        tipo de dato TIMESTAMP, que permite que se le asocie por defecto el valor CURRENT_TIMESTAMP,
+        que es el momento actual en el que estemos (fecha y hora).
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>      Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;      Fecha_ingreso TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        También vamos a necesitar que se compruebe que los valores que se introducen son adecuados
+        para ese campo. Para ello utilizaremos CHECK.
+    </p>
+    <p>
+        Esta restricción comprueba que se cumpla una condición determinada al rellenar una columna.
+        Dicha condición se puede construir con columnas de esa misma tabla.
+    </p>
+    <p>
+        Si en la tabla USUARIOS tenemos el campo Crédito y éste sólo puede estar entre 0 y 2000, lo
+        especificaríamos así:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (Login VARCHAR (25) PRIMARY KEY),
+</pre>
+            <pre ngNonBindable>    Credito FLOAT(4) CHECK (Crédito BETWEEN 0 AND 2000));
+
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una misma columna puede tener varios CHECK asociados a ella, para ello ponemos varios
+        CONSTRAINT seguidos y separados por comas.
+    </p>
+    <p>
+    </p>
+    <p>
+        Además, en
+        <strong>
+            MySQL
+        </strong>
+        también existe el tipo de datos
+        <strong>
+            ENUM
+        </strong>
+        que
+        se puede utilizar para crear enumeraciones, es decir, campos que admiten sólo valores fijos.
+        Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>     Login VARCHAR (25) PRIMARY KEY,&lt;br /&gt;     Pais ENUM ('España', 'Francia', 'Bélgica'));  &lt;br /&gt;
+
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    11.4.- Eliminación de tablas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Cuando una tabla ya no es útil y no la necesitamos es mejor borrarla, de este modo no ocupará
+        espacio y podremos utilizar su nombre en otra ocasión.
+    </p>
+    <p>
+        Para eliminar una tabla en
+        <strong>
+            MySQL
+        </strong>
+        utilizaremos el comando DROP TABLE.
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.650000000000002em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DROP TABLE Nombre_tabla [,Nombre_tabla] ...</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Esta instrucción borrará la tabla de la base de datos incluido sus datos (filas). También se
+        borrará toda la información que existiera de esa tabla en el Diccionario de Datos.
+    </p>
+    <p>
+        En
+        <strong>
+            Oracle
+        </strong>
+        , cambia un poco pero es muy similar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.750000000000004em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DROP TABLE nombre_tabla [ CASCADE CONSTRAINT]</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        No se permite el borrado de varias tablas en la misma sentencia y la opción CASCADE
+        CONSTRAINTS se puede incluir para los casos en que alguna de las columnas sea clave ajena en
+        otra tabla secundaria, lo que impediría su borrado. Al colocar esta opción las restricciones
+        donde es clave ajena se borrarán antes y a continuación se eliminará la tabla en cuestión.
+    </p>
+    <p>
+    </p>
+    <p>
+        Vamos a eliminar la tabla con la que hemos estado trabajando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DROP TABLE USUARIOS ;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Ten cuidado al utilizar este comando, el borrado de una tabla es irreversible y no hay una
+        petición de confirmación antes de ejecutarse.
+    </p>
+</div><h1 class="title">
+    11.5.- Modificación de tablas (I).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Es posible que después de crear una tabla nos demos cuenta que se nos ha
+        olvidado añadir algún campo o restricción, quizás alguna de las restricciones que añadimos
+        ya no es necesaria o tal vez queramos cambiar el nombre de alguno de los campos. ¿Es posible
+        esto? Ahora veremos que sí y en casi todos los casos utilizaremos el comando ALTER TABLE.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos cambiar el nombre de una tabla:
+            </strong>
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 24.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>RENAME TABLE NombreViejo TO NombreNuevo;
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos añadir columnas a una tabla: l
+            </strong>
+            as columnas se añadirán al
+            final de la tabla.
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 28.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TABLE NombreTabla ADD
+</pre>
+            <pre ngNonBindable>( ColumnaNueva1 Tipo_Datos [Propiedades]
+</pre>
+            <pre ngNonBindable>[, ColumnaNueva2 Tipo_Datos [Propiedades]
+</pre>
+            <pre ngNonBindable>... );
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos eliminar columnas de una tabla:
+            </strong>
+            se eliminará la columna
+            indicada sin poder deshacer esta acción. Además de la definición de la columna, se
+            eliminarán todos los datos que contuviera. No se puede eliminar una columna si es la
+            única que forma la tabla, para ello tendremos que borrar la tabla directamente.
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 41.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TABLE NombreTabla DROP COLUMN (Columna1 [, Columna2, ...]);
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos modificar columnas de una tabla:
+            </strong>
+            podemos modificar el tipo
+            de datos y las propiedades de una columna. Todos los cambios son posibles si la tabla no
+            contiene datos. En general, si la tabla no está vacía podremos aumentar la longitud de
+            una columna, aumentar o disminuir en número de posiciones decimales en un tipo NUMBER
+            (en Oracle) y FLOAT(en MySQL), reducir la anchura siempre que los datos no ocupen todo
+            el espacio reservado para ellos.
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 48.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable> ALTER TABLE NombreTabla MODIFY
+</pre>
+            <pre ngNonBindable>(Columna1 TipoDatos [propiedades] [, columna2 TipoDatos [propiedades] ...] );
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos renombrar columnas de una tabla:
+            </strong>
+            <ul>
+                <li>
+                    En
+                    <strong>
+                        Oracle:
+                    </strong>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TABLE NombreTabla RENAME COLUMN NombreAntiguo TO NombreNuevo;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li style="list-style-type: none;">
+            <ul>
+                <li>
+                    En
+                    <strong>
+                        MySQL
+                    </strong>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 51.650000000000006em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>ALTER TABLE NombreTabla CHANGE COLUMN NombreAntiguo  NombreNuevo definiciónColumna;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Tenemos la siguiente tabla creada:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable> CREATE TABLE USUARIOS (
+</pre>
+            <pre ngNonBindable>    Credito INTEGER(4) CHECK (Credito BETWEEN 0 AND 2000));
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por ejemplo, nos gustaría incluir una nueva columna llamada
+        <span lang="en">
+         User
+        </span>
+        que
+        será tipo texto y clave primaria:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TABLE USUARIOS ADD
+</pre>
+            <pre ngNonBindable>    (User VARCHAR(10) PRIMARY KEY);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Nos damos cuenta que ese campo se llamaba
+        <span lang="en">
+         Login
+        </span>
+        y no
+        <span lang="en">
+         User
+        </span>
+        , vamos a cambiarlo (
+        <strong>
+            en Oracle)
+        </strong>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 32.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TABLE USUARIOS RENAME COLUMN User TO Login;
+</pre>
+        </div>
+    </div>
+    <div class="block" id="ta100_69" style="display: block; position: relative;">
+        <p>
+            Y en
+            <strong>
+                MySQL
+            </strong>
+        </p>
+        <div class="codigo elemento_centrado" style="width: 37.35em;">
+            <div class="texto_izquierda">
+                <pre ngNonBindable>ALTER TABLE USUARIOS CHANGE COLUMN User Login VARCHAR(10);</pre>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    11.5.1.- Modificación de tablas (II).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            En Oracle
+        </strong>
+        , utilizando el comando ALTER TABLE, podemos modificar las
+        restricciones o bien eliminarlas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos borrar restricciones:
+            </strong>
+            <div class="texto_izquierda">
+          <pre ngNonBindable>	ALTER TABLE NombreTabla DROP CONSTRAINT NombreRestriccion;
+	</pre>
+            </div>
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos modificar el nombre de las restricciones:
+            </strong>
+            <pre ngNonBindable>	ALTER TABLE NombreTabla RENAME CONSTRAINT NombreViejo TO NombreNuevo;
+	</pre>
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Si queremos activar o desactivar restricciones:
+            </strong>
+            <p>
+                A veces es conveniente desactivar temporalmente una restricción para hacer pruebas o
+                porque necesitemos saltarnos esa regla. Para ello usaremos esta sintaxis:
+            </p>
+            <div class="texto_izquierda">
+          <pre ngNonBindable>	ALTER TABLE NombreTabla DISABLE CONSTRAINT NombreRestriccion [CASCADE];
+	</pre>
+            </div>
+            <p>
+                La opción CASCADE desactiva las restricciones que dependan de ésta.
+            </p>
+            <p>
+                Para activar de nuevo la restricción:
+            </p>
+            <div class="texto_izquierda" style="text-align: left;">
+          <pre ngNonBindable>	ALTER TABLE NombreTabla ENABLE CONSTRAINT NombreRestriccion [CASCADE];
+</pre>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    11.6.- Creación y eliminación de índices
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Sabemos que crear índices ayuda a la localización más rápida de la información contenida en
+        las tablas. Ahora aprenderemos a crearlos y eliminarlos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE INDEX NombreIndice ON NombreTabla (Columna1 [, Columna2 ...]);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        No es aconsejable que utilices campos de tablas pequeñas o que se actualicen con mucha
+        frecuencia. Tampoco es conveniente si esos campos no se usan en consultas de manera
+        frecuente o en expresiones.
+    </p>
+    <p>
+        El diseño de índices es un tema bastante complejo para los Administradores de Bases de Datos,
+        ya que una mala elección ocasiona ineficiencia y tiempos de espera elevados. Un uso excesivo
+        de ellos puede dejar a la Base de Datos colgada simplemente con insertar alguna fila.
+    </p>
+    <p>
+        Además de con la sentencia CREATE INDEX,&nbsp; en MySQL también podemos crear índices de la
+        siguientes maneras:
+        <br>
+        <br>
+        1.&nbsp;&nbsp; &nbsp;Al mismo tiempo que creamos la tabla con el
+        uso de la opción INDEX.
+        <br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE TABLE nombreTabla(&lt;br&gt;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;campo1 tipoDato, &lt;br&gt;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;campo2 tipoDato,..&lt;br&gt;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;INDEX [nombreIndice] (campos);&nbsp;&nbsp;&nbsp; &lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        2.&nbsp;&nbsp; &nbsp;Con la sentencia ALTER TABLE si es que la tabla ya existe, mediante
+        ADD INDEX.
+        <br/></p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TABLE nombreTabla &lt;br&gt;ADD INDEX [nombreIndice] (campos);
+&lt;/br&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Las dos sentencias piden el nombre del índice, sin embargo con la sentencia CREATE INDEX el
+        nombre es obligatorio..
+    </p>
+    <p>
+        Para eliminar un índice es suficiente con poner la instrucción (
+        <strong>
+            tanto para Oracle
+            como MySQL
+        </strong>
+        ):
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DROP INDEX NombreIndice ON NombreTabla;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="texto_izquierda">
+        Pero ¿cómo averiguo el nombre de los índices de una tabla?
+        Mediante la sentencia:
+    </div>
+    <div class="texto_izquierda">
+    </div>
+    <div class="texto_izquierda">
+        <div class="codigo elemento_centrado" style="width: 30.750000000000004em;">
+            <div class="texto_izquierda">
+                <pre ngNonBindable>SHOW INDEX FROM database_nombre.table_nombre;</pre>
+            </div>
+        </div>
+    </div>
+    <div class="texto_izquierda">
+    </div>
+</div><h1 class="title">
+    11.7.- Creación y eliminación de vistas
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Como ya se ha comentado anteriormente en el apartado 8, una
+        <strong>
+            vista
+        </strong>
+        es una
+        tabla "virtual" cuyas filas y columnas se obtienen a partir de una o de varias tablas que
+        constituyen nuestro modelo. Lo que se almacena no es la tabla en sí, sino su definición, por
+        eso decimos que es "virtual". Una vista actúa como filtro de las tablas a las que hace
+        referencia en ella.
+        <br/></p>
+    <p>
+        Para crear una vista en una base de datos utilizaremos la siguiente sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE [OR REPLACE] VIEW NombreVista AS Sentencia de Consulta;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Las palabras clave CREATE VIEW NombreVista creará la vista bajo un nombre específico con el
+        cual podremos referirnos a ella. Y para que la vista tenga un sentido completo debemos
+        utilizar al menos una tabla y algunos campos ya creados previamente para que podamos
+        almacenar su estructura. Es decir, estaríamos creando una "tabla virtual" utilizando la
+        estructura de una o más tablas con los campos que necesitemos. Para ello es necesario
+        utilizar las sentencias de consulta.
+    </p>
+    <p>
+        Aunque todavía no se ha trabajado con la sentencia SELECT en SQL simplemente daremos unas
+        pinceladas básicas para poder utilizar y crear vistas.
+    </p>
+    <p>
+        La sentencia SELECT tiene la siguiente sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT [nombreCampos] FROM nombreTabla [WHERE condiciones] [ORDER BY campo ASC|DESC];</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para eliminar una vista utilizamos la palabra reservada DROP seguido del elemento que
+        deseamos eliminar, en este caso,&nbsp; VIEW e indicando el nombre que le hemos
+        proporcionado.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DROP VIEW NombreVista;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    12.- Lenguaje de control de datos (DCL).
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    12.1.- Permisos (I).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ningún usuario puede llevar a cabo una operación si antes no se le ha concedido el permiso
+        para ello. En el apartado anterior hemos creado un usuario para iniciar sesión, pero si con
+        él intentáramos crear una tabla veríamos que no tenemos permisos suficientes para ello.
+    </p>
+    <p>
+        Para poder acceder a los objetos de una base de datos necesitas tener privilegios (permisos).
+        Éstos se pueden agrupar formando
+        <strong>
+            roles
+        </strong>
+        , lo que simplificará la
+        administración. Los roles pueden activarse, desactivarse o protegerse con una clave.
+        Mediante los roles podemos gestionar los comandos que pueden utilizar los usuarios. Un
+        permiso se puede asignar a un usuario o a un rol.
+    </p>
+    <p>
+        Un privilegio o permiso se especifica con el comando GRANT (conceder).
+    </p>
+    <p>
+        <strong>
+            En Oracle:
+        </strong>
+    </p>
+    <p>
+        Si se dan privilegios
+        <strong>
+            sobre los objetos
+        </strong>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>GRANT &#123;privilegio_objeto [, privilegio_objeto]...|ALL|[PRIVILEGES]&#125;
+</pre>
+            <pre ngNonBindable>ON [usuario.]objeto
+</pre>
+            <pre ngNonBindable>TO &#123;usuario1|rol1|PUBLIC&#125; [,&#123;usuario2|rol2|PUBLIC] ...
+</pre>
+            <pre ngNonBindable>[WITH GRANT OPTION];
+</pre>
+        </div>
+    </div>
+    <p>
+        donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ON especifica el objeto sobre el que se conceden los privilegios.
+        </li>
+        <li>
+            TO señala a los usuarios o roles a los que se conceden privilegios.
+        </li>
+        <li>
+            ALL concede todos los privilegios sobre el objeto especificado.
+        </li>
+        <li>
+            [WITH GRANT OPTION] permite que el receptor del privilegio se lo asigne a otros.
+        </li>
+        <li>
+            PUBLIC hace que un privilegio esté disponible para todos los usuarios.
+        </li>
+    </ul>
+    <p>
+        En el siguiente ejemplo Juan ha accedido a la base de datos y ejecuta los siguientes
+        comandos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            GRANT INSERT ON Usuarios TO Ana; (permitirá a Ana insertar datos en la tabla Usuarios)
+        </li>
+        <li>
+            GRANT ALL ON Partidas TO Ana; (Juan concede todos los privilegios sobre la tabla
+            Partidas a Ana)
+        </li>
+    </ul>
+    <p>
+        Los privilegios
+        <strong>
+            de sistema
+        </strong>
+        son los que dan derecho a ejecutar comandos SQL o
+        acciones sobre objetos de un tipo especificado. Existen gran cantidad de privilegios
+        distintos.
+    </p>
+    <p>
+        La sintaxis para dar este tipo de privilegios la tienes aquí:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>GRANT &#123;Privilegio1 | rol1 &#125; [, privilegio2 | rol2&#125;, ...]
+</pre>
+            <pre ngNonBindable>TO &#123;usuario1 | rol1| PUBLIC&#125; [, usuario2 | rol2 | PUBLIC&#125; ... ]
+</pre>
+            <pre ngNonBindable>[WITH ADMIN OPTION];
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            TO señala a los usuarios o roles a los que se conceden privilegios.
+        </li>
+        <li>
+            WITH ADMIN OPTION es una opción que permite al receptor de esos privilegios que pueda
+            conceder esos mismos privilegios a otros usuarios o roles.
+        </li>
+        <li>
+            PUBLIC hace que un privilegio esté disponible para todos los usuarios.
+        </li>
+    </ul>
+    <p>
+        Veamos algunos ejemplos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>GRANT CONNECT TO Ana;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Concede a Ana el rol de CONNECT con todos los privilegios que éste tiene asociados.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>GRANT DROP USER TO Ana WITH ADMIN OPTION;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Concede a Ana el privilegio de borrar usuarios y que ésta puede conceder el mismo privilegio
+        de borrar usuarios a otros.
+    </p>
+    <p>
+        <strong>
+            En MySQL:
+        </strong>
+    </p>
+    <p>
+        Para poder acceder a los objetos de una base de datos necesitas tener privilegios
+        (permisos).
+    </p>
+    <ul>
+        <li>
+            Los
+            <strong>
+                privilegios sobre objetos
+            </strong>
+            permiten acceder y realizar cambios en
+            las tablas&nbsp; de los esquemas de la base de datos. Por ejemplo, INSERT, SELECT,
+            UPDATE y DELETE, son privilegios sobre objetos.
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Los
+            <strong>
+                privilegios de sistema
+            </strong>
+            son los que dan derecho a ejecutar un tipo
+            de comando SQL o a realizar alguna acción sobre objetos de un&nbsp; tipo especificado,
+            por ejemplo, CREATE USER, ALTER, CREATE o CREATE VIEW.
+        </li>
+    </ul>
+    <p>
+        Un privilegio o permiso se otorga con el comando GRANT (conceder) una vez creado el
+        usuario con CREATE USER
+    </p>
+    <p>
+        <em>
+            Nota. En versiones de MySQL anteriores a la versión 8.x, el comando GRANT también
+            permitía crear a un usuario en el momento de concederle permisos.
+        </em>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>GRANT &#123;permiso[(listacolumnas)] [, permiso[(listacolumnas)]...|ALL]&#125;
+</pre>
+            <pre ngNonBindable>ON [tipoobjeto]&#123;nombretabla | *.* | basedatos.*&#125;
+</pre>
+            <pre ngNonBindable>TO &#123;usuario1 [IDENTIFIED BY [PASSWORD] contraseña&#125; [,&lt;code&gt;usuario1 [IDENTIFIED BY [PASSWORD] contraseña] ...
+</pre>
+            <pre ngNonBindable>[WITH GRANT OPTION];
+</pre>
+        </div>
+    </div>
+    <p>
+        donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                permiso
+            </strong>
+            : privilegio sobre objeto o sistema.
+        </li>
+        <li>
+            <strong>
+                listacolumnas
+            </strong>
+            : columnas sobre las que se concede el permiso.
+        </li>
+        <li>
+            <strong>
+                tipoobjeto
+            </strong>
+            =TABLE&nbsp; | FUNCTION&nbsp; | PROCEDURE
+        </li>
+        <li>
+            ON especifica el objeto sobre el que se conceden los privilegios.
+        </li>
+        <li>
+            TO señala a los usuarios&nbsp; a los que se conceden privilegios.
+        </li>
+        <li>
+            ALL concede todos los privilegios sobre el objeto especificado.
+        </li>
+        <li>
+            <strong>
+                usuarioN
+            </strong>
+            :
+            <strong>
+                (nombreUsuario&#64;ubicación)
+            </strong>
+            usuario al que se
+            le concede los permisos. Se especifica indicando un nombre, luego &#64; y después la
+            ubicación de acceso. La ubicación % hace refercnia a cualquier equipo, 'localhost' al
+            equipo local, pero también se puede especificar la dirección
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            o nombre del equipo dentro de una red, entre
+            otros.
+        </li>
+        <li>
+            <strong>
+                contraseña
+            </strong>
+            : password del usuario.
+        </li>
+        <li>
+            <strong>
+                WITH GRANT OPTION
+            </strong>
+            : permite al usuario otorgar permisos a otros
+            usuarios, para ello, el usuario debe tener esos permisos sobre los objetos
+            correspondientes.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Con GRANT también se pueden asignar permisos a Roles. Los Roles están permitidos en
+            MySQl desde la versión 8.x.
+        </strong>
+    </p>
+    <p>
+        En el siguiente ejemplo el usuario
+        <strong>
+            root
+        </strong>
+        ha accedido a la base de datos y
+        ejecuta los siguientes comandos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Concede al usuario1 con conexión desde localhost, (
+            usuario1&#64;localhost
+            )
+            insertar datos en la tabla usuarios:
+            <ul>
+                <li>
+                    GRANT INSERT ON usuarios TO &lt;a
+                    href="https://educacionadistancia.juntadeandalucia.es/formacionprofesional/pluginfile.php/55304/mod_scorm/content/0/mailto:usuario1&#64;localhost;"&gt;usuario1&#64;localhost;&lt;/a&gt;
+                </li>
+            </ul>
+        </li>
+        <li>
+            Concede todos los privilegios sobre la tabla partidas&nbsp; al usuario1 con conexión
+            desde localhost (usuario1&#64;localhost)
+            <ul>
+                <li>
+                    GRANT ALL ON partidas TO usuario1&#64;localhost;
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+    </p>
+</div><h1 class="title">
+    12.2.- Permisos (II).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Hasta ahora hemos aprendido a conceder permisos o privilegios. Será importante aprender a
+        retirarlos:
+    </p>
+    <p>
+        Con el comando REVOKE se retiran los privilegios:
+    </p>
+    <p>
+        <strong>
+            En Oracle:
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Sobre
+            <strong>
+                objetos
+            </strong>
+            :
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 43.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>REVOKE &#123;privilegio_objeto [, privilegio_objeto]...|ALL|[PRIVILEGES]&#125;
+</pre>
+            <pre ngNonBindable>ON [usuario.]objeto
+</pre>
+            <pre ngNonBindable>FROM &#123;usuario|rol|PUBLIC&#125; [,&#123;usuario|rol|PUBLIC] ...;
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Del sistema o roles a usuarios
+            </strong>
+            :
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 50em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>REVOKE &#123;privilegio_stma | rol&#125; [, &#123;privilegio_stma | rol&#125;]...|ALL|[PRIVILEGES]&#125;
+</pre>
+            <pre ngNonBindable>ON [usuario.]objeto
+</pre>
+            <pre ngNonBindable>FROM &#123;usuario|rol|PUBLIC&#125; [,&#123;usuario|rol|PUBLIC] ...;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Juan va a quitar el permiso de seleccionar y de actualizar sobre la tabla Usuarios a Ana:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>REVOKE SELECT, UPDATE ON Usuarios FROM Ana;
+</pre>
+        </div>
+    </div>
+    <p>
+        y va a quitarle el permiso de eliminar usuarios:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.3em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>REVOKE DROP USER FROM Ana;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    13.- Enlaces de refuerzo y ampliación.
+</h1><div class="iDevice_content">
+    <ul class="lista_verificacion">
+        <li>
+           <span>
+            <strong>
+             Tipos de datos en MySQL
+            </strong>
+           </span>
+            :
+            http://www.ajpdsoft.com/modules.php?name=News&file=article&sid=423
+
+        </li>
+        <li>
+            <strong>
+            <span>
+             Documentación oficial del SGBD MySQL
+            </span>
+                :
+            </strong>
+            http://docs.oracle.com/cd/E17952_01/index.html
+        </li>
+        <li>
+            <strong>
+                Ejemplo de creación de una base de datos y una tabla en MySQL con
+                Workbench
+            </strong>
+            <span style="font-size: 1em;">
+            :
+           </span>
+            <span style="font-size: 1em;">
+            https://jumipe.wordpress.com/2013/06/16/crear-base-de-datos-en-mysql-con-workbenchcreate-data-base-mysql-with-workbench/
+
+           </span>
+        </li>
+        <li>
+           <span style="font-size: 1em;">
+            <span style="text-decoration: underline;">
+             <strong>
+              Ejemplo de conexión mediante
+													consola de comandos en Windows
+             </strong>
+            </span>
+            :
+            http://mysql.conclase.net/curso/?cap=006#
+           </span>
+        </li>
+        <li>
+           <span style="text-decoration: underline;">
+            <strong>
+             Ejemplos de uso del comando
+												ALTER TABLE con MySQL
+            </strong>
+           </span>
+            :
+            http://mysql.conclase.net/curso/?sqlsen=ALTER_TABLE
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <strong style="font-size: 1em;">
+                Documentación oficial del SGBD
+                ORACLE
+            </strong>
+            <span style="font-size: 1em;">
+            :
+           </span>
+            <span style="font-size: 1em;">
+            https://docs.oracle.com/en/database/database.html
+           </span>
+
+        </li>
+        <li>
+           <span>
+            <strong>
+             Tipos de datos en Oracle
+            </strong>
+           </span>
+            :
+            http://www.tuinformaticafacil.com/oracle-11g/tipos-de-datos-en-oracle-11g
+        </li>
+        <li>
+           <span>
+            <span style="text-decoration: underline;">
+             <strong>
+              Concepto de TABLESPACE
+													en ORACLE:
+             </strong>
+            </span>
+            http://edwinsaldanaabd.blogspot.com.es/2010/04/que-es-un-tablespace-oracle.html
+           </span>
+        </li>
+        <li>
+           <span style="text-decoration: underline;">
+            <strong>
+             Ejemplo de creación de un
+												"TABLESPACE" y asociarle un archivo (DATAFILE) en
+												Oracle
+            </strong>
+           </span>
+            :
+            http://dba.stackexchange.com/questions/1989/how-do-i-create-tablespace-in-oracle-11g
+        </li>
+        <li>
+           <span>
+            <span style="text-decoration: underline;">
+             <strong>
+              Ejemplo de creación de
+													un usuario en ORACLE, asignarle los "TABLESPACES por defecto: user y
+													temp" y otorgar todos lo permisos
+             </strong>
+            </span>
+            :
+            http://jeanmazuelos.com/es/blog/20131102/oracle-database-server-express-edition-11g
+												(mirar el pto 3.1. Creación de un usuario oracle)
+            .
+           </span>
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+            <span>
+             Documentación oficial del SGBD POSTGRESQL
+            </span>
+                :
+            </strong>
+            http://www.postgresql.org/docs/
+        </li>
+        <li>
+            <strong>
+                Uso de la herramienta Query Tool de PgAdminIII para ejecutar
+                Scripts
+            </strong>
+            <span style="font-size: 1em;">
+            :
+           </span>
+            http://www.pgadmin.org/docs/dev/query.html
+        </li>
+        <li>
+            <strong style="font-size: 1em;">
+            <span style="text-decoration: underline;">
+             Tipos
+												de datos en PostgreSQL
+            </span>
+            </strong>
+            <span style="font-size: 1em;">
+            :
+           </span>
+            http://www.postgresql.org.ar/trac/wiki/datatype.html
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Elementos del lenguaje SQL.
+</h1><div class="iDevice_content">
+    <p>
+
+        El lenguaje SQL está compuesto por comandos, cláusulas, operadores, funciones y literales .
+        Todos estos elementos se combinan en las instrucciones y se utilizan para crear, actualizar
+        y manipular bases de datos.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            COMANDOS:
+            <p>
+                Comandos DDL. Lenguaje de Definición de Datos:
+            </p>
+            <table class="tabla">
+                <caption>
+                    Comandos DDL. Lenguaje de Definición de Datos.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Comando:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        CREATE
+                    </th>
+                    <td>
+                        Se utiliza para crear nuevas tablas, campos e índices.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        DROP
+                    </th>
+                    <td>
+                        Se utiliza para eliminar tablas e índices.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        ALTER
+                    </th>
+                    <td>
+                        Se utiliza para modificar tablas.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                Comandos DML. Languaje de Manipulación de Datos:
+            </p>
+            <table class="tabla">
+                <caption>
+                    Comandos DML. Lenguaje de Manipulación de Datos.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Comando:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        SELECT
+                    </th>
+                    <td>
+                        Se utiliza para consultar filas que satisfagan un criterio determinado.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        INSERT
+                    </th>
+                    <td>
+                        Se utiliza para cargar datos en una única operación.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        UPDATE
+                    </th>
+                    <td>
+                        Se utiliza para modificar valores de campos y filas específicos.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        DELETE
+                    </th>
+                    <td>
+                        Se utiliza para eliminar filas de una tabla.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                Comandos DCL. Lenguaje de Control de Datos:
+            </p>
+            <table class="tabla">
+                <caption>
+                    Comandos DCL. Lenguaje de Control de Datos.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Comando:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        GRANT
+                    </th>
+                    <td>
+                        Permite dar permisos a uno o varios usuarios o roles para realizar
+                        tareas determinadas.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        REVOKE
+                    </th>
+                    <td>
+                        Permite eliminar permisos que previamente se han concedido con GRANT.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            CLÁUSULAS:
+            <p>
+                Llamadas también condiciones o criterios, son palabras especiales que permiten
+                modificar el funcionamiento de un comando.
+            </p>
+            <table class="tabla">
+                <caption>
+                    Cláusulas
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Cláusulas:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        FROM
+                    </th>
+                    <td>
+                        Se utiliza para especificar la tabla de la que se van a seleccionar las
+                        filas.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        WHERE
+                    </th>
+                    <td>
+                        Se utiliza para especificar las condiciones que deben reunir las filas
+                        que se van a seleccionar.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        GROUP BY
+                    </th>
+                    <td>
+                        Se utiliza para separar las filas seleccionadas en grupos específicos.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        HAVING
+                    </th>
+                    <td>
+                        Se utiliza para expresar la condición que debe satisfacer cada grupo.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        ORDER BY
+                    </th>
+                    <td>
+                        Se utiliza para ordenar las filas seleccionadas de acuerdo a un orden
+                        específico.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            OPERADORES:
+            <p>
+                Permiten crear expresiones complejas. Pueden ser aritméticos (+, -, *, /, ...) o
+                lógicos (&lt; , &gt;, , &lt; &gt;,
+                <span lang="en">
+           And
+          </span>
+                ,
+                <span lang="en">
+           Or
+          </span>
+                , …).
+            </p>
+            <p>
+                Operadores lógicos
+            </p>
+            <table class="tabla">
+                <caption>
+                    Operadores lógicos.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Operadores:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        AND
+                    </th>
+                    <td>
+                        Evalúa dos condiciones y devuelve un valor de verdad sólo si ambas son
+                        ciertas.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        OR
+                    </th>
+                    <td>
+                        Evalúa dos condiciones y devuelve un valor de verdad si alguna de las
+                        dos es cierta.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        NOT
+                    </th>
+                    <td>
+                        Devuelve el valor contrario de la expresión.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <p>
+                Operadores de comparación
+            </p>
+            <table class="tabla">
+                <caption>
+                    Operadores de comparación.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Operadores:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        &lt;
+                    </th>
+                    <td>
+                        Menor que.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        &gt;
+                    </th>
+                    <td>
+                        Mayor que.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        &lt; &gt;
+                    </th>
+                    <td>
+                        Distinto de.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        &lt; =
+                    </th>
+                    <td>
+                        Menor o igual.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        &gt; =
+                    </th>
+                    <td>
+                        Mayor o igual.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        =
+                    </th>
+                    <td>
+                        Igual.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        BETWEEN
+                    </th>
+                    <td>
+                        Se utiliza para especificar un intervalo de valores.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        LIKE
+                    </th>
+                    <td>
+                        Se utiliza para comparar.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        IN
+                    </th>
+                    <td>
+                        Se utiliza para especificar filas de una base de datos.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            FUNCIONES:
+            <p>
+                Para conseguir valores complejos. Por ejemplo, la función promedio para obtener la
+                media de un salario. Existen muchas funciones, aquí tienes la descripción de
+                algunas.
+            </p>
+            <p>
+                Funciones de agregado:
+            </p>
+            <table class="tabla">
+                <caption>
+                    Funciones de agregado.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Función:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        AVG
+                    </th>
+                    <td>
+                        Calcula el promedio de los valores de un campo determinado.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        COUNT
+                    </th>
+                    <td>
+                        Devuelve el número de filas de la selección.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        SUM
+                    </th>
+                    <td>
+                        Devuelve la suma de todos los valores de un campo determinado.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        MAX
+                    </th>
+                    <td>
+                        Devuelve el valor más alto de un campo determinado.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        MIN
+                    </th>
+                    <td>
+                        Devuelve el valor mínimo de un campo determinado.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            LITERALES:
+            <p>
+                Les podemos llamar también constantes y serán valores concretos, como por ejemplo un
+                número, una fecha, un conjunto de caracteres, etc.
+            </p>
+            <table class="tabla">
+                <caption>
+                    Literales
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Literales:
+                    </th>
+                    <th scope="col">
+                        Descripción:
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th>
+                        23/03/97
+                    </th>
+                    <td>
+                        Literal fecha.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        María
+                    </th>
+                    <td>
+                        Literal caracteres.
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        5
+                    </th>
+                    <td>
+                        Literal número.
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Jesús García Arámbula.
+                </p>
+                <p>
+                    Licencia: Dominio Público.
+                </p>
+                <p>
+                    Procedencia:
+                    http://commons.wikimedia.org/wiki/File:Globo_terr%C3%A1queo.jpg?uselang=es
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: warszawianka.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/30283/tango-face-glasses-by-warszawianka
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: aldana florencia.
+                </p>
+                <p>
+                    Licencia: CC-by-sa.
+                </p>
+                <p>
+                    Procedencia: http://www.flickr.com/photos/retrorocker/3547135149/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: ArtFavor.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/44977/money-09-by-artfavor
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: alcaline / alcaline.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/6178/spiral_calendar-by-alcaline
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Anonymous.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/107959/kcontrol-by-anonymous
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Nathan Eady / liftarn.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/2863/handshake-by-liftarn
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: rgtaylor_csc.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/17668/net-computer-by-rgtaylor_csc
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Francisco Mochis.
+                </p>
+                <p>
+                    Licencia: Dominio Público.
+                </p>
+                <p>
+                    Procedencia:
+                    http://commons.wikimedia.org/wiki/File:Usuario_anonimo.PNG?uselang=es
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: jhnri4.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/118015/paper-with-pen-by-jhnri4
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: ArtFavor.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/941/female-computer-user-by-artfavor
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: bugmenot.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/91543/blue-worker-by-bugmenot
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Anonymous.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/105727/stop-sign-angled-01-by-anonymous
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: user9.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/131491/mouse-pointer-by-user9-131491
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Anonymous.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/109297/koffice-by-anonymous
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: pgbrandolin.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/101395/math-processor-by-pgbrandolin
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: warszawianka.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/32401/tango-edit-delete-by-warszawianka
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Anonymous.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/108265/view-remove-by-anonymous
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Anonymous.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/108373/spellcheck-by-anonymous
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: rg1024.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia: http://www.openclipart.org/detail/29923/felt-tip-by-rg1024
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Leandro Sciola.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/127183/pessoas--people-by-leandrosciola&#64;gmail.com
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: warszawianka.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/35347/tango-system-users-by-warszawianka
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Antoine.
+                </p>
+                <p>
+                    Licencia: Open Clip Art .Creative Commons.
+                </p>
+                <p>
+                    Procedencia:
+                    http://www.openclipart.org/detail/37135/personnage_ordinateur-by-antoine-37135
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle Corporation.
+                </p>
+                <p>
+                    Licencia: Copyright (Cita).
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de Oracle, propiedad de Oracle Corporation.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    Autoría: Douglas Crockford.
+                </p>
+                <p>
+                    Licencia: Dominio Público.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:JSON_vector_logo.svg
+                </p>
+            </td>
+            <td>
+            </td>
+            <td>
+                <p>
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+										uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

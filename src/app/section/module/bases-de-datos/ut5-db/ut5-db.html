@@ -1,0 +1,3025 @@
+<h1 class="title">
+    Tratamiento de datos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ada le ha preguntado a Juan sobre el estado actual del proyecto y él le comenta que está empezando el desarrollo de la aplicación y va a empezar a desarrollar una serie de procesos en los que se deberá almacenar la información que debe manejar la aplicación, así como modificarla o eliminar los datos que así lo requieran.
+    </p>
+    <p>
+        Estas acciones de tratamiento de la información deberán asegurar que no se obtengas resultados incorrectos, por errores en la ejecución de la aplicación o por las acciones de los usuarios, y además debe asegurar que los datos puedan ser accesibles por varios usuarios simultáneamente.
+    </p>
+    <p>
+        La aplicación requiere que se puedan dar de alta nuevos datos en la base de datos como nuevas salas, conferencias, ponentes,.... Además se podrá modificar en un determinado momento la información personal de los asistentes, de los ponentes, o añadir nuevas conferencias. También asegurará la posibilidad de suprimir cualquiera de esos datos.
+    </p>
+    <p>
+        Se debe asegurar que, por ejemplo, una conferencia no haga referencia a una sala que haya sido eliminada, o a ponentes que no existen. Un ponente podrá ver aumentada su gratificación en un determinado momento, y la nueva información de su gratificación sólo deberá ser accesible cuando haya finalizado el proceso de aumento de la gratificación, y no mientras se realiza esa actualización, ya que el  campo "gratificación" no estará actualizado.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    1.- Introducción.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Juan le pregunta a Ana, la alumna que se encuentra en prácticas, qué mecanismos conoce para poder manipular los datos que deben encontrarse en una base de datos, de manera que se puedan añadir nuevos datos, modificarlos o eliminarlos. Ella recuerda que estudió una serie de sentencias o comandos del lenguaje
+        <abbr title="Structured Query Language.">
+            SQL
+        </abbr>
+        que permiten realizar todas esas operaciones, y que además, desde el entorno visual de la base de datos de Oracle y de MySQL también se pueden realizar todas esas acciones de manera más cómoda para el usuario, pero menos flexible.
+    </p>
+</div><h1 class="title">
+    2.- Edición de la información mediante herramientas gráficas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.1.- Inserción de registros.
+</h1><div class="iDevice_content">
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        La inserción de registros permite introducir nuevos datos en las tablas que componen la base de datos. Para insertar registros en tablas, utilizando las herramientas gráficas que ofrece Oracle
+        <span lang="en">
+         Database Express
+        </span>
+        , se deben seguir los siguientes
+        <strong>
+            pasos
+        </strong>
+        :
+    </p>
+    <ol>
+        <li>
+            Ir a la
+            <strong>
+                página inicial
+            </strong>
+            de bases de datos de Oracle
+            <span lang="en">
+          Database Express
+         </span>
+            , si no te encuentras en ella.
+        </li>
+        <li>
+            Hacer clic en el botón
+            <strong>
+                <em>
+                    Explorador de objetos
+                </em>
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Seleccionar una tabla
+            </strong>
+            en la lista izquierda.
+        </li>
+        <li>
+            Seleccionar la pestaña
+            <strong>
+                <em>
+                    Datos
+                </em>
+            </strong>
+            y hacer clic en el botón
+            <strong>
+                <em>
+                    Insertar Fila
+                </em>
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Escribir los datos
+            </strong>
+            correspondientes para cada campo del nuevo registro.
+        </li>
+        <li>
+            Hacer clic en el botón
+            <strong>
+                <em>
+                    Crear
+                </em>
+            </strong>
+            para guardar los datos introducidos, o
+            <strong>
+                <em>
+                    Crear
+                </em>
+            </strong>
+            y
+            <strong>
+                <em>
+                    Crear Otro
+                </em>
+            </strong>
+            si se desea seguir añadiendo otro registro nuevo. Se utilizará el botón
+            <em>
+                Cancelar
+            </em>
+            si no se desea guardar los datos.
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            Si la fila se ha
+            <strong>
+                añadido correctamente
+            </strong>
+            se mostrará el mensaje correspondiente:
+        </li>
+    </ol>
+    <p>
+        Permaneciendo en la vista de la pestaña
+        <em>
+            Datos
+        </em>
+        se podrá ver, en la parte central, la
+        <strong>
+            lista de los datos
+        </strong>
+        contenidos en los registros que se han ido insertando.
+    </p>
+    <p>
+        En caso de que se haya producido un
+        <strong>
+            error
+        </strong>
+        al intentar insertar los datos, habrá que comprobar el mensaje que se muestra, e intentar solucionar el problema. Por ejemplo, si se intenta introducir un texto en un campo de tipo numérico se obtendrá un error como el siguiente: "
+        <em>
+            error ORA-00984: columna no permitida aquí
+        </em>
+        ", y no se habrá realizado ninguna operación de la inserción del nuevo registro.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <div class="block iDevice_content" id="ta6_73">
+        <p>
+            La inserción de registros permite introducir nuevos datos en las tablas que componen la base de datos. Para insertar registros en tablas, utilizando las herramientas gráficas que ofrece MySQL, como es Workbench, debes seguir los siguientes
+            <strong>
+                pasos
+            </strong>
+            :
+        </p>
+        <ol>
+            <li>
+                Ir a la
+                <strong>
+                    página inicial
+                </strong>
+                de Workbench, si no te encuentras en ella y abrir conexión con el servidor.
+            </li>
+            <li>
+                <strong>
+                    Seleccionar o poner en uso la base de datos
+                </strong>
+                con la que vas a trabajar, haciendo doble clic sobre ella.
+            </li>
+            <li>
+                <strong>
+                    Desplegar el contenedor de las tablas
+                </strong>
+                de la base de datos, haciendo clic sobre el icono correspondiente.
+            </li>
+            <li>
+                <strong>
+                    Seleccionar una tabla
+                </strong>
+                en la lista izquierda.
+            </li>
+            <li>
+                <strong>
+                    En su menú contextual
+                </strong>
+                (un clic izquierdo) seleccionar la opción
+                <strong>
+                    <em>
+                        Select Rows
+                    </em>
+                </strong>
+                . Aparecerán todas las filas o registros de la tabla con un encabezado de botones que nos permiten insertar, editar y eliminar filas, entre otras opciones.
+                <p>
+                </p>
+            </li>
+            <li>
+                Selecciona el botón o icono que aparece con el
+                <strong>
+                    símbolo +
+                </strong>
+                y cuya acción es
+                <em>
+                    <strong>
+                        Insertar nueva Fila (Insert new row)
+                    </strong>
+                </em>
+            </li>
+            <li>
+                <strong>
+                    Escribe los datos
+                </strong>
+                correspondientes para cada campo del nuevo registro.
+                <p>
+                </p>
+            </li>
+            <li>
+                Haz clic en el botón
+                <strong>
+                    <em>
+                        Apply
+                    </em>
+                </strong>
+                para guardar los datos introducidos, o si se desea seguir añadiendo otros registros, sigue introduciendo datos en la siguiente fila y al final es cuando debes pulsar el botón
+                <strong>
+                    <em>
+                        Apply
+                    </em>
+                </strong>
+                . Se utilizará el botón
+                <em>
+                    Cancelar
+                </em>
+                (Revert) si no se desea guardar los datos.
+                <div class="elemento_centrado">
+                </div>
+            </li>
+            <li>
+                Si la fila o filas se han
+                <strong>
+                    añadido correctamente
+                </strong>
+                se mostrará un mensaje indicando que la operación se ha realizado con éxito. En caso contrario, se mostrará un mensaje de error.
+            </li>
+        </ol>
+        <p>
+        </p>
+        <p>
+        </p>
+        <p>
+            Observa que antes de aplicar o confirmar la operación, se muestra el SQL correspondiente a la sentencia que se va a ejecutar.
+        </p>
+        <p>
+            Permaneciendo en la ventana proporcionada por la opción
+            <em>
+                Select Rows
+            </em>
+            se podrá ver, la
+            <strong>
+                lista de los datos
+            </strong>
+            contenidos en los registros que se han ido insertando.
+        </p>
+        <p>
+            En caso de que se haya producido un
+            <strong>
+                error
+            </strong>
+            al intentar insertar los datos, habrá que comprobar el mensaje que se muestra, e intentar solucionar el problema. Por ejemplo, si se intenta introducir un texto en un campo de tipo numérico se obtendrá un error como el siguiente: "
+            <em>
+                columna no permitida aquí
+            </em>
+            ", y no se habrá realizado ninguna operación de la inserción del nuevo registro.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.2.- Modificación de registros.
+</h1><div class="iDevice_content">
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Para modificar registros en tablas, utilizando las herramientas gráficas que ofrece Oracle
+        <span lang="en">
+         <em>
+          Database Express
+         </em>
+        </span>
+        , se deben seguir los siguientes
+        <strong>
+            pasos
+        </strong>
+        :
+    </p>
+    <ol>
+        <li>
+            Ir a la
+            <strong>
+                página inicial
+            </strong>
+            de bases de datos de Oracle
+            <span lang="en">
+          Database Express
+         </span>
+            , si no te encuentras en ella.
+        </li>
+        <li>
+            Hacer clic en el botón
+            <strong>
+                <em>
+                    Explorador de objetos
+                </em>
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Seleccionar una tabla
+            </strong>
+            en la lista izquierda.
+        </li>
+        <li>
+            Seleccionar la pestaña
+            <strong>
+                <em>
+                    Datos
+                </em>
+            </strong>
+            .
+        </li>
+        <li>
+            Debe aparecer, bajo los botones anteriores, una
+            <strong>
+                lista
+            </strong>
+            con los registros que previamente se hayan insertado en la tabla. En el lado izquierdo de cada registro aparece el
+            <strong>
+                icono
+            </strong>
+            que permite la modificación de los datos del registro que se encuentra en la misma fila.
+        </li>
+        <li>
+            Tras hacer clic en el icono, se muestran los campos que forman el registro con los datos que contiene actualmente. Para
+            <strong>
+                modificar cualquier dato
+            </strong>
+            simplemente debemos escribirlo en el campo correspondiente. Así habrá que modificar todos los datos necesarios.
+        </li>
+        <li>
+            Para aceptar los cambios realizados, se debe hacer clic en el botón
+            <strong>
+                <em>
+                    Aplicar Cambios
+                </em>
+            </strong>
+            , pero si se desea volver al estado anterior, simplemente hay que utilizar el botón
+            <em>
+                Cancelar
+            </em>
+            .
+        </li>
+        <li>
+            Si todo ha ido bien aparecerá un mensaje informando que los cambios se han aplicado.
+        </li>
+    </ol>
+    <p>
+        Los cambios efectuados se pueden
+        <strong>
+            comprobar
+        </strong>
+        en la lista de registros mostrada en la parte inferior de la ventana.
+    </p>
+    <p>
+        Al igual que se comentó en la inserción de registros, al aceptar los cambios realizados en los datos, éstos se comprobarán automáticamente para ver si cumplen con los requisitos establecidos en la tabla. En caso de que no se cumplan, aparecerá un mensaje informando del error que se ha producido. Una vez solucionado el problema se podrá volver a intentar aplicar los cambios efectuados.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        La modificación de registros o valores de una fila permite cambiar los datos en las tablas que componen la base de datos. Para modificar registros o filas en tablas, utilizando las herramientas gráficas que ofrece MySQL, como es Workbench, se deben seguir los siguientes
+        <strong>
+            pasos
+        </strong>
+        :
+    </p>
+    <ol>
+        <li>
+            Ir a la
+            <strong>
+                página inicial
+            </strong>
+            de Workbench, si no te encuentras en ella y abrir conexión con el servidor.
+        </li>
+        <li>
+            <strong>
+                Seleccionar o poner en uso la base de datos
+            </strong>
+            con la que vas a trabajar, haciendo doble clic sobre ella.
+        </li>
+        <li>
+            <strong>
+                Desplegar el contenedor de las tablas
+            </strong>
+            de la base de datos, haciendo clic sobre el icono correspondiente.
+        </li>
+        <li>
+            <strong>
+                Seleccionar una tabla
+            </strong>
+            en la lista izquierda.
+        </li>
+        <li>
+            <strong>
+                En su menú contextual
+            </strong>
+            (un clic izquierdo) seleccionar la opción
+            <strong>
+                <em>
+                    Select Rows
+                </em>
+            </strong>
+            . Aparecerán todas las filas o registros de la tabla con un encabezado de botones que nos permiten insertar, editar o modificar y eliminar filas, entre otras opciones.
+        </li>
+        <li>
+            Sitúa el
+            <strong>
+                cursor en la fila y columna cuyo valor vayas a modificar
+            </strong>
+            .
+        </li>
+        <li>
+            Selecciona el botón o icono que aparece con un
+            <strong>
+                lápiz de edición
+            </strong>
+            y cuya acción es
+            <em>
+                <strong>
+                    modificar una Fila (Edit current row)
+                </strong>
+            </em>
+        </li>
+        <li>
+            <strong>
+                Escribe los nuevos datos
+            </strong>
+            correspondientes para cada campo o columna que quieras modificar en esa fila o registro.
+        </li>
+        <li>
+            Hacer clic en el botón
+            <strong>
+                <em>
+                    Apply
+                </em>
+            </strong>
+            para guardar los datos modificados, o si se desea seguir modificando otros registros, continúa moviéndote con el cursor a las correspondientes columnas de las filas a modificar y al final, es cuando debes pulsar el botón
+            <strong>
+                <em>
+                    Apply
+                </em>
+            </strong>
+            . Se utilizará el botón
+            <em>
+                Cancelar
+            </em>
+            (Revert) si no se desea modificar los datos.
+            <div class="elemento_centrado">
+            </div>
+        </li>
+        <li>
+            Si la fila o filas se han
+            <strong>
+                modificado correctamente
+            </strong>
+            se mostrará el mensaje correspondiente a que la operación se ha realizado con éxito. En caso contrario, se mostrará un mensaje de error.
+        </li>
+    </ol>
+    <p>
+        Observa que antes de aplicar o confirmar la operación, se muestra el SQL correspondiente a la sentencia que se va a ejecutar.
+    </p>
+    <p>
+        Permaneciendo en la ventana proporcionada por la opción
+        <em>
+            Select Rows,
+        </em>
+        se podrá ver la
+        <strong>
+            lista de los datos
+        </strong>
+        contenidos en los registros que se han ido modificando.
+    </p>
+    <p>
+        Al igual que se comentó en la inserción de registros, al aceptar los cambios realizados en los datos, éstos se comprobarán automáticamente para ver si cumplen con los requisitos establecidos en la tabla. En caso de que no se cumplan, aparecerá un mensaje informando del error que se ha producido. Una vez solucionado el problema se podrá volver a intentar aplicar los cambios efectuados.
+    </p>
+</div><h1 class="title">
+    2.3.- Borrado de registros.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        En el caso de que quieras eliminar un registro de una determinada tabla hay que seguir, en principio, los
+        <strong>
+            mismos pasos
+        </strong>
+        que se han comentado anteriormente para
+        <strong>
+            editar un registro
+        </strong>
+        . Es decir, una vez seleccionada la tabla, elegir la pestaña Datos y hacer clic en el botón
+        <em>
+            Editar
+        </em>
+        junto al registro que quieres suprimir.
+    </p>
+    <p>
+    </p>
+    <p>
+        Cuando se muestra la información del contenido del registro, puedes observar en la parte superior derecha que dispones de un botón
+        <strong>
+            <em>
+                Suprimir
+            </em>
+        </strong>
+        , junto al que has podido utilizar en el apartado anterior para
+        <em>
+            Aplicar Cambios
+        </em>
+        .
+    </p>
+    <p>
+    </p>
+    <p>
+        Al hacer clic en ese botón verás una ventana de diálogo donde solicita que confirmes si deseas borrar el registro.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si todo ha ido bien se mostrará un mensaje informando de ello:
+    </p>
+    <p>
+    </p>
+    <p>
+        La eliminación de un registro no podrá realizarse si un registro de otra tabla hace referencia a él. En ese caso, se mostrará el mensaje correspondiente al intentar eliminarlo (similar a: "
+        <em>
+            error ORA-02292: restricción de integridad violada - registro secundario encontrado
+        </em>
+        "). Si ocurriera esto, para eliminar el registro se debe eliminar el registro que hace referencia a él, o bien modificarlo para que haga referencia a otro registro.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+    </p>
+    <div class="block iDevice_content" id="ta10_73">
+        <p>
+            En el caso de que quieras eliminar un registro o fila de una determinada tabla, debes seguir los
+            <strong>
+                mismos pasos
+            </strong>
+            que se han comentado anteriormente para
+            <strong>
+                editar o modificar un registro
+            </strong>
+            . Es decir, una vez seleccionada la tabla, los pasos a seguir son los siguientes.
+        </p>
+        <ol>
+            <li>
+                <strong>
+                    En su menú contextual
+                </strong>
+                (un clic izquierdo) selecciona la opción
+                <strong>
+                    <em>
+                        Select Rows
+                    </em>
+                </strong>
+                . Aparecerán todas las filas o registros de la tabla con un encabezado de botones que nos permiten insertar, editar o modificar y eliminar filas, entre otras opciones.
+            </li>
+            <li>
+                Sitúa el
+                <strong>
+                    cursor en la fila que deseas eliminar
+                </strong>
+                .
+            </li>
+            <li>
+                Selecciona el botón o icono que aparece con un
+                <strong>
+                    menos
+                </strong>
+                (
+                <strong>
+                    -)
+                </strong>
+                y cuya acción es
+                <em>
+                    <strong>
+                        eliminar una Fila (Delete selected rows)
+                    </strong>
+                </em>
+            </li>
+            <li>
+                Debes hacer clic en el botón
+                <strong>
+                    <em>
+                        Apply
+                    </em>
+                </strong>
+                para guardar los cambios, o si se desea seguir eliminando otros registros, continúa posicionándote en las filas a eliminar y pulsando el
+                <em>
+                    botón menos (-)
+                </em>
+                y al final, es cuando debes pulsar el botón
+                <strong>
+                    <em>
+                        Apply
+                    </em>
+                </strong>
+                . Se utilizará el botón
+                <em>
+                    Cancelar
+                </em>
+                (
+                <em>
+                    Revert
+                </em>
+                ) si no se desea eliminar las filas.
+                <ol>
+                    <li>
+                        Puedes seleccionar el conjunto de filas a eliminar, manteniendo pulsada la tecla CTRL mientras haces clic en cada fila a eliminar, y posteriormente pulsar el
+                        <em>
+                            botón (-)
+                        </em>
+                        y luego
+                        <em>
+                            Apply
+                        </em>
+                        .
+                        <br>
+                        <div class="elemento_centrado">
+                        </div>
+                        <br/></li>
+                </ol>
+            </li>
+            <li>
+                Si la fila o filas se han
+                <strong>
+                    eliminado correctamente
+                </strong>
+                se mostrará el mensaje correspondiente a que la operación se ha realizado con éxito. En caso contrario, se mostrará un mensaje de error.
+            </li>
+        </ol>
+        <p>
+            Observa que antes de aplicar o confirmar la operación, se muestra el SQL correspondiente a la sentencia que se va a ejecutar.
+        </p>
+        <p>
+            Permaneciendo en la ventana proporcionada por la opción
+            <em>
+                Select Rows
+            </em>
+            se podrá ver, la
+            <strong>
+                lista de los datos
+            </strong>
+            contenidos en los registros actuales y podrás comprobar que se han eliminado las filas indicadas.
+        </p>
+        <p>
+            Al igual que se comentó en la inserción y modificación de registros, al aceptar los cambios realizados en los datos, en este caso eliminación de filas, éstos se comprobarán automáticamente para ver si cumplen con los requisitos establecidos en la tabla. En caso de que no se cumplan, aparecerá un mensaje informando del error que se ha producido. Una vez solucionado el problema se podrá volver a intentar aplicar los cambios efectuados.
+        </p>
+        <p>
+            Ten en cuenta que la eliminación de un registro no podrá realizarse si un registro de otra tabla hace referencia a él. En ese caso, se mostrará el mensaje correspondiente al intentar eliminarlo (similar a: "
+            <em>
+                restricción de integridad referecnial violada"
+            </em>
+            . Si ocurriera esto, para eliminar el registro se debe eliminar el registro que hace referencia a él, o bien modificarlo para que haga referencia a otro registro.
+        </p>
+        <p>
+            Lo normal es, que si se viola la integridad referencial, el registro se deje sin eliminar, pues esa restricción de integridad proviene del diseño de la base de datos para que los datos almacenados sean en todo momento correctos.
+        </p>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.- Edición de la información mediante sentencias SQL.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La aplicación web que está desarrollando Juan, debe acceder a la base de datos desde su código fuente para recoger datos almacenados en ella. La herramienta gráfica que ha estado utilizando Ana para introducir datos no puede usarse para que la aplicación que está desarrollando realice esa misma operación. Tendrá que utilizar, desde el código fuente de la aplicación, sentencias del lenguaje SQL que permiten la manipulación de los datos. Por ello, va a practicar con Ana el uso de esas sentencias SQL desde las aplicaciones de
+        <span lang="en">
+           Oracle Express
+          </span>
+        , para más adelante implementarlas en el código fuente de la aplicación.
+    </p>
+</div><h1 class="title">
+    3.1.- Inserción de registros.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La sentencia &lt;em&gt;INSERT&lt;/em&gt; permite la inserción de nuevas filas o registros en un tabla existente.
+    </p>
+    <p>
+        Existen dos formas básicas de la sentencia
+        <strong>
+            <em>
+                INSERT
+            </em>
+        </strong>
+        :
+    </p>
+    <ul>
+        <li>
+            añadir una fila indicando explícitamente los valores que deben tomar las columnas, o
+        </li>
+        <li>
+            extraer las filas de una tabla ya existente y añadirlas a otra tabla (utilizando consultas
+            <em>
+                SELECT
+            </em>
+            con
+            <em>
+                INSERT
+            </em>
+            ).
+        </li>
+    </ul>
+    <p>
+        El formato más sencillo de utilización de la sentencia &lt;em&gt;INSERT&lt;/em&gt; tiene la siguiente sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>INSERT INTO nombre_tabla (lista_campos) VALUES (lista_valores);
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Donde
+        <em>
+            nombre_tabla
+        </em>
+        será el nombre de la tabla en la que quieras añadir nuevos registros. En lista_campos se indicarán los campos de dicha tabla en los que se desea escribir los nuevos valores indicados en
+        <em>
+            lista_valores
+        </em>
+        . Es posible omitir la lista de campos (
+        <em>
+            lista_campos
+        </em>
+        ), si se indican todos los valores de cada campo y en el orden en el que se encuentran en la tabla.
+    </p>
+    <p>
+        Tanto la lista de campos
+        <em>
+            lista_campos
+        </em>
+        como la de valores
+        <em>
+            lista_valores
+        </em>
+        , tendrán separados por comas cada uno de sus elementos. Hay que tener en cuenta también que cada campo de
+        <em>
+            lista_campos
+        </em>
+        debe tener un valor válido en la posición correspondiente de la
+        <em>
+            lista_valores
+        </em>
+        (Si no recuerdas los valores válidos para cada campo puedes utilizar la sentencia &lt;em&gt;DESCRIBE&lt;/em&gt; seguida del nombre de la tabla que deseas consultar).
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        En el siguiente ejemplo se inserta un nuevo registro en la tabla
+        <em>
+            ASISTENTE
+        </em>
+        en el que se tienen todos los datos disponibles:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 76.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>INSERT INTO ASISTENTE (codigo, nombre, apellido1, apellido2, sexo, fechaNac, empresa) VALUES ('AS0015','Julia', 'Hernández','Sáez','M', &lt;br&gt;'11/10/1992','BK Programación');&lt;/br&gt;</pre>
+            <pre ngNonBindable> </pre>
+        </div>
+    </div>
+    <p>
+        En este otro ejemplo, se inserta un registro de igual manera, pero sin disponer de todos los datos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 53.3em;">
+        <div class="texto_izquierda">
+            <br>
+            <p>
+                INSERT INTO ASISTENTE (codigo, nombre, apellido1, sexo, fechaNac) VALUES ('AS0016','María', 'Durán','M',
+            </p>
+            <p>
+                '03/30/1979');
+            </p>
+            <br/></div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Al hacer un &lt;em&gt;INSERT&lt;/em&gt; en el que no se especifiquen los valores de todos los campos, se obtendrá el valor &lt;em&gt;NULL&lt;/em&gt; en aquellos campos que no se han indicado.
+    </p>
+    <p>
+        Si la lista de campos indicados no se corresponde con la lista de valores, se obtendrá un error en la ejecución. Por ejemplo, si no se indica el campo "empresa" pero sí se especifica un valor para dicho campo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 81.35em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>INSERT INTO ASISTENTE (codigo, nombre, apellido1, sexo, fechaNac) VALUES ('AS0017','Lucas', 'López','H', '12/22/1989','Big Soft');</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Se obtiene el siguiente error:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>ORA-00913: demasiados valores</pre>
+        </div>
+    </div>
+
+</div><h1 class="title">
+    3.2.- Modificación de registros.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La sentencia &lt;em&gt;UPDATE&lt;/em&gt; permite modificar una serie de valores de determinados registros de las tablas de la base de datos.
+    </p>
+    <p>
+        La manera más sencilla de utilizar la sentencia &lt;em&gt;UPDATE&lt;/em&gt; tiene la siguiente sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 46.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>UPDATE nombre_tabla SET nombre_campo = valor [, nombre_ campo = valor]...
+</pre>
+            <pre ngNonBindable>[ WHERE condición ];
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Donde
+        <em>
+            nombre_tabla
+        </em>
+        será el nombre de la tabla en la que quieras modificar datos. Se pueden especificar los nombres de campos que se deseen de la tabla indicada. A cada campo especificado se le debe asociar el nuevo valor utilizando el signo =. Cada emparejamiento
+        <em>
+            campo=valor
+        </em>
+        debe separarse del siguiente utilizando comas (,).
+    </p>
+    <p>
+        La cláusula &lt;em&gt;WHERE&lt;/em&gt; seguida de la condición es opcional (como pretenden indicar los corchetes). Si se indica, la actualización de los datos sólo afectará a los registros que cumplen la condición. Por tanto, ten en cuenta que si no indicas la cláusula &lt;em&gt;WHERE&lt;/em&gt;, los cambios afectarán a todos los registros.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Por ejemplo, si se desea poner a 20 el precio de cada conferencia:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>UPDATE CONFERENCIA SET precio = 20;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En este otro ejemplo puedes ver la actualización de dos campos, poniendo a 20 el precio de las conferencias  y borrando la información del campo
+        <em>
+            tema
+        </em>
+        de todos las conferencias:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>UPDATE CONFERENCIA SET precio = 20, tema = NULL;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para que los cambios afecten a determinados registros hay que especificar una condición. Por ejemplo, si se quiere cambiar el precio de todas las conferencias del turno de tarde, estableciendo el valor 30:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 34.05em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>UPDATE CONFERENCIA SET Credito = 30 WHERE turno = 'T';
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Cuando termina la ejecución de una sentencia &lt;em&gt;UPDATE&lt;/em&gt;, se muestra la cantidad de registros (filas) que han sido actualizadas, o el error correspondiente si se ha producido algún problema. Por ejemplo podríamos encontrarnos con un mensaje similar al siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.3em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>3 fila(s) actualizada(s).
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.3.- Borrado de registros.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La sentencia &lt;em&gt;DELETE&lt;/em&gt; es la que permite eliminar o borrar registros de un tabla.
+    </p>
+    <p>
+        Esta es la sintaxis que debes tener en cuenta para utilizarla:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DELETE FROM nombre_tabla [ WHERE condición ];
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Al igual que hemos visto en las sentencias anteriores, nombre_tabla hace referencia a la tabla sobre la que se hará la operación, en este caso de borrado. Se puede observar que la cláusula &lt;em&gt;WHERE&lt;/em&gt; es opcional. Si no se indica, debes tener muy claro que se borrará todo el contenido de la tabla, aunque la tabla seguirá existiendo con la estructura que tenía hasta el momento.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Por ejemplo, si usas la siguiente sentencia, borrarás todos los registros de la tabla
+        <em>
+            PONENTE
+        </em>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DELETE FROM PONENTE;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para ver un ejemplo de uso de la sentencia &lt;em&gt;DELETE&lt;/em&gt; en la que se indique una condición, supongamos que queremos eliminar todos los ponentes cuya especialidad es Programación:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 27.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DELETE FROM PONENTE WHERE especialidad = 'Programación';
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Como resultado de la ejecución de este tipo de sentencia, se obtendrá un mensaje de error si se ha producido algún problema, o bien, el número de filas que se han eliminado.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>2 fila(s) suprimida(s).
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.- Integridad referencial.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ana tiene una duda en el planteamiento de la base de datos  y se la plantea a Juan: ¿Qué ocurre si el registro correspondiente a los datos de un determinada sala  es eliminado y existen conferencias que se van a celebrar en dicha sala? Juan le responde que para eso existe la
+        integridad referencial
+
+
+        Integridad Referencial
+
+        Garantiza que una entidad (fila o registro) siempre se relaciona con otras entidades válidas, es decir, que existen en la base de datos. Implica que en todo momento dichos datos sean correctos, sin repeticiones innecesarias, datos perdidos y relaciones mal resueltas
+        , que además asegurará otras cosas como por ejemplo que no puedan existir conferencias que reflejen que la sala donde se van a celebrar no existe en la base de datos.
+    </p>
+    <p>
+        Igualmente, ¿Qué ocurre si el registro correspondiente a los datos de un determinado
+        <em>
+            departamento
+        </em>
+        es eliminado y existen empleados asociados a ese
+        <em>
+            departamento
+        </em>
+        ? Pues la
+        integridad referencial
+
+
+        Integridad referencial
+
+        Garantiza que una entidad (fila o registro) siempre se relaciona con otras entidades válidas, es decir, que existen en la base de datos. Implica que en todo momento dichos datos sean correctos, sin repeticiones innecesarias, datos perdidos y relaciones mal resueltas
+        ,  asegurará en otras  cosas como por ejemplo que no puedan existir empleados que reflejen que su departamento es un departamento que no existe en la base de datos.
+    </p>
+</div><h1 class="title">
+    4.1.- Integridad en actualización y supresión de registros.
+</h1><div class="iDevice_content">
+    <p>
+        La relación existente entre la clave ajena y la clave padre tiene implicaciones en el borrado y modificación de sus valores.
+    </p>
+    <p>
+        Si se modifica el valor de la clave ajena en la tabla hija, debe establecerse un nuevo valor que haga referencia a la clave principal de uno de los registros de la tabla padre. De la misma manera, no se puede modificar el valor de la clave principal en un registro de la tabla padre si una clave ajena hace referencia a dicho registro.
+    </p>
+    <p>
+        Los borrados de registros en la tabla de referencia también puede suponer un problema, ya que no pueden suprimirse registros que son referenciados con una clave ajena desde otra tabla.
+    </p>
+    <p>
+        Suponiendo el siguiente ejemplo:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el registro de la partida con nombre "
+        <em>
+            PARTIDA01
+        </em>
+        " no puede ser modificado el campo
+        <em>
+            Cod_Juego
+        </em>
+        al valor 4, porque no es una clave ajena válida, puesto que no existe un registro en la tabla
+        <em>
+            JUEGOS
+        </em>
+        con esa clave primaria.
+    </p>
+    <p>
+        El código del juego "
+        <em>
+            DAMAS
+        </em>
+        " no puede ser cambiado, ya que hay registros en la tabla
+        <em>
+            PARTIDAS
+        </em>
+        que hacen referencia a dicho juego a través del campo
+        <em>
+            Cod_Juego
+        </em>
+        .
+    </p>
+    <p>
+        Si se eliminara en la tabla
+        <em>
+            JUEGOS
+        </em>
+        el registro que contiene el juego "
+        <em>
+            PARCHIS
+        </em>
+        ", la partida "
+        <em>
+            PARTIDA05
+        </em>
+        " quedaría con un valor inválido en el campo
+        <em>
+            Cod_Juego
+        </em>
+        .
+    </p>
+    <p>
+        Cuando se hace el borrado de registros en una tabla de referencia, se puede configurar la clave ajena de diversas maneras para que se conserve la integridad referencial:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                No Permitir Supresión
+            </strong>
+            : Es la opción por defecto. En caso de que se intente borrar en la tabla de referencia un registro que está siendo referenciado desde otra tabla, se produce un error en la operación de borrado impidiendo dicha acción.
+        </li>
+        <li>
+            <strong>
+                Supresión en Cascada
+            </strong>
+            : Al suprimir registros de la tabla de referencia, los registros de la tabla hija que hacían referencia a dichos registros, también son borrados.
+        </li>
+        <li>
+            <strong>
+                Definir Nulo en Suprimir
+            </strong>
+            : Los valores de la clave ajena que hacían referencia a los registros que hayan sido borrados de la tabla de referencia, son cambiados al valor &lt;em&gt;NULL&lt;/em&gt;.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Modificaciones y restricciones de Integridad
+        </strong>
+    </p>
+    <p>
+        <strong>
+            1)
+        </strong>
+        Si se intenta hacer un cambio que entra en conflicto con alguna de las reglas integridad de la tabla, se producirá un error y el cambio no será llevado a efecto. Por ejemplo si intentamos modificar el valor de la clave primaria de una fila por un valor que exista previamente (recuerda que no pueden existir dos filas con el mismo valor de clave primaria), la operación no se efectuará. Esto lo gestiona automáticamente el
+        <abbr title="Sistema Gestor de Bases de Datos Relacional">
+            SGBDR
+        </abbr>
+        , asegurando la integridad de los datos de la base de datos.
+        <br>
+        <br>
+        <strong>
+            2)
+        </strong>
+        Si modificamos el valor de una columna que forma parte de una restricción de clave foránea o ajena (
+        <strong>
+            <em>
+                FOREIGN KEY
+            </em>
+        </strong>
+        )  el SGBDR  que soporta integridad referencial(caso de MySQL motor InnoDB) actuará según lo indicado en
+        <strong>
+            <em>
+                ON UPDATE
+            </em>
+        </strong>
+        (
+        <strong>
+            RESTRICT, NO ACTION,
+            <strong>
+                CASCADE,
+            </strong>
+            SET NULL
+        </strong>
+        ).
+        <br/><br/></p>
+    <p>
+        <strong>
+            Eliminación de filas y Reglas de Integridad
+        </strong>
+        <br>
+        <br>
+        Por supuesto el borrado de filas no debe dejar la base de datos en un estado de inconsistencia. Esto quiere decir que el
+        <abbr title="Sistema Gestor de Bases de Datos Relacional">
+            SGBDR
+        </abbr>
+        que soporte Integridad referencial (caso de motor InnoDB en MySQL) comprobará las restricciones de clave ajena,
+        <strong>
+            <em>
+                FOREIGN KEY
+            </em>
+        </strong>
+        , definidas y actuará según lo indicado en
+        <em>
+            <strong>
+                ON DELETE
+            </strong>
+        </em>
+        <strong>
+            <em>
+                (RESTRICT, NO ACTION,
+                <strong>
+                    <em>
+                        CASCADE
+                    </em>
+                </strong>
+                , SET NULL)
+            </em>
+        </strong>
+        .
+        <br/><br/></p>
+    <p>
+    </p>
+    <p>
+        Veamos algún ejemplo para que practiques con tu base de datos proyectosx  en MySQL
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Por ejemplo, si intentamos eliminar un departamento que es referenciado en la tabla de empleados y en la tabla de proyectos, es decir, un departamento donde trabaja al menos un empleado o un departamento con proyecto asignado, el SGBDR abortará la operación de borrado. Sólo se podrán eliminar departamentos en los que no trabaje ningún empleado y no tenga proyecto asignado. Esto es así porque se especificó ON
+        <em>
+            DELETE RESTRICT
+        </em>
+        al definir la clave ajena cddep de la tabla empleado y en la tabla proyecto.
+    </p>
+    <p>
+        Ejemplo: Eliminar el departamento ‘02’
+        <br>
+        <br>
+        <br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 27.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DELETE FROM departamento&lt;br /&gt;WHERE cddep='02';</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        No eliminará al departamento ‘02’ si existen filas en las tablas hijas (empleado o proyecto) cuyo valor de columna cddep sea “02”.
+        <br/></p>
+    <p>
+    </p>
+</div><h1 class="title">
+    4.2.- Supresión en cascada.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Las opciones de
+        <em>
+            Supresión en Cascada o Definir Nulo en Suprimir
+        </em>
+        pueden establecerse desde el momento de creación de las tablas, en el tercer paso del asistente que ofrece
+        <em>
+         <span lang="en">
+          Application Express
+         </span>
+            de Oracle
+        </em>
+        , al establecer las claves ajenas.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si la tabla ya estaba creada, y posteriormente se desea establecer una restricción de clave ajena con opción de
+        <em>
+            Supresión en Cascada
+        </em>
+        , se puede establecer desde el
+        <em>
+            Explorador de objetos de
+            <span lang="en">
+          Application Express
+         </span>
+        </em>
+        , seleccionando la tabla que contiene el campo con la clave ajena. La pestaña
+        <em>
+            Restricciones
+        </em>
+        ofrece la posibilidad de crear, borrar, activar y desactivar restricciones de este tipo.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si se está creando una restricción de clave ajena con supresión en cascada, tras usar el botón
+        <em>
+            Crear
+        </em>
+        anterior, hay que seleccionar la opción
+        <em>
+            clave ajena
+        </em>
+        en la lista desplegable, y marcar la opción Supresión en Cascada.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si estas operaciones se quieren realizar con código SQL, se dispone de las siguientes opciones durante la declaración de la clave ajena de la tabla: utilizar la opción &lt;em&gt;ON DELETE CASCADE&lt;/em&gt; para hacer la supresión en cascada, o bien &lt;em&gt;ON DELETE SET NULL&lt;/em&gt; si se prefiere definir nulo en suprimir. Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 54.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CONSTRAINT JUEGOS_CON FOREIGN KEY (Cod_Juego) REFERENCES JUEGO (Codigo) ON DELETE CASCADE
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Hay que recordar que una declaración de este tipo debe hacerse en el momento de crear la tabla (&lt;em&gt;CREATE TABLE&lt;/em&gt;) o modificar su estructura (&lt;em&gt;ALTER TABLE&lt;/em&gt;).
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        <strong>
+            Los mismos ejemplos vistos anteriormente para Oracle con SQL son válidos para MySQL.
+        </strong>
+    </p>
+    <p>
+        Vamos a ver otros ejemplos en MySQL para que practiques con tu base de datos proyectosx y el cliente gráfico de MySQL Workbench.
+    </p>
+    <p>
+        Las reglas de integridad referidas al comportamiento de la base de datos en las operaciones de modificación y eliminación de registros se pueden establecer mediante:
+    </p>
+    <ul>
+        <li>
+            Sentencias SQL.
+        </li>
+        <li>
+            Una herramienta gráfica como Workbench.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Con sentencias SQL
+        </strong>
+        , se pueden establecer las restricciones de integridad en el momento de crear la tabla (&lt;em&gt;CREATE TABLE&lt;/em&gt;) o modificar su estructura (&lt;em&gt;ALTER TABLE&lt;/em&gt;).:
+    </p>
+    <p>
+        Recuerda que por defecto, si no se indica nada, la restricción será equivalente a haber puesto
+        <strong>
+            <em>
+                RESTRICT
+            </em>
+        </strong>
+        o
+        <em>
+            <strong>
+                NO ACTION
+            </strong>
+        </em>
+        , para eliinaciones y modificaciones restrictivas, utilizar la opción &lt;em&gt; CASCADE&lt;/em&gt; para hacer la eliminación o modificación  en cascada, o bien &lt;em&gt;SET NULL&lt;/em&gt; si se prefiere poner a valor nulo la clave ajena en eliminaciones o modificaciones.
+    </p>
+    <p>
+        Por ejemplo, la siguiente restricción en la tabla empleado, indica que las modificaciones se realicen en cascada y las eliminaciones sean restrictivas:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 54.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CONSTRAINT emple_dep FOREIGN KEY (cddep) REFERENCES departamento (cddep)&lt;br /&gt;ON UPDATE CASCADE
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por tanto, si actualizamos el valor de la clave primaria
+        <em>
+            cddep
+        </em>
+        en la tabla
+        <em>
+            departamento
+        </em>
+        el cambio se transmitirá a todos los empleados (también los proyectos)  que referenciaban a ese departamento. Esto es así porque en la creación de la esas tablas de la base de datos se estableció la política de Integridad referencial (
+        <em>
+            ON UPDATE CASCADE
+        </em>
+        ).
+    </p>
+    <p>
+        Por ejemplo, si modificas el código del departamento '02' por el valor '42' mediante la sentencia:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 54.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>UPDATE departamento&lt;br /&gt; SET cddep='42'&lt;br /&gt; WHERE cddep='02';
+</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        comprobarás que se modifica el valor de la columna
+        <em>
+            cddep
+        </em>
+        del departamento “02” por “42”, en la tabla departamento, y también en las tablas hijas proyecto y empleado. El cambio se transmite en cascada tal y como se ha indicado en la reglas FOREIGN KEY correspondientes.
+        <br>
+        <br>
+        Haz la comprobación y  cambia de nuevo al valor '02'.
+        <br/><br/><br/></p>
+    <p>
+        <strong>
+            Mediante una herramienta gráfica como Workbench,
+        </strong>
+        se pueden indicar también estas restricciones de forma visual. Recuerda que para ello los pasos a seguir, una vez estamos en la ventana de creación o modificación de la tabla, son:
+    </p>
+    <ol>
+        <li>
+            Selecciona la pestaña
+            <em>
+                Foreign Keys
+            </em>
+            de la ventana de edición de la tabla.
+        </li>
+        <li>
+            En la siguiente ventana, selecciona la clave ajena de la lista que aparece bajo el encabezado
+            <em>
+                Foreign Key Name.
+            </em>
+        </li>
+        <li>
+            En esa misma ventana, a la derecha, bajo el encabezado
+            <em>
+                Foreign Key Options
+            </em>
+            puedes desplegar las listas relativas a
+            <em>
+                On Update
+            </em>
+            y
+            <em>
+                On Delete
+            </em>
+            , para elegir la opción deseada:
+            <em>
+                RESTRICT, CASCADE, SET NULL, NO ACTION.
+            </em>
+        </li>
+        <li>
+            Pulsa el botón
+            <em>
+                Apply
+            </em>
+            , para confirmar los cambios, o si quieres cancelar la operación, pulsa el botón
+            <em>
+                Revert.
+            </em>
+        </li>
+    </ol>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.- Subconsultas y composiciones en órdenes de edición.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.- Inserción de registros a partir de una consulta.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Anteriormente hemos visto la posibilidad de insertar registros en una tabla a través de la sentencia &lt;em&gt;INSERT&lt;/em&gt;, por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 52.2em;">
+        <div class="texto_izquierda" style="text-align: center;">
+            INSERT INTO ASISTENTE (codigo, nombre, apellido1, apellido2, sexo, fechaNac, empresa) VALUES ('AS0015','Julia', 'Hernández','Sáez','M', '11/10/1992','BK Programación');
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Esta misma acción se puede realizar usando una consulta &lt;em&gt;SELECT&lt;/em&gt; dentro de la sentencia &lt;em&gt;INSERT&lt;/em&gt;, así por ejemplo, la equivalente a la anterior sería:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 59.9em;">
+        <div class="texto_izquierda">
+            <br>
+            <p style="text-align: center;">
+                INSERT INTO (SELECT codigo, nombre, apellido1, apellido2, sexo, fechaNac, empresa FROM ASISTENTE VALUES ('AS0015','Julia', 'Hernández','Sáez','M', '11/10/1992','BK Programación');
+            </p>
+            <br/></div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Puedes observar que simplemente se ha sustituido el nombre de la tabla, junto con sus campos, por una consulta equivalente.
+    </p>
+    <p>
+        Y no sólo eso, sino que es posible insertar en una tabla valores que se obtienen directamente del resultado de una consulta. Supongamos por ejemplo, que disponemos de una tabla
+        <em>
+            ASISTENTES_SUPLENTES
+        </em>
+        con la misma estructura que la tabla
+        <em>
+            ASISTENTE
+        </em>
+        . Si queremos insertar en esa tabla todos los usuarios que tienen el campo empresa a null:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 46.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>INSERT INTO ASISTENTES_SUPLENTES SELECT * FROM ASISTENTE WHERE empresa = null;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Observa que en ese caso no se debe especificar la palabra &lt;em&gt;VALUES&lt;/em&gt;, ya que no se está especificando una lista de valores.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong>
+            Los mismos ejemplos vistos anteriormente para Oracle con SQL son válidos para MySQL.
+        </strong>
+    </p>
+    <p>
+        Vamos a ver otros ejemplos en MySQL para que practiques tu base de datos proyectosx.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Anteriormente hemos visto la posibilidad de insertar registros en una tabla a través de la sentencia &lt;em&gt;INSERT&lt;/em&gt;, por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 52.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;INSERT INTO departamento  (cddep,nombre,ciudad) VALUES ('07','I+D', 'Sevilla');&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <p>
+        En este caso, se indican de forma explícita los valores a insertar en la fila.
+    </p>
+    <p>
+        ¿Y si quiero insertar filas o valores que provienen de otra tabla? ¿Cómo lo podemos hacer?
+    </p>
+    <p>
+        Se puede combinar un INSERT con una SELECT de la siguiente forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 59.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>INSERT [INTO] &lt;tabla&gt; [(&lt;columna&gt;,...)]&lt;br /&gt;  SELECT ...
+</pre>
+        </div>
+    </div>
+    <p>
+        En este caso, los valores a insertar en una tabla no se indican explícitamente, sino que se obtienen a partir de una consulta (SELECT) de las filas de otra tabla.
+        <br>
+        <br>
+        Por ejemplo, si quisiéramos añadir todos los empleados del departamento “03” al proyecto con código “ECS”, suponiendo que existe tal proyecto en la tabla de proyectos, la sentencia a utilizar sería:
+        <br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 59.9em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>INSERT INTO trabaja (cdemp,cdpro)&lt;br /&gt;SELECT cdemp,'ECS' &lt;br /&gt;FROM empleado &lt;br /&gt;WHERE   cddep='03';</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        Puedes comprobar que se han insertado esos datos mediante la consulta:
+        <br/></p>
+    <div class="codigo elemento_centrado" style="width: 59.9em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT * FROM trabaja&lt;br /&gt;WHERE cdpro='ECS';</pre>
+        </div>
+    </div>
+    <p>
+        <br>
+        Observa que en el INSERT no se ha indicado ningún valor para la columna
+        <em>
+            nhoras
+        </em>
+        y que por tanto se le ha asignado el valor por defecto (cero) que se indicó en la definición de esa columna mediante la cláusula DEFAULT.
+        <br>
+        <br>
+        Veamos otro ejemplo: si quisiéramos añadir los empleados que no tienen proyecto asignado,  al proyecto con código “ECS”, suponiendo que existe tal proyecto en la tabla de proyectos, la sentencia a utilizar sería:
+        <br>
+        <br>
+        <br/><br/><br/><br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 59.9em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>INSERT INTO trabaja (cdemp,cdpro)&lt;br /&gt;SELECT cdemp,'ECS' &lt;br /&gt;FROM empleado &lt;br /&gt;WHERE  cdemp NOT IN (SELECT DISTINCT cdemp &lt;br /&gt;                 FROM trabaja);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.2.- Modificación de registros a partir de una consulta.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La acción de actualizar registros mediante la sentencia &lt;em&gt;UPDATE&lt;/em&gt; también puede ser utilizada con consultas para realizar modificaciones más complejas de los datos. Las consultas pueden formar parte de cualquiera de los elementos de la sentencia &lt;em&gt;UPDATE&lt;/em&gt;.
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Por ejemplo, la siguiente sentencia modifica el precio de las conferencias que se celebren en salas cuya capacidad sea mayor que 200. El precio que se les asignará será el de la conferencia que tenga mayor precio.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.6em;">
+        <div class="texto_izquierda">
+            <br>
+            <pre ngNonBindable>UPDATE CONFERENCIA SET precio = (SELECT MAX(precio) FROM CONFERENCIA) WHERE sala IN &lt;br /&gt;(SELECT nombre FROM SALA WHERE capacidad &gt;200);&lt;br /&gt;
+</pre>
+            <br/></div>
+    </div>
+</div><h1 class="title">
+    5.3.- Supresión de registros a partir de una consulta.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Al igual que las sentencias &lt;em&gt;INSERT&lt;/em&gt; y &lt;em&gt;UPDATE&lt;/em&gt; vistas anteriormente, también se pueden hacer borrados de registros utilizando consultas como parte de las tablas donde se hará la eliminación o como parte de la condición que delimita la operación.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Por ejemplo, si se ejecuta la siguiente sentencia:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DELETE FROM (SELECT * FROM ASISTENTE WHERE Empresa='Bigsoft' AND sexo='H');
+</pre>
+        </div>
+    </div>
+    <p>
+        El resultado es que se eliminan determinados registros de la
+        <em>
+            tabla ASISTENTE
+        </em>
+        , en concreto, aquellos asistentes varones que pertenezcan a la empresa 'Bigsoft'.
+    </p>
+    <p>
+        Puedes observar que no se ha establecido ninguna condición &lt;em&gt;WHERE&lt;/em&gt; en la sentencia, ya que se ha incluido dentro de la consulta. Otra manera de realizar la misma acción, pero utilizando la cláusula &lt;em&gt;WHERE&lt;/em&gt; es la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 51.65em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable> &lt;code&gt;DELETE FROM (SELECT * FROM ASISTENTE WHERE Empresa='Bigsoft') WHERE sexo='H';</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.- Transacciones.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ana ha estado haciendo algunas pruebas del funcionamiento de la aplicación y ha observado un error: En la tabla Participar ha intentado intercambiar el orden de participación de dos ponentes en una conferencia pero antes de finalizar el proceso ha utilizado un botón "Cancelar" para simular que se ha optado por dar marcha atrás al intercambio. En ese caso, el num_orden de  los ponentes no se debería de haber modificado  ya que  no se han completado todas las sentencias pero sin embargo en un ponente si  ha modificado  el num_orden pero en el otro ponente no.
+    </p>
+    <p>
+        Al comentarle el problema a Juan, éste le comenta que debe gestionar ese proceso utilizando transacciones.
+    </p>
+</div><h1 class="title">
+    6.1.- Hacer cambios permanentes.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Una transacción comienza cuando se encuentra la primera sentencia SQL ejecutable. Para que los cambios producidos durante la transacción se hagan permanentes (no puedan deshacerse), se dispone de las siguientes opciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Utilizar la sentencia &lt;em&gt;COMMIT&lt;/em&gt;, la cual ordena a la base de datos que haga permanentes las acciones incluidas en la transacción.
+        </li>
+        <li>
+            Ejecutar una sentencia
+            <abbr title="Data Definition Language.">
+                DDL
+            </abbr>
+            (como &lt;em&gt;CREATE&lt;/em&gt;, &lt;em&gt;DROP&lt;/em&gt;, &lt;em&gt;RENAME&lt;/em&gt;, o &lt;em&gt;ALTER&lt;/em&gt;). La base de datos ejecuta implícitamente una orden &lt;em&gt;COMMIT&lt;/em&gt; antes y después de cada sentencia DDL.
+        </li>
+        <li>
+            Si el usuario cierra adecuadamente las aplicaciones de gestión de las bases de datos Oracle, se produce un volcado permanente de las cambios efectuados por la transacción.
+        </li>
+    </ul>
+    <p>
+        Desde la aplicación gráfica
+        <span lang="en">
+         <em>
+          Application Express
+         </em>
+        </span>
+        , la ejecución de sentencias SQL desde
+        <em>
+            Inicio &gt; SQL &gt; Comandos SQL
+        </em>
+        permite que se hagan los cambios permanentes tras su ejecución, marcando la opción
+        <em>
+            Confirmación Automática
+        </em>
+        .
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Los pasos para usar transacciones en MySQL son:
+    </p>
+    <ol>
+        <li>
+            Iniciar una transacción con
+            <strong>
+                <em>
+                    START TRANSACTION
+                </em>
+            </strong>
+            o
+            <strong>
+                <em>
+                    BEGIN
+                </em>
+            </strong>
+        </li>
+        <li>
+            Actualizar datos (insertar, eliminar o modificar registros).
+        </li>
+        <li>
+            Confirmar la transacción con
+            <em>
+                <strong>
+                    COMMIT
+                </strong>
+            </em>
+            . Los cambios hechos serán permanentes.
+        </li>
+        <li>
+            Deshacer la transacción con
+            <strong>
+                <em>
+                    ROLLBACK
+                </em>
+            </strong>
+            si ha habido algún problema con la ejecución de alguna sentencia de la transacción y ésta queda a medias. (Una cancelación, una excepción, un fallo en sistema, etc.). De esta forma, no se graba ningún cambio  en la
+            <abbr title="Base de Datos">
+                BD
+            </abbr>
+            .
+        </li>
+    </ol>
+    <p>
+        En tablas
+        <em>
+            InnoDB
+        </em>
+        toda la actividad del usuario se produce dentro de una transacción.
+    </p>
+    <p>
+        Si está activado el modo de ejecución automático (
+        <em>
+            autocommit
+        </em>
+        ) cada sentencia SQL conforma una transacción individual por sí misma.
+    </p>
+    <p>
+        MySQL siempre comienza una nueva conexión con la ejecución automática habilitada, es decir, con  la variable
+        <em>
+            AUTOCOMMIT= ON (o 1),
+        </em>
+        por lo que cada instrucción individual SQL se trata como una transacción en sí misma, y se confirmará en cuanto que la ejecución termine.
+        <br>
+        <br>
+        Puedes comprobar el estado de esta variable mediante la orden:
+        <br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>mysql&gt; show variables like '%autocommit%';
+</pre>
+        </div>
+    </div>
+    <p>
+        Se puede cambiar el valor de la variable AUTOCOMMIT a OFF (o 0), ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>mysql&gt; SET autocommit = OFF;
+</pre>
+        </div>
+    </div>
+    <pre ngNonBindable> &lt;br /&gt;Recuerda que todas las órdenes que puedes dar en modo comando (prompt mysq&gt;), las puedes dar desde la ventana de SQL &lt;br /&gt;de Workbench.</pre>
+    <p>
+    </p>
+    <pre ngNonBindable>Si el modo de ejecución automática se deshabilitó con &lt;em&gt;SET AUTOCOMMIT=0&lt;/em&gt;, entonces puede considerarse que un usuario siempre &lt;br /&gt;tiene una transacción abierta. &lt;br /&gt;&lt;br /&gt;Una sentencia COMMIT o ROLLBACK termina la transacción vigente y comienza con una nueva.&lt;br /&gt;&lt;br /&gt;Ambas sentencias liberan todos los bloqueos InnoDB que se establecieron durante la transacción vigente.&lt;br /&gt;&lt;br /&gt;Si la conexión tiene la ejecución automática habilitada, el usuario puede igualmente llevar a cabo una transacción &lt;br /&gt;con varias sentencias si la comienza explícitamente con START TRANSACTION o BEGIN, y la termina con COMMIT  o ROLLBACK.&lt;br /&gt;&lt;br /&gt;A continuación tienes un ejemplo que te ayudará a ver de forma práctica el manejo de transacciones. &lt;br /&gt;&lt;br /&gt;EJEMPLO:&lt;br /&gt;1.-Iniciamos transacción&lt;br /&gt;2.-Incrementamos en 50 las horas  dedicadas por los empleados que trabajan en el proyecto ‘DAG’&lt;br /&gt;3.-Finalizamos la transacción, confirmando con COMMIT  &lt;br /&gt;</pre>
+    <pre ngNonBindable> </pre>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;START TRANSACTION;&lt;br /&gt;UPDATE trabaja &lt;br /&gt;SET nhoras=nhoras+50 &lt;br /&gt;WHERE cdpro='DAG';&lt;br /&gt;COMMIT;&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <pre ngNonBindable>&lt;br /&gt;Una vez finalizda la transacción con COMMIT, los cambios son permanenetes y no se pueden deshacer.&lt;br /&gt;&lt;br /&gt;</pre>
+    <pre ngNonBindable>Si en vez de COMMIT hubiésemos finalizado la transacción con ROLLBACK, no se ejecuta la sentencia UPDATE de este ejemplo, &lt;br /&gt;es decir, se deshace la transacción realizada. Lo probaremos en el siguiente apartado.&lt;br /&gt;&lt;br /&gt;Hay instrucciones SQL que, dadas sus características, &lt;strong&gt;implican confirmación automática&lt;/strong&gt;. Éstas son:</pre>
+    <ul>
+        <li>
+            <p>
+                Instrucciones del DDL que definen o modifican objetos de la base de datos. CREATE, ALTER, DROP, RENAME, TRUNCATE.
+            </p>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <p>
+                Instrucciones que modifican tablas de la base de datos administrativa mysql. GRANT y REVOKE
+            </p>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            Instrucciones de control de transacciones y bloqueo de tablas. START TRANSACTION BEGIN, LOCK y UNLOCK.
+        </li>
+    </ul>
+    <ul>
+        <li>
+         <span style="font-family: times new roman,times;">
+          Instrucciones de carga de &lt;strong&gt;datos.&lt;/strong&gt; LOAD DATA.Instrucciones de administración de tablas. ANALIZE, CHECK, OPTIMIZE y REPAIR.
+         </span>
+        </li>
+    </ul>
+    <p>
+    </p>
+</div><h1 class="title">
+    6.2.- Deshacer cambios.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La sentencia &lt;em&gt;ROLLBACK&lt;/em&gt; permite deshacer los cambios efectuados por la transacción actual, dándola además por finalizada.
+    </p>
+    <p>
+        Siempre se recomienda que explícitamente finalices las transacciones en las aplicaciones usando las sentencias &lt;em&gt;COMMIT&lt;/em&gt; o &lt;em&gt;ROLLBACK&lt;/em&gt;.
+    </p>
+    <p>
+        Recuerda que si no se han hecho permanentes los cambios de una transacción, y la aplicación termina incorrectamente, la base de datos de Oracle y MySQL retorna al estado de la última transacción volcada, deshaciendo los cambios de forma implícita.
+    </p>
+    <p>
+        Para deshacer los cambios de la transacción simplemente debes indicar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 10.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ROLLBACK;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Hay que tener en cuenta que si una transacción termina de forma anormal, por ejemplo, por un fallo de ejecución, los cambios que hasta el momento hubiera realizado la transacción son deshechos de forma automática.
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Vamos a iniciar una transacción para incrementar en 100 las horas que se hayan trabajado en el proyecto 'DAG'
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;START TRANSACTION;&lt;br /&gt;UPDATE trabaja &lt;br /&gt;SET nhoras=nhoras+100 &lt;br /&gt;WHERE cdpro='DAG';&lt;br /&gt;  &lt;br /&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Consulta ahora la tabla
+        <em>
+            trabaja
+        </em>
+        y comprobarás que se han incrementado las horas correspondientes.
+    </p>
+    <p>
+        Vamos a deshacer los cambios, (la transacción está abierta), para ello ejecutamos un
+        <em>
+            ROLLBACK.
+        </em>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;ROLLBACK;  &lt;br /&gt;</pre>
+        </div>
+    </div>
+    <pre ngNonBindable>&lt;br /&gt;Vuelve a consultar la tabla &lt;em&gt;trabaja&lt;/em&gt;, y comprobarás que se han deshecho los cambios.</pre>
+    <p>
+    </p>
+</div><h1 class="title">
+    6.3.- Deshacer cambios parcialmente.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Un punto de restauración (&lt;em&gt;SAVEPOINT&lt;/em&gt;) es un marcador intermedio declarado por el usuario en el contexto de una transacción. Los puntos de restauración dividen una transacción grande en pequeñas partes.
+    </p>
+    <p>
+        Otros comandos para la gestión de transacciones son los que gestionan los puntos de salvaguarda o savepoint:
+        <br>
+        <br>
+        <br/><br/></p>
+    <ul>
+        <li>
+            <strong>
+                <em>
+                    SAVEPOINT id
+                </em>
+            </strong>
+            . Es una sentencia que permite nombrar cierto paso en un conjunto de instrucciones de una transacción.
+        </li>
+        <li>
+            <strong>
+                <em>
+                    ROLLBACK TO SAVEPOINT id
+                </em>
+            </strong>
+            . Permite deshacer el conjunto de operaciones realizadas a partir del identificador de savepoint.
+        </li>
+        <li>
+            <strong>
+                <em>
+                    RELEASE SAVEPOINT id
+                </em>
+            </strong>
+            . Elimina o libera el savepoint creado.
+        </li>
+    </ul>
+    <p>
+        Si usas puntos de restauración en una transacción larga, tendrás la opción de deshacer los cambios efectuados por la transacción antes de la sentencia actual en la que se encuentre, pero después del punto de restauración establecido. Así, si se produce un error, no es necesario rehacer todas las sentencias de la transacción completa, sino sólo aquellos posteriores al punto de restauración.
+    </p>
+    <p>
+        Para establecer un punto de restauración se utiliza la sentencia &lt;em&gt;SAVEPOINT&lt;/em&gt; con la sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SAVEPOINT nombre_punto_restauración;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        La restauración de los cambios hasta ese punto se hará con un comando con el siguiente formato:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 32.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ROLLBACK TO SAVEPOINT nombre_punto_restauración;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    7.- Problemas asociados al acceso simultáneo a los datos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ana tiene una duda que le quiere preguntar a Juan, ya que se ha estado planteando qué ocurre en el supuesto caso de que dos operaciones simultáneas modifiquen un mismo registro. Por ejemplo, si se ofrece la posibilidad de que dos usuarios puedan acceder simultaneamente a la base de datos, qué ocurriría si los dos usuarios incrementan simultaneamente el precio de la misma conferencia a la vez.  ¿Podría ocurrir que sólo llegara a realizarse una de las dos operaciones?
+    </p>
+    <p>
+        Juan le responde que ese tipo de problemas de acceso simultáneo a los datos están controlados en las bases de datos con lo que se denomina bloqueos.
+    </p>
+</div><h1 class="title">
+    7.1.- Políticas de bloqueo.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La base de datos permite el uso de diferentes tipos de bloqueos, dependiendo de la operación que realiza el bloqueo.
+    </p>
+    <p>
+        Bloquear una tabla o vista permite que nadie más pueda hacer uso de la misma de modo que tenemos la exclusividad de lectura y/o excritura sobre ella.
+    </p>
+    <p>
+        MySQL y Oracle permiten el bloqueo de tablas por parte de los clientes con el objeto de cooperar con otras sesiones de clientes o evitar que estos puedan modificar datos que necesitamos en nuestra sesión.
+    </p>
+    <p>
+        Los bloqueos permiten simular transacciones así como acelerar operaciones de modificación o de inserción de datos.
+    </p>
+    <p>
+        Los bloqueos afectan a la interacción de lectores y escritores. Un lector es una consulta sobre un recurso, mientras que un escritor es una sentencia que realiza un modificación sobre un recurso. Las siguientes reglas resumen el comportamiento de la base de datos Oracle y también MySQL (con su motor InnoDB) sobre lectores y escritores:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Un registro es bloqueado sólo cuando es modificado por un escritor: Cuando una sentencia actualiza un registro, la transacción obtiene un bloqueo sólo para ese registro.
+        </li>
+        <li>
+            Un escritor de un registro bloquea a otro escritor concurrente del mismo registro: Si una transacción está modificando una fila, un bloqueo del registro impide que otra transacción modifique el mismo registro simultáneamente.
+        </li>
+        <li>
+            Un lector nunca bloquea a un escritor: Puesto que un lector de un registro no lo bloquea, un escritor puede modificar dicho registro. La única excepción es la sentencia &lt;em&gt;SELECT … FOR UPDATE&lt;/em&gt;, que es un tipo especial de sentencia &lt;em&gt;SELECT&lt;/em&gt; que bloquea el registro que está siendo consultado.
+        </li>
+        <li>
+            Un escritor nunca bloquea a un lector: Cuando un registro está siendo modificado, la base de datos proporciona al lector una vista del registro sin los cambios que se están realizando.
+        </li>
+    </ul>
+    <p>
+        Hay dos mecanismos para el bloqueo de los datos en una base de datos: el bloqueo
+        <strong>
+            pesimista
+        </strong>
+        y bloqueo
+        <strong>
+            optimista
+        </strong>
+        . En el bloqueo pesimista de un registro o una tabla se realiza el bloqueo inmediatamente, en cuanto el bloqueo se solicita, mientras que en un bloqueo optimista el acceso al registro o la tabla sólo está cerrado en el momento en que los cambios realizados a ese registro se actualizan en el disco. Esta última situación sólo es apropiada cuando hay menos posibilidad de que alguien necesite acceder al registro mientras está bloqueado, de lo contrario no podemos estar seguros de que la actualización tenga éxito, porque el intento de actualizar el registro producirá un error si otro usuario actualiza antes el registro. Con el bloqueo pesimista se garantiza que el registro será actualizado.
+    </p>
+</div><h1 class="title">
+    7.2.- Bloqueos compartidos y exclusivos.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        En general, la base de datos usa dos tipos de bloqueos: bloqueos exclusivos y bloqueos compartidos. Un recurso, por ejemplo un registro de una tabla, sólo puede obtener un bloqueo exclusivo, pero puede conseguir varios bloqueos compartidos.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                bloqueo exclusivo
+            </strong>
+            : Este modo previene que sea compartido el recurso asociado. Una transacción obtiene un bloqueo exclusivo cuando modifica los datos. La primera transacción que bloquea un recurso exclusivamente, es la única transacción que puede modificar el recurso hasta que el bloqueo exclusivo es liberado.
+        </li>
+        <li>
+            <strong>
+                bloqueo compartido
+            </strong>
+            : Este modo permite que sea compartido el recurso asociado, dependiendo de la operación en la que se encuentra involucrado. Varios usuarios que estén leyendo datos pueden compartir los datos, realizando bloqueos compartidos para prevenir el acceso concurrente de un escritor que necesita un bloqueo exclusivo. Varias transacciones pueden obtener bloqueos compartidos del mismo recurso.
+        </li>
+    </ul>
+    <p>
+        Por ejemplo, supongamos que transacción usa la sentencia &lt;em&gt;SELECT … FOR UPDATE&lt;/em&gt; para consultar un registro de una tabla. La transacción obtiene un bloqueo exclusivo del registro y un bloqueo compartido de la tabla. El bloqueo del registro permite a otras sesiones que modifiquen cualquier otro registro que no sea el registro bloqueado, mientras que el bloqueo de la tabla previene que otras sesiones modifiquen la estructura de la tabla. De esta manera, la base de datos permite la ejecución de todas las sentencias que sean posibles.
+    </p>
+</div><h1 class="title">
+    7.3.- Bloqueos automáticos.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+
+    </div>
+    <p>
+        La base de datos Oracle y MySQL bloquea automáticamente un recurso usado por una transacción para prevenir que otras transacciones realicen alguna acción que requiera acceso exclusivo sobre el mismo recurso. La base de datos adquiere automáticamente diferentes tipo de bloqueos con diferentes niveles de restricción dependiendo del recurso y de la operación que se realice.
+    </p>
+    <p>
+        Los bloqueos que realiza la base de datos Oracle y MySQL están divididos en las siguientes categorías:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Bloqueos DML
+            </strong>
+            : Protegen los datos, garantizando la integridad de los datos accedidos de forma concurrente por varios usuarios. Por ejemplo, evitan que dos clientes compren el último artículo disponible en una tienda
+            <span lang="en">
+          online
+         </span>
+            . Estos bloqueos pueden ser sobre un sólo registro o sobre la tabla completa.
+        </li>
+        <li>
+            <strong>
+                Bloqueos DDL
+            </strong>
+            : Protegen la definición del esquema de un objeto mientras una operación DDL actúa sobre él. Los bloqueos se realizan de manera automática por cualquier transacción DDL que lo requiera. Los usuarios no pueden solicitar explícitamente un bloqueo DDL.
+        </li>
+        <li>
+            <strong>
+                Bloqueos del sistema
+            </strong>
+            : La base de datos Oracle y MySQL usa varios tipos de bloqueos del sistema para proteger la base de datos interna y las estructuras de memoria.
+        </li>
+    </ul>
+</div><h1 class="title">
+    7.4.- Bloqueos manuales.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+
+    </div>
+    <p>
+        Hemos visto que la base de datos Oracle y MySQL realizna bloqueos de forma automática para asegurar la concurrencia de datos, su integridad y consistencia en la consulta de datos. Sin embargo, también puedes omitir los mecanismos de bloqueo que realiza por defecto la base de datos. Esto puede ser útil en situaciones como las siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            En aplicaciones que requieren consistencia en la consulta de datos a nivel de transacciones o en lecturas repetitivas: En este caso, las consultas obtienen datos consistentes en la duración de la transacción, sin reflejar los cambios realizados por otras transacciones.
+        </li>
+        <li>
+            En aplicaciones que requieren que una transacción tenga acceso exclusivo a un recurso con el fin de que no tenga que esperar que otras transacciones finalicen.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        La cancelación de los bloqueos automáticos se pueden realizar a nivel de sesión o de transacción. En el nivel de sesión, una sesión puede establecer el nivel requerido de aislamiento de la transacción con la sentencia &lt;em&gt;ALTER SESSION&lt;/em&gt;. En el nivel de transacción, las transacciones que incluyan las siguientes sentencias SQL omiten el bloqueo por defecto:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            SET TRANSACTION ISOLATION LEVEL
+        </li>
+        <li>
+            LOCK TABLE
+        </li>
+        <li>
+            SELECT...FOR UPDATE
+        </li>
+    </ul>
+    <p>
+        Los bloqueos que establecen las sentencias anteriores terminan una vez que la transacción ha finalizado.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Bloquear una tabla o una vista permite que nadie más pueda hacer uso de la misma, de manera que tenemos la exclusividad de lectura y/o escritura sobre ella.
+        <br>
+        <br>
+        MySQL permite el bloqueo de tablas por parte de clientes con el objeto de cooperar con otras sesiones de clientes o de evitar que estos puedan modificar datos que necesitemos en nuestra sesión.
+        <br>
+        <br>
+        La instrucción para bloqueo de tablas es
+        <strong>
+            <em>
+                LOCK
+            </em>
+        </strong>
+        . Su sintaxis es:
+        <br/><br/><br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 20.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>LOCK TABLES &lt;br /&gt;nombre_tabla [[AS] alias] tipo_bloqueo&lt;br /&gt;[, nombre_tabla [[AS] alias] tipo_bloqueo&lt;br /&gt;&lt;br /&gt;Tipo_bloqueo:&lt;br /&gt;&lt;em&gt;&nbsp;READ [LOCAL]&nbsp; | [LOW_PRIORITY]&nbsp; WRITE&lt;/em&gt;&lt;br /&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        Para desbloquear tablas (solo podemos desbloquear todas las tablas a la vez), se usa la instrucción:
+        <br>
+        <br>
+        <em>
+            UNLOCK TABLES
+        </em>
+        <br>
+        <br>
+        <strong>
+            Tipos de bloqueo READ y WRITE:
+        </strong>
+        <br/><br/><br/><br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            READ
+            <br>
+            <br>
+            En este caso la sesión o cliente que tiene el bloqueo puede leer pero ni él ni ningún otro cliente podrá escribir en la tabla.
+            <br>
+            <br>
+            Es un bloqueo que pueden adquirir varios clientes simultáneamente y permite que cualquiera pueda leer las tablas bloqueadas.
+            <br>
+            <br>
+            El modificador LOCAL permite que haya inserciones concurrentes de otros clientes mientras dura el bloqueo.
+            <br>
+            <br>
+            <br/><br/><br/><br/><br/><br/><br/><br/></li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            WRITE
+            <br>
+            <br>
+            La sesión o cliente que adquiere este tipo de bloqueo puede leer y escribir en la tabla, pero ningún otro cliente podrá acceder a ella o bloquearla.
+            <br>
+            <br>
+            <br/><br/><br/><br/></li>
+    </ul>
+    <p>
+        Por defecto, los bloqueos de escritura tiene mayor prioridad que los de lectura, de manera que si una sesión solicita un bloqueo de escritura éste tendrá prioridad sobre otras solicitudes de bloqueo de lectura. De este modo, hasta que la sesión que solicitó el bloqueo de escritura no libere dicho bloqueo, no se podrán adquirir nuevos bloqueos de lectura.
+    </p>
+    <p>
+        El modificador
+        <em>
+            LOW PRIORITY
+        </em>
+        permite que los bloqueos de lectura se adquieran antes que el de escritura. De hecho, el bloqueo de escritura solo se obtendrá cuando no queden bloqueos de lectura pendientes.
+    </p>
+    <p>
+        Por ejemplo, para bloquear la tabla departamento en modo de solo lectura:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;USE proyectosx;&lt;br /&gt;LOCK TABLES departamento READ; &lt;br /&gt;&lt;br /&gt;SELECT&nbsp; * FROM departamento;&nbsp; //realiza la lectura y muestra los departamentos.&lt;br /&gt;&lt;br /&gt;UPDATE departamento&nbsp;&nbsp;&nbsp; //da error, pues la tabla está bloqueada para lectura&lt;br /&gt;SET ciudad="ciudad"&lt;br /&gt;WHERE nombre='depar20';&lt;br /&gt;&lt;br /&gt;UNLOCK TABLES;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //desbloquea la tabla&lt;br /&gt;&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <pre ngNonBindable>&nbsp;</pre>
+</div><h1 class="title">
+    8.- Enlaces de refuerzo y ampliación.
+</h1><div class="iDevice_content">
+    <p style="text-align: center;">
+        <strong>
+            MySQL
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Documentación oficial del SGBD MySQL de la sintaxis de la sentencia INSERT(En Inglés):
+            https://dev.mysql.com/doc/refman/8.0/en/insert.html
+        </li>
+        <li>
+            Documentación oficial del SGBD MySQL de la sintaxis de la sentencia DELETE(En Inglés):
+            https://dev.mysql.com/doc/refman/8.0/en/delete.html
+        </li>
+        <li>
+            Documentación oficial del SGBD MySQL de la sintaxis de la sentencia UPDATE(En Inglés):
+            https://dev.mysql.com/doc/refman/8.0/en/update.html
+        </li>
+        <li>
+            Documentación oficial del SGBD MySQL de la sintaxis de&nbsp;las sentencias COMMIT, ROLLBACK y START TRANSACTION para realizar TRANSACCIONES&nbsp;(En Inglés):
+            https://dev.mysql.com/doc/refman/8.0/en/commit.html
+        </li>
+        <li>
+            Documentación oficial del SGBD MySQL de la sintaxis de&nbsp;las sentencias&nbsp;SAVEPOINT, ROLLBACK TO SAVEPOINT, and RELEASE SAVEPOINT&nbsp;para realizar TRANSACCIONES&nbsp;(En Inglés):
+            https://dev.mysql.com/doc/refman/8.0/en/savepoint.html
+        </li>
+    </ul>
+    <p style="text-align: center;">
+        <strong>
+            ORACLE
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de la sentencia INSERT(En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_9014.htm
+        </li>
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de la sentencia DELETE(En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_8005.htm#i2143613
+        </li>
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de la sentencia UPDATE(En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_10007.htm#i2189756
+        </li>
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de las sentencias COMMIT y SET TRANSACTION para realizar TRANSACCIONES con ejemplos (En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_10005.htm
+
+        </li>
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de la sentencia ROLLBACK para realizar TRANSACCIONES con ejemplos (En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_9021.htm#i2104635
+        </li>
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de la sentencia SAVEPOINT para realizar TRANSACCIONES con ejemplos (En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_10001.htm#BABFIJGC
+        </li>
+    </ul>
+    <p style="text-align: center;">
+        <strong>
+            PostgreSQL
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Documentación oficial del SGBD PostgreSQL de la sintaxis de la sentencia INSERT (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-insert.html
+        </li>
+        <li>
+            Documentación oficial del SGBD PostgreSQL&nbsp;de la sintaxis de la sentencia DELETE (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-delete.html
+        </li>
+        <li>
+            Documentación oficial del SGBD PostgreSQL&nbsp;de la sintaxis de la sentencia UPDATE (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-update.html
+        </li>
+        <li>
+            Documentación oficial del SGBD PostgreSQL&nbsp;de la sintaxis de la sentencia COMMIT para realizar TRANSACCIONES con ejemplos (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-commit.html
+
+        </li>
+        <li>
+            Documentación oficial del SGBD PostgreSQL&nbsp;de la sintaxis de la sentencia ROLLBACK para realizar TRANSACCIONES con ejemplos (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-rollback.html
+
+        </li>
+        <li>
+            Documentación oficial del SGBD&nbsp;PostgreSQL de la sintaxis de la sentencia SAVEPOINT para realizar TRANSACCIONES con ejemplos (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-savepoint.html
+        </li>
+    </ul>
+    <p style="text-align: center;">
+        <strong>
+            Ejemplos On-Line sobre la utilización de INSERT, UPDATE y DELETE
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            INSTRUCCIÓN INSERT INTO:
+            http://www.w3schools.com/sql/sql_insert.asp
+        </li>
+        <li>
+            INSTRUCCIÓN INSERT INTO SELECT:
+            http://www.w3schools.com/sql/sql_insert_into_select.asp
+        </li>
+        <li>
+            INSTRUCCIÓN UPDATE:
+            http://www.w3schools.com/sql/sql_update.asp
+        </li>
+        <li>
+            INSTRUCCIÓN DELETE:
+            http://www.w3schools.com/sql/sql_delete.asp
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Victor C.
+                </p>
+                <p>
+                    Licencia: GNU General Public License.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Gnome-colors-alacarte.svg
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Everaldo Coelho.
+                </p>
+                <p>
+                    Licencia: GNU Lesser General Public License.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Crystal_Clear_app_winprops.png
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Microsoft.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Windows XP.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle y Microsoft.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express sobre
+                    <br>
+                    entorno Windows XP.
+                    <br/></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Microsoft.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura Windows XP.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Mart.
+                </p>
+                <p>
+                    Licencia: GNU Lesser General Public License.
+                </p>
+                <p>
+                    Procedencia: http://www.iconarchive.com/show/glaze-icons-by-mart/encrypted-icon.html
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación. Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia, a partir de imágenes
+                </p>
+                <p>
+                    de la colección Tango icons http://commons.wikimedia.org/wiki/Tango_icons (public domain)
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Public domain.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Edit-undo.svg
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Public domain.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Go-first.svg
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación. Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia, a partir de imágenes de la colección Tango icons http://commons.wikimedia.org/wiki/Tango_icons(public domain)
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación. Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia, e imágenes de la colección Tango icons http://commons.wikimedia.org/wiki/Tango_icons (public domain)
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación. Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia, e imágenes de la colección Tango icons http://commons.wikimedia.org/wiki/Tango_icons (public domain)
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación. Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia, e imágenes de la colección Tango icons http://commons.wikimedia.org/wiki/Tango_icons (public domain)
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del Software Workbench para MySQL de Oracle, bajo licencia libre GPL
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del Software Workbench para MySQL de Oracle, bajo licencia libre GPL
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del Software Workbench para MySQL de Oracle, bajo licencia libre GPL
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría:  Microsoft.
+                </p>
+                <p>
+                    Licencia: copyright (cita).
+                </p>
+                Procedencia: Elaboración propia. Captura de pantalla del Software Windows propiedad de Microsoft
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del Software Workbench para MySQL de Oracle, bajo licencia libre GPL
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del Software Workbench para MySQL de Oracle, bajo licencia libre GPL
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: WampServer.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla Wampserver, bajo licencia libre GPL
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación. Sasa Stefanovic.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia, e imágenes de la colección Tango icons http://commons.wikimedia.org/wiki/Tango_icons (public domain)
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Licencia libre GPL. Uso educativo-no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del Software Workbench para MySQL de Oracle, bajo licencia libre GPL
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle y Microsoft.
+                </p>
+                <p>
+                    Licencia: Oracle Licencia libre GPL. copyright (cita Microsoft).
+                </p>
+                <p>
+                    Procedencia: Elaboración propia. Captura de pantalla del CommandLine para MySQL de Oracle, bajo licencia libre GPL en una ventana de consola de Windows de Microsoft.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>

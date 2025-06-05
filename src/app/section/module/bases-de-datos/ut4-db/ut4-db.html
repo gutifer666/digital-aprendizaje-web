@@ -1,0 +1,3741 @@
+<h1 class="title">
+    Realización de consultas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ana sabe que existen muchos tipos de operadores con los que puede "jugar" para crear consultas y también tiene la posibilidad de crear campos nuevos donde podrán hacer cálculos e incluso trabajar con varias tablas relacionadas a la vez.
+    </p>
+    <p>
+        Actualmente Ana está trabajando con su equipo en una base de datos para una empresa que se dedica a organizar conferencias y en este momento ya han implementado las tablas en Oracle y se ha almacenado información sobre l
+        <strong>
+            as conferencias, las salas donde se celebran, los ponentes que las imparten y los asistentes.
+        </strong>
+    </p>
+    <p>
+        De este modo pueden llevar un control más exhaustivo de las conferencias pudiendo conocer los ponentes que realizan cada conferencia, la gratificación que reciben, el nombre de los asistentes que asisten, la capacidad de las salas, etc. Para obtener esta información necesitarán consultar la base utilizando principalmente el comando SELECT.
+    </p>
+</div><h1 class="title">
+    1.- Introducción.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+</div><h1 class="title">
+    2.- La sentencia SELECT.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        está trabajando con la tabla Conferencia, de aquí quiere ver qué información es la más importante, para así crear las consultas más sencillas pero a la vez más frecuentes. Sabe que con SQL y utilizando el comando SELECT puede sacar provecho a los datos contenidos en una tabla.
+    </p>
+</div><h1 class="title">
+    2.1.- Cláusula SELECT.
+</h1><div class="iDevice_content">
+    <p>
+        Ya has visto que a continuación de la sentencia SELECT debemos especificar cada una de las columnas que queremos seleccionar. Además, debemos tener en cuenta lo siguiente:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    Se pueden nombrar
+                </strong>
+                a las columnas anteponiendo el nombre de la tabla de la que proceden, pero esto es opcional y quedaría: NombreTabla.NombreColumna
+            </p>
+        </li>
+        <li>
+            <p>
+                Si queremos
+                <strong>
+                    incluir todas las columnas
+                </strong>
+                de una tabla podemos utilizar el comodín
+                <strong>
+                    asterisco
+                </strong>
+                ("*"). Quedaría así: SELECT * FROM NombreTabla;
+            </p>
+        </li>
+        <li>
+            <p>
+                También podemos
+                <strong>
+                    ponerle alias a los nombres
+                </strong>
+                de las columnas. Cuando se consulta una base de datos, los nombres de las columnas se usan como cabeceras de presentación. Si éste resulta largo, corto o poco descriptivo, podemos usar un alias. Para ello a continuación del nombre de la columna ponemos entre comillas dobles el alias que demos a esa columna. Veamos un ejemplo:
+            </p>
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 36.8em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT nombre "Nombre de la Sala" FROM SALA;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 32.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT nombre "Nombre empleado" FROM empleado;</pre>
+            <pre ngNonBindable> </pre>
+            <pre ngNonBindable>SELECT nombre as "Nombre empleado" FROM empleado;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                También podemos
+                <strong>
+                    sustituir el nombre
+                </strong>
+                de las columnas por
+                constantes,
+
+
+                Constante
+
+                Cantidad que tiene un valor fijo en un determinado proceso, cálculo, etc.
+                expresiones
+
+
+                Expresión
+
+                Combinación de constantes, variables o funciones, que es interpretada (evaluada) de acuerdo a las normas particulares de precedencia y asociación para un lenguaje de programación en particular. Como en matemáticas, la expresión es su "valor evaluado", es decir, la expresión es una representación de ese valor.
+                o
+                funciones
+
+
+                Función
+
+                Es un grupo de instrucciones con un objetivo en particular y que se ejecuta al ser llamada desde otra función o procedimiento. Una función puede llamarse múltiples veces e incluso llamarse a sí misma (función recurrente). Las funciones pueden recibir datos desde afuera al ser llamadas a través de los parámetros y deben entregar un resultado. Se diferencian de los procedimientos porque estos no devuelven un resultado.
+                SQL.
+            </p>
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35.7em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable> SELECT 4*3/100 "MiExpresión",capacidad FROM SALA;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.2.- Cláusula FROM.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En la sentencia SELECT debemos establecer de dónde se obtienen las columnas que vamos a seleccionar, para ello disponemos en la sintaxis de la cláusula FROM.
+    </p>
+    <p>
+        Por tanto, en la cláusula FROM
+        <strong>
+            se definen los nombres de las tablas
+        </strong>
+        de las que proceden las columnas.
+    </p>
+    <p>
+        Si se utiliza más de una, éstas deben aparecer separadas por comas. A este tipo de consulta se denomina
+        <strong>
+            consulta combinada
+        </strong>
+        o
+        <strong>
+         <span lang="en">
+          join
+         </span>
+        </strong>
+        . Más adelante verás que para que la consulta combinada pueda realizarse, necesitaremos aplicar una condición de combinación a través de una cláusula WHERE.
+    </p>
+    <p>
+        En el caso de Oracle, también puedes añadir el nombre del usuario que es
+        <strong>
+            propietario
+        </strong>
+        de esas tablas, indicándolo de la siguiente manera:
+    </p>
+    <p>
+        USUARIO.TABLA
+    </p>
+    <p>
+        de este modo podemos distinguir entre las tablas de un usuario y otro (ya que esas tablas pueden tener el mismo nombre).
+    </p>
+    <p>
+        Tanto en Oracle como en MySQL, puedes asociar un alias a las tablas para abreviar, en este caso
+        <strong>
+            no es necesario que lo encierres entre comillas
+        </strong>
+        .
+    </p>
+    <p>
+        Pongamos un ejemplo:
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT * FROM CONFERENCIA C;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT * FROM empleado e;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.3.- Cláusula WHERE.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        A continuación de la palabra WHERE será donde pongamos la condición que han de cumplir las filas para salir como resultado de dicha consulta.
+    </p>
+    <p>
+        El criterio de búsqueda o condición puede ser más o menos sencillo y para crearlo se pueden
+        conjugar
+
+
+        Conjugar
+
+        Combinar varias cosas entre sí.
+        operadores de diversos tipos, funciones o expresiones más o menos complejas.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Si en nuestra tabla ASISTENTE, necesitáramos un listado de los asistentes que sean hombres, bastaría con crear la siguiente consulta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT nombre, apellido1, apellido2</pre>
+            <pre ngNonBindable>FROM ASISTENTE</pre>
+            <pre ngNonBindable>WHERE sexo = 'H'; </pre>
+        </div>
+    </div>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Si en nuestra tabla empleado, necesitáramos un listado de los empleados con salario inferior a 2000€, bastaría con crear la siguiente consulta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT nombre</pre>
+            <pre ngNonBindable>FROM empleado</pre>
+            <pre ngNonBindable>WHERE salario &lt; 2000; </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Más adelante te mostraremos los operadores con los que podrás crear condiciones de diverso tipo.
+    </p>
+</div><h1 class="title">
+    2.4.- Cláusula HAVING.
+</h1><div class="iDevice_content">
+    <p>
+        ¿Podríamos desear seleccionar los datos de una tabla que cumplan una determinada condición con operadores aritméticos como SUM,
+        <code>
+            MAX
+        </code>
+        , COUNT,
+        <code>
+            MIN
+        </code>
+        o&nbsp;AVG? En el apartado anterior veíamos las funciones del&nbsp;WHERE, pero si existen operadores aritméticos ya no es posible usarlo y entraría en juego la clausula HAVING. Si queremos restringir esta selección a un subconjunto de filas especificando con una condición aritmética la clausula&nbsp;WHERE, no podría utilizarse y trabajaríamos con HAVING
+    </p>
+    <p>
+        .
+    </p>
+
+    <p>
+        Por lo tanto, si nos preguntamos cuando debemos usar&nbsp;WHERE&nbsp;o&nbsp;HAVING, hay que tener en cuenta lo anteriormente comentado y además, saber que WHERE se utilizará para registros individuales y HAVING cuando se opere con un grupo de registros.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Si en nuestra tabla ASISTENTE, necesitáramos un listado de los asistentes a más de dos películas, bastaría con crear la siguiente consulta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT nombre, apellido1, apellido2</pre>
+            <pre ngNonBindable>FROM ASISTENTE&lt;br /&gt;GROUP&nbsp;BY&nbsp;nombre</pre>
+            <pre ngNonBindable>HAVING count(peliculas)&gt;2 ; </pre>
+        </div>
+    </div>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Si en nuestra tabla empleado, necesitáramos un listado de los empleados con salario medio inferior a 200€, bastaría con crear la siguiente consulta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT nombre</pre>
+            <pre ngNonBindable>FROM empleado&lt;br /&gt;GROUP&nbsp;BY&nbsp;nombre</pre>
+            <pre ngNonBindable>HAVING AVG(salario) &lt; 200; </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Normalmente, el HAVING&nbsp;suele ir acompañado del GROUP BY, por el motivo de que opera sobre los grupos que devuelve la sentencia GROUP BY.
+    </p>
+</div><h1 class="title">
+    2.5.- Ordenación de registros. Cláusula ORDER BY.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        ORDER BY se utiliza para
+        <strong>
+            especificar el criterio de ordenación
+        </strong>
+        de la respuesta a nuestra consulta. Tendríamos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT [ALL | DISTINCT] columna1, columna2, ...
+</pre>
+            <pre ngNonBindable>FROM tabla1, tabla2, ...
+</pre>
+            <pre ngNonBindable>WHERE condición1, condición2, ...
+</pre>
+            <pre ngNonBindable>ORDER BY columna1 [ASC | DESC], columna2 [ASC | DESC], …, columnaN [ASC | DESC];
+</pre>
+        </div>
+    </div>
+    <p>
+        Después de cada columna de ordenación se puede incluir el tipo de ordenación (ascendente o descendente) utilizando las palabras reservadas ASC o
+        <code>
+            DESC
+        </code>
+        . Por defecto, y si no se pone nada, la ordenación es ascendente.
+    </p>
+    <p>
+        Debes saber que es
+        <strong>
+            posible ordenar por más de una columna
+        </strong>
+        . Es más, puedes ordenar no solo por columnas sino a través de una expresión creada con columnas, una constante (aunque no tendría mucho sentido) o funciones SQL.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        En el siguiente ejemplo, ordenamos por apellidos y en caso de empate por nombre:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, apellido1, apellido2
+</pre>
+            <pre ngNonBindable>FROM ASISTENTE
+</pre>
+            <pre ngNonBindable>ORDER BY apellido1,apellido2, nombre;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        En el siguiente ejemplo, ordenamos por departamento y en caso de empate por nombre:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, cddep
+</pre>
+            <pre ngNonBindable>FROM empleado
+</pre>
+            <pre ngNonBindable>ORDER BY cddep, nombre;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Puedes colocar el número de orden del campo por el que quieres que se ordene en lugar de su nombre, es decir, referenciar a los campos por su posición en la lista de selección.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Por ejemplo, si queremos el resultado del ejemplo anterior ordenado por la Empresa:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, apellido1, apellido2, empresa
+</pre>
+            <pre ngNonBindable>FROM ASISTENTE
+</pre>
+            <pre ngNonBindable>ORDER BY 4;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Por ejemplo, si queremos el resultado del ejemplo anterior ordenado por salario:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, cddep, salario
+</pre>
+            <pre ngNonBindable>FROM empleado
+</pre>
+            <pre ngNonBindable>ORDER BY 3;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Si colocamos un número mayor a la cantidad de campos de la lista de selección, aparece un mensaje de error y la sentencia no se ejecuta.
+    </p>
+    <p>
+        ¿Se puede utilizar cualquier tipo de datos para ordenar? No todos los tipos de campos te servirán para ordenar, únicamente aquellos de tipo
+        <strong>
+            carácter, número o fecha
+        </strong>
+        .
+    </p>
+</div><h1 class="title">
+    2.6.- Tipos de JOIN
+</h1><div class="iDevice_content">
+    <p>
+        La palabra JOIN significa unir, y nada más lejos de su utilización dentro del lenguaje
+        <abbr title="Structured Query Language">
+            SQL
+        </abbr>
+        . Principalmente se utiliza para combinar filas de distintas tablas con campos comunes entre ellas. Existen distintos tipos de joins en
+        <abbr title="Structured Query Language">
+            SQL
+        </abbr>
+        :
+    </p>
+
+    <p>
+        1.
+        <strong>
+            INNER JOIN:
+        </strong>
+        Devuelve como resultado la selección de las distintas filas que tengan columnas coincidentes en ambas tablas.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                Ejemplo
+            </em>
+            : si tenemos dos tablas Empleados y Departamentos, vamos a listar el departamento al cual pertenece cada empleado:
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT de.nombre, e.nombre&lt;br /&gt;from departamento de &lt;br /&gt;INNER JOIN empleados e &lt;br /&gt;ON de.id= e.departamento ;</pre>
+        </div>
+    </div>
+    <p>
+        <br style="clear: both;">
+        2.
+        <strong>
+            RIGHT JOIN:
+        </strong>
+        Devuelve como resultado todas las filas de la tabla de la derecha más las coincidentes con la de la tabla izquierda. Los campos no coincidentes aparecerá con NULL.
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                Ejemplo
+            </em>
+            : si tenemos dos tablas Empleados y Proyectos, vamos a listar los proyectos y aparecerán los empleados que están asignados a algún proyecto.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT p.nombre, e.nombre&lt;br /&gt;from proyectos p  &lt;br /&gt;RIGHT JOIN empleados e &lt;br /&gt;ON P.id= e.proyecto ;</pre>
+        </div>
+    </div>
+    <p>
+        <br style="clear: both;">
+        3.
+        <strong>
+            LEFT&nbsp;JOIN:
+        </strong>
+        Devuelve como resultado todas las filas de la tabla de la izquierda más las coincidentes con la de la tabla derecha. Los campos no coincidentes aparecerá con NULL.
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                Ejemplo
+            </em>
+            : si tenemos dos tablas Empleados y Proyectos, vamos a listar los empleados y aparecerán los proyectos que están asignados a algún empleado:
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT p.nombre, e.nombre&lt;br /&gt;from proyectos p  &lt;br /&gt;LEFT JOIN empleados e &lt;br /&gt;ON P.id= e.proyecto ;</pre>
+        </div>
+    </div>
+    <p>
+        <br style="clear: both;">
+        4.
+        <strong>
+            OUTER JOIN O FULL OUTER JOIN:
+        </strong>
+        Devuelve como resultado todas las filas de la tabla de la derecha y todas las filas de la tabla izquierda. Aparecerá NULL cuando no haya una coincidencia.
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                Ejemplo
+            </em>
+            : si tenemos dos tablas Empleados y Proyectos, vamos a listar todos los proyectos y todos los empleados:
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT p.nombre, e.nombre&lt;br /&gt;from proyectos p  &lt;br /&gt;OUTER JOIN empleados e &lt;br /&gt;ON P.id= e.proyecto ;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.- Operadores.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para poder realizar este tipo de consultas necesitaremos utilizar operadores que sirvan para crear las expresiones necesarias.
+        <strong>
+            Ana
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        conocen los 4 tipos de operadores con los que se puede trabajar: relacionales, aritméticos, de concatenación y lógicos.
+    </p>
+</div><h1 class="title">
+    3.1.- Operadores de comparación.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Los operadores de comparación son símbolos que se usan como su nombre indica para comparar dos valores. Si el resultado de la comparación es correcto la expresión considerada es verdadera, en caso contrario es falsa.
+    </p>
+    <p>
+        Tenemos los siguientes operadores y su operación:
+    </p>
+    <div style="clear: both;">
+    </div>
+    <p>
+    </p>
+    <table class="tabla">
+        <caption>
+            Operadores y su significado.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                OPERADOR
+            </th>
+            <th scope="col">
+                SIGNIFICADO
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                =
+            </td>
+            <td>
+                Igualdad.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                !=, &lt; &gt;, ^=
+            </td>
+            <td>
+                Desigualdad. (En el caso de MySQL, sólo != y &lt; &gt;)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;
+            </td>
+            <td>
+                Menor que.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &gt;
+            </td>
+            <td>
+                Mayor que.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;=
+            </td>
+            <td>
+                Menor o igual que.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &gt;=
+            </td>
+            <td>
+                Mayor o igual que.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                IN &lt;br /&gt;
+            </td>
+            <td>
+                Igual que cualquiera de los miembros entre paréntesis.   IN (miembro1, miembro2,...)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NOT IN &lt;code&gt;
+                <br>
+                <br/></td>
+            <td>
+                Distinto que cualquiera de los miembros entre paréntesis. NOT IN &lt;code&gt;(miembro1, miembro2,...)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                BETWEEN &lt;br /&gt;
+            </td>
+            <td>
+                Entre. Contenido dentro del rango, incluidos valorMin y valorMax.    B
+                <code>
+                    ETWEEN valorMin AND valorMax
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NOT BETWEEN
+            </td>
+            <td>
+                Fuera del rango.   NOT B
+                <code>
+                    ETWEEN valorMin AND valorMax
+                </code>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                LIKE '_abc%'
+            </td>
+            <td>
+                Se utiliza sobre todo con textos y permite obtener columnas cuyo valor en un campo cumpla una condición textual. Utiliza una cadena que puede contener los símbolos "%" que sustituye a un conjunto de caracteres o "_" que sustituye a un carácter.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                IS NULL
+            </td>
+            <td>
+                Devuelve verdadero si el valor del campo de la fila que examina es nulo.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    3.2.- Operadores aritméticos y de concatenación.
+</h1><div class="iDevice_content">
+    <p>
+        Aprendimos que los operadores son símbolos que permiten realizar distintos tipos de operaciones. Los operadores aritméticos permiten realizar cálculos con valores numéricos. Son los siguientes:
+    </p>
+    <table class="tabla">
+        <caption>
+            Operadores aritméticos y su significado.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                OPERADOR
+            </th>
+            <th scope="col">
+                SIGNIFICADO
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                +
+            </td>
+            <td>
+                Suma
+            </td>
+        </tr>
+        <tr>
+            <td>
+                -
+            </td>
+            <td>
+                Resta
+            </td>
+        </tr>
+        <tr>
+            <td>
+                *
+            </td>
+            <td>
+                Multiplicación
+            </td>
+        </tr>
+        <tr>
+            <td>
+                /
+            </td>
+            <td>
+                División
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Mira este ejemplo sobre la tabla  CONFERENCIA en el que obtenemos el precio de la conferencia  aumentado en un 5
+        <abbr title="Tanto por ciento.">
+            %
+        </abbr>
+        de aquellas conferencias cuyo precio sea menor a 15
+        <abbr title="Euros.">
+            €
+        </abbr>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT precio*1,05
+</pre>
+            <pre ngNonBindable>FROM CONFERENCIA
+</pre>
+            <pre ngNonBindable>WHERE precio&lt;15;
+</pre>
+        </div>
+    </div>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Mira este ejemplo sobre una tabla TRABAJADORES en el que obtenemos el salario aumentado en un 5
+        <abbr title="Tanto por ciento.">
+            %
+        </abbr>
+        de aquellos trabajadores que cobran menos de 2000
+        <abbr title="Euros.">
+            €
+        </abbr>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT salario*1.05
+</pre>
+            <pre ngNonBindable>FROM empleado
+</pre>
+            <pre ngNonBindable>WHERE salario&lt;=2000;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Cuando una expresión aritmética se calcula sobre valores NULL, el resultado es el propio valor NULL.
+    </p>
+    <p>
+    </p>
+    <p>
+        En Oracle, para
+        concatenar
+
+
+        Concatenar
+
+        Unir, enlazar, relacionar una cosa con otra.
+        cadenas de caracteres existe el operador de concatenación (" | | "). Oracle puede convertir automáticamente valores numéricos a cadenas para una concatenación.
+    </p>
+    <p>
+        En MySQL se utilza la función CONCAT(cadena1, cadena2, ...)
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        En la tabla PONENTE tenemos separados en dos campos el primer y segundo apellido de los ponentes, si necesitáramos mostrarlos juntos podríamos crear la siguiente consulta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, apellido1 || apellido2
+</pre>
+            <pre ngNonBindable>FROM PONENTE;
+</pre>
+        </div>
+    </div>
+    <p>
+        Si queremos dejar un espacio entre un apellido y otro, debemos concatenar también el espacio en blanco de la siguiente manera:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, apellido1 || ' ' ||apellido2
+</pre>
+            <pre ngNonBindable>FROM PONENTE;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.3.- Operadores lógicos.
+</h1><div class="iDevice_content">
+    <p>
+        Habrá ocasiones en las que tengas que evaluar más de una expresión y necesites verificar que se cumple una única condición, otras veces comprobar si se cumple una u otra o ninguna de ellas. Para poder hacer esto utilizaremos los operadores lógicos.
+    </p>
+    <p>
+        Tenemos los siguientes:
+    </p>
+    <table class="tabla">
+        <caption>
+            Operadores lógicos y su significado.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                OPERADOR
+            </th>
+            <th scope="col">
+                SIGNIFICADO
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                AND
+            </td>
+            <td>
+                Devuelve verdadero si sus expresiones a derecha e izquierda son ambas verdaderas.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                OR
+            </td>
+            <td>
+                Devuelve verdadero si alguna de sus expresiones a derecha o izquierda son verdaderas.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NOT
+            </td>
+            <td>
+                Invierte la lógica de la expresión que le precede, si la expresión es verdadera devuelve falsa y si es falsa devuelve verdadera.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Si queremos obtener aquellas salas cuya capacidad esté entre 100 y 300 personas seria:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT nombre, capacidad
+</pre>
+            <pre ngNonBindable>FROM SALA
+</pre>
+            <pre ngNonBindable>WHERE capacidad&gt;=100 AND capacidad&lt;=300;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.4.- Precedencia.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <ol>
+        <li>
+            Se evalúa la multiplicación (*) y la división (/) al mismo nivel.
+        </li>
+        <li>
+            A continuación sumas (+) y restas (-).
+        </li>
+        <li>
+            Concatenación (| |). (
+            <strong>
+                en el caso de Oracle
+            </strong>
+            )
+        </li>
+        <li>
+            Todas las comparaciones (&lt;, &gt;, …).
+        </li>
+        <li>
+            Después evaluaremos los operadores IS NULL, IN NOT NULL, LIKE, BETWEEN.
+        </li>
+        <li>
+            NOT.
+        </li>
+        <li>
+            AND.
+        </li>
+        <li>
+            OR.
+        </li>
+    </ol>
+    <p>
+        Si quisiéramos variar este orden necesitaríamos utilizar paréntesis.
+    </p>
+</div><h1 class="title">
+    4.- Consultas calculadas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Lo que hará será practicar a partir de una tabla que tenga bastantes campos numéricos de manera que pueda manipular la información sin modificar nada.
+    </p>
+    <p>
+        En clase trabajaban con la tabla ARTICULOS que tenía, entre otros, los campos Precio y Cantidad. A partir de ellos podría realizar consultas calculadas para obtener el precio con
+        <abbr title="Impuesto sobre el Valor Añadido.">
+            IVA
+        </abbr>
+        incluido, un descuento sobre el precio e incluso aumentar ese precio en un porcentaje concreto. Seguro que se pone al día rápidamente.
+    </p>
+</div><h1 class="title">
+    5.- Funciones.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+</div><h1 class="title">
+    5.1.- Funciones numéricas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para trabajar con campos de tipo número tenemos las siguientes funciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                ABS(n)
+            </strong>
+            <p>
+                Calcula el
+                valor absoluto
+
+
+                Valor absoluto
+
+                O módulo de un número real es su valor numérico sin tener en cuenta su signo, sea este positivo (+) o negativo (-).
+                de un número n.
+            </p>
+            <p>
+                <strong class="destacado">
+                    Oracle
+                </strong>
+            </p>
+        </li>
+    </ul>
+    <p>
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT ABS(-17) FROM DUAL; -- Resultado: 17
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.150000000000002em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT ABS(-17); -- Resultado: 17</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p class="destacado">
+        Observa que con MySQL no es necesario utilizar ninguna tabla. Basta con hacer la SELECT a la función. El resto de ejemplos expuestos funcionan igual. En MySQL los puedes probar sin poner la tabla DUAL.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                EXP(n)
+            </strong>
+            <p>
+                Calcula en
+                ,
+
+
+                en
+
+                También conocida como función exponencial, formalmente como la función real ex, donde e es el número de Euler, aproximadamente 2.71828.... Esta función tiene por dominio de definición el conjunto de los números reales, y tiene la particularidad de que su derivada es la misma función. Se denota equivalentemente como f(x)=ex o exp(x), donde e es la base de los logaritmos naturales y corresponde a la función inversa del logaritmo natural.
+                es decir, el exponente en base e del número n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT EXP(2) FROM DUAL; -- Resultado: 7,38</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            CEIL(n)
+            <p>
+                Calcula el valor entero inmediatamente superior o igual al argumento n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 30.75em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT CEIL(17.4) FROM DUAL; -- Resultado: 18</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            FLOOR(n)
+            <p>
+                Calcula el valor entero inmediatamente inferior o igual al parámetro n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 31.3em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT FLOOR(17.4) FROM DUAL; -- Resultado: 17</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            MOD(m,n)
+            <p>
+                Calcula el
+                resto
+
+
+                Resto
+
+                Es el número resultante de la diferencia del dividendo con el producto del divisor por el cociente.
+                resultante de dividir m entre n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT MOD(15, 2) FROM DUAL; --Resultado: 1</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            POWER(valor, exponente)
+            <p>
+                Eleva el valor al exponente indicado.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 32.4em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT POWER(4, 5) FROM DUAL; -- Resultado: 1024</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            ROUND(n, decimales)
+            <p>
+                Redondea el número n al siguiente número con el número de decimales que se indican.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 36.25em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT ROUND(12.5874, 2) FROM DUAL; -- Resultado: 12.59</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            SQRT(n)
+            <p>
+                Calcula la raíz cuadrada de n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 28.55em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT SQRT(25) FROM DUAL; --Resultado: 5</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            TRUNC(m,n)
+            <p>
+                Trunca
+
+
+                Truncar
+
+                Es el término usado para reducir el número de dígitos a la derecha del separador decimal, descartando los menos significativos.
+                un número a la cantidad de decimales especificada por el segundo argumento. Si se omite el segundo argumento, se truncan todos los decimales. Si "n" es negativo, el número es truncado desde la parte entera.
+            </p>
+            <p>
+                Ejemplos:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 37.35em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT TRUNC(127.4567, 2) FROM DUAL; -- Resultado: 127.45</pre>
+                </div>
+            </div>
+            <div class="codigo elemento_centrado" style="width: 37.35em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT TRUNC(4572.5678, -2) FROM DUAL; -- Resultado: 4500</pre>
+                </div>
+            </div>
+            <div class="codigo elemento_centrado" style="width: 37.35em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT TRUNC(4572.5678, -1) FROM DUAL; -- Resultado: 4570</pre>
+                </div>
+            </div>
+            <div class="codigo elemento_centrado" style="width: 35.15em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT TRUNC(4572.5678) FROM DUAL; -- Resultado: 4572</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            SIGN(n)
+            <p>
+                Si el argumento "n"es un valor positivo, retorna 1, si es negativo, devuelve -1 y 0 si es 0.
+            </p>
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>SELECT SIGN(-23) FROM DUAL; – Resultado: -1</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.2.- Funciones de cadena de caracteres.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            CHR(n)
+            <p>
+                Devuelve el carácter cuyo valor codificado es n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 28em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT CHR(81) FROM DUAL; --Resultado: Q
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            ASCII(n)
+            <p>
+                Devuelve el valor
+                <abbr title="American Standard Code for Information Interchange ">
+                    ASCII
+                </abbr>
+                de n.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 30.2em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT ASCII('O') FROM DUAL; --Resultado: 79
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            CONCAT(cad1, cad2)
+            <p>
+                Devuelve las dos cadenas unidas. Es equivalente al operador ||
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 41.2em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT CONCAT('Hola', 'Mundo') FROM DUAL; --Resultado: HolaMundo
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            LOWER(cad)
+            <p>
+                Devuelve la cadena cad con todos sus caracteres en minúsculas.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 42.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT LOWER('En MInúsculAS') FROM DUAL; --Resultado: en minúsculas
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            UPPER(cad)
+            <p>
+                Devuelve la cadena cad con todos sus caracteres en mayúsculas.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 42.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT UPPER('En MAyúsculAS') FROM DUAL; --Resultado: EN MAYÚSCULAS
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            INITCAP(cad)
+            <p>
+                Devuelve la cadena cad con su primer carácter en mayúscula.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 34.05em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT INITCAP('hola') FROM DUAL; --Resultado: Hola
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            LPAD(cad1, n, cad2)
+            <p>
+                Devuelve cad1 con longitud n, ajustada a la derecha, rellenando por la izquierda con cad2.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 35.7em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT LPAD('M', 5, '*') FROM DUAL; --Resultado: ****M
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            RPAD(cad1, n, cad2)
+            <p>
+                Devuelve cad1 con longitud n, ajustada a la izquierda, rellenando por la derecha con cad2.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 35.7em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT RPAD('M', 5, '*') FROM DUAL; --Resultado: M****
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            REPLACE(cad, ant, nue)
+            <p>
+                Devuelve cad en la que cada ocurrencia de la cadena ant ha sido sustituida por la cadena nue.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 53.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT REPLACE('correo&#64;gmail.es', 'es', 'com') FROM DUAL; --Resultado: correo&#64;gmail.com
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            SUBSTR(cad, m, n)
+            <p>
+                Devuelve la cadena cad compuesta por n caracteres a partir de la posición m.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 37.35em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT SUBSTR('1234567', 3, 2) FROM DUAL; --Resultado: 34
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            LENGTH(cad)
+            <p>
+                Devuelve la longitud de cad.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 31.85em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT LENGTH('hola') FROM DUAL; --Resultado: 4
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            TRIM(cad)
+            <p>
+                Elimina los espacios en blanco a la izquierda y la derecha de cad y los espacios dobles del interior.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 43.4em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT TRIM(' Hola de nuevo ') FROM DUAL; --Resultado: Hola de nuevo
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            LTRIM(cad)
+            <p>
+                Elimina los espacios a la izquierda que posea cad.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 33.5em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT LTRIM(' Hola') FROM DUAL; --Resultado: Hola
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            RTRIM(cad)
+            <p>
+                Elimina los espacios a la derecha que posea cad.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 33.5em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT RTRIM('Hola ') FROM DUAL; --Resultado: Hola
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            INSTR(cad, cadBuscada [, posInicial [, nAparición]])
+            <p>
+                Obtiene la posición en la que se encuentra la cadena buscada en la cadena inicial cad. Se puede comenzar a buscar desde una posición inicial concreta e incluso indicar el número de aparición de la cadena buscada. Si no encuentra nada devuelve cero.
+            </p>
+            <p>
+                Ejemplo:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 39.55em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>SELECT INSTR('usuarios', 'u') FROM DUAL; --Resultado: 1
+</pre>
+                    <pre ngNonBindable>SELECT INSTR('usuarios', 'u', 2) FROM DUAL; --Resultado: 3
+</pre>
+                    <pre ngNonBindable>SELECT INSTR('usuarios', 'u', 2, 2) FROM DUAL; --Resultado: 0
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.3.- Funciones de manejo de fechas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        En los SGBD se utilizan mucho las fechas. Oracle tiene dos tipos de datos para manejar fechas, son DATE y
+        <code>
+            TIMESTAMP.
+        </code>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            DATE almacena
+            <strong>
+                fechas concretas incluyendo a veces la hora.
+            </strong>
+        </li>
+        <li>
+            TIMESTAMP almacena
+            <strong>
+                un instante de tiempo más concreto
+            </strong>
+            que puede incluir hasta fracciones de segundo.
+        </li>
+    </ul>
+    <p>
+        Podemos realizar operaciones numéricas con las fechas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Le podemos
+            <strong>
+                sumar números
+            </strong>
+            y esto se entiende como sumarles días, si ese número tiene decimales se suman días, horas, minutos y segundos.
+        </li>
+        <li>
+            La
+            <strong>
+                diferencia
+            </strong>
+            entre dos fechas también nos dará un número de días.
+        </li>
+    </ul>
+    <p>
+        En Oracle tenemos las siguientes funciones más comunes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            SYSDATE Devuelve la fecha y hora actuales. Ejemplo: SELECT SYSDATE FROM DUAL; --Resultado: 26/07/11
+        </li>
+        <li>
+            SYSTIMESTAMP Devuelve la fecha y hora actuales en formato TIMESTAMP. Ejemplo: SELECT SYSTIMESTAMP FROM DUAL; --Resultado: 26-JUL-11 08.32.59,609000 PM +02:00
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            ADD_MONTHS(fecha, n) Añade a la fecha el número de meses indicado con n. Ejemplo: SELECT ADD_MONTHS('27/07/11', 5) FROM DUAL; --Resultado: 27/12/11
+        </li>
+        <li>
+            MONTHS_BETWEEN(fecha1, fecha2) Devuelve el número de meses que hay entre fecha1 y fecha2. Ejemplo: SELECT MONTHS_BETWEEN('12/07/11','12/03/11') FROM DUAL; --Resultado: 4
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+        <li>
+            LAST_DAY(fecha) Devuelve el último día del mes al que pertenece la fecha. El valor devuelto es tipo DATE. Ejemplo: SELECT LAST_DAY('27/07/11') FROM DUAL; --Resultado: 31/07/11
+        </li>
+        <li>
+            NEXT_DAY(fecha, d) Indica el día que corresponde si añadimos a la fecha el día d. El día devuelto puede ser texto ('Lunes', Martes', ..) o el número del día de la semana (1=lunes, 2=martes, ..) dependiendo de la configuración. Ejemplo: SELECT NEXT_DAY('31/12/11','LUNES') FROM DUAL; --Resultado: 02/01/12
+        </li>
+        <li>
+            EXTRACT(valor FROM fecha) Extrae un valor de una fecha concreta. El valor puede ser
+            <span lang="en">
+          day, month, year, hours,
+         </span>
+            etc. Ejemplo: SELECT EXTRACT(MONTH FROM SYSDATE) FROM DUAL; --Resultado: 7
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p>
+        En Oracle: Los operadores aritméticos "+" (más) y "-" (menos) pueden emplearse para las fechas. Por ejemplo:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT SYSDATE – 5;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Devolvería la fecha correspondiente a 5 días antes de la fecha actual.
+    </p>
+    <p>
+        Se pueden emplear estas funciones enviando como argumento el nombre de un campo de tipo fecha.
+    </p>
+</div><h1 class="title">
+    5.4.- Funciones de conversión.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Tanto Oracle como MySQL convierten automáticamente datos de manera que el resultado de una expresión tenga sentido. Por tanto, de manera automática se pasa de texto a número y al revés. Ocurre lo mismo para pasar de tipo texto a fecha y viceversa. Pero existen ocasiones en que queramos realizar esas conversiones de modo explícito, para ello contamos con funciones de conversión.
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            TO_NUMBER(cad, formato) Convierte textos en números. Se suele utilizar para dar un formato concreto a los números. Los formatos que podemos utilizar son los siguientes:
+        </li>
+    </ul>
+    <table class="tabla">
+        <caption>
+            Formatos para números y su significado.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Símbolo
+            </th>
+            <th scope="col">
+                Significado
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                9
+            </td>
+            <td>
+                Posiciones numéricas. Si el número que se quiere visualizar contiene menos dígitos de los que se especifican en el formato, se rellena con blancos.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                0
+            </td>
+            <td>
+                Visualiza ceros por la izquierda hasta completar la longitud del formato especificado.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                $
+            </td>
+            <td>
+                Antepone el signo de dólar al número.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                L
+            </td>
+            <td>
+                Coloca en la posición donde se incluya, el símbolo de la moneda local (se puede configurar en la base de datos mediante el parámetro NSL_CURRENCY)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                S
+            </td>
+            <td>
+                Aparecerá el símbolo del signo.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                D
+            </td>
+            <td>
+                Posición del símbolo decimal, que en español es la coma.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                G
+            </td>
+            <td>
+                Posición del separador de grupo, que en español es el punto.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <ul class="lista_verificacion">
+        <li>
+        </li>
+        <li>
+            TO_DATE( cad, formato) Convierte textos a fechas. Podemos indicar el formato con el que queremos que aparezca.
+        </li>
+    </ul>
+    <p>
+        Para las funciones TO_CHAR y
+        <code>
+            TO_DATE
+        </code>
+        , en el caso de fechas, indicamos el formato incluyendo los siguientes símbolos:
+    </p>
+    <table class="tabla">
+        <caption>
+            Formatos para fechas y su significado.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Símbolo
+            </th>
+            <th scope="col">
+                Significado
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                YY
+            </td>
+            <td>
+                Año en formato de dos cifras
+            </td>
+        </tr>
+        <tr>
+            <td>
+                YYYY
+            </td>
+            <td>
+                Año en formato de cuatro cifras
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MM
+            </td>
+            <td>
+                Mes en formato de dos cifras
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MON
+            </td>
+            <td>
+                Las tres primeras letras del mes
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MONTH
+            </td>
+            <td>
+                Nombre completo del mes
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DY
+            </td>
+            <td>
+                Día de la semana en tres letras
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DAY
+            </td>
+            <td>
+                Día completo de la semana
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DD
+            </td>
+            <td>
+                Día en formato de dos cifras
+            </td>
+        </tr>
+        <tr>
+            <td>
+                D
+            </td>
+            <td>
+                Día de la semana del 1 al 7
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Q
+            </td>
+            <td>
+                Semestre
+            </td>
+        </tr>
+        <tr>
+            <td>
+                WW
+            </td>
+            <td>
+                Semana del año
+            </td>
+        </tr>
+        <tr>
+            <td>
+                AM
+                <br>
+                PM
+                <br/></td>
+            <td>
+                <p>
+                    Indicador
+                    <abbr title="Ante merídiem">
+                        a.m.
+                    </abbr>
+                </p>
+                <p>
+                    Indicador
+                    <abbr title="Post merídiem">
+                        p.m.
+                    </abbr>
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                HH12
+                <br>
+                HH24
+                <br/></td>
+            <td>
+                <p>
+                    Hora de 1 a 12
+                </p>
+                <p>
+                    Hora de 0 a 23
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                MI
+            </td>
+            <td>
+                Minutos de 0 a 59
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SS
+                <br>
+                SSSS
+                <br/></td>
+            <td>
+                <p>
+                    Segundos dentro del minuto
+                </p>
+                <p>
+                    Segundos dentro desde las 0 horas
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    5.5.- Otras funciones: NVL y DECODE -  IFNULL
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Cualquier operación que se haga con un valor NULL devuelve un NULL. Por ejemplo, si se intenta dividir por NULL, no nos aparecerá ningún error sino que como resultado obtendremos un NULL (no se producirá ningún error tal y como puede suceder si intentáramos dividir por cero).
+    </p>
+    <p>
+        También es posible que el resultado de una función nos de un valor nulo.
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Por tanto, es habitual encontrarnos con estos valores y es entonces cuando aparece la necesidad de poder hacer algo con ellos. Las
+        <strong>
+            funciones con nulos
+        </strong>
+        nos permitirán hacer algo en caso de que aparezca un valor nulo.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            NVL(valor, expr1)
+            <p>
+                Si valor es NULL, entonces devuelve expr1. Ten en cuenta que expr1 debe ser del mismo tipo que valor.
+            </p>
+        </li>
+    </ul>
+    <p>
+        ¿Y no habrá alguna función que nos permita evaluar expresiones? La respuesta es afirmativa y esa función se llama DECODE.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            DECODE(expr1, cond1, valor1 [, cond2, valor2, ...], default )
+            <p>
+                Esta función evalúa una expresión expr1, si se cumple la primera condición (cond1) devuelve el valor1, en caso contrario evalúa la siguiente condición y así hasta que una de las condiciones se cumpla. Si no se cumple ninguna condición se devuelve el valor por defecto que hemos llamado default.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Si en la tabla PONENTE  queremos un listado de las especialidades, podemos pedir que cuando una especialidad  no exista, aparezca el texto No tiene especialidad conocida, para ello podemos utilizar la siguiente consulta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.3em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT NVL(especialidad, 'No tiene especialidad conocida') FROM PONENTE;
+</pre>
+        </div>
+    </div>
+    <p>
+        Obtendremos:
+    </p>
+    <table class="tabla">
+        <caption>
+            Resultado de la sentencia SELECT
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                ESPECIALIDAD
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                No tiene dirección conocida
+            </td>
+        </tr>
+        <tr>
+            <td>
+                'Bases de Datos'
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    6.- Consultas de resumen.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.1.- Funciones de agregado: SUM y COUNT.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Sumar y contar filas o datos contenidos en los campos es algo bastante común. Imagina que para nuestra tabla Usuarios necesitamos sumar el número de créditos total que tienen nuestros jugadores. Con una función que sumara los valores de la columna crédito sería suficiente, siempre y cuando lo agrupáramos por cliente, ya que de lo contrario lo que obtendríamos sería el total de todos los clientes jugadores.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La función SUM:
+            <ul>
+                <li>
+                    SUM([ALL|DISTINCT] expresión)
+                </li>
+                <li>
+                    Devuelve la suma de los valores de la expresión.
+                </li>
+                <li>
+                    Sólo puede utilizarse con columnas cuyo tipo de dato sea número. El resultado será del mismo tipo aunque puede tener una precisión mayor.
+                </li>
+                <li>
+                    Por ejemplo,
+                    <ul>
+                        <li>
+                            SELECT SUM(precio) FROM CONFERENCIA; en Oracle&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT SUM( salario) FROM empleado; en MySQL&lt;br /&gt;
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            La función COUNT:
+            <ul>
+                <li>
+                    COUNT([ALL|DISTINCT] expresión)
+                </li>
+                <li>
+                    Cuenta los elementos de un campo. Expresión contiene el nombre del campo que deseamos contar. Los operandos de expresión pueden incluir el nombre del campo, una constante o una función.
+                </li>
+                <li>
+                    Puede contar cualquier tipo de datos incluido texto.
+                </li>
+                <li>
+                    COUNT simplemente cuenta el número de registros sin tener en cuenta qué valores se almacenan.
+                </li>
+                <li>
+                    La función COUNT no cuenta los registros que tienen campos NULL a menos que
+                    <strong>
+                        expresión
+                    </strong>
+                    sea el carácter comodín
+                    <strong>
+                        asterisco
+                    </strong>
+                    (*).
+                </li>
+                <li>
+                    Si utilizamos COUNT(*), calcularemos el total de filas, incluyendo aquellas que contienen valores NULL.
+                </li>
+                <li>
+                    Por ejemplo,
+                    <ul>
+                        <li>
+                            SELECT COUNT(nombre) FROM PONENTE; en Oracle&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT COUNT(*) FROM PONENTE; en Oracle&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT COUNT(cddep) FROM empleado; en MySQL //Nos permite saber cuantos empleados tienen departamento asignado.&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT COUNT(*) FROM empleado; en MySQL //Nos permite saber cuantos empleados hay en total
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    6.2.- Funciones de agregado: MIN y MAX.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        ¿Y si pudiéramos encontrar el valor máximo y mínimo de una lista enormemente grande? Esto es lo que nos permiten hacer las siguientes funciones.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Función
+            </strong>
+            MIN
+            <strong>
+                :
+            </strong>
+            <ul>
+                <li>
+                    MIN ([ALL| DISTINCT] expresión)
+                </li>
+                <li>
+                    Devuelve el valor mínimo de la expresión sin considerar los nulos (NULL).
+                </li>
+                <li>
+                    En expresión podemos incluir el nombre de un campo de una tabla, una constante o una función (pero no otras funciones agregadas de SQL).
+                </li>
+                <li>
+                    Un ejemplo sería:
+                    <ul>
+                        <li>
+                            SELECT MIN(precio) FROM CONFERENCIA; // en Oracle&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT MIN(salario) FROM empleado; //en MySQL: -- Obtiene el menor salario&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT MIN(fecha_ingreso) FROM empleado; // MySQL: -- Obtiene la fecha más antigua de ingreso
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Función
+            </strong>
+            MAX
+            <strong>
+                :
+            </strong>
+            <ul>
+                <li>
+                    MAX ([ALL| DISTINCT] expresión)
+                </li>
+                <li>
+                    Devuelve el valor máximo de la expresión sin considerar los nulos (NULL).
+                </li>
+                <li>
+                    En expresión podemos incluir el nombre de un campo de una tabla, una constante o una función (pero no otras funciones agregadas de SQL).
+                </li>
+                <li>
+                    Un ejemplo,
+                    <ul>
+                        <li>
+                            SELECT MAX(precio) FROM CONFERENCIA; //Oracle&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT MAX (salario) FROM empleado; // MySQL -- obtiene el mayor salario&lt;br /&gt;
+                        </li>
+                        <li>
+                            SELECT MAX(fecha_ingreso) FROM empleado; // MySQL -- Obtiene la fecha más actual o reciente de ingreso
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    6.3.- Funciones de agregado: AVG, VAR, STDEV y STDEVP.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Quizás queramos obtener datos estadísticos de los datos guardados en nuestra base de datos. Para ello podemos hacer uso de las funciones que calculan el
+        promedio,
+
+
+        Promedio
+
+        También llamada media aritmética o simplemente media de un conjunto finito de números es igual a la suma de todos sus valores dividida entre el número de sumandos.
+        la
+        varianza
+
+
+        Varianza
+
+        Es una medida de su dispersión definida como la esperanza del cuadrado de la desviación de dicha variable respecto a su media.
+        y la
+        desviación típica
+
+
+        Desviación típica
+
+        Es una medida de centralización o dispersión para variables de razón (ratio o cociente) y de intervalo, de gran utilidad en la estadística descriptiva. Se define como la raíz cuadrada de la varianza. Junto con este valor, la desviación típica es una medida (cuadrática) que informa de la media de distancias que tienen los datos respecto de su media aritmética, expresada en las mismas unidades que la variable.
+        .
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Función
+            </strong>
+            AVG
+            <ul>
+                <li>
+                    AVG ([ALL| DISTINCT] expresión)
+                </li>
+                <li>
+                    Devuelve el promedio de los valores de un grupo, para ello se omiten los valores nulos (NULL).
+                </li>
+                <li>
+                    El grupo de valores será el que se obtenga como resultado de la expresión y ésta puede ser un nombre de columna o una expresión basada en una columna o varias de la tabla.
+                </li>
+                <li>
+                    Se aplica a campos tipo número y el tipo de dato del resultado puede variar según las necesidades del sistema para representar el valor.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        <strong class="destacado">
+            Ejemplos en MySQL:
+        </strong>
+    </p>
+    <p>
+        a)-- SELECT AVG(salario) as 'Salario medio' FROM empleado;
+    </p>
+    <p>
+        b)-- SELECT round(AVG(salario),2) as 'Salario medio' FROM empleado; -- para sacar sólo dos decimales
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Función
+            </strong>
+            VAR
+            <ul>
+                <li>
+                    VAR ([ALL| DISTINCT] expresión)
+                </li>
+                <li>
+                    Devuelve la varianza estadística de todos los valores de la expresión.
+                </li>
+                <li>
+                    Como tipo de dato admite únicamente columnas numéricas. Los valores nulos (NULL) se omiten.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Función
+            </strong>
+            STDEV
+            <ul>
+                <li>
+                    STDEV ([ALL| DISTINCT] expresión)
+                </li>
+                <li>
+                    Devuelve la desviación típica estadística de todos los valores de la expresión.
+                </li>
+                <li>
+                    Como tipo de dato admite únicamente columnas numéricas. Los valores nulos (NULL) se omiten.
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    7.- Agrupamiento de registros.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        ha estado realizando algunas consultas de resumen y ahora quiere continuar sacando todo el jugo posible a las tablas realizando operaciones como las anteriores pero agrupándolas por algún campo. Hay veces que se obtiene mucha información si estudiamos los datos por grupos, como puede ser el total de asistentes por empresa, o la gratificación media según el sexo del ponente para así poder obtener conclusiones sobre la información guardada.
+    </p>
+</div><h1 class="title">
+    8.- Consultas multitablas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Hasta ahora
+        <strong>
+            Juan
+        </strong>
+        ha estado haciendo uso de consultas a una única tabla, pero eso limita la obtención de resultados. Si esas tablas están relacionadas
+        <strong>
+            Juan
+        </strong>
+        podrá coger información de cada una de ellas según lo que le interese. En las tablas de la base de datos Conferencias tiene por un lado la tabla PONENTE que recoge los datos de los ponentes y por otra la tabla PARTICIPAR que muestra las conferencias en las que ha participado cada ponente. En esta última tabla, lo único que recogemos de los ponentes es su código. Como a
+        <strong>
+            Juan
+        </strong>
+        le interesa obtener la gratificación incluyendo nombres y apellidos de sus ponentes, debe utilizar la información que viene en ambas tablas.
+    </p>
+</div><h1 class="title">
+    8.1.- Composiciones internas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        ¿Qué ocurre si combinamos dos o más tablas sin ninguna restricción? El resultado será un producto cartesiano.
+    </p>
+    <p>
+        El
+        producto cartesiano
+
+
+        Producto cartesiano
+
+        En teoría de conjuntos, el producto cartesiano es un producto directo de conjuntos. En particular, el producto cartesiano de dos conjuntos X e Y, denotado por X × Y, es el conjunto de todos los pares ordenados en los que el primer componente pertenece a X y el segundo a Y.
+        entre dos tablas da como resultado todas las combinaciones de todas las filas de esas dos tablas.
+    </p>
+    <p>
+        Se indica poniendo en la cláusula FROM las tablas que queremos componer separadas por comas. Y puedes obtener el producto cartesiano de las tablas que quieras.
+    </p>
+    <p>
+        Como lo que se obtiene son todas las posibles combinaciones de filas, debes tener especial cuidado con las tablas que combinas. Si tienes dos tablas de 10 filas cada una, el resultado tendrá
+        <span title="Diez por diez.">
+         10x10
+        </span>
+        filas, a medida que aumentemos el número de filas que contienen las tablas, mayor será el resultado final, con lo cual se puede considerar que nos encontraremos con una operación costosa.
+    </p>
+    <p>
+        Esta operación no es de las más utilizadas ya que coge una fila de una tabla y la asocia con todos y cada uno de las filas de la otra tabla, independientemente de que tengan relación o no. Lo más normal es que queramos seleccionar los registros según algún criterio.
+    </p>
+    <p>
+        Necesitaremos
+        <strong>
+            discriminar
+        </strong>
+        de alguna forma para que únicamente aparezcan filas de una tabla que estén relacionadas con la otra tabla. A esto se le llama
+        <strong>
+            asociar tablas
+        </strong>
+        (JOIN).
+    </p>
+    <p>
+        Para hacer una composición interna se parte de un producto cartesiano y se eliminan aquellas filas que no cumplen la condición de composición.
+    </p>
+    <p>
+        Lo importante en las composiciones internas es emparejar los campos que han de tener valores iguales.
+    </p>
+    <p>
+        Las reglas para las composiciones son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Pueden combinarse tantas tablas como se desee.
+        </li>
+        <li>
+            El criterio de combinación puede estar formado por más de una pareja de columnas.
+        </li>
+        <li>
+            En la cláusula SELECT pueden citarse columnas de ambas tablas, condicionen o no, la combinación.
+        </li>
+        <li>
+            Si hay columnas con el mismo nombre en las distintas tablas, deben identificarse especificando la tabla de procedencia o utilizando un alias de tabla.
+        </li>
+    </ul>
+    <p class="iDevice_destacadofpd">
+        Las columnas que aparecen en la cláusula WHERE se denominan
+        <strong>
+            columnas de emparejamiento
+        </strong>
+        ya que son las que permiten emparejar las filas de las dos tablas. Éstas no tienen por qué estar incluidas en la lista de selección. Emparejaremos tablas que estén relacionadas entres sí y además, una de las columnas de emparejamiento será clave principal en su tabla. Cuando emparejamos campos debemos especificar de la siguiente forma: NombreTabla1. Camporelacionado1 = NombreTabla2.Camporelacionado2.
+    </p>
+    <p>
+        Puedes combinar una tabla consigo misma pero debes poner de manera obligatoria un alias a uno de los nombres de la tabla que vas a repetir.
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        Veamos un ejemplo, si queremos obtener el nombre y ciudad de los departamentos de los empleados, así como el código, nombre y fecha de ingreso, tendremos que utilizar alias o anteponer el nombre de la tabla a las columnas que se denominen igual en ambas tablas que se combian:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT e.cdemp, e.nombre, e.fecha_ingreso, d.nombre, d.ciudad
+</pre>
+            <pre ngNonBindable>FROM empleado e, departamento d
+</pre>
+            <pre ngNonBindable>WHERE e.cddep= d.cddep;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Observa que ambas tablas,
+        <span style="font-size: small;">
+         empleado y departamento
+        </span>
+        están relacionadas por la columna
+        <span style="font-size: small;">
+         cddep
+        </span>
+        (código de departamento) y que en ambas tablas la columna se denomina igual, y lo mismo ocurre con el nombre del empleado y departamento, en ambas tablas se guarda en una columna denominada
+        <span style="font-size: small;">
+         nombre
+        </span>
+        . Por ello, es obligatorio anteponer al nombre de cada columna que se denomine igual, el nombre de la tabla de procedencia (
+        <span style="font-size: small;">
+         <strong>
+          tabla.columna
+         </strong>
+        </span>
+        ) o bien, poner un alias a la tabla y utilizar el alias (
+        <span style="font-size: small;">
+         <strong>
+          alias.columna
+         </strong>
+        </span>
+        ).
+    </p>
+    <p>
+        En el ejemplo, se ha optado por poner a empleado el alias
+        <strong>
+            e
+        </strong>
+        , y a departamento el alias
+        <strong>
+            d
+        </strong>
+        , de manera que todas las columnas quedan totalmente claras si le anteponemos ese alias.
+    </p>
+    <p>
+        Puedes
+        <strong>
+            combinar una tabla consigo misma
+        </strong>
+        pero debes poner de manera obligatoria un alias a uno de los nombres de la tabla que vas a repetir.
+    </p>
+    <p>
+        Por ejempo, la tabla empleado tiene una (inter)relación reflexiva, pues un empleado tiene como jefe a otro empleado. De hecho, ésto hace que aparezca dentro de la misma tabla la clave foránea
+        <strong>
+         <span style="font-size: small;">
+          cdjefe
+         </span>
+        </strong>
+        que hace referencia a la clave primaria
+        <strong>
+         <span style="font-size: small;">
+          cdemp.
+         </span>
+        </strong>
+    </p>
+    <p>
+        <span style="font-size: medium;">
+         Supongamos que nuestra consulta es para obtener el código y nombre de cada empleado con el nombre de su jefe ¿cómo la redactaríamos?. Observa que habrá que componer o combinar la tabla empleado con ella misma, desde el punto de vista de los empleados y el de los jefes. La consulta quedaría así:
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT e.cdemp, e.nombre, je.nombre
+</pre>
+            <pre ngNonBindable>FROM empleado e, empleado je
+</pre>
+            <pre ngNonBindable>WHERE e.cdjefe = je.cdemp;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Veamos un ejemplo, si queremos obtener la referencia, el tema, el nombre de la sala en la que se celebra y la capacidad tendremos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT referencia, tema, nombre, capacidad FROM CONFERENCIA, SALA&lt;br /&gt;WHERE CONFERENCIA.sala= SALA.Nombre;&lt;br /&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Ahora vamos a obtner el  codigo y el nombre de los asistentes (sin repetirse) que asisten a alguna conferencia que tenga la palabra "datos" en su tema.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT DISTINCT A.codigo, A.nombre FROM ASISTENTE A, &lt;br /&gt;CONFERENCIA C, ASISTIR AT, WHERE A.codigo= AT.codasistente AND&lt;br /&gt;C.referencia=AT.refconferencia AND C.Tema LIKE '%DATOS%';&lt;br /&gt;&lt;br /&gt;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    8.2.- Composiciones externas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        ¿Has pensado que puede que te interese seleccionar algunas filas de una tabla aunque éstas no tengan correspondencia con las filas de la otra tabla? Esto puede ser necesario.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Imagina que tenemos, tal como ocurre en nuestra base  de datos
+        <strong>
+            proyectosx
+        </strong>
+        guardadas en dos tablas la información de los empleados de la empresa (
+        <strong>
+            cdemp, nombre, salario y cddep
+        </strong>
+        ) por otro lado los departamentos (
+        <strong>
+            cddep, nombre
+        </strong>
+        ) de esa empresa. Recientemente se ha remodelado la empresa y se han creado un par de departamentos más pero no se les ha asignado los empleados. Si tuviéramos que obtener un informe con los datos de los empleados por departamento, seguro que deben aparecer esos departamentos aunque no tengan empleados. Para poder hacer esta combinación usaremos las composiciones externas.
+    </p>
+    <p>
+        ¿Cómo es el formato? En este caso lo mejor es utilizar directamente la sintaxis derivada del estándar SQL 99, mediante una composición externa
+        <span style="font-size: small;">
+         <strong>
+          LEFT OUTER JOIN
+         </strong>
+        </span>
+        .
+    </p>
+    <div class="codigo elemento_centrado" style="width: 49.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SELECT tabla1.columna1, tabla1.columna2, …, tabla2.columna1, tabla2.columna2, … </pre>
+            <pre ngNonBindable>FROM tabla1 </pre>
+            <pre ngNonBindable>[LEFT | RIGTH  OUTER JOIN tabla2 ON (tabla1.columna=tabla2.columna)] </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En nuestro ejemplo, como queremos que aparezcan todos los departamentos, estén o no relacionados con empleados, pondremos esa tabla, la tabla DEPARTAMENTO,  a la izquierda de
+        <strong>
+         <span style="font-size: small;">
+          LEFT OUTER JOIN.
+          <br>
+         <br/></span>
+        </strong>
+    </p>
+    <p>
+        Obtendríamos el mismo resultado, si pusiéramos la tabla DEPARTAMENTO a la derecha de
+        <strong>
+         <span style="font-size: small;">
+          RIGHT OUTER JOIN.
+         </span>
+        </strong>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Imagina que tenemos en una base de datos guardadas en dos tablas la información de los empleados de la empresa (
+        <strong>
+            Cod_empleado, Nombre, Apellidos, salario y Cod_dpto
+        </strong>
+        ) por otro lado los departamentos (
+        <strong>
+            Codigo_dep, Nombre
+        </strong>
+        ) de esa empresa. Recientemente se ha remodelado la empresa y se han creado un par de departamentos más pero no se les ha asignado los empleados. Si tuviéramos que obtener un informe con los datos de los empleados por departamento, seguro que deben aparecer esos departamentos aunque no tengan empleados. Para poder hacer esta combinación usaremos las composiciones externas.
+    </p>
+    <p>
+        ¿Cómo es el formato? Muy sencillo, añadiremos un signo más entre paréntesis (+) en la igualdad entre campos que ponemos en la cláusula WHERE. El carácter (+) irá detrás del nombre de la tabla en la que deseamos aceptar valores nulos.
+    </p>
+    <p>
+        En nuestro ejemplo, la igualdad que tenemos en la cláusula WHERE es Cod_dpto (+)= Codigo_dep ya que es en la tabla empleados donde aparecerán valores nulos.
+    </p>
+</div><h1 class="title">
+    8.3.- Composiciones en la versión SQL99.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Como has visto, SQL incluye en esta versión mejoras de la sintaxis a la hora de crear composiciones en consultas. Recuerda que la sintaxis es la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT tabla1.columna1, tabla1.columna2, …, tabla2.columna1, tabla2.columna2, …
+</pre>
+            <pre ngNonBindable>FROM tabla1
+</pre>
+            <pre ngNonBindable>     [CROSS JOIN tabla2] |
+</pre>
+            <pre ngNonBindable>     [NATURAL JOIN tabla2] |
+</pre>
+            <pre ngNonBindable>     [JOIN tabla2 USING (columna)] |
+</pre>
+            <pre ngNonBindable>     [JOIN tabla2 ON (tabla1.columna=tabla2.columna)] |
+</pre>
+            <pre ngNonBindable>     [LEFT | RIGTH | FULL OUTER JOIN tabla2 ON (tabla1.columna=tabla2.columna)];
+</pre>
+        </div>
+    </div>
+    <p>
+        CROSS JOIN: creará un producto cartesiano de las filas de ambas tablas por lo que podemos olvidarnos de la cláusula WHERE.
+    </p>
+    <p>
+        NATURAL JOIN: detecta automáticamente las claves de unión, basándose en el nombre de la columna que coincide en ambas tablas. Por supuesto, se requerirá que las columnas de unión tengan el mismo nombre en cada tabla. Además, esta característica funcionará incluso si no están definidas las claves primarias o ajenas.
+    </p>
+    <p>
+        JOIN USING: las tablas pueden tener más de un campo para relacionar y no siempre queremos que se relacionen por todos los campos. Esta cláusula permite establecer relaciones indicando qué campo o campos comunes se quieren utilizar para ello.
+    </p>
+    <p>
+        JOIN ON: se utiliza para unir tablas en la que los nombres de columna no coinciden en ambas tablas o se necesita establecer asociaciones más complicadas.
+    </p>
+    <p>
+        OUTER JOIN: se puede eliminar el uso del signo (+) para composiciones externas utilizando un OUTER JOIN, de este modo resultará más fácil de entender. (
+        <strong>
+            Oracle)
+        </strong>
+    </p>
+    <p>
+        LEFT OUTER JOIN: es una composición externa izquierda, todas las filas de la tabla de la izquierda se devuelven, aunque no haya ninguna columna correspondiente en las tablas combinadas.
+    </p>
+    <p>
+        RIGTH OUTER JOIN: es una composición externa derecha, todas las filas de la tabla de la derecha se devuelven, aunque no haya ninguna columna correspondiente en las tablas combinadas.
+    </p>
+    <p>
+        FULL OUTER JOIN: es una composición externa en la que se devolverán todas las filas de los campos no relacionados de ambas tablas. (
+        <strong>
+            Oracle
+        </strong>
+        )
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Podríamos transformar algunas de las consultas con las que hemos estado trabajando:
+    </p>
+    <p>
+        Veamos un ejemplo, si queremos obtener el nombre y ciudad de los departamentos de los empleados, así como el código, nombre y fecha de ingreso, tendremos que utilizar alias o anteponer el nombre de la tabla a las columnas que se denominen igual en ambas tablas que se combian:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT e.cdemp, e.nombre, e.fecha_ingreso, d.nombre, d.ciudad
+</pre>
+            <pre ngNonBindable>FROM empleado e&lt;br /&gt;INNER JOIN departamento d ON e.cddep= d.cddep;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Queríamos también, una
+        <span style="font-size: medium;">
+         consulta para obtener el código y nombre de cada empleado con el nombre de su jefe ¿cómo la redactaríamos ahora?. Observa que habrá que componer o combinar la tabla empleado con ella misma, desde el punto de vista de los empleados y el de los jefes. La consulta quedaría así:
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT e.cdemp, e.nombre, je.nombre
+</pre>
+            <pre ngNonBindable>FROM empleado e&lt;br /&gt;INNER JOIN empleado je ON  e.cdjefe = je.cdemp;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+        Podríamos transformar algunas de las consultas con las que hemos estado trabajando:
+    </p>
+    <p>
+        Queríamos obtener  de cada conferencia la referencia, el tema, el nombre de la sala en la que se celebra y la capacidad  Es una consulta de composición interna, luego utilizaremos JOIN ON:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 44.5em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT  &lt;code&gt; referencia, tema, nombre, capacidad FROM CONFERENCIA JOIN SALA ON &lt;br /&gt;CONFERENCIA.sala= SALA.nombre;
+</pre>
+        </div>
+    </div>
+    <p>
+        Queríamos también, obtener un listado con los nombres de los distintos departamentos y sus jefes con sus datos personales. Ten en cuenta que deben aparecer todos los departamentos aunque no tengan asignado ningún jefe. Aquí estamos ante una composición externa, luego podemos utilizar OUTER JOIN:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 44.5em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT  D.NOMBRE_DPTO, D.JEFE, E.NOMBRE, E.APELLIDO1, E.APELLIDO2
+</pre>
+            <pre ngNonBindable>FROM DEPARTAMENTOS D LEFT OUTER JOIN EMPLEADOS E ON ( D.JEFE = E.DNI);
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    9.- Otras consultas multitablas: Unión, Intersección y diferencia de consultas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    10.- Subconsultas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    11.- Realizando un repaso mediante un ejemplo práctico.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            Ana
+        </strong>
+        y
+        <strong>
+            Juan
+        </strong>
+        ya han visto todo lo que se puede hacer con el lenguaje SQL pero
+        <strong>
+            Ada
+        </strong>
+        les ha pasado un ejemplo más con otra Base de Datos en la que se les explica mediante algunos videotutoriales algunos conceptos que ya conocen y les sirve para repasar.
+    </p>
+    <p>
+        La BD
+        <strong>
+            TRUEKASA
+        </strong>
+        trata sobre intercambios o trueques que realizan los diferentes usuarios de la aplicación con respecto a incidencias que se producen en las&nbsp; viviendas (fontanería, albañilería, pintura, etc.). Dichas incidencias las abren y reparan los propios usuarios y hay unos técnicos que las aprueban. Se adjunta a continuación el script que puedes descargar para practicar:
+    </p>
+    <p style="text-align: center;">
+        Script de la BD Truekasa
+        <span class="exe-link-data file-size">
+           (zip - 1.84
+           <abbr lang="en" title="KiloBytes">
+            KB
+           </abbr>
+           )
+          </span>
+        .
+    </p>
+    <p>
+        El diagrama Entidad-Relación es el siguiente:
+    </p>
+    <p>
+
+    </p>
+    <p>
+    </p>
+    <p>
+        Y el modelo relacional resultante sería:
+    </p>
+    <p>
+
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    11.1.- Caso práctico 1.
+</h1><div class="iDevice_content">
+    <p>
+        María y&nbsp;Luis ya han visto todo lo que se puede hacer con el lenguaje SQL, pero Víctor les ha pasado un ejemplo más con otra Base de Datos en la que se les explica mediante algunos videotutoriales, conceptos que ya conocen y les sirve para repasar.
+    </p>
+    <p>
+        La BD CAMPEONATO UNIVERSITARIO trata el campeonato de atletismo en las distintas universidades. Para el manejo de la información, se necesitan realizar una serie de consultas al respecto indicadas a continuación.
+    </p>
+    <p>
+        Para poder realizarlas, se adjunta a continuación el script que puedes descargar para practicar:
+    </p>
+    <p style="text-align: center;">
+        Script Campeonato de Atletismo.zip
+    </p>
+    <p>
+        Diagrama Entidad-Relación :
+    </p>
+
+    <p>
+        Modelo relacional:
+    </p>
+
+    <p>
+    </p>
+</div><h1 class="title">
+    11.2.- Caso práctico 2.
+</h1><div class="iDevice_content">
+    <p>
+        Patricio&nbsp;es el gerente de la empresa&nbsp;ALMERIADVENTURE. Esta empresa es de nueva creación y su principal línea de negocio es gestionar diferentes excursiones a través de distintas rutas que tienen creadas en la provincia de Almería. Para ello ha recurrido a la empresa de&nbsp;Ada&nbsp;para que le puedan diseñar la base de datos que pueda almacenar toda la información necesaria para su gestión.
+    </p>
+    <p>
+        Ada&nbsp;se lo ha comentado al resto del equipo y todos están de acuerdo en realizar la base datos.&nbsp;Por lo tanto Ana va a realizar la base de datos.&nbsp;Como miembro del equipo de trabajo de&nbsp;Ana, estás trabajando directamente con la base de datos. Para el manejo de la información, se necesitan crear una serie de consultas al respecto indicadas a continuación.
+        <br style="clear: both;">
+        <br style="clear: both;">
+        Para poder realizarlas, se adjunta a continuación el script que puedes descargar para practicar:
+        <br/><br/></p>
+    <p style="text-align: center;">
+        Script Campeonato de Excursiones.zip
+    </p>
+    <p>
+        Diagrama Entidad-Relación :
+    </p>
+
+    <p>
+        <br>
+        <br>
+        <br/><br/></p>
+    <p>
+        Modelo Relacional:
+    </p>
+
+    <p>
+    </p>
+</div><h1 class="title">
+    11.3.- Caso práctico 3.
+</h1><div class="iDevice_content">
+    <p>
+          <span>
+           Un amigo de
+          </span>
+        <strong>
+            Ana
+        </strong>
+        <span>
+           es dueño de la hamburguesería "BURGUER PREMIUMS". Lleva con ella varios años y le funciona muy bien, de tal manera que año tras año aumenta el número de pedidos tanto para consumirlos en el alojamiento como de entrega a domicilio, por lo que le interesaría tener una aplicación informática que le permita gestionar los pedidos y reparto a domicilio de sus productos, así como para obtener estadísticas de los mismos. Por lo tanto Ana va a realizar la base de datos para poder mejorar la gestión del local.
+          </span>
+        Como miembro del equipo de trabajo de
+        <span>
+          </span>
+        <strong>
+            Ana
+        </strong>
+        , estás trabajando directamente con la base de datos. El análisis y diseño está ya realizado, así como la implementación en MySQL, ahora se han cargado una serie de datos de prueba para probar las sentencias de consultas que el representante de las distintas asociaciones nos ha pedido entre los requisitos que desean.
+    </p>
+    <p>
+        Tu tarea es realizar dichas sentencias SQL para MySQL probándolas con los datos que se han cargado de prueba para comprobar el resultado de cada consulta y verificar si es correcto o no.
+    </p>
+    <p>
+        <br style="clear: both;">
+        <br style="clear: both;">
+        Para poder realizarlas, se adjunta a continuación el script que puedes descargar para practicar:
+        <br/><br/></p>
+    <p style="text-align: center;">
+        Script Burger Premiums.zip
+    </p>
+    <p>
+        <strong>
+            Diagrama Entidad-Relación :
+        </strong>
+    </p>
+
+    <p>
+        <strong>
+            Modelo Relacional:
+        </strong>
+    </p>
+
+    <p>
+    </p>
+</div><h1 class="title">
+    12.- Enlaces de refuerzo y ampliación
+</h1><div class="iDevice_content">
+    <ul class="lista_verificacion">
+        <li>
+            Documentación oficial del SGBD MySQL de la sintaxis de la sentencia SELECT (En Inglés):
+            https://dev.mysql.com/doc/refman/5.7/en/select.html
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            Documentación oficial del SGBD ORACLE de la sintaxis de la sentencia SELECT con ejemplos (En Inglés):
+            https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_10002.htm#i2065706
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            Documentación oficial del SGBD POSTGRESQL de la sintaxis de la sentencia SELECT (En Inglés):
+            http://www.postgresql.org/docs/9.0/static/sql-select.html
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            Sintaxis de la sentencia SELECT junto con la clausula FROM y ejemplos On-Line
+            http://www.w3schools.com/sql/sql_select.asp
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            Uso de la clausula WHERE junto con Operadores Relacionales con la sentencia SELECT y ejemplos On-Line
+            http://www.w3schools.com/sql/sql_where.asp
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            Uso de operadores Lógicos AND y OR en la clausula WHERE y ejemplos On-Line
+            http://www.w3schools.com/sql/sql_and_or.asp
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Creación de tablas y preparación de Oracle y MySQL.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            Oracle
+        </strong>
+    </p>
+    <p>
+
+        Para comenzar crearemos un espacio de trabajo o Workspace llamado TAREA con un usuario llamado ANA al que pondremos también una contraseña (ej: ANA). Este usuario será por tanto el administrador de este espacio de trabajo y tendrá permisos para crear tablas.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Vamos a utilizar la
+        <strong>
+            línea de
+        </strong>
+        <strong>
+            comandos de SQL
+        </strong>
+        para ejecutar el archivo descargado, para ello seguiremos los pasos que aparecen a continuación:
+    </p>
+    <ol>
+        <li>
+            Vamos a
+            <strong>
+                Inicio &gt; Todos los programas &gt; Oracle Database 11g Express Edition
+            </strong>
+            .
+        </li>
+        <li>
+            Pulsamos en
+            <strong>
+                Run SQL Command Line
+            </strong>
+            . Aparecerá la siguiente pantalla:
+        </li>
+        <li>
+            Ejecutamos la instrucción: &lt;strong&gt;connect TAREA/ANA&lt;/strong&gt;. que corresponde al workspace creado anteriormente con la contraseña del usuario administrador que es ANA en mayúsculas.
+        </li>
+        <li>
+            Ahora ya podemos ejecutar el archivo del siguiente modo: &lt;strong&gt;&#64;Ruta_donde_se_encuentra_el_archivo/BD04_CONT_R07_02.sql&lt;/strong&gt;
+        </li>
+    </ol>
+    <p>
+        En nuestro caso, el archivo está guardado directamente en la unidad C para que nos resulte más fácil localizarlo:
+    </p>
+    <p>
+        Si todo es correcto, deberían crearse las tablas e insertarse los datos que contiene el archivo:
+    </p>
+    <p>
+        A partir de aquí ya tienes un usuario con tablas y datos inlcuidos para poder practicar a la vez que Ana.
+    </p>
+    <p>
+        Lo siguiente que nos queda por hacer será desconectarnos del espacio de trabajo antes de comprobar las tablas y datos insertados entrando por la aplicación gráfica.
+    </p>
+    <p>
+        Para eso introducimos el comando DISCONNECT y pulsamos enter.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong class="destacado">
+            MySQL
+        </strong>
+    </p>
+    <p>
+        Vamos a realizar el ejercicio mediante el
+        <strong>
+            cliente gráfico de MySQL Workbenc
+        </strong>
+        h.
+    </p>
+    <ol class="lista_esquema">
+        <li>
+            Inicia sesión o conéctate al servidor MySQL. Para ello, asegúrate de tener iniciado o puesto en marcha el servidor de bases de datos MySQL e inicia sesión en servidor como el usuario root, indicando su contraseña.
+            <p style="text-align: center;">
+            </p>
+        </li>
+        <li>
+            Carga el srcipt de creación de la base dedatos bd_proyectosx.sql. Para ello ve al menú
+            <em>
+                File/Open SQL Script...
+            </em>
+            y busca en tus carpetas locales el archivo bd_proyectosx.sql. Una vez localizado, lo seleccionas y pulsas en Abrir. Aparecerá el script en pantalla.
+            <p style="text-align: center;">
+            </p>
+        </li>
+        <li>
+            Con en script SQL en pantalla, pulsa sobre
+            <em>
+                File/Run SQL
+            </em>
+            Script o bien sobre el botón de atajo "el rayo amarillo". Se ejecutará el
+            <span lang="en">
+          script
+         </span>
+            y dejará implantada la base de datos en el servidor.
+            <p>
+            </p>
+        </li>
+        <li>
+            Actualiza el cliente gráfico pulsando sobre la doble flecha, esquina superior izquierda y verás la nueva base de datos, o bien, escribe en una nueva ventana de SQL (
+            <em>
+                File/New Query Tab)
+            </em>
+            la sentencia: SHOW DATABASES; y comprobarás que ya está la base de datos en tu servidor.
+            <p>
+            </p>
+        </li>
+        <li>
+            Puedes ver los datos de cada tabla ejecutando la sentencia SELECT que corresponda. Por ejemplo, para ver los datos de la tabla empleado, pon en uso la base de datos proyectosx y escribe en el ventana de SQL la sentencia: SELECT * FROM empleado; y ejecútala pulsando sobre le "rayo amarillo con cursor" o bien pulsando las teclas CTRL+INTRO.
+            <p>
+            </p>
+        </li>
+        <li>
+            Puedes seguir viendo el contenido del resto de tablas, ejecutando la correspondiente sentencia SELECT ........ ¿te animas a ello?
+        </li>
+    </ol>
+    <p>
+    </p>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright. (Cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Microsoft.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura Windows XP.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla SQL*Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. V07.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD165.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD109.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD109.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CDV43.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CDV43.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CDV43.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. ECD001.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD165.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD EP006.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD EP006.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD EP006.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD EP006.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD V43.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num.CD165.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. SD174.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. SD174.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. ECD001.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD109.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de
+                    <br>
+                    pantalla Oracle Express.
+                    <br/></p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. SD174.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. EP006_.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. ECD001.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. ECD001.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. SD174.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Stockbyte.
+                </p>
+                <p>
+                    Licencia: Uso educativo no comercial para plataformas públicas de Formación Profesional a distancia.
+                </p>
+                <p>
+                    Procedencia: CD-DVD Num. CD73.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: Copyright (Cita)
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: Copyright (Cita)
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: Copyright (Cita)
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: Copyright (Cita)
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: Copyright (Cita)
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+                <p>
+                </p>
+                <p>
+                </p>
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: Copyright (Cita)
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla Oracle Express
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+                Capturas Anexo I. Apartado MySQL. Software Workbench
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle
+                </p>
+                <p>
+                    Licencia: GPL
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia: Isabel Cruz Granados. Captura de pantalla MySQL Workbench.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>

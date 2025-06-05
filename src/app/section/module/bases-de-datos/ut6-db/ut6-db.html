@@ -1,0 +1,3143 @@
+<h1 class="title">
+    Programación de bases de datos.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            Juan
+        </strong>
+        recuerda, de cuando estudió el Ciclo de Desarrollo de Aplicaciones Informáticos, que había muchas tareas que se podían automatizar dentro de la base de datos mediante el uso de un lenguaje de programación, e incluso que se podían programar algunas restricciones a la hora de manipular los datos.
+        <strong>
+            Juan
+        </strong>
+        se lo comenta a
+        <strong>
+            María
+        </strong>
+        y ésta se muestra ilusionada con dicha idea ya que muchas veces repiten el trabajo con la base de datos de juegos
+        <span lang="en">
+           on-line
+          </span>
+        que tienen entre manos (consultas, inserciones,
+        <abbr title="Etcétera.">
+            etc
+        </abbr>
+        . que son muy parecidas y que se podrían automatizar).
+    </p>
+    <p>
+        Para ello, hablan con
+        <strong>
+            Ada
+        </strong>
+        y ésta les comenta que claro que se puede hacer y que precisamente eso es lo que les toca hacer ahora.
+        <strong>
+            Ada
+        </strong>
+        les dice que para ese propósito existe un lenguaje de programación llamado
+        <abbr title="Procedural Language/Structured Query Language.">
+            PL/SQL
+        </abbr>
+        que permite hacer lo que ellos quieren, así que les pasa un manual para que se lo vayan leyendo y se vayan poniendo manos a la obra con la base de datos de juegos
+        <span lang="en">
+           on-line
+          </span>
+        .
+    </p>
+    <div style="width: 100%">
+        <div style="width: 50%; float: left">
+            <div class="elemento_centrado">
+            </div>
+        </div>
+        <div style="width: 50%; float: right">
+            <div class="elemento_centrado">
+            </div>
+        </div>
+    </div>
+    <div style="clear: both">
+    </div>
+</div><h1 class="title">
+    1.- Introducción.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.- Conceptos básicos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.1.- Unidades léxicas (I).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En este apartado nos vamos a centrar en conocer cuáles son las unidades léxicas que podemos utilizar para escribir código en PL/SQL. Al igual que en nuestra lengua podemos distinguir diferentes unidades léxicas como palabras, signos de puntuación, etc. En los lenguajes de programación también existen diferentes unidades léxicas que definen los elementos más pequeños que tienen sentido propio y que al combinarlos de manera adecuada, siguiendo las reglas de sintaxis, dan lugar a sentencias válidas sintácticamente.
+    </p>
+    <p>
+        PL/SQL es un lenguaje no sensible a las mayúsculas, por lo que será equivalente escribir en mayúsculas o minúsculas, excepto cuando hablemos de literales de tipo cadena o de tipo carácter.
+    </p>
+    <p>
+        Cada unidad léxica puede estar separada por espacios (debe estar separada por espacios si se trata de 2 identificadores), por saltos de línea o por tabuladores para aumentar la legibilidad del código escrito.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>IF A=CLAVE THEN ENCONTRADO:=TRUE;ELSE ENCONTRADO:=FALSE;END IF;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Sería equivalente a escribir la siguiente línea:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>if a=clave then encontrado:=true;else encontrado:=false;end if;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Y también sería equivalente a este otro fragmento:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>IF a = clave THEN
+</pre>
+            <pre ngNonBindable>     encontrado := TRUE;
+</pre>
+            <pre ngNonBindable>ELSE
+</pre>
+            <pre ngNonBindable>     encontrado := FALSE;
+</pre>
+            <pre ngNonBindable>END IF;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Las unidades léxicas se pueden clasificar en:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Delimitadores.
+        </li>
+        <li>
+            Identificadores.
+        </li>
+        <li>
+            Literales.
+        </li>
+        <li>
+            Comentarios.
+        </li>
+    </ul>
+    <p>
+        Vamos a verlas más detenidamente.
+    </p>
+    <p>
+        <strong>
+            Delimitadores.
+        </strong>
+    </p>
+    <p>
+        PL/SQL tiene un conjunto de símbolos denominados delimitadores utilizados para representar operaciones entre tipos de datos, delimitar comentarios, etc. En la siguiente tabla puedes ver un resumen de los mismos.
+    </p>
+    <table class="tabla">
+        <caption>
+            Delimitadores en PL/SQL.
+        </caption>
+        <thead>
+        <tr>
+            <th colspan="2" id="delimitadorsimple">
+                Delimitadores Simples.
+            </th>
+            <th colspan="2" id="delimitadorcompuestos">
+                Delimitadores Compuestos.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th headers="delimitadorsimple" id="simbolo01">
+                Símbolo.
+            </th>
+            <th headers="delimitadorsimple" id="significado01">
+                Significado.
+            </th>
+            <th headers="delimitadorcompuestos" id="simbolo02">
+                Símbolo.
+            </th>
+            <th headers="delimitadorcompuestos" id="significado02">
+                Significado.
+            </th>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                +
+            </td>
+            <td headers="significado01">
+                Suma.
+            </td>
+            <td headers="simbolo02">
+                **
+            </td>
+            <td headers="significado02">
+                Exponenciación.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                %
+            </td>
+            <td headers="significado01">
+                Indicador de atributo.
+            </td>
+            <td headers="simbolo02">
+                &lt;&gt;
+            </td>
+            <td headers="significado02">
+                Distinto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                .
+            </td>
+            <td headers="significado01">
+                Selector.
+            </td>
+            <td headers="simbolo02">
+                ¡=
+            </td>
+            <td headers="significado02">
+                Distinto.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                /
+            </td>
+            <td headers="significado01">
+                División.
+            </td>
+            <td headers="simbolo02">
+                &lt;=
+            </td>
+            <td headers="significado02">
+                Menor o igual.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                (
+            </td>
+            <td headers="significado01">
+                Delimitador de lista.
+            </td>
+            <td headers="simbolo02">
+                &gt;=
+            </td>
+            <td headers="significado02">
+                Mayor o igual.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                )
+            </td>
+            <td headers="significado01">
+                Delimitador de lista.
+            </td>
+            <td headers="simbolo02">
+                ..
+            </td>
+            <td headers="significado02">
+                Rango.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                :
+            </td>
+            <td headers="significado01">
+                Variable
+                <span lang="en">
+            host
+           </span>
+                .
+            </td>
+            <td headers="simbolo02">
+                ||
+            </td>
+            <td headers="significado02">
+                Concatenación.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                ,
+            </td>
+            <td headers="significado01">
+                Separador de elementos.
+            </td>
+            <td headers="simbolo02">
+                &lt;&lt;
+            </td>
+            <td headers="significado02">
+                Delimitador de etiquetas.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                *
+            </td>
+            <td headers="significado01">
+                Producto.
+            </td>
+            <td headers="simbolo02">
+                &gt;&gt;
+            </td>
+            <td headers="significado02">
+                Delimitador de etiquetas.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                "
+            </td>
+            <td headers="significado01">
+                Delimitador de identificador acotado.
+            </td>
+            <td headers="simbolo02">
+                --
+            </td>
+            <td headers="significado02">
+                Comentario de una línea.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                =
+            </td>
+            <td headers="significado01">
+                Igual relacional.
+            </td>
+            <td headers="simbolo02">
+                /*
+            </td>
+            <td headers="significado02">
+                Comentario de varias líneas.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                &lt;
+            </td>
+            <td headers="significado01">
+                Menor.
+            </td>
+            <td headers="simbolo02">
+                */
+            </td>
+            <td headers="significado02">
+                Comentario de varias líneas.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                &gt;
+            </td>
+            <td headers="significado01">
+                Mayor.
+            </td>
+            <td headers="simbolo02">
+                :=
+            </td>
+            <td headers="significado02">
+                Asignación.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                &#64;
+            </td>
+            <td headers="significado01">
+                Indicador de acceso remoto.
+            </td>
+            <td headers="simbolo02">
+                =&gt;
+            </td>
+            <td headers="significado02">
+                Selector de nombre de parámetro.
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                ;
+            </td>
+            <td headers="significado01">
+                Terminador de sentencias.
+            </td>
+            <td headers="simbolo02">
+            </td>
+            <td headers="significado02">
+            </td>
+        </tr>
+        <tr>
+            <td headers="simbolo01">
+                -
+            </td>
+            <td headers="significado01">
+                Resta/negación.
+            </td>
+            <td headers="simbolo02">
+            </td>
+            <td headers="significado02">
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.1.1.- Unidades léxicas (II).
+</h1><div class="iDevice_content">
+    <p>
+        Ya hemos visto qué son los delimitadores. Ahora vamos a continuar viendo el resto de unidades léxicas que nos podemos encontrar en PL/SQL.
+    </p>
+    <p>
+        <strong>
+            Identificadores.
+        </strong>
+    </p>
+    <p>
+        Los identificadores en PL/SQL, como en cualquier otro lenguaje de programación, son utilizados para nombrar elementos de nuestros programas.  A la hora de utilizar los identificadores debemos tener en cuenta los siguientes aspectos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Un identificador es una letra seguida opcionalmente de letras, números, $, _, #.
+        </li>
+        <li>
+            No podemos utilizar como identificador una palabra reservada.
+            <ul>
+                <li>
+                    Ejemplos válidos: X,
+                    <code>
+                        A1
+                    </code>
+                    , codigo_postal.
+                </li>
+                <li>
+                    Ejemplos no válidos: rock&amp;roll, on/off.
+                </li>
+            </ul>
+        </li>
+        <li>
+            PL/SQL nos permite además definir los identificadores acotados, en los que podemos usar cualquier carácter con una longitud máxima de 30 y deben estar delimitados por ". Ejemplo: "X*Y".
+        </li>
+        <li>
+            En PL/SQL existen algunos identificadores predefinidos y que tienen un significado especial ya que nos permitirán darle sentido sintáctico a nuestros programas. Estos identificadores son las palabras reservadas y no las podemos utilizar como identificadores en nuestros programas. Ejemplo: IF,
+            <code>
+                THEN
+            </code>
+            , ELSE ...
+        </li>
+        <li>
+            Algunas palabras reservadas para PL/SQL no lo son para SQL, por lo que podríamos tener una tabla con una columna llamada 'type' por ejemplo, que nos daría un error de compilación al referirnos a ella en PL/SQL. La solución sería acotarlos. SELECT "TYPE" …
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Literales.
+        </strong>
+    </p>
+    <p>
+        Los literales se utilizan en las comparaciones de valores o para asignar valores concretos a los identificadores que actúan como variables o constantes. Para expresar estos literales tendremos en cuenta que:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Los literales numéricos se expresarán por medio de notación decimal o de notación exponencial. Ejemplos: 234, +341, 2e3, -2E-3, 7.45, 8.1e3.
+        </li>
+        <li>
+            Los literales tipo carácter y tipo cadena se deben delimitar con unas comillas simples.
+        </li>
+        <li>
+            Los literales lógicos son TRUE y
+            <code>
+                FALSE
+            </code>
+            .
+        </li>
+        <li>
+            El literal NULL que expresa que una variable no tiene ningún valor asignado.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Comentarios.
+        </strong>
+    </p>
+    <p>
+        En los lenguajes de programación es muy conveniente utilizar comentarios en mitad del código. Los comentarios no tienen ningún efecto sobre el código pero sí ayudan mucho al programador o la programadora a recordar qué se está intentando hacer en cada caso (más aún cuando el código es compartido entre varias personas que se dedican a mejorarlo o corregirlo).
+    </p>
+    <p>
+        En PL/SQL podemos utilizar dos tipos de comentarios:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px">
+            Los comentarios de una línea se expresaran por medio del delimitador --. Ejemplo:
+            <div class="codigo elemento_centrado" style="width: 16.45em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>a:=b;  --asignación
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Los comentarios de varias líneas se acotarán por medio de los delimitadores /* y */. Ejemplo:
+            <div class="codigo elemento_centrado" style="width: 25.8em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>/* Primera línea de comentarios.
+</pre>
+                    <pre ngNonBindable>    Segunda línea de comentarios. */
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.2.- Tipos de datos simples, variables y constantes.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En cualquier lenguaje de programación, las variables y las constantes tienen un tipo de dato asignado (bien sea explícitamente o implícitamente). Dependiendo del tipo de dato el lenguaje de programación sabrá la estructura que utilizará para su almacenamiento, las restricciones en los valores que puede aceptar, la precisión del mismo, etc.
+    </p>
+    <p>
+        En PL/SQL contamos con todos los
+        <strong>
+            tipos de datos simples
+        </strong>
+        utilizados en SQL y algunos más. En este apartado vamos a enumerar los más utilizados.
+    </p>
+    <p>
+        <strong>
+            Numéricos.
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            BINARY_INTEGER: Tipo de dato numérico cuyo rango es de -2147483647 .. 2147483647. PL/SQL además define algunos subtipos de éste: NATURAL,
+            <code>
+                NATURALN
+            </code>
+            , POSITIVE,
+            <code>
+                POSITIVEN
+            </code>
+            , SIGNTYPE.
+        </li>
+        <li>
+            NUMBER: Tipo de dato numérico para almacenar números racionales. Podemos especificar su escala (-84 .. 127) y su precisión (1 .. 38). La escala indica cuándo se redondea y hacia dónde. Ejemplos. escala=2: 8.234 -&gt; 8.23, escala=-3: 7689 -&gt; 8000. PL/SQL también define algunos subtipos como: DEC,
+            <code>
+                DECIMAL
+            </code>
+            , DOUBLE
+            <code>
+                PRECISION
+            </code>
+            , FLOAT,
+            <code>
+                INTEGER
+            </code>
+            , INT,
+            <code>
+                NUMERIC
+            </code>
+            , REAL,
+            <code>
+                SMALLINT
+            </code>
+            .
+        </li>
+        <li>
+            PLS_INTEGER: Tipo de datos numérico cuyo rango es el mismo que el del tipo de dato BINARY_INTEGER, pero que su representación es distinta por lo que las operaciones aritméticas llevadas a cabo con los mismos serán más eficientes que en los dos casos anteriores.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Alfanuméricos.
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            CHAR(n):
+            <span lang="en">
+          Array
+         </span>
+            de n caracteres, máximo 2000
+            <span lang="en">
+          bytes
+         </span>
+            . Si no especificamos longitud sería 1.
+        </li>
+        <li>
+            LONG:
+            <span lang="en">
+          Array
+         </span>
+            de caracteres con un máximo de 32760
+            <span lang="en">
+          bytes
+         </span>
+            .
+        </li>
+        <li>
+            RAW:
+            <span lang="en">
+          Array
+         </span>
+            de
+            <span lang="en">
+          bytes
+         </span>
+            con un número máximo de 2000.
+        </li>
+        <li>
+            LONG RAW:
+            <span lang="en">
+          Array
+         </span>
+            de
+            <span lang="en">
+          bytes
+         </span>
+            con un máximo de 32760.
+        </li>
+        <li>
+            VARCHAR2: Tipo de dato para almacenar cadenas de longitud variable con un máximo de 32760.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Grandes objetos.
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            BFILE:
+            Puntero
+
+
+            Puntero
+
+            Un puntero o apuntador es una variable que referencia una región de memoria; en otras palabras es una variable cuyo valor es una dirección de memoria.
+            a un fichero del Sistema Operativo.
+        </li>
+        <li>
+            BLOB: Objeto binario con una capacidad de 4
+            <abbr title="GigaByte.">
+                GB
+            </abbr>
+            .
+        </li>
+        <li>
+            CLOB: Objeto carácter con una capacidad de 2 GB.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Otros.
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            BOOLEAN:
+            <code>
+                TRUE
+            </code>
+            /FALSE.
+        </li>
+        <li>
+            DATE: Tipo de dato para almacenar valores día/hora desde el 1 enero de 4712
+            <abbr title="Antes de Cristo.">
+                a.c.
+            </abbr>
+            hasta el 31 diciembre de 4712
+            <abbr title="Después de Cristo.">
+                d.c.
+            </abbr>
+        </li>
+    </ul>
+    <p>
+        Hemos visto los tipos de datos simples más usuales. Los tipos de datos compuestos los dejaremos para posteriores apartados.
+    </p>
+</div><h1 class="title">
+    2.2.1.- Subtipos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.2.2.- Variables y constantes.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.3.- El bloque PL/SQL.
+</h1><div class="iDevice_content">
+    <p>
+        Ya hemos visto las unidades léxicas que componen PL/SQL, los tipos de datos que podemos utilizar y cómo se definen las variables y las constantes. Ahora vamos a ver la unidad básica en PL/SQL que es el bloque.
+    </p>
+    <p>
+        Un bloque PL/SQL consta de tres zonas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Declaraciones
+            </strong>
+            : definiciones de variables, constantes, cursores y excepciones.
+        </li>
+        <li>
+            <strong>
+                Proceso
+            </strong>
+            : zona donde se realizará el proceso en sí, conteniendo las sentencias ejecutables.
+        </li>
+        <li>
+            <strong>
+                Excepciones
+            </strong>
+            : zona de manejo de errores en tiempo de ejecución.
+        </li>
+    </ul>
+    <p>
+        La sintaxis es la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 43.4em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>[DECLARE
+</pre>
+            <pre ngNonBindable>     [Declaración de variables, constantes, cursores y excepciones]]
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>     [Sentencias ejecutables]
+</pre>
+            <pre ngNonBindable>[EXCEPTION
+</pre>
+            <pre ngNonBindable>     Manejadores de excepciones]
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+    <br>
+    <p>
+        Los bloques PL/SQL pueden anidarse a cualquier nivel. Como hemos comentado anteriormente el ámbito y la visibilidad de las variables es la normal en un lenguaje procedimental. Por ejemplo, en el siguiente fragmento de código se declara la variable aux en ambos bloques, pero en el bloque anidado aux con valor igual a 10 actúa de variable global y aux con valor igual a 5 actúa como variable local, por lo que en la comparación evaluaría a FALSE, ya que al tener el mismo nombre la visibilidad dominante sería la de la variable local.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>     aux number := 10;
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>     DECLARE
+</pre>
+            <pre ngNonBindable>          aux number := 5;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          ...
+</pre>
+            <pre ngNonBindable>          IF aux = 10 THEN     --evalúa a FALSE, no entraría
+</pre>
+            <pre ngNonBindable>          ...
+</pre>
+            <pre ngNonBindable>     END;
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+    <br/></div><h1 class="title">
+    2.4.- Estructuras de control (I).
+</h1><div class="iDevice_content">
+    <p>
+        En la vida constantemente tenemos que tomar decisiones que hacen que llevemos a cabo unas acciones u otras dependiendo de unas circunstancias o repetir una serie de acciones un número dado de veces o hasta que se cumpla una condición. En PL/SQL también podemos imitar estas situaciones por medio de las estructuras de control que son sentencias que nos permiten manejar el
+        flujo de control
+
+
+        Flujo de control
+
+        Se llama flujo de control al orden en el que se ejecutan las instrucciones de un programa, siendo las propias instrucciones las que determinan o controlan dicho flujo. En un programa, a menos que el flujo de control se vea modificado por una instrucción de control, las instrucciones siempre se ejecutan secuencialmente, una detrás de otra.
+        de nuestro programa, y éstas son dos: condicionales e iterativas.
+    </p>
+    <p>
+        <strong>
+            Control condicional.
+        </strong>
+    </p>
+    <p>
+        Las estructuras de control condicional nos permiten llevar a cabo una acción u otra dependiendo de una condición. Vemos sus diferentes variantes:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            IF-THEN: Forma más simple de las sentencias de control condicional. Si la evaluación de la condición es TRUE, entonces se ejecuta la secuencia de sentencias encerradas entre el THEN y el final de la sentencia.
+            <table class="tabla">
+                <caption>
+                    Sentencia IF-THEN.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Sintaxis.
+                    </th>
+                    <th scope="col">
+                        Ejemplo.
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 19.2em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>IF condicion THEN
+</pre>
+                                <pre ngNonBindable>secuencia_de_sentencias;
+</pre>
+                                <pre ngNonBindable>END IF;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 15.35em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>IF (b&lt;&gt;0) THEN
+</pre>
+                                <pre ngNonBindable>     c:=a/b;
+</pre>
+                                <pre ngNonBindable>END IF;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <ul>
+                <li style="margin-bottom: 20px;">
+                    IF-THEN-ELSE: Con esta forma de la sentencia ejecutaremos la primera secuencia de sentencias si la condición evalúa a TRUE y en caso contrario ejecutaremos la segunda secuencia de sentencias.
+                    <table class="tabla">
+                        <caption>
+                            Sentencia IF-THEN-ELSE.
+                        </caption>
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                Sintaxis.
+                            </th>
+                            <th scope="col">
+                                Ejemplo.
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="codigo elemento_centrado" style="width: 22.5em;">
+                                    <div class="texto_izquierda">
+                 <pre ngNonBindable>IF condicion THEN
+</pre>
+                                        <pre ngNonBindable>     Secuencia_de_sentencias1;
+</pre>
+                                        <pre ngNonBindable>ELSE
+</pre>
+                                        <pre ngNonBindable>     Secuencia_de_sentencias2;
+</pre>
+                                        <pre ngNonBindable>END IF;
+</pre>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="codigo elemento_centrado" style="width: 15.35em;">
+                                    <div class="texto_izquierda">
+                 <pre ngNonBindable>IF (b&gt;0) THEN
+</pre>
+                                        <pre ngNonBindable>     c:=a*b;&lt;br /&gt;ELSE&lt;br /&gt;     c:=a+b;&lt;br /&gt;END IF;
+</pre>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+        </li>
+        <li>
+            IF-THEN-ELSIF: Con esta última forma de la sentencia condicional podemos hacer una selección múltiple. Si la evaluación de la condición 1 da TRUE, ejecutamos la secuencia de sentencias 1, sino evaluamos la condición 2. Si esta evalúa a TRUE ejecutamos la secuencia de sentencias 2 y así para todos los ELSIF que haya. El último ELSE es opcional y es por si no se cumple ninguna de las condiciones anteriores.
+            <table class="tabla">
+                <caption>
+                    Sentencia IF-THEN-ELSIF.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Sintaxis.
+                    </th>
+                    <th scope="col">
+                        Ejemplo.
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 22.5em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>IF condicion1 THEN
+</pre>
+                                <pre ngNonBindable>     Secuencia_de_sentencias1;
+</pre>
+                                <pre ngNonBindable>ELSIF condicion2 THEN
+</pre>
+                                <pre ngNonBindable>     Secuencia_de_sentencias2;
+</pre>
+                                <pre ngNonBindable>     ...
+</pre>
+                                <pre ngNonBindable>[ELSE
+</pre>
+                                <pre ngNonBindable>     Secuencia_de_sentencias;]
+</pre>
+                                <pre ngNonBindable>END IF;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 35.7em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>IF (operacion = ‘SUMA’) THEN
+</pre>
+                                <pre ngNonBindable>     resultado := arg1 + arg2;
+</pre>
+                                <pre ngNonBindable>ELSIF (operacion = ‘RESTA’) THEN
+</pre>
+                                <pre ngNonBindable>     resultado := arg1 – arg2;
+</pre>
+                                <pre ngNonBindable>ELSIF (operacion = ‘PRODUCTO’) THEN
+</pre>
+                                <pre ngNonBindable>     resultado := arg1 * arg2;
+</pre>
+                                <pre ngNonBindable>ELSIF (arg2 &lt;&gt; 0) AND (operacion = ‘DIVISION’) THEN
+</pre>
+                                <pre ngNonBindable>     resultado := arg1 / arg2;
+</pre>
+                                <pre ngNonBindable>ELSE
+</pre>
+                                <pre ngNonBindable>     RAISE operacion_no_permitida;
+</pre>
+                                <pre ngNonBindable>END IF;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.4.1.- Estructuras de control (II).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ya que hemos visto las estructuras de control condicional, veamos ahora las estructuras de control iterativo.
+    </p>
+    <p>
+        <strong>
+            Control iterativo.
+        </strong>
+    </p>
+    <p>
+        Estas estructuras nos permiten ejecutar una secuencia de sentencias un determinado número de veces.
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            LOOP: La forma más simple es el
+            bucle infinito
+
+
+            Bucle infinito
+
+            Bucle infinito es aquel ciclo que se repite de forma indefinida, ya que su condición para finalizar nunca se cumple o no tiene dicha condición.
+            , cuya sintaxis es:
+            <div class="codigo elemento_centrado" style="width: 21.95em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>LOOP
+</pre>
+                    <pre ngNonBindable>     secuencia_de_sentencias;
+</pre>
+                    <pre ngNonBindable>END LOOP;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            EXIT: Con esta sentencia forzamos a un bucle a terminar y pasa el control a la siguiente sentencia después del bucle. Un EXIT no fuerza la salida de un bloque PL/SQL, sólo la salida del bucle.
+            <div class="codigo elemento_centrado" style="width: 22.5em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>LOOP
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>     IF encontrado = TRUE THEN
+</pre>
+                    <pre ngNonBindable>          EXIT;
+</pre>
+                    <pre ngNonBindable>     END IF;
+</pre>
+                    <pre ngNonBindable>END LOOP;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            EXIT WHEN condicion: Fuerza a salir del bucle cuando se cumple una determinada condición.
+            <div class="codigo elemento_centrado" style="width: 20.3em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>LOOP
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>     EXIT WHEN encontrado;
+</pre>
+                    <pre ngNonBindable>END LOOP;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            WHILE LOOP: Este tipo de bucle ejecuta la secuencia de sentencias mientras la condición sea cierta.
+            <table class="tabla">
+                <caption>
+                    Sentencia WHILE LOOP.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Sintaxis.
+                    </th>
+                    <th scope="col">
+                        Ejemplo.
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 21.95em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>WHILE condicion LOOP
+</pre>
+                                <pre ngNonBindable>     Secuencia_de_sentencias;
+</pre>
+                                <pre ngNonBindable>END LOOP;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 20.85em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>WHILE (not encontrado) LOOP
+</pre>
+                                <pre ngNonBindable>     ...
+</pre>
+                                <pre ngNonBindable>END LOOP;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+        <li>
+            FOR LOOP: Este bucle itera mientras el contador se encuentre en el rango definido.
+            <table class="tabla">
+                <caption>
+                    Sentencia FOR LOOP.
+                </caption>
+                <thead>
+                <tr>
+                    <th scope="col">
+                        Sintaxis.
+                    </th>
+                    <th scope="col">
+                        Ejemplo.
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 40.65em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>FOR contador IN [REVERSE] limite_inferior..limite_superior LOOP
+</pre>
+                                <pre ngNonBindable>     Secuencia_de_sentencias;
+</pre>
+                                <pre ngNonBindable>END LOOP;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="codigo elemento_centrado" style="width: 31.3em;">
+                            <div class="texto_izquierda">
+               <pre ngNonBindable>FOR i IN 1..3 LOOP     --i=1, i=2, i=3
+</pre>
+                                <pre ngNonBindable>     ...
+</pre>
+                                <pre ngNonBindable>END LOOP;
+</pre>
+                                <pre ngNonBindable> </pre>
+                                <pre ngNonBindable>SELECT count(*) INTO num_agentes FROM agentes;
+</pre>
+                                <pre ngNonBindable>FOR i IN 1..num_agentes LOOP
+</pre>
+                                <pre ngNonBindable>     ...
+</pre>
+                                <pre ngNonBindable>END LOOP;
+</pre>
+                                <pre ngNonBindable> </pre>
+                                <pre ngNonBindable> </pre>
+                                <pre ngNonBindable>FOR i IN REVERSE 1..3 LOOP --i=3, i=2, i=1
+</pre>
+                                <pre ngNonBindable>     ...
+</pre>
+                                <pre ngNonBindable>END LOOP;
+</pre>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.5.- Excepciones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.5.1.- Manejo de errores.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.- Tipos de datos compuestos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.1.- Registros.
+</h1><div class="iDevice_content">
+    El uso de los registros es algo muy común en los lenguajes de programación. PL/SQL también nos ofrece este tipo de datos. En este apartado veremos qué son y cómo definirlos y utilizarlos.
+</div><h1 class="title">
+    3.2.- Colecciones. Arrays de longitud variable.
+</h1><div class="iDevice_content">
+    Una colección es un grupo ordenado de elementos, todos del mismo tipo. Cada elemento tiene un subíndice único que determina su posición en la colección.
+</div><h1 class="title">
+    3.2.1.- Colecciones. Tablas anidadas.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.3.- Cursores.
+</h1><div class="iDevice_content">
+    En los apartados anteriores hemos visto algunos tipos de datos compuestos cuyo uso es común en otros lenguajes de programación. Sin embargo, en este apartado vamos a ver un tipo de dato, que aunque se puede asemejar a otros que ya conozcas, su uso es exclusivo en la programación de las bases de datos y que es el
+    <strong>
+        cursor
+    </strong>
+    .
+</div><h1 class="title">
+    3.3.1.- Cursores explícitos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.3.2.- Cursores variables.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.- Abstracción en PL/SQL.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.1.- Subprogramas.
+</h1><div class="iDevice_content">
+    Los subprogramas son bloques nombrados a los cuales les podemos pasar parámetros y los podemos invocar. Además, los subprogramas pueden estar almacenados en la base de datos o estar encerrados en otros bloques. Si el programa está almacenado en la base de datos, podremos invocarlo si tenemos permisos suficientes y si está encerrado en otro bloque lo podremos invocar si tenemos visibilidad sobre el mismo.
+</div><h1 class="title">
+    4.1.1.- Almacenar subprogramas en la base de datos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.1.2.- Parámetros de los subprogramas.
+</h1><div class="iDevice_content">
+    Ahora vamos a profundizar un poco más en los parámetros que aceptan los subprogramas y cómo se los podemos pasar  a  la hora de invocarlos.
+</div><h1 class="title">
+    4.1.3.- Sobrecarga de subprogramas y recursividad.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.2.- Paquetes.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.2.1.- Ejemplos de utilización del paquete DBMS_OUTPUT.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.3.- Objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Hoy día, la programación orientada a objetos es uno de los
+        paradigmas
+
+
+        Paradigma
+
+        Un paradigma de programación es una propuesta tecnológica que es adoptada por una comunidad de programadores cuyo núcleo central es incuestionable en cuanto a que unívocamente trata de resolver uno o varios problemas claramente delimitados. La resolución de estos problemas debe suponer consecuentemente un avance significativo en al menos un parámetro que afecte a la ingeniería de software. Probablemente, el paradigma de programación que actualmente es el más usado a todos los niveles es la orientación a objeto. El núcleo central de este paradigma es la unión de datos y procesamiento en una entidad llamada "objeto", relacionable a su vez con otras entidades "objeto".
+        más utilizados y casi todos los lenguajes de programación la soportan. En este apartado vamos a dar unas pequeñas pinceladas de su uso en PL/SQL que serán ampliados en la siguiente unidad de trabajo.
+    </p>
+    <p>
+        Un tipo de objeto es un tipo de dato compuesto, que encapsula unos datos y las funciones y procedimientos necesarios para manipular esos datos. Las variables son los atributos y los subprogramas son llamados métodos. Podemos pensar en un tipo de objeto como en una entidad que posee unos atributos y un comportamiento (que viene dado por los métodos).
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Cuando creamos un tipo de objeto, lo que estamos creando es una entidad abstracta que especifica los atributos que tendrán los objetos de ese tipo y define su comportamiento.
+        </li>
+        <li>
+            Cuando instanciamos un objeto estamos particularizando la entidad abstracta a una en particular, con los atributos que tiene el tipo de objeto, pero con un valor dado y con el mismo comportamiento.
+        </li>
+    </ul>
+    <p>
+        Los tipos de objetos tiene 2 partes: una
+        <strong>
+            especificación
+        </strong>
+        y un
+        <strong>
+            cuerpo
+        </strong>
+        . La parte de especificación declara los atributos y los métodos que harán de interfaz de nuestro tipo de objeto. En el cuerpo se implementa la parte de especificación. En la parte de especificación debemos declarar primero los atributos y después los métodos. Todos los atributos son públicos (visibles). No podemos declarar atributos en el cuerpo, pero sí podemos declarar subprogramas locales que serán visibles en el cuerpo del objeto y que nos ayudarán a implementar nuestros métodos.
+    </p>
+    <p>
+        Los atributos pueden ser de cualquier tipo de datos
+        <span lang="en">
+         Oracle
+        </span>
+        , excepto:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            LONG y
+            <code>
+                LONG RAW
+            </code>
+            .
+        </li>
+        <li>
+            NCHAR,
+            <code>
+                NCLOB
+            </code>
+            y NVARCHAR2.
+        </li>
+        <li>
+            MLSLABEL y
+            <code>
+                ROWID
+            </code>
+            .
+        </li>
+        <li>
+            Tipos específicos de PL/SQL: BINARY_INTEGER,
+            <code>
+                BOOLEAN
+            </code>
+            , PLS_INTEGER,
+            <code>
+                RECORD
+            </code>
+            , REF CURSOR,
+            <code>
+                %TYPE
+            </code>
+            y %ROWTYPE.
+        </li>
+        <li>
+            Tipos definidos dentro de un paquete PL/SQL.
+        </li>
+    </ul>
+    <p>
+        No podemos inicializar un atributo en la declaración. Tampoco podemos imponerle la restricción NOT NULL.
+    </p>
+    <p>
+        Un
+        <strong>
+            método
+        </strong>
+        es un subprograma declarado en la parte de especificación de un tipo de objeto por medio de: MEMBER. Un método no puede llamarse igual que el tipo de objeto o que cualquier atributo. Para cada método en la parte de especificación, debe haber un método implementado en el cuerpo con la misma cabecera.
+    </p>
+    <p>
+        Todos los métodos en un tipo de objeto aceptan como primer parámetro una instancia de su tipo. Este parámetro es SELF y siempre está accesible a un método. Si lo declaramos explícitamente debe ser el primer parámetro, con el nombre SELF y del tipo del tipo de objeto. Si SELF no está declarado explícitamente, por defecto será IN para las funciones e IN OUT para los procedimientos.
+    </p>
+    <p>
+        Los métodos dentro de un tipo de objeto pueden sobrecargarse. No podemos sobrecargarlos si los parámetros formales sólo difieren en el modo o pertenecen a la misma familia. Tampoco podremos sobrecargar una función miembro si sólo difiere en el tipo devuelto.
+    </p>
+    <p>
+        Una vez que tenemos creado el objeto, podemos usarlo en cualquier declaración. Un objeto cuando se declara sigue las mismas reglas de alcance y visibilidad que cualquier otra variable.
+    </p>
+    <p>
+        Cuando un objeto se declara éste es automáticamente NULL. Dejará de ser nulo cuando lo inicialicemos por medio de su constructor o cuando le asignemos otro. Si intentamos acceder a los atributos de un objeto NULL saltará la excepción ACCES_INTO_NULL.
+    </p>
+    <p>
+        Todos los objetos tienen constructores por defecto con el mismo nombre que el tipo de objeto y acepta tantos parámetros como atributos del tipo de objeto y con el mismo tipo. PL/SQL no llama implícitamente a los constructores, deberemos hacerlo nosotros explícitamente.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 32.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>     familia1 Familia;
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     familia1 := Familia( 10, ‘Fam10’, 1, NULL );
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Un tipo de objeto puede tener a otro tipo de objeto entre sus atributos. El tipo de objeto que hace de atributo debe ser conocido por
+        <span lang="en">
+         Oracle
+        </span>
+        . Si 2 tipos de objetos son mutuamente dependientes, podemos usar una declaración hacia delante para evitar errores de compilación.
+    </p>
+</div><h1 class="title">
+    4.3.1.- Objetos. Funciones mapa y funciones de orden.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.- Disparadores.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.- Definición de disparadores.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.2.- Ejemplos de disparadores.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.- Interfaces de programación de aplicaciones para lenguajes externos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    7.- Tutorial y ejercicios resueltos
+</h1><div class="iDevice_content">
+    <p>
+        En esta sección puedes consultar los siguientes videos a modo de resumen de todo lo comentado a lo largo de la unidad,&nbsp; un tutorial sobre PL/SQL para ampliar y complementar los contenidos y además realizar los ejercicios prácticos resueltos que te ayudarán a comprender mejor la utilización del lenguaje PL/SQL.
+    </p>
+    <div class="elemento_centrado">
+        <p class="titulo">
+            Introducción a PLSQL
+        </p>
+        <div class="elemento_centrado">
+           <span class="external-iframe-src" style="display:none">
+            https://www.youtube.com/embed/bwwhM8Un20A
+           </span>
+            <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="external-iframe" frameborder="0" height="315" src="https://www.youtube.com/embed/bwwhM8Un20A" width="560">
+            </iframe>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+        <p class="titulo">
+            Fundamentos de PLSQL
+        </p>
+        <div class="elemento_centrado">
+           <span class="external-iframe-src" style="display:none">
+            https://www.youtube.com/embed/WEunKazZ_SU
+           </span>
+            <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" class="external-iframe" frameborder="0" height="315" src="https://www.youtube.com/embed/WEunKazZ_SU" width="560">
+            </iframe>
+        </div>
+    </div>
+    <p>
+          <span style="font-size: 1em;">
+          </span>
+    </p>
+    <p style="text-align: center;">
+        Tutorial de PL/SQL
+    </p>
+    <p style="text-align: center;">
+        Ejercicios Resueltos de PL/SQL
+    </p>
+    <p style="text-align: center;">
+    </p>
+</div><h1 class="title">
+    Anexo I.- Caso de estudio.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        Una empresa de telefonía tiene sus centros de llamadas distribuidos por la geografía española en diferentes oficinas. Estas oficinas están jerarquizadas en familias de agentes telefónicos. Cada familia, por tanto, podrá contener agentes u otras familias. Los agentes telefónicos, según su categoría, además se encargarán de supervisar el trabajo de todos los agentes de una oficina o de coordinar el trabajo de los agentes de una familia dada. El único agente que pertenecerá directamente a una oficina y que no formará parte de ninguna familia será el supervisor de dicha oficina, cuya categoría es la 2. Los coordinadores de las familias deben pertenecer a dicha familia y su categoría será 1 (no todas las familias tienen por qué tener un coordinador y dependerá del tamaño de la oficina, ya que de ese trabajo también se puede encargar el supervisor de la oficina). Los demás agentes deberán pertenecer a una familia, su categoría será 0 y serán los que principalmente se ocupen de atender las llamadas.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            De los agentes queremos conocer su nombre, su clave y contraseña para entrar al sistema, su categoría y su habilidad que será un número entre 0 y 9 indicando su habilidad para atender llamadas.
+        </li>
+        <li>
+            Para las familias sólo nos interesa conocer su nombre.
+        </li>
+        <li>
+            Finalmente, para las oficinas queremos saber su nombre, domicilio, localidad y código postal de la misma.
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo II.- Excepciones predefinidas en Oracle.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        Las excepciones predefinidas son:
+    </p>
+    <table class="tabla">
+        <caption>
+            Excepciones predefinidas en
+            <span lang="en">
+          Oracle
+         </span>
+            .
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Excepción.
+            </th>
+            <th scope="col">
+                SQLCODE
+            </th>
+            <th scope="col">
+                Lanzada cuando ...
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                ACCES_INTO_NULL
+            </td>
+            <td>
+                -6530
+            </td>
+            <td>
+                Intentamos asignar valor a atributos de objetos no inicializados.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                COLECTION_IS_NULL
+            </td>
+            <td>
+                -6531
+            </td>
+            <td>
+                Intentamos asignar valor a elementos de colecciones no inicializadas, o acceder a métodos distintos de EXISTS.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                CURSOR_ALREADY_OPEN
+            </td>
+            <td>
+                -6511
+            </td>
+            <td>
+                Intentamos abrir un cursor ya abierto.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                DUP_VAL_ON_INDEX
+            </td>
+            <td>
+                -1
+            </td>
+            <td>
+                Índice único violado.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                INVALID_CURSOR
+            </td>
+            <td>
+                -1001
+            </td>
+            <td>
+                Intentamos hacer una operación con un cursor que no está abierto.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                INVALID_NUMBER
+            </td>
+            <td>
+                -1722
+            </td>
+            <td>
+                Conversión de cadena a número falla.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                LOGIN_DENIED
+            </td>
+            <td>
+                -1403
+            </td>
+            <td>
+                El usuario y/o contraseña para conectarnos a
+                <span lang="en">
+            Oracle
+           </span>
+                no es válido.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NO_DATA_FOUND
+            </td>
+            <td>
+                +100
+            </td>
+            <td>
+                Una sentencia SELECT no devuelve valores, o intentamos acceder a un elemento borrado de una tabla anidada.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                NOT_LOGGED_ON
+            </td>
+            <td>
+                -1012
+            </td>
+            <td>
+                No estamos conectados a
+                <span lang="en">
+            Oracle
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td>
+                PROGRAM_ERROR
+            </td>
+            <td>
+                -6501
+            </td>
+            <td>
+                Ha ocurrido un error interno en PL/SQL.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ROWTYPE_MISMATCH
+            </td>
+            <td>
+                -6504
+            </td>
+            <td>
+                Diferentes tipos en la asignación de 2 cursores.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                STORAGE_ERROR
+            </td>
+            <td>
+                -6500
+            </td>
+            <td>
+                Memoria corrupta.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SUBSCRIPT_BEYOND_COUNT
+            </td>
+            <td>
+                -6533
+            </td>
+            <td>
+                El índice al que intentamos acceder en una colección sobrepasa su límite superior.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                SUBSCRIPT_OUTSIDE_LIMIT
+            </td>
+            <td>
+                -6532
+            </td>
+            <td>
+                Intentamos acceder a un rango no válido dentro de una colección (-1 por ejemplo).
+            </td>
+        </tr>
+        <tr>
+            <td>
+                TIMEOUT_ON_RESOURCE
+            </td>
+            <td>
+                -51
+            </td>
+            <td>
+                Un
+                <span lang="en">
+            timeout
+           </span>
+                ocurre mientras Oracle espera por un recurso.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                TOO_MANY_ROWS
+            </td>
+            <td>
+                -1422
+            </td>
+            <td>
+                Una sentencia SELECT...INTO... devuelve más de una fila.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                VALUE_ERROR
+            </td>
+            <td>
+                -6502
+            </td>
+            <td>
+                Ocurre un error de conversión, aritmético, de truncado o de restricción de tamaño.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                ZERO_DIVIDE
+            </td>
+            <td>
+                -1476
+            </td>
+            <td>
+                Intentamos dividir un número por 0.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Anexo II a.- Manejo de errores (I).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Continuemos viendo algunos detalles a tener en cuenta, relativos al uso de las excepciones.
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            Cuando ejecutamos varias sentencias seguidas del mismo tipo y queremos capturar alguna posible excepción debida al tipo de sentencia, podemos encapsular cada sentencia en un bloque y manejar en cada bloque la excepción, o podemos utilizar una variable localizadora para saber qué sentencia ha sido la que ha lanzado la excepción (aunque de esta manera no podremos continuar por la siguiente sentencia).
+            <div class="codigo elemento_centrado" style="width: 29.65em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable>DECLARE</pre>
+                    <pre ngNonBindable>     sentencia NUMBER := 0;</pre>
+                    <pre ngNonBindable>BEGIN</pre>
+                    <pre ngNonBindable>     ...</pre>
+                    <pre ngNonBindable>     SELECT * FROM agentes ...</pre>
+                    <pre ngNonBindable>     sentencia := 1;</pre>
+                    <pre ngNonBindable>     SELECT * FROM familias ...</pre>
+                    <pre ngNonBindable>     sentencia := 2;</pre>
+                    <pre ngNonBindable>     SELECT * FROM oficinas ...</pre>
+                    <pre ngNonBindable>     ...</pre>
+                    <pre ngNonBindable>EXCEPTION</pre>
+                    <pre ngNonBindable>     WHEN NO_DATA_FOUND THEN</pre>
+                    <pre ngNonBindable>          IF sentencia = 0 THEN</pre>
+                    <pre ngNonBindable>               RAISE agente_no_encontrado;</pre>
+                    <pre ngNonBindable>          ELSIF sentencia = 1 THEN</pre>
+                    <pre ngNonBindable>               RAISE familia_no_encontrada;</pre>
+                    <pre ngNonBindable>          ELSIF sentencia = 2 THEN</pre>
+                    <pre ngNonBindable>               RAISE oficina_no_encontrada;</pre>
+                    <pre ngNonBindable>          END IF;</pre>
+                    <pre ngNonBindable>END;</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Si la excepción es capturada por un manejador de excepción apropiado, ésta es tratada y posteriormente el control es devuelto al bloque superior. Si la excepción no es capturada y no existe bloque superior, el control se devolverá al entorno. También puede darse que la excepción sea manejada en un bloque superior a falta de manejadores para ella en los bloques internos, la excepción se propaga de un bloque al superior y así hasta que sea manejada o no queden bloques superiores con lo que el control se devuelve al entorno. Una excepción también puede ser relanzada en un manejador. En la siguiente presentación puedes ver cómo se propagan diferentes excepciones entre diferentes bloques.
+        </li>
+    </ul>
+    <p style="text-align: center;">
+        Propagación Excepciones
+    </p>
+    <div class="exe-fx exe-carousel" id="exe-carousel-0">
+        <div class="fx-carousel-content fx-C2 fx-current" id="exe-carousel-0-0">
+            <h2>
+                Propagación de las excepciones en PL/SQL
+            </h2>
+            <p style="text-align: center;">
+            </p>
+        </div>
+        <div class="fx-carousel-content fx-C2" id="exe-carousel-0-1">
+            <h2>
+                Propagación de las excepciones (a)
+            </h2>
+            <p style="text-align: center;">
+            </p>
+        </div>
+        <div class="fx-carousel-content fx-C2" id="exe-carousel-0-2">
+            <h2>
+                Propagación de las excepciones (b)
+            </h2>
+            <p style="text-align: center;">
+            </p>
+        </div>
+        <div class="fx-carousel-content fx-C2" id="exe-carousel-0-3">
+            <h2>
+                Propagación de las excepciones (c)
+            </h2>
+            <p style="text-align: center;">
+            </p>
+        </div>
+        <ul class="fx-pagination fx-carousel-pagination">
+            <li class="fx-carousel-prev-next fx-carousel-prev fx-disabled fx-C2" id="exe-carousel-0-prev">
+                ◄
+
+
+                Anterior
+            </li>
+            <li class="fx-current fx-C1" id="exe-carousel-0-0-link">
+                1
+            </li>
+            <li id="exe-carousel-0-1-link">
+                2
+            </li>
+            <li id="exe-carousel-0-2-link">
+                3
+            </li>
+            <li id="exe-carousel-0-3-link">
+                4
+            </li>
+            <li class="fx-carousel-prev-next fx-carousel-next fx-C2" id="exe-carousel-0-next">
+                ►
+
+
+                Siguiente
+            </li>
+        </ul>
+    </div>
+    <div class="elemento_centrado">
+
+    </div>
+</div><h1 class="title">
+    Anexo II b.- Manejo de errores (II).
+</h1><div class="iDevice_content">
+    <p>
+        <span lang="en">
+         Oracle
+        </span>
+        también permite que nosotros lancemos nuestros propios mensajes de error a las aplicaciones y asociarlos a un código de error que
+        <span lang="en">
+         Oracle
+        </span>
+        reserva, para no interferir con los demás códigos de error. Lo hacemos por medio del procedimiento:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 41.2em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>RAISE_APPLICATION_ERROR(error_number, message [, (TRUE|FALSE)]);
+</pre>
+        </div>
+    </div>
+    <br>
+    <p>
+        Donde error_number es un entero negativo comprendido entre –20000..-20999 y message es una cadena que devolvemos a la aplicación. El tercer parámetro especifica si el error se coloca en la pila de errores (TRUE) o se vacía la pila y se coloca únicamente el nuestro (FALSE). Sólo podemos llamar a este procedimiento desde un subprograma.
+    </p>
+    <p>
+        No hay excepciones predefinidas asociadas a todos los posibles errores de
+        <span lang="en">
+         Oracle
+        </span>
+        , por lo que nosotros podremos asociar excepciones definidas por nosotros a errores
+        <span lang="en">
+         Oracle
+        </span>
+        , por medio de la directiva al compilador (o pseudoinstrucción):
+    </p>
+    <div class="codigo elemento_centrado" style="width: 31.3em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>PRAGMA_INIT( nombre_excepcion, error_Oracle )
+</pre>
+        </div>
+    </div>
+    <br>
+    <p>
+        Donde nombre_excepcion es el nombre de una excepción definida anteriormente, y error_Oracle es el número negativo asociado al error.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.9em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>     no_null EXCEPTION;
+</pre>
+            <pre ngNonBindable>     PRAGMA EXCEPTION_INIT(no_null, -1400);
+</pre>
+            <pre ngNonBindable>     id familias.identificador%TYPE;
+</pre>
+            <pre ngNonBindable>     nombre familias.nombre%TYPE;
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     nombre := NULL;
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     INSERT INTO familias VALUES (id, nombre, null, null);
+</pre>
+            <pre ngNonBindable>EXCEPTION
+</pre>
+            <pre ngNonBindable>     WHEN no_null THEN
+</pre>
+            <pre ngNonBindable>          ...
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+    <br>
+    <p>
+        <span lang="en">
+         Oracle
+        </span>
+        asocia 2 funciones para comprobar la ejecución de cualquier sentencia. SQLCODE nos devuelve el código de error y SQLERRM devuelve el mensaje de error asociado. Si una sentencia es ejecutada correctamente, SQLCODE nos devuelve 0 y en caso contrario devolverá un número negativo asociado al error (excepto NO_DATA_FOUND que tiene asociado el +100).
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>cod number;
+</pre>
+            <pre ngNonBindable>msg varchar2(100);
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>...
+</pre>
+            <pre ngNonBindable>EXCEPTION
+</pre>
+            <pre ngNonBindable>WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>     cod := SQLCODE;
+</pre>
+            <pre ngNonBindable>     msg := SUBSTR(SQLERRM, 1, 1000);
+</pre>
+            <pre ngNonBindable>     INSERT INTO errores VALUES (cod, msg);
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+    <br/><br/><br/></div><h1 class="title">
+    Anexo III.- Evaluación de los atributos de un cursor explícito.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <table class="tabla">
+        <caption>
+            Evaluación de los atributos de un cursor explícito según las operaciones realizadas con él.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Operación realizada.
+            </th>
+            <th scope="col">
+                %FOUND
+            </th>
+            <th scope="col">
+                %NOTFOUND
+            </th>
+            <th scope="col">
+                %ISOPEN
+            </th>
+            <th scope="col">
+                %ROWCOUNT
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                Antes del OPEN
+            </td>
+            <td>
+                Excepción.
+            </td>
+            <td>
+                Excepción.
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                Excepción.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Después del OPEN
+            </td>
+            <td>
+                NULL
+            </td>
+            <td>
+                NULL
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                0
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Antes del primer FETCH
+            </td>
+            <td>
+                NULL
+            </td>
+            <td>
+                NULL
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                0
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Después del primer FETCH
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Antes de los siguientes FETCH
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Después de los siguientes FETCH
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                Depende datos.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Antes del último FETCH
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                Depende datos.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Después del último FETCH
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                Depende datos.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Antes del CLOSE
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                TRUE
+            </td>
+            <td>
+                Depende datos.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Después del CLOSE
+            </td>
+            <td>
+                Excepción.
+            </td>
+            <td>
+                Excepción.
+            </td>
+            <td>
+                FALSE
+            </td>
+            <td>
+                Excepción.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Anexo IV.- Paso de parámetros a subprogramas.
+</h1><div class="iDevice_content">
+
+    <p>
+        Veamos algunos ejemplos del paso de parámetros a subprogramas:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px">
+            Notación mixta.
+            <div class="codigo elemento_centrado" style="width: 40.1em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>DECLARE
+</pre>
+                    <pre ngNonBindable>     PROCEDURE prueba( formal1 NUMBER, formal2 VARCHAR2) IS
+</pre>
+                    <pre ngNonBindable>     BEGIN
+</pre>
+                    <pre ngNonBindable>          ...
+</pre>
+                    <pre ngNonBindable>     END;
+</pre>
+                    <pre ngNonBindable>     actual1 NUMBER;
+</pre>
+                    <pre ngNonBindable>     actual2 VARCHAR2;
+</pre>
+                    <pre ngNonBindable>BEGIN
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>     prueba(actual1, actual2);               --posicional
+</pre>
+                    <pre ngNonBindable>     prueba(formal2=&gt;actual2,formal1=&gt;actual1);     --nombrada
+</pre>
+                    <pre ngNonBindable>     prueba(actual1, formal2=&gt;actual2);          --mixta
+</pre>
+                    <pre ngNonBindable>END;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px">
+            Parámetros de entrada.
+            <div class="codigo elemento_centrado" style="width: 37.35em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>FUNCTION categoria( id_agente IN NUMBER )
+</pre>
+                    <pre ngNonBindable>RETURN NUMBER IS
+</pre>
+                    <pre ngNonBindable>     cat NUMBER;
+</pre>
+                    <pre ngNonBindable>BEGIN
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>     SELECT categoria INTO cat FROM agentes
+</pre>
+                    <pre ngNonBindable>WHERE identificador = id_agente;
+</pre>
+                    <pre ngNonBindable>RETURN cat;
+</pre>
+                    <pre ngNonBindable>EXCEPTION
+</pre>
+                    <pre ngNonBindable>     WHEN NO_DATA_FOUND THEN
+</pre>
+                    <pre ngNonBindable>          id_agente := -1; --ilegal, parámetro de entrada
+</pre>
+                    <pre ngNonBindable>END;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px">
+            Parámetros de salida.
+            <div class="codigo elemento_centrado" style="width: 38.45em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>PROCEDURE nombre( id_agente NUMBER, nombre OUT VARCHAR2) IS
+</pre>
+                    <pre ngNonBindable>BEGIN
+</pre>
+                    <pre ngNonBindable>     IF (nombre = 'LUIS') THEN     --error de sintaxis
+</pre>
+                    <pre ngNonBindable>     END IF;
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>END;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Parámetros con valor por defecto de los que podemos prescindir.
+            <div class="codigo elemento_centrado" style="width: 69.25em">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>DECLARE
+</pre>
+                    <pre ngNonBindable>     SUBTYPE familia IS familias%ROWTYPE;
+</pre>
+                    <pre ngNonBindable>     SUBTYPE agente IS agentes%ROWTYPE;
+</pre>
+                    <pre ngNonBindable>     SUBTYPE tabla_agentes IS TABLE OF agente;
+</pre>
+                    <pre ngNonBindable>     familia1 familia;
+</pre>
+                    <pre ngNonBindable>     familia2 familia;
+</pre>
+                    <pre ngNonBindable>     hijos_fam tabla_agentes;
+</pre>
+                    <pre ngNonBindable>     FUNCTION inserta_familia( mi_familia familia,
+</pre>
+                    <pre ngNonBindable>          mis_agentes tabla_agentes := tabla_agentes() )
+</pre>
+                    <pre ngNonBindable>RETURN NUMBER IS
+</pre>
+                    <pre ngNonBindable>     BEGIN
+</pre>
+                    <pre ngNonBindable>          INSERT INTO familias VALUES (mi_familia);
+</pre>
+                    <pre ngNonBindable>          FOR i IN 1..mis_agentes.COUNT LOOP
+</pre>
+                    <pre ngNonBindable>               IF (mis_agentes(i).oficina IS NOT NULL) or (mis_agentes(i).familia ¡= mi_familia.identificador) THEN
+</pre>
+                    <pre ngNonBindable>                    ROLLBACK;
+</pre>
+                    <pre ngNonBindable>                    RETURN –1;
+</pre>
+                    <pre ngNonBindable>               END IF;
+</pre>
+                    <pre ngNonBindable>               INSERT INTO agentes VALUES (mis_agentes(i));
+</pre>
+                    <pre ngNonBindable>          END LOOP;
+</pre>
+                    <pre ngNonBindable>          COMMIT;
+</pre>
+                    <pre ngNonBindable>          RETURN 0;
+</pre>
+                    <pre ngNonBindable>     EXCEPTION
+</pre>
+                    <pre ngNonBindable>          WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+                    <pre ngNonBindable>               ROLLABACK;
+</pre>
+                    <pre ngNonBindable>               RETURN –1;
+</pre>
+                    <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+                    <pre ngNonBindable>               ROLLBACK;
+</pre>
+                    <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+                    <pre ngNonBindable>     END inserta_familia;
+</pre>
+                    <pre ngNonBindable>BEGIN
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>     resultado := inserta_familia( familia1 );
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>     resultado := inserta_familia( familia2, hijos_fam2 );
+</pre>
+                    <pre ngNonBindable>     ...
+</pre>
+                    <pre ngNonBindable>END;
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo V.- Sobrecarga de subprogramas.
+</h1><div class="iDevice_content">
+
+    <p>
+        Veamos un ejemplo de sobrecarga de subprogramas en el que una misma función es sobrecargada tres veces para diferentes tipos de parámetros.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 116em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>     TYPE agente IS agentes%ROWTYPE;
+</pre>
+            <pre ngNonBindable>     TYPE familia IS familias%ROWTYPE;
+</pre>
+            <pre ngNonBindable>     TYPE tAgentes IS TABLE OF agente;
+</pre>
+            <pre ngNonBindable>     TYPE tFamilias IS TABLE OF familia;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_familia( mi_familia familia )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          INSERT INTO familias VALUES (mi_familia.identificador, mi_familia.nombre, mi_familia.familia, mi_familia.oficina );
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN 0;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN –1;
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END inserta_familia;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_familia( mi_familia familia, hijas tFamilias )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          INSERT INTO familias VALUES (mi_famila.identificador, mi_familia.nombre, mi_familia.familia, mi_familia.oficina );
+</pre>
+            <pre ngNonBindable>          IF (hijas IS NOT NULL) THEN
+</pre>
+            <pre ngNonBindable>               FOR i IN 1..hijas.COUNT LOOP
+</pre>
+            <pre ngNonBindable>                    IF (hijas(i).oficina IS NOT NULL) or (hijas(i).familia ¡= mi_familia.identificador) THEN
+</pre>
+            <pre ngNonBindable>                         ROLLBACK;
+</pre>
+            <pre ngNonBindable>                         RETURN –1;
+</pre>
+            <pre ngNonBindable>                    END IF;
+</pre>
+            <pre ngNonBindable>                    INSERT INTO familias VALUES (hijas(i).identificador, hijas(i).nombre, hijas(i).familia, hijas(i).oficina );
+</pre>
+            <pre ngNonBindable>               END LOOP;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN 0;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN –1;
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN –1;
+</pre>
+            <pre ngNonBindable>     END inserta_familia;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_familia( mi_familia familia, hijos tAgentes )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          INSERT INTO familias VALUES (mi_familia.identificador, mi_familia.nombre, mi_familia.familia, mi_familia.oficina );
+</pre>
+            <pre ngNonBindable>          IF (hijos IS NOT NULL) THEN
+</pre>
+            <pre ngNonBindable>               FOR i IN 1..hijos.COUNT LOOP
+</pre>
+            <pre ngNonBindable>                    IF (hijos(i).oficina IS NOT NULL) or (hijos(i).familia ¡= mi_familia.identificador) THEN
+</pre>
+            <pre ngNonBindable>                         ROLLBACK;
+</pre>
+            <pre ngNonBindable>                         RETURN –1;
+</pre>
+            <pre ngNonBindable>                    END IF;
+</pre>
+            <pre ngNonBindable>                    INSERT INTO agentes VALUES (hijos(i).identificador, hijos(i).nombre, hijos(i).usuario, hijos(i).clave, hijos(i).habilidad, hijos(i).categoria, hijos(i).familia, hijos(i).oficina );
+</pre>
+            <pre ngNonBindable>               END LOOP;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN 0;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN –1;
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN –1;
+</pre>
+            <pre ngNonBindable>     END inserta_familias;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     mi_familia familia;
+</pre>
+            <pre ngNonBindable>     mi_familia1 familia;
+</pre>
+            <pre ngNonBindable>     familias_hijas tFamilias;
+</pre>
+            <pre ngNonBindable>     mi_familia2 familia;
+</pre>
+            <pre ngNonBindable>     hijos tAgentes;
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     resultado := inserta_familia(mi_familia);
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     resultado := inserta_familia(mi_familia1, familias_hijas);
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     resultado := inserta_familia(mi_familia2, hijos);
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    Anexo VI.- Ejemplo de recursividad.
+</h1><div class="iDevice_content">
+
+    <p>
+        Aquí tienes un ejemplo del uso de la recursividad en nuestros subprogramas.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 54.4em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>     TYPE agente IS agentes%ROWTYPE;
+</pre>
+            <pre ngNonBindable>     TYPE tAgentes IS TABLE OF agente;
+</pre>
+            <pre ngNonBindable>     hijos10 tAgentes;
+</pre>
+            <pre ngNonBindable>     PROCEDURE dame_hijos( id_familia NUMBER,
+</pre>
+            <pre ngNonBindable>                    hijos IN OUT tAgentes ) IS
+</pre>
+            <pre ngNonBindable>          CURSOR hijas IS SELECT identificador FROM familias WHERE familia = id_familia;
+</pre>
+            <pre ngNonBindable>hija NUMBER;
+</pre>
+            <pre ngNonBindable>     CURSOR cHijos IS SELECT * FROM agentes WHERE familia = id_familia;
+</pre>
+            <pre ngNonBindable>hijo agente;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          --Si la tabla no está inicializada -&gt; la inicializamos
+</pre>
+            <pre ngNonBindable>          IF hijos IS NULL THEN
+</pre>
+            <pre ngNonBindable>               hijos = tAgentes();
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          --Metemos en la tabla los hijos directos de esta familia
+</pre>
+            <pre ngNonBindable>          OPEN cHijos;
+</pre>
+            <pre ngNonBindable>          LOOP
+</pre>
+            <pre ngNonBindable>               FETCH cHijos INTO hijo;
+</pre>
+            <pre ngNonBindable>               EXIT WHEN cHijos%NOTFOUND;
+</pre>
+            <pre ngNonBindable>               hijos.EXTEND;
+</pre>
+            <pre ngNonBindable>               hijos(hijos.LAST) := hijo;
+</pre>
+            <pre ngNonBindable>          END LOOP;
+</pre>
+            <pre ngNonBindable>          CLOSE cHijos;
+</pre>
+            <pre ngNonBindable>          --Hacemos lo mismo para todas las familias hijas de la actual
+</pre>
+            <pre ngNonBindable>          OPEN hijas;
+</pre>
+            <pre ngNonBindable>          LOOP
+</pre>
+            <pre ngNonBindable>               FETCH hijas INTO hija;
+</pre>
+            <pre ngNonBindable>               EXIT WHEN hijas%NOTFOUND;
+</pre>
+            <pre ngNonBindable>               dame_hijos( hija, hijos );
+</pre>
+            <pre ngNonBindable>          END LOOP;
+</pre>
+            <pre ngNonBindable>          CLOSE hijas;
+</pre>
+            <pre ngNonBindable>     END dame_hijos;
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>     dame_hijos( 10, hijos10 );
+</pre>
+            <pre ngNonBindable>     ...
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    Anexo VII.- Ejemplo de paquete.
+</h1><div class="iDevice_content">
+
+    <p>
+        Aquí puedes ver un ejemplo de un paquete que agrupa las principales tareas que llevamos a cabo con la base de datos de ejemplo.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 115.45em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE OR REPLACE PACKAGE call_center AS     --inicialización
+</pre>
+            <pre ngNonBindable>     --Definimos los tipos que utilizaremos
+</pre>
+            <pre ngNonBindable>     SUBTYPE agente IS agentes%ROWTYPE;
+</pre>
+            <pre ngNonBindable>     SUBTYPE familia IS familias%ROWTYPE;
+</pre>
+            <pre ngNonBindable>     SUBTYPE oficina IS oficinas%ROWTYPE;
+</pre>
+            <pre ngNonBindable>     TYPE tAgentes IS TABLE OF agente;
+</pre>
+            <pre ngNonBindable>     TYPE tFamilias IS TABLE OF familia;
+</pre>
+            <pre ngNonBindable>     TYPE tOficinas IS TABLE OF oficina;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Definimos las excepciones propias
+</pre>
+            <pre ngNonBindable>     referencia_no_encontrada exception;
+</pre>
+            <pre ngNonBindable>     referencia_encontrada exception;
+</pre>
+            <pre ngNonBindable>     no_null exception;
+</pre>
+            <pre ngNonBindable>     PRAGMA EXCEPTION_INIT(referencia_no_encontrada, -2291);
+</pre>
+            <pre ngNonBindable>     PRAGMA EXCEPTION_INIT(referencia_encontrada, -2292);
+</pre>
+            <pre ngNonBindable>     PRAGMA EXCEPTION_INIT(no_null, -1400);
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Definimos los errores que vamos a tratar
+</pre>
+            <pre ngNonBindable>     todo_bien                CONSTANT NUMBER := 0;
+</pre>
+            <pre ngNonBindable>     elemento_existente           CONSTANT NUMBER:= -1;
+</pre>
+            <pre ngNonBindable>     elemento_inexistente           CONSTANT NUMBER:= -2;
+</pre>
+            <pre ngNonBindable>     padre_existente          CONSTANT NUMBER:= -3;
+</pre>
+            <pre ngNonBindable>     padre_inexistente          CONSTANT NUMBER:= -4;
+</pre>
+            <pre ngNonBindable>     no_null_violado          CONSTANT NUMBER:= -5;
+</pre>
+            <pre ngNonBindable>     operacion_no_permitida          CONSTANT NUMBER:= -6;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Definimos los subprogramas públicos
+</pre>
+            <pre ngNonBindable>     --Nos devuelve la oficina padre de un agente
+</pre>
+            <pre ngNonBindable>     PROCEDURE oficina_padre( mi_agente agente, padre OUT oficina );
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos devuelve la oficina padre de una familia
+</pre>
+            <pre ngNonBindable>     PROCEDURE oficina_padre( mi_familia familia, padre OUT oficina );
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos da los hijos de una familia
+</pre>
+            <pre ngNonBindable>     PROCEDURE dame_hijos( mi_familia familia, hijos IN OUT tAgentes );
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos da los hijos de una oficina
+</pre>
+            <pre ngNonBindable>     PROCEDURE dame_hijos( mi_oficina oficina, hijos IN OUT tAgentes );
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Inserta un agente
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_agente ( mi_agente agente )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Inserta una familia
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_familia( mi_familia familia )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Inserta una oficina
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_oficina ( mi_oficina oficina )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Borramos una oficina
+</pre>
+            <pre ngNonBindable>     FUNCTION borra_oficina( id_oficina NUMBER )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Borramos una familia
+</pre>
+            <pre ngNonBindable>     FUNCTION borra_familia( id_familia NUMBER )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Borramos un agente
+</pre>
+            <pre ngNonBindable>     FUNCTION borra_agente( id_agente NUMBER )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER;
+</pre>
+            <pre ngNonBindable>END call_center;
+</pre>
+            <pre ngNonBindable>/
+</pre>
+            <pre ngNonBindable>CREATE OR REPLACE PACKAGE BODY call_center AS          --cuerpo
+</pre>
+            <pre ngNonBindable>     --Implemento las funciones definidas en la especificación
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos devuelve la oficina padre de un agente
+</pre>
+            <pre ngNonBindable>     PROCEDURE oficina_padre( mi_agente agente, padre OUT oficina ) IS
+</pre>
+            <pre ngNonBindable>          mi_familia familia;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          IF (mi_agente.oficina IS NOT NULL) THEN
+</pre>
+            <pre ngNonBindable>               SELECT * INTO padre FROM oficinas
+</pre>
+            <pre ngNonBindable>               WHERE identificador = mi_agente.oficina;
+</pre>
+            <pre ngNonBindable>          ELSE
+</pre>
+            <pre ngNonBindable>               SELECT * INTO mi_familia FROM familias
+</pre>
+            <pre ngNonBindable>               WHERE identificador = mi_agente.familia;
+</pre>
+            <pre ngNonBindable>               oficina_padre( mi_familia, padre );
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               padre := NULL;
+</pre>
+            <pre ngNonBindable>     END oficina_padre;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos devuelve la oficina padre de una familia
+</pre>
+            <pre ngNonBindable>     PROCEDURE oficina_padre( mi_familia familia, padre OUT oficina ) IS
+</pre>
+            <pre ngNonBindable>          madre familia;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          IF (mi_familia.oficina IS NOT NULL) THEN
+</pre>
+            <pre ngNonBindable>               SELECT * INTO padre FROM oficinas
+</pre>
+            <pre ngNonBindable>               WHERE identificador = mi_familia.oficina;
+</pre>
+            <pre ngNonBindable>          ELSE
+</pre>
+            <pre ngNonBindable>               SELECT * INTO madre FROM familias
+</pre>
+            <pre ngNonBindable>               WHERE identificador = mi_familia.familia;
+</pre>
+            <pre ngNonBindable>               oficina_padre( madre, padre );
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               padre := NULL;
+</pre>
+            <pre ngNonBindable>     END oficina_padre;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos da los hijos de una familia
+</pre>
+            <pre ngNonBindable>     PROCEDURE dame_hijos( mi_familia familia, hijos IN OUT tAgentes ) IS
+</pre>
+            <pre ngNonBindable>          CURSOR cHijos IS SELECT * FROM agentes
+</pre>
+            <pre ngNonBindable>          WHERE familia = mi_familia.identificador;
+</pre>
+            <pre ngNonBindable>          CURSOR cHijas IS SELECT * FROM familias
+</pre>
+            <pre ngNonBindable>          WHERE familia = mi_familia.identificador;
+</pre>
+            <pre ngNonBindable>          hijo agente;
+</pre>
+            <pre ngNonBindable>          hija familia;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          --inicializamos la tabla si no lo está
+</pre>
+            <pre ngNonBindable>          if (hijos IS NULL) THEN
+</pre>
+            <pre ngNonBindable>               hijos := tAgentes();
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          --metemos en la tabla los hijos directos
+</pre>
+            <pre ngNonBindable>          OPEN cHijos;
+</pre>
+            <pre ngNonBindable>          LOOP
+</pre>
+            <pre ngNonBindable>               FETCH cHijos INTO hijo;
+</pre>
+            <pre ngNonBindable>               EXIT WHEN cHijos%NOTFOUND;
+</pre>
+            <pre ngNonBindable>               hijos.EXTEND;
+</pre>
+            <pre ngNonBindable>               hijos(hijos.LAST) := hijo;
+</pre>
+            <pre ngNonBindable>          END LOOP;
+</pre>
+            <pre ngNonBindable>          CLOSE cHijos;
+</pre>
+            <pre ngNonBindable>          --hacemos lo mismo para las familias hijas
+</pre>
+            <pre ngNonBindable>          OPEN cHijas;
+</pre>
+            <pre ngNonBindable>          LOOP
+</pre>
+            <pre ngNonBindable>               FETCH cHijas INTO hija;
+</pre>
+            <pre ngNonBindable>               EXIT WHEN cHijas%NOTFOUND;
+</pre>
+            <pre ngNonBindable>               dame_hijos( hija, hijos );
+</pre>
+            <pre ngNonBindable>          END LOOP;
+</pre>
+            <pre ngNonBindable>          CLOSE cHijas;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               hijos := tAgentes();
+</pre>
+            <pre ngNonBindable>     END dame_hijos;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Nos da los hijos de una oficina
+</pre>
+            <pre ngNonBindable>     PROCEDURE dame_hijos( mi_oficina oficina, hijos IN OUT tAgentes ) IS
+</pre>
+            <pre ngNonBindable>          CURSOR cHijos IS SELECT * FROM agentes
+</pre>
+            <pre ngNonBindable>          WHERE oficina = mi_oficina.identificador;
+</pre>
+            <pre ngNonBindable>          CURSOR cHijas IS SELECT * FROM familias
+</pre>
+            <pre ngNonBindable>          WHERE oficina = mi_oficina.identificador;
+</pre>
+            <pre ngNonBindable>          hijo agente;
+</pre>
+            <pre ngNonBindable>          hija familia;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          --inicializamos la tabla si no lo está
+</pre>
+            <pre ngNonBindable>          if (hijos IS NULL) THEN
+</pre>
+            <pre ngNonBindable>               hijos := tAgentes();
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          --metemos en la tabla los hijos directos
+</pre>
+            <pre ngNonBindable>          OPEN cHijos;
+</pre>
+            <pre ngNonBindable>          LOOP
+</pre>
+            <pre ngNonBindable>               FETCH cHijos INTO hijo;
+</pre>
+            <pre ngNonBindable>               EXIT WHEN cHijos%NOTFOUND;
+</pre>
+            <pre ngNonBindable>               hijos.EXTEND;
+</pre>
+            <pre ngNonBindable>               hijos(hijos.LAST) := hijo;
+</pre>
+            <pre ngNonBindable>          END LOOP;
+</pre>
+            <pre ngNonBindable>          CLOSE cHijos;
+</pre>
+            <pre ngNonBindable>          --hacemos lo mismo para las familias hijas
+</pre>
+            <pre ngNonBindable>          OPEN cHijas;
+</pre>
+            <pre ngNonBindable>          LOOP
+</pre>
+            <pre ngNonBindable>               FETCH cHijas INTO hija;
+</pre>
+            <pre ngNonBindable>               EXIT WHEN cHijas%NOTFOUND;
+</pre>
+            <pre ngNonBindable>               dame_hijos( hija, hijos );
+</pre>
+            <pre ngNonBindable>          END LOOP;
+</pre>
+            <pre ngNonBindable>          CLOSE cHijas;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               hijos := tAgentes();
+</pre>
+            <pre ngNonBindable>     END dame_hijos;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Inserta un agente
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_agente ( mi_agente agente )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          IF (mi_agente.familia IS NULL and mi_agente.oficina IS NULL) THEN
+</pre>
+            <pre ngNonBindable>               RETURN operacion_no_permitida;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          IF (mi_agente.familia IS NOT NULL and mi_agente.oficina IS NOT NULL) THEN
+</pre>
+            <pre ngNonBindable>               RETURN operacion_no_permitida;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          INSERT INTO agentes VALUES (mi_agente.identificador, mi_agente.nombre, mi_agente.usuario, mi_agente.clave, mi_agente.habilidad, mi_agente.categoria, mi_agente.familia, mi_agente.oficina );
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN todo_bien;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN referencia_no_encontrada THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN padre_inexistente;
+</pre>
+            <pre ngNonBindable>          WHEN no_null THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN no_null_violado;
+</pre>
+            <pre ngNonBindable>          WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN elemento_existente;
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END inserta_agente;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Inserta una familia
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_familia( mi_familia familia )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          IF (mi_familia.familia IS NULL and mi_familia.oficina IS NULL) THEN
+</pre>
+            <pre ngNonBindable>               RETURN operacion_no_permitida;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          IF (mi_familia.familia IS NOT NULL and mi_familia.oficina IS NOT NULL) THEN
+</pre>
+            <pre ngNonBindable>               RETURN operacion_no_permitida;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          INSERT INTO familias VALUES ( mi_familia.identificador, mi_familia.nombre, mi_familia.familia, mi_familia.oficina );
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN todo_bien;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN referencia_no_encontrada THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN padre_inexistente;
+</pre>
+            <pre ngNonBindable>          WHEN no_null THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN no_null_violado;
+</pre>
+            <pre ngNonBindable>           WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN elemento_existente;
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END inserta_familia;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Inserta una oficina
+</pre>
+            <pre ngNonBindable>     FUNCTION inserta_oficina ( mi_oficina oficina )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          INSERT INTO oficinas VALUES (mi_oficina.identificador, mi_oficina.nombre, mi_oficina.domicilio, mi_oficina.localidad, mi_oficina.codigo_postal );
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN todo_bien;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN no_null THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN no_null_violado;
+</pre>
+            <pre ngNonBindable>          WHEN DUP_VAL_ON_INDEX THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN elemento_existente;
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END inserta_oficina;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Borramos una oficina
+</pre>
+            <pre ngNonBindable>     FUNCTION borra_oficina( id_oficina NUMBER )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>          num_ofi NUMBER;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          SELECT COUNT(*) INTO num_ofi FROM oficinas
+</pre>
+            <pre ngNonBindable>          WHERE identificador = id_oficina;
+</pre>
+            <pre ngNonBindable>          IF (num_ofi = 0) THEN
+</pre>
+            <pre ngNonBindable>               RETURN elemento_inexistente;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          DELETE oficinas WHERE identificador = id_oficina;
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN todo_bien;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END borra_oficina;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Borramos una familia
+</pre>
+            <pre ngNonBindable>     FUNCTION borra_familia( id_familia NUMBER )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>          num_fam NUMBER;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          SELECT COUNT(*) INTO num_fam FROM familias
+</pre>
+            <pre ngNonBindable>          WHERE identificador = id_familia;
+</pre>
+            <pre ngNonBindable>          IF (num_fam = 0) THEN
+</pre>
+            <pre ngNonBindable>               RETURN elemento_inexistente;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          DELETE familias WHERE identificador = id_familia;
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN todo_bien;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END borra_familia;
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>     --Borramos un agente
+</pre>
+            <pre ngNonBindable>     FUNCTION borra_agente( id_agente NUMBER )
+</pre>
+            <pre ngNonBindable>     RETURN NUMBER IS
+</pre>
+            <pre ngNonBindable>          num_ag NUMBER;
+</pre>
+            <pre ngNonBindable>     BEGIN
+</pre>
+            <pre ngNonBindable>          SELECT COUNT(*) INTO num_ag FROM agentes
+</pre>
+            <pre ngNonBindable>          WHERE identificador = id_agente;
+</pre>
+            <pre ngNonBindable>          IF (num_ag = 0) THEN
+</pre>
+            <pre ngNonBindable>               RETURN elemento_inexistente;
+</pre>
+            <pre ngNonBindable>          END IF;
+</pre>
+            <pre ngNonBindable>          DELETE agentes WHERE identificador = id_agente;
+</pre>
+            <pre ngNonBindable>          COMMIT;
+</pre>
+            <pre ngNonBindable>          RETURN todo_bien;
+</pre>
+            <pre ngNonBindable>     EXCEPTION
+</pre>
+            <pre ngNonBindable>          WHEN OTHERS THEN
+</pre>
+            <pre ngNonBindable>               ROLLBACK;
+</pre>
+            <pre ngNonBindable>               RETURN SQLCODE;
+</pre>
+            <pre ngNonBindable>     END borra_agente;
+</pre>
+            <pre ngNonBindable>END call_center;
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    Ningún recurso de fuentes externas que requiera citar explícitamente sus datos de licencia
+    ha sido usado en esta unidad, por lo que este anexo queda vacío. Todos los recursos utilizados,
+    de fuentes internas, se acogen al Aviso Legal de la plataforma.
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>

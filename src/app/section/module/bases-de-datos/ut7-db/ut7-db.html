@@ -1,0 +1,1644 @@
+<h1 class="title">
+    Uso de bases de datos objeto-relacionales.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    1.- Características de las bases de datos objeto-relacionales.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.- Tipos de datos objeto.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.- Definición de tipos de objeto.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.1.- Declaración de atributos.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        La declaración de los atributos la puedes realizar de forma muy
+        similar a declaración de las variables, es decir, utilizando un
+        nombre y un tipo de dato. Dicho nombre debe ser único dentro del
+        tipo de objeto, aunque puede ser reutilizado en otros tipos de
+        objeto. El tipo de dato que puede almacenar un determinado atributo
+        puede ser
+        <strong>
+            cualquiera de los tipos de Oracle excepto
+        </strong>
+        los
+        siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            LONG y
+            <code>
+                LONG RAW
+            </code>
+            .
+        </li>
+        <li>
+            ROWID y
+            <code>
+                UROWID
+            </code>
+            .
+        </li>
+        <li>
+            Los tipos específicos PL/SQL BINARY_INTEGER (y sus subtipos), BOOLEAN,
+            <code>
+                PLS_INTEGER
+            </code>
+            , RECORD,
+            <code>
+                REF CURSOR
+            </code>
+            , %TYPE,
+            y %ROWTYPE.
+        </li>
+        <li>
+            Los tipos definidos dentro de un paquete PL/SQL.
+        </li>
+    </ul>
+    <p>
+        Debes tener en cuenta que no puedes inicializar los atributos
+        usando el operador de asignación, ni la cláusula DEFAULT, ni asignar la restricción NOT NULL.
+    </p>
+    <p>
+        El
+        <strong>
+            tipo de dato de un atributo puede ser otro tipo de objeto
+        </strong>
+        ,
+        por lo que la estructura de datos puede ser tan complicada como sea
+        necesario.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE OR REPLACE TYPE Usuario AS OBJECT (
+</pre>
+            <pre ngNonBindable>	login VARCHAR2(10),
+</pre>
+            <pre ngNonBindable>	nombre VARCHAR2(30),
+</pre>
+            <pre ngNonBindable>	f_ingreso DATE,
+</pre>
+            <pre ngNonBindable>	credito NUMBER
+</pre>
+            <pre ngNonBindable>);
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+    <p>
+        Después de haber sido creado el tipo de objeto, se pueden
+        <strong>
+            modificar sus atributos
+        </strong>
+        utilizando la sentencia ALTER TYPE. Si se desean añadir nuevos atributos se añadirá la
+        cláusula ADD ATTRIBUTE seguida de la
+        lista de nuevos atributos con sus correspondientes tipos de dato.
+        Utilizando MODIFY ATTRIBUTE se podrán
+        modificar los atributos existentes, y para eliminar atributos se
+        dispone de manera similar de DROP ATTRIBUTE.
+    </p>
+    <p>
+        Aquí tienes varios ejemplos de modificación del tipo de objeto
+        Usuario creado anteriormente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 51.1em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ALTER TYPE Usuario DROP ATTRIBUTE f_ingreso;
+</pre>
+            <pre ngNonBindable>ALTER TYPE Usuario ADD ATTRIBUTE (apellidos VARCHAR2(40), localidad VARCHAR2(50));
+</pre>
+            <pre ngNonBindable>ALTER TYPE Usuario
+</pre>
+            <pre ngNonBindable>	ADD ATTRIBUTE cp VARCHAR2(5),
+</pre>
+            <pre ngNonBindable>	MODIFY ATTRIBUTE nombre VARCHAR2(35);
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.2.- Definición de métodos.
+</h1><div class="iDevice_content">
+    <p>
+        Un
+        <strong>
+            método es un subprograma
+        </strong>
+        que declaras en la
+        especificación de un tipo de objeto usando las palabras clave MEMBER
+        o
+        <code>
+            STATIC
+        </code>
+        . Debes tener en cuenta que el
+        nombre de un determinado método no puede puede ser el mismo nombre
+        que el tipo de objeto ni el de ninguno de sus atributos. Como se verá
+        más adelante, se pueden crear métodos con el mismo nombre que el
+        tipo de objeto, pero dichos métodos tendrán una función especial.
+    </p>
+    <p>
+        Al igual que los subprogramas empaquetados, los métodos tienen
+        <strong>
+            dos partes: una especificación y un cuerpo
+        </strong>
+        .
+    </p>
+    <p>
+        En la
+        <strong>
+            especificación
+        </strong>
+        o declaración se debe encontrar el
+        nombre del método, una lista opcional de parámetros, y, en el caso
+        de las funciones, un tipo de dato de retorno. Por ejemplo, observa la
+        especificación del método incrementoCredito que se encuentra detrás
+        de las declaraciones de los atributos:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <div class="codigo elemento_centrado" style="width: 31.3em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE OR REPLACE TYPE Usuario AS OBJECT (
+</pre>
+            <pre ngNonBindable>	login VARCHAR2(10),
+</pre>
+            <pre ngNonBindable>	nombre VARCHAR2(30),
+</pre>
+            <pre ngNonBindable>	f_ingreso DATE,
+</pre>
+            <pre ngNonBindable>	credito NUMBER,
+</pre>
+            <pre ngNonBindable>	MEMBER PROCEDURE incrementoCredito(inc NUMBER)
+</pre>
+            <pre ngNonBindable>);
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+    <p>
+        En el
+        <strong>
+            cuerpo
+        </strong>
+        debes indicar el código que se debe ejecutar
+        para realizar una determinada tarea cuando el método es invocado. En
+        el siguiente ejemplo se desarrolla el cuerpo del método que se ha
+        declarado antes:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <div class="codigo elemento_centrado" style="width: 32.95em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE OR REPLACE TYPE BODY Usuario AS
+</pre>
+            <pre ngNonBindable>	MEMBER PROCEDURE incrementoCredito(inc NUMBER) IS
+</pre>
+            <pre ngNonBindable>		BEGIN
+</pre>
+            <pre ngNonBindable>			credito := credito + inc;
+</pre>
+            <pre ngNonBindable>		END incrementoCredito;
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+    <p>
+        Por cada especificación de método que se indique en el bloque de
+        especificación del tipo de objeto, debe existir su correspondiente
+        cuerpo del método, o bien, el método debe declararse como NOT INSTANTIABLE, para indicar que el cuerpo del método se
+        encontrará en un subtipo de ese tipo de objeto. Además, debes tener
+        en cuenta que las cabeceras de los métodos deben coincidir
+        exactamente en la especificación y en el cuerpo.
+    </p>
+    <p>
+        Al igual que los atributos, los parámetros formales se declaran
+        con un nombre y un tipo de dato. Sin embargo, el tipo de dato de un
+        parámetro no puede tener restricciones de tamaño. El tipo de datos
+        puede ser cualquiera de los empleados por Oracle salvo los indicados
+        anteriormente para los atributos. Las mismas restricciones se aplican
+        para los tipos de retorno de las funciones.
+    </p>
+    <p>
+        El código fuente de los métodos no sólo puede escribirse en el
+        lenguaje PL/SQL. También con otros lenguajes de programación como
+        Java o C.
+    </p>
+    <p>
+        Puedes usar la sentencia ALTER TYPE
+        para
+        <strong>
+            añadir, modificar o eliminar métodos
+        </strong>
+        de un tipo de
+        objeto existente, de manera similar a la utilizada para modificar los
+        atributos de un tipo de objeto.
+    </p>
+</div><h1 class="title">
+    3.3.- Parámetro SELF.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.4.- Sobrecarga.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.5.- Métodos Constructores.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Cada tipo de objeto tiene un método constructor, que se trata de una
+        <strong>
+            función con el mismo nombre que el tipo de objeto
+        </strong>
+        y que se encarga de
+        <strong>
+            inicializar los atributos y retornar una nueva instancia
+        </strong>
+        de ese tipo de objeto.
+    </p>
+    <p>
+        Oracle crea un
+        <strong>
+            método constructor por defecto
+        </strong>
+        para cada tipo de objeto declarado, cuyos parámetros formales coinciden en orden, nombres y tipos de datos con los atributos del tipo de objeto.
+    </p>
+    <p>
+        También puedes declarar
+        <strong>
+            tus propios métodos constructores
+        </strong>
+        , reescribiendo ese método declarado por el sistema, o bien, definiendo un nuevo método con otros parámetros. Una de las ventajas de crear un nuevo método constructor personalizado es que se puede hacer una verificación de que los datos que se van a asignar a los atributos son correctos (por ejemplo, que cumplen una determinada restricción).
+    </p>
+    <p>
+        Si deseas reemplazar el método constructor por defecto, debes utilizar la sentencia CONSTRUCTOR FUNCTION seguida del nombre del tipo de objeto en el que se encuentra (recuerda que los métodos constructores tienen el mismo nombre que el tipo de objeto). A continuación debes indicar los parámetros que sean necesarios de la manera habitual. Por último, debes indicar que el valor de retorno de la función es el propio objeto utilizando la cláusula RETURN SELF AS RESULT.
+    </p>
+    <p>
+        Puedes crear
+        <strong>
+            varios métodos constructores
+        </strong>
+        siguiendo las restricciones indicadas para la sobrecarga de métodos.
+    </p>
+    <p>
+        En el siguiente ejemplo puedes ver la declaración y el cuerpo de un método constructor para el tipo de objeto Usuario. Como puedes comprobar, utiliza dos parámetros:
+        <span lang="en">
+         login
+        </span>
+        y crédito inicial. El cuerpo del método realiza un pequeño control para que en caso de que el crédito indicado sea negativo, se deje en cero:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CONSTRUCTOR FUNCTION Usuario(login VARCHAR2, credito NUMBER)
+</pre>
+            <pre ngNonBindable>	RETURN SELF AS RESULT
+</pre>
+            <pre ngNonBindable>
+</pre>
+            <pre ngNonBindable>CREATE OR REPLACE TYPE BODY Usuario AS
+</pre>
+            <pre ngNonBindable>	CONSTRUCTOR FUNCTION Usuario(login VARCHAR2, credito NUMBER)
+</pre>
+            <pre ngNonBindable>		RETURN SELF AS RESULT
+</pre>
+            <pre ngNonBindable>	IS
+</pre>
+            <pre ngNonBindable>		BEGIN
+</pre>
+            <pre ngNonBindable>			IF (credito &gt;= 0) THEN
+</pre>
+            <pre ngNonBindable>				SELF.credito := credito;
+</pre>
+            <pre ngNonBindable>			ELSE
+</pre>
+            <pre ngNonBindable>				SELF.credito := 0;
+</pre>
+            <pre ngNonBindable>			END IF;
+</pre>
+            <pre ngNonBindable>			RETURN;
+</pre>
+            <pre ngNonBindable>		END;
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    4.- Utilización de objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.1.- Declaración de objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Una vez que el tipo de objeto ha sido definido, éste puede ser utilizado para
+        <strong>
+            declarar variables de objetos
+        </strong>
+        de ese tipo en cualquier bloque PL/SQL, subprograma o paquete. Ese tipo de objeto lo puedes utilizar como tipo de dato para una variable, atributo, elemento de una tabla, parámetro formal, o resultado de una función, de igual manera que se utilizan los tipos de datos habituales como VARCHAR o
+        <code>
+            NUMBER
+        </code>
+        .
+    </p>
+    <p>
+        Por ejemplo, para declarar una variable denominada u1, que va a permitir almacenar un objeto del tipo Usuario, debes hacer la siguiente declaración:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 12.05em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>u1 Usuario;
+</pre>
+        </div>
+    </div>
+    <p>
+        En la declaración de cualquier
+        <strong>
+            procedimiento o función
+        </strong>
+        , incluidos los métodos del mismo tipo de objeto o de otro, se puede utilizar el tipo de dato objeto definido para indicar que debe
+        <strong>
+            pasarse como parámetro un objeto
+        </strong>
+        de dicho tipo en la llamada. Por ejemplo pensemos en un procedimiento al que se le debe pasar como parámentro un objeto del tipo Usuario:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>PROCEDURE setUsuario(u IN Usuario)
+</pre>
+        </div>
+    </div>
+    <p>
+        La llamada a este método se realizaría utilizando como parámetro un objeto, como el que podemos tener en la variable declarada anteriormente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>setUsuario(u1);
+</pre>
+        </div>
+    </div>
+    <p>
+        De manera semejante una función puede
+        <strong>
+            retornar objetos
+        </strong>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 33.5em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>FUNCTION getUsuario(codigo INTEGER) RETURN Usuario
+</pre>
+        </div>
+    </div>
+    <p>
+        Los objetos se crean durante la ejecución del código como instancias del tipo de objeto, y cada uno de ellos pueden contener valores diferentes en sus atributos.
+    </p>
+    <p>
+        El
+        <strong>
+            ámbito
+
+
+            Ámbito
+
+            Área del programa donde un determinado elemento existe y puede ser utilizado. Fuera de ese ámbito , o bien no existe o no puede ser usado.
+            de los objetos
+        </strong>
+        sigue las mismas reglas habituales en PL/SQL, es decir, en un bloque o subprograma los objetos son creados (instanciados) cuando se entra en dicho bloque o subprograma y se destruyen automáticamente cuando se sale de ellos. En un paquete, los objetos son instanciados en el momento de hacer referencia al paquete y dejan de existir cuando se finaliza la sesión en la base de datos.
+    </p>
+</div><h1 class="title">
+    4.2.- Inicialización de objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para
+        <strong>
+            crear o instanciar un objeto
+        </strong>
+        de un determinado tipo de objeto, debes hacer una
+        <strong>
+            llamada a su método constructor
+        </strong>
+        . Esto lo puedes realizar empleando la
+        <strong>
+            instrucción
+
+
+            Instrucción
+
+            Conjunto de datos insertados en una secuencia estructurada o específica que el procesador interpreta y ejecuta.
+        </strong>
+        NEW seguido del nombre del tipo de objeto como una llamada a una función en la que se indican como parámetros los valores que se desean asignar a los atributos inicialmente. En una asignación también puedes optar por hacer eso mismo omitiendo la palabra NEW.
+    </p>
+    <p>
+        El
+        <strong>
+            orden de los parámetros
+        </strong>
+        debe coincidir con el orden en el que están declarados los atributos, así como los tipos de datos. El formato sería como el siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 51.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>variable_objeto := NEW Nombre_Tipo_Objeto (valor_atributo1, valor_atributo2, ...);
+</pre>
+        </div>
+    </div>
+    <p>
+        Por ejemplo, en el caso del tipo de objeto Usuario:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>u1 := NEW Usuario('luitom64', 'LUIS ', 'TOMAS BRUÑA', '24/10/07', 100);
+</pre>
+        </div>
+    </div>
+    <p>
+        En ese momento se
+        <strong>
+            inicializa el objeto
+        </strong>
+        . Hasta que no se inicializa el objeto llamando a su constructor, el objeto tiene el valor NULL.
+    </p>
+    <p>
+        Es habitual inicializar los objetos en su declaración.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 49.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>u1 Usuario := NEW Usuario('luitom64', 'LUIS ', 'TOMAS BRUÑA', '24/10/07', 100);
+</pre>
+        </div>
+    </div>
+    <p>
+        La llamada al método constructor se puede realizar en cualquier lugar en el que se puede hacer una llamada a una función de la forma habitual. Por ejemplo, la llamada al método constructor puede ser utilizada
+        <strong>
+            como parte de una expresión
+        </strong>
+        .
+    </p>
+    <p>
+        Los
+        <strong>
+            valores de los parámetros
+        </strong>
+        que se pasan al constructor cuando se hace la llamada, son asignados a los atributos del objeto que está siendo creado. Si la llamada es al método constructor que incorpora Oracle por defecto, debes indicar un parámetro para cada atributo, en el mismo orden en que están declarados los atributos. Ten en cuenta que los atributos, en contra de lo que ocurre con variables y constantes, no pueden tener valores por defecto asignados en su declaración. Por tanto, los valores que se desee que tengan inicialmente los atributos de un objeto instanciado deben indicarse como parámetros en la llamada al método constructor.
+    </p>
+    <p>
+        Existe la posibilidad de
+        <strong>
+            utilizar los nombres de los parámetros formales
+        </strong>
+        en la llamada al método constructor, en lugar de utilizar el modelo posicional de los parámetros. De esta manera no es obligatorio respetar el orden en el que se encuentran los parámetros reales respecto a los parámetros formales, que como se ha comentado antes coincide con el orden de los atributos.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 49.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>DECLARE
+</pre>
+            <pre ngNonBindable>u1 Usuario;
+</pre>
+            <pre ngNonBindable>BEGIN
+</pre>
+            <pre ngNonBindable>u1 := NEW Usuario('user1', -10);
+</pre>
+            <pre ngNonBindable>/* Se mostrará el crédito como cero, al intentar asignar un crédito negativo */
+</pre>
+            <pre ngNonBindable>dbms_output.put_line(u1.credito);
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.3.- Acceso a los atributos de objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para hacer referencia a un atributo de un objeto debes utilizar el
+        <strong>
+            nombre de dicho atributo
+        </strong>
+        ,
+        <strong>
+            utilizando el punto
+        </strong>
+        para acceder al valor que contiene o bien para modificarlo. Antes debe ir
+        <strong>
+            precedido del objeto
+        </strong>
+        cuyo atributo deseas conocer o modificar.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>nombre_objeto.nombre_atributo
+</pre>
+        </div>
+    </div>
+    <p>
+        Por ejemplo, la consulta del valor de un atributo puede utilizarse como parte de una asignación o como parámetro en la llamada a una función:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>unNombre := usuario1.nombre;
+</pre>
+            <pre ngNonBindable>dbms_output.put_line(usuario1.nombre);
+</pre>
+        </div>
+    </div>
+    <p>
+        La
+        <strong>
+            modificación del valor
+        </strong>
+        contenido en el atributo puede ser similar a la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>usuario1.nombre:= 'Nuevo Nombre';
+</pre>
+        </div>
+    </div>
+    <p>
+        Los nombres de los atributos pueden ser encadenados, lo que permite el acceso a atributos de tipos de objetos anidados. Por ejemplo, si el objeto sitio1 tiene un atributo del tipo de objeto Usuario, se accedería al atributo del nombre del usuario con:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>sitio1.usuario1.nombre
+</pre>
+        </div>
+    </div>
+    <p>
+        Si se utiliza en una expresión el acceso a un atributo de un objeto que
+        <strong>
+            no ha sido inicializado
+        </strong>
+        , se evalúa como NULL. Por otro lado, si se intenta asignar valores a un objeto no inicializado, éste lanza una
+        excepción
+
+
+        Excepción
+
+        Indicación de un problema que ocurre durante la ejecución de un programa.
+        ACCESS_INTO_NULL.
+    </p>
+    <p>
+        Para comprobar si un objeto es NULL se puede utilizar el operador de comparación IS NULL con el que se obtiene el valor TRUE si es así.
+    </p>
+    <p>
+        De manera similar, al intentar hacer una llamada a un método de un objeto que no ha sido inicializado, se lanza una excepción NULL_SELF_DISPATCH. Si se pasa como parámetro de tipo IN, los atributos del objeto NULL se evalúan como NULL, y si el parámetro es de tipo OUT o
+        <code>
+            IN OUT
+        </code>
+        lanza una excepción al intentar modificar el valor de sus atributos.
+    </p>
+</div><h1 class="title">
+    4.4.- Llamada a los métodos de los objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.5.- Herencia.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.- Tipos de datos colección.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    5.1.- Declaración y uso de colecciones.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.- Tablas de objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.1.- Tablas con columnas tipo objeto.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.2.- Uso de la sentencia Select.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        De manera similar a las consultas que has realizado sobre tablas sin tipos de objetos,
+        <strong>
+            puedes utilizar la sentencia
+        </strong>
+        SELECT para obtener datos de las filas almacenadas en tablas de objetos o tablas con columnas de tipos de objetos.
+    </p>
+    <p>
+        El uso más sencillo sería para mostrar todas las filas contenidas en la tabla:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.3em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT * FROM NombreTabla;
+</pre>
+        </div>
+    </div>
+    <p>
+        Como puedes apreciar en la imagen, la tabla que forme parte de la consulta puede ser una tabla de objetos (como la tabla UsuariosObj), o una tabla que contiene columnas de tipos de objetos (como la tabla Gente).
+    </p>
+    <p>
+        En las sentencias SELECT que utilices con objetos, puedes incluir cualquiera de las
+        <strong>
+            cláusula
+        </strong>
+        <strong>
+            s y funciones de agrupamiento
+        </strong>
+        que has aprendido para la sentencia SELECT que has usado anteriormente con las tablas que contienen columnas de tipos básicos. Por ejemplo, puedes utilizar: SUM,
+        <code>
+            MAX
+        </code>
+        , WHERE,
+        <code>
+            ORDER
+        </code>
+        , JOIN, etc.
+    </p>
+    <p>
+        Es habitual utilizar
+        alias
+
+
+        Alias
+
+        Nombre alternativo por el que se conoce a una tabla o resultado de una consulta.
+        para hacer referencia al nombre de la tabla. Observa, por ejemplo, la siguiente consulta, en la que se desea obtener el nombre y los apellidos de los usuarios que tienen algo de crédito:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT u.nombre, u.apellidos FROM UsuariosObj u WHERE u.credito &gt; 0
+</pre>
+        </div>
+    </div>
+    <p>
+        Si se trata de una
+        <strong>
+            tabla con columnas de tipo objeto
+        </strong>
+        , el acceso a los atributos del objeto se debe realizar indicando previamente el nombre asignado a la columna que contiene los objetos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT g.unUsuario.nombre, g.unUsuario.apellidos FROM Gente g;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    6.3.- Inserción de objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.4.- Modificación de objetos.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.5.- Borrado de objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Por supuesto, no nos puede faltar una sentencia que nos permita eliminar determinados objetos almacenados en tablas. Al igual que has podido comprobar en las operaciones anteriores, tienes a tu disposición la misma sentencia que has podido utilizar en las operaciones habituales sobre tablas. En este caso de borrado de objetos deberás utilizar la sentencia DELETE.
+    </p>
+    <p>
+        El modo de uso de DELETE sobre objetos almacenados en tablas es muy similar al utilizado hasta ahora:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 23.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DELETE FROM NombreTablaObjetos;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Recuerda que si no se indica ninguna condición, se
+        <strong>
+            eliminarán todos
+        </strong>
+        los objetos de la tabla, por lo que suele ser habitual utilizar la sentencia DELETE con una condición detrás de la cláusula WHERE. Los objetos o filas de la tabla que
+        <strong>
+            cumplan con la condición
+        </strong>
+        indicada serán los que se eliminen.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 31.85em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DELETE FROM NombreTablaObjetos WHERE condición;</pre>
+        </div>
+    </div>
+    <p>
+        Observa el siguiente ejemplo en el que se borrarán de la tabla UsuariosObj, que es una tabla de objetos, los usuarios cuyo crédito sea 0. Observa que se utiliza un alias para el nombre de la tabla:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 31.3em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DELETE FROM UsuariosObj u WHERE u.credito = 0;</pre>
+        </div>
+    </div>
+    <p>
+        De manera similar se puede realizar el borrado de filas en tablas en las que alguna de sus columnas son objetos. Puedes comprobarlo con el siguiente ejemplo, donde se utiliza la tabla Gente, en la que una de sus columnas (unUsuario) es del tipo de objeto Usuario que hemos utilizado en otros apartados anteriores.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 33.5em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>DELETE FROM Gente g WHERE g.unUsuario.credito = 0;</pre>
+        </div>
+    </div>
+    <p>
+        Esta sentencia, al igual que las anteriores, se puede
+        <strong>
+            combinar con otras consultas
+        </strong>
+        SELECT, de manera que en vez de realizar el borrado sobre una determinada tabla, se haga sobre el resultado de una consulta, o bien que la condición que determina las filas que deben ser eliminadas sea también el resultado de una consulta. Es decir, todo lo aprendido sobre las operaciones de manipulación de datos sobre las tablas habituales, se puede aplicar sobre tablas de tipos de objetos, o tablas con columnas de tipos de objetos.
+    </p>
+</div><h1 class="title">
+    6.6.- Consultas con la función VALUE.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    6.7.- Referencias a objetos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        El paso de objetos a un método resulta ineficiente cuando se trata de objeto de gran tamaño, por lo que es más conveniente
+        <strong>
+            pasar un
+        </strong>
+        <strong>
+            puntero
+
+
+            Puntero
+
+            Variable que hace referencia (apunta) a un objeto de la base de datos.
+            a dicho objeto
+        </strong>
+        , lo que permite que el método que lo recibe pueda hacer referencia a dicho objeto sin que sea necesario que se pase por completo. Ese puntero es lo que se conoce en Oracle como una
+        <strong>
+            referencia (
+        </strong>
+        REF
+        <strong>
+            )
+        </strong>
+        .
+    </p>
+    <p>
+        Al compartir un objeto mediante su referencia,
+        <strong>
+            los datos no son duplicados
+        </strong>
+        , por lo que cuando se hace cualquier cambio en los atributos del objeto, se producen en un único lugar.
+    </p>
+    <p>
+        Cada objeto almacenado en una tabla tiene un
+        <strong>
+            identificador de objeto
+        </strong>
+        que identifica de forma única al objeto guardado en una determinada fila y sirve como una referencia a dicho objeto.
+    </p>
+    <p>
+        Las referencias se crean utilizando el modificador REF delante del tipo de objeto, y se puede usar con variables, parámetros, campos, atributos, e incluso como variables de entrada o salida para sentencias de manipulación de datos en SQL.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE OR REPLACE TYPE Partida AS OBJECT (</pre>
+            <pre ngNonBindable>	codigo INTEGER,</pre>
+            <pre ngNonBindable>	nombre VARCHAR2(20),</pre>
+            <pre ngNonBindable>	usuarioCreador REF Usuario</pre>
+            <pre ngNonBindable>);</pre>
+            <pre ngNonBindable>/</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+            <pre ngNonBindable>DECLARE</pre>
+            <pre ngNonBindable>	u_ref REF Usuario;</pre>
+            <pre ngNonBindable>	p1 Partida;</pre>
+            <pre ngNonBindable>BEGIN</pre>
+            <pre ngNonBindable>	SELECT REF(u) INTO u_ref FROM UsuariosObj u WHERE u.login = 'luitom64';</pre>
+            <pre ngNonBindable>	p1 := NEW Partida(1, 'partida1', u_ref);</pre>
+            <pre ngNonBindable>END;</pre>
+            <pre ngNonBindable>/</pre>
+        </div>
+    </div>
+    <p>
+        Hay que tener en cuenta que sólo se pueden usar
+        <strong>
+            referencias a tipos de objetos que han sido declarados previamente
+        </strong>
+        . Siguiendo el ejemplo anterior, no se podría declarar el tipo Partida antes que el tipo Usuario, ya que dentro del tipo Partida se utiliza una referencia al tipo Usuario. Por tanto, primero debe estar declarado el tipo Usuario y luego el tipo Partida.
+    </p>
+    <p>
+        El problema surge cuando tengamos dos tipos que utilizan referencias mutuas. Es decir, un atributo del primer tipo hace referencia a un objeto del segundo tipo, y viceversa. Esto se puede solucionar haciendo una
+        <strong>
+            declaración de tipo anticipada
+        </strong>
+        . Se realiza indicando únicamente el nombre del tipo de objeto que se detallará más adelante:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 32.4em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE OR REPLACE TYPE tipo2;</pre>
+            <pre ngNonBindable>/</pre>
+            <pre ngNonBindable>CREATE OR REPLACE TYPE tipo1 AS OBJECT (</pre>
+            <pre ngNonBindable>	tipo2_ref REF tipo2</pre>
+            <pre ngNonBindable>	/*Declaración del resto de atributos del tipo1*/</pre>
+            <pre ngNonBindable>);</pre>
+            <pre ngNonBindable>/</pre>
+            <pre ngNonBindable>CREATE OR REPLACE TYPE tipo2 AS OBJECT (</pre>
+            <pre ngNonBindable>	tipo1_ref REF tipo1</pre>
+            <pre ngNonBindable>	/*Declaración del resto de atributos del tipo2*/</pre>
+            <pre ngNonBindable>);</pre>
+            <pre ngNonBindable>/</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    6.8.- Navegación a través de referencias.
+</h1><div class="iDevice_content">
+    <p>
+        Debes tener en cuenta que
+        <strong>
+            no se puede acceder directamente a
+            los atributos de un objeto referenciado que se encuentre almacenado
+            en una tabla
+        </strong>
+        . Para ello, puedes utilizar la función DEREF.
+    </p>
+    <p>
+        Esta función
+        <strong>
+            toma una referencia a un objeto y retorna el
+            valor
+        </strong>
+        de ese objeto.
+    </p>
+    <p>
+        Vamos a verlo en un ejemplo suponiendo que disponemos de las
+        siguientes variable declaradas:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>u_ref REF Usuario;
+</pre>
+            <pre ngNonBindable>u1 Usuario;
+</pre>
+        </div>
+    </div>
+    <p>
+        Si u_ref hace referencia a un objeto de tipo Usuario que se
+        encuentra en la tabla UsuariosObj, para obtener información sobre
+        alguno de los atributos de dicho objeto referenciado, hay que
+        utilizar la función DEREF.
+    </p>
+    <p>
+        Esta función se utiliza
+        <strong>
+            como parte de una consulta
+        </strong>
+        SELECT,
+        por lo que hay que utilizar una tabla tras la cláusula FROM. Esto puede resultar algo confuso,
+        ya que las referencias a objetos apuntan directamente a un objeto
+        concreto que se encuentra almacenado en una determinada tabla. Por
+        tanto, no debería ser necesario indicar de nuevo en qué tabla se
+        encuentra. Realmente es así. Podemos hacer referencia a cualquier
+        tabla en la consulta, y la función DEREF
+        nos devolverá el objeto referenciado que se encuentra en su tabla
+        correspondiente.
+    </p>
+    <p>
+        La base de datos de Oracle ofrece la
+        <strong>
+            tabla
+        </strong>
+        DUAL
+        para este tipo de operaciones. Esta tabla es creada de forma
+        automática por la base de datos, es accesible por todos los
+        usuarios, y
+        <strong>
+            tiene un solo campo y un solo registro
+        </strong>
+        . Por tanto,
+        es como una tabla comodín.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>SELECT DEREF(u_ref) INTO u1 FROM Dual;
+</pre>
+            <pre ngNonBindable>dbms_output.put_line(u1.nombre);
+</pre>
+        </div>
+    </div>
+    <p>
+        Por tanto, para obtener el objeto referenciado por una variable REF, debes
+        <strong>
+            utilizar una consulta
+            sobre cualquier tabla
+        </strong>
+        , independientemente de la tabla en la que
+        se encuentre el objeto referenciado. Sólo existe la condición de
+        que siempre se obtenga una solo fila como resultado. Lo más
+        <strong>
+            cómodo
+            es utilizar esa tabla
+        </strong>
+        DUAL.
+        Aunque se use esa tabla comodín,
+        <strong>
+            el resultado será un objeto
+        </strong>
+        almacenado en la tabla UsuariosObj.
+    </p>
+</div><h1 class="title">
+    7.- Ejercicio práctico.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Como
+        <strong>
+            Juan
+        </strong>
+        ha realizado recientemente un curso de bases de datos objeto-relacionales,
+        <strong>
+            Ada
+        </strong>
+        le ha propuesto a él que utilizando los conocimientos adquiridos en el curso, realice la base de datos objeto-relacional que tienen que desarrollar para la gestión de carga y descarga de buques contenedores que operan en uno de los puertos más importantes de España.
+    </p>
+    <p>
+        En este caso se gestionará información sobre personal que trabaja en las dependencias portuarias así como los buques que transportan los contenedores y dársenas donde se realizan las operaciones de carga y descarga.
+    </p>
+</div><h1 class="title">
+    7.1.- Creación de objetos: Herencia y métodos
+</h1><div class="iDevice_content">
+    <p>
+        En primer lugar debemos crear los objetos y en este caso optamos por empezar creando el objeto padre EMPLEADO del cual heredarán después los objetos hijos&nbsp;INSPECTOR y
+        <code>
+            ESTIBADOR
+        </code>
+        . El código para crear el objeto EMPLEADO sería el siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE OR REPLACE TYPE Empleado AS OBJECT (</pre>
+            <pre ngNonBindable>	DNI VARCHAR2(9),</pre>
+            <pre ngNonBindable>	nombre VARCHAR2(30),</pre>
+            <pre ngNonBindable>	apellidos VARHCAR2(40),&lt;br /&gt;        telefono VARCHAR2(9)&lt;br /&gt;</pre>
+            <pre ngNonBindable>)NOT FINAL;&nbsp;&nbsp;/*Añadimos&nbsp;NOT&nbsp;FINAL&nbsp;porque&nbsp;heredan&nbsp;otros&nbsp;tipos&nbsp;de&nbsp;objetos*/</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el siguiente videotutorial podrás ver cómo se crean los objetos hijos:
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            El objeto INSPECTOR sobre cual además de heredar los atributos del objeto padre tendrá los suyos propios
+        </li>
+        <li class="lista_verificacion">
+            El objeto ESTIBADOR el cual tendrá los atributos del objeto padre, los suyos propios y si nos fijamos un método (función) para calcular el complemento salarial y que habrá que especificar en el cuerpo del objeto.
+        </li>
+    </ul>
+
+    <p>
+        Una vez creados los tipos podemos probar su funcionalidad creando instancias por ejemplo en un bloque anónimo PL/SQL donde usamos variables para ello, pero cabe recordar que después de cada ejecución de un bloque PL/SQL no se mantendrán los valores almacenados a no ser que utilicemos alguna estructura de almacenamiento como por ejemplo las
+        <strong>
+            tablas
+        </strong>
+        .
+    </p>
+    <p>
+        Vamos a crear dos tablas para después poder almacenar instancias de los objetos ESTIBADOR e
+        <code>
+            INSPECTOR
+        </code>
+        y así mantener los valores almacenados de forma permanente. Debemos ejecutar estas sentencias de forma independiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE TABLE Trabajadores OF Estibador;  /* Creamos tabla para almacenar registros de tipo Estibador */&lt;br /&gt;</pre>
+            <pre ngNonBindable>CREATE TABLE Supervisores OF Inspector;  /* Creamos tabla para almacenar registros de tipo Inspector */</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Ahora vamos a crear instancias del objeto ESTIBADOR usando un bloque de código PL/SQL y probaremos también el método función de este objeto donde se calcula el complemento salarial. Posteriormente almacenaremos en la tabla TRABAJADORES sus valores teniendo en cuenta que deseamos que se almacene el salarioBase actualizado con el cálculo de su complemento salarial. Veremos en el videotutorial cómo podemos hacerlo de dos formas distintas. Podemos elegir incremetar primero el valor inicial del atributo salarioBase y después insertar toda la instancia en la tabla; o bien podemos insertar la instancia con los valores de su inicialización y después usar la sentencia UPDATE para actualizar el atributo salarioBase con el complemento salarial que le corresponde. Todo esto está explicado en el siguiente videotutorial:
+    </p>
+
+    <p>
+        Recuerda que para que se puedan mostrar los resultados por pantalla hay que activar la salida con la siguiente instrucción:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>SET SERVEROUTPUT ON:</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Y por último vamos a insertar instancias del objeto INSPECTOR en la tabla RESPONSABLES pero en esta ocasión sin usar un bloque PL/SQL. Como se puede ver en el siguiente videotutorial también podemos usar sentencias INSERT de forma independiente teniendo en cuenta que lo que vamos a insertar son objetos y no campos como tal. Por tanto en la clásula VALUES tendremos que crear el objeto correspondiente inicializando cada atributo con un valor.
+    </p>
+
+    <p>
+        En el apartado 7.4 se verán más ejemplos de este tipo de instrucciones SQL que pueden operar en las bases de datos objeto-relacionales.
+    </p>
+</div><h1 class="title">
+    7.2.- Creación de objetos: Método CONSTRUCTOR propio.
+</h1><div class="iDevice_content">
+    <p>
+        Una vez tenemos creados los tres primeros objetos de nuestra
+        <abbr title="Base de Datos Objeto-Relacional">
+            BDOR
+        </abbr>
+        vamos a crear el siguiente fijándonos en el diagrama de clases. Como se puede ver, hay un objeto que debe crearse antes que los otros dos, en este caso nos referimos al objeto CONTENEDOR el cual nos servirá para crear una lista o colección VARRAY que necesitaremos para uno de los últimos objetos.
+    </p>
+    <p>
+        Este objeto tiene la particularidad de tener que definir un método constructor propio el cual añadimos al final de todos los atributos en la propia definición del objeto. El código para crear el objeto CONTENEDOR es el siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>CREATE OR REPLACE TYPE Contenedor AS OBJECT(&lt;br /&gt;   codigo VARCHAR2(7),&lt;br /&gt;   tipoCarga VARCHAR2(30),&lt;br /&gt;   valorTotalCarga NUMBER(6,2),&lt;br /&gt;   numBultos NUMBER(3),&lt;br /&gt;   valorMedioCarga NUMBER(6,2),&lt;br /&gt;   /* Definimos el constructor el cual sólamente usará cuatro parámetros */&lt;br /&gt;   CONSTRUCTOR FUNCTION Contenedor(codigo VARCHAR2, tipoCarga VARCHAR2, &lt;br /&gt;                                   valorTotalCarga NUMBER, numBultos NUMBER)&lt;br /&gt;   RETURN SELF AS RESULT&lt;br /&gt;);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Todo objeto que tenga en su definición un método tendrá que especificarse en el cuerpo o BODY, así pues creamos el código correspondiente al cuerpo del objeto con la especificación del método constructor. Nos fijamos que todo método constructor debe nombrarse igual que el objeto y podremos crear tantos métodos constructores como queramos (lo que recibe el nombre de sobrecarga) pero siempre con alguna diferencia en el tipo o número de parámetros que utiliza. En nuestro caso sólamente pasamos cuatro parámetros porque la inicialización del atributo valorMedioCarga se realiza mediante un cálculo que implementamos en el propio constructor que estamos creando.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>/* Se crea el cuerpo del constructor */&lt;br /&gt;CREATE OR REPLACE TYPE BODY Contenedor AS&lt;br /&gt;   CONSTRUCTOR FUNCTION Contenedor(codigo VARCHAR2, tipoCarga VARCHAR2,&lt;br /&gt;                                   valorTotalCarga NUMBER, numBultos NUMBER)&lt;br /&gt;   RETURN SELF AS RESULT&lt;br /&gt;   IS&lt;br /&gt;   BEGIN&lt;br /&gt;      /* Los cuatro primeros atributos se inicializan con sus correspondientes parámetros */&lt;br /&gt;      SELF.codigo := codigo;&lt;br /&gt;      SELF.tipoCarga := tipoCarga;&lt;br /&gt;      SELF.valorTotalCarga := valorTotalCarga;&lt;br /&gt;      SELF.numBultos := numBultos;&lt;br /&gt;&lt;br /&gt;      /*Este último atributo se inicializa con la operación correspondiente */&lt;br /&gt;      SELF.valorMedioCarga := valorTotalCarga/numBultos; &lt;br /&gt;&lt;br /&gt;      RETURN;  /* Por último no debemos olvidar devolver la propia instancia del objeto */&lt;br /&gt;   END;&lt;br /&gt;END;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por último debemos crear una lista o colección VARRAY para almacenar las instancias de objetos que creamos dentro del bloque PL/SQL anónimo donde vamos a probar el objeto que acabamos de crear.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>/* Se crea el tipo VARRAY lista para almacenar contenedores */&lt;br /&gt;CREATE OR REPLACE TYPE ListadoContenedores AS VARRAY(10) OF Contenedor;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Veamos cómo se implementa este código en el siguiente vídeotutorial:
+    </p>
+
+    <p>
+        Para comprobar que hemos creado bien el objeto y el método constructor funciona perfectamente vamos a crear un bloque de código PL/SQL donde se crean instancias de este tipo de objeto usando tanto el constructor por defecto que tienen todos los objetos como también el constructor que se ha creado de forma propia. También usaremos el objeto Lista de contenedores para inicializarlo con valores de tipo CONTENEDOR . En el siguiente videotutorial se explica con detalle:
+    </p>
+
+</div><h1 class="title">
+    7.3.- Creación de objetos: atributos de tipo objeto y referencia a objetos.
+</h1><div class="iDevice_content">
+    <p>
+        Para completar el ejercicio nos falta crear dos objetos que tienen característiicas en común. En ambos casos se utilizan atributos que no son simples.
+    </p>
+    <ul>
+        <li class="lista_verificacion">
+            En el caso del objeto MUELLE tenemos un atributo de tipo REF que guardaría la referencia del objeto del tipo al que apunta, en este caso a INSPECTOR. Esto quiere decir que no se almacena el propio objeto sino que guarda un puntero al objeto.
+        </li>
+        <li class="lista_verificacion">
+            En el caso del objeto BARCO se guarda entre otros atributos uno de tipo objeto MUELLE. En este caso&nbsp; sí se almacenan los datos de la instancia MUELLE correspondiente en dicho atributo. Además también hay un atributo que es de tipo lista o VARRAY que se había declarado anteriormente y que almacena un conjunto de instancias de tipo CONTENEDOR.
+        </li>
+    </ul>
+    <p>
+        Veamos el código de creación de ambos tipos de objetos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45.05em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>/* Se crea el tipo de objeto Muelle */&lt;br /&gt;CREATE OR REPLACE TYPE Muelle AS OBJECT(&lt;br /&gt;   letra VARCHAR2(2),&lt;br /&gt;   longitud NUMBER(3),&lt;br /&gt;   numGruas NUMBER(2),&lt;br /&gt;   responsable &lt;strong&gt;REF&lt;/strong&gt; Inspector&lt;br /&gt;);&lt;br /&gt;/&lt;br /&gt;/* Se crea el tipo de objeto Barco */&lt;br /&gt;CREATE OR REPLACE TYPE Barco AS OBJECT(&lt;br /&gt;   matricula VARCHAR2(7),&lt;br /&gt;   nombre VARCHAR2(20),&lt;br /&gt;   nacionalidad VARCHAR2(20),&lt;br /&gt;   eslora NUMBER(4),&lt;br /&gt;   contenedoresCarga &lt;strong&gt;ListadoContenedores&lt;/strong&gt;,  /* Atributo de tipo VARRAY o colección */&lt;br /&gt;   fecLlegada DATE,&lt;br /&gt;   fecSalida DATE,&lt;br /&gt;   muelleAtraque &lt;strong&gt;Muelle&lt;/strong&gt;  /* Atributo de tipo objeto Muelle */&lt;br /&gt;);</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Veamos cómo se implementa el código de estos dos tipo de objetos y también sus correspondientes tablas donde se almacenarán las instancias creadas de forma permanente:
+    </p>
+
+    <p>
+        En el siguiente videotutorial se puede ver cómo crear dos instancias del objeto MUELLE&nbsp;asignando una referencia a cada uno de las instancias de INSPECTOR&nbsp; que ya teníamos guardadas en la tabla RESPONSABLES. Finalmente se almacenan las instancias&nbsp;del objeto MUELLE en la tabla DARSENAS&nbsp;creada para tal fin.
+    </p>
+
+    <p>
+        Y para finalizar veamos cómo trabajar con instancias del objeto tipo BARCO para almacenarlo como registros en la tabla FLOTA. Para crear una instancia de tipo BARCO es necesario además de inicializar los atributos simples también los atributos que son de tipo objeto MUELLE&nbsp;y LISTACONTENEDORES&nbsp;y por tanto debemos trabajar con instancias de estos dos tipos que pasaremos como parámetros en el constructor del objeto tipo BARCO.
+    </p>
+
+    <p>
+        <br>
+        <br>
+        <br/><br/></p>
+</div><h1 class="title">
+    7.4.- Manipulación de la BD objeto-relacional.
+</h1><div class="iDevice_content">
+    <p>
+        En los apartados anteriores hemos creado los tipos de objeto necesarios en el orden apropiado y a su vez hemos creado tablas en los que se han insertado las instancias utilizando la sentencia INSERT tanto dentro de bloques PL/SQL anónimos como también ejecutándolas como sentencias SQL independientes. También hemos trabajado con la sentencia SELECT&nbsp;para recuperar esos registros o instancias almacenadas.
+    </p>
+    <p>
+        Para concluir con este ejemplo vamos a comprobar que además de insertar (INSERT) y recuperar (SELECT) información también podemos eliminar (DELETE) o actualizar (UPDATE) registros en las tablas que disponemos.
+    </p>
+    <p>
+        Intenta realizar los siguientes ejercicios por tu cuenta y después revisa con la solución propuesta.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    8.- PostgreSQL.
+</h1><div class="iDevice_content">
+    <p>
+        PostgreSQL es otro sistema de gestión de bases de datos objeto-relacional muy extendido en la actualidad. A continuación se incluyen enlaces para saber más sobre él.
+    </p>
+</div><h1 class="title">
+    Anexo I.- Métodos MAP y ORDER.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para crear un método MAP debes declarar un método que
+        <strong>
+            retorne el valor que se va a utilizar para hacer las comparaciones
+        </strong>
+        . El método que declares para ello debe empezar su declaración con la palabra MAP:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 33.5em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE OR REPLACE TYPE Usuario AS OBJECT (
+</pre>
+            <pre ngNonBindable>	login VARCHAR2(30),
+</pre>
+            <pre ngNonBindable>	nombre VARCHAR2(30),
+</pre>
+            <pre ngNonBindable>	apellidos VARCHAR2(40),
+</pre>
+            <pre ngNonBindable>	f_ingreso DATE,
+</pre>
+            <pre ngNonBindable>	credito NUMBER,
+</pre>
+            <pre ngNonBindable>	MAP MEMBER FUNCTION ordenarUsuario RETURN VARCHAR2
+</pre>
+            <pre ngNonBindable>);
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el cuerpo del método se debe retornar el valor que se utilizará para realizar las comparaciones entre las instancias del tipo de objeto. Por ejemplo, si se quiere establecer que las comparaciones entre objetos del tipo Usuario se realice considerando el orden alfabético habitual de apellidos y nombre:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>CREATE OR REPLACE TYPE BODY Usuario AS
+</pre>
+            <pre ngNonBindable>	MAP MEMBER FUNCTION ordenarUsuario RETURN VARCHAR2 IS
+</pre>
+            <pre ngNonBindable>	BEGIN
+</pre>
+            <pre ngNonBindable>		RETURN (apellidos || ' ' || nombre);
+</pre>
+            <pre ngNonBindable>	END ordenarUsuario;
+</pre>
+            <pre ngNonBindable>END;
+</pre>
+            <pre ngNonBindable>/
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El lenguaje PL/SQL utiliza los métodos MAP para evaluar expresiones lógicas que resultan valores booleanos como objeto1 &gt; objeto2, y para realizar las comparaciones implícitas en las cláusulas DISTINCT,
+        <code>
+            GROUP BY
+        </code>
+        y ORDER BY.
+    </p>
+    <p>
+        Cada tipo de objeto
+        <strong>
+            sólo puede tener un método
+        </strong>
+        MAP
+        <strong>
+            declarado
+        </strong>
+        , y sólo puede retornar alguno de los siguientes tipos: DATE,
+        <code>
+            NUMBER
+        </code>
+        , VARCHAR2,
+        <code>
+            CHARACTER
+        </code>
+        o REAL.
+    </p>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia con imagen de
+                    http://commons.wikimedia.org/wiki/File:View-refresh.svg
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia  utilizando la siguiente imagen:
+                </p>
+                <p>
+                    http://commons.wikimedia.org/wiki/File:Preferences-system.svg
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Manco Capac.
+                </p>
+                <p>
+                    Licencia: Creative Commons Attribution-Share Alike.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Megaphone.svg
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: The people from the Tango! project.
+                </p>
+                <p>
+                    Licencia: Dominio público.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Edit-find-replace.svg
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Gauthier Tellier.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Applications-mplayer.svg
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: The people from the Tango! project.
+                </p>
+                <p>
+                    Licencia: Dominio público.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Bkchem48.png
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-yellow.svg
+                    </li>
+                </ul>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-yellow.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-green.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-red.svg
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Everaldo Coelho and YellowIcon.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: http://commons.wikimedia.org/wiki/File:Crystal_Clear_device_blockdevice.png
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-green.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-red.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Document-save.svg
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla de la línea de comandos SQL de Oracle Database.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-green.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-red.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Document-save.svg
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla de la línea de comandos SQL de Oracle Database.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Oracle.
+                </p>
+                <p>
+                    Licencia: Copyright (cita).
+                </p>
+                <p>
+                    Procedencia: Elaboración Propia. Captura de pantalla de la línea de comandos SQL de Oracle Database.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-green.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-red.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Document-save.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-yellow.svg
+                    </li>
+                </ul>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-green.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-red.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Document-save.svg
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ministerio de Educación.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Elaboración propia a partir de imágenes de dominio público:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-purple.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-green.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Emblem-person-red.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Document-save.svg
+                    </li>
+                    <li>
+                        http://commons.wikimedia.org/wiki/File:Edit-clear.svg
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente por el Ministerio de Educación, Cultura y Deporte y actualizados por el profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier uso leer detenidamente el siguente
+          </span>
+            Aviso legal
+        </p>
+    </div>
+</div>
