@@ -1,0 +1,3439 @@
+<h1 class="title">
+    Instalación y configuración (Linux I).
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            María
+        </strong>
+        está delante del ordenador junto a
+        <strong>
+            Juan
+        </strong>
+        .
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : -
+        <strong>
+            María
+        </strong>
+        , ¿sabes utilizar Linux?
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        : -
+        <strong>
+        </strong>
+        Sí, un poco, lo tengo instalado en mi
+        equipo y lo suelo utilizar bastante.
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : -
+        <strong>
+        </strong>
+        Pues me ha dicho
+        <strong>
+            Ada
+        </strong>
+        que
+        tengo que utilizarlo. ¿Me ayudas?
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        : - ¡Claro que sí! Vamos a tu equipo y lo utilizamos.
+    </p>
+</div><h1 class="title">
+    1.- Introducción.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Juan
+        </strong>
+        va a instalar Linux en su equipo con
+        <strong>
+            María
+        </strong>
+        .
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : - He visto en Internet que hay muchas distribuciones de Linux
+        y no sé la que utilizar.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        : -
+        <strong>
+        </strong>
+        Existen muchas distribuciones y cada una
+        tiene ventajas o desventajas sobre el resto. Lo importante es saber para qué
+        queremos utilizar Linux y utilizar la distribución que mejor se adapte a nuestra
+        necesidades. Mira vamos a ver las distribuciones más importantes para seleccionar la
+        que mejor se adapta a tus necesidades.
+    </p>
+</div><h1 class="title">
+    1.1.- Distribuciones.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        El kernel del sistema operativo Linux fue desarrollado por
+        <span lang="fi">
+         Linus
+								Torwards
+        </span>
+        y licenciado bajo
+        GPL
+        . Pero un sistema
+
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+
+        /Linux no es sólo su
+        núcleo, ya que existen hoy en día un gran número de aplicaciones desarrolladas también bajo
+        licencias libres que permiten que los sistemas
+
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+
+        /Linux tengan una gran
+        versatibilidad y funcionalidad.
+        <br/></p>
+    <div class="exe-tooltip-text" id="t11881c89-9eb2-5866-cd6a-2ddc5fe6b5ec">
+        <p>
+            La licencia GPL está orientada principalmente a proteger la libre distribución,
+            modificación y uso del software garantizando siempre los derechos de autoría.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.2.- Licencias de software.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Sin duda alguna no se puede hablar de los sistemas
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux sin mencionar las licencias de software libre, germen de
+        todo el desarrollo de los sistemas
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux.
+        <br/></p>
+    <p>
+        La Licencia Pública General de
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        ,
+        más conocida como
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        <abbr title="General Public Licence.">
+            GPL
+        </abbr>
+        , es una licencia creada por la
+        <span lang="en">
+         Free Software Fundation
+        </span>
+        en 1989. Su principal objetivo es garantizar
+        la libertad de compartir y modificar el software. El término libre (
+        <span lang="en">
+         free
+        </span>
+        en inglés) se refiere a la libertad de poder modificar y
+        distribuir el software, no a su precio.
+    </p>
+    <p>
+        Al desarrollar un programa, escribir un artículo o crear cualquier obra que se desea
+        distribuir libremente, puedes optar por dos caminos diferentes:
+        <strong>
+            dominio
+            público
+        </strong>
+        o
+        <strong>
+            licencia libre
+        </strong>
+        . Lógicamente, las dos opciones
+        permiten liberar el software garantizando la autoría de la obra.
+    </p>
+    <p>
+        Si creas una aplicación para
+        <strong>
+            dominio público
+        </strong>
+        , el software estará disponible
+        de forma gratuita para otras personas pero el código fuente no estará disponible. Por el
+        contrario, si eliges una
+        <strong>
+            licencia libre
+        </strong>
+        , entonces el proceso es mucho más
+        enriquecedor ya que pone disponible el código fuente por lo que permite que otros
+        programadores puedan modificar, mejorar o adaptar nuestro software a sus necesidades.
+    </p>
+    <p>
+        Cuando un software se publica bajo licencia
+        <abbr title="GNU's Not Unix">
+            GPL
+        </abbr>
+        tiene que cumplir las siguientes cuatro libertades:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Libertad 0.
+            </strong>
+            Ejecutar el programa sea cuál sea nuestro propósito.
+        </li>
+        <li>
+            <strong>
+                Libertad 1.
+            </strong>
+            Estudiar el funcionamiento del programa y adaptarlo a tus
+            necesidades.
+        </li>
+        <li>
+            <strong>
+                Libertad 2.
+            </strong>
+            Redistribuir copias.
+        </li>
+        <li>
+            <strong>
+                Libertad 3.
+            </strong>
+            Mejorar el programa y luego distribuirlo.
+        </li>
+    </ul>
+    <p>
+        Lógicamente, los términos de la licencia permiten la libertad de poder utilizar y adaptar el
+        software a sus necesidades pero el resultado debe seguir siendo libre. Este punto es muy
+        importante ya que permite que no se "rompa" la cadena de software libre.
+    </p>
+    <p>
+        Actualmente se encuentra en vigor
+        <abbr title="General Public License">
+            GPL
+        </abbr>
+        versión 3 que fue publicada en 2007 y define aspectos de una
+        forma mucho más precisa sobre el uso del software licenciado
+        <abbr title="General Public License">
+            GPL
+        </abbr>
+        .
+    </p>
+</div><h1 class="title">
+    2.- Instalación de Ubuntu.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            <br>
+            Juan
+            <br/></strong>
+        : -
+        <strong>
+        </strong>
+        Hola
+        <strong>
+            María
+        </strong>
+        , ya he
+        descargado la distribución
+        Ubuntu
+        y la he grabado en un
+        <abbr title="Compact Disc (Disco compacto)">
+            CD
+        </abbr>
+        . Ahora me toca
+        instalarla en el equipo pero no me atrevo a hacerlo solo.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        : -
+        <strong>
+        </strong>
+        Estupendo, vamos a instalarlo en tu equipo
+        y así aprendes.
+    </p>
+    <div class="exe-tooltip-text" id="t27a1943d-3c69-512a-4731-cf4a406eca63">
+        <p>
+            Distribución GNU/Linux basada en Debian.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.1.- Características y versiones.
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         <br>
+         Ubuntu es una de las distribuciones Linux más populares
+								actualmente. Te preguntaras: ¿A qué se debe esta popularidad de uso frente a otras
+								distribuciones? ¿Qué es lo que la hace diferente? A continuación vamos a ver algunas de
+								sus características que ayudan a entender su despegue popular frente a otras
+								distribuciones:
+        <br/></span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+          <span style="font-size: 1em;">
+           Ubuntu nos ofrece un número cuidadosamente seleccionado
+										de paquetes provenientes de la distribución Debian, y conserva su eficaz sistema
+										de mantenimiento de paquetes permitiéndonos la instalación y desinstalación de
+										programas de un modo fácil y limpio.
+          </span>
+            </p>
+        </li>
+        <li>
+            <p>
+                A diferencia de la mayoría de las distribuciones que vienen con una gran cantidad de
+                software que finalmente no se usa y cuya organización puede llegar a ser confusa, la
+                lista de Ubuntu se reduce a un número pequeño de aplicaciones fundamentales y de
+                alta calidad.
+            </p>
+        </li>
+        <li>
+            <p>
+          <span lang="en" style="font-size: 1em;">
+           Ubuntu cuenta con un entorno de trabajo muy
+										cuidado y robusto, adecuado para la mayoría de las necesidades tanto
+										profesionales como domésticas. Es probablemente la distribución actual que mejor
+										soporte ofrece para el moderno hardware informático.
+          </span>
+            </p>
+        </li>
+        <li>
+            <p>
+                Cada versión de Ubuntu se distribuye en dos modalidades:
+                <b>
+           <span lang="en">
+            Workstation
+           </span>
+                </b>
+                (estación de trabajo) y
+                <b>
+                </b>
+                <span lang="en">
+           <b>
+            Server
+           </b>
+          </span>
+                (servidor).
+            </p>
+        </li>
+        <li>
+            <p>
+                Publicación regular y previsible de nuevas versiones cada seis meses. Cada versión
+                recibe soporte por parte de
+                <em>
+                    Canonical
+                </em>
+                durante nueve meses por medio de
+                actualizaciones de seguridad, parches para
+                bugs
+                críticos y actualizaciones
+                menores de programas, que podrán descargarse e instalarse completamente gratis sin
+                necesidad de ningún tipo de registro.&nbsp;Las versiones
+                <abbr lang="inglés" title="Long Term Support">
+                    LTS
+                </abbr>
+                , que se liberan cada dos
+                años, reciben soporte durante cinco años en los sistemas de escritorio y
+                servidor.
+            </p>
+        </li>
+        <li>
+            <p>
+                Insistencia en lo humano por encima de lo tecnológico. Ubuntu es una palabra que
+                viene de las lenguas zulú y xhosa y que puede traducirse como "
+                <i>
+                    humanidad hacia
+                    los demás
+                </i>
+                ". El lema de Ubuntu es "
+                <b>
+                    <i>
+            <span lang="en">
+             Linux for human
+												beings
+            </span>
+                    </i>
+                </b>
+                " (Linux para seres humanos).
+            </p>
+        </li>
+    </ul>
+    <p>
+        En definitiva, se trata de una distribución funcional, fácil de usar, actualizada y
+        totalmente gratuita. Como puedes ver su popularidad está más que justificada.
+    </p>
+    <div class="exe-tooltip-text" id="t74aa828e-718a-8b91-79bf-69aaa2cc1cb3">
+        <p>
+            Error o fallo en un programa de computador o sistema de software que desencadena un
+            resultado indeseado.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.2.- Requisitos hardware del sistema.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        El proceso de instalación del sistema
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux resulta bastante sencillo gracias al asistente que nos
+        guía durante todo el proceso de instalación. Antes de iniciar la instalación necesitamos
+        tener en cuenta el uso que le vamos a dar al sistema ya que de ello dependerá mucho el
+        hardware del equipo.
+        <br/></p>
+    <p>
+        Actuamente en la página oficial de
+        Ubuntu
+        se encuentran disponibles sus dos últimas versiones para
+        escritorio como son Ubuntu Desktop 20.04
+        <abbr title="Long Term Support">
+            LTS
+        </abbr>
+        y Ubuntu Desktop 20.10, pero esta última sólo dispone de soporte
+        y actualizaciones hasta julio 2021, mientras que Ubuntu Desktop 20.04
+        <abbr title="Long Term Support">
+            LTS
+        </abbr>
+        dispondrá de soporte y actualizaciones
+        hasta abril de 2025, necesitando ambas versiones los mismos requisitos mínimos para su
+        instalación.
+    </p>
+    <p>
+        En esta unidad vamos a instalar
+        <strong>
+            Ubuntu Desktop 20.04
+            <abbr title="Long Term Support">
+                LTS
+            </abbr>
+        </strong>
+        y los requisitos mínimos
+        para que funcione eficientemente son:
+    </p>
+    <ol class="lista_verificacion">
+        <li>
+            Microprocesador de doble núcleo de 2
+            <abbr title="Gigaherzio">
+                GHz
+            </abbr>
+            o superior.
+        </li>
+        <li>
+            Memoria Principal (
+            <abbr title="Memoria de acceso aleatorio (Random Access Memory)">
+                RAM
+            </abbr>
+            ) de 4
+            <abbr title="Gigabyte">
+                GB
+            </abbr>
+            .
+        </li>
+        <li>
+            25
+            <abbr title="Gigabyte">
+                GB
+            </abbr>
+            de espacio libre en el disco duro.
+        </li>
+        <li>
+            Puerto
+            <abbr title="Universal Serial Bus">
+                USB
+            </abbr>
+            o unidad
+            lectora de
+            <abbr title="Disco Versátil Digital">
+                DVD
+            </abbr>
+            , para
+            instalar el sistema operativo.
+        </li>
+        <li>
+            Se recomienda tener acceso a Internet.
+        </li>
+    </ol>
+    <p>
+        Este
+        <abbr title="Sistema Operativo">
+            SO
+        </abbr>
+        puede funcionar con menos recursos, pero
+        si se le quiere sacar el máximo provecho se precisan al menos los recursos
+        <span lang="en">
+         hardware
+        </span>
+        anteriormente descritos.
+    </p>
+</div><h1 class="title">
+    2.3.- Instalando el sistema.
+</h1><div class="iDevice_content">
+    <p>
+        En Ubuntu existen tres versiones:
+        <strong>
+         <span lang="en">
+          Ubuntu Desktop
+         </span>
+        </strong>
+        (para equipos de escritorio),
+        <strong>
+         <span lang="en">
+          Ubuntu
+									Server
+         </span>
+        </strong>
+        (para servidores),
+        <strong>
+         <span lang="en">
+          Ubuntu
+									for
+          <abbr title="Internet of Things">
+           IoT
+          </abbr>
+          board
+         </span>
+        </strong>
+        <span lang="en">
+         (para Internet de las cosas)
+        </span>
+        <span lang="en">
+         y
+        </span>
+        <strong>
+         <span lang="en">
+          Ubuntu Cloud
+         </span>
+        </strong>
+        (para montar un
+        servidor en la nube). Como el objetivo de la unidad es aprender a instalar un sistema
+        operativo
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux, realizaremos la
+        instalación de la versión
+        <span lang="en">
+         Desktop
+        </span>
+        <em>
+            .
+        </em>
+    </p>
+    <p class="enlace_centrado" style="text-align: justify;">
+        El proceso de instalación del sistema
+        <abbr title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux resulta bastante sencillo
+        gracias al asistente que te guía durante todo el proceso de instalación. Un apartado en el
+        que debemos prestar atención es el relacionado con el particionamiento del sistema, que
+        podemos realizarlo de forma automática o manual. Si elegimos la forma automática Ubuntu
+        creará una única partición incluyendo en ésta el área de intercambio (swap) y gestionándola
+        a través de un fichero (similar a los sistemas Windows) pero si elegimos la forma manual,
+        tendremos que analizar qué particiones vamos a crear. Una buena práctica sería separar en
+        particiones independientes los datos (/home) del sistema (/) y con respecto a la creación o
+        no de una partición swap, habrá que tener en cuenta las características del equipo, así como
+        el uso y el tipo de aplicaciones que se van a ejecutar en él. En el siguiente enlace puedes
+        ver más información sobre esto.
+    </p>
+    <p class="enlace_centrado" style="text-align: center;">
+        Partición swap en Linux. Cómo determinar el tamaño
+        adecuado
+    </p>
+    <p>
+    </p>
+    <p>
+        A continuación se muestra como instalar Ubuntu
+        <span lang="en">
+         Desktop 20.04
+         <abbr title="Long Term Support">
+          LTS
+         </abbr>
+        </span>
+        en nuestro sistema.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado titulo">
+            Instalación Ubuntu 20.04 LTS
+        </div>
+        <div class="elemento_centrado">
+            Poner el vídeo de InstalacionUbuntu20_04.mp4
+        </div>
+
+    </div>
+</div><h1 class="title">
+    3.- Primeros pasos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : - Hola
+        <strong>
+            Ana
+        </strong>
+        . Estoy utilizando Linux y me han
+        dicho que tú llevas utilizándolo desde hace mucho tiempo. La verdad es que estoy un
+        poco perdido porque es la primera vez.
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        : -
+        <strong>
+            Juan
+        </strong>
+        , Linux es muy fácil de utilizar pero
+        hay que hacerlo poco a poco. Vamos a empezar viendo algunos de sus aspectos más
+        característicos.
+    </p>
+</div><h1 class="title">
+    3.1.- X-Windows.
+</h1><div class="iDevice_content">
+    <p>
+        Uno de los elementos que ha propiciado la gran expansión de los sistemas
+        <abbr lang="inglés" title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux en empresas y hogares es la
+        utilización de entornos gráficos sencillos y amigables. Los sistemas
+        <abbr lang="inglés" title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux cuentan con diversos entornos
+        gráficos, muy potentes, que permiten utilizar el sistema fácilmente.
+    </p>
+    <p>
+        X-
+
+        Windows
+        (o
+        <em>
+            sistema de ventanas X
+        </em>
+        en castellano) es el nombre por el que se conoce al entorno
+        gráfico usado por los sistemas Unix. Fue desarrollado a mediados de la década de los 80 en
+        el
+        <abbr title="Massachusetts Institute of Technology">
+            MIT
+        </abbr>
+        (Instituto
+        Tecnológico de
+        <span lang="en">
+         Massachussets
+        </span>
+        ) y el grupo de desarrollo inicial ha ido
+        dando lugar en el tiempo a diversos sucesores:
+        <span lang="en">
+         X Consortium
+        </span>
+        (desde
+        1994 a 1996),
+        <span lang="en">
+        </span>
+        <span lang="en">
+         <span lang="en">
+          The Open Group
+         </span>
+         (de 1997 a 1998),
+         <span lang="en">
+          XFree
+         </span>
+        </span>
+        <span lang="en">
+        </span>
+        86 (de 1992
+        a 2004) y X.org (desde 2004).
+        <span lang="en">
+         X.org Foundation
+        </span>
+        se fundó a partir de
+        un grupo de desarrolladores y actualmente se encarga de desarrollar y coordinar el entorno
+        X.
+    </p>
+    <p>
+        X-
+        <span lang="en">
+         Windows
+        </span>
+        proporciona una
+        interfaz gráfica
+        (
+        <abbr title="Graphical User Interface">
+            GUI
+        </abbr>
+        ) al mundo de Linux. X-
+        <span lang="en">
+         Windows
+        </span>
+        , al igual que el sistema operativo
+        <span lang="en">
+         Windows
+        </span>
+        de Microsoft, ofrece una forma de manejo de algunos de los
+        elementos de interacción más comunes como ventanas, cuadros de diálogo, botones y menús.
+        X-
+        <span lang="en">
+         Windows
+        </span>
+        es quien proporciona las capacidades gráficas que hacen de
+        las plataformas basadas en Linux la elección para el desarrollo de muchas aplicaciones de
+        ingeniería y diseño, y es X-
+        <span lang="en">
+         Windows
+        </span>
+        lo que hace posible que Linux sea
+        un competidor serio en el mercado de los sistemas operativos para
+        <abbr title="Personal Computer">
+            PC
+        </abbr>
+        .
+    </p>
+    <p>
+        El protocolo de comunicaciones implementado en X-
+        <span lang="en">
+         Windows
+        </span>
+        no ha
+        demostrado ser el más óptimo y por eso sistemas como Wayland están comenzando a implantarse
+        por defecto en las instalaciones de algunas distribuciones Linux. El no soporte en Wayland
+        de los drivers de las tarjetas gráficas privativas NVIDIA, es lo que ha evitado que se
+        utilice al 100%.
+    </p>
+    <p>
+        De forma simple, se puede decir que tanto X-
+        <span lang="en">
+         Windows
+        </span>
+        como Wayland son
+        una interfaz gráfica completa para Linux y, por extensión, para Unix. Ambos están compuestos
+        por dos elementos principales: el
+        <strong>
+            servidor
+        </strong>
+        , encargado de mostrar
+        visualmente los elementos en la pantalla de forma totalmente independiente del sistema
+        operativo, y el
+        <strong>
+            gestor de ventanas
+        </strong>
+        , cuyo objetivo es la gestión y
+        administración de las ventanas mostradas para las aplicaciones, su apariencia, creación,
+        colocación en la pantalla, etcétera. De esta forma X-
+        <span lang="en">
+         Windows
+        </span>
+        y
+        Wayland son capaces de distribuir el procesamiento de las aplicaciones siguiendo el
+        paradigma cliente-servidor: el servidor provee los servicios para acceder a teclado, ratón y
+        pantalla, mientras que los clientes son las aplicaciones que toman estos recursos para poder
+        interactuar con los usuarios.
+    </p>
+    <p>
+        Esta forma de diseño en dos partes es lo que origina que existan diferentes implementaciones
+        de gestores de ventanas, con diferentes características funcionales y visuales. El servidor
+        como puedes imaginar es altamente portable y en el caso de Ubuntu permite utilizar los tres
+        principales
+        <strong>
+            entornos de escritorio
+            <abbr lang="inglés" title="Graphical User Interface">
+                GUI
+            </abbr>
+        </strong>
+        (
+        <em>
+            Interfaces Gráficas de Usuario
+        </em>
+        ):
+        <abbr title="GNU Network Object Model Environment">
+            GNOME
+        </abbr>
+        está
+        orientado a la simplicidad, PlasmaKDE ofrece un mayor conjunto de aplicaciones así como
+        posibilidades de caracterización por defecto, y
+        <abbr title="XForms Common Environment">
+            Xfce
+        </abbr>
+        está optimizado para su uso con
+        requisitos
+        <span lang="en">
+         hardware
+        </span>
+        bajos. Aparte de los citados, es posible utilizar
+        otros entornos de escritorio como
+        <em>
+         <span lang="en">
+          Fluxbox o Sugaro
+         </span>
+        </em>
+        <abbr title="Lightweight X11 Desktop Environment">
+            LXDE
+        </abbr>
+        .
+    </p>
+    <table class="tabla">
+        <thead>
+        <tr>
+            <th scope="col">
+                Entornos gráficos más utilizados
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <p class="enlace_centrado">
+                    GNOME
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="enlace_centrado">
+                    PlasmaKDE
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="enlace_centrado">
+                    Xfce
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t965193fa-2a68-1884-c0d3-6a2fc1e55f38">
+        <p>
+            Interfaz gráfico para los sistemas GNU/Linux. Los sistemas más utilizados son GNOME y
+            PlasmaKDE.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="tc7b2cec6-cff2-5071-4f1b-1e42e09e08c8">
+        <p>
+            Interfaz entre el usuario y el sistema que utiliza elementos gráficos como botones,
+            barras de desplazamiento, casillas de verificación, etc.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.2.- Intérprete de comandos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        El intérprete de comandos, o
+        <span lang="en">
+         shell,
+        </span>
+        es una interfaz entre el
+        usuario y el sistema operativo que permite interactuar directamente con el sistema y con sus
+        ficheros de configuración. Su función es recibir las órdenes del usuario a través de la
+        línea de comandos, interpretarlas, ejecutarlas y mostrar su resultado. Resulta muy útil
+        aprender a utilizarlo ya que, aunque al principio pueda parecer un poco difícil, resulta
+        fundamental para obtener el máximo rendimiento del sistema.
+        <br/></p>
+    <p>
+        Para iniciar el intérprete de comandos tienes que ir al botón
+        <em>
+            Aplicaciones
+        </em>
+        <em>
+        </em>
+        y ejecutar la herramienta
+        <em>
+            Terminal.
+        </em>
+        Hecho esto, aparecerá una
+        pantalla como la de la derecha con un símbolo del sistema, o
+        prompt
+        como el de abajo:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>ubuntu&#64;ubuntu-VirtualBox:~$
+</pre>
+        </div>
+    </div>
+    <p>
+        donde se puede observar:
+    </p>
+    <ul class="lista_verificacion" style="list-style-type: disc;">
+        <li>
+            El nombre del usuario que ha iniciado sesión en el sistema (
+            <em>
+                ubuntu).
+            </em>
+        </li>
+        <li>
+            El nombre del equipo (
+            <em>
+                ubuntu-VirtualBox
+            </em>
+            ).
+        </li>
+        <li>
+            El directorio actual en el que se encuentra. En el caso de que se muestre el carácter ~
+            es porque está en el directorio personal del usuario (
+            <em>
+                /home/ubuntu).
+            </em>
+        </li>
+        <li>
+            El tipo de usuario. Si aparece un símbolo $, se trata de un usuario normal y si aparece
+            un símbolo #, se trata de un administrador del sistema.
+        </li>
+    </ul>
+    <p>
+        El usuario
+        root
+        es el administrador del sistema y
+        puede realizar cualquier tarea de administración. En algunas distribuciones puede acceder
+        directamente al sistema como administrador o
+        <em>
+         <span lang="en">
+          root
+         </span>
+        </em>
+        , pero
+        otras distribuciones, como Ubuntu, te obligan a acceder al sistema con un usuario sin
+        privilegios de administrador y luego cambiar de usuario para una seguridad extra.
+    </p>
+    <p>
+        Si deseas ejecutar una tarea de forma puntual como administrador, o
+        <span lang="en">
+         root
+        </span>
+        <em>
+         <span lang="en">
+          ,
+         </span>
+        </em>
+        puedes utilizar el comando sudo
+        de la siguiente forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$ sudo &lt;comando&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Si necesitas ejecutar múltiples tareas puedes obtener un
+        <span lang="en">
+         intérprete
+        </span>
+        de
+        administrador, o
+        <span lang="en">
+         root
+        </span>
+        <em>
+         <span lang="en">
+          ,
+         </span>
+        </em>
+        ejecutando
+        <em>
+            sudo bash
+        </em>
+        o
+        <em>
+            su
+        </em>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda" style="text-align: left;">
+         <pre ngNonBindable>$ sudo bash&lt;code/&gt;
+</pre>
+            <p>
+            </p>
+            <pre ngNonBindable>$ su&lt;code/&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        Para salir como usuario root escribimos la orden:
+        <span style="font-size: 10pt; font-family: 'Times New Roman','serif';">
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># exit</pre>
+        </div>
+    </div>
+    <p>
+        El comando
+        <em>
+            su
+        </em>
+        se utiliza para iniciar sesión en la cuenta de root, pero de forma
+        predeterminada la contraseña de la cuenta raíz está bloqueada en Ubuntu. Si lo deseas,
+        puedes activar la cuenta de administrador, o
+        <span lang="en">
+         root
+        </span>
+        <em>
+         <span lang="en">
+          ,
+         </span>
+        </em>
+        estableciendo su contraseña:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ sudo passwd root
+</pre>
+        </div>
+    </div>
+    <p>
+        Iniciar sesión como root puede causar problemas muy serios ya que éste puede hacer cualquier
+        cosa y podría escribirse un comando incorrectamente y destruir el sistema. Si por alguna
+        razón has habilitado la cuenta de root y deseas deshabilitarla nuevamente, usaríamos el
+        siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ sudo passwd -dl root
+</pre>
+        </div>
+    </div>
+    <p>
+        Aunque a lo largo del curso aprenderás a utilizar el
+        <span lang="en">
+         intérprete de comandos
+        </span>
+        del sistema, a continuación puedes ver los comandos más utilizados en los sistemas
+        GNU/Linux.
+    </p>
+    <p>
+        Un comando que te resultará muy interesante y útil, sobre todo en los inicios con tu nuevo
+        sistema operativo, es el acceso a la ayuda en línea de un determinado comando. La sintaxis
+        es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># man nombre_del_comando
+</pre>
+        </div>
+    </div>
+    <p>
+        Por ejemplo, si quieres acceder al contenido de la ayuda del comando
+        <em>
+            apt-get
+        </em>
+        ,
+        deberás ejecutar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># man apt-get
+</pre>
+        </div>
+    </div>
+    <div class="exe-tooltip-text" id="t5f190a56-ce6c-79ad-7ea6-9371d837af12">
+        <p>
+            Carácter o conjunto de caracteres que se muestran en una línea de comandos para indicar
+            que está a la espera de órdenes.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="td4aad05e-1051-8c6c-67f0-d317dba05bdd">
+        <p>
+            En los sistemas GNU/Linux, root es el nombre que recibe el usuario que es administrador
+            del sistema y que tiene todos los permisos.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.3.- Estructura de directorios.
+</h1><div class="iDevice_content">
+
+    <p>
+        <span style="font-size: 1em;">
+         <abbr lang="en" title="GNU's Not Unix">
+          GNU
+         </abbr>
+         /Linux, al
+								igual que UNIX, organiza la información del sistema en una estructura de árbol
+								jerárquico de directorios compuesta de ficheros. Esta estructura se forma mediante un
+								sistema de ficheros raíz (
+        </span>
+        <span lang="en" style="font-size: 1em;">
+         file system
+								root
+        </span>
+        <span style="font-size: 1em;">
+         ) y un conjunto de sistemas de ficheros
+								montables.
+        </span>
+    </p>
+    <p>
+        Un sistema de ficheros, o
+        <span lang="en">
+         file system
+        </span>
+        , es una estructura de
+        directorios completa. Para poder utilizar un sistema de ficheros hay que montarlo; o sea,
+        enlazarlo a la estructura de directorios ya existente. Los sistemas de ficheros se montan
+        automáticamente cada vez que se inicia el sistema operativo. Cuando un usuario se conecta al
+        sistema, se encuentra un único árbol de directorios formado por los distintos sistemas de
+        ficheros que se encuentran montados en ese instante.
+    </p>
+</div><h1 class="title">
+    4.- Entorno gráfico GNOME. Personalización.
+</h1><div class="iDevice_content">
+
+    <p>
+          <span>
+           <strong>
+            Juan
+           </strong>
+           ya ha visto los aspectos más característicos de Linux y
+										ahora quiere familiarizarse con el entorno gráfico de Ubuntu
+          </span>
+        Desktop
+        20.04
+        <abbr title="Long Term Support">
+            LTS
+        </abbr>
+        para
+        poder&nbsp;configurarlo a su gusto:
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : - Me gustaría personalizar el entorno gráfico del sistema,
+        ¿podrías ayudarme?
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        : - Por supuesto que sí
+        <strong>
+            Juan,
+        </strong>
+        veamos
+        cómo hacerlo.
+    </p>
+</div><h1 class="title">
+    4.1.- Escritorio GNOME.
+</h1><div class="iDevice_content">
+    <p>
+        <span style="font-size: 1em;">
+         La interfaz gráfica de Ubuntu Desktop 20.04
+         <abbr title="Long Term Support">
+          LTS
+         </abbr>
+         es fácil de usar, atractiva, muy
+								rápida y, como ya hemos dicho anteriormente, está basada en el entorno gráfico
+         <abbr title="GNU Network Object Model Environment">
+          GNOME
+         </abbr>
+         .
+        </span>
+    </p>
+
+    <p>
+        <span style="font-size: 1em;">
+         En el escritorio de Ubuntu Desktop 20.04
+         <abbr title="Long Term Support">
+          LTS
+         </abbr>
+         podemos diferenciar los siguientes
+								elementos:
+        </span>
+    </p>
+    <p>
+        1.
+        <em>
+            <strong>
+                Barra de menús
+            </strong>
+        </em>
+        : es la barra situada en la parte superior de la
+        pantalla y en ella encontramos, comenzando de izquierda a derecha:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                <strong>
+                    Actividades
+                </strong>
+            </em>
+            : sirve para acceder a nuestras aplicaciones,
+            mostrar las ventanas de las aplicaciones que estamos utilizando y ver de forma sencilla
+            todos los
+            <span>
+          espacios de trabajo que tenemos disponibles.
+          <span>
+           Cada
+										espacio de trabajo es un escritorio, donde podemos organizar los iconos y
+										ventanas a nuestro gusto. Resulta bastante útil cuando necesitamos utilizar
+										varias aplicaciones de forma simultánea. Podemos pasar ventanas de una
+										aplicación de un espacio de trabajo a otro, para de esta forma, organizarnos el
+										trabajo a nuestro antojo.
+          </span>
+         </span>
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Menú aplicaciones
+                </strong>
+            </em>
+            : muestra el nombre de la aplicación con la
+            que estamos trabajando y nos permite acceder a su menú contextual.
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Calendario y notificaciones
+                </strong>
+            </em>
+            : muestra&nbsp;la fecha y hora
+            actual. Al pulsar sobre este botón se desplegará un cuadro contextual en el que
+            aparecerán las notificaciones, el calendario actual, así como las fechas más señaladas
+            si has añadido tus cuentas. Así por ejemplo, si añades tu&nbsp;cuenta de Google, verás
+            los eventos&nbsp;de tus calendarios.
+        </li>
+        <li>
+            <em>
+                <strong style="font-size: 1em;">
+                    Menú de acceso universal
+                </strong>
+            </em>
+            <span style="font-size: 1em;">
+          : no aparece por defecto y sirve para activar determinadas
+									funciones relativas con la accesibilidad del sistema.
+         </span>
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Menú del sistema
+                </strong>
+            </em>
+            : aquí tenemos agrupados, y podemos modificar
+            algunas de sus configuraciones, la conexión de red e inalámbrica, el control de volumen,
+            el brillo de la pantalla, cerrar la sesión o cambiar de usuario, bloquear la pantalla y
+            apagar el equipo. También tenemos acceso a la configuración del sistema.
+        </li>
+    </ul>
+    <p>
+        2.
+        <em>
+            <strong>
+                Lanzador
+            </strong>
+        </em>
+        (también llamado
+        <em>
+            Dock
+        </em>
+        ): es la barra de iconos
+        situada en la parte izquierda de la pantalla y nos ofrece un acceso rápido a las
+        aplicaciones que se utilizan con más frecuencia. Las aplicaciones en ejecución también
+        colocan un icono en el lanzador mientras están en marcha.
+        <br>
+        <br>
+        3.
+        <strong>
+            Botón
+            <em>
+                Aplicaciones
+            </em>
+        </strong>
+        : se encuentra en el extremo inferior del
+        <em>
+            Lanzador
+        </em>
+        y nos muestra las aplicaciones que tenemos instaladas.
+        <br>
+        <br>
+        4.
+        <em>
+            <strong>
+                Fondo de escritorio
+            </strong>
+        </em>
+        :&nbsp;es el espacio comprendido entre la
+        <em>
+            Barra de menús
+        </em>
+        y el
+        <em>
+            Lanzador
+        </em>
+        . Es la zona más amplia de la pantalla y está
+        decorado
+        <span>
+         conservando el esquema de color estándar de Ubuntu de púrpura y naranja
+								mezclado en un degradado junto con la imagen de un felino
+        </span>
+        . Podemos situar aquí
+        lanzadores a documentos o a nuestras aplicaciones favoritas.
+        <br/><br/><br/><br/></p>
+</div><h1 class="title">
+    4.2.- Iconos del escritorio.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Al igual que en
+        <span lang="en">
+         Windows
+        </span>
+        podemos hacer que determinados iconos de
+        uso frecuente como la carpeta
+        <em>
+            Mis documentos
+        </em>
+        , o la
+        <em>
+            Papelera de reciclaje
+        </em>
+        se muestren en el escritorio, lo mismo podemos hacer en el escritorio
+        <abbr title="GNU Network Object Model Environment">
+            GNOME
+        </abbr>
+        de Ubuntu.
+        <br>
+        Por
+        defecto en el escritorio de Ubuntu Desktop 20.04
+        <abbr title="Long Term Support">
+            LTS
+        </abbr>
+        aparecen la carpeta personal del usuario y la
+        <em>
+            Papelera
+        </em>
+        ,
+        pero si queremos ocultar alguna de ellas o posteriormente volver a ponerla visible,
+        tendremos que hacerlo a través de la herramienta
+        <strong>
+            <em>
+                Retoques
+            </em>
+            ,
+        </strong>
+        también conocida como
+        <strong>
+         <span lang="en">
+          <em>
+           Gnome Tweaks
+          </em>
+          .
+         </span>
+        </strong>
+        <span lang="en">
+         E
+        </span>
+        sta
+        herramienta no viene instalada por defecto y para instalarla ejecutamos en la
+        <em>
+            Terminal
+        </em>
+        el siguiente comando:
+        <br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;$ sudo apt install gnome-tweaks&lt;/code&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <span>
+         Una vez instalada la herramienta podemos acceder a ella pulsando en el botón
+         <em>
+          Aplicaciones
+         </em>
+         y tecleando
+         <em>
+          Retoques
+         </em>
+         . Al iniciarla observamos
+								que
+        </span>
+        está dividida en una serie de secciones que nos permiten modificar una
+        interesante cantidad de elementos en el sistema. Nosotros utilizaremos la sección
+        <em>
+            Extensiones
+        </em>
+        y en ella encontraremos la opción
+        <em>
+         <span lang="en">
+          Desktop
+									Icons
+         </span>
+        </em>
+        , junto a la que aparece un botón con la imagen de una rueda de
+        engranaje. Al pulsar en este botón podremos marcar si mostrar o no en el escritorio la
+        carpeta del usuario o la papelera. También, nos permite ajustar el tamaño de los iconos del
+        escritorio pudiendo elegir entre los valores
+        <em>
+            Pequeño
+        </em>
+        ,
+        <em>
+            Estándar
+        </em>
+        o
+        <em>
+            Grande
+        </em>
+        . Por defecto, aparecen en tamaño
+        <em>
+            Pequeño
+        </em>
+        .
+    </p>
+</div><h1 class="title">
+    4.3.- Configuración visual.
+</h1><div class="iDevice_content">
+    <p>
+        Al igual que en
+        <span lang="en">
+         Windows
+        </span>
+        , en Ubuntu podemos cambiar la configuración
+        visual del escritorio como: el fondo de escritorio, la resolución de pantalla, los temas
+        visuales, las tipografías, etc. Veamos cómo hacerlo en Ubuntu Desktop 20.04
+        <abbr title="Long Term Support">
+            LTS
+        </abbr>
+        .
+    </p>
+    <div class="elemento_centrado">
+    </div>
+    <p>
+        <span style="font-size: large;">
+         <b>
+          Fondo de escritorio
+         </b>
+        </span>
+    </p>
+    <p>
+        Podemos poner como fondo de escritorio algunos de los fondos incluidos en Ubuntu, o bien
+        personalizarlo utilizando cualquier archivo de tipo imagen. El procedimiento es sencillo:
+    </p>
+    <ol>
+        <li>
+            Hacemos clic con el botón derecho sobre el escritorio y seleccionamos la opción
+            <em>
+                Cambiar el fondo...
+            </em>
+        </li>
+        <li>
+            Seleccionamos el fondo deseado o en el caso de que queramos utilizar un archivo de
+            imagen como fondo, hacemos clic en el botón
+            <em>
+                Añadir imagen...
+                <strong style="font-size: 1em;">
+                </strong>
+            </em>
+            <span style="font-size: 1em;">
+          Si
+									elegimos esta última opción,&nbsp;seleccionamos la ruta donde está almacenado el
+									archivo de imagen en el explorador de archivos.
+         </span>
+        </li>
+    </ol>
+
+    <p>
+        <span style="font-size: 1em;">
+         También podemos cambiar el fondo de escritorio, e incluso
+								afinar más con las opciones de su estilo, utilizando la sección
+        </span>
+        Apariencia
+        <span style="font-size: 1em;">
+         de la herramienta
+        </span>
+        <em>
+            Retoques
+        </em>
+        <span style="font-size: 1em;">
+         . Los estilos que podemos aplicar, que son los que aparecen en
+								el menú desplegable
+        </span>
+        <em>
+            Ajuste
+        </em>
+        <span style="font-size: 1em;">
+         , son los
+								siguientes:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <b>
+                    <em>
+            <span lang="en">
+             Centered
+            </span>
+                    </em>
+                    :
+                </b>
+                sitúa la imagen centrada en el
+                escritorio, en su resolución original.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    <em>
+            <span lang="en">
+             Scaled
+            </span>
+                    </em>
+                    :
+                </b>
+                amplia o reduce la imagen para
+                adaptarla al tamaño del escritorio, respetando la relación de aspecto de la imagen
+                original. No produce distorsión.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    <em>
+            <span lang="en">
+             Spanned
+            </span>
+                    </em>
+                    :
+                </b>
+                distorsiona la imagen para
+                ocupar toda la pantalla.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    <em>
+            <span lang="en">
+             Stretched
+            </span>
+                    </em>
+                    :
+                </b>
+                aumenta el tamaño de la imagen
+                para que ocupe toda la pantalla.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    <em>
+            <span lang="en">
+             Wallpaper
+            </span>
+                    </em>
+                    :
+                </b>
+                en caso de utilizar como fondo
+                una imagen de baja resolución, hace un mosaico con la imagen, colocándola de forma
+                correlativa.
+            </p>
+        </li>
+        <li>
+            <em>
+                <b>
+           <span lang="en">
+            Zoom
+           </span>
+                </b>
+            </em>
+            : realiza una ampliación de la imagen.
+        </li>
+    </ul>
+
+    <p>
+    </p>
+    <p>
+        <span style="font-size: large;">
+         <b>
+          Resolución de pantalla
+         </b>
+        </span>
+    </p>
+    <p>
+        Podemos cambiar la resolución de pantalla haciendo clic con el botón derecho sobre el
+        escritorio y seleccionando
+        <em>
+            Configuración de pantalla
+        </em>
+        . En la pestaña
+        <em>
+            Monitores
+        </em>
+        nos aparecerán las siguientes opciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <em>
+                    <strong>
+                        Orientación
+                    </strong>
+                </em>
+                :&nbsp;este es un aspecto dirigido a algunos
+                equipos o público en especial, ya que se aplica en aquellos equipos en los cuales es
+                posible rotar físicamente la pantalla en algunas direcciones. Podemos elegir entre
+                los valores
+                <em>
+                    Horizontal
+                </em>
+                ,
+                <em>
+                    Vertical derecha
+                </em>
+                ,
+                <em>
+                    Vertical
+                    izquierda
+                </em>
+                y
+                <em>
+                    Horizontal (dada la vuelta)
+                </em>
+                .
+            </p>
+        </li>
+        <li>
+            <p>
+                <em>
+                    <strong>
+                        Resolución
+                    </strong>
+                </em>
+                : la resolución hace referencia al número de
+                píxeles que pueden ser desplegados en cada direccionamiento en la pantalla. La
+                resolución posee una relación de aspecto, la cual técnicamente es la relación del
+                ancho a la altura.
+            </p>
+        </li>
+        <li>
+            <p>
+                <em>
+                    <strong>
+                        Escala
+                    </strong>
+                </em>
+                : e
+                <span>
+           n el momento en el que seleccionemos una
+										nueva resolución, y en base a la elegida, se activará esta nueva opción
+										permitiéndonos definir el porcentaje de escalamiento de los objetos en la
+										pantalla de Ubuntu
+           <span>
+            entre los valores
+            <em>
+             100%
+            </em>
+            ,
+            <em>
+             200%
+            </em>
+            o
+            <em>
+             300%
+            </em>
+            .
+           </span>
+          </span>
+            </p>
+        </li>
+        <li>
+            <p>
+          <span>
+           <span>
+           </span>
+          </span>
+                <em>
+                    <strong>
+                        Escalado fraccionario
+                    </strong>
+                </em>
+                : al
+                instalar Ubuntu en un
+                <abbr title="Personal Computer">
+                    PC
+                </abbr>
+                o
+                portátil con un buen monitor, nos podemos encontrar con un problema, y es que el
+                escalado anterior sea o muy grande con el de 200% o muy pequeño con el de 100%.
+                Activando esta opción, podremos elegir&nbsp;entre cinco valores de
+                escalado,
+                <em>
+                    100%
+                </em>
+                ,
+                <em>
+                    125%
+                </em>
+                ,
+                <em>
+                    150%
+                </em>
+                ,
+                <em>
+                    175%
+                </em>
+                y
+                <em>
+                    200%
+                </em>
+                <strong>
+                    ,
+                </strong>
+                ajustándolo así a nuestras preferencias exactas
+                y dejando la interfaz a nuestro gusto.
+            </p>
+        </li>
+    </ul>
+
+    <p>
+    </p>
+    <p>
+        <span style="font-size: large;">
+         <b>
+          Luz noturna
+         </b>
+        </span>
+    </p>
+    <p>
+        Las aplicaciones nocturnas se han vuelto populares últimamente. En la misma ventana en la que
+        hemos cambiado anteriormente la resolución de pantalla, pero en esta ocasión accediendo a la
+        pestaña
+        <em>
+            Luz nocturna
+        </em>
+        , podemos habilitar la opción
+        <em>
+            Luz nocturna
+        </em>
+        .&nbsp;Esta
+        función filtra la luz azul y convierte nuestra pantalla en un amarillo oscuro después del
+        atardecer, reduciendo así la tensión en nuestros ojos.
+    </p>
+
+    <p>
+    </p>
+    <p>
+        <strong>
+         <span style="font-size: large;">
+          Temas
+         </span>
+        </strong>
+    </p>
+    <p>
+        Un&nbsp;tema&nbsp;es una combinación de imágenes de fondo de&nbsp;escritorio, colores de
+        ventanas y sonidos. Para aplicar un nuevo tema en Ubuntu utilizaremos la sección
+        <em>
+            Apariencia
+        </em>
+        de la herramienta
+        <em>
+            Retoques
+        </em>
+        ,
+        <span lang="en" style="font-size: 1em;">
+         la cual nos permite&nbsp;modificar los siguientes elementos decorativos:
+								aplicaciones (colores del texto y de las ventanas), el cursor (puntero del ratón), los
+								iconos y el sonido. También nos permite cargar un tema Shell si se ha descargado
+								previamente. Para todos los casos aparecen cuadros desplegables en los que se puede
+								elegir el elemento que queramos de entre los que se dispone por defecto o los que
+								descarguemos.
+        </span>
+    </p>
+
+</div><h1 class="title">
+    4.4.- Barra de menús.
+</h1><div class="iDevice_content">
+    <p>
+        A continuación vamos a ver cómo personalizar la barra de menús, que como sabemos es la barra
+        que nos encontramos en la parte superior del escritorio GNOME en Ubuntu.
+    </p>
+    <p>
+        <span style="font-size: large;">
+         <strong style="font-size: 1em;">
+          Habilitar la esquina activa
+									de la vista de actividades
+         </strong>
+        </span>
+    </p>
+    <p>
+        <span>
+         La esquina activa nos permite que, con sólo desplazar el cursor del ratón a la esquina
+								superior izquierda de la pantalla, aparezcan todas
+        </span>
+        <span style="font-size: 1em;">
+         nuestras aplicaciones
+         <span>
+          y ventanas abiertas.
+									P
+         </span>
+        </span>
+        or defecto está desactivada y para poder recuperarla usaremos la
+        herramienta
+        <em>
+            Retoques
+        </em>
+        .&nbsp;Una vez dentro de ella seleccionamos
+        <em>
+            Barra
+            Superior
+        </em>
+        y activamos
+        <em>
+            Esquina activa de la vista de actividades
+        </em>
+        .
+    </p>
+
+    <p>
+    </p>
+    <p>
+        <span style="font-size: large;">
+         <b>
+          Calendario y notificaciones
+         </b>
+        </span>
+    </p>
+    <p>
+        <span>
+         El botón Calendario y notificaciones que aparece en la zona central de la barra de
+								menús, muestra por defecto el día y mes de la fecha actual, así como las horas y minutos
+								de la hora actual.
+        </span>
+    </p>
+    <p>
+        <span>
+         Podemos modificar la información mostrada utilizando la herramienta
+         <em>
+          Retoques
+         </em>
+         ,
+								seleccionando
+         <em>
+          Barra superior
+         </em>
+         y activando o desactivando las siguientes
+								opciones:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                <strong>
+                    Día de semana
+                </strong>
+            </em>
+            : muestra el día de la semana (
+            <abbr title="lunes">
+                lun
+            </abbr>
+            ,
+            <abbr title="martes">
+                mar
+            </abbr>
+            ,
+            <abbr title="miércoles">
+                mié
+            </abbr>
+            ,
+            <abbr title="jueves">
+                jue
+            </abbr>
+            ,
+            <abbr title="viernes">
+                vie
+            </abbr>
+            ,
+            <abbr title="sábado">
+                sáb
+            </abbr>
+            o
+            <abbr title="domingo">
+                dom
+            </abbr>
+            ).
+        </li>
+        <li>
+         <span>
+         </span>
+            <em>
+                <strong>
+                    Fecha
+                </strong>
+            </em>
+            : muestra el día y el mes de la fecha
+            actual.
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Segundos
+                </strong>
+            </em>
+            : muestra los segundos de la hora actual.
+        </li>
+    </ul>
+
+    <p>
+    </p>
+    <p>
+        <span style="font-size: large;">
+         <strong>
+          Menú de acceso universal
+         </strong>
+        </span>
+    </p>
+    <p>
+        Ubuntu se ha preocupado de incluir una amplia gama de opciones y programas de accesibilidad
+        para que los equipos resulten más fáciles de utilizar por personas con algún tipo de
+        discapacidad, siendo particularmente útiles para mejorar la accesibilidad de personas que
+        por problemas de movilidad tienen dificultades para escribir con el teclado o usar el ratón,
+        o de personas que tienen deficiencias visuales o auditivas.
+        <br>
+        Todas estas opciones las
+        encontraremos a través de la herramienta
+        <em>
+            Configuración
+        </em>
+        , seleccionando
+        <em>
+            Acceso
+            universal
+        </em>
+        , pero podemos acceder a ellas de forma más rápida a través del
+        <em>
+            menú
+            de acceso universal
+        </em>
+        .
+        <br/></p>
+
+    <p>
+        <span style="font-size: 1em;">
+         Por defecto el menú de acceso universal no está visible y
+								podemos mostrarlo activando la opción
+        </span>
+        <em>
+            Mostrar siempre el menú de acceso
+            universal
+        </em>
+        <span style="font-size: 1em;">
+         que aparece en&nbsp;la
+								herramienta
+        </span>
+        <em>
+            Configuración
+        </em>
+        <span style="font-size: 1em;">
+         ,
+								seleccionando
+        </span>
+        <em>
+            Acceso universal
+            <strong style="font-size: 1em;">
+                .
+            </strong>
+        </em>
+    </p>
+
+</div><h1 class="title">
+    4.5.- Lanzador.
+</h1><div class="iDevice_content">
+    <p>
+        El
+        <em>
+            <b>
+                lanzador
+            </b>
+        </em>
+        es una&nbsp;barra de iconos&nbsp;situada en el lado
+        izquierdo de la pantalla al iniciar sesión, que nos&nbsp;ofrece un acceso rápido a las
+        aplicaciones que se utilizan con más frecuencia.
+    </p>
+    <p>
+        Las aplicaciones en ejecución colocan también un icono
+        en&nbsp;el
+        <em>
+            lanzador
+        </em>
+        mientras están en marcha.&nbsp;Podemos conservar en
+        el
+        <em>
+            lanzador
+        </em>
+        el&nbsp;icono&nbsp;de la aplicación&nbsp;que está en ejecución,
+        situando el cursor sobre el icono, pulsando con el botón derecho del ratón y seleccionando
+        la opción
+        <em>
+            Añadir a los favoritos
+        </em>
+        <b>
+            .
+        </b>
+        Por el contrario, si lo que
+        queremos es&nbsp;quitar un icono que está en el
+        <em>
+            lanzador
+        </em>
+        , pulsamos con el botón
+        derecho del ratón y seleccionamos la opción
+        <em>
+            Quitar de los favoritos
+            <b>
+                .
+            </b>
+        </em>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         En el caso de que no nos guste la&nbsp;posición del
+								icono&nbsp;de una aplicación, lo podemos mover pulsando con el botón izquierdo del
+								ratón, y sin soltar, lo arrastramos hasta el lugar deseado dentro del
+         <em>
+          lanzador
+         </em>
+         .
+        </span>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+        </span>
+        <span style="font-size: 1em;">
+         Cuando tenemos varias
+								ventanas abiertas de una misma aplicación, el icono de esa aplicación tendrá varios
+								puntos&nbsp;en su parte izquierda indicando el número de&nbsp;ventanas abiertas, y
+								si
+        </span>
+        <b style="font-size: 1em;">
+        </b>
+        <span style="font-size: 1em;">
+         pulsamos&nbsp;con&nbsp;el botón izquierdo del ratón sobre el
+								icono,&nbsp;nos aparece una&nbsp;vista previa&nbsp;de las ventanas
+								abiertas.
+        </span>
+        <span style="font-size: 1em;">
+         Desde la
+        </span>
+        vista
+        previa
+        <span style="font-size: 1em;">
+         podemos acceder a la ventana de la aplicación que
+								nos interese pulsando con el ratón.
+        </span>
+    </p>
+    <div>
+        <div>
+         <span style="font-size: 1em;">
+          Podemos también
+         </span>
+            ocultar automáticamente el
+            <em>
+                lanzador
+            </em>
+            ,
+            <span style="font-size: 1em;">
+          modificar su posición en la
+									pantalla y cambiar el
+         </span>
+            tamaño de sus iconos.&nbsp;Lo haremos a través de
+            la sección
+            <em>
+                Apariencia
+            </em>
+            de la herramienta
+            <em>
+                Configuración
+            </em>
+            .
+            Podemos&nbsp;acceder
+            <b style="font-size: 1em;">
+            </b>
+            a la herramienta
+            <em>
+                Configuración
+            </em>
+            desde el
+            <em>
+                menú del sistema
+            </em>
+            o desde el botón
+            <em>
+                Aplicaciones
+            </em>
+            tecleando
+            <em>
+                Configuración
+            </em>
+            .
+        </div>
+        <div>
+
+        </div>
+    </div>
+</div><h1 class="title">
+    5.- Repositorios.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : -
+        <strong>
+            Ana
+        </strong>
+        he escuchado hablar de los repositorios
+        pero no sé realmente ni lo que son ni para lo que sirven. ¿Podrías explicármelo?
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        : - Sí Juan, te lo explico. Verás como no es complicado.
+    </p>
+</div><h1 class="title">
+    5.1.- Añadir repositorios externos.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+    </div>
+    <p>
+        A veces nos encontramos con que queremos instalar una aplicación en nuestro sistema operativo
+        Ubuntu pero dicha aplicación no se encuentra en los repositorios de Ubuntu o Canonical que
+        es la organización que se encarga de su mantenimiento.
+    </p>
+    <p>
+        Normalmente no han sido incluidas porque se trata de programas que no son libres ni de código
+        abierto, porque estos terceros no se han puesto en contacto con Canonical para que lo
+        incluyan en sus repositorios, o porque están en una versión no estable pero totalmente
+        funcional para nuestros intereses.
+    </p>
+    <p>
+        Estas otras aplicaciones de terceros se encuentran en otros repositorios que podemos instalar
+        y para eso debemos conocer la dirección del repositorio. Hay varias formas de incluir la
+        dirección de un nuevo repositorio:
+    </p>
+    <p>
+        <strong>
+            1. Editando el archivo
+            <em>
+                sources.list
+            </em>
+        </strong>
+        :
+    </p>
+    <p>
+        El archivo
+        <em>
+            /etc/apt/sources.list
+        </em>
+        indica a dónde se debe ir a buscar los paquetes que
+        se instalan con los gestores de paquetes,&nbsp;es decir, las fuentes o lugares que
+        suministran todas las aplicaciones disponibles de la distribución y los paquetes que
+        actualizan el sistema operativo. Reproducimos parte de este archivo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>deb http://es.archive.ubuntu.com/ubuntu/ focal main restricted</pre>
+            <pre ngNonBindable># deb-src http://es.archive.ubuntu.com/ubuntu/ focal main restricted</pre>
+            <pre ngNonBindable>......</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para editarlo escribimos en la
+        <em>
+            Terminal
+        </em>
+        la siguiente instrucción:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 24.15em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$ sudo nano /etc/apt/sources.list</pre>
+        </div>
+    </div>
+    <p>
+        y al final del documento añadimos la dirección del nuevo repositorio y la dirección de las
+        fuentes, es decir, el
+        <em>
+            deb
+        </em>
+        y
+        <em>
+            deb-src
+        </em>
+        , respectivamente.
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+</div><h1 class="title">
+    6.- Actualizaciones.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Juan
+        </strong>
+        ya ha dado sus primeros pasos en Linux y se plantea lo
+        siguiente:
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : -
+        <strong>
+            Ana
+        </strong>
+        estoy pensando... ¿los sistemas Linux
+        no necesitan actualizarse?
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        : - Claro que sí
+        <strong>
+            Juan,
+        </strong>
+        vamos a ver cómo
+        hacerlo.
+        <strong>
+        </strong>
+    </p>
+</div><h1 class="title">
+    6.1.- Actualización de los repositorios.
+</h1><div class="iDevice_content">
+    <p>
+        Antes de proceder a comentar la actualización del sistema, debemos tener en cuenta la
+        actualización de los repositorios. Ya hemos visto que los repositorios consisten en sitios
+        web donde se encuentran almacenados los paquetes, que una vez descargados, instalan el
+        software en el ordenador.
+    </p>
+    <p>
+        Tanto los repositorios oficiales (mantenidos por Canonical), como el resto de repositorios
+        externos (incluyen programas que no son libres, de código abierto o versiones no estables
+        que funcionan), varían a lo largo del tiempo, bien añadiendo nuevos paquetes o versiones de
+        los mismos, por lo que es necesario actualizar los repositorios que tenemos en el archivo
+        <em>
+            /etc/apt/sources.list
+        </em>
+        y así comprobar si hay algo nuevo.
+    </p>
+    <p>
+        Podemos actualizar los repositorios desde el modo comando a través de la
+        <em>
+            Terminal
+        </em>
+        ,
+        siendo usuario administrador o root, y para ello hay que ejecutar la orden:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$ sudo apt update</pre>
+        </div>
+    </div>
+
+</div><h1 class="title">
+    6.1.1.- Actualizar /etc/apt/sources.list
+</h1><div class="iDevice_content">
+    <p>
+        Es muy frecuente que a la hora de instalar un paquete utilizando un repositorio automático,
+        por ejemplo con apt, apt-get o synaptic, se produzca un error porque no tienes actualizado
+        el archivo que contiene el lugar donde se encuentran los paquetes (los
+        <span lang="Inglés" title="Source">
+         sources
+        </span>
+        ).
+    </p>
+    <p>
+        Las fuentes se encuentran en el archivo /etc/apt/sources.list.&nbsp; Para actualizar el
+        archivo debe realizar los siguientes pasos:
+    </p>
+    <ul class="lista_verificacion" style="list-style-type: disc;">
+        <li>
+            Realizamos una copia de seguridad del archivo:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># cd /etc/apt
+</pre>
+            <pre ngNonBindable># cp sources.list sources.list_copia
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion" style="list-style-type: disc;">
+        <li>
+            Eliminamos el archivo y creamos uno vacío:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># rm sources.list
+</pre>
+            <pre ngNonBindable># touch sources.list
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion" style="list-style-type: disc;">
+        <li>
+            Ahora buscamos los fuentes que queremos utilizar. Existen muchas páginas que los
+            proporcionan. Un ejemplo es:
+            http://repogen.simplylinux.ch.
+        </li>
+    </ul>
+    <div style="text-align: center;">
+
+    </div>
+    <p>
+        Es muy frecuente que a la hora de instalar un paquete utilizando un repositorio automático,
+        por ejemplo con apt, apt-get o synaptic, se produzca un error porque no tienes actualizado
+        el archivo que contiene el lugar donde se encuentran los paquetes (los
+        <span lang="Inglés" title="Source">
+         sources
+        </span>
+        ).
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code style="background-color: initial;"&gt;# apt update&lt;/code&gt;&lt;span style="background-color: initial;"&gt; &lt;/span&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Y, ¡ya podemos instalar cualquier paquete!
+    </p>
+</div><h1 class="title">
+    6.2. Actualización del sistema.
+</h1><div class="iDevice_content">
+    <p>
+        Entendemos por actualización del sistema a todas las posibles actualizaciones que pudiera
+        haber, no sólo de nuestro sistema operativo, sino también de las aplicaciones que tengamos
+        instaladas.
+    </p>
+    <p>
+        La actualización del sistema se puede realizar desde el entorno gráfico o desde un terminal
+        mediante comandos. Veamos las distintas formas de hacerlo:
+    </p>
+    <p>
+        <strong>
+            1. A través de la herramienta
+            <em>
+                Actualización de software:
+            </em>
+        </strong>
+    </p>
+    <p>
+        La distribución Ubuntu dispone en su entorno gráfico para la actualización automática del
+        sistema de la aplicación
+        <em>
+            Actualización de software
+        </em>
+        <strong>
+        </strong>
+        (
+        <em>
+            /usr/bin/update-manager
+        </em>
+        ) y que está disponible través del botón
+        <em>
+            Aplicaciones
+        </em>
+        , con el icono siguiente:
+    </p>
+
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+            <div class="elemento_centrado" style="text-align: justify;">
+                <p>
+                    Esta aplicación detecta la disponibilidad de nuevas versiones de los paquetes
+                    instalados y propone la actualización de la lista de paquetes así como la
+                    descarga de estas nuevas versiones.
+                </p>
+                <p class="elemento_centrado" style="text-align: left;">
+           <span>
+            La
+											aplicación
+           </span>
+                    <em>
+                        Actualización de
+                        software
+                        <strong>
+                        </strong>
+                    </em>
+                    <span>
+            no puede ser ejecutada si existe
+											lanzada otra instancia de algún programa relacionado con la instalación de
+											paquetes o actualización de sistema&nbsp;y pedirá que se cierre una de
+											ellas.
+           </span>
+                </p>
+                <p class="elemento_centrado" style="text-align: left;">
+           <span>
+           </span>
+                    <span>
+            Pulsando
+											en el botón
+            <em>
+             Instalar ahora
+            </em>
+            la actualización es inmediata
+											y, dependiendo del volumen de paquetes a actualizar y de la velocidad de la
+											conexión a Internet, tardará más o menos tiempo.
+           </span>
+                </p>
+
+                <p class="elemento_centrado" style="text-align: left;">
+                    Esta herramienta también nos
+                    permite determinar ciertos aspectos sobre las actualizaciones, pulsando en el
+                    botón
+                    <em>
+                        Configuración...
+                    </em>
+                    a través de&nbsp;las siguientes
+                    opciones:
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        <b>
+                            Para otros paquetes, suscríbase a:
+                        </b>
+                        nos permite
+                        indicar
+                        <strong>
+                            qué tipo
+                        </strong>
+                        de actualizaciones deseamos
+                        comprobar si están disponibles:
+                        <ul>
+                            <li>
+                                Todas las actualizaciones.
+                            </li>
+                            <li>
+                                Actualizaciones de seguridad y recomendadas.
+                            </li>
+                            <li>
+                                Solo actualizaciones de seguridad.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>
+                            Comprobar actualizaciones automáticamente:
+                        </b>
+                        nos permite indicar
+                        cada
+                        <b>
+                            cuánto tiempo
+                        </b>
+                        queremos que se compruebe la
+                        disponibilidad de nuevas versiones:
+                        <ul>
+                            <li>
+                                Diariamente.
+                            </li>
+                            <li>
+                                Cada dos días.
+                            </li>
+                            <li>
+                                Semanalmente.
+                            </li>
+                            <li>
+                                Cada dos semanas.
+                            </li>
+                            <li>
+                                Nunca.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <b>
+                            Cuando hay actualizaciones de seguridad:
+                        </b>
+                        nos permite
+                        indicar
+                        <b>
+                            la forma
+                        </b>
+                        en la que deben instalarse las
+                        actualizaciones de seguridad:
+                        <ul>
+                            <li>
+                                Mostrar inmediatamente.
+                            </li>
+                            <li>
+                                Descargar automáticamente.
+                            </li>
+                            <li>
+                                Descargar e instalar automáticamente.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>
+                            Cuando hay otras actualizaciones:
+                        </strong>
+                        nos permite
+                        indicar
+                        <strong>
+                            cuándo mostrar
+                        </strong>
+                        el resto de
+                        actualizaciones.
+                        <ul>
+                            <li>
+                                Mostrar inmediatamente.
+                            </li>
+                            <li>
+                                Mostrar semanalmente.
+                            </li>
+                            <li>
+                                Mostrar cada dos semanas.
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>
+                            Notificarme una versión nueva de Ubuntu:
+                        </strong>
+                        para indicar
+                        cuando queremos que nos avise de que hay una nueva versión de Ubuntu.
+                        <ul>
+                            <li>
+                                Para cualquier versión nueva.
+                            </li>
+                            <li>
+                                Para versiones con servicio técnico a largo plazo.
+                            </li>
+                            <li>
+                                Nunca.
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    7.- Instalación y desinstalación de software.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : -
+        <strong>
+            Ana
+        </strong>
+        necesito instalar una aplicación en el
+        sistema y no sé cómo hacerlo.
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        : - No te preocupes
+        <strong>
+            Juan
+        </strong>
+        , es sencillo y existen
+        varias formas de hacerlo. Vamos a verlo.
+    </p>
+</div><h1 class="title">
+    7.1.- Synaptic.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            <em>
+                Synaptic
+            </em>
+        </strong>
+        es un gestor de paquetes. Recordemos que un paquete
+        (programa de Linux) puede estar formado por varios paquetes,&nbsp;y si olvidamos instalar
+        alguno de ellos, el programa no funcionaría. El gestor de paquetes facilita esta labor,
+        marcando automáticamente todos los paquetes necesarios para el funcionamiento correcto de un
+        programa.
+    </p>
+    <p>
+        <em>
+            Synaptic
+        </em>
+        no viene instalado por defecto en Ubuntu
+        <span lang="en">
+         Desktop
+        </span>
+        20.04
+        <abbr title="Long Term Support">
+            LTS
+        </abbr>
+        , pero una vez instalado podremos acceder a él a través del
+        botón
+        <em>
+            Aplicaciones
+            <strong>
+            </strong>
+        </em>
+        <span>
+         tecleando
+         <strong>
+          <em>
+          </em>
+         </strong>
+        </span>
+        <em>
+            synaptic.
+        </em>
+    </p>
+
+    <p>
+        <span>
+         En la parte central, debajo de la barra de herramientas, podemos ver la lista de
+								paquetes disponibles.
+        </span>
+    </p>
+    <p>
+        Podemos buscar un paquete determinado, utilizando el botón
+        <em>
+            Buscar
+        </em>
+        de la
+        barra de herramientas, pero necesitamos conocer el nombre del paquete o una parte del mismo.
+    </p>
+    <p>
+        Si hacemos clic en un paquete, en el panel inferior nos aparecerá una descripción del
+        contenido del paquete.&nbsp;Cada paquete tiene al lado una casilla de verificación que puede
+        estar:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Rellena en color verde: indica que ese paquete ya está instalado, y si queremos
+            desinstalarlo, pulsamos sobre él con el botón derecho del ratón y
+            seleccionamos
+            <em>
+                Marcar para desinstalar.
+            </em>
+        </li>
+        <li>
+            Sin marcar: indica que el paquete no está instalado, y si queremos instalarlo, hacemos
+            doble clic en la casilla o seleccionamos
+            <em>
+                Marcar para instalar
+            </em>
+            tras
+            pulsarlo con el botón derecho del ratón.
+        </li>
+    </ul>
+    <p>
+        Los paquetes marcados se instalarán o desinstalarán cuando hagamos clic en el
+        botón
+        <em>
+            Aplicar
+        </em>
+        de la barra de herramientas.
+    </p>
+</div><h1 class="title">
+    7.1.1.- Opciones de Synaptic.
+</h1><div class="iDevice_content">
+    <p>
+        Vamos a continuar viendo algunas opciones más que nos ofrece
+        <em>
+            Synaptic
+        </em>
+        .
+    </p>
+    <p>
+        En un principio, te aparecen todos los paquetes disponibles según los repositorios
+        configurados, lo cuál significa una lista interminable.
+    </p>
+    <p>
+        Si conocemos el nombre del paquete a instalar, bastaría con ponerlo en la búsqueda a través
+        del botón
+        <em>
+            Buscar
+        </em>
+        de la barra de herramientas, y se procedería a realizar un
+        filtrado con los criterios de búsqueda. Pero si desconocemos el nombre del paquete, en el
+        panel izquierdo de la aplicación, podemos ver que los paquetes están organizados de acuerdo
+        a los siguientes criterios:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+
+            <em>
+                <strong>
+                    Secciones
+                </strong>
+            </em>
+            : permite, a través del panel inmediatamente
+            superior, organizar los paquetes por tipo de aplicación. Si seleccionamos
+            <em>
+                Todo
+            </em>
+            aparecen todos los paquetes, pero también disponemos de filtrados por tipo de
+            aplicación: Administración del sistema, Bases de Datos, Bibliotecas, Ciencia, Correo
+            electrónico, Editores, Gráficos, etc.
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Estado
+                </strong>
+            </em>
+            : podemos ver qué paquetes están instalados y cuáles no
+            lo están.
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Origen
+                </strong>
+            </em>
+            : podemos realizar una clasificación de los paquetes por
+            repositorio, es decir, nos indica qué paquetes pertenecen a cada uno de los repositorios
+            que aparecen en la lista.
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Filtros personalizados
+                </strong>
+            </em>
+            : muestra diferentes clasificaciones de
+            los paquetes utilizando diferentes criterios, como por ejemplo, paquetes actualizables,
+            paquetes rotos, deteriorados, etc.
+            <p>
+                Incluso permite añadir un filtro a medida realizado por el usuario. Este filtro lo
+                puedes crear utilizando el menú:
+                <em>
+                    Configuración
+                </em>
+                →
+                <em>
+                    Filtros.
+                </em>
+            </p>
+        </li>
+    </ul>
+</div><h1 class="title">
+    7.2.- apt-get o apt.
+</h1><div class="iDevice_content">
+    <p>
+        apt-get&nbsp; o&nbsp;apt, este último actualmente más utilizado, permiten instalar o
+        desinstalar por línea de comandos cualquier paquete utilizando los repositorios que se
+        encuentran en el fichero /etc/apt/sources.list
+        <em>
+            .
+        </em>
+    </p>
+    <p>
+        A continuación, vamos a ver los procedimientos más utilizados:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Actualizar los repositorios:
+            </strong>
+            permite actualizar los repositorios del
+            fichero /etc/apt/sources.list
+            <em>
+                .
+            </em>
+            <br>
+            <div class="codigo elemento_centrado" style="width: 16.45em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># apt-get update&lt;br /&gt;# apt update
+</pre>
+                </div>
+            </div>
+            <br/></li>
+        <li>
+            <strong>
+                Actualizar el sistema:
+            </strong>
+            permite actualizar el sistema con todas las
+            dependencias.
+            <br>
+            <div class="codigo elemento_centrado" style="width: 16.45em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># apt-get -f upgrade&lt;br /&gt;# apt upgrade
+</pre>
+                </div>
+            </div>
+            <br/></li>
+        <li>
+            <strong>
+                Búscar un paquete:
+            </strong>
+            permite localizar un paquete o término en alguno de
+            los repositorios.
+            <br>
+            <div class="codigo elemento_centrado" style="width: 16.45em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># apt-cache search &lt;paquete&gt;&lt;br /&gt;# apt search &lt;paquete&gt;
+</pre>
+                </div>
+            </div>
+            <br/></li>
+        <li>
+            <strong>
+                Consultar información de un paquete:
+            </strong>
+            permite consultar información de
+            un paquete.
+            <div class="codigo elemento_centrado" style="width: 16.45em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># apt-cache show &lt;paquete&gt;&lt;br /&gt;# apt show &lt;paquete&gt;
+</pre>
+                </div>
+            </div>
+            <br>
+            <div class="texto_izquierda">
+            </div>
+            <br/></li>
+        <li>
+            <strong>
+                Instalar un paquete:
+            </strong>
+            permite realizar la instalación de paquetes con la
+            resolución automática de dependencias.
+            <div class="codigo elemento_centrado" style="width: 16.45em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># apt-get install &lt;paquete&gt;&lt;br /&gt;# apt install &lt;paquete&gt;
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            <strong>
+                Desinstalar un paquete:
+            </strong>
+            permite desinstalar un paquete:
+            <ul>
+                <li>
+                    Manteniendo los archivos de configuración:
+                    <br>
+                    <div class="codigo elemento_centrado" style="width: 16.45em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable># apt-get remove &lt;paquete&gt;&lt;br /&gt;# apt remove &lt;paquete&gt;
+</pre>
+                        </div>
+                    </div>
+                    <br/></li>
+                <li>
+                    Desinstalando los archivos de configuración:
+                    <br>
+                    <div class="codigo elemento_centrado" style="width: 16.45em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable># apt-get purge &lt;paquete&gt;&lt;br /&gt;# apt purge &lt;paquete&gt;
+</pre>
+                        </div>
+                    </div>
+                    <br/></li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    7.3.- Aptitude.
+</h1><div class="iDevice_content">
+    <p>
+        aptitude
+        es un gestor de paquetes por
+        línea de comandos muy cómodo y sencillo de utilizar, pero para poder utilizarlo, necesitamos
+        instalarlo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># apt install aptitude
+</pre>
+        </div>
+    </div>
+    <p>
+        Y para ejecutarlo, ponemos el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># aptitude
+</pre>
+        </div>
+    </div>
+    <p>
+        Una vez ejecutada la herramienta podemos acceder a las diferentes categorías e instalar o
+        desinstalar el software.
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <div class="exe-tooltip-text" id="tc85170de-c967-d2e5-99b2-e64d32b06763">
+        <p>
+            Gestor automático de paquetes de Ubuntu.
+        </p>
+    </div>
+</div><h1 class="title">
+    7.4.- Ubuntu Software.
+</h1><div class="iDevice_content">
+    <p>
+        La herramienta
+        <em>
+            <strong>
+                Ubuntu
+                <span lang="en">
+           Software
+          </span>
+            </strong>
+        </em>
+        es
+        seguramente la forma más simple que tenemos para instalar y desinstalar aplicaciones en
+        Ubuntu. La podemos ejecutar a través de su icono en el lanzador o mediante el botón
+        <em>
+            Aplicaciones
+        </em>
+        .
+    </p>
+
+    <p>
+        <span style="font-size: 1em;">
+         En el panel superior, tenemos 3 pestañas:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <b>
+                    <em>
+                        Explorar
+                    </em>
+                    :
+                </b>
+                está destinada a la instalación de nuevo
+                <span lang="en">
+           software
+          </span>
+                . Nos muestra una aplicación sugerida para instalar y
+                una serie de categorías a través de las cuales accederemos a una lista de programas
+                clasificados en esa categoría. Esta clasificación facilita mucho la búsqueda de una
+                determinada aplicación.
+            </p>
+
+        </li>
+        <li>
+            <p>
+                <b>
+                    <em>
+                        Instalado
+                    </em>
+                    :
+                </b>
+                nos muestra una lista del
+                <span lang="en">
+           software
+          </span>
+                que está actualmente instalado. Si deseamos desinstalar un programa, bastaría con
+                buscarlo en la lista y hacer clic en
+                <em>
+                    Eliminar.
+                </em>
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    <em>
+                        Actualizaciones
+                    </em>
+                    :
+                </b>
+                nos informa si existen actualizaciones de las
+                aplicaciones que tenemos instaladas en el sistema.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Como puedes ver el funcionamiento de la herramienta
+        <em>
+            Ubuntu Software
+        </em>
+        es muy sencillo.
+    </p>
+</div><h1 class="title">
+    7.5.- Snap.
+</h1><div class="iDevice_content">
+    <p>
+        El término
+        <em style="font-size: 1em;">
+            <strong>
+                snap
+            </strong>
+        </em>
+        (instantánea, en
+        español)
+        <span style="font-size: 1em;">
+         se refiere tanto al comando
+        </span>
+        <em style="font-size: 1em;">
+            snap
+        </em>
+        <span style="font-size: 1em;">
+         utilizado&nbsp;para
+								instalar aplicaciones, como al de un paquete&nbsp;que permite la instalación de una
+								determinada aplicación.
+        </span>
+        <span style="font-size: 1em;">
+         <br>
+        <br/></span>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         Un paquete
+         <em>
+          snap
+         </em>
+         agrupa una aplicación y todas sus
+								dependencias en un único archivo comprimido que funciona sin modificaciones en muchas
+								distribuciones de Linux diferentes, pero para poder utilizarlo en el sistema, requiere
+								que tengamos instalado el demonio
+        </span>
+        <strong style="font-size: 1em;">
+            <em>
+                snapd
+            </em>
+        </strong>
+        . La
+        <span style="font-size: 1em;">
+         instalación de este incluye también
+								la&nbsp;herramienta
+        </span>
+        <em style="font-size: 1em;">
+            snap
+        </em>
+        <span style="font-size: 1em;">
+         para interactuar con
+								paquetes
+         <em>
+          snap
+         </em>
+         .
+        </span>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         Podemos comprobar si ambos están instalados en nuestro sistema
+								ejecutando el siguiente comando:
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ snap version
+</pre>
+        </div>
+    </div>
+    <p>
+        <span>
+         Si todo está bien, se mostrarán los números de versión de los componentes principales
+								del sistema, pero si
+        </span>
+        <span style="font-size: 1em;">
+         no se encuentra el
+								comando
+        </span>
+        <em style="font-size: 1em;">
+            snap
+        </em>
+        <span style="font-size: 1em;">
+         ,
+								o si el comando tarda un poco en responder antes de informar que
+        </span>
+        <em style="font-size: 1em;">
+            snapd no está disponible
+        </em>
+        <span style="font-size: 1em;">
+         , hay
+								que asegurarse que
+         <em>
+          snapd
+         </em>
+         está correctamente instalado.
+        </span>
+    </p>
+</div><h1 class="title">
+    7.6.- Instalación manual.
+</h1><div class="iDevice_content">
+
+    <p>
+        En
+        <abbr lang="en" title="GNU's Not Unix">
+            GNU
+        </abbr>
+        /Linux se puede realizar la
+        instalación de una aplicación directamente a partir del código fuente o a través de la
+        aplicación compilada, llamada paquete, y que contiene los archivos binarios, complementarios
+        y de configuración necesarios para poder ejecutarse.
+    </p>
+    <p>
+        <strong>
+            Instalación a través de un paquete
+        </strong>
+    </p>
+    <p>
+        Se puede realizar la instalación o desinstalación directa de un paquete. Vamos a ver los
+        procedimientos más utilizados:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Instalar un paquete
+            </strong>
+            : previamente debes descargar el paquete y después
+            ejecutar:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dpkg -i &lt;nombre_paquete&gt;
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Buscar el nombre de un paquete
+            </strong>
+            : si deseas eliminar un paquete, primero
+            debes conocer su nombre exacto. Para saberlo debes ejecutar:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dpkg-query –s &lt;paquete&gt;
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Desinstalar un paquete:
+            </strong>
+            una vez que conoces el nombre exacto se realiza
+            la desinstalación ejecutando:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dpkg -r &lt;nombre_paquete&gt;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    8.- Webmin.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Juan
+        </strong>
+        : -
+        <strong>
+            Ana
+        </strong>
+        estoy muy contento con todo lo que he
+        aprendido de Linux.
+    </p>
+    <p>
+        <strong>
+            Ana
+        </strong>
+        : - Ya te lo dije
+        <strong>
+            Juan
+        </strong>
+        , que no debías
+        preocuparte. Ahora vamos a ver una herramienta muy sencilla de usar para administrar
+        el sistema.
+    </p>
+</div><h1 class="title">
+    Anexo I.- Pasos documentados para realizar la instalación de Ubuntu.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p class="texto_centrado" style="text-align: left;">
+        A continuación, se muestran los pasos para
+        realizar la instalación de Ubuntu Desktop 20.04
+        <abbr lang="en" title="Long Term Support">
+            LTS
+        </abbr>
+        .
+    </p>
+    <p class="texto_centrado">
+        <strong>
+            INSTALACIÓN DE UBUNTU
+        </strong>
+    </p>
+    <p>
+        Para iniciar la instalación debes iniciar el equipo con el
+        <abbr title="Compact Disc.">
+            CD
+        </abbr>
+        de la distribución. Si el equipo no muestra la
+        pantalla de inicio puedes entrar en la
+        <abbr title="Basic Input/Output System.">
+            BIOS
+        </abbr>
+        del equipo y configurarla para que
+        arranque el sistema directamente desde
+        <abbr lang="en" title="Compact Disk">
+            CD
+        </abbr>
+        .
+    </p>
+
+    <p style="text-align: left;">
+        <span style="text-align: justify; font-size: 1em;">
+         Una vez iniciado
+								el sistema, aparece la pantalla de bienvenida donde debes seleccionar el idioma
+         <em>
+          Español
+         </em>
+         e indicar si quieres
+         <em>
+          Probar Ubuntu
+         </em>
+         o si deseas
+         <em>
+          Instalar
+									Ubuntu
+         </em>
+         . En nuestro caso vamos a realizar la instalación de Ubuntu.
+        </span>
+    </p>
+    <div class="elemento_centrado" style="text-align: center;">
+
+    </div>
+    <div class="elemento_centrado" style="text-align: justify;">
+        <p>
+            Indica la distribución de tu teclado y pulsa
+            <em>
+                Continuar
+            </em>
+            .
+        </p>
+
+        <p style="text-align: left;">
+         <span style="text-align: justify; font-size: 1em;">
+          Además,
+									podemos indicarle al sistema las aplicaciones que queremos instalar y que descargue
+									automáticamente las actualizaciones del sistema mientras que se realiza la
+									instalación.
+         </span>
+        </p>
+
+        <p style="text-align: left;">
+         <span style="text-align: justify; font-size: 1em;">
+          El siguiente
+									paso es elegir el tipo de instalación. Para ello puedes seleccionar la opción
+          <em>
+           Borrar disco e instalar Ubuntu
+          </em>
+          en el caso de querer hacer el
+									particionamiento automático, o puedes seleccionar
+          <em>
+           Más opciones
+          </em>
+          para
+									especificar particiones manualmente. Para no perder la información del sistema vamos
+									a seleccionar la opción
+          <em>
+           Más opciones
+          </em>
+          y pulsar
+          <em>
+           Instalar
+										ahora
+          </em>
+          .
+         </span>
+        </p>
+
+        <p style="text-align: left;">
+         <span style="font-size: 1em; text-align: justify;">
+          Para
+									realizar el particionamiento del sistema debes tener en cuenta que hay crear la
+									partición del sistema (/) y la partición swap. La partición swap o área de
+									intercambio, debe tener al menos el doble del tamaño de la memoria
+         </span>
+            <abbr title="Random-access memory.">
+                RAM
+            </abbr>
+            <span style="font-size: 1em; text-align: justify;">
+          del sistema.
+         </span>
+        </p>
+    </div>
+    <p>
+        Para empezar el proceso de particionamiento pulsa en
+        <em>
+            Nueva tabla de particiones...
+        </em>
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <p>
+        Crea la partición de
+        <span lang="en">
+         swap
+        </span>
+        (área de intercambio). Con respecto al
+        tamaño a asignar a esta partición tendremos que tener en cuenta la cantidad de memoria RAM
+        de nuestro sistema, así en equipos con memoria RAM igual o menor a 2
+        <abbr lang="en" title="Gigabyte">
+            GB
+        </abbr>
+        asignaremos el doble de espacio en disco. En equipos cuya memoria
+        RAM sea superior a 2
+        <abbr lang="en" title="Gigabyte">
+            GB
+        </abbr>
+        habrá que determinar el uso
+        que se le dará al equipo siendo incluso no necesaria la creación de esta partición swap.
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <p>
+        Crea la partición del sistema de tipo
+        <em>
+            ext4
+        </em>
+        con al menos 25 Gigabytes con punto de
+        montaje "/" y pulsa
+        <em>
+            OK
+        </em>
+        .
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <p>
+        Una vez creadas las dos particiones pulsa
+        <em>
+            Instalar ahora
+        </em>
+        .
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <p>
+        Selecciona la zona horaria donde te encuentras y pulsa
+        <em>
+            Continuar
+        </em>
+        .
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <p>
+        A continuación se va a crear una cuenta de usuario. Para ello, introduce tu nombre, el nombre
+        del equipo, el nombre de usuario y tu contraseña. Y para acabar pulsa
+        <em>
+            Continuar
+        </em>
+        .
+    </p>
+
+    <p style="text-align: left;">
+        Para finalizar la instalación pulsa
+        <em>
+            Reiniciar ahora
+        </em>
+        .
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+    <p>
+        Una vez reiniciado el equipo, aparece la pantalla de inicio de sesión. Una vez introducido el
+        nombre de usuario y contraseña ya puedes empezar a utilizar el sistema.
+    </p>
+
+    <p style="text-align: center;">
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+										uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

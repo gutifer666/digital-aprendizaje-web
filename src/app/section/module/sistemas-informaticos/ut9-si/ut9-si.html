@@ -1,0 +1,4484 @@
+<h1 class="title">
+    Administración de la red (Linux III).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        María visita a Juan.
+    </p>
+    <p>
+        -Juan, vamos a mejorar la red de la empresa y para eso necesito que utilices un
+        Servidor
+        para que actúe como enrutador y le
+        proporcione a le empresa los servicios más importantes:
+        Encaminamiento
+        y
+        DHCP
+        Más
+        adelante le instalaremos más servicios.
+    </p>
+    <p>
+        -Muy bien María, he visto por Internet que
+        <span lang="en">
+           Linux
+          </span>
+        funciona muy
+        bien con redes. De hecho su máxima potencia se alcanza actuando como servidor. Ahora
+        mismo me pongo a configurar el servidor.
+    </p>
+    <div class="exe-tooltip-text" id="tfaeda37c-4238-e8d9-413f-93146a0d63dd">
+        <p>
+            Equipo que ofrece unos determinados servicios. Normalmente los servidores están
+            dotados de un hardware preparados para trabajar de forma ininterrumpida
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="tac06a7db-a162-7a82-c668-81eafd33a744">
+        <p>
+            Servicio por el cual un enrutador (o router) enruta (o envía) el tráfico entre
+            varias redes.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t54231f82-1d50-fea4-f13b-555d00c99ed3">
+        <p>
+            Protocolo que provee de forma automática los parámetros de configuración de red a
+            un equipo.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.- Esquema básico de red.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Juan se dispone a diseñar la red, pero antes de empezar, va a hacer un esquema de
+        red, ya que le será de utilidad para mantener la red y para cuando tenga que hacer
+        cambios en la misma.
+    </p>
+</div><h1 class="title">
+    1.1.- Configuración de la red.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Una vez que tienes claro el esquema de red que vas a implementar, el primer paso que debes
+        dar es configurar correctamente las diferentes interfaces de red de nuestro servidor (que
+        actúa como enrutador) y de los clientes.
+    </p>
+    <p>
+        Básicamente existen dos formas de configurar las tarjetas de red: manual o automáticamente a
+        través de un servidor
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        . A continuación se van a ver ambos métodos de configuración.
+    </p>
+</div><h1 class="title">
+    1.1.1.- Configuración de la red cableada.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Para configurar una interfaz de red es necesario asignarle una dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        con su respectiva máscara de red. El
+        comando más utilizado para configurar la red es
+        ifconfig
+        el cual debe
+        ser ejecutado en modo administrador (fíjate en el símbolo del
+        prompt
+        #). Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 34.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># ifconfig eth0 192.168.1.2 netmask 255.255.255.0 up
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En este caso estás configurando la interfaz
+        <em>
+            eth0
+        </em>
+        (primera tarjeta de red detectada)
+        con la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        192.168.1.2 y con
+        máscara de red 255.255.255.0. El parámetro
+        <em>
+         <span lang="en">
+          up
+         </span>
+        </em>
+        indica que la
+        tarjeta debe activarse, pero puede omitirse puesto que al asignarle los parámetros de red la
+        tarjeta se activará por defecto. Para desactivar una interfaz de red ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># ifconfig eth0 down
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para activar una interfaz de red ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># ifconfig eth0 up
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para comprobar la configuración de las interfaces de red ejecuta el comando ifconfig
+        <em>
+            .
+        </em>
+        Tal y como puedes ver en la siguiente figura, la interfaz
+        <em>
+            eth0
+        </em>
+        tiene la
+        dirección 192.168.118.142 (la ha obtenido de forma automática) y la interfaz
+        <em>
+            eth1
+        </em>
+        tiene la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        10.0.0.1.
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Para que el equipo pueda conectarse a una red diferente de la que se encuentra (por ejemplo,
+        <span lang="en">
+         Internet
+        </span>
+        ) necesita tener una puerta de enlace, que es el equipo que
+        permite comunicar varias redes. Por ejemplo, si el equipo se encuentra conectado a la red
+        192.168.0.0/24 en la interfaz
+        <em>
+            eth0
+        </em>
+        y la puerta de enlace es 192.168.0.1, debes
+        ejecutar el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># route add –net 0/0 gw 192.168.0.1 eth0
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        La misma configuración se puede realizar usando el entorno gráfico xWindows. Para ello, en el
+        menú
+        <strong>
+            Sistema &gt; Preferencias
+        </strong>
+        ejecuta la herramienta
+        <em>
+            Conexiones de
+            red
+        </em>
+        .
+    </p>
+    <div class="exe-tooltip-text" id="t3a3c527f-58bb-fa60-4194-ff48715be6e5">
+        <p>
+            Comando que permite ver y configurar las interfaces de red cableadas de los sistemas
+            GNU/Linux.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t9cd9dc3d-73bd-71bc-5dd3-9fc2e81b2976">
+        <p>
+            Carácter o conjunto de caracteres que se muestran que la línea de comandos está a la
+            espera de órdenes
+        </p>
+    </div>
+</div><h1 class="title">
+    1.1.2.- Configuración de la red inalámbrica.
+</h1><div class="iDevice_content">
+    <p>
+        Desde los sistemas
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux es
+        posible configurar la red inalámbrica a través del comando
+        iwconfig
+        o a través del asistente de
+        <strong>
+            Conexión
+        </strong>
+        . Para acceder a la red inalámbrica de forma gráfica, en el menú de
+        herramientas superior, pulsa en el icono de la red inalámbrica y selecciona la red a la que
+        deseas conectarte. Si la red inalámbrica requiere autentificación, indica la contraseña
+        WEP
+        o
+        WPA
+        y pulsa el botón
+        <strong>
+            Conectar
+        </strong>
+        <em>
+            .
+        </em>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Automáticamente, el asistente establece la conexión a la red inalámbrica y muestra en
+        pantalla un mensaje de que el proceso se ha realizado correctamente.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <div class="exe-tooltip-text" id="t5c93978b-e533-37e3-81ec-c3a910e251c6">
+        <p>
+            Comando que permite ver y configurar las interfaces de red inalámbricas de los sistemas
+            GNU/Linux.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t6002340f-31d8-a347-47bf-48d84e8619b0">
+        <p>
+            Es el sistema de cifrado incluido en el estándar IEEE 802.11 como protocolo para redes
+            wireless que permite cifrar la información que se transmite. Está basado en el algoritmo
+            de cifrado RC4, y utiliza claves de 64 bits (40 bits más 24 bits del vector de
+            inicialización IV.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="ted80201a-80d3-82be-0779-2d725106df70">
+        <p>
+            Sistema de cifrado de redes inalámbricas creado para sustituir el protocolo WEP debido a
+            sus fallos de seguridad.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.1.3.- Ficheros de configuración.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        El problema de configurar las interfaces de red con ifconfig es que no se guardan los datos
+        de configuración en ningún fichero, al reiniciar el equipo se pierde la configuración. A
+        continuación se van a ver los diferentes ficheros de configuración que intervienen en la
+        configuración de la red del equipo.
+    </p>
+    <p>
+        La configuración de las interfaces de red se guarda en el fichero /etc/network/interfaces.
+        Siguiendo el esquema de red propuesto anteriormente, la interfaz de red
+        <em>
+            eth0
+        </em>
+        es la
+        encargada de conectarse a Internet mientras que la interfaz
+        <em>
+            eth1
+        </em>
+        pertenece a la red
+        interna. Los parámetros de configuración de
+        <em>
+            eth0
+        </em>
+        los tiene que facilitar el
+        proveedor de Internet o los puedes obtener automáticamente utilizando
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        .
+    </p>
+    <p>
+        <strong>
+            Fichero
+        </strong>
+        /etc/network/interfaces.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>auto eth0
+</pre>
+            <pre ngNonBindable>iface eth0 inet dhcp
+</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+            <pre ngNonBindable>auto eth1
+</pre>
+            <pre ngNonBindable>iface eth1 inet static
+</pre>
+            <pre ngNonBindable>address 10.0.0.1
+</pre>
+            <pre ngNonBindable>netmask 255.255.255.0
+</pre>
+            <pre ngNonBindable>network 10.0.0.0
+</pre>
+            <pre ngNonBindable>broadcast 10.0.0.255
+</pre>
+            <pre ngNonBindable># gateway 10.0.0.1
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Aunque lo normal es que eth0 obtenga la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        de forma automática al iniciar el equipo puedes hacerlo
+        manualmente ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dhclient eth0
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <em>
+            <strong>
+                Configuración del nombre del equipo.
+            </strong>
+        </em>
+    </p>
+    <p>
+        Para configurar el nombre del equipo hay que modificar el fichero /etc/hostname e indicar el
+        nombre del equipo.
+    </p>
+    <p>
+        <em>
+            <strong>
+                Configuración del servidor
+                <abbr title="Domain Name System">
+                    DNS
+                </abbr>
+                .
+            </strong>
+        </em>
+    </p>
+    <p>
+        Existen dos formas de resolver nombres: de forma local o a través de un servidor de nombres
+        (
+        <abbr title="Domain Name System">
+            DNS
+        </abbr>
+        ). Para el primer caso, se usa
+        el fichero /etc/hosts en donde se guarda el nombre y la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        de las máquinas locales. Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 36.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>127.0.0.1           localhost.localdomain      localhost
+</pre>
+            <pre ngNonBindable>193.147.0.29          www.mec.es
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para establecer los servidores de resolución de nombres (
+        <abbr title="Domain Name System">
+            DNS
+        </abbr>
+        ) debes editar el fichero /etc/resolv.conf
+        <em>
+            .
+        </em>
+        Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>nameserver 8.8.8.8
+</pre>
+            <pre ngNonBindable>nameserver 150.214.156.2
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong>
+            <em>
+                Actualizar los cambios.
+            </em>
+        </strong>
+    </p>
+    <p>
+        Una vez realizada la configuración del sistema para que se apliquen los cambios en las
+        interfaces de red hay que reiniciar el servicio o hacer un
+        <span lang="en">
+         <em>
+          <span lang="en">
+           reload
+          </span>
+         </em>
+        </span>
+        ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># /etc/init.d/networking force-reload
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    1.1.4.- Comprobación.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Para comprobar la conexión a
+        <span lang="en">
+         Internet
+        </span>
+        puedes ejecutar el comando
+        ping
+        indicando como parámetro cualquier dirección de
+        <span lang="en">
+         Internet
+        </span>
+        . Por
+        ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ ping www.google.es
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si al realizar el ping se recibe respuesta entonces la comunicación se está realizando
+        correctamente. Si por el contrario indica que todos los paquetes se han perdido (100%
+        <em>
+         <span lang="en">
+          packet loss
+         </span>
+        </em>
+        ) debes comprobar la configuración de red o los
+        parámetros de configuración. En la figura anterior puedes ver como el servidor www.google.es
+        responde correctamente al comando ping.
+    </p>
+    <p>
+        Para comprobar la configuración de la red de forma gráfica, disponemos de una herramienta
+        llamada
+        <strong>
+            herramientas de red
+        </strong>
+        , que permite:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Realizar ping a un determinado
+            <span lang="en">
+          equipo
+         </span>
+            .
+        </li>
+        <li>
+            Ver el estado de las conexiones de mi equipo, utilizando netstat.
+        </li>
+        <li>
+            Comprobar la ruta entre mi equipo y un equipo remoto mediante el comando traceroute.
+        </li>
+        <li>
+            Explorar los puertos de un determinado equipo, comprobando si están cerrados o abiertos.
+        </li>
+        <li>
+            Mostrar información sobre los usuarios que están siendo usados en un determinado euipo
+            de la red, usando finger.
+        </li>
+        <li>
+            Comprobar los detalles del propietario de un determinado dominio, mediante el
+            comando&nbsp;whois.
+        </li>
+    </ul>
+    <p>
+        Para poder utilizarla, es necesario instalar la aplicación llamada
+        <strong>
+            Herramientas de
+            red
+        </strong>
+        si lo hacemos usando el
+        <strong>
+            Centro de Software de Ubuntu
+        </strong>
+        ó gnome-nettools si lo hacemos usando apt-get, como se muestra en el siguiente ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># apt-get install gnome-nettool
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez instalada, la buscamos con el icono de arriba a la izquierda y, al ejecutarla,
+        podremos ver lo siguiente:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t22bc3ab7-e578-2df5-701e-b6db0ade498e">
+        <p>
+            Es un comando que se utiliza para comprobar el estado de la conexión en un red de
+            ordenadores utilizando paquetes ICMP de solicitud y de respuesta.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.2.- Enrutamiento
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        La tecnología de
+        cortafuegos
+        (
+        <em>
+         <span lang="en">
+          firewall
+         </span>
+        </em>
+        en inglés) de
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux ha evolucionado desde sencillos filtros de paquetes
+        lineales hasta los motores actuales de inspección
+        <span lang="en">
+         de paquetes de estado
+								o
+         <em>
+          <abbr title="State Packet Inspection.">
+           SPI
+          </abbr>
+         </em>
+        </span>
+        .&nbsp; Un cortafuegos realiza dos funciones
+        principalmente.
+    </p>
+    <ol>
+        <li>
+            <strong>
+                Filtrado de paquetes:
+            </strong>
+            puede analizar cada paquete del tráfico de la red
+            y decidir en base a un conjunto de reglas qué hacer con ese paquete. Además se puede
+            marcar y modificar paquetes para que otros programas decidan qué hacer con ese paquete.
+        </li>
+        <li>
+            <strong>
+                Traducción de red
+            </strong>
+            o
+            <abbr title="Network Address Translation">
+                NAT:
+            </abbr>
+            de forma simultánea al filtrado se traduce las
+            direcciones de red de forma que se puede compartir una dirección IP pública por muchos
+            equipos ante la limitacioń de direcciones IPv4.
+        </li>
+    </ol>
+    <p>
+        iptables&nbsp;es la herramienta&nbsp;prederminada en Ubuntu 20.04 para configurar el
+        cortafuegos que implementa y es el que se estudiará en este apartado no obstante mostramos a
+        continuacion la evolucion de los cortafuegos en Linux.
+    </p>
+    <div class="exe-fx exe-timeline fx-timeline-container" id="exe-timeline-0" style="border-color: rgba(0, 0, 0, 0.8);">
+        <div class="fx-timeline-toggler">
+            <p>
+                Mostrar
+            </p>
+        </div>
+        <div class="fx-timeline-major">
+            <h2 class="fx-timeline-marker">
+          <span>
+           Evolución de los cortafuegos
+          </span>
+            </h2>
+            <div class="fx-timeline-minor">
+                <h3 class="fx-timeline-event-trigger" id="event-exe-timeline-0-0">
+                    ipfwadm o Linux 2.0
+                </h3>
+                <div class="fx-timeline-event" id="event-exe-timeline-0-0EX" style="display:none">
+                    <p>
+            <span>
+             El núcleo de Linux 2.0 utilizaba tres reglas para configurar, mantener
+												e inspeccionar el cortafuegos y que corresponde con las tres pilas de la
+												tabla filter:
+            </span>
+                    </p>
+                    <ol>
+                        <li>
+             <span>
+              Reglas de entrada de cortafuegos IP
+             </span>
+                        </li>
+                        <li>
+             <span>
+              Reglas de salida de cortafuegos IP
+             </span>
+                        </li>
+                        <li>
+             <span>
+              Reglas de reenvío del cortafuegos IP.
+             </span>
+                        </li>
+                    </ol>
+                    <p>
+            <span>
+             Existe una última que son las reglas de contabilidad del núcleo para
+												contalbilizar paquetes IP que cumplen con alguna regla. Las opciones del
+												comando ipfwadmin se utilizan para la gestión de cada lista de
+												reglas.
+            </span>
+                    </p>
+                </div>
+                <h3 class="fx-timeline-event-trigger" id="event-exe-timeline-0-1">
+                    ipchains o Linux 2.2
+                </h3>
+                <div class="fx-timeline-event" id="event-exe-timeline-0-1EX" style="display:none">
+                    <p>
+                        Aunque la capacidad nativa de cortafuegos de los núcleos de Linux 2.0 era más
+                        que adecuada, en la siguiente versión del núcleo 2.2 apareció ipchains que
+                        incorporó nuevas y eficaces características: permite la definición de nuevas
+                        pilas y mejora la administración de las reglas de una pila.
+                    </p>
+                    <p>
+                        ipchains no implementa el seguimiento de paquetes por estado, es decir, no
+                        permite realizar un seguimiento de las conexiones y sesiones en vez de
+                        paquetes individuales,&nbsp;no permite diferenciar la "verdadera naturaleza"
+                        del tráfico de la red. Por ejemplo, un
+                        cortafuegos&nbsp;ipchains&nbsp;programado para permitir el
+                        tráfico
+                        <abbr title="File Transfer Protocol.">
+                            FTP
+                        </abbr>
+                        de salida también tendrá una
+                        regla&nbsp;INPUT&nbsp;asociada para permitir la devolución de paquetes. Si
+                        un atacante puede fabricar paquetes
+                        <abbr title="File Transfer Protocol">
+                            FTP
+                        </abbr>
+                        devueltos,&nbsp;Ipchains&nbsp;permite su
+                        entrada. Con un sistema
+                        <abbr title="State Packet Inspection">
+                            SPI
+                        </abbr>
+                        no existe ninguna sesión para asociar
+                        estos paquetes falsificados y, por tanto, el
+                        <span lang="en">
+             firewall
+            </span>
+                        los rechazaría. iptables si implementa el
+                        seguimienro de paquetes de estado, evitando ser engañado ante amenazas de
+                        red más avanzadas.
+                    </p>
+                </div>
+                <h3 class="fx-timeline-event-trigger" id="event-exe-timeline-0-2">
+                    iptables o Linux 2.4
+                </h3>
+                <div class="fx-timeline-event" id="event-exe-timeline-0-2EX" style="display:none">
+                    <p>
+                        En el núcleo 2.4 se lanzó&nbsp;&nbsp;iptables (también llamado netfilter).
+                        <code>
+                            iptables
+                        </code>
+                        mejoró las ventajas de administración de conjuntos de
+                        reglas al permitir la capacidad de crear y anular asociaciones de conjunto
+                        de reglas con sesiones existentes. Con iptables, el cortafuegos se puede
+                        programar para asociar el tráfico devuelto generado a partir de una regla
+                        INPUT anterior. El tráfico que entra correctamente en el equipo puede salir
+                        automáticamente del equipo al ser devuelto, indicando simplemente que genere
+                        dinámicamente una regla de devolución.
+                    </p>
+                </div>
+                <h3 class="fx-timeline-event-trigger" id="event-exe-timeline-0-3">
+                    nftables
+                </h3>
+                <div class="fx-timeline-event" id="event-exe-timeline-0-3EX" style="display:none">
+                    <p>
+                        nftables es la evolución de iptables pero que aún no ha se ha establecido de
+                        forma prederminada en Ubuntu 20.04 siendo iptables la opción escogida. Este
+                        proyecto reemplaza a los cortafuegos ya existentes por tanto no se puede
+                        usar de forma conjunta con iptables&nbsp; cuya sintaxis es diferente a
+                        iptables, más amigable y compacta. Además, simplifica la administración en
+                        entornos IPv4/IPv6 y evita la duplicación de código e inconsistencias,
+                        reduciendo la cantidad de reglas que deben consultarse.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+        iptables se se divide en varias tablas, dentro de las cuales existen diferentes cadenas. Las
+        tablas y las cadenas más importantes son:
+    </p>
+    <ol>
+        <li>
+            filter: es la tabla prederminada para el filtrado de las comunicaciones y está formada
+            por tres cadenas
+            <ul>
+                <li>
+                    INPUT: aquí se filtran
+                    <span>
+            los paquetes entrantes destinados al equipo
+											local.
+           </span>
+                </li>
+                <li>
+                    OUTPUT:&nbsp;aquí se filtran los paquetes salientes originados en el equipo
+                    local.
+                </li>
+                <li>
+                    FORWARD: aquí se filtran&nbsp;los paquetes que pasan por el equipo pero cuyo
+                    origen y destino son equipos diferentes al equipo local.
+                </li>
+            </ul>
+        </li>
+        <li>
+            nat: se utiliza para la traducción de direcciones de red y contiene dos pilas o listas:
+            <ul>
+                <li>
+                    POSTROUTING permite establecer las comunicaciones desde la red intera al
+                    exterior. Por ejemplo, para hacer que la red interna tenga Internet.
+                </li>
+                <li>
+                    PREROUTING: permite esyablecer las comunicaciones desde la red externa a la red
+                    interna. Por ejemplo se utiliza para que desde el exterior se tenga acceso a un
+                    servidor interno.
+                </li>
+            </ul>
+        </li>
+        <li>
+            mangle: contiene reglas para la alteración de los paquetes de red especializados.
+        </li>
+    </ol>
+    <p>
+        Cada regla contiene información específica sobre las direcciones origen y destino,
+        protocolos, número de puerto y algunas otras características. Cada paquete llega a la parte
+        superior de la pila que le corresponda y se le va aplicando las reglas de dicha pila,
+        secuencialmente, hasta que exista una coincidencia. En este punto, cada paquete se puede
+        aceptar, descartar, rechazar o reenviar. Si el paquete no coincide con ninguna de las
+        reglas, pasa a la directiva predeterminada, que normalmente descarta el paquete. La clave
+        para entender cómo funciona iptables es
+        este gráfico
+        .
+    </p>
+    <div class="exe-tooltip-text" id="t8abb3966-926f-53b0-e2c5-870ac1146835">
+        <p>
+            Un cortafuegos es un dispositivo de seguridad que suele situarse entre una red local e
+            Internet, para evitar que los intrusos puedan acceder a información confidencial. Se
+            trata de un filtro que controla todas las comunicaciones que pasan de una red a la otra.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.2.1.- Resolución de un supuesto práctico.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        A continuación se va a configurar el cortafuegos para que permita que la red Interna pueda
+        conectarse a Internet para ello realiza la lectura del&nbsp;Anexo I.-Configuración de
+        iptables para entender los comandos&nbsp; y acciones que se pueden realizar sobre la tabla
+        filter.
+    </p>
+    <p>
+        Antes de ver el supuesto práctico, vamos a explicar las partes de una regla o
+        <em>
+        </em>
+        <span lang="en">
+         <em>
+          rule
+         </em>
+        </span>
+        que se especifican por:
+    </p>
+    <ul>
+        <li>
+            <strong>
+                Coincidencias
+            </strong>
+            o
+            <span lang="en">
+          <em>
+           matches
+          </em>
+         </span>
+            , son las
+            condiciones que el paquete debe satisfacer.&nbsp;Las cosas típicas en las que puede
+            coincidir una regla es la interfaz por la que entró el paquete (por ejemplo, eth0 o
+            eth1), qué tipo de paquete es (
+            <abbr title="Internet Control Message Protocol ">
+                ICMP
+            </abbr>
+            ,
+            <abbr title="Transmission Control Protocol.">
+                TCP
+            </abbr>
+            o
+            <abbr title="User Datagram Protocol.">
+                UDP
+            </abbr>
+            ) o el puerto de destino del paquete. Por jemplo con la
+            opción -s se puede especificar una
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            origen: iptables -s 192.168.10.100.
+        </li>
+        <li>
+            <strong>
+                Objetivos
+            </strong>
+            o
+            <span lang="en">
+          <em>
+           target
+          </em>
+         </span>
+            que son las acciones
+            que se toman cuando un paquete coincide plenamente con la condición. Se especifican
+            mediante la opción -j o
+            <code>
+                --jump
+            </code>
+            y pueden ser cadenas definidas por el
+            usuario,
+            <span lang="en">
+          <em>
+           targets
+          </em>
+         </span>
+            integrados como
+            ACCEPT,
+            <code>
+                DROP
+            </code>
+            ,&nbsp;QUEUE&nbsp;y&nbsp;RETURN o&nbsp;extensiones de
+            <span lang="en">
+          <em>
+           targets
+          </em>
+         </span>
+            son, por ejemplo,&nbsp;REJECT&nbsp;y&nbsp;LOG.
+        </li>
+    </ul>
+    <p>
+        Para establecer que el sistema actúe como
+        <span lang="en">
+         enrutador
+        </span>
+        hay que habilitar
+        el reenvío de paquetes de kernel con el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># echo "1" &gt;/proc/sys/net/ipv4/ip_forward
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            Antes de comenzar a crear un nuevo conjunto de reglas, es
+            deseable limpiar todas las reglas predeterminadas y las reglas existentes. Ejecute las
+            siguientes instrucciones para eliminar la configuración del cortafuegos:
+            <div class="codigo elemento_centrado" style="width: 35em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># iptables -F (o) iptables --flush</pre>
+                    <pre ngNonBindable># iptables -t nat -F
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Indica que la red interna tiene salida al exterior por
+            <abbr title="Network Address Translation">
+                NAT
+            </abbr>
+            . Al utilizar
+            <abbr title="Network Address Translation">
+                NAT
+            </abbr>
+            todos los equipos
+            de la red interna salen a través de la dirección pública del router aislando la red
+            interna del exterior.
+            <div class="codigo elemento_centrado" style="width: 35em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -j MASQUERADE
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Se permite todo el tráfico de la red interna y todo lo
+            demás se deniega:
+            <div class="codigo elemento_centrado" style="width: 35em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># iptables -A FORWARD -s 10.0.0.0/24 -j ACCEPT
+</pre>
+                    <pre ngNonBindable># iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+</pre>
+                    <pre ngNonBindable># iptables -A FORWARD -j DROP
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-bottom: 20px;">
+            Guarda la configuración del cortafuegos ejecutando:
+            <div class="codigo elemento_centrado" style="width: 35em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># iptables-save &gt;/etc/iptables.rules
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            Y modifica el fichero /etc/sysctl.conf para establecer la variable
+            net.ipv4.ip_forward=1.
+        </li>
+    </ul>
+    <p>
+        Para comprender mejor iptables se va a realizar una mejora del supuesto en la que la red
+        interna sólo tiene acceso al exterior para ver páginas web (puerto 80/
+        <abbr title="Transmission Control Protocol.">
+            TCP
+        </abbr>
+        ) y para la resolución de
+        nombres (53/
+        <abbr title="User Datagram Protocol.">
+            UDP
+        </abbr>
+        y 53/
+        <abbr title="Transmission Control Protocol.">
+            TCP
+        </abbr>
+        ). Además, se va a
+        permitir la entrada desde fuera a un servidor web interno que se encuentra en la dirección
+        10.0.0.100.
+    </p>
+    <p>
+        Limpia la configuración del cortafuegos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># iptables -F
+</pre>
+            <pre ngNonBindable># iptables -t nat -F
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Indica que la red interna tiene salida al exterior por
+        <abbr title="Network Address Translation">
+            NAT
+        </abbr>
+        .
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># iptables -t nat -A POSTROUTING -s 10.0.0.0/24 -d 0/0 -j MASQUERADE
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Se permite sólo el tráfico web (80/
+        <abbr title="Transmission Control Protocol.">
+            TCP
+        </abbr>
+        ) y DNS (53/
+        <abbr title="User Datagram Protocol.">
+            UDP
+        </abbr>
+        y 53/
+        <abbr title="Transmission Control Protocol.">
+            TCP
+        </abbr>
+        ). Todo lo demás se deniega:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># iptables -A FORWARD -s 10.0.0.0/24 -p TCP --dport 80 -j ACCEPT
+</pre>
+            <pre ngNonBindable># iptables -A FORWARD -s 10.0.0.0/24 -p TCP --dport 53 -j ACCEPT
+</pre>
+            <pre ngNonBindable># iptables -A FORWARD -s 10.0.0.0/24 -p UDP --dport 53 -j ACCEPT
+</pre>
+            <pre ngNonBindable># iptables -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
+</pre>
+            <pre ngNonBindable># iptables -A FORWARD -j DROP
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Redirige el tráfico web que entra por la interfaz externa (
+        <em>
+            eth0
+        </em>
+        ) al servidor de la
+        red interna:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># iptables -t nat -A PREROUTING -i eth0 –p tcp --dport 80 -j DNAT -- to 10.0.0.100:80
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Guarda la configuración del cortafuegos ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># iptables-save &gt;/etc/iptables.rules
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Finalmente, modifica el fichero /etc/network/interfaces y escribe al final:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>pre-up iptables-restore &lt;/etc/iptables.rules
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    1.3.- DHCP.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        El mantenimiento y la configuración de la red en los equipos de una red pequeña es
+        relativamente fácil. Sin embargo, cuando se dispone de una red grande con equipos
+        heterogéneos, la administración y asignación de direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        s así como la configuración de los
+        equipos, se convierte en una tarea compleja de difícil mantenimiento y gestión. Cualquier
+        cambio en la configuración de red, el servidor de nombres, la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        asignada, la puerta de enlace,
+        etcétera, conlleva un excesivo tiempo.
+    </p>
+    <p>
+        Por otra parte, en entornos con equipos móviles, la gestión y asignación de direcciones
+        supone una tarea compleja que, aunque puede resolverse con la asignación de direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        estáticas, conlleva la asociación
+        fija de una dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        al mismo
+        equipo, para evitar conflictos, y la imposibilidad de su reutilización si un portátil no
+        está conectado a la red local en un momento determinado.
+    </p>
+    <p>
+        Éste es el mismo problema que se presenta en el entorno de trabajo de un
+        ISP
+        : se debe disponer de
+        un sistema de asignación dinámica y flexible que permita reutilizar las direcciones de tal
+        forma que sólo los equipos conectados en un momento determinado a la red tengan asignada una
+        dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        , ya que disponer
+        de una dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        distinta por cada cliente es inviable con el número de usuario conectados a Internet.
+    </p>
+    <p>
+        Para solucionar este problema surge el servidor
+        DHCP
+        el cual
+        se encarga de gestionar la asignación de direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        , la mácara de red, la puerta de enlace y el servidor
+        <abbr title="Domain Name System">
+            DNS
+        </abbr>
+        . Para ello, necesita de un proceso
+        (dhcpd) y un fichero de configuración (/etc/dhcpd.conf) que proporciona la información
+        necesaria al proceso.
+    </p>
+    <p>
+        El protocolo
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        incluye dos métodos de asignación de direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Asignación dinámica
+            </strong>
+            . Asigna direcciones
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            s libres de un rango de direcciones
+            establecido por el administrador en el fichero /etc/dhcpd.conf. Es el único método que
+            permite la reutilización dinámica de las direcciones
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            .
+        </li>
+        <li>
+            <strong>
+                Asignación por reservas
+            </strong>
+            . Permite que un dispositivo o equipo tenga
+            siempre la misma dirección
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            . Para ello, en el fichero de configuración hay que asignar
+            una dirección
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            a la
+            dirección MAC del equipo. Este método es muy útil para aquellos dispositivos que no
+            deben cambiar dirección
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            como, por ejemplo, una impresora en red, ya que si ésta
+            cambiase de dirección
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            habría que configurarla nuevamente en todos los equipos
+            que la utilizasen.
+        </li>
+    </ul>
+    <p>
+        En el fichero /etc/dhcpd.conf se almacena toda la información referente a la asignación de
+        direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        s a los clientes.
+        Esta información incluye:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Rango de direcciones
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            a otorgar a los clientes.
+        </li>
+        <li>
+            Asociación fija de direcciones
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            a clientes, mediante el uso de la dirección
+            <abbr title="Media Access Control">
+                MAC
+            </abbr>
+            .
+        </li>
+        <li>
+            Periodo de validez de las asignaciones.
+        </li>
+        <li>
+            Servidores de nombres y
+            <span lang="en">
+          wins
+         </span>
+            .
+        </li>
+        <li>
+            Si tienen o no autoridad para asignar direcciones
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            .
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t12e6231d-1791-763f-f8f7-eecf5559dba7">
+        <p>
+            Proveedor de servicios de Internet
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t85196c54-131a-3619-4884-3d264380469d">
+        <p>
+            Protocolo de configuración dinámica de host. Es un protocolo de red que permite a los
+            clientes de una red IP obtener sus parámetros de configuración automáticamente.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.3.1.- Resolución de un supuesto práctico.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        En primer lugar, es necesario realizar la instalación del servidor
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        ejecutando
+        <em>
+            :
+        </em>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 22.5em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># apt-get install isc-dhcp-server
+</pre>
+        </div>
+    </div>
+    <p>
+        Una vez instalado, vamos practicar un poco con esto, configurando el servidor
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        para asignar
+        dinámicamente direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        a la red 10.0.0.0/24 y para realizar una reserva al equipo
+        con dirección
+        <abbr title="Media Access Control">
+            MAC
+        </abbr>
+        (AA.BB:CC:DD:EE:FF) para que se le asigne siempre la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        10.0.0.254.
+    </p>
+    <p>
+        Para comenzar con la configuración, debes indicar los parámetros generales del servidor y
+        comunes a los equipos de la red, la información necesaria para que éste sepa cómo
+        comportarse. Así, si el servidor dhcp.ejemplo.es es el que tiene la autoridad sobre la zona,
+        se quiere que el tiempo máximo de asignación de una dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        sea de una semana
+        (max-lease-time). Para ello el fichero /etc/dhcp/dhcpd.conf debe tener el siguiente
+        contenido:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>authoritative;
+</pre>
+            <pre ngNonBindable>one-lease-per-client on;
+</pre>
+            <pre ngNonBindable>server-identifier 10.0.0.1;
+&lt;code&gt;ddns-update-style interim;&lt;br/&gt;&lt;/code&gt;</pre>
+            <pre ngNonBindable>default-lease-time 600;</pre>
+            <pre ngNonBindable>max-lease-time 604800;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El siguiente paso es introducir los parámetros generales que se transmitirán a los clientes
+        de la red. La red 10.0.0.0 con la máscara de red 255.255.255.0 tiene como puerta de enlace
+        la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        10.0.0.1 y
+        quiere utilizar los servidores de nombres 8.8.8.8 y 194.224.52.36. Además, hay que tener en
+        cuenta el rango de direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        que desea asignar por
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        que en el
+        ejemplo es desde la dirección 10.0.0.100 a la 10.0.0.254.
+    </p>
+    <p>
+        A partir de estos parámetros de configuración debes escribir en el fichero la siguiente
+        configuración:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 35.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>subnet 10.0.0.0 netmask 255.255.255.0 &#123;
+</pre>
+            <pre ngNonBindable>    range 10.0.0.100 10.0.0.254;
+</pre>
+            <pre ngNonBindable>    option domain-name-servers 8.8.8.8, 194.224.52.36;
+</pre>
+            <pre ngNonBindable>    option domain-name "miempresa.com"; &lt;br /&gt;    option routers 10.0.0.1;
+</pre>
+            <pre ngNonBindable>    option broadcast-address 10.0.0.255;
+</pre>
+            &#125;
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Como se desea realizar la reserva de la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        10.0.0.254 para el portátil con la dirección
+        <abbr title="Media Access Control">
+            MAC
+        </abbr>
+        AA:BB:CC:DD:EE:FF debes añadir
+        las siguientes líneas:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>host portatil &#123;
+</pre>
+            <pre ngNonBindable>    hardware ethernet AA:BB:CC:DD:EE:FF;
+</pre>
+            <pre ngNonBindable>    fixed-address 10.0.0.254;
+</pre>
+            <pre ngNonBindable>&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        A continuación indicamos la interfaz de red donde queremos que el servidor dhcpd ofrezca sus
+        servicios. Para&nbsp;ello el fichero /etc/default/isc-dhcp-server debe tener&nbsp;el
+        siguiente contenido:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>INTERFACES="eth1"
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        siendo
+        <em>
+            eth1
+        </em>
+        la interfaz de red elegida.
+    </p>
+    <p>
+        Para comprobar que la configuración del servidor dhcpd se ha realizado correctamente ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 13.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dhcpd eth1
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez configurado correctamente el servidor, inicia el servicio ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># service isc-dhcp-server start&lt;br /&gt;ó&lt;br /&gt;# /etc/init.d/isc-dhcp-server start
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Finalmente, hay que configurar el sistema para que se inicie automáticamente el servicio dhcp
+        al iniciar el equipo. Para ello, se puede usar la herramienta sysv-rc-conf, que previamente
+        habrá que instalar y luego ejecutar
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.85em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># apt-get install sysv-rc-conf&lt;br /&gt;# sysv-rc-conf</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Tras ejecutarlo, saldrá la siguiente pantalla, desde la cual se marca con una X, para cada
+        servicio, en qué nivel de ejecución se desea que se ejecute.
+    </p>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p>
+        Para conocer el nivel de ejecución actual bastaría con ejecutar
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.85em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># runlevel&lt;br /&gt;</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por tanto, buscando el servicio isc-dhcp y marcándolo para el nivel de ejecución actual, el
+        servidor
+        <abbr title="Dynamic Host Configuration Protocol">
+            DHCP
+        </abbr>
+        se ejecutaría cada vez que arrancase el equipo.
+    </p>
+    <p>
+        De esta forma el servidor dhcpd irá asignando automáticamente las direcciones
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        a los equipos que se conecten a la red.
+        Para comprobar las asignaciones que se han realizado puedes consultar el fichero
+        /var/lib/dhcp/dhcpd.leases donde, como puedes ver a continuación, se muestran los datos de
+        cada concesión de dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        :
+    </p>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p>
+    </p>
+    <table class="tabla">
+        <caption>
+            Datos más importantes del servicio DHCP.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="row">
+                Nombre del servicio:
+            </th>
+            <td>
+                isc-dhcp-server
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Fichero de configuración:
+            </th>
+            <td>
+                /etc/dhcp/dhcpd.conf
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Concesiones de direcciones:
+            </th>
+            <td>
+                /var/lib/dhcp/dhcpd.releases
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Comandos más utilizados:
+            </th>
+            <td>
+                dhcpd
+                <br>
+                dhclient
+                <br/></td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.- Compartir archivos e impresoras (Samba).
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Ana y Juan están cada uno utilizando su ordenador.
+    </p>
+    <p>
+        -Juan, tengo aquí todos los documentos que me pediste pero ocupan mucho espacio y no
+        tengo un lápiz
+        <abbr title="Universal Serial Bus.">
+            USB
+        </abbr>
+        ¿cómo
+        te los paso?
+    </p>
+    <p>
+        -Muy fácil, vamos a compartir una carpeta por red y me lo pasas.
+    </p>
+    <p>
+        -Así de fácil ¿cómo se hace?
+    </p>
+</div><h1 class="title">
+    2.1.- Gestión de usuarios.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    2.2.- Compartir carpetas.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para compartir una carpeta hay que modificar el fichero de configuración de samba
+        /etc/samba/smb.conf
+        <em>
+            .
+        </em>
+        En la siguiente tabla puedes ver las opciones más importantes
+        para compartir carpetas.
+    </p>
+    <p>
+        El ejemplo más sencillo que se puede realizar es compartir una carpeta de forma pública para
+        todos los usuarios. Para ello añada:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>[publico]
+</pre>
+            <pre ngNonBindable>        path = /home/usuario/publico
+</pre>
+            <pre ngNonBindable>        public = yes
+</pre>
+            <pre ngNonBindable>        read only = yes
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <table class="tabla">
+        <caption>
+            Opciones más utilizadas de smb.conf.
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Opción.
+            </th>
+            <th scope="col">
+                Comentario.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                [ recurso ]
+            </th>
+            <td>
+                Nombre del recurso compartido.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                browseable
+            </th>
+            <td>
+                Indica si se puede explorar dentro del recurso. Los posibles valores son
+                <em>
+                    no
+                </em>
+                y
+                <em>
+            <span lang="en">
+             yes
+            </span>
+                </em>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                comment
+            </th>
+            <td>
+                Proporciona información adicional sobre el recurso (no afecta a su forma de
+                operar).
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                create mode
+            </th>
+            <td>
+                Especifica los permisos por defecto que tienen los ficheros creados.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                directory mode
+            </th>
+            <td>
+                Especifica los permisos por defecto que tienen los directorios creados.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                force user
+            </th>
+            <td>
+                Especifica el usuario propietario que tienen los ficheros y carpetas que se
+                crean.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                force group
+            </th>
+            <td>
+                Especifica el grupo propietario que tienen los ficheros y carpetas que se crean.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                guest ok
+            </th>
+            <td>
+                Indica si se permite el acceso a usuarios anónimos. Los posibles valores son
+                <em>
+                    no
+                </em>
+                y
+                <span lang="en">
+            <em>
+             yes
+            </em>
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                path
+            </th>
+            <td>
+                Carpeta a compartir.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                public
+            </th>
+            <td>
+                Indica si el directorio permite el acceso público. Los posibles valores son
+                <em>
+                    no
+                </em>
+                y
+                <span lang="en">
+            <em>
+             yes
+            </em>
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                read only
+            </th>
+            <td>
+                Indica que el directorio es sólo lectura. Los posibles valores son
+                <em>
+                    no
+                </em>
+                y
+                <span lang="en">
+            <em>
+             yes
+            </em>
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                valid users
+            </th>
+            <td>
+                Indica los usuarios que pueden acceder a la carpeta. Para añadir un grupo
+                entonces hay que poner el nombre del grupo precedido de la &#64;.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                writable
+            </th>
+            <td>
+                Indica que se puede modificar el contenido de la carpeta.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                write list
+            </th>
+            <td>
+                Indica los usuarios que pueden modificar el contenido.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        O si lo prefieres, puedes establecer que el recurso sea accesible solamente por unos
+        determinados usuarios:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>[miscosas]
+</pre>
+            <pre ngNonBindable>        path = /datos/
+</pre>
+            <pre ngNonBindable>        comment = “Datos y aplicaciones”
+</pre>
+            <pre ngNonBindable>        valid users = juan,encarni,&#64;master
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Lógicamente los usuarios se han tenido que crear previamente y el grupo master debe existir
+        en el fichero /etc/group.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>master:x:502:juan,encarni
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        A continuación se amplía el ejemplo pero estableciendo el permiso de escritura para el
+        usuario juan y el permiso de lectura para el usuario encarni y el grupo master. Además,
+        cuando un usuario crea un fichero o carpeta éste se crea en el sistema con un propietario
+        (juan:juan) y unos determinados permisos (770).
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.65em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable> [miscosas]
+</pre>
+            <pre ngNonBindable>        path = /datos/
+</pre>
+            <pre ngNonBindable>        comment = “Datos y aplicaciones”
+</pre>
+            <pre ngNonBindable>        valid users = juan, encarni,&#64;master
+</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+            <pre ngNonBindable>        writeable = yes
+</pre>
+            <pre ngNonBindable>        write list = juan
+</pre>
+            <pre ngNonBindable>        read list = juan,&#64;master
+</pre>
+            <pre ngNonBindable>&nbsp;</pre>
+            <pre ngNonBindable>        force user = juan
+</pre>
+            <pre ngNonBindable>        force group = juan
+</pre>
+            <pre ngNonBindable>        create mode = 770
+</pre>
+            <pre ngNonBindable>        directory mode = 770
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p class="destacado">
+        Cuando se comparte una carpeta es necesario establecer los permisos en el
+        fichero de configuración y en el sistema de ficheros. Para ello puedes utilizar los
+        comandos: chmod, chown y chgrp.
+    </p>
+    <p>
+        Finalmente, para que se apliquen los cambios reinicia el servicio:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># service samba restart
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.3.- Compartir impresoras.
+</h1><div class="iDevice_content">
+    <p>
+        Existen dos formas de compartir las impresoras que se encuentran conectadas al equipo para
+        que las puedan utilizar todos los clientes de la red: a través de cups o utilizando samba.
+    </p>
+    <p class="destacado">
+        Existen impresoras con tarjeta de red que permiten a los clientes imprimir
+        directamente sin necesidad de ningún servidor.
+    </p>
+    <p>
+        <em>
+            <strong>
+                cups
+            </strong>
+        </em>
+    </p>
+    <p>
+        Cups es un servidor de impresión que viene por defecto instalado en Ubuntu. Dispone de una
+        interfaz gráfica, accesible desde un navegador sin más que escribir
+        <em>
+            http://localhost:631
+        </em>
+        en la barra de direcciones
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Las tareas más frecuentes que se pueden realizan son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Bajo la pestaña administración:
+            <ul>
+                <li>
+                    Compartir las impresoras y permitir la impresión desde Internet
+                    <em>
+                        .
+                    </em>
+                </li>
+                <li>
+                    Añadir impresoras
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+
+    </div>
+    <div class="elemento_centrado">
+
+    </div>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Bajo la pestaña impresoras:
+            <ul>
+                <li>
+                    Mantenimiento, que engloba tareas como impresión de página de prueba, tareas con
+                    trabajos, etc.
+                </li>
+                <li>
+                    Administración, que engloba tareas como modificación o borrado de impresora.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p>
+    </p>
+    <p>
+        Para compartir impresoras conectadas a un sistema ubuntu con cups, basta con hacer que la
+        impresora apunte a la dirección http://IP_UBUNTU:631/printers/NOMBRE_IMPRESORA
+    </p>
+    <p>
+        <em>
+            <strong>
+                Samba
+            </strong>
+        </em>
+    </p>
+    <p>
+        Para compartir una impresora hay que añadir en el fichero de configuración de Samba
+        /etc/samba/smb.conf un nuevo recurso siguiendo la siguiente estructura:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>[printers]
+</pre>
+            <pre ngNonBindable>    comment = All printers
+</pre>
+            <pre ngNonBindable>    path = /var/spool/samba
+</pre>
+            <pre ngNonBindable>    browseable = no
+</pre>
+            <pre ngNonBindable>    printable = yes
+</pre>
+            <pre ngNonBindable>    public = no
+</pre>
+            <pre ngNonBindable>    writable = no
+</pre>
+            <pre ngNonBindable>    create mode = 0700
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        El acceso a las impresoras GNU/Linux desde Windows funciona de la misma forma que los
+        directorios. El nombre compartido es el nombre de la impresora Linux en el fichero printtab.
+        Por ejemplo, para acceder a la impresora HP_laserjet, los usuarios de Windows deberá acceder
+        a \\smbserv\HP_laserjet.
+    </p>
+    <p>
+        A modo de resumen, en la tabla se muestran los parámetros utilizados en la sección
+        [printers].
+    </p>
+    <table class="tabla">
+        <caption>
+            Opciones más utilizadas de smb.conf (sección
+            <span lang="en">
+          printers
+         </span>
+            ).
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Parámetro.
+            </th>
+            <th scope="col">
+                Comentario.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                comment
+            </th>
+            <td>
+                Proporciona información sobre la sección (no afecta a la operación).
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                path
+            </th>
+            <td>
+                Especifica la ruta de acceso a la cola de impresión o
+                <span lang="en">
+            spool
+           </span>
+                (que por defecto es /var/spool/samba). Es posible
+                crear un directorio de
+                <span lang="en">
+            spool
+           </span>
+                para Samba y hacer que
+                apunte a él.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                browseable
+            </th>
+            <td>
+                Como con los directorios raíz, si indica NO se asegura de que sólo pueden ver
+                las impresoras los usuarios autorizados.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                printable
+            </th>
+            <td>
+                Se debe poner
+                <span lang="en">
+            <em>
+             YES
+            </em>
+           </span>
+                , si no se hace así no
+                funcionarán las impresoras.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                public
+            </th>
+            <td>
+                Si se pone
+                <span lang="en">
+            <em>
+             YES
+            </em>
+           </span>
+                , cualquier usuario podrá imprimir
+                (en algunas redes se pone
+                <em>
+                    NO
+                </em>
+                para evitar la impresión excesiva).
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                writable
+            </th>
+            <td>
+                Las impresoras no son escribibles, por lo tanto escriba NO.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    2.4.- Asistentes de configuración.
+</h1><div class="iDevice_content">
+    <p>
+        Dado el gran uso que se realiza de Samba para compartir información entre sistemas Windows y
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux contar con una interfaz
+        gráfica a veces facilita su gestión. Las más usadas son
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            webmin. Como siempre
+            <em>
+          <span lang="en">
+           webmin
+          </span>
+            </em>
+            permite configurar cualquier
+            servicio del servidor. Para acceder al módulo de configuración pulse en
+            <em>
+          <span lang="en">
+           Servers
+          </span>
+            </em>
+            .
+            <span lang="en">
+          <em>
+           Samba W
+          </em>
+         </span>
+            <span lang="en">
+          <em>
+           indows File Sharing
+          </em>
+         </span>
+            .
+        </li>
+    </ul>
+    <p>
+
+    </p>
+    <p style="text-align: center;">
+
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            system-config-samba. Por último, también dispones de la herramienta de xWindows para
+            administrar samba. Para instalarla debes ejecutar:
+            <div class="codigo elemento_centrado" style="width: 26.35em;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># apt-get install system-config-samba</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+</div><h1 class="title">
+    2.5.- Cliente.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Además de actuar como servidor de ficheros, el equipo puede utilizarse como cliente para
+        acceder a los recursos compartidos que hay en otros servidores.
+    </p>
+    <p>
+        Existen varias formas para acceder desde
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux a carpetas e impresoras compartidas. La forma más sencilla
+        es mediante dos programas cliente que vienen en la instalación de Samba: smbclient y
+        <code>
+            smbprint
+        </code>
+        . Aunque esta solución funciona, está algo limitada, particularmente en
+        el acceso a ficheros. Smbclient proporciona una forma similar a un servidor
+        <abbr title="File Transfer Protocol.">
+            FTP
+        </abbr>
+        para acceder a un recurso remoto
+        compartido. No permite el uso de comandos normales de Unix como cp y
+        <code>
+            mv
+        </code>
+        para
+        manipular los ficheros y, por lo tanto, no permite acceder a los recursos compartidos de
+        otras aplicaciones (a diferencia de los sistemas de ficheros remotos montados con
+        NFS
+        que aparecen para las
+        aplicaciones
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux como
+        sistemas de ficheros locales).
+    </p>
+    <p>
+        Este problema se puede evitar montando el sistema de ficheros compartidos samba en
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux, como se hace con sistemas de
+        ficheros
+        <abbr title="Network File System.">
+            NFS
+        </abbr>
+        y locales.
+    </p>
+    <p>
+        La forma más sencilla de acceder a un recurso compartido de Samba es montarlo en una carpeta
+        y así poder acceder al contenido del recurso de la misma forma que lo haces con cualquier
+        otra carpeta del sistema.
+    </p>
+    <p>
+        Para montar el recurso primero hay que crear la carpeta donde se va a montar el recurso y
+        luego ejecuta el comando mount.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 46.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>$ mkdir /prueba
+</pre>
+            <pre ngNonBindable>$ mount -t cifs –o user=usuario,pass=contrasena //10.0.0.1/recurso /prueba
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            -t cifs. Indica el tipo de ficheros que se va a utilizar que en este caso es
+            <em>
+                cifs
+            </em>
+            .
+        </li>
+        <li>
+            -o user=usuario,pass=contrasena. Indica el nombre del usuario y la contraseña con la
+            quiere acceder.
+        </li>
+        <li>
+            //10.0.0.1/recurso. Indica la dirección IP y el nombre del recurso al que quieres
+            acceder.
+        </li>
+        <li>
+            /prueba. Es el directorio donde se va a montar el recurso compartido.
+        </li>
+    </ul>
+    <p class="destacado">
+        Para ver si se ha montado correctamente el recurso puedes ejecutar el
+        comando mount o entrar en la carpeta y ver su contenido.
+    </p>
+    <p>
+        Para que el recurso se monte automáticamente al iniciar el equipo hay que añadir al fichero
+        /etc/fstab la siguiente línea:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 42.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>//10.0.0.1/recurso /prueba cifs rw,username=login,password=pass 0 0
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde username y
+        <code>
+            password
+        </code>
+        especifican el nombre y la contraseña del usuario con
+        el que acceder al servidor.
+    </p>
+    <table class="tabla">
+        <caption>
+            Datos más importantes del servicio Samba.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="row">
+                Nombre del servicio:
+            </th>
+            <td>
+                samba4
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Fichero de configuración:
+            </th>
+            <td>
+                /etc/samba/smb.conf
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Comandos más utilizados:
+            </th>
+            <td>
+                smbpasswd smbclient pdbedit mount
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Puertos utilizados:
+            </th>
+            <td>
+                137/UDP, 138/UDP, 139/TCP y 445/TCP
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t24d90ab6-7373-013e-b890-4d4665964df8">
+        <p>
+            Servicio que permite compartir sistemas de ficheros por red.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.- NFS.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    3.1.- Configuración del servidor.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Es en el servidor donde se indican los directorios que se desean compartir. Para ello, hay
+        que modificar dos ficheros:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            /etc/exports, donde se indica los directorios locales que se van a exportar a sistemas
+            remotos. Dicho fichero tiene una serie de líneas, cada una con el siguiente formato:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;directorio&gt; &lt;IP&gt;/&lt;MÁSCARA&gt;(opciones) &lt;IP&gt;/&lt;MÁSCARA&gt;(opciones)...
+</pre>
+        </div>
+    </div>
+    <p style="margin-left: 60px;">
+        Y donde las opciones disponibles son las siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <ul>
+            <li>
+                <em>
+                    ro|rw
+                </em>
+                : compartir el directorio como solo lectura (
+                <em>
+                    ro
+                </em>
+                ), opción por
+                defecto, o como lectura y escritura (
+                <em>
+                    rw
+                </em>
+                ).
+            </li>
+            <li>
+                <em>
+                    sync|async
+                </em>
+                :
+                <em>
+                    sync
+                </em>
+                <span>
+           comunica al usuario los cambios realizados
+										sobre los archivos conforme se hacen mientras que
+          </span>
+                <em>
+                    async
+                </em>
+                no lo
+                hace, mejorando el rendimiento y agilizando el funcionamiento del servicio, pero
+                puede generar archivos corruptos si el servidor falla
+            </li>
+            <li>
+                <em>
+           <span style="color: #000000;">
+            no_subtree_check
+           </span>
+                </em>
+                <strong>
+           <span style="color: #000000;">
+            <em>
+             <span>
+              :
+             </span>
+            </em>
+           </span>
+                </strong>
+                <span style="color: #000000;">
+           permite que no se compruebe el camino hasta el
+										directorio que se exporta, en el caso de que el usuario no tenga permisos sobre
+										el directorio exportado.
+          </span>
+            </li>
+            <li>
+                <em>
+                    root_squash | no_root_squash | all_squash
+                </em>
+                <ul>
+                    <li>
+                        <em>
+                            root_squash
+                        </em>
+                        . El administrador (
+                        <em>
+                            root
+                        </em>
+                        ) tendrá acceso al
+                        directorio compartido sólo con privilegios de usuario anónimo.
+                    </li>
+                    <li>
+                        <em>
+                            no_root_squash.
+                        </em>
+                        <span style="color: #000000;">
+             Los accesos
+												realizados como administrador desde el cliente, también lo serán en el
+												servidor NFS.
+            </span>
+                    </li>
+                    <li>
+                        <em>
+                            all_squash
+                        </em>
+                        <span style="color: #000000;">
+             . Todos los usuarios
+												tendrán acceso al directorio como usuario anónimo. No se mantienen los
+												UID y GID de ningún usuario.
+            </span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </ul>
+    <p class="_mce_tagged_br" style="margin-left: 60px;">
+        <span style="color: #000000;">
+         Si se
+								utiliza alguna de las opciones
+         <em>
+          squash
+         </em>
+         , se puede indicar el UID y GID del
+								usuario con el que se quiere que se acceda, en lugar del anónimo. Por
+								ejemplo:
+         <br>
+        <br/></span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>(rw,all_squash,anonuid=1004,anongid=1004)
+</pre>
+        </div>
+    </div>
+    <p style="margin-left: 60px; text-align: center;">
+    </p>
+    <p style="margin-left: 60px;">
+        Un ejemplo de todo lo anterior se podría apreciar en la siguiente
+        línea:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>/datos 192.168.20.9/24(rw,sync,root_squash) 192.168.20.8/24(ro)</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            /etc/host.allow y /etc/host.deny, donde se indica a qué máquinas se les permite o
+            deniega, respectivamente, el acceso. El primer paso sería denegarle a todos los equipos
+            el acceso para después, concedérselo sólo a los equipos que lo necesiten. Por tanto, en
+            /etc/host.deny escribiremos:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>rpcbind: ALL
+</pre>
+        </div>
+    </div>
+    <div class="texto_izquierda">
+    </div>
+    <div class="texto_izquierda">
+        <p style="margin-left: 60px;">
+            y en /etc/host.allow:
+        </p>
+        <div class="codigo elemento_centrado" style="width: 25.8em;">
+            <div class="texto_izquierda">
+          <pre ngNonBindable>rpcbind: &lt;IP&gt;/MÁSCARA&lt;br /&gt;nfs: &lt;IP&gt;/MÁSCARA
+</pre>
+            </div>
+        </div>
+        <div class="texto_izquierda">
+        </div>
+    </div>
+    <p>
+        Una vez modificados ambos ficheros, hay que iniciar el servicio ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># service nfs-kernel-service star</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.2.- Configuración del cliente.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        Para acceder al directorio que comparte el servidor hay que montarlo, ya sea automática o
+        manualmente al iniciar el equipo, como se muestra en el siguiente ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>#  mount 192.168.20.100:/datos /prueba
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            192.168.20.100:/datos es la carpeta que se ha compartido en el servidor en el fichero
+            /etc/exports.
+        </li>
+        <li>
+            /mnt/trabajo es la carpeta donde se monta la carpeta compartida.
+        </li>
+    </ul>
+    <p>
+        Si deseas montar la carpeta automáticamente al iniciar el sistema, hay que modificar el
+        fichero /etc/fstab añadiendo la siguiente línea:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>192.168.20.100:/datos /prueba nfs rw,hard,intr  0 0
+</pre>
+        </div>
+    </div>
+    <p>
+        Donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            rw. Indica que se monta el directorio en modo lectura/escritura. Para montarlo sólo en
+            modo lectura escriba ro.
+        </li>
+        <li>
+            hard. Indica que si al copiar un fichero en la carpeta compartida se pierde la conexión
+            con el servidor se vuelva a iniciar la copia del fichero cuando el servidor se encuentre
+            activo.
+        </li>
+        <li>
+            intr. Evita que las aplicaciones se queden "colgadas" al intentar escribir en la carpeta
+            si no se encuentra activa.
+        </li>
+    </ul>
+    <table class="tabla">
+        <caption>
+            Datos más importantes del servicio
+            <abbr title="Network File System.">
+                NFS
+            </abbr>
+            .
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="row">
+                Nombre del servicio:
+            </th>
+            <td>
+                nfs
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                <em>
+                    Carpetas compartidas:
+                </em>
+            </th>
+            <td>
+                /etc/exports
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Comandos más utilizados:
+            </th>
+            <td>
+                mount
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                Puertos:
+            </th>
+            <td>
+                2049/TCP y 2049/UDP
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    4.- Acceso remoto al sistema.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    4.1.- SSH.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        <abbr title="Secure SHell">
+            SSH
+        </abbr>
+        es un protocolo que permite conectarse
+        de forma segura a un servidor para poder administrarlo. En realidad, es más que eso, ya que
+        se ofrecen más servicios como la transmisión de ficheros, el protocolo
+        <abbr title="File Transfer Protocol.">
+            FTP
+        </abbr>
+        seguro e, incluso, se puede usar
+        como transporte de otros servicios.
+    </p>
+    <p>
+        El protocolo
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        garantiza que la conexión se realiza
+        desde los equipos deseados (para lo que usa certificados) y establece una comunicación
+        cifrada entre el cliente y el servidor, mediante un algoritmo de
+        cifrado
+
+
+        Cifrado
+
+        Proceso
+        de ocultación de la información para hacerla ilegible a personas no autorizadas. Se
+        realiza mediante algoritmos matemáticos y con el uso de claves secretas o
+        privadas.
+        robusto (normalmente con 128 bits) que se utilizará para todos
+        los intercambios de datos.
+    </p>
+    <p>
+        A continuación vas a ver cómo instalar y configurar el servicio
+        <em>
+         <span lang="en">
+          OpenSSH
+         </span>
+        </em>
+        por ser el servidor
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        más utilizado.
+    </p>
+    <p>
+        Al ser
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        el mecanismo más frecuente para
+        acceder a un servidor,
+        <span lang="en">
+         OpenSSH
+        </span>
+        se instala por defecto al realizar la
+        instalación del sistema. No obstante puedes realizar la instalación de
+        <span lang="en">
+         <em>
+          OpenSSH
+         </em>
+        </span>
+        ejecutando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># apt-get install ssh
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez que se complete la instalación, el servicio
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        se iniciará automáticamente. Para verificar que
+        la instalación fue exitosa y que el servicio
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        se está ejecutando, escriba el siguiente comando
+        que imprimirá el estado del servidor
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        obteniendo
+        un mensaje similar a Active: active (running):
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># sudo systemctl status ssh&lt;br /&gt;ó</pre>
+            <pre ngNonBindable># service ssh start</pre>
+        </div>
+    </div>
+    <div class="stack-block" data-trans-dest="answer-867334">
+        <p>
+        </p>
+        <p class="destacado">
+            <strong>
+                service&nbsp;es adecuado para la gestión de servicios básicos
+                (es decir, status,
+                <code>
+                    start
+                </code>
+                , reload,
+                <code>
+                    restart
+                </code>
+                y stop)&nbsp;
+                mientras que las llamadas directas&nbsp;systemctl&nbsp;ofrecen mayores opciones de
+                control. En algún servicio os hemos enseñado la llamada directa al script en
+                /etc/init.d pero a continuación se usará el comando systemctl
+            </strong>
+        </p>
+        <p>
+         <span style="font-size: 1em;">
+          No obstante para parar e iniciar el servicio puede ejecutar
+									la siguiente secuencia de comandos:
+         </span>
+        </p>
+    </div>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># sudo systemctl stop ssh</pre>
+            <pre ngNonBindable># sudo systemctl start ssh</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Recuerda que para que el servicio se ejecute automáticamente al iniciar el sistema se puede
+        ejecutar la herramienta sysv-rc-conf, como hemos visto en apartados anteriores, o modificar
+        el fichero /etc/fstab. No obstente si se quiere desabilitar el servicio al arrancar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># sudo systemctl disable ssh
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para habilitar de nuevo el servicio se ejecuta el siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># sudo systemctl enable ssh
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.1.1.- Configuración del servidor.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        El servidor openSSH utiliza el fichero de configuración /etc/ssh/sshd_config y normalmente no
+        es necesario modificarlo. Los parámetros más importantes son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Port y
+            <code>
+                &gt;ListenAdress
+            </code>
+            . Por defecto el servicio ssh trabaja en el puerto
+            22 y responde por todas las interfaces del sistema. Los siguientes parámetros permiten
+            cambiar el puerto y la dirección, en las que atenderá peticiones:
+            <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>Port 22
+</pre>
+                    <pre ngNonBindable>ListenAddress 0.0.0.0
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-top: 2em;">
+            PermitRootLogin:establece si se permite o no el acceso del
+            usuario
+            <em>
+          <span lang="en">
+           root
+          </span>
+            </em>
+            al servidor.
+            <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>PermitRootLogin no
+</pre>
+                </div>
+            </div>
+        </li>
+        <li style="margin-top: 2em;">
+            Por defecto existen dos directivas que permiten y deniegan el
+            acceso
+            <abbr title="Secure Shell">
+                SSH
+            </abbr>
+            a un usuario o grupo en
+            particular:
+            <ul>
+                <li style="margin-top: 2em;">
+                    La directiva&nbsp;AllowUsers indica los usuarios que
+                    puedan acceder al sistema separados por espacios. Si se quiere denegar el acceso
+                    a un usuario se utilizará&nbsp;DenyUsers.
+                    <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>AllowUsers cesar sonia
+</pre>
+                        </div>
+                    </div>
+                    <br>
+                    <p>
+                        También es posible indicar el equipo anfitrión desde el que pueden
+                        conectarse. En el siguiente ejemplo sólo los usuarios cesar y sonia pueden
+                        conectarse al servidor desde el equipo 10.0.0.2.
+                    </p>
+                    <br>
+                    <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>AllowUsers cesar&#64;10.0.0.2 sonia&#64;10.0.0.2
+</pre>
+                        </div>
+                    </div>
+                    <br/><br/></li>
+                <li style="margin-top: 2em;">
+                    La directiva AllowsGroups permite el acceso a todos los
+                    miembros de un grupo. Si se quiere denegar el acceso a un grupo se utiliza la
+                    directiva&nbsp;DenyGroups:
+                    <br>
+                    <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>AllowGroups root
+</pre>
+                        </div>
+                    </div>
+                    <br/></li>
+            </ul>
+        </li>
+        <li style="margin-top: 2em;">
+            Cuando un usuario se conecta se le puede enviar un mensaje de
+            advertencia antes de autenticarse con el fin de obtener protección jurídica o
+            simplemente da rinformación a los usuarios. Se puede utilizar dos directivas:
+            <ul>
+                <li>
+                    PrintMotd especifica si el servicio SSH debería mostrar el contenido de
+                    /etc/motd cuando el usuario ingresa.
+                </li>
+                <li>
+                    Banner&nbsp;cumple la misma función que la directiva PrintMotd pero no se
+                    visualiza de forma predeterminada y hay que indicar el fichero que se quiere
+                    mostrar. Consulta el siguiente enlace para crear divertidos Banner mediante la
+                    herramienta Boxes
+                    .
+                    <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>PrintMotd yes
+</pre>
+                            <pre ngNonBindable>Banner /etc/issue.net
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li style="margin-bottom: 2em; margin-top: 2em;">
+            A continuación ponemos un ejemplo de
+            seguridad y control de acceso válido para nuestro servicio:
+            <ul>
+                <li>
+                    La directiva IgnoreUserKnownHosts indica si se evita la conexión de usuarios de
+                    equipos conocidos meiante claves de host del fichero&nbsp;~/.ssh/known_host.
+                </li>
+                <li>
+                    El reenvío de puertos, o tunnlehing, permite que un usuario externo alcance un
+                    puerto en una dirrección
+                    <abbr title="Internet Protocol">
+                        IP
+                    </abbr>
+                    privada de una
+                    <abbr title="Local Area Network">
+                        LAN
+                    </abbr>
+                    desde le exterior a través de un router con
+                    <abbr title="Network Address Translation">
+                        NAT
+                    </abbr>
+                    habilitada, la
+                    directiva GatewayPorts evita esta posibilidad si está inicializada al valor
+                    no.
+                </li>
+                <li>
+                    AllowTcpForwarding&nbsp;si se permite el reenvío de
+                    <abbr title="Transmission Control Protocol">
+                        TCP
+                    </abbr>
+                    . El valor
+                    predeterminado es si.
+                    <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>IgnoreUserKnownHosts no
+</pre>
+                            <pre ngNonBindable>GatewayPorts no
+</pre>
+                            <pre ngNonBindable>AllowTcpForwarding yes
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li style="margin-top: 2em;">
+            Uso de subsistemas para otras aplicaciones, como por ejemplo,
+            <abbr title="     ">
+                FTP
+            </abbr>
+            .
+            <div class="codigo elemento_centrado" style="width: 25em; margin-top: 2em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>Subsystem sftp /usr/lib/openssh/sftp-server
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p>
+        Una vez configurado el servidor, para que se apliquen los cambios, debes ejecutar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># sudo systemctl restart ssh
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.1.2.- Configuración del cliente.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Cuando se trabaja con servidores lo normal es administrarlos de forma remota a través de
+        <abbr title="Secure Shell">
+            SSH
+        </abbr>
+        o
+        <span lang="en">
+         Webmin
+        </span>
+        . Si utilizas un
+        equipo
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux y quieres
+        conectarte al servidor tan sólo hay que ejecutar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$ ssh username&#64;REMOTE.HOST_IP.ADDRESS </pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Donde
+        <code class="language-bash">
+            REMOTE.HOST_IP.ADDRESS
+        </code>
+        puede indicar el
+        nombre del equipo o la dirección
+        <abbr title="Internet Protocol">
+            IP
+        </abbr>
+        del mismo.&nbsp;Si utilizas Windows y quieres conectarte al servidor en
+        <abbr title="GNU's Not Unix.">
+            GNU
+        </abbr>
+        /Linux lo mejor es utilizar la
+        aplicación
+        <em>
+            PuTTY
+        </em>
+        .
+    </p>
+    <p class="enlace_centrado">
+        Putty.
+    </p>
+    <p>
+        Veremos a continuación un caso práctico de cómo acceder al servidor mediante ssh:
+    </p>
+    <ol>
+        <li>
+            Abrir una terminal y ejecutar el comando ipconfig para saber la
+            <abbr title="Internet Protocol">
+                IP
+            </abbr>
+            del servidor, por ejemplo,
+            192.168.63.129
+        </li>
+        <li>
+            Desde un equipo cliente que se encuentre en la misma red del servidor, se realizan los
+            siguientes pasos:
+            <ol>
+                <li>
+                    Si se trata de Linux, se ejecuta el siguiente comando:&nbsp;ssh
+                    ubuntu&#64;192.168.63.129
+                </li>
+                <li>
+                    Si usamos Windows se puede utilizar un cliente
+                    <abbr title="Secure Shell">
+                        SSH
+                    </abbr>
+                    gratuito como PuTTY y en
+                    <abbr title="Internet Protocol">
+                        IP
+                    </abbr>
+                    address introducir la Ip
+                    del servidor como muestra la imagen. En el caso de Windows abre una ventana de
+                    sesión que nos pide el usuario con el conectarnos login as: e introducimos el
+                    usuario ubuntu y la constraseña.
+                </li>
+            </ol>
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+
+            </div>
+        </li>
+    </ol>
+    <p>
+        Finalmente ya estamos en el sistema, nos tenemos que fijar en el&nbsp;prompt de
+        Linux:ubuntu&#64;ip-192.168.63.129&nbsp;donde pueses introducir el comando&nbsp;pwd para conocer
+        la ruta o directorio en el que nos encontramos.
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    4.2.- VNC.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        <abbr title="Virtual Network Computing.">
+            VNC
+        </abbr>
+        es un programa con
+        licencia
+        <abbr title="General Public License.">
+            GPL
+        </abbr>
+        que utiliza el
+        modelo cliente/servidor y permite ver la pantalla del equipo remoto y controlarlo desde uno
+        o varios equipos clientes y desde cualquier ubicación. Para que esto sea posible el equipo
+        servidor debe ser visto desde cualquier parte del mundo ya que el cliente y el servidor se
+        conectan a través de internet.
+    </p>
+    <p>
+        Con
+        <abbr title="Virtual Network Computing.">
+            VNC
+        </abbr>
+        se puede
+        contectar a cualquier equipo que ejecute el servidor
+        <abbr title="Virtual Network Computing.">
+            VNC
+        </abbr>
+        que está disponible para
+        <span lang="en">
+         Windows
+        </span>
+        ,
+        <span lang="en">
+         macOS
+        </span>
+        ,
+        <span lang="en">
+         Linux
+        </span>
+        ,
+        <span lang="en">
+         Raspberry Pi
+        </span>
+        ,
+        <span lang="en">
+         HP-UX
+        </span>
+        entre otros.
+        <abbr title="Virtual Network Computing.">
+            VNC
+        </abbr>
+        es un término genérico
+        para el tipo de
+        <span lang="en">
+         software
+        </span>
+        que cumple esta función, ya que existen
+        diferente
+        <span lang="en">
+         software
+        </span>
+        para los diferentes sistemas operativos.
+    </p>
+    <p>
+        Con la proliferación de dispositivos
+        <span lang="en">
+         Raspberry
+        </span>
+        como elementos de
+        medición o centros multimedia se utiliza el software
+        <abbr title="Virtual Network Computing.">
+            VNC
+        </abbr>
+        para acceder a la
+        <span lang="en">
+         Raspberry
+        </span>
+        e instalar por ejemplo
+        <span lang="en">
+         software
+        </span>
+        desde
+        un equipo cliente.
+        <span>
+         Con
+         <abbr title="Virtual Network Computing.">
+          VNC
+         </abbr>
+         se utiliza un puerto para cada escritorio virtual. El
+								primer escritorio suele utilizar el puerto 5900 y los sucesivos 5901, 5902...
+        </span>
+    </p>
+    <p>
+        En Ubuntu se puede utilizar las siguientes herramientas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            vino como servidor
+            <abbr title="Virtual Network Computing.">
+                VNC
+            </abbr>
+            que se configurará para permitir a otros usuarios
+            controlar el escritorio.
+        </li>
+        <li>
+            remmina&nbsp;o&nbsp;vinagre&nbsp;como visores
+            <abbr title="Virtual Network Computing.">
+                VNC
+            </abbr>
+            que además admiten
+            otros protocolos.
+        </li>
+    </ul>
+    <p>
+        En las siguientes secciones vamos a ver cómo se configuran para acceder desde otro equipo a
+        nuestro Ubuntu.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    4.2.1.- Configuración del servidor.
+</h1><div class="iDevice_content">
+    <p>
+        El paquete vino proporciona acceso remoto al escritorio en
+        <span lang="en">
+         Ubuntu
+        </span>
+        .
+        vino es un servidor VNC que fue desarrollado específicamente para su uso con el escritorio
+        <span lang="en">
+         GNOME
+        </span>
+        . En
+        <span lang="en">
+         Ubuntu
+        </span>
+        20.04 ya se incropora la
+        herramienta con lo cual para&nbsp;habilitar el acceso al escritorio remoto desde
+        <span lang="en">
+         GNOME
+        </span>
+        se debe abrir la aplicación de confiugración como muestra la
+        siguiente imagen:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+        </div>
+
+
+        <p style="text-align: left;">
+        </p>
+        <p style="text-align: left;">
+         <span>
+          Dentro de la aplicación
+          <strong>
+           Configuración
+          </strong>
+          ,
+									seleccione la opción
+          <strong>
+           Compartir
+          </strong>
+          .
+          <span>
+           Active el interruptor
+           <strong>
+            Compartir (A)
+           </strong>
+           y haga clic en la opción
+           <strong>
+            Compartir
+											pantalla (B)
+           </strong>
+           para mostrar el cuadro de diálogo que se muestra a
+										continuación:
+          </span>
+         </span>
+        </p>
+        <div class="elemento_centrado">
+            <div class="elemento_centrado">
+
+            </div>
+
+
+        </div>
+        <div id="translation">
+            <div class="gtx-body" style="text-align: left;">
+            </div>
+            <div class="gtx-body" style="text-align: left;">
+            </div>
+            <div class="gtx-body" style="text-align: left;">
+                El cuadro de diálogo Compartir pantalla
+                podemos configurar las siguientes opciones para administrar el acceso al escritorio
+                remoto:
+            </div>
+            <div class="gtx-body" style="text-align: left;">
+                <ul>
+                    <li>
+                        <strong>
+                            Permitir conexiones para controlar la pantalla
+                        </strong>
+                        : si está
+                        habilitado, la sesión remota podrá usar el ratón y el teclado para
+                        interactuar con el entorno de escritorio. Si está deshabilitada, la sesión
+                        remota solo permitirá que se vea el escritorio.
+                    </li>
+                    <li>
+                        <strong>
+                            Las conexiones nuevas deben solicitar acceso
+                        </strong>
+                        : cuando se
+                        selecciona, aparecerá un mensaje en la pantalla del servidor pidiendo
+                        permiso al usuario remoto para acceder al escritorio. No seleccione esta
+                        opción si planea acceder a su pantalla de forma remota y nadie se encuentre
+                        en el equipo servidor para aceptar la solicitud de conexión.
+                    </li>
+                    <li>
+                        <strong>
+                            Solicitar una contraseña:
+                        </strong>
+                        requiere que el usuario ingrese
+                        la contraseña especificada antes de obtener acceso al escritorio.
+                    </li>
+                    <li>
+                        <strong>
+                            Redes
+                        </strong>
+                        : las conexiones de red en el sistema servidor a
+                        través de las cuales se permitirá el acceso remoto.
+                    </li>
+                </ul>
+                <p>
+           <span style="font-size: 1em;">
+            Para tener un control más fino de las opciones de
+											configuración del servidor, instalamos y abrimos
+           </span>
+                    dconf-editor
+                    <span style="font-size: 1em;">
+            . En la pantalla que aparece navegamos por el menú
+											de la derecha por las opciones
+           </span>
+                    <strong style="font-size: 1em;">
+                        org
+                        &gt;gnome &gt;desktop &gt;remote-access
+                    </strong>
+                    <span style="font-size: 1em;">
+            para acceder a las opciones de configuración de
+           </span>
+                    vino
+                    <span style="font-size: 1em;">
+            .
+           </span>
+                </p>
+            </div>
+        </div>
+        <div class="elemento_centrado">
+            <div class="elemento_centrado">
+
+            </div>
+
+        </div>
+        <p style="text-align: left;">
+        </p>
+        <p style="text-align: left;">
+            Desgraciadamente, algunos clientes
+            <abbr title="Virtual Network Computing.">
+                VNC
+            </abbr>
+            no cifran la conexión. En
+            esos casos, habría que desmarcar la casilla require-encryption
+            <code>
+            </code>
+            para que el
+            servidor no solicitase cifrado al cliente o, si no instalamos
+            <em>
+                dconf
+            </em>
+            , ejecutar
+            el comando:
+        </p>
+        <div class="codigo elemento_centrado" style="width: 26.9em;">
+            <div class="texto_izquierda">
+          <pre ngNonBindable># gsettings set org.gnome.Vino require-encryption false
+</pre>
+            </div>
+        </div>
+        <p>
+        </p>
+        <div style="color: #252525; font-family: Roboto, arial, sans-serif; font-size: 14px; text-align: start; display: inline;">
+            <div class="gtx-body" style="display: inline; font-size: 18px; margin: 5px auto; padding: 5px 0;">
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.2.2.- Configuración del cliente.
+</h1><div class="iDevice_content">
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+        </div>
+
+    </div>
+    <p>
+        Para acceder al servidor, se puede utilizar cualquier cliente
+        <abbr title="Virtual Network Computing.">
+            VNC
+        </abbr>
+        como, por ejemplo, los
+        siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Remmina:
+            </strong>
+            En Ubuntu 20.04 viene por defecto esta aplicación así que
+            puede acceder a esta aplicación pulsando sobre el icono
+            <strong>
+                Mostrar Aplicaciones
+                &gt; Buscar Remmina.
+            </strong>
+            Cuando se ejecuta aparece un&nbsp; menú desplegable
+            donde puede seleccionar entre los protocolos que soporta:
+            <abbr title="Virtual Network Computing">
+                VNC
+            </abbr>
+            ,
+            <abbr title="Remote Desktop Protocol">
+                RDP
+            </abbr>
+            ,
+            <span lang="en" title="Secure Shell">
+          SSH
+         </span>
+            .
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+
+
+            </div>
+        </li>
+        <li>
+            <em>
+                <strong>
+                    Vinagre (GNU/Linux).
+                </strong>
+            </em>
+            Para ejecutarlo, habrá que usar los
+            siguientes comandos:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 20.3em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># apt-get install vinagre&lt;br /&gt;# vinagre
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p style="text-align: center;">
+
+
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <em>
+                <strong>
+           <span title="en">
+            tigerVNC
+           </span>
+                    (Windows).
+                </strong>
+            </em>
+            Se trata de un
+            cliente/servidor
+            <abbr title="Virtual Network Computing.">
+                VNC
+            </abbr>
+            que
+            se encuentra licenciado bajo
+            <abbr title="General Public License.">
+                GPL
+            </abbr>
+            . Para conectarse al servidor, una vez instalado, hay que
+            poner su IP. Normalmente es suficiente con las opciones por defecto que trae, aunque se
+            pueden modificar pinchando en
+            <em>
+          <span lang="en">
+           options
+          </span>
+            </em>
+            .
+        </li>
+    </ul>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p style="text-align: center;">
+
+
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.- Servidor Web.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        -Para mejorar la imagen de la empresa vamos a tener nuestro propio servidor web.
+        Hasta ahora estábamos utilizando un servidor externo pero como vamos a incorporar
+        muchos servicios nuevos, vamos a utilizar el nuestro. Juan necesito que hagas tú esa
+        tarea.
+    </p>
+    <p>
+        -De acuerdo, pero he visto que hay muchos servidores web ¿Cuál utilizo?
+    </p>
+    <p>
+        -Aunque hay muchos servidores web, el más utilizado, con diferencia, es Apache. Así
+        que lo mejor es elegir ese. Además, es muy sencillo y permite realizar un montón de
+        tareas con él.
+    </p>
+</div><h1 class="title">
+    5.1.- Instalar módulo php.
+</h1><div class="iDevice_content">
+    <p>
+        <abbr title="PHP: Hypertext Preprocessor">
+            PHP
+        </abbr>
+        es un lenguaje de programación del
+        lado del servidor, es decir, lo ejecuta el servidor web, que permite la generación dinámica
+        de webs. Sin embargo, no sólo se utiliza para este propósito, sino que además se puede
+        utilizar desde una interfaz de línea de comandos o para la creación de aplicaciones con
+        interfaces gráficas.
+    </p>
+</div><h1 class="title">
+    5.2.- Configuración.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La configuración de apache se almacena en el directorio de configuración /etc/apache2. A
+        continuación se van a ver las opciones de configuración más utilizadas para cada uno de los
+        ficheros:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 20px;">
+            /etc/apache2/ports.conf. Permite establecer los puertos de
+            escucha para las comunicaciones
+            <abbr title="Hypertext Transfer Protocol.">
+                http
+            </abbr>
+            normales (puerto 80) y las comunicaciones seguras
+            <abbr title="Hypertext Transfer Protocol Secure">
+                https
+            </abbr>
+            (puerto 443).
+            <div class="codigo elemento_centrado" style="width: 25em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>Listen *:80
+</pre>
+                    <pre ngNonBindable>Listen *:443
+</pre>
+                </div>
+            </div>
+        </li>
+        <li>
+            /etc/apache2/apache2.conf. Una de las opciones más importantes y permite establecer el
+            usuario y grupo al que pertenecen los procesos que ejecuta el servidor:
+            <div class="codigo elemento_centrado" style="width: 25em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable>User www-data
+</pre>
+                    <pre ngNonBindable>Group www-data
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <p>
+        Apache almacena en la carpeta /etc/apache2/sites-available la configuración de cada uno de
+        los sitios web de apache. Por defecto se encuentran los sitios default y
+        <code>
+            default-ssl
+        </code>
+        . Cada sitio tiene la siguiente estructura:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>&lt;VirtualHost *:80&gt;
+</pre>
+            <pre ngNonBindable>     ServerAdmin servermaster&#64;localhost
+</pre>
+            <pre ngNonBindable>     # Servername www.miempresa.com # comentado en default
+</pre>
+            <pre ngNonBindable>     DocumentRoot /var/www/html
+</pre>
+            <pre ngNonBindable>     DirectoryIndex index.html default.html
+</pre>
+            <pre ngNonBindable>&lt;/VirtualHost&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ServerAdmin es el correo electrónico del administrador del sitio web.
+        </li>
+        <li>
+            Servername es el nombre
+            <abbr title="Fully Qualified Domain Name.">
+                FQDN
+            </abbr>
+            del sitio web. Para el dominio default no se indica ningún nombre, pero para
+            atender peticiones específicas de dominios (por ejemplo, www.miempresa.com) sí se debe
+            establecer.
+        </li>
+        <li>
+            DocumentRoot. Indica la ubicación donde se encuentra las páginas web del sitio.
+        </li>
+        <li>
+            DirectoryIndex. Indica el nombre de los ficheros que envía por defecto el servidor web.
+        </li>
+    </ul>
+    <div class="exe-fx exe-accordion" style="box-shadow: rgba(51, 51, 51, 0.5) 0px 1px 3px;">
+        <div id="exe-accordion-1">
+            <div class="fx-accordion-section">
+                Nuevo Sitio
+                <div class="fx-accordion-content" id="exe-accordion-1-0">
+                    <p>
+                        <strong>
+                            <em>
+                                Nuevo sitio
+                            </em>
+                        </strong>
+                    </p>
+                    <p>
+                        Por defecto el servidor web publica el
+                        directorio&nbsp;/var/www/html&nbsp;para todos los dominios pero es posible
+                        personalizar de forma independiente cada dominio. Por ejemplo, para añadir
+                        el dominio
+                        <em>
+                            www.miempresa.com
+                        </em>
+                        que se aloja en la
+                        carpeta&nbsp;/portales/miempresa&nbsp;hay que crear el
+                        fichero&nbsp;/etc/apache2/sites-available/miempresa.conf&nbsp;con el
+                        siguiente contenido:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 25em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>&lt;virtualhost *:80&gt;
+</pre>
+                            <pre ngNonBindable>     ServerName www.miempresa.com
+</pre>
+                            <pre ngNonBindable>     DocumentRoot /portales/miempresa
+</pre>
+                            <pre ngNonBindable>&lt;/virtualhost&gt;
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                    </p>
+                    <p>
+                        Activar el sitio
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 25em;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable># a2ensite miempresa.conf
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                    </p>
+                    <p>
+                        Y reiniciar el servidor web
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 25em;">
+                        <div class="texto_izquierda">
+                            <pre ngNonBindable># sudo systemctl restart apache2</pre>
+                        </div>
+                    </div>
+                    <p class="destacado">
+                        <strong>
+                            Para que el servidor web atienda un determinado
+                            dominio, debe haber una entrada para dicho nombre (por ejemplo,
+                            www.miempresa.com)en un servidor DNS que apunte hacia el servidor
+                            web.
+                        </strong>
+                    </p>
+                </div>
+                Sitio Seguro (https)
+                <div class="fx-accordion-content" id="exe-accordion-1-1">
+                    <p>
+            <span style="font-size: 1em;">
+             Con el auge de los negocios en Internet se ha
+												popularizado el uso de comunicaciones cifradas entre los clientes y el
+												servidor Web, siendo la tecnología de encriptación más utilizada el
+            </span>
+                        <span lang="en" style="font-size: 1em;">
+             Security Socket
+												Layer
+            </span>
+                        <span style="font-size: 1em;">
+             (
+            </span>
+                        <abbr title="Security Socket Layer.">
+                            SSL
+                        </abbr>
+                        <span style="font-size: 1em;">
+             ).
+            </span>
+                    </p>
+                    <p>
+                        Para poder utilizar una página segura bajo
+                        <abbr title="Hypertext Transfer Protocol Secure.">
+                            https
+                        </abbr>
+                        hay que
+                        realizar los siguientes pasos:
+                    </p>
+                    <ul class="lista_verificacion">
+                        <li>
+                            Activar el módulo ssl y reiniciar el servidor apache
+                            <br>
+                            <div class="codigo elemento_centrado" style="width: 25em;">
+                                <div class="texto_izquierda">
+                                    <pre ngNonBindable># a2enmod ssl&lt;br /&gt;# sudo systemctl restart apache2</pre>
+                                </div>
+                            </div>
+                            <br/></li>
+                        <li style="margin-bottom: 20px; margin-top: 20px;">
+                            Crear un certificado
+                            <abbr title="Security Socket Layer.">
+                                SSL
+                            </abbr>
+                            personal para que
+                            el servidor web se lo presente al cliente cada vez que éste se
+                            conecte
+                            <br>
+                            <br>
+                            <div class="codigo elemento_centrado" style="width: 75em;">
+                                <div class="texto_izquierda">
+                                    <pre ngNonBindable># mkdir /etc/apache2/ssl&lt;br /&gt;# openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/apache2/ssl/apache.key -out /etc/apache2/ssl/apache.crt</pre>
+                                </div>
+                            </div>
+                            <ul>
+                                <li style="margin-top: 2em;">
+                                    req. Se va a llevar a cabo una gestión
+                                    de petición de firma X.509, que es una infraestructura de clave
+                                    pública estándar a la que se adhiere SSL.
+                                </li>
+                                <li>
+                                    -X509. Se va a hacer un certificado auto-firmado en vez de hacer
+                                    una petición a una entidad certificadora.
+                                </li>
+                                <li>
+                                    -nodes. No se va a asegurar el fichero de clave con una
+                                    contraseña.
+                                </li>
+                                <li>
+                                    -days 365. El certificado será válido durante un año.
+                                </li>
+                                <li>
+                                    -newkey rsa:2048. Crea la clave pública y la privada al mismo
+                                    tiempo usando el algoritmo RSA y 2048 bits-
+                                </li>
+                                <li>
+                                    -keyout. Fichero de salida donde se guardará la clave privada.
+                                </li>
+                                <li>
+                                    -out. Fichero de salida para la clave pública.
+                                    <p style="text-align: center;">
+
+
+                                    </p>
+                                </li>
+                            </ul>
+                            <br/><br/></li>
+                        <li>
+                            Configurar apache para usar SSL. Para ello, vamos a usar la plantilla
+                            predefinida /etc/apache2/sites-available/default-ssl.conf
+                            <br>
+                            <br>
+                            <div class="codigo elemento_centrado" style="width: 50em;">
+                                <div class="texto_izquierda">
+                                    <pre ngNonBindable># cp /etc/apache2/sites-available/default-ssl.conf /etc/apache2/sites-available/miempresa-ssl.conf&lt;br /&gt;# gedit /etc/apache2/sites-available/miempresa-ssl.con</pre>
+                                </div>
+                            </div>
+                            <br/><br/></li>
+                    </ul>
+                    <p style="text-align: center;">
+
+
+                    </p>
+                    <ul class="lista_verificacion">
+                        <li>
+                            Activar el sitio miempresa-ssl y reinciar el servidor web
+                            <br>
+                            <br>
+                            <div class="codigo elemento_centrado" style="width: 50em;">
+                                <div class="texto_izquierda">
+                                    <pre ngNonBindable># a2ensite miempresa-ssl.conf</pre>
+                                    <pre ngNonBindable># sudo systemctl restart apache2</pre>
+                                </div>
+                            </div>
+                            <br/><br/></li>
+                    </ul>
+                    <p>
+                        Para comprobarlo, escribe en el navegador https://IP_Servidor.
+                    </p>
+                    <p style="text-align: center;">
+
+
+                    </p>
+                    <p>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    6.- Servidor FTP.
+</h1><div class="iDevice_content">
+</div><h1 class="title">
+    Anexo I.- Configuración de iptables.
+</h1><div class="iDevice_content">
+    <p>
+
+    </p>
+    <p>
+        Los comandos básicos de iptables son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            iptables –L. Muestra el estado de la tabla predeterminada (
+            <em>
+          <span lang="en">
+           filter
+          </span>
+            </em>
+            ). Si quiere ver el estado de la tabla NAT ejecuta
+            iptables –t nat –L.
+        </li>
+        <li>
+            iptables –A &lt;parámetros&gt; -j &lt;acción&gt;. Permite añadir una regla para que el
+            cortafuegos realice una acción sobre un tráfico determinado.
+        </li>
+        <li>
+            iptables –D &lt;parámetros&gt; -j &lt;acción&gt;. Permite quitar una regla del
+            cortafuegos.
+        </li>
+        <li>
+            iptables –F. Limpia la tabla de cortafuegos. Si quieres limpiar la tabla NAT ejecuta
+            iptables –t nat –F.
+        </li>
+        <li>
+            iptables –P &lt;cadena&gt; &lt;acción&gt;. Permite establecer por defecto una acción
+            determinada sobre una pila. Por ejemplo, si quieres que por defecto el
+            <span lang="en">
+          router
+         </span>
+            deniegue todo el tráfico de la pila
+            <span lang="en">
+          FORWARD
+         </span>
+            ejecuta el comando iptables –P FORWARD DROP.
+        </li>
+    </ul>
+    <p>
+        Como se ha comentado antes, con el comando iptables –A &lt;parámetros&gt; -j &lt;acción&gt;
+        puedes definir la acción que quieras que realice el cortafuegos con un determinado tráfico.
+        En la tabla 10-1 puedes ver los parámetros que se utilizan para especificar el tráfico.
+    </p>
+    <p>
+        Las acciones que se pueden realizar en la tabla
+        <span lang="en">
+         FILTER
+        </span>
+        son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            -j ACCEPT. Acepta el tráfico.
+        </li>
+        <li>
+            -j DROP. Elimina el tráfico.
+        </li>
+        <li>
+            -j REJECT. Rechaza el tráfico e informa al equipo de origen.
+        </li>
+        <li>
+            -j LOG –log-prefix "IPTABLES_L". Registra el tráfico que cumple los criterios en
+            /var/log.
+        </li>
+    </ul>
+    <p>
+        Las acciones que se pueden realizar en la tabla NAT son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            -j MASQUERADE. Hace enmascaramiento del tráfico (NAT) de forma que la red interna sale
+            al exterior con la dirección externa del
+            <span lang="en">
+          router
+         </span>
+            .
+        </li>
+        <li>
+            -j DNAT --to &lt;ip&gt;. Se utiliza para que desde el exterior se tenga acceso a un
+            servidor que se encuentra en la red interna.
+        </li>
+    </ul>
+    <p>
+        <em>
+            <strong>
+                Tabla 10.1. Parámetros para especificar las reglas de iptables.
+            </strong>
+        </em>
+    </p>
+    <table class="tabla">
+        <caption>
+            Tabla 10.1. Parámetros para especificar las reglas de
+            <em>
+                iptables
+            </em>
+            .
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Elemento.
+            </th>
+            <th scope="col">
+                Sintaxis.
+            </th>
+            <th scope="col">
+                Ejemplo.
+            </th>
+            <th scope="col">
+                Descripción.
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th id="interfaz001" rowspan="2">
+                Interfaz.
+            </th>
+            <td headers="interfaz001">
+                - i &lt;interfaz&gt;
+            </td>
+            <td headers="interfaz001">
+                -i eth0
+            </td>
+            <td headers="interfaz001">
+                Interfaz de entrada.
+            </td>
+        </tr>
+        <tr>
+            <td headers="interfaz001">
+                -o &lt;interfaz&gt;
+            </td>
+            <td headers="interfaz001">
+                -o eth1
+            </td>
+            <td headers="interfaz001">
+                Interfaz de salida.
+            </td>
+        </tr>
+        <tr>
+            <th id="direccion001" rowspan="2">
+                Dirección.
+            </th>
+            <td headers="direccion001">
+                -s &lt;dir_red&gt;
+            </td>
+            <td headers="direccion001">
+                -s 10.0.0.0/24
+            </td>
+            <td headers="direccion001">
+                Red de origen.
+            </td>
+        </tr>
+        <tr>
+            <td headers="direccion001">
+                -d &lt;dir_red&gt;
+            </td>
+            <td headers="direccion001">
+                -d 0/0
+            </td>
+            <td headers="direccion001">
+                Red de destino.
+            </td>
+        </tr>
+        <tr>
+            <th id="puerto001" rowspan="3">
+                Puerto.
+            </th>
+            <td headers="puerto001">
+                -p &lt;tipo&gt;
+            </td>
+            <td headers="puerto001">
+                -p TCP
+            </td>
+            <td headers="puerto001">
+                Tipo de protocolo. Las opciones son: TCP, UDP o ICMP.
+            </td>
+        </tr>
+        <tr>
+            <td headers="puerto001">
+                --dport &lt;puerto&gt;
+            </td>
+            <td headers="puerto001">
+                -p TCP --dport 80
+            </td>
+            <td headers="puerto001">
+                Indica el puerto de destino. En el ejemplo de hace
+                referencia al puerto de destino http (80/TCP).
+            </td>
+        </tr>
+        <tr>
+            <td headers="puerto001">
+                --sport &lt;puerto&gt;
+            </td>
+            <td headers="puerto001">
+                -p UDP --sport 53
+            </td>
+            <td headers="puerto001">
+                Indica el puerto de origen. En el ejemplo se hace referencia
+                al puerto de destino DNS (53/UDP).
+            </td>
+        </tr>
+        <tr>
+            <th id="estado001">
+                Estado.
+            </th>
+            <td headers="estado001">
+                -m state --state &lt;tipo&gt;
+            </td>
+            <td headers="estado001">
+                -m state --state ESTABLISHED
+            </td>
+            <td headers="estado001">
+                Indica el estado de la conexión. Los posibles estados son:
+                NEW, INVALID, RELATED y ESTABLISHED.
+            </td>
+        </tr>
+        <tr>
+            <th id="accion001">
+                Acción.
+            </th>
+            <td headers="accion001">
+                -j &lt;acción&gt;
+            </td>
+            <td headers="accion001">
+                -j ACCEPT
+            </td>
+            <td headers="accion001">
+                Indica la acción que se va a realizar con un determinado
+                tráfico. Las posibles acciones son: ACCEPT, DROP, REJECT, LOG, DNAT y
+                MASQUERADE.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        De esta forma puedes "jugar" con los parámetros de una determinada regla para poder
+        especificar la acción que se aplica. A continuación puedes ver tres reglas, para permitir el
+        tráfico que reenvía el
+        <span lang="en">
+         router
+        </span>
+        , que van desde la más general a la más
+        específica:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            iptables -A FORWARD -j ACCEPT. Permite todo el tráfico.
+        </li>
+        <li>
+            iptables -A FORWARD -s 192.168.0.0/24 -j ACCEPT. Permite sólo el tráfico de la red
+            interna 192.168.0.0/24.
+        </li>
+        <li>
+            iptables -A FORWARD -s 192.168.0.0/24 -p TCP –dport 80 -j ACCEPT. Permite sólo el
+            tráfico de la red interna 192.168.0.0/24 en el puerto 80.
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo.- Licencias de recursos.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Licencias de recursos utilizados en la Unidad de Trabajo.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Recurso (1)
+            </th>
+            <th scope="col">
+                Datos del recurso (1)
+            </th>
+            <th scope="col">
+                Recurso (2)
+            </th>
+            <th scope="col">
+                Datos del recurso (2)
+            </th>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: rgtaylor_csc.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia: http://openclipart.org/detail/17668/net-computer-by-rgtaylor_csc
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ubuntu.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla del terminal ejecutando ifconfig, propiedad
+                    de Ubuntu.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ubuntu.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de la herramienta de configuración de red de
+                    Xwindows, propiedad de Ubuntu.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ubuntu.
+                </p>
+                <p>
+                    Licencia: Uso Educativo no comercial.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de la herramienta de configuración de red
+                    inalámbrica de Xwindows, propiedad de Ubuntu.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ubuntu.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla del escritorio de Ubuntu, propiedad de
+                    Ubuntu.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Andrew Fitzsimon / Anonymous.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia:
+                    http://openclipart.org/detail/25528/text-page-icon-by-anonymous-25528
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ubuntu.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla del terminal mostrando el comando ping,
+                    propiedad de Ubuntu.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Ubuntu.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de la herramienta de red de Xwindows,
+                    propiedad de Ubuntu.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <br>
+                <p>
+                    Autoría: Anonymous.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia:
+                    http://openclipart.org/detail/109591/another-folder-icon-01-by-anonymous
+                </p>
+                <br/></td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Andrew Fitzsimon / Anonymous.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia: http://openclipart.org/detail/25428/network-by-anonymous-25428
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: isc.org.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de www.isc.org.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: www.samba.org.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla www.samba.org.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: warszawianka.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia:
+                    http://openclipart.org/detail/35347/tango-system-users-by-warszawianka
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: lyte.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia: http://openclipart.org/detail/163717/file-server-by-lyte
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Blog del sensei.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia: Montaje sobre: http://josejuanlt.ipower.com/blogsensei/?p=763
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: OpenSSH.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: www.openssh.org.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Andrew Fitzsimon / Anonymous.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia:
+                    http://openclipart.org/detail/25528/text-page-icon-by-anonymous-25528
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Putty.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de la aplicación Putty, propiedad de Putty.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: toghtVNC Software.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: http://www.tightvnc.com/
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Vinagre.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla de la aplicación Vingre, propiedad de
+                    Vinagre.
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Firefox y Apache.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: Captura de pantalla del navegador Firefox, propiedad de firefox.
+                </p>
+            </td>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: Andrew Fitzsimon / Anonymous.
+                </p>
+                <p>
+                    Licencia: GPL.
+                </p>
+                <p>
+                    Procedencia:
+                    http://openclipart.org/detail/25528/text-page-icon-by-anonymous-25528
+                </p>
+            </td>
+        </tr>
+        <tr>
+            <td class="texto_centrado">
+            </td>
+            <td>
+                <p>
+                    Autoría: vsftpd.
+                </p>
+                <p>
+                    Licencia: GNU/GPL.
+                </p>
+                <p>
+                    Procedencia: vsftpd.beasts.org/.
+                </p>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+										uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

@@ -1,0 +1,5456 @@
+<h1 class="title">
+    Administración básica del sistema (Linux II).
+</h1><div class="iDevice_content">
+    <p>
+        María va a ver a Antonio para ver cómo va con Linux.
+    </p>
+
+    <p>
+        —Hola Antonio, ¿cómo vas con Linux?
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        María, muchas gracias por enseñarme Linux, la verdad es que está
+        muy bien el sistema y va muy rápido.
+        <br>
+        <strong>
+            —
+        </strong>
+        Me alegro que te guste,
+        mira, tienes que coger ese servidor e instalar Linux para poder utilizarlo para
+        compartir datos entre todo el mundo.
+        <br/></p>
+    <p>
+        <strong>
+            —
+        </strong>
+        De acuerdo, la instalación la sé realizar bien, pero todavía no se
+        administrar bien el sistema. ¡Me tienes que ayudar un poco!.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Claro que sí, yo te voy indicando los pasos.
+    </p>
+</div><h1 class="title">
+    1.- Administración de usuarios.
+</h1><div class="iDevice_content">
+
+    <p>
+        Antonio va a ver a María porque ya ha terminado de instalar el sistema.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        María, como ya tengo instalado el sistema me tienes que indicar las
+        cuentas de usuario que tengo que crear para que puedan utilizar el sistema. Lo
+        tienes por ahí.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Sí, toma los usuarios, me los ha dado esta mañana Ada. Te
+        recomiendo que crees los usuarios de varias formas y así vas aprendido.
+    </p>
+    <p>
+        —¿Hay varias formas? Yo creía que todo se realiza desde la interfaz gráfica.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Lo bueno que tiene Linux es que podemos administrar el sistema de
+        diferentes formas y que cada una tiene sus ventajas. Venga, te ayudo…
+    </p>
+</div><h1 class="title">
+    1.1.- Intérprete de comandos.
+</h1><div class="iDevice_content">
+    <p>
+        La gestión de usuarios y grupos se puede realizar directamente a través del intérprete de
+        comandos. A continuación se muestran los comandos más importantes para la gestión de
+        usuarios y grupos agrupados por categorías.
+    </p>
+    <p>
+        Sobre la mayoría de los comandos que a continuación se citan, se puede obtener más
+        información con la ayuda del sistema, para ello tendremos que escribir man nombre_comando.
+        Por ejemplo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25%;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># man useradd
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        <strong>
+            Comandos más utilizados (usuarios):
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                adduser:
+            </strong>
+            permite dar de alta a un usuario. Cuando das de alta un
+            usuario el sistema solicita algunos datos como: nombre completo, dirección, contraseña,
+            etc.
+        </li>
+        <li>
+            <strong>
+                deluser:
+            </strong>
+            permite eliminar un usuario. Si solo ejecutamos deluser y el
+            nombre del usuario, no se eliminará su directorio personal (si lo hubiera).
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Otra forma de trabajar con cuentas usuarios:
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                useradd:
+            </strong>
+            permite dar de alta una cuenta de usuario, sin
+            interacción con el usuario que lo está creando. Se le puede indicar mediante parámetros
+            la configuración de la cuenta como: (
+            <abbr title="User ID">
+                UID
+            </abbr>
+            )identificicador, grupos a los que pertenecerá, descripción,
+            etc. Algunos de los parámetros más importantes son:
+            <br>
+            <ul>
+                <li>
+                    -g
+                    < grupo>
+                        : permite añadir el grupo principal al que va a pertenecer el usuario.
+                        El grupo debe estar previamente creado.
+                    < /grupo>
+                </li>
+                <li>
+                    -G
+                    < grupo grupos="" o="">
+                        : permite añadir el grupo o grupos (separados por
+                        comas) a los que va a pertenecer el usuario. El grupo o grupos deben existir
+                        previamente.
+                    < /grupo>
+                </li>
+                <li>
+                    -u
+                    < uid>
+                        : permite introducir el identificador del usuario.
+                    < /uid>
+                </li>
+                <li>
+                    -m: crea el directorio del usuario, si no existe (con el mismo nombre que el
+                    usuario).
+                </li>
+                <li>
+                    -d: permite cambiar el directorio por defecto del usuario, habitualmente suele
+                    ser /home/usuario.
+                </li>
+                <li>
+                    -s
+                    < shell>
+                        : asigna un
+                        shell
+                        o interprete de
+                        comandos al usuario, en la versión de ubuntu que estamos trabajando por
+                        defecto es /bin/bash.
+                    < /shell>
+                </li>
+                <li>
+                    -c "
+                    < comentarios>
+                        ": permite añadir comentarios al usuario.
+                    < /comentarios>
+                </li>
+            </ul>
+            <br/></li>
+    </ul>
+    <p>
+        Como se ha indicado anteriormente para conocer todas las opciones que nos presenta el comando
+        tendremos que acceder a la ayuda del sistema: man useradd
+    </p>
+    <p>
+        En el siguiente ejemplo crearemos un usuario denominado pablo, cuyo identificador en el
+        sistema tendrá el valor 2500, tendrá como grupo principal usuarios y pertenecerá al grupo
+        profesores, su shell será /bin/bash y se creará su directorio de usuario /home/pablo
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50%;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># sudo useradd pablo -g usuarios -G profesores -u 2500 -s /bin/bash -m
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                userdel:
+            </strong>
+            otrro comando para eliminar cuentas de usuarios.
+        </li>
+        <li>
+            <strong>
+                usermod:
+            </strong>
+            nos permite modificar las propiedades de una cuenta de
+            usuario.
+        </li>
+        <li>
+            <strong>
+                passwd:
+            </strong>
+            permite cambiar la contraseña de un usuario. Si ejecutamos
+            passwd cambias la contraseña del usuario actual y si ejecutas passwd nombre_usuario se
+            cambiará la contraseña del usuario indicado.
+        </li>
+        <li>
+            <strong>
+                chage:
+            </strong>
+            permite establecer los periodos de vigencia de las contraseñas.
+        </li>
+        <li>
+            <strong>
+                id:
+            </strong>
+            muestra información sobre el usuario y los grupos a los que
+            pertenece dicho usuario.
+        </li>
+        <li>
+            <strong>
+                who:
+            </strong>
+            muestra información sobre los usuarios que hay conectados al al
+            sistema.
+        </li>
+        <li>
+            <strong>
+                w :
+            </strong>
+            similar a who, pero muestra información también sobre sus
+            procesos.
+        </li>
+        <li>
+            <strong>
+                users:
+            </strong>
+            muestra los usuarios registrados en el sistema.
+        </li>
+        <li>
+            <strong>
+                su :
+            </strong>
+            permite cambiar de usuario.
+        </li>
+        <li>
+            <strong>
+                sudo :
+            </strong>
+            permite ejecutar un comando como
+            <span lang="en">
+          root
+         </span>
+            .
+        </li>
+    </ul>
+    <p style="list-style-type: none;">
+    </p>
+    <p>
+        <strong>
+            Comandos más utilizados (grupos):
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                groups:
+            </strong>
+            muestra los grupos a los que pertenece el usuario. Diferencia
+            entre grupo principal y grupos secundarios.
+        </li>
+        <li>
+            <strong>
+                addgroup:
+            </strong>
+            permite crear un grupo o añadir una cuenta de usuario a un
+            grupo ya existente. Para ello escribiremos:
+        </li>
+    </ul>
+    <div class="codigo elemento_centrado" style="width: 25%;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># addgroup usuario grupo
+</pre>
+        </div>
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                delgroup:
+            </strong>
+            permite eliminar un grupo del sistema y/o dejar que un
+            usuario pertenezca a un grupo.
+        </li>
+        <li>
+            <strong>
+                groupadd:
+            </strong>
+            permite crear un nuevo grupo.
+        </li>
+        <li>
+            <strong>
+                groupdel:
+            </strong>
+            permite borrar un grupo existente.
+        </li>
+        <li>
+            <strong>
+                groupmod:
+            </strong>
+            permite modificar las propiedades de un grupo.
+        </li>
+        <li>
+            <strong>
+                newgrp:
+            </strong>
+            cambia el grupo primario de usuario. En el ejemplo anterior
+            pablo tiene como grupo principal usuarios y como secundario profesores. Cuando pablo
+            inicia sesión y crea un fichero el propietario será pablo y el grupo al que pertenezca
+            este fichero sera usuarios (ya que es el grupo principal del usuario). Si queremos que
+            se cree un fichero y que el grupo sea profesores utilizaremos este comando.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            Manipulación del fichero /etc/shadow
+        </strong>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                pwconv:
+            </strong>
+            crea y actualiza el fichero /etc/shadow.
+        </li>
+        <li>
+            <strong>
+                pwunconv:
+            </strong>
+            desactiva el fichero /etc/shadow.
+        </li>
+    </ul>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p style="text-align: left;">
+        En la anterior imagen vemos como se crea el usuario pablo, se le
+        asigna contraseña. Posteriormen se cambia del usuario jesus a pablo y se comprueban los
+        grupos a los que pertenece pablo, así como su identificador y los identificadores de los
+        grupos a los que pertenece.
+    </p>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t888f076f-eb5e-cbcc-3942-1373b69692be">
+        <p>
+            Programa informático que proporciona una interfaz para acceder a los servicios que
+            proporciona el sistema operativo.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.2.- Ficheros utilizados.
+</h1><div class="iDevice_content">
+    <p>
+        Siempre resulta muy útil conocer el funcionamiento interno del sistema operativo para poder
+        tener un mayor control de las operaciones que realiza. Para conocer el funcionamiento
+        interno debes conocer dos tipos de ficheros: aquellos ficheros que se utilizan para guardar
+        la información de los usuarios y grupos, y los ficheros con los valores predeterminados que
+        utiliza el sistema.
+    </p>
+
+    <p>
+        La información de las cuentas de usuario y grupos se encuentran en los siguientes ficheros:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            /etc/passwd
+            <strong>
+                .
+            </strong>
+            En este fichero se encuentra un listado de las cuentas de
+            usuario que están dados de alta en el sistema.
+        </li>
+        <li>
+            /etc/shadow
+            <strong>
+                .
+            </strong>
+            En este fichero se encuentran cifradas las contraseñas y
+            sus periodos de vigencia.
+        </li>
+        <li>
+            /etc/group
+            <strong>
+                .
+            </strong>
+            Listado de grupos activos en el sistema y usuarios que
+            pertenecen a dichos grupos.
+        </li>
+    </ul>
+    <p>
+        En estos ficheros de configuración cada fila hace referencia a un dato, por ejemplo, en el
+        caso del fichero /etc/passwd a un usuario dado de alta en el sistema. Cada fila está formada
+        por campos que&nbsp;están separados por dos puntos
+        <strong>
+            (:)
+        </strong>
+        los cuales
+        hacen referencia a una opción de configuración para ese usuario.
+    </p>
+    <div class="exe-fx exe-accordion" style="box-shadow: rgba(51, 51, 51, 0.5) 0 1px 3px;">
+        <div id="exe-accordion-0">
+            <div class="fx-accordion-section">
+                /etc/passwd
+                <div class="fx-accordion-content" id="exe-accordion-0-0">
+                    <p>
+            <span>
+             Veamos el siguiente ejemplo:
+            </span>
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 50%;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>javier:x:1000:1000::/home/javier:/bin/bash
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                    </p>
+                    <p>
+                        La configuración del usuario se divide en las siguientes columnas:
+                    </p>
+                    <ol>
+                        <li>
+                            <strong>
+                                javier
+                            </strong>
+                            : nombre de la cuenta (Login)
+                        </li>
+                        <li>
+                            <strong>
+                                x
+                            </strong>
+                            : contraseña encriptada. En este caso aparece una
+                            <strong>
+                                x
+                            </strong>
+                            con lo cual la contraseña cifrada se encuentra en
+                            el&nbsp;/etc/shadow.
+                        </li>
+                        <li>
+                            <strong>
+                                1000
+                            </strong>
+                            :
+                            <abbr title="User ID">
+                                UID
+                            </abbr>
+                            el identificador de usuario.
+                            Generalmente es un número entre 1000 y 60000. Los números por debajo de
+                            1000 se reservan para usuarios especiales del sistema siendo root el
+                            número 0. Puedes ejecutar el siguiente comando y comprobar el rango
+                            asignado:&nbsp;cat /etc/login.defs | grep -i UID.
+                        </li>
+                        <li>
+                            <strong>
+                                1000
+                            </strong>
+                            :
+                            <abbr title="Group ID">
+                                GID
+                            </abbr>
+                            el identificador del grupo principal
+                            del usuario.
+                        </li>
+                        <li>
+                            <strong>
+                                vacío
+                            </strong>
+                            : cadena de texto con información adicional del
+                            usuario como el nombre completo del usuario, información del puesto de
+                            trabajo, despacho o teléfono. Si no se quiere añadir información se
+                            puede dejar vacío como en el ejemplo.
+                        </li>
+                        <li>
+                            <strong>
+                                /home/javier
+                            </strong>
+                            : directorio HOME o carpeta de trabajo.
+                        </li>
+                        <li>
+                            <strong>
+                                /bin/shell
+                            </strong>
+                            : intérprete de comandos que va a utilizar
+                            este usuario.&nbsp;Como se ha comentado hay usuarios especiales del
+                            sistema cuya función es lanzar demonios y ser propietarios de ciertos
+                            procesos y directorios. Estos usuarios no deben iniciar sesión en el
+                            sistema por lo que es conveniente asignar&nbsp;/bin/false&nbsp;a la
+                            columna de la shell.
+                        </li>
+                    </ol>
+                    <p class="destacado">
+                        <strong>
+                            Con un editor de texto como nano y privilegios de
+                            root se puede cambiar la configuración de todos los usuarios almacenados
+                            en /etc/passwd salvo la contraseña.
+                        </strong>
+                    </p>
+                    <p>
+                    </p>
+                </div>
+                /etc/shadow
+                <div class="fx-accordion-content" id="exe-accordion-0-1">
+                    <p>
+                        El fichero&nbsp;/etc/shadow guarda la contraseña encriptada por
+                        cada&nbsp;usuario que se encuentra en el fichero
+                        /etc/passwd,&nbsp;además&nbsp;nos da información sobre caducidad y validez
+                        de la cuenta&nbsp;Si un usuario sin permiso root intenta acceder a este
+                        fichero obtendrá el mensaje permiso denegado. Para ver el contenido de este
+                        fichero tendrás que ejecutar el siguiente comando sudo cat /etc/shadow. A
+                        continuación mostramos el esquema de cada línea:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 75%;">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>usuario : contraseña_cifrada : d1 : d2 : d3 : d4 : d5 : d6 : reservado
+</pre>
+                        </div>
+                    </div>
+                    <ul>
+                        <li>
+                            <strong>
+                                usuario
+                            </strong>
+                            : es el nombre de usuario, el mismo que en
+                            /etc/passwd
+                        </li>
+                        <li>
+                            <strong>
+                                contraseña encriptada
+                            </strong>
+                            : si aparece una
+                            <strong>
+                                x
+                            </strong>
+                            la contraseña se encuentra cifrada en /etc/gshadow.
+                            Si aparece
+                            <strong>
+                                *
+                            </strong>
+                            la cuenta nunca ha tenido una constraseña
+                            y
+                            <strong>
+                                !
+                            </strong>
+                            al comienzo del hash de la contraseá indica que la
+                            cuenta ha sido deshabilitada.
+                        </li>
+                        <li>
+                            <strong>
+                                d1
+                            </strong>
+                            : número de días desde el 01/01/1970 en que la
+                            contraseña se cambió por última vez.
+                        </li>
+                        <li>
+                            <strong>
+                                d2:
+                            </strong>
+                            número de días que deben pasar hasta que se pueda
+                            cambiar la contraseña
+                        </li>
+                        <li>
+                            <strong>
+                                d3
+                            </strong>
+                            : número de días que deben pasar para que caduque la
+                            contraseña y deba ser cambiada.
+                        </li>
+                        <li>
+                            <strong>
+                                d4
+                            </strong>
+                            : número de días de antelación con los que avisará el
+                            sistema de la caducidad de la contraseña.
+                        </li>
+                        <li>
+                            <strong>
+                                d5
+                            </strong>
+                            : número de días con contraseña caducada antes de
+                            deshabilitar la cuenta.
+                        </li>
+                        <li>
+                            <strong>
+                                d6:
+                            </strong>
+                            número de días desde el 01/01/1970&nbsp; donde
+                            la cuenta es deshabilitada, y el usuario no podrá iniciar sesión. Si se
+                            deja en blanco, la cuenta nunca expira.
+                        </li>
+                        <li>
+                            <strong>
+                                reservado
+                            </strong>
+                            : campo reservado
+                        </li>
+                    </ul>
+                    <p class="destacado">
+                        <strong>
+                            La fecha 01/01/1970 se conoce como
+                            <em>
+                                epoch
+                            </em>
+                            un punto en el tiempo conocido como la
+                            época de
+
+                            Unix
+                            ,&nbsp;a partir de
+                            la cual&nbsp;los sistemas informáticos determinan el tiempo como un
+                            número que representa los segundos eliminados de una fecha y hora
+                            arbitrarias particulares
+                        </strong>
+                    </p>
+                </div>
+                /etc/group
+                <div class="fx-accordion-content" id="exe-accordion-0-2">
+                    <p>
+                        El fichero&nbsp;/etc/group&nbsp;almacena los datos de los grupos que han sido
+                        dados de alta en el sistema. A continuación se muestra un fragmento del
+                        fichero:
+                    </p>
+                    <div class="codigo elemento_centrado">
+                        <div class="texto_izquierda">
+             <pre ngNonBindable>root:x:0:javier,lourdes
+</pre>
+                            <pre ngNonBindable>javier:x:1000:&lt;br /&gt;lourdes:x:1001</pre>
+                        </div>
+                    </div>
+                    <p>
+                    </p>
+                    <p>
+                        Donde tenemos:
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>
+                                grupo
+                            </strong>
+                            : Nombre del grupo
+                        </li>
+                        <li>
+                            <strong>
+                                contraseña del grupo
+                            </strong>
+                            : este campo no se suele usar. Si
+                            aparece una
+                            <strong>
+                                x
+                            </strong>
+                            entonces la contraseña se
+                            guarda en el fichero&nbsp;/etc/gshadow
+                        </li>
+                        <li>
+                            <strong>
+                                <abbr title="Group ID">
+                                    GID
+                                </abbr>
+                                :
+                            </strong>
+                            identificador único del
+                            grupo.
+                        </li>
+                        <li>
+                            <strong>
+                                miembros:
+                            </strong>
+                            lista de usuarios que pertenecen al
+                            grupo separados por coma (,). Para añadir un nuevo usuario a un grupo,
+                            basta con agregarlo en la lista de usuarios (sin olvidar poner la coma)
+                            de forma que adquiere los privilegios de ese grupo,
+                            denominándose
+                            <strong>
+                                grupo secundario o
+                                suplementario
+                            </strong>
+                            del usuario.&nbsp;En el ejemplo anterior
+                            se puede ver como los
+                            usuarios&nbsp;javier&nbsp;y&nbsp;lourdes,&nbsp;&nbsp;tienen como grupo
+                            secundario el grupo&nbsp;root.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    1.3.- Interfaz gráfica.
+</h1><div class="iDevice_content">
+    <p>
+        La administración de los usuarios del sistema se puede realizar desde la versión gráfica. En
+        la versión de
+        <span lang="en">
+         Ubuntu
+        </span>
+        con la que estamos trabajando la gestión de
+        usuarios está limitada: no se puede crear grupos nuevos y sólo se puede crear usuarios o
+        bien modificar algunas características de los mismos como el
+        <span>
+         tipo de cuenta,
+								idioma, contraseña y opciones de inicio.
+        </span>
+    </p>
+    <p>
+        Antes de continuar con la administración de usuarios mostramos los elementos más importantes
+        de la interfaz gráfica con la que vamos a trabajar en gran parte de esta unidad de trabajo,
+        correspondiente a la versión de
+        <span lang="en">
+         Ubuntu
+        </span>
+        20.04
+        <abbr title="Long Term Support.">
+            LTS
+        </abbr>
+        (
+        <span lang="en">
+         Focal Fossa
+        </span>
+        ).
+        En el siguiente enlace se explica la funcionalidad de los elementos más importantes de la
+        interfaz de usuario de
+        GNOME
+        3:
+        Resumen visual de GNOME
+        .
+    </p>
+    <p>
+        Para dar de alta un nuevo usuario realizamos los siguientes pasos:
+    </p>
+    <ol>
+        <li>
+            Iremos a la opción superior derecha de la pantalla (menú del sistema) y seleccionaremos
+            la opción
+            <strong>
+                Configuración
+            </strong>
+            .
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+
+            </div>
+        </li>
+        <li style="padding-top: 2ex;">
+            Esta ventana contiene todas las opciones de configuración del
+            sistema y accederemos a la opción
+            <strong>
+                Usuarios
+            </strong>
+            . Otra forma de acceder es
+            desde el botón
+            <strong>
+                Aplicaciones,
+            </strong>
+            en el campo de búsqueda
+            poner
+            <strong>
+                Usuarios
+            </strong>
+            .
+        </li>
+        <li style="text-align: left;">
+            En esta ventana aparece a la izquierda el listado de opciones
+            de configuración y a la derecha la información de nuestro usuario. Hay un panel superior
+            que muestra el listado de usuarios dados de alta en el equipo. Pulse
+            <strong>
+                Desbloquear
+            </strong>
+            en la esquina superior derecha e introduzca su contraseña
+            cuando se le pida. Finalmente pulsamos sobre
+            la
+            <span>
+          opción
+         </span>
+            <strong>
+                Añadir usuario...
+            </strong>
+        </li>
+        <li style="text-align: left;">
+            Como puedes ver esta ventana de configuración permite crear un
+            usuario con opciones limitadas: seleccionar tipo de cuenta, nombre completo, nombre de
+            inicio de sesión y contraseña.
+        </li>
+    </ol>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p style="text-align: left;">
+    </p>
+    <p style="text-align: left;">
+        En el siguiente vídeo vemos la funcionalidad básica de esta opción.
+    </p>
+
+    <p>
+    </p>
+    <p>
+        Si se quiere profundizar en la gestión de usuarios desde la interfaz gráfica habrá que
+        instalar el paquete gnome-system-tools. Para instalar un paquete en
+        <span lang="en">
+         Ubuntu
+        </span>
+        puedes escoger una de las siguientes opciones:
+    </p>
+    <ol>
+        <li>
+            <p style="padding-bottom: 2ex;">
+                Ejecuta la aplicación
+                <strong>
+                    Terminal
+                </strong>
+                o bien
+                abre una consola mediante la combinación de teclas
+                <strong>
+                    Alt + Ctrl + T
+                </strong>
+                y
+                escribe el siguiente comando:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 50%;">
+                <div class="texto_izquierda">
+                    <pre ngNonBindable># sudo apt-get install gnome-system-tools</pre>
+                </div>
+            </div>
+        </li>
+        <li style="padding-top: 2ex;">
+            <div class="elemento_derecha">
+                <div class="elemento_centrado">
+                </div>
+
+            </div>
+            Desde la opción
+            <strong>
+          <span lang="en">
+           Software
+          </span>
+                de
+                <span lang="en">
+           Ubuntu
+          </span>
+            </strong>
+            o tienda de aplicaciones de
+            <span lang="en">
+          Ubuntu
+         </span>
+            , a través de la cual se puede buscar, instalar, actualizar y
+            desinstalar tanto aplicaciones en el formato
+            deb
+            como en el nuevo formato
+            de paquetes de Canonical,
+            Snap
+            . Para instalar este paquete,
+            tenemos que introducir "users and groups"&nbsp; (usuarios y grupos) en el campo de
+            búsqueda. En la tienda de
+            <span lang="en">
+          Ubuntu
+         </span>
+            existe otra aplicación similar
+            denominada usuarios y grupos, cuya funcionalidad es la misma y tan solo cambia un poco
+            la interfaz.
+        </li>
+    </ol>
+    <p>
+        <span style="text-align: left; font-size: 1em;">
+         A continuación podemos visualizar un video
+								donde se muestra la funcionalidad básica que nos ofrece la gestión avanzada de usuarios
+								y grupos.
+        </span>
+    </p>
+
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t5219c6e7-23d6-9911-3a1f-8f8379dde388">
+        <p>
+            GNOME es un entorno de escritorio e infraestructura de desarrollo para sistemas
+            operativos GNU/Linux que permite al usuario interactuar de manera gráfica e intuitiva
+            con el sistema operativo.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t13acf132-c0d2-adff-ce2b-4e3b3f42698e">
+        <p>
+            Snap es un sistema de gestión de paquetes universales creado originalmente por Canonical
+            de forma cuya ventaja es que incluye las
+            <span>
+          dependencias en un solo paquete sin
+									tener que depender de las librerías del sistema de forma que siempre
+									funcionará
+          <strong>
+           en cualquier distribución y
+										dispositivo
+          </strong>
+          <span>
+           .
+          </span>
+         </span>
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t01567b81-1bed-3746-e22f-5f7983b682ca">
+        <p>
+            Paquetes de software de la distribución de Linux, Debian GNU/Linux y derivadas. Se
+            utiliza la herramienta
+            <span>
+          GDebi para su instalación dentro del
+									sistema.
+         </span>
+            <span>
+          <br>
+         <br/></span>
+        </p>
+    </div>
+</div><h1 class="title">
+    1.4.- Interfaz web. Webmin.
+</h1><div class="iDevice_content">
+    <p>
+        Otra forma de administrar los usuarios del sistema es utilizar
+        <span lang="en">
+         Webmin
+        </span>
+        .
+        Recuerda que
+        <span lang="en">
+         Webmin
+        </span>
+        es una herramienta de configuración de sistemas
+        accesible vía web para
+        <span lang="en">
+         GNU/Linux
+        </span>
+        y otros sistemas
+        <span lang="en">
+         Unix
+        </span>
+        . Para ello puedes acceder con un navegador a
+        <span lang="en">
+         webmin
+        </span>
+        (https://localhost:10000). Este servidor web está formado por
+        módulos que actúan directamente sobre los archivos de&nbsp;configuración como sería
+        /etc/passwd en el módulo de gestión de
+        <strong>
+            Usuarios y Grupos
+        </strong>
+        , el cual ofrece
+        una interfaz&nbsp;amigable para la administración de los mismos. Una vez dentro en la página
+        principal dentro de menú
+        <strong>
+         <span lang="en">
+          System
+         </span>
+        </strong>
+        accede a
+        <strong>
+         <span lang="en">
+          Users and groups
+         </span>
+        </strong>
+        .
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        La pantalla se divide en tres zonas:
+    </p>
+    <ol>
+        <li>
+            <strong>
+                Cabecera
+            </strong>
+            : es la parte superior y contiene una serie de&nbsp;opciones
+            útiles:
+            <ul>
+                <li>
+                    <strong>
+                        Configuración del módulo
+                    </strong>
+                    :&nbsp;Permite configurar opciones de
+                    directorio inicial para los usuarios y algunas opciones por defecto cuando se
+                    crea un usuario: permisos de los directorios, directorio /home
+                    <abbr title="etcétera">
+                        etc
+                    </abbr>
+                    .
+                </li>
+                <li>
+                    <strong>
+                        Ayuda
+                    </strong>
+                    : es una introducción sobre conceptos como usuario, grupo,
+                    tipos de usuario que existen
+                    <span lang="es" title="etcétera">
+            <abbr title="etcétera">
+             etc
+            </abbr>
+           </span>
+                    .
+                </li>
+                <li>
+                    <strong>
+                        Filtrar
+                    </strong>
+                    el contenido que se muestra en la parte central en base
+                    al texto que se escriba.
+                </li>
+                <li>
+                    <strong>
+                        Buscar documentos
+                    </strong>
+                    : muestra el manual de un comando, cumple la
+                    misma función que el comando man.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Parte central:
+            </strong>
+            se muestra el listado de usuarios locales que hay en
+            sistema, es decir, el contenido del fichero /etc/passwd . Haciendo clic en cualquiera de
+            las cabeceras el listado se ordena en base a ese criterio. También se puede acceder a la
+            información de los grupos existentes, el listado es el resultado de ejecutar el comando
+            cat /etc/group. Presionando sobre uno de los usuarios se puede editar la información del
+            usuario. Para eliminar un usuario se pulsa sobre la casilla de selección o
+            <em>
+          <span lang="en">
+           checkbox
+          </span>
+            </em>
+            y se pulsa la opción
+            <strong>
+                Delete Selected
+                Users
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Parte inferior:
+            </strong>
+            En este área nos permite realizar operaciones en lote
+            al seleccionar todos los usuarios o invertir la selección para habilitar o deshabilitar
+            usuarios por ejemplo. Aparece la opción de añadir un nuevo usuario donde se muestra una
+            interfaz en la cual se puede configurar los datos de la cuenta, las opciones de
+            contraseña y el grupo primario y secundario del usuario. A continuación se puede mostrar
+            el inicio de sesión de uno o todos los usuarios de Unix que se han conectado a través de
+            <abbr title="Secure Shell">
+                SSH
+            </abbr>
+            o bien a través del inicio de
+            sesión.
+        </li>
+    </ol>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+</div><h1 class="title">
+    2.- Sistema de ficheros.
+</h1><div class="iDevice_content">
+
+    <p>
+        Juan y Ana están tomando café.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Puff... ¡menudo problema tengo!
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        ¿Qué te pasa Juan?
+        <br>
+        <strong>
+            —
+        </strong>
+        Estoy configurando el
+        servidor de la empresa y me estoy quedando sin espacio en el disco duro y la jefa me
+        ha dicho que cada usuario tiene que tener espacio en el disco duro para sus datos
+        ¿Cómo lo hago?
+        <br/></p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Es fácil, puedes añadirle al equipo un nuevo disco duro y en el
+        disco duro que guarden los datos los usuarios. Mira vamos a hacerlo…
+    </p>
+</div><h1 class="title">
+    2.1.- Particionamiento.
+</h1><div class="iDevice_content">
+
+    <p>
+        El particionamiento es uno de los procesos más importantes que hay que tener en cuenta, ya
+        que define cómo se van a utilizar los diferentes discos duros del equipo. En el proceso de
+        particionamiento hay que prestar un especial cuidado para no perder datos del sistema.
+    </p>
+    <p>
+        La administración de las particiones de los sistemas de ficheros se puede realizar con
+        herramientas gráficas como la
+        <em>
+            Utilidad
+        </em>
+        <em>
+            de discos del sistema o
+            GParted
+        </em>
+        <em>
+        </em>
+        o también de
+        forma manual con el comando
+        fdisk
+        o los comandos relacionados con la
+        administración de volúmenes lógicos. Usaremos el comando fdisk para ver las particiones del
+        sistema de archivos mediante la opción -l:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25%;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># sudo fdisk -l</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Otro comando interesante para ver el la jerarquía de particiones es el siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25%;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># sudo lsblk -fm</pre>
+        </div>
+    </div>
+    <p class="destacado">
+        <strong>
+            Es los servidores es recomendable utilizar un sistema RAID por
+            hardware para permitir que, en caso de rotura de un disco duro, no se pierda la
+            información del sistema.
+        </strong>
+    </p>
+    <div class="exe-tooltip-text" id="t9a3c6834-3392-481e-2422-e18c668efed4">
+        <p>
+            gparted es el editor de particiones de GNOME para crear, reorganizar y eliminar
+            particiones de disco.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="tcf884e31-c204-4717-ff92-0c318a9be9eb">
+        <p>
+            Herramienta que permite administrar las particiones de los sistemas de ficheros.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.1.1.- Herramientas gráficas.
+</h1><div class="iDevice_content">
+    <p>
+        Ubuntu Desktop por defecto instala la herramienta
+        <em>
+            Utilidad de discos
+        </em>
+        para
+        administrar el sistema de ficheros. Utilizando la herramienta
+        <em>
+            Utilidad de discos
+        </em>
+        puede crear, modificar o eliminar las particiones de los discos duros del sistema.&nbsp;Para
+        ejecutar la herramienta debes ir a
+        <strong>
+            Mostrar Aplicaciones
+        </strong>
+        y escribir Discos o
+        bien en
+        <strong>
+            Sistema &gt; Administración &gt; Utilidad de Discos
+        </strong>
+        . Si por
+        alguna casualidad no lo tienes instalado en tu Ubuntu, se puede instalar el paquete desde el
+        administrador de software en inglés gnome-disk-utility.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Es una herramienta muy sencilla pero muy poderosa. Como se puede apreciar en la imagen, la
+        herramienta nos permite formatear particiones, montar/desmontar cualquier unidad o volumen,
+        comprobar el sistema de archivos y hasta realizar una prueba de rendimiento de la unidad. Si
+        quieres conocer las operaciones que se pueden realizar en un disco duro consulta la
+        Guía de Ubuntu: Discos y
+        almacenamiento
+        .
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         Como se ha comentado anteriormente para trabajar con
+								particiones existe también una herramienta muy potente que podemos instalar en nuestro
+								sistema denomina GParted. Tal como puedes leer en la tabla de contenidos de la
+         Documentación oficial GParted
+         puedes realizar operaciones que alteran las particiones de nuestro disco duro que llama
+								acciones intermedias o avanzadas. Un ejemplo sería redimensionar o mover una partción
+								cuando nos quedamos sin espacio en una partición.
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>sudo apt-get install gparted</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Entre las muchas ventajas de esta herramienta descamos las siguientes:
+    </p>
+    <ol>
+        <li>
+            Se puede&nbsp; planificar los cambios en el disco sin que estos sean aplicados, y una
+            vez que el resultado sea el deseado, se aplican todos los cambios para que sean
+            permanentes.
+        </li>
+        <li>
+            Existe la opción de
+            <span lang="en">
+          GParted Live
+         </span>
+            , que permite manipular
+            particiones sin necesidad de iniciar ningún sistema operativo instalado en
+            el
+            <abbr title="Personal Computer">
+                PC.
+            </abbr>
+        </li>
+        <li>
+            A partir de la versión 1.2 añade soporte para
+            exFAT
+            .
+        </li>
+    </ol>
+    <p>
+        Una vez instalado, al iniciar la herramienta solicita&nbsp;privilegios de root. La ventana
+        que nos encontramos al inicio se encuentra dividida en tres zonas:
+    </p>
+    <ol>
+        <li>
+            <strong>
+                Selección de Disco duro
+            </strong>
+            : muestra una lista de los discos duros quie hay
+            en el ordenador. Inicialmente muestra el primer disco, se debeseleccionar el disco duro
+            donde se quiere realizar el cambio de alguna partición.
+        </li>
+        <li>
+            <strong>
+                Barra de espacio en el disco duro
+            </strong>
+            : esta barra muestra el contenido del
+            disco duro seleccionado. Cada caja representa una partición del disco duro y tiene un
+            color que corresponde con el sistema de ficheros con el que está formateada. En la
+            leyenda de la barra se puede ver qué sistemas de ficheros corresponden con cada color.
+            También se puede ver dentro de cada partición el espacio utilizado.
+        </li>
+        <li>
+            <strong>
+                Listado de particiones
+            </strong>
+            : Este listado permite ver detalles sobre las
+            particiones tales como:&nbsp; nombre de la partición,&nbsp; sistema de ficheros, tamaño
+            total,&nbsp; tamaño usado (ocupado), espacio libre,
+            <abbr title="etcétera">
+                etc
+            </abbr>
+            ...
+        </li>
+    </ol>
+    <p>
+        <span style="font-size: 1em;">
+         Por último indicar que podemos incorporar a nuestro sistema
+								herramientas que permitan trabajar con volúmenes lógicos o unidades RAID. Recuerda que
+								un volumen permite agrupar uno o más discos duros para tener un sistema de ficheros de
+								mayor tamaño. Además, puede crear volúmenes en los que se mejore la seguridad de los
+								datos. Por ejemplo, en un volumen reflejado (o RAID 1) los datos se guardan de forma
+								simultánea en dos discos duros.
+        </span>
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    2.1.2.- fdisk.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+    <p>
+        La utilidad fdisk es una utilidad basada en texto, que aunque no trabaja bajo una interfaz
+        gráfica, a través de un comando&nbsp;podemos acceder rápidamente a la información de nuestro
+        disco duro sin tener que iniciar ninguna herramienta gráfica. Además permite gestionar y
+        administrar el espadio del disco como hemos visto en las otras herramientas. Vamos a ver a
+        continuación las operaciones que podemos realizar:
+    </p>
+    <ol>
+        <li>
+            Ver las particioens existentes en nuestro sistema usando el comando con el argumento
+            "-l": sudo fdisk -l
+        </li>
+        <li>
+            Ver la información de un disco específico: sudo fdisk -l /dev/sda
+        </li>
+        <li>
+            Ver todas las opciones que ofrece, se ejecuta el comando sudo fdisk /dev/sda y en el
+            menú de fiskz se pulsa "m" para entrar en la ayuda.
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+                </div>
+
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            Mostrar la tabla de particiones del sistema, al igual que la opción anterior cuando se
+            ejecuta el comando sudo fdisk/dev/sda se pulsa ""p" en el menú de fdisk.
+        </li>
+        <li>
+            Eliminar una partición. Hay que tener en cuenta que en este caso se pierden todos lo
+            datos de la partición, para ello se tiene que seleccionar el disco en el ejemplo será
+            sda2, para ellos ejecuta el comando sudo fdsik /dev/sda2 y se pulsa la opción 'd'
+            (delete) del menú. A continuación se tiene que introducir el número de la partición.
+            Finalmente&nbsp;se debe pulsar ‘w’ (write) para escribir los cambios o confirmar la
+            acción.
+        </li>
+    </ol>
+    <p class="destacado" style="text-align: center;">
+        <strong>
+            Es recomendable antes de realizar
+            cualquier operación tener la información de los discos y particiones del
+            sistema.
+        </strong>
+    </p>
+    <p>
+        Para aprender mejor lo que hace, se va a utilizar&nbsp;fdisk para crear una partición en uno
+        de los discos duros que tienes libre en el sistema, a continuación le daremos formato y
+        finalmente se montará la partición para poder utilizarla. Consulta el Ver Anexo I.-
+        Documentación del particionamiento de una unidad de disco para conocer la explicación de los
+        comandos que se ejecutan a continuación:
+    </p>
+    <div class="enlace_centrado">
+        <div class="elemento_centrado">
+            <div class="elemento_centrado titulo">
+            </div>
+        </div>
+    </div>
+
+</div><h1 class="title">
+    2.1.3.- Volúmenes Lógicos.
+</h1><div class="iDevice_content">
+    <div class="enlace_centrado" style="text-align: left;">
+        Cuando se utiliza el particionado
+        tradicional de un disco a través del comando fdisk o la herramienta GParted plantea el
+        inconveniente que al redimensionar las particiones conlleva ciertos riesgos como la pérdida
+        o corrupción de datos. La solución a este problema es el uso de volúmenes lógicos
+        o
+        <strong>
+            <abbr title="Logical Volume">
+                LV
+            </abbr>
+            .
+        </strong>
+        Para entender qué es un volúmen lógico
+        vamos a explicar los siguientes conceptos:
+    </div>
+    <ol>
+        <li>
+            Un
+            <strong>
+                volúmen físico
+            </strong>
+            <abbr title="Phisical Volume ">
+                PV
+            </abbr>
+            es&nbsp;cada uno de los componentes físicos que forman parte de un grupo de
+            volúmenes. Puede ser un disco físico entero o bien particiones.
+        </li>
+        <li>
+            Un
+            <strong>
+                grupo de volúmenes
+            </strong>
+            o
+            <abbr title="Volume Group">
+                VG
+            </abbr>
+            es el grupo de volúmenes físicos que trabajan como una
+            única unidad, algo similar a un disco entero en el particionado tradicional.
+        </li>
+        <li>
+            Finalmente, un
+            <strong>
+                volúmen lógico
+            </strong>
+            o
+            <abbr title="Logical Volume">
+                LV
+            </abbr>
+            es cada una de los trozos lógicos en las que se puede dividir
+            un grupo de volúmen, algo similar a una partición tradicional.
+        </li>
+    </ol>
+    <p>
+        Para trabajar con volúmenes lógicos tenemos instalar&nbsp;el Administrador de Volúmenes
+        Lógicos o
+        <abbr title="Logical Volumen Manager">
+            LVM
+        </abbr>
+        instalando el siguiente
+        paquete:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.750000000000004em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># apt-get install lvm2
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Los volúmenes lógicos proporcionan las siguientes ventajas:
+    </p>
+    <ol>
+        <li>
+            Con un volumen lógico no hay restricción física de espacio del disco,&nbsp;ya que se
+            pueden agregar discos y particiones en un único volumen lógico.
+        </li>
+        <li>
+            Para redimensionar los volúmenes lógicos se utiliza&nbsp; comandos de software
+            sencillos, sin necesidad de volver a dar formato o crear particiones en los dispositivos
+            de discos subyacentes.
+        </li>
+        <li>
+            Los volúmenes lógicos proporcionan una manera sencilla para obtener copias de sus datos
+            formando volúmenes lógicos en espejo.
+        </li>
+        <li>
+            Se pueden realizar operaciones sobre un volumen lógico sin tener que&nbsp;desmontar el
+            sistema de archivos.
+        </li>
+    </ol>
+    <p>
+        Al igual que se pueden gestionar las particiones con fdisk, se puede realizar la gestión de
+        volúmenes. Podremos crear, eliminar y modificar grupos de volúmenes físicos y lógicos y
+        volúmenes lógicos.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                lvmdiskscan:
+            </strong>
+            muestra todos los discos visibles del sistema.
+        </li>
+        <li>
+            <strong>
+                pvcreate, vgcreate y lvcreate:
+            </strong>
+            permite crear volúmenes físicos, grupos
+            de volúmenes y volúmenes lógicos respectivamente.
+        </li>
+        <li>
+            <strong>
+                vgextend, lvextend:
+            </strong>
+            permite modificar grupo de volúmenes y volúmenes
+            lógicos respectivamente.
+        </li>
+        <li>
+            <strong>
+                pvdisplay:
+            </strong>
+            muestra información sobre los dispositivos físicos.
+        </li>
+        <li class="_mce_tagged_br">
+            <strong>
+                vgs, vgdisplay:
+            </strong>
+            muestra información sobre un
+            grupo de volúmenes.
+        </li>
+        <li class="_mce_tagged_br">
+            <strong>
+                lvdisplay:
+            </strong>
+            muestra información sobre un volumen
+            lógico.
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.2.- Espacio en disco.
+</h1><div class="iDevice_content">
+    <p>
+        Algunas de las cuestiones importantes a la hora de administar nuestro sistema es por ejemplo,
+        saber cuanto espacio hay libre u ocupado en una partición, que sistema de archivos estamos
+        utilizando, cuanto ocupa un directorio o archivo, etc. Para dar respuesta a estas cuestiones
+        planteadas existen muchas herramientas que permiten monitorizar el sistema de ficheros, a
+        continuación mostraremos algunas de las posibilidades que nos ofrece el sistema operativo:
+    </p>
+    <p>
+        <strong>
+            df.
+        </strong>
+        Muestra un resumen sobre el espacio libre que queda en unidades de
+        almacenamiento y particiones (sistema de archivos).
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        Algunos ejemplos del comando df (
+        <span lang="en">
+         disk free)
+        </span>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            df -h: muestra información del espacio de forma legible, con unidades de información
+            (
+            <abbr title="KiloByte.">
+                KB
+            </abbr>
+            ,
+            <abbr title="MegaByte.">
+                MB
+            </abbr>
+            ,
+            <abbr title="GigaByte.">
+                GB
+            </abbr>
+            )
+        </li>
+        <li>
+            df -i :muestra la información teniendo como referencia o unidad los i-nodos.
+        </li>
+        <li>
+            df -h /home: muestra información de una partición determinada. En este caso concreto
+            /home.
+        </li>
+        <li>
+            df -t ext4: muestra información de las particiones con este sistema de archivos. El
+            parámetro -x realizaría lo contrario, excluir el sistema de archivos indicado.
+        </li>
+    </ul>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.- Permisos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            —
+        </strong>
+        Juan, he visto ya que tienes configurado el sistema. Lo has hecho
+        muy bien, pero he visto que en la carpeta de la empresa todo el mundo tiene permisos
+        de escritura.
+    </p>
+    <p>
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Si he creado, la carpeta y ahora tengo que poner los permisos sobre
+        las carpetas. Me tienes que decir los permisos que doy y termino de configurar el
+        sistema.
+    </p>
+    <p>
+        <strong>
+            —¡
+        </strong>
+        Qué bien! Explícame eso de los permisos porque nunca lo he
+        utilizado y también me interesa.
+    </p>
+</div><h1 class="title">
+    3.1.- Notaciones simbólica y octal.
+</h1><div class="iDevice_content">
+    <p>
+        La orden
+        <strong>
+            chmod
+        </strong>
+        , se utiliza para modificar los permisos de acceso
+        descritos anteriormente.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado titulo">
+            Manual en línea del comando chmod.
+        </div>
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        La forma que tenemos para asignar los permisos a los elementos de nuestra estructura de
+        directorios, se resumen en la siguiente tabla:
+    </p>
+    <table class="tabla">
+        <thead>
+        <tr>
+            <th scope="row">
+            </th>
+            <th scope="row">
+                PERMISO
+            </th>
+            <th scope="row">
+                NOTACIÓN SIMBÓLICA
+            </th>
+            <th scope="row">
+                NOTACIÓN OCTAL
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th rowspan="3" scope="row" valign="middle">
+                PROPIETARIO
+                (
+                <strong>
+                    u
+                </strong>
+                )
+            </th>
+            <td>
+                Lectura (
+                <strong>
+                    r
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    u+r
+                </strong>
+                ó
+                <strong>
+                    u-r
+                </strong>
+            </td>
+            <td>
+                400 (100 ggg ooo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Escritura (
+                <strong>
+                    w
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    u+w
+                </strong>
+                ó
+                <strong>
+                    u-w
+                </strong>
+            </td>
+            <td>
+                200 (010 ggg ooo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ejecución (
+                <strong>
+                    x
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    u+x
+                </strong>
+                ó
+                <strong>
+                    u-x
+                </strong>
+            </td>
+            <td>
+                100 (001 ggg ooo)
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="3" scope="col" valign="middle">
+                GRUPO (
+                <strong>
+                    g
+                </strong>
+                )
+            </th>
+            <td>
+                Lectura (r)
+            </td>
+            <td>
+                <strong>
+                    g+r
+                </strong>
+                ó
+                <strong>
+                    g-r
+                </strong>
+            </td>
+            <td>
+                040 (uuu 100 ooo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Escritura (
+                <strong>
+                    w
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    g+w
+                </strong>
+                ó
+                <strong>
+                    g-w
+                </strong>
+            </td>
+            <td>
+                020 (uuu 010 ooo)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ejecución (
+                <strong>
+                    x
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    g+x
+                </strong>
+                ó
+                <strong>
+                    g-x
+                </strong>
+            </td>
+            <td>
+                010 (uuu 001 ooo)
+            </td>
+        </tr>
+        <tr>
+            <th rowspan="3" scope="col" valign="middle">
+                RESTO (o)
+            </th>
+            <td>
+                Lectura (
+                <strong>
+                    r
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    o+r
+                </strong>
+                ú
+                <strong>
+                    o-r
+                </strong>
+            </td>
+            <td>
+                004 (uuu ggg 100)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Escritura (
+                <strong>
+                    w
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    o+w
+                </strong>
+                ú
+                <strong>
+                    o-w
+                </strong>
+            </td>
+            <td>
+                002 (uuu ggg 010)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Ejecución (
+                <strong>
+                    x
+                </strong>
+                )
+            </td>
+            <td>
+                <strong>
+                    o+x
+                </strong>
+                ú
+                <strong>
+                    o-x
+                </strong>
+            </td>
+            <td>
+                001 (uuu ggg 001)
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    3.2.- Establecer los permisos.
+</h1><div class="iDevice_content">
+    <p>
+        Para definir los permisos de un fichero o directorio se emplea el comando chmod. Su sintaxis
+        es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.75em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># chmod &lt;modo&gt; fichero
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        donde
+        <em>
+            < modo>
+            < /modo>
+        </em>
+        indica los permisos que le quiere asignar al fichero. Por ejemplo, si quiere
+        establecer los permisos rw- para el propietario y r-- para el resto, el comando que se debe
+        utilizar es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># chmod 644 fichero
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+
+    <p>
+        Con chmod se puede establecer los permisos con tres valores numéricos (por ejemplo, 664): el
+        primer valor corresponde al usuario propietario, el segundo al grupo propietario y el tercer
+        valor corresponde a todos los demás usuarios del sistema.
+    </p>
+    <p>
+        Cada permiso tiene una equivalencia numérica donde
+        <em>
+            r
+        </em>
+        vale 4,
+        <em>
+            w
+        </em>
+        vale 2 y
+        <em>
+            x
+        </em>
+        vale 1. De esta forma si tiene el valor 7 corresponde a (
+        <em>
+            rwx
+        </em>
+        ), el valor
+        6 corresponde a (
+        <em>
+            rw-
+        </em>
+        ), etcétera.
+    </p>
+    <p>
+        El propietario de un fichero es aquel usuario que creó dicho fichero. GNU/Linux permite
+        cambiar al propietario de cualquier fichero o directorio. Opcionalmente se puede cambiar
+        también al grupo al que pertenece dicho fichero o directorio. Para ello se utiliza la orden
+        chown&nbsp;que tiene la siguiente sintaxis:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 39em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>chown &lt;NombreUsuario&gt; [.&lt;NombreGrupo&gt;] &lt;fichero&gt;...
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        donde
+        <em>
+            < nombreusuario>
+            < /nombreusuario>
+        </em>
+        identifica el nuevo propietario de fichero o directorio.
+        <em>
+            < nombregrupo>
+            < /nombregrupo>
+        </em>
+        el nuevo grupo y
+        <em>
+            < fichero>
+            < /fichero>
+        </em>
+        identifica el fichero o directorio sobre el que se va a actuar.
+    </p>
+    <p>
+    </p>
+    <p>
+        Por otro lado, para cambiar el grupo al que pertenece un directorio se utiliza chgrp. Su
+        sintaxis es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># chgrp &lt;NombreGrupo&gt; &lt;fichero&gt;...
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        donde
+        <em>
+            < nombregrupo>
+            < /nombregrupo>
+        </em>
+        identifica el nuevo nombre de grupo que se le va a asignar al fichero o directorio
+        <em>
+            < fichero>
+            < /fichero>
+        </em>
+        . Se puede actuar sobre varios ficheros a la vez.
+    </p>
+    <p>
+        En los comandos chmod,
+        <code>
+            chown
+        </code>
+        y chgrp la opción –R significa que se establecen
+        los permisos al directorio y a todos los datos que contiene. Por ejemplo, el comando
+    </p>
+    <div class="codigo elemento_centrado" style="width: 17.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># chmod 777 /datos -R
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        establece todos los permisos a la carpeta datos y a todo su contenido.
+    </p>
+</div><h1 class="title">
+    3.3.- Listas de Control de Acceso.
+</h1><div class="iDevice_content">
+    <p>
+        La distribución básica de permisos de
+        <span lang="EN">
+         Linux
+        </span>
+        es bastante rígida, sin
+        embargo, las
+        <strong>
+            Listas de Control de Acceso (
+            <abbr title="Lista de Control de Acceso.">
+                ACL
+            </abbr>
+            )
+        </strong>
+        se implementan
+        como una extensión al sistema de archivos para definir distintos conjuntos de permisos para
+        usuarios y grupos de forma individualizada.
+    </p>
+    <p>
+        Una ACL consta de una lista de entradas en la que se especifica la asignación de los 3
+        permisos básicos de Linux: lectura (r), escritura (w) y ejecución (x), en este orden; como
+        se ha visto la ausencia de un determinado permiso se representa con un guión (-).
+    </p>
+    <p>
+        A continuación se muestra el formato genérico de una ACL
+    </p>
+    <p style="text-align: center;">
+        <strong>
+            [Tipo]:[Calificador]:ListaPermisos[,...]
+        </strong>
+    </p>
+    <p>
+        Las principales órdenes usadas para la gestión de las ACL's son:
+    </p>
+    <ul>
+        <li>
+            getfacl: Devuelve la lista de control de acceso a un fichero o directorio.
+        </li>
+        <li>
+            setfacl: Asigna, modifica o elimina una lista de control de acceso.
+        </li>
+    </ul>
+    <p>
+        María, tiene que dar permiso de lectura (r), escritura (w) y ejecución (x) al usuario:
+        uantonio, que pertenece al grupo: gbecarios, al fichero: Admin_Linux_14.sh, que pertenece al
+        usuario: umaria, que a su vez pertenece al grupo: gadmin.
+    </p>
+    <p>
+        Para ello María, decide crear una ACL. En este punto duda en la sintaxis del comando que
+        modifica la
+        <strong>
+            ACL
+        </strong>
+        , para asegurarse ejecuta el manual de ayuda en línea del
+        comando:
+        <strong>
+            setfacl:
+        </strong>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado titulo">
+            Ayuda en Linea comando setfacl
+        </div>
+        <div class="elemento_centrado" style="text-align: center;">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        <span style="font-size: 0.8em;">
+         <br>
+        <br/></span>
+    </p>
+    <p>
+        Una vez consultado el manual en línea. María observa que para añadir una condición al ACL,
+        tiene que utilizar la opción
+        <strong>
+            -m
+        </strong>
+        : Para eliminar una entrada de la lista ACL
+        asociada a un directorio o fichero, se utiliza la opción:
+        <strong>
+            -x
+        </strong>
+        .
+    </p>
+    <p>
+        María conoce las opciones básicas de este comando y decide añadir los permisos descritos al
+        ACL asociado al fichero: Admin_Linux_14.sh.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 43.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$&lt;strong&gt; ls -l Admin_Linux_14.sh&lt;/strong&gt;&lt;br /&gt;</pre>
+            <pre ngNonBindable>-rwxr-x---. 1 umaria gadmin 12424 2015-04-01 12:39 Admin_Linux_14.sh</pre>
+            <pre ngNonBindable>$ &lt;strong&gt;setfacl -m user:uantonio:rwx Admin_Linux_14.sh&lt;/strong&gt;</pre>
+            <pre ngNonBindable>$&lt;strong&gt; ls -l Admin_Linux_14.sh&lt;/strong&gt;</pre>
+            <pre ngNonBindable>-rwxr-x---+ 1 umaria gadmin 12424 2015-04-01 12:39 Admin_Linux_14.sh</pre>
+            <pre ngNonBindable>$ &lt;strong&gt;getfacl Admin_Linux_14.sh&lt;/strong&gt;&lt;br&gt;# file: Admin_Linux_14.sh&lt;br&gt;# owner: umaria&lt;br&gt;# group: gadmin&lt;br&gt;user::rwx&lt;br&gt;user:uantonio:rwx&lt;br&gt;group::r-x&lt;br&gt;other::---&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;&lt;/br&gt;</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    4.- Arranque y parada.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Ana y Juan se ven casualmente en el pasillo.
+        <br/></p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Hola Juan, mira me han dicho que estás hecho ya un experto en Linux
+        y tengo un problema en mi equipo. Cada vez que reinicio el equipo tengo que iniciar
+        manualmente unos servicios ¿Se puede hacer automáticamente?.
+    </p>
+    <p>
+        <br>
+        <strong>
+            —
+        </strong>
+        Claro Ana, lo bueno de Linux es que podemos configurarlo como
+        más nos guste. De hecho podemos configurar el gestor de arranque, los servicios que
+        se inician automáticamente en el sistema e incluso programar tareas. Te lo explico y
+        así configuras bien tu ordenador.
+        <br/></p>
+</div><h1 class="title">
+    4.1.- Gestor de arranque de GNU/Linux.
+</h1><div class="iDevice_content">
+    <p>
+        El gestor de arranque es el encargado de iniciar cualquier sistema operativo que haya sido
+        previamente instalado en el sistema (por ejemplo, Windows, GNU/Linux,
+        <span lang="en">
+         Free
+        </span>
+        <abbr title="Berkeley Software Distribution.">
+            BSD
+        </abbr>
+        ). De forma tradicional el gestor de arranque utilizado en
+        GNU/Linux era
+        <abbr title="Linux Loader.">
+            LILO
+        </abbr>
+        , aunque actualmente el gestor de
+        arranque más utilizado en la actualidad es GRUB.
+    </p>
+    <p>
+        GRUB (
+        <span lang="en">
+         Grand Unified Bootloader
+        </span>
+        ) fue diseñado por
+        <span lang="en">
+         Erich
+								Stefan Boleyn
+        </span>
+        y es un gestor de arranque que permite gestionar el inicio de
+        nuestro equipo entre diferentes sistemas operativos.
+    </p>
+    <p>
+        En este punto es importante recordar que existe la posibilidad de que estos sistemas
+        coexistan entre sí en el mismo ordenador, aunque en distintas particiones, y por ello es
+        necesario tener mecanismos adecuados para que todos puedan arrancar y ser utilizados cuando
+        el usuario crea conveniente. Concretamente estos mecanismos son los
+        <strong>
+            gestores de
+            arranque
+        </strong>
+        .
+    </p>
+    <p>
+        GNU/Linux, prácticamente desde su invención, asumió que en algunas circunstancias debía
+        compartir espacio en disco con sistemas de
+        <span lang="en">
+         Microsoft
+        </span>
+        por lo que han
+        existido diversos y variados métodos, para su arranque en estas condiciones.
+    </p>
+    <p>
+        El gestor de arranque que más se utiliza, en la actualidad, en casi todas las distribuciones
+        de GNU/Linux es
+        GRUB
+        , a pesar de no ser
+        exclusivo de GNU/Linux. GRUB puede instalarse de forma independiente al sistema operativo y
+        puede ser utilizado para iniciar varios tipos de sistemas operativos, entre ellos cualquiera
+        de las versiones antiguas y actuales de
+        <span lang="en">
+         Microsoft.
+        </span>
+    </p>
+
+    <p>
+        <span lang="en">
+         Siempre que realices operaciones sobre el gestor de arranque es muy
+								importante estar seguros de las opciones y parámetros introducidos, ya que es posible
+								dañar el arranque del sistema. Aún así, siempre es posible utilizar alguna utilidad de
+								recuperación del arranque, como por ejemplo
+         Super
+											GRUB Disk
+         , de libre distribución. Esta herramienta
+								además permite a usuarios avanzados realizar operaciones potencialmente peligrosas en el
+         <em>
+          <abbr title="Master Boot Record.">
+           MBR
+          </abbr>
+          (
+          <span lang="en">
+           Master Boot
+										Record
+          </span>
+         </em>
+         <em>
+          o
+         </em>
+         <em>
+          Registro de Arranque Principal)
+         </em>
+         de forma
+								segura.
+        </span>
+    </p>
+    <div class="exe-tooltip-text" id="t1074a90c-1736-23b7-477f-715bd1325ef7">
+        <p>
+            Programa que permite seleccionar qué sistema operativo cargará el ordenador para
+            arrancar.
+        </p>
+    </div>
+</div><h1 class="title">
+    4.2.- Proceso de arranque y parada del sistema.
+</h1><div class="iDevice_content">
+    <p>
+        Una vez que se ha encontrado el
+        kernel
+        y se ha iniciado. El sistema
+        operativo comienza a cargarse, se inicia el
+        <span lang="en">
+         hardware
+        </span>
+        , los discos
+        están preparados, se asignan direcciones
+        <abbr title="Internet Protocol.">
+            IP
+        </abbr>
+        ,
+        se inician servicios, y se realizan otras muchas tareas. Para ello, Linux ejecutaba el
+        programa
+        <em>
+            init
+        </em>
+        (al final de la unidad en anexos se describe de forma detallada la
+        ejecución de init) auque actualmente la labor realizada por init ha sido sustiuida por
+        systemd.
+    </p>
+    <p>
+        Podemos definir systemd como un gestor del sistema y de los servicios para Linux, es decir,
+        se encarga de cargar y controlar que funcione correctamente, todo aquello que viene después
+        de la carga del nucleo.
+    </p>
+    <p>
+        Systemd trabaja con lo que define como unidades, pudiendo ser una unidad: servicios,
+        dispositivos, puntos de montaje, particiones, sockets, areas de inercambio, etc. A
+        continuación se describen algunas operaciones que podemos realizar con las unidades:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+            systemctl o
+            <code>
+                systemctl list-units
+            </code>
+            : para poder ver
+            las unidades activas ejecutaremos el comando.
+        </li>
+        <li style="text-align: left;">
+            systemctl status: para poder ver el estado del sistema
+            ejeuctaremos.
+        </li>
+        <li style="text-align: left;">
+            systemctl --failed&lt;code&gt;: para poder ver las unidades
+            que han fallado ejecutaremos el comando.
+        </li>
+    </ul>
+    <p style="text-align: left;">
+        Una de las ventajas que presenta systemd es la paralelización de
+        procesos, es decir, puede manejar dos o más procesos a la misma vez en el arranque.
+    </p>
+    <p style="text-align: left;">
+        Como se ha comentado anteriormente systemd trabaja con unidades,
+        dichas unidades se encuentra en los directorios /lib/systemd/system y
+        <code>
+            /etc/systemd/system
+        </code>
+        , también se pueden ver con el comando systemctl
+        list-unit-files.
+    </p>
+
+    <p style="text-align: left;">
+    </p>
+    <p style="text-align: left;">
+        El sistema init utilizaba el concepto de
+        <span lang="en" style="text-align: left;">
+         runlevels
+        </span>
+        (o niveles de ejecución 0-6),
+        systemd utiliza el concepto de
+        <span lang="en" style="text-align: left;">
+         targets. Los
+								targets se nombran y tienen un proposito determinado, aunque puede realizar más de una
+								acción al mismo tiempo. Para:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+         <span lang="en" style="text-align: left;">
+          <span lang="en" style="text-align: left;">
+           conocer los targets presentes se ejecutará
+										systemctl list-units-files --type=target.
+          </span>
+         </span>
+        </li>
+        <li>
+         <span lang="en" style="text-align: left;">
+          pasar de un target a otro se utiliza la orden:
+									telinit runlevel.
+         </span>
+        </li>
+    </ul>
+    <p>
+        En el siguiente enlace podemos ver una
+        comparativa
+        entre los runlevels del sistema init y los targets del sistema systemd.
+    </p>
+    <p>
+        Las unidades pueden administrarse con systemctl, así podremos iniciar, parar, comprobar el
+        estado, recargar, reiniciar, etc. unidades. Por lo tanto nos bastará con poner systemctl y
+        uno de las siguientes argumentos
+        <em>
+            start
+        </em>
+        ,
+        <em>
+            stop,
+            <code>
+                status
+            </code>
+            , restart
+        </em>
+        o
+        <em>
+            relaod
+        </em>
+        y la unidad sobre la que queremos realizar la acción. Anteriormente se ha
+        comentado que una unidad podría ser un sericio, por lo tanto si queremos iniciar el servicio
+        ssh tendríamos que escribir:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># systemctl start sshd.services
+</pre>
+        </div>
+    </div>
+    <p>
+        Y para pararlo:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># systemctl stop sshd.services
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="td2f93a5b-7c7e-9065-e3b2-1ed590a6ec6e">
+        <p>
+            Núcleo del sistema operativo.
+        </p>
+    </div>
+</div><h1 class="title">
+    4.3.- Servicios del sistema.
+</h1><div class="iDevice_content">
+    <p>
+        Los servicios son aplicaciones que se ejecutan en segundo plano, independientemente del
+        usuario y ofrecen una determinada funcionalidad. Normalmente se asocia el término “servicio”
+        sólo a servicios de red (por ejemplo, servidor web, servidor
+        <abbr title="File Transfer Protocol.">
+            ftp
+        </abbr>
+        ) pero existen servicios que ofrecen todo
+        tipo de funcionalidades (gestionan las conexiones de red, monitorizan el sistema, comprueban
+        las actualizaciones y seguridad del sistema, permiten utilizar el hardware del equipo,
+        etcétera).
+    </p>
+    <p>
+        El administrador de servicios permite establecer los servicios que se van a ejecutar al
+        iniciar el sistema, y permiten parar, ejecutar o reanudar los servicios que se ejecutan
+        actualmente en el sistema. Con la actual implementación de systemd, los servicios serán
+        unidades que pueden administrarse con systemctl. Por lo tanto y continuando con lo dicho en
+        el apartado anterior sobre el proceso de arranque y parada del sistema podremos realizar
+        diferenes operaciones como: ver el estado, parar, cargar, iniciar, etc. un servicio.
+    </p>
+    <p>
+        Para administrar los servicios del sistema en modo terminal podemos utilizar
+        <em>
+            systemctl:
+        </em>
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># systemctl
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para ver el estado de los diferentes servicios ejecutamos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 15.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># systemctl status nombre_servicio
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <span lang="en" style="text-align: left;">
+         <span lang="en" style="text-align: left;">
+          Ahora nos
+									faltaría conocer todos los servicios de nuestro sistema, para ello
+									escribiremos:
+         </span>
+        </span>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># &lt;span lang="en" style="text-align: left;"&gt;&lt;span lang="en" style="text-align: left;"&gt;systemctl list-unit-files --type=service&lt;/span&gt;&lt;/span&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Las unidades pueden administrarse con systemctl, así podremos iniciar, parar, comprobar el
+        estado, recargar, reiniciar, etc. unidades. Por lo tanto nos bastará con poner systemctl,
+        una de las siguientes argumentos
+        <em>
+            start
+        </em>
+        ,
+        <em>
+            stop,
+            <code>
+                status
+            </code>
+            , restart
+        </em>
+        o
+        <em>
+            relaod
+        </em>
+        y la unidad sobre la que queremos realizar la acción. Anteriormente se ha
+        comentado que una unidad podría ser un sericio, por lo tanto si queremos iniciar el servicio
+        de impresión tendríamos que escribir:
+    </p>
+    <div class="elemento_centrado">
+        <div class="codigo elemento_centrado" style="width: 18.1em;">
+            <div class="texto_izquierda">
+          <pre ngNonBindable># systemctl start cups.service
+</pre>
+            </div>
+        </div>
+
+        <p style="text-align: left;">
+            Algunos servicios pueden seguir siendo administrados con
+            <em>
+                service
+            </em>
+            aunque es recomendable utilizar systemctl.
+        </p>
+        <br>
+        <p style="text-align: left;">
+            A continuación citamos algunas acciones que podemos realizar
+            con los servicios, como son:
+        </p>
+        <ul class="lista_verificacion">
+            <li style="text-align: left;">
+                Activar o habilitar un servicio. systemctl enable
+                cups.service
+            </li>
+            <li style="text-align: left;">
+                Desactivar o deshabilitar un servicio. systemctl enable
+                cups.service
+            </li>
+            <li style="text-align: left;">
+                Comprobar si un servicio está activo. systemctl is-active
+                cups.service
+            </li>
+            <li style="text-align: left;">
+                Comprobar si el servicio se inicia en el arranque.
+                systemctl is-enabled cups.service
+            </li>
+            <li style="text-align: left;">
+                Comprobar si el servicio ha fallado. systemctl is-failed
+                cups.service
+            </li>
+            <li style="text-align: left;">
+                Poder ver la configuración de un servicio. systemctl cat
+                cups.service
+            </li>
+            <li style="text-align: left;">
+                Ver las dependencias de un servicio. systemctl
+                list-dependencies cups.service
+            </li>
+            <li style="text-align: left;">
+                Comprobar las características de un servicio: systemctl
+                show cups.service
+            </li>
+        </ul>
+        <p style="text-align: left;">
+            Si quisieramos trabajar con cualquier otro servicio
+            reemplazaríamos el nombre cups, por el nombre del servicio. Destacar también que el
+            nombre del servicio termina en .service.
+        </p>
+        <p>
+        </p>
+        <br/></div>
+</div><h1 class="title">
+    4.4.- Procesos.
+</h1><div class="iDevice_content">
+    <p>
+        En los sistemas GNU/Linux se ejecutan una gran cantidad de servicios que permiten realizar
+        una determinada actividad en el sistema. Cada servicio o demonio consiste en uno o más
+        procesos
+        que se ejecutan en el equipo.
+        Además de los procesos vinculados a servicios, en el sistema se encuentran los procesos que
+        ejecuta un usuario. Por ejemplo, un editor de textos, un navegador Web, etcétera.
+    </p>
+    <p>
+        Para ver los procesos que se ejecutan en el equipo hay que ejecutar el comando ps
+        <em>
+            .
+        </em>
+        Tal y como se muestra en la siguiente figura, para cada proceso se muestra su
+        identificador (
+        PID
+        )
+        <span>
+         <em>
+         </em>
+         Número que
+								identifica de forma unívoca un proceso en el sistema.
+        </span>
+        ), terminal donde se ejecuta
+        (
+        <abbr title="TeleTYpewriter.">
+            TTY
+        </abbr>
+        ), tiempo de uso de
+        <abbr title="Central processing unit.">
+            CPU
+        </abbr>
+        (
+        <span lang="en">
+         TIME
+        </span>
+        ) y el
+        comando que ejecuta (
+        <abbr title="Command.">
+            CMD
+        </abbr>
+        ).
+    </p>
+
+    <p>
+        Si quires ver todos los procesos que se ejecutan en el sistema utiliza la opción
+        <em>
+            -A
+        </em>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 9.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># ps -A
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si quires ver todos los procesos que se ejecutan en el sistema de forma detallada
+        utilizaremos las opciones -aux:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 9.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># ps -aux
+</pre>
+        </div>
+    </div>
+
+    <p>
+        La información que obtenemos que muestra la anterior imagen es:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            USER: usuario que ejecutqa el proceso.
+        </li>
+        <li>
+            PID: identificado (ID) del proceso.
+        </li>
+        <li>
+            %CPU: porcentaje de tiempo de uso de
+            <abbr title="Central Processing Unit">
+                CPU
+            </abbr>
+            desde que el proceso se inicio.
+        </li>
+        <li>
+            %MEM: porcentaje de memoria física utilizada.
+        </li>
+        <li>
+            VSZ: memoria virtual del proceso medida en
+            <abbr title="KiloByte.">
+                KB
+            </abbr>
+            .
+        </li>
+        <li>
+            RSS: es la cantidad de memoria física no swappeada que la tarea a utilizado (en KB).
+        </li>
+        <li>
+            TT: terminal (tty) que controla el proceso.
+        </li>
+        <li>
+            STAT: código de estado del proceso.
+        </li>
+        <li>
+            STARTED: fecha de inicio del proceso.
+        </li>
+        <li>
+            TIME: tiempo de CPU acumulado.
+        </li>
+        <li>
+            COMMAND: comando con todos sus argumentos que ejecuta el proceso.
+        </li>
+    </ul>
+    <p>
+        Si deseas eliminar un proceso que se está ejecutando en el sistema puede utilizar el comando
+        <em>
+            kill.
+        </em>
+        kill es un comando que permite enviar una señal a un proceso. Existen
+        multiples señales que se pueden enviar, así entre ellas estará la señal para terminar un
+        proceso, esto lo haremos de la siguiente forma.:
+    </p>
+    <p>
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># kill -9 &lt;ID del proceso&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para conocer las señales que podemos enviar a un proceso ejecutaremos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.95em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># kill -l
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para seguir profundizando en el significado de cada una de las señales consultaremos el
+        siguiente enlace:
+        significado
+        de las señales
+        .
+    </p>
+    <p>
+        Otra aplicación que permite ver los procesos que se ejecutan en el sistema es top.
+        <code>
+            Top
+        </code>
+        es una aplicación que, en tiempo real, informa sobre la actividad del
+        sistema. Proporciona información sobre la carga del sistema operativo, grado de utilización
+        de la CPU, memoria y
+        <span lang="en">
+         swap
+        </span>
+        , y los procesos que se encuentran en
+        ejecución.
+    </p>
+    <div class="elemento_centrado">
+
+
+        <p style="text-align: left;">
+            Si queremos ver el arbol de procesos de nuestro sistema
+            tendremos que ejecutar el comando
+            <em>
+                pstree
+            </em>
+            de la siguiente forma:
+        </p>
+    </div>
+    <div class="codigo elemento_centrado" style="width: 21.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># pstree</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si junto a cada proceso queremos ver su identificador escribiremos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.95em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable># pstree -p</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si junto a cada proceso queremos ver su identificador escribiremos:
+    </p>
+
+
+    <p style="text-align: center;">
+        <br>
+        <br>
+        <br/><br/></p>
+    <div class="exe-tooltip-text" id="tcd69f21a-91da-1e07-4e3b-902c36bd35f6">
+        <p>
+            Proceso es cualquier programa en ejecución desde el punto de vista del sistema operativo
+            quien se encarga de proporcionar a todos los procesos el reparto del tiempo de CPU y del
+            resto de recursos del computador.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="tdc062c50-0b0a-3950-1207-b0ec655f0667">
+        <p>
+            Identificador de proceso.
+        </p>
+    </div>
+</div><h1 class="title">
+    4.5.- Programación de tareas.
+</h1><div class="iDevice_content">
+
+    <p>
+        La programación de tareas permite programar la ejecución de un determinado programa en un
+        momento determinado. Por ejemplo, se puede programar
+        una copia de seguridad
+        , enviar un
+        fichero, comprobar la seguridad del sistema, enviar un informe, etcétera.
+        <br>
+        <br>
+        Antes de
+        programar las tareas hay que comprobar que el servicio
+        cron
+        se encuentra en ejecución mediante
+        el comando:
+        <br/><br/></p>
+    <div class="codigo elemento_centrado" style="width: 18.1em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;code&gt;# systemctl status cron.service&lt;br&gt;             o&lt;br/&gt;&lt;/br&gt;</pre>
+            <pre ngNonBindable># service cron status</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Para modificar el fichero de configuración de
+        <em>
+            cron,
+        </em>
+        ejecuta el comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 13.15em;">
+        <div class="texto_centrado">
+         <pre ngNonBindable># crontab –e
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        y nos encontraremos un fichero como el siguiente.
+    </p>
+
+    <p style="text-align: left;">
+        A continuación analizamos un par de ejemplos de programación de
+        tareas:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 26.9em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>PATH=/bin
+</pre>
+            <pre ngNonBindable>0 0 * * * /root/comprobar_seguridad.sh
+</pre>
+            <pre ngNonBindable>0 0 1 * * /root/copia_seguridad.sh
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        La sintaxis de las tareas programadas es:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 71.45em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># .---------------- minuto (0 - 59)
+</pre>
+            <pre ngNonBindable># |   .------------- hora (0 - 23)
+</pre>
+            <pre ngNonBindable># |   |   .---------- día del mes (1 - 31)
+</pre>
+            <pre ngNonBindable># |   |   |   .------- mes (1 - 12) o jan,feb,mar,apr ... (los meses en inglés)
+</pre>
+            <pre ngNonBindable># |   |   |   |    .---- día de la semana (0 - 6) (Domingo = 0 o 7) OR sun,mon,tue,wed,thu,fri,sat (los días en inglés)
+</pre>
+            <pre ngNonBindable># |   |   |   |    |
+</pre>
+            <pre ngNonBindable># |   |   |   |    |
+</pre>
+            <pre ngNonBindable>  *   *   *   *    *  Comando a ejecutar
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        En el ejemplo anterior se ejecuta el
+        <span lang="en">
+         script
+        </span>
+        <em>
+            comprobar_seguridad.sh
+        </em>
+        todos los días a las 0:00h y se ejecuta
+        <em>
+            copia_seguridad.sh
+        </em>
+        el primer día de
+        cada mes a las 0:00h.
+    </p>
+    <p>
+        Otra forma de poder programar tareas es guardar el
+        <span lang="en">
+         script
+        </span>
+        que quiere
+        ejecutar en las siguientes carpetas de configuración de
+        <em>
+            cron
+        </em>
+        :
+    </p>
+    <div class="codigo elemento_centrado" style="width: 41.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>/etc/cron.hourly          # Ejecuta el script cada hora
+</pre>
+            <pre ngNonBindable>/etc/cron.daily           # Ejecuta el script diariamente
+</pre>
+            <pre ngNonBindable>/etc/cron.weekly          # Ejecuta el script semanalmente
+</pre>
+            <pre ngNonBindable>/etc/cron.monthly         # Ejecuta el script mensualmente
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p class="destacado">
+        Para asegurar el sistema sólo el usuario
+        <span lang="en">
+         root
+        </span>
+        puede
+        modificar los
+        <span lang="en">
+         scripts
+        </span>
+        que ejecuta
+        <em>
+            crontab
+        </em>
+        .
+    </p>
+    <p>
+        Para saber en el momento (hora, minuto, dia) en que se ejecutan los script contenidos en las
+        carpetas citadas anteriormente, lo haremos editando el fichero /etc/crontab. En la siguiene
+        imagen mostramos la configuración que viene por defecto.
+    </p>
+
+    <p>
+        Otras opciones son:
+    </p>
+    <p>
+        crontab -l: permite ver las tareas programadas que existen para el usuario con el que estamos
+        trabajando.
+    </p>
+    <p>
+        crontab -r: permite eliminar las tareas programadas que existan.
+    </p>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t94b70851-ca37-a23d-fa12-cdf79309c717">
+        <p>
+            Programa o servicio que se ejecuta en segundo plano.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="td7d39244-1c01-55b8-f5a5-1517b4aad59b">
+        <p>
+            Una copia de seguridad es el proceso de grabar los datos de un sistema para evitar la
+            pérdida de la información ante un posible incidente.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t519c97fe-4cd7-f991-4bdd-27134820bafc">
+        <p>
+            Servicio de los sistemas GNU/Linux que permite programar tareas para que se ejecuten
+            automáticamente.
+        </p>
+    </div>
+</div><h1 class="title">
+    4.6.- Reinicio y parada del sistema.
+</h1><div class="iDevice_content">
+    <p>
+        El proceso de parada y reinicio del sistema se puede realizar de forma gráfica o por
+        terminal. Para hacerlo de forma gráfica tan sólo hay que pulsar en el menú del sistema, en
+        la flecha situada en la parte superior derecha. Se deplegará un menú y tendremos que pulsar
+        sobre el botón de apagado.
+    </p>
+    <div class="elemento_centrado">
+
+
+    </div>
+    <p>
+        Además de la opción que nos ofrece la interfaz gráfica, podemos utilizar comandos específicos
+        (desde la consola) para apagar el equipo, como
+        <em>
+            halt
+        </em>
+        o
+        <em>
+            shutdown,
+        </em>
+        o se
+        puede reiniciar el equipo ejecutando
+        <em>
+            reboot.
+        </em>
+        Shutdown permite reinicar el sistema a
+        una hora determinada. En los siguientes enlaces se puede consultar la ayuda del sistema para
+        estos comandos.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ayuda halt,
+            power off y reboot.
+        </li>
+        <li>
+            ayuda shutdown.
+        </li>
+    </ul>
+    <p>
+        Desde la versión 18.04 de ubuntu, los comandos halt y
+        <code>
+            reboot
+        </code>
+        llaman a shutdown
+        si el sistema no está en niveles 0 o 6.
+    </p>
+    <p>
+        Para apagar el sistema con shutdown es obligatorio poner el argumento time, así se puede
+        poner una hora determiada o bien la palabra now.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 29.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># shutdown -h now
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p style="text-align: left;">
+        A continuación se muestran algunas opciones de apagado del sistema:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+            Para apagar el equipo a las 14:30 escribiremos: shutdown -h
+            14:30
+        </li>
+        <li style="text-align: left;">
+            Para reinciar el equipo a las 14:30 escribiríamos: shutdown -r
+            14:30
+        </li>
+        <li style="text-align: left;">
+            Para apagar el sistema dentro de 30 minutos escribiremos:
+            shutdown -h +30
+        </li>
+        <li style="text-align: left;">
+            Para cancelar el apagado programado a las 14:30: shutdown -c
+        </li>
+    </ul>
+    <p style="text-align: left;">
+        En la siguiente captura de pantalla se muestra como se avisa de la
+        próxima parada del sistema, a la vez se nos informa como con
+
+            shutdown -c
+
+        se puede
+        cancelar.
+    </p>
+
+    <p style="text-align: left;">
+    </p>
+</div><h1 class="title">
+    5.- Monitorización del sistema.
+</h1><div class="iDevice_content">
+    <p>
+        Ada va a ver a Juan porque el servidor va muy lento.
+    </p>
+
+    <p>
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Hola Juan, he comprobado que el servidor va un poco lento y me
+        gustaría que analices su comportamiento para ver lo que pasa. Quizás sea que tiene
+        poca memoria
+        <abbr title="Random Access Memory.">
+            RAM
+        </abbr>
+        .
+    </p>
+    <p>
+        <br>
+        <strong>
+            —
+        </strong>
+        De acuerdo, he estado viendo por ahí que hay herramientas de
+        monitorización que me permiten ver el estado del sistema. Voy a utilizarlas e
+        investigar un poco.
+        <br/></p>
+    <p>
+        <br>
+        <strong>
+            —
+        </strong>
+        ¡Muy bien Juan!. Me quedo contigo y así veo yo también lo que
+        está pasando.
+        <br/></p>
+</div><h1 class="title">
+    5.1.- Herramientas básicas (I).
+</h1><div class="iDevice_content">
+    <p>
+        Según el tipo de información que presentan, los comandos se pueden clasificar en:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Procesos
+            </strong>
+            . Muestra información sobre los procesos que se están
+            ejecutando en el sistema.
+        </li>
+        <li>
+            <strong>
+                Almacenamiento
+            </strong>
+            .
+            <strong>
+            </strong>
+            Proporcionan información sobre la
+            entrada y salida al subsistema de almacenamiento.
+        </li>
+        <li>
+            <strong>
+                Memoria
+            </strong>
+            . Proporcionan información sobre el espacio de memoria real y
+            <em>
+          <span lang="en">
+           swap
+          </span>
+                .
+            </em>
+        </li>
+        <li>
+            <strong>
+                Red
+            </strong>
+            . Facilitan estadísticas de uso de las interfaces de red.
+        </li>
+        <li>
+            <strong>
+                Polivalentes
+            </strong>
+            . Muestran información sobre distintos subsistemas del
+            equipo.
+        </li>
+    </ul>
+    <p>
+        En la siguiente tabla se muestra un resumen de las herramientas básicas de monitorización en
+        GNU/Linux.
+    </p>
+    <table class="tabla">
+        <caption>
+            Herramientas básicas de monitorización en GNU/Linux
+        </caption>
+        <tbody>
+        <tr>
+            <th colspan="3" scope="col">
+                Procesos
+            </th>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    ps
+                </p>
+            </td>
+            <td>
+                Muestra el estado de los procesos que se están ejecutando en el equipo.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3" scope="col">
+                Almacenamiento
+            </th>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    df
+                </p>
+            </td>
+            <td>
+                Muestra el espacio libre del sistema de ficheros.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    du
+                </p>
+            </td>
+            <td>
+                Muestra el espacio ocupado a partir de un determinado directorio.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3" scope="col">
+                Memoria
+            </th>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    free
+                </p>
+            </td>
+            <td>
+                Proporciona información relativa a la cantidad de memoria física, espacio de
+                <span lang="en">
+            swap
+           </span>
+                libre y usado por el sistema operativo, estado de
+                los
+                <span lang="en">
+            buffers
+           </span>
+                y memoria caché utilizada por el núcleo.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    pmap
+                </p>
+            </td>
+            <td>
+                Proporciona información referente a la utilización de la memoria por parte de un
+                determinado proceso.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3" scope="col">
+                Red
+            </th>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    ifstat
+                </p>
+            </td>
+            <td>
+                Muestra la estadística de tráfico de entrada y salida de las interfaces de red.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    iftop
+                </p>
+            </td>
+            <td>
+                Muestra las conexiones de red de un equipo.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+            <span style="color: #000000;">
+             iptraf
+            </span>
+                </p>
+            </td>
+            <td>
+                Es una completa herramienta que permite mostrar las estadísticas de red en
+                tiempo real.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    netstat
+                </p>
+            </td>
+            <td>
+                Proporciona estadísticas e información de estado sobre tablas de rutas,
+                interfaces de red, conexiones establecidas, etcétera.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    ping
+                </p>
+            </td>
+            <td>
+                Permite comprobar el estado de una conexión.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    traceroute
+                </p>
+            </td>
+            <td>
+                Permite obtener el camino que se sigue un paquete para establecer una
+                comunicación con un destinatario, es decir, los
+                <span lang="en">
+            routers
+           </span>
+                que se atraviesan.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+            </td>
+            <td>
+            </td>
+        </tr>
+        <tr>
+            <th colspan="3" scope="col">
+                Polivalentes
+            </th>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    dstat
+                </p>
+            </td>
+            <td>
+                Permite realizar estadísticas de CPU, utilización de disco, red, paginación y
+                estado del sistema.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+            <span style="color: #000000;">
+             iostat
+            </span>
+                </p>
+            </td>
+            <td>
+                Permite ver la carga de CPU y del disco duro.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    top
+                </p>
+            </td>
+            <td>
+                Informa en tiempo real sobre la actividad del sistema. Proporciona información
+                sobre la carga del sistema operativo, grado de utilización de la CPU, memoria y
+                <span lang="en">
+            swap
+           </span>
+                , y los procesos que se encuentran en ejecución.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    vmstat
+                </p>
+            </td>
+            <td>
+                Muestra información sobre los procesos que se están ejecutando en el equipo, la
+                memoria, las operaciones de entrada y salida a disco, y la utilización de la
+                CPU. Es una aplicación clásica en los sistemas.
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+                    who
+                </p>
+            </td>
+            <td>
+                Permite ver de forma resumida el tiempo que lleva activo el sistema (
+                <span lang="en">
+            uptime
+           </span>
+                ), la carga del sistema y la actividad de los
+                usuarios que se encuentran conectados al sistema
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <p>
+            <span style="color: #000000;">
+             xosview
+            </span>
+                </p>
+            </td>
+            <td>
+                Es una aplicación gráfica que proporciona información sobre el uso de CPU,
+                memoria, cantidad de carga del sistema, red, interrupciones y
+                <span lang="en">
+            swap
+           </span>
+                en espacio de usuario. Se ejecuta en entorno gráfico.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+
+    <div style="width: 100%;">
+        <div style="width: 50%; float: left;">
+            <div class="elemento_centrado">
+
+            </div>
+        </div>
+        <div style="width: 50%; float: right;">
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="clear: both;">
+        Ubuntu ofrece a nivel gráfico una herramienta básica de
+        monitorización, en la cual se puede obtener información sobre los procesos que se está
+        ejecutando, los recursos del sistema (uso de cpu, memoría y tráfico de red) y el sistemas de
+        archivos. Para poder acceder a dicha herramienta buscaremos en tre las aplicaciones
+        instaladas Monitor del Sistema.
+    </div>
+    <div style="clear: both; text-align: center;">
+
+
+    </div>
+    <p>
+        Otra herramienta que nos proporciona el sistema es la relacionada con la energía de nuestro
+        equipo. A continuación mostramos una captura de pantalla de dicha herramienta (Estadística
+        de energía).
+    </p>
+
+    <p>
+    </p>
+</div><h1 class="title">
+    5.2.- Herramientas básicas (II).
+</h1><div class="iDevice_content">
+    <p>
+        Como hemos podido comprobar existen multitud de herramientas que nos permiten monitorizar
+        nuestro sistema. En este apartado analizaremos un poco más despacio aquellas que
+        consideramos más interesantes, tanto por su importancia como por la presencia en la mayoría
+        de versiones y distribuciones Linux. Así destacamos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                uptime
+            </strong>
+            : monitoriza la
+            carga
+            del sistema. Presenta la hora
+            del sistema, cuánto tiempo lleva operativo, el número de usuarios conectados y el valor
+            medio de la carga en el último minuto, los últimos 5 minutos y los últimos 10 minutos.
+            El número resultante suele indicar la carga de la CPU con el siguiente baremo, si el
+            equipo tiene un sólo procesador la carga con valor de 1 indica que los procesos tienen
+            una carga del 100% de la CPU. Con dos procesadores, el 100% de la carga sería de un
+            valor de 2, y así sucesivamente.
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                time
+            </strong>
+            : monitoriza el tiempo de ejecución de un programa. Permite conocer
+            cómo se ha distribuido el tiempo de ejecución de su código, en modo usuario y en modo
+            supervisor.
+        </li>
+    </ul>
+    <p style="text-align: center;">
+
+    </p>
+    <div class="elemento_centrado">
+
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                top
+            </strong>
+            : monitoriza la actividad de los procesos. Visualiza los procesos
+            que hay en ejecución y cuánta memoria consumen. Por defecto la información se actualiza
+            cada 5 segundos pero puede personalizarse.
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                ps
+            </strong>
+            : monitoriza la actividad de los procesos. Muestra los procesos
+            lanzados en el sistema por el usuario que ha ejecutado la orden.
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                vmstat
+            </strong>
+            : monitoriza la actividad de la memoria. Informa sobre el uso de
+            la memoria física y virtual, de la actividad de intercambio entre la memoria y el disco,
+            las transferencias, las interrupciones, los cambios de contexto y el uso del procesador.
+        </li>
+    </ul>
+    <p style="text-align: center;">
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                free
+            </strong>
+            : monitoriza la actividad de la memoria. Informa sobre el uso de la
+            memoria física y la swap.
+        </li>
+    </ul>
+    <p style="text-align: center;">
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                who
+            </strong>
+            : monitoriza la actividad de los usuarios del sistema. Permite
+            obtener información sobre los usuarios conectados al equipo y qué están haciendo.
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p style="text-align: center;">
+    </p>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+            <strong>
+                lsof:
+            </strong>
+            se utiliza para listar todos los
+            archivos abiertos y los procesos que lo utilizan.
+            <span>
+          Los archivos abiertos
+									incluidos son
+         </span>
+            archivos de disco, de la red, tuberías,
+            dispositivos&nbsp;y&nbsp;procesos.
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+            <strong>
+                tcpdump
+            </strong>
+            : analiza los paquetes de red, de
+            manera que captura o filtra paquetes TCP/IP que recibieron o han sido transferidos en
+            una interfaz específica a través de una red.
+            <span>
+          También proporciona una opción
+									para guardar los paquetes capturados en un archivo para su posterior
+									análisis.
+         </span>
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p style="text-align: center;">
+    </p>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+         <span>
+          <strong>
+           netstat:
+          </strong>
+          muestra las conexiones de
+									red a los puertos del sistema y controla los paquetes de red, estadísticas entrantes
+									y salientes, así como estadísticas de la interfaz.
+         </span>
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+         <span>
+          <strong>
+           htop:
+          </strong>
+          similar al comando top pero tiene
+									algunas características avanzadas como el interfaz para la gestión de
+									procesos,&nbsp;teclas de acceso directo, vista vertical y horizontal de los
+									procesos
+          <span>
+           y mucho más.
+          </span>
+         </span>
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+         <span>
+          <span>
+           <span>
+            <strong>
+             iptraf:
+            </strong>
+            r
+           </span>
+          </span>
+         </span>
+            <span style="font-size: 1em;">
+          ecoge una gran variedad
+									de información como monitor de tráfico IP que pasa a través de la red, incluida la
+									información de flags TCP, detalles ICMP, TCP / averías tráfico UDP, paquete de
+									conexión TCP y cuenta Byne. También recoge información de estadísticas de la
+									interfaz general y detaled de TCP, UDP,,,, errores de suma de comprobación IP no IP
+									ICMP IP, interfaz actividad, etc
+         </span>
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <div style="width: 100%;">
+        <div style="width: 33%; float: left;">
+            <div class="elemento_centrado">
+                <!--AQUÍ ES DONDE VA EL CONTENIDO-->
+            </div>
+
+        </div>
+    </div>
+    <div class="exe-tooltip-text" id="te41cb8d0-3064-4ed6-56f5-d5340264e17e">
+        <p>
+            Grado de ocupación del procesador. Se suele medir por el número medio de procesos que
+            están en la cola de procesamiento.
+        </p>
+    </div>
+</div><h1 class="title">
+    5.3.- Directorio /proc.
+</h1><div class="iDevice_content">
+    <p>
+        El núcleo de Linux almacena información relativa a su funcionamiento en archivos situados en
+        el directorio
+        <em>
+            /proc,
+        </em>
+        de tal forma que, para analizar el comportamiento de un
+        sistema, también se puede recurrir a la consulta de los archivos de este sistema de
+        ficheros. De hecho, prácticamente todas las herramientas analizadas obtienen sus datos de
+        esta fuente.
+    </p>
+    <p>
+        Un ejemplo de la información que reside en
+        <em>
+            /proc
+        </em>
+        es:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Estado de la memoria
+            </strong>
+            disponible en el fichero
+            <em>
+                /proc/meminfo.
+            </em>
+        </li>
+        <li>
+            <strong>
+                Información sobre el procesador
+            </strong>
+            en
+            <em>
+                /proc/cpuinfo.
+            </em>
+        </li>
+        <li>
+            <strong>
+                Sistema de comunicaciones
+            </strong>
+            en
+            <em>
+                /proc/net.
+            </em>
+        </li>
+        <li>
+            <strong>
+                Datos referentes a un proceso
+            </strong>
+            que se encuentran en un subdirectorio
+            del estilo a
+            <em>
+                /proc/pid_del_proceso
+            </em>
+            .
+        </li>
+        <li>
+            <strong>
+                Etcétera
+            </strong>
+            .
+        </li>
+    </ul>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+</div><h1 class="title">
+    5.4.- Archivos de registro (syslog).
+</h1><div class="iDevice_content">
+    <p>
+        <span style="font-size: 1em;">
+         Hasta ahora se ha visto como ver el estado actual del sistema,
+								pero sin duda es muy importante saber lo que ha pasado en el servidor.
+        </span>
+    </p>
+    <p>
+        Existen muchos motivos por los que se pueden generar mensajes. Entre los más frecuentes se
+        encuentran los fallos del servidor (por ejemplo, problema de hardware, fallo en un
+        servicio), de autentificación (por ejemplo, fallo en la autentificación de un usuario) o por
+        la utilización de un servicio (por ejemplo, petición de un cliente de una página web). Estos
+        mensajes se encuentran en los archivos de registro o
+        archivos log
+        ubicados en el directorio
+        <em>
+            /var/log
+        </em>
+        . Por ejemplo, muchos mensajes son guardados en los ficheros
+        <em>
+            /var/log/syslog
+        </em>
+        o en el
+        <em>
+            /var/log/messages.
+        </em>
+        Pero si un servicio genera
+        muchos mensajes lo normal es que sean escritos en un fichero o carpeta separada como lo hace
+        apache (
+        <em>
+            /var/log/httpd)
+        </em>
+        o el servidor de correo (
+        <em>
+            /var/log/mail)
+        </em>
+        .
+    </p>
+    <p>
+        El registro de todos los mensajes del sistema lo realiza el servicio
+        <em>
+            syslogd (
+        </em>
+        o
+        <em>
+            rsyslogd)
+        </em>
+        , el cuál no es exclusivo de los servicios del sistema sino que nosotros
+        también podemos registrar nuestros propios mensajes usando
+        <em>
+            syslog
+        </em>
+        .
+    </p>
+    <p>
+        El acceso a los registros o log del sistema se puede realizar de varias formas: Interfaz
+        gráfica, línea de comandos o webmin.
+    </p>
+    <p>
+        A través de la interfaz de gráfica, tendremos que añadir a nuestro sistema una herramienta
+        denomina registros. En ella nos aparecerá los diferentes logs de nuestro sistema y podremos
+        seleccionar el que queramos. Una vez seleccionado nos muestra la información de dicho
+        fichero.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+        <br>
+        <br>
+        <span class="license">
+         <span class="sep">
+         </span>
+        </span>
+        <br/><br/></p>
+    <p>
+        En el siguiente video, se puede comprobar como se accede a los registros del sistema a través
+        de la interfaz gráfica.
+    </p>
+
+    <p>
+    </p>
+    <p>
+        Como se ha comentado anteriormente también podremos visualizar el histórico de registros con
+        Webmin seleccionando el módulo
+        <strong>
+            Sistema
+        </strong>
+        /
+        <strong>
+            Históricos (Logs del
+            Sistema)
+        </strong>
+        del panel de la izquierda:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        A continuación describimos la información que contiene algunos de los ficheros logs o de
+        registros de nuestro sistema:
+    </p>
+    <ul class="lista_verificacion">
+        <li style="text-align: left;">
+            /var/log/message: registros de mensajes generales del sistema.
+        </li>
+        <li style="text-align: left;">
+            /var/log/auth.log: registros de autenticación.
+        </li>
+        <li style="text-align: left;">
+            /var/log/kern.log: registros del kernel.
+        </li>
+        <li style="text-align: left;">
+            /var/log/cron.log: registros de crond.
+        </li>
+        <li style="text-align: left;">
+            /var/log/maillog: registros del servidor de mails.
+        </li>
+        <li style="text-align: left;">
+            /var/log/utmp or /var/log/wtmp : registro de inicio y cierre
+            de sesión.
+        </li>
+        <li style="text-align: left;">
+            /var/log/btmp: registros con intentos fallidos de inicio del
+            sistema.
+        </li>
+        <li style="text-align: left;">
+            /var/log/cups/: registros relacionados con el sistema de
+            impresión cups.
+        </li>
+    </ul>
+    <p>
+        Se puede visualizar el contenido de estos ficheros de varios formas:
+    </p>
+    <ol>
+        <li>
+            Mediante el comando&nbsp;cat&nbsp;seguido del fichero a visualizar
+        </li>
+        <li>
+            Mediante la opción
+            <strong>
+                Ver archivo de registro
+            </strong>
+            que se encuentra en la
+            parte inferior del módulo
+            <strong>
+                Históricos (Logs) del Sistema
+            </strong>
+            <div class="elemento_centrado">
+                <div class="elemento_centrado">
+                </div>
+
+
+            </div>
+        </li>
+        <li>
+            O bien hacer doble clic en el fichero de diario a visualizar y pulsar la opción
+            <strong>
+                Ver archivo de diario
+            </strong>
+            .
+        </li>
+    </ol>
+    <p>
+        En la siguiente imagen se muestra los registros de autenticación:
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        <strong>
+        </strong>
+        <span lang="en">
+         <strong>
+          Systemd
+         </strong>
+        </span>
+        nos proporciona una gestión
+        centralizada de lo que sucede en el sistema con elementos tales, como: el kernel, servicios,
+        dispositivos,
+        <abbr title="etcétera">
+            etc
+        </abbr>
+        . A la vez, es capaz de
+        recopilar todos los registros de dichos elementos, que pueden ser gestionados con el comando
+        denominada journalctl, Este funciona gracias a un denomino denominado
+        <strong>
+        </strong>
+        <span lang="en">
+         <strong>
+          journald
+         </strong>
+        </span>
+        que es el encargado de escuchar
+        permanentemente lo que ocurre en el sistema.
+    </p>
+    <p>
+        Así, si queremos ver los registros asociados con el servicio cups escribiremos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 16em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># journalctl -u cups.service
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        <span>
+         donde -u indica que es una unidad (
+         unit
+         ).
+								Si quisiéramos obtener información sobre más de una unidad, solo tendremos que ponerlas
+								una a continuación de la otra:
+        </span>
+        journalctl -u cups -u NetworkManager
+    </p>
+    <p>
+        Destacar que el ejemplo anterior las unidades referidas a servicios no se le ha puesto
+        .service, esto es porque lo asume por defecto, sería igual que si hubiéramos ejecutado:
+        journalctl -u cups.service -u NetworkManager.service
+    </p>
+    <div class="exe-tooltip-text" id="t38cc1573-5a3e-8a94-7776-13fb63d07fa5">
+        <p>
+            Archivos que registran la actividad del sistema o servicio y que permiten analizar el
+            funcionamiento del sistema.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t1d68557f-17f2-86be-dbcb-01f223262d8a">
+        <p>
+            Las unidades pueden ser: services (.service), mount points (.mount), devices (.device) o
+            sockets (.socket), entre otros.
+        </p>
+    </div>
+</div><h1 class="title">
+    6.- Copias de seguridad.
+</h1><div class="iDevice_content">
+    <p>
+        Carlos va a ver a Juan.
+    </p>
+
+    <p>
+        <strong>
+            —
+        </strong>
+        Hola Juan, mira me han encargado instalar muchos equipos iguales y
+        la verdad es que me va a llevar mucho tiempo. ¿Conoces algún truco para ayudarme?.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        Sí claro, ahora mismo estoy viendo una herramienta que me permite
+        clonar discos duros. La idea es que instalas y configuras bien un equipo, y luego le
+        haces una copia al disco duro y la pones en todos los ordenadores. Así lo realizarás
+        todo mucho más rápido.
+    </p>
+    <p>
+        <strong>
+            —
+        </strong>
+        ¡Qué bien! Además, me gustaría que me expliques también cómo
+        realizar copias de seguridad en Linux. ¡Me quedo contigo y así aprendo cómo se hace!
+    </p>
+</div><h1 class="title">
+    6.1.- Comandos básicos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Aunque muchas distribuciones de UNIX/Linux ofrecen sus propias herramientas para realizar
+        copias de seguridad de todo tipo, casi todas estas herramientas suelen presentar un grave
+        problema a la hora de recuperar ficheros cuando se trata de software propietario, por lo que
+        si deseas restaurar total o parcialmente ficheros necesitas el propio programa para hacerlo.
+        En determinadas situaciones, esto no es posible o es muy difícil. Imagina un departamento
+        que dispone de sólo una estación
+        <span lang="en">
+         Silicon Graphics
+        </span>
+        y pierde todos los
+        datos del sistema. Si has utilizado herramientas propias del sistema, necesitarás otra
+        estación con el mismo sistema operativo para poder restaurar estas copias, lo que obviamente
+        puede ser problemático.
+        <br/></p>
+    <p>
+        Por este motivo, muchos administradores utilizan herramientas estándar para realizar las
+        copias de seguridad de sus máquinas. Estas herramientas suelen ser tan simples como:
+        <em>
+            dump/restore,
+            <code>
+                tar
+            </code>
+            , dd,
+            <code>
+                gzip
+            </code>
+            , rsync
+        </em>
+        etcétera
+        <em>
+            .
+        </em>
+        Para mejorar las prestaciones de dichas herramientas se realizan, y programan,
+        <span lang="en">
+         scripts
+        </span>
+        para que se realicen las copias de forma automática.
+    </p>
+    <p>
+        A continuación se van a ver los comandos más utilizados para realizar copias de seguridad en
+        sistemas GNU/Linux.
+    </p>
+</div><h1 class="title">
+    6.1.1.- El comando tar.
+</h1><div class="iDevice_content">
+    <p>
+        La utilidad tar (
+        <em>
+         <span lang="en">
+          Tape ARchiver
+         </span>
+        </em>
+        ) es una herramienta de fácil
+        manejo disponible en todas las versiones de UNIX/Linux que permite copiar ficheros
+        individuales o directorios completos en un único fichero. Oficialmente fue diseñada para
+        crear ficheros de cinta (esto es, para transferir ficheros de un disco a una cinta magnética
+        y viceversa), aunque en la actualidad casi todas sus versiones pueden utilizarse para copiar
+        a cualquier dispositivo o fichero, denominado
+        <em>
+            “contenedor”
+        </em>
+        .
+    </p>
+    <p>
+        En la siguiente tabla se muestran las opciones de tar más habituales. Algunas de ellas no
+        están disponibles en todas las versiones de tar, por lo que es recomendable consultar la
+        página del manual de esta orden antes de utilizarla.
+    </p>
+    <table class="tabla">
+        <caption>
+            Opciones de la orden tar
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                Opción
+            </th>
+            <th scope="col">
+                Acción
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <th scope="row">
+                c
+            </th>
+            <td>
+                Crea un contenedor.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                x
+            </th>
+            <td>
+                Extrae ficheros de un contenedor.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                t
+            </th>
+            <td>
+                Testea los ficheros almacenados en un contenedor.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                r
+            </th>
+            <td>
+                Añade ficheros al final de un contenedor.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                v
+            </th>
+            <td>
+                Modo
+                <span lang="en">
+            verbose
+           </span>
+                .
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                f
+            </th>
+            <td>
+                Especifica el nombre del contenedor.
+            </td>
+        </tr>
+        <tr>
+            <th scope="row">
+                z
+            </th>
+            <td>
+                Comprime o descomprime el fichero.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        En primer lugar debe saber cómo crear contenedores con los ficheros deseados. Por ejemplo,
+        para copiar el directorio /home/ubuntu en el fichero /home/copia.tar hay que ejecutar el
+        siguiente comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 23.6em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># tar cvf /home/copia.tar /home/ubutu
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+
+
+    </div>
+    <p>
+        La opción “
+        <em>
+            v”
+        </em>
+        no es necesaria, pero es útil para ver el proceso de empaquetamiento
+        del fichero En muchas situaciones también resulta útil comprimir la información guardada
+        (
+        <em>
+            tar
+        </em>
+        no comprime, sólo empaqueta) por lo que hay que utilizar las opciones
+        “
+        <em>
+            cvfz”
+        </em>
+        .
+    </p>
+</div><h1 class="title">
+    6.1.2.- El comando dd.
+</h1><div class="iDevice_content">
+    <p>
+        El comando dd permite realizar copias exactas (bit a bit) de discos duros, particiones o
+        ficheros. La sintaxis de dd es la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28.55em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dd if=fichero_origen of=fichero_destino
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Antes de duplicar un disco duro debes saber los discos duros que tiene el sistema por lo que
+        tienes que ejecutar el comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 12.05em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># fdisk –l
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+
+    <p>
+        Por ejemplo, si desea clonar el disco duro que se encuentra en
+        <em>
+            /dev/sda
+        </em>
+        en el disco
+        duro /dev/sdb ejecuta el comando:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 21.4em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># dd if=/dev/sda of=/dev/sdb
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+</div><h1 class="title">
+    6.1.3.- rsync.
+</h1><div class="iDevice_content">
+
+    <p>
+        rsync
+        es una aplicación para sistemas
+        GNU/Linux que permite sincronizar carpetas de forma incremental y permite trabajar con datos
+        comprimidos y cifrados. Mediante una técnica que se conoce como de delta
+        <span lang="en">
+         encoding
+        </span>
+        , permite sincronizar archivos y directorios entre dos máquinas
+        de una red o entre dos ubicaciones en una misma máquina, minimizando el volumen de datos
+        transferidos por la red.
+    </p>
+    <p>
+        Al sincronizar las carpetas de dos equipos los datos se envían a través de
+        <abbr title="Secure SHell.">
+            SSH
+        </abbr>
+        por lo que es posible configurar el servidor SSH
+        para que no solicite la contraseña a la hora de sincronizar las carpetas.
+    </p>
+    <p>
+        Si deseas sincronizar dos carpetas locales ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 30.75em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$ rsync --avz /carpeta_origen /carpeta_destino</pre>
+        </div>
+    </div>
+    <p>
+        Donde se sincroniza el contenido de la
+        <em>
+            /carpeta_origen
+        </em>
+        en la
+        <em>
+            /carpeta_destino
+        </em>
+        . De forma análoga si quieres sincronizar las carpetas de dos
+        equipos ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 37.35em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>$ rsync --avz /carpeta_origen 192.168.0.9:/carpeta_destino</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Lógicamente, tanto el origen como el destino puede ser un equipo remoto siguiendo la sintaxis
+        anterior.
+    </p>
+    <div class="exe-tooltip-text" id="t5181521b-43d5-4921-a657-4fc00e1da78a">
+        <p>
+            Comando GNU/Linux que permite sincronizar los datos entre varios equipos.
+        </p>
+    </div>
+</div><h1 class="title">
+    6.1.4.- Backups con ISO y soportes ópticos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Otra posibilidad que existe, aunque cada vez más en desuso es la posibilidad de realizar
+        copias de seguridad sobre discos compactos. Para poder grabar datos en un soporte óptico
+        como
+        <abbr title="Compact Disc.">
+            CD
+        </abbr>
+        ,
+        <abbr title="Digital Versatile Disc.">
+            DVD
+        </abbr>
+        o
+        <span lang="en">
+         BluRay
+        </span>
+        primero es
+        necesario crear la imagen
+        ISO
+        (el
+        “molde” del futuro soporte
+        <abbr title="Compact Disc - Read Only Memory.">
+        </abbr>
+        ). En
+        tiempos anteriores estas imágenes se volcaban o grababan en un disco o soporte óptico
+        utilizando software de grabación. Otra posibilidad que tenemos es almacenar dichos ficheros
+        o imágenes ISO en otros soportes y abrirlos o montarlos en un directorio cuando los
+        necesitemos.
+        <br/></p>
+    <p>
+        Para grabar un
+        <abbr title="Digital Versatile Disc.">
+            DVD
+        </abbr>
+        desde la línea de
+        comandos, realizaremos dos pasos:
+    </p>
+    <ol>
+        <li>
+            El primero de ellos es usar el comando&nbsp;genisoimage para generar el archivo .iso que
+            contiene los archivos que se quiere almacenar.
+        </li>
+        <li>
+            El segundo es mediante la herramienta wodim se grabará el fichero ido al
+            <abbr title="Digital Versatile Disc.">
+                DVD
+            </abbr>
+            .
+        </li>
+    </ol>
+    <p>
+        Por ejemplo, si quieres realizar una copia del directorio
+        <em>
+            /home
+        </em>
+        , en primer lugar
+        ejecutarás
+        <em>
+            genisoimage
+        </em>
+        para crear una imagen con todos los ficheros y
+        subdirectorios de los usuarios. Primero crearemos un directorio denominado copia y
+        posteriormente realizaremos la imagen ISO:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 50%;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>mkdir /copia&lt;br /&gt;sudo genisoimage -o /copia/imagen.iso /home
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Con estas ordenes hemos creado una imagen ISO denominada
+        <em>
+        </em>
+        /copia/imagen.iso la cual
+        contiene toda la estructura de directorios de
+        <em>
+        </em>
+        /home.&nbsp;Como alternativas a
+        genisoimage tenemos otros comandos como xorrisofs, mkisofts y
+        <code>
+            xorriso
+        </code>
+        .
+    </p>
+    <p>
+        Una vez creada la imagen hay que grabarla en un CD-ROM, por ejemplo, mediante el comando
+        wodin:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 28em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>wodin -v -eject dev=/dev/cdrom -dao /copia/imagen.iso
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Con esta orden el sistema detecta la grabadora del soporte óptico y realiza la grabación de
+        la imagen ISO, con el parámetro eject&nbsp;se realiza la expulsión del dispositivo una vez
+        que se ha grabado. Al igual que ocurría en el aparado anterior tenemos alternativas a wodim
+        como son cdrskin y
+        <code>
+            xorriso
+        </code>
+        .
+    </p>
+    <p>
+        Como se ha comentado anteriormente los soportes ópticos hoy en día no se utilizan mucho, es
+        más, muchos de los equipos portátiles que podemos comprar no traen unidad óptica, por tanto
+        se plantea la siguiente cuestión, ¿que hacer con la imagen iso?. Pues bien, una cosa que
+        podemos realizar en montar la imagen iso en un directorio de nuestro sistema, que es lo que
+        vamos a realizar a continuación. Con el comando mount&lt;7code&gt; montamos nuestra imagen
+        en el directorio &lt;code&gt;/media/imagen.
+        <!--7code-->
+    </p>
+    <div class="codigo elemento_centrado" style="width: 25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># mount -o /copia/imagen.iso /media/imagen
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por último hacemos dejamos una referencia web, donde se puede obtener más información sobre
+        los diferentes comandos que se han enunciado y los múltiples parámetros que soportan, así
+        como los diferentes sistemas de archivos relacionados con los soportes ópticos.
+        Dispositivos ópticos.
+    </p>
+    <p>
+    </p>
+    <p class="destacado">
+        <strong>
+            La mejor forma de automatizar una copia de seguridad es crear un
+            <span lang="en">
+          script
+         </span>
+            con todos los pasos de la copia de seguridad y programar
+            su ejecución con crontab.
+        </strong>
+    </p>
+    <div class="exe-tooltip-text" id="t85f763e9-e1dc-6e75-51d2-1057cbcacb63">
+        <p>
+            Copia exacta del sistema de archivos y contenido de un CD o DVD.
+        </p>
+    </div>
+</div><h1 class="title">
+    6.2.- Herramientas gráficas.
+</h1><div class="iDevice_content">
+    <p>
+        Además de realizar las copias de seguridad por comandos puede realizar la copia de seguridad
+        del sistema mediante herramientas gráficas. Las herramientas más utilizadas son:
+    </p>
+    <div class="exe-fx exe-accordion" style="box-shadow: rgba(51, 51, 51, 0.5) 0 1px 3px;">
+        <div id="exe-accordion-1">
+            <div class="fx-accordion-section">
+                Déjà-Dup
+                <div class="fx-accordion-content" id="exe-accordion-1-0">
+                    <p>
+                        <strong>
+             <span lang="en">
+              Déjà-Dup
+             </span>
+                        </strong>
+                        es una aplicación para
+                        realizar copias de seguridad de forma sencilla e intuitiva. Entre sus
+                        características más importantes destaca la posibilidad de cifrar los datos
+                        para asegurar la privacidad, programación de las copias, permite almacenar
+                        las copias en diferentes destinos (por ejemplo, el servidor externo,
+                        local...).&nbsp;La instalación de
+                        <span lang="fr">
+            </span>
+                        <span lang="en">
+             <span lang="fr">
+              Déjà
+             </span>
+             -Dup
+            </span>
+                        se puede realizar a
+                        través de la herramienta
+                        <strong>
+             <span lang="en">
+              Ubuntu Software
+             </span>
+                        </strong>
+                        o ejecutando en el terminal el siguiente comando:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 20.3em;">
+                        <div class="texto_izquierda">
+                            <pre ngNonBindable># apt-get install deja-dup</pre>
+                        </div>
+                    </div>
+                    <p>
+                    </p>
+                    <p>
+                        Para iniciar la aplicación de copias de seguridad puedes ejecutar el comando
+                        <em>
+                            deja-dup
+                        </em>
+                        en un terminal, o al botón Mostrar aplicaciones y escribir
+                        Copias de seguridad:
+                    </p>
+                    <div class="elemento_centrado">
+                        <div class="elemento_centrado">
+
+                        </div>
+
+                        <p>
+                        </p>
+                    </div>
+                </div>
+                Brasero
+                <div class="fx-accordion-content" id="exe-accordion-1-1">
+                    <p>
+                        <strong>
+                            Brasero
+                        </strong>
+                        es el software de grabación de
+                        <abbr title="Compact Disc">
+                            CD
+                        </abbr>
+                        /
+                        <abbr title="Digital Versatile Disc">
+                            DVD
+                        </abbr>
+                        en sistemas
+                        <span lang="en">
+             GNU/Linux
+            </span>
+                        más utilizado. Su interfaz es bastante
+                        sencilla e intuitiva y permite, entre otras opciones, la grabación de
+                        <abbr title="Compact Disc">
+                            CD
+                        </abbr>
+                        /
+                        <abbr title="Digital Versatile Disc">
+                            DVD
+                        </abbr>
+                        de datos,
+                        <abbr title="Compact Disc">
+                            CD
+                        </abbr>
+                        de audio, duplicación
+                        de
+                        <abbr title="Compact Disc">
+                            CD
+                        </abbr>
+                        /
+                        <abbr title="Digital Versatile Disc">
+                            DVD
+                        </abbr>
+                        , etcétera.
+                    </p>
+                    <p>
+                        Para instalar brasero lo podemos realizar en el entorno gráfico a través de
+                        la aplicación de software de Ubuntu o bien a través de la consola de
+                        comandos ejecutando:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 19.75em;">
+                        <div class="texto_izquierda">
+                            <pre ngNonBindable># apt-get install brasero</pre>
+                        </div>
+                    </div>
+                    <p>
+                    </p>
+                    <p>
+                        Para iniciar Brasero puedes ejecutar en un terminal el comando brasero o
+                        pulsar en el botón Mostrar aplicaciones y escribir Brasero. Una vez iniciada
+                        la aplicación puede utilizarla para realizar diferentes proyectos de
+                        grabación.
+                    </p>
+                    <div class="elemento_centrado">
+                        <div class="elemento_centrado">
+
+                        </div>
+
+                    </div>
+                </div>
+                Clonezilla
+                <div class="fx-accordion-content" id="exe-accordion-1-2">
+                    <p>
+                        <strong>
+             <span lang="en">
+              Clonezilla
+             </span>
+                        </strong>
+                        es la distribución
+                        <span lang="en">
+             LiveCD
+            </span>
+                        más potente y utilizada en la actualidad que
+                        permite realizar la clonación y restauración de sistemas.
+                        <span lang="en">
+             Clonezilla
+            </span>
+                        esta licenciado bajo
+                        <abbr title="General Public License.">
+                            GPL
+                        </abbr>
+                        y entre sus
+                        características más importantes destacan:
+                    </p>
+                    <ul>
+                        <li>
+                            Permite la clonación y restauración de particiones o de discos duros
+                            completos.
+                        </li>
+                        <li>
+                            Utiliza diferentes sistemas de ficheros como
+                            <abbr title="File allocation table.">
+                                FAT
+                            </abbr>
+                            32,
+                            <abbr title="New Technology File System.">
+                                NTFS
+                            </abbr>
+                            y
+                            <abbr title="Third extended filesystem.">
+                                ext3
+                            </abbr>
+                            por lo que permite
+                            trabajar con cualquier instalación GNU/Linux o Windows.
+                        </li>
+                        <li>
+                            Permite realizar y restaurar las copias de seguridad utilizando
+                            diferentes medios como, por ejemplo, discos duros locales, servidores
+                            Samba, servidores SSH, llaveros
+                            <abbr title="Universal Serial Bus.">
+                                USB
+                            </abbr>
+                            , etcétera.
+                        </li>
+                        <li>
+                            Es fácil y sencilla de utilizar.
+                        </li>
+                    </ul>
+                    <p>
+                        Para empezar a utilizar clonezilla para clonar o restaurar un equipo tienes
+                        que descargar la imagen ISO de clonezilla de su web oficial y la grabas en
+                        un
+                        <span>
+            </span>
+                        <abbr title="Compact Disc">
+                            CD
+                        </abbr>
+                        <span>
+            </span>
+                        . Inicias el LiveCD en el
+                        equipo que deseas clonar y en el menú de arranque seleccione la opción cuya
+                        resolución se adapte mejor a nuestras necesidades. A continuación se inicia
+                        el asistente que te guía para poder clonar o restaurar una copia del equipo.
+                    </p>
+                    <div class="elemento_centrado">
+
+                        <div class="elemento_centrado">
+                            <div class="elemento_centrado">
+
+                            </div>
+
+                        </div>
+                        <br>
+
+                        <br/></div>
+                    <p>
+                        En la página oficial de Clonezilla puedes
+                        descargar la imagen
+
+                        ISO
+                        .
+                    </p>
+                    <p>
+                    </p>
+                    <p>
+                    </p>
+                </div>
+                Bacula
+                <div class="fx-accordion-content" id="exe-accordion-1-3">
+                    <p>
+                        <strong>
+             <span lang="en">
+              Bacula
+             </span>
+                        </strong>
+                        es otra herramienta de copia
+                        de seguridad mucho más compleja que las vistas anteriormente y que solamente
+                        la citaremos para ponerla como ejemplo de aplicación que trabaja con un
+                        modelo
+                        <strong>
+                            cliente/servidor.
+                        </strong>
+                    </p>
+                    <p>
+                        Para trabajar con
+                        <span lang="en">
+             Bacula
+            </span>
+                        se necesita tener instalado
+                        un
+                        <strong>
+                            cliente
+                            <span lang="en">
+              Bacula
+             </span>
+                        </strong>
+                        en el
+                        <strong>
+             <span lang="en">
+              host
+             </span>
+                        </strong>
+                        que va a ser copiado, así
+                        permite manejar copias de seguridad, recuperación y verificación de la
+                        información incluso a través de la red. Es una aplicación de código abierto
+                        y uso libre. Se puede descargar desde el repositorio oficial.
+                    </p>
+                    <p>
+                        El equipo cliente necesita ejecutar el
+                        <strong>
+                            demonio
+                            <span lang="en">
+              File
+             </span>
+                        </strong>
+                        , que se encarga de establecer la
+                        comunicación con el servidor, preparar los archivos, enviarlos y escribir la
+                        información sobre la acción en el catálogo de
+                        <span lang="en">
+             Bacula
+            </span>
+                        .
+                    </p>
+                    <p>
+                        El equipo servidor precisa la ejecución de dos demonios:
+                    </p>
+                    <ul class="lista_verificacion">
+                        <li>
+                            <strong>
+                                Demonio
+                                <span lang="en">
+               Director
+              </span>
+                                :
+                            </strong>
+                            Controla qué
+                            se copiará, cuándo y dónde.
+                        </li>
+                        <li>
+                            <strong>
+                                Demonio
+                                <span lang="en">
+               Storage
+              </span>
+                                :
+                            </strong>
+                            Se comunica con
+                            los demonios
+                            <strong>
+                            </strong>
+                            <span lang="en">
+              Director
+             </span>
+                            y
+                            <span lang="en">
+              File
+             </span>
+                            a la par que controla el acceso a los
+                            dispositivos en los que se almacenará la información.
+                        </li>
+                    </ul>
+                    <p>
+                        El
+                        <strong>
+                            catálogo
+                            <span lang="en">
+              Bacula
+             </span>
+                        </strong>
+                        registra los
+                        archivos que se han copiado, su procedencia, destino y soporte empleado.
+                        Toda esta información se almacena en una base de datos
+                        <abbr title="Structured Query Language">
+                            SQL
+                        </abbr>
+                        para futuras
+                        consultas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    Anexo I.- Documentación del particionamiento de una unidad de disco.
+</h1><div class="iDevice_content">
+    <p>
+
+        <strong>
+            Crear la partición
+        </strong>
+    </p>
+    <p>
+        El primer paso que debes realizar es conocer los discos duros y particiones que tiene el
+        sistema. Para ello ejecutas: # fdisk –l
+    </p>
+    <p>
+        Tal y como puede ver en la figura 1, el equipo tiene dos discos duros (/dev/sda y
+        <code>
+            /dev/sdb
+        </code>
+        ). El primer disco duro (/dev/sda) tiene dos particiones donde está el
+        sistema operativo (/dev/sda1) y la partición
+        <span lang="en">
+         swap
+        </span>
+        (/dev/sda2). Y el
+        segundo disco duro no contiene ninguna tabla de particiones válida.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Por ejemplo, si quieres utilizar
+        <em>
+            fdisk
+        </em>
+        en el segundo disco duro entonces hay que
+        ejecutar:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>fdisk /dev/sdb
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez dentro del disco duro (véase la figura 2) el sistema informa que el disco duro no
+        contiene ninguna tabla de particiones válida. Si deseas conocer los comandos disponibles
+        pulsa
+        <em>
+            m
+        </em>
+        .
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Para crear una partición en el sistema pulsa
+        <em>
+            n
+        </em>
+        y realiza los siguientes pasos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Selecciona el tipo de partición que quieres crear: (
+            <em>
+                p
+            </em>
+            ) primaria y (
+            <em>
+                e)
+            </em>
+            extendida. Pulsa
+            <em>
+                p.
+            </em>
+        </li>
+        <li>
+            Indica el número de la partición primaria. Como es la primera pulsa 1
+            <em>
+                .
+            </em>
+        </li>
+        <li>
+            Ahora hay que indicar el tamaño de la partición.
+        </li>
+        <li>
+            A continuación indica el último cilindro. Para especificar el tamaño de la partición
+            puedes indicar el número del último cilindro o indicar el tamaño en Mega Bytes que
+            quieres asignarle a la partición de la forma
+            <em>
+                +tamañoM (p.e.: 1000M).
+            </em>
+            Por
+            ejemplo, pulsa
+            <em>
+                Enter
+            </em>
+            para utilizar todo el disco duro.
+        </li>
+    </ul>
+    <p>
+        Una vez creada la partición pulsa
+        <em>
+            p
+        </em>
+        para ver la tabla de particiones
+        <em>
+            .
+        </em>
+        Tal y
+        como se muestra en la figura 3 el disco tiene la partición /dev/sdb1.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez realizados todos los cambios hay que guardar la configuración y salir de la
+        aplicación, utilizando w.
+    </p>
+    <p>
+        <strong>
+            Formateo
+        </strong>
+    </p>
+    <p>
+        Una vez creada la partición, el siguiente paso es formatearla con el comando mkfs. Para
+        formatear la partición ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 14.8em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>mkfs /dev/sdb1
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez lista la partición /dev/sdb1 para poder utilizarla hay que montarla en un directorio
+        existente.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 13.7em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>mkdir /datos
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Existen dos formas diferentes de montar una partición:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Manualmente con el comando mount.
+            </strong>
+            Esta opción es la más sencilla y
+            permite montar un sistema de ficheros de forma puntual ya que si se reinicia el
+            ordenador se pierde el punto de montaje.
+        </li>
+        <li>
+            <strong>
+                Automáticamente editando el fichero /etc/fstab.
+            </strong>
+            Esta opción permite
+            montar de forma permanente un sistema de ficheros. Es la mejor opción en el caso de
+            querer utilizar siempre el sistema de ficheros, o si quieres realizar en él acciones
+            especiales como por ejemplo, utilizar las cuotas de usuarios.
+        </li>
+    </ul>
+    <p>
+        Para montar manualmente nuestra partición ejecutamos:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 19.2em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>mount /dev/sdb1 /datos
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Si deseas montar de forma definitiva el sistema de ficheros entonces hay que editar el
+        fichero /etc/fstab y añadir al final la siguiente línea de configuración.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 34.05em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>/dev/sdb1     /datos ext2     defaults          0 0
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez modificado el fichero de configuración, la partición se monta automáticamente al
+        reiniciar el equipo o puedes montarla ahora ejecutando mount /datos.
+    </p>
+    <p>
+        Para finalizar, si quieres ver que la partición está correctamente montada puede ejecutar el
+        comando mount o
+        <code>
+            df
+        </code>
+        .
+    </p>
+</div><h1 class="title">
+    Anexo II.- Proceso de arranque y parada del sistema (init).
+</h1><div class="iDevice_content">
+    <p>
+        Una vez que se ha encontrado el kernel y se ha iniciado. El sistema operativo comienza a
+        cargarse, se inicia el hardware, los discos están preparados, se asignan direcciones
+        <abbr title="Internet Protocol.">
+            IP
+        </abbr>
+        , se inician servicios, y se realizan otras
+        muchas tareas. Para ello, Linux ejecuta el programa
+        <em>
+            init
+        </em>
+        , cuya función es iniciar
+        el sistema operativo y sus servicios. Las tareas que realiza el proceso
+        <em>
+            init
+        </em>
+        son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Comprueba los sistemas de ficheros.
+        </li>
+        <li>
+            Monta los sistemas de ficheros permanentes.
+        </li>
+        <li>
+            Activa la zona de memoria
+            <span lang="en">
+          swap
+         </span>
+            o de intercambio.
+        </li>
+        <li>
+            Activa los demonios o servicios del sistema (por ejemplo,
+            <em>
+                atd
+            </em>
+            y
+            <em>
+                syslog
+            </em>
+            ).
+        </li>
+        <li>
+            Activa la red.
+        </li>
+        <li>
+            Inicia los demonios o servicios de red del sistema (por ejemplo,
+            <em>
+                sendmail
+            </em>
+            y
+            <em>
+                httpd
+            </em>
+            ).
+        </li>
+        <li>
+            Limpia los sistemas de ficheros temporales.
+        </li>
+        <li>
+            Finalmente, habilita el
+            <span lang="en">
+          login
+         </span>
+            a los usuarios del sistema.
+        </li>
+    </ul>
+
+    <p>
+    </p>
+    <p>
+        El proceso init es el estándar para iniciar y apagar equipos Linux y Unix llamado
+        <em>
+            SysV
+        </em>
+        .
+        <em>
+            SysV
+        </em>
+        es un modo de definir qué estado debe tener el equipo en un
+        momento determinado. Para ello se emplea un concepto denominado modo de ejecución (o
+        <em>
+         <span lang="en">
+          runlevels
+         </span>
+            )
+        </em>
+        .
+    </p>
+    <p>
+        <em>
+            SysV
+        </em>
+        utiliza siete modos de ejecución que van del 0 al 6, y cada distribución
+        utiliza los modos de ejecución para diferentes fines aunque hay varios niveles que son
+        comunes. Los niveles que son comunes son: el 0 se utiliza para apagar el equipo; el 1 es el
+        modo monousuario; y el 6 se utiliza para reiniciar el equipo. Los demás niveles, del 2 al 5,
+        en Ubuntu permiten iniciar el equipo en modo multiusuario.
+    </p>
+    <p>
+        A continuación se van a ver las tareas más frecuentes sobre el nivel de ejecución del
+        sistema:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Si quieres, puedes
+            <strong>
+                cambiar el nivel de ejecución del sistema por defecto
+            </strong>
+            modificando el fichero
+            <em>
+                /etc/init/rc-sysinit.conf
+            </em>
+            de la siguiente
+            forma: env DEFAULT_RUNLEVEL=2
+        </li>
+        <li>
+            Para ver el nivel de ejecución que tiene actualmente el sistema debes ejecutar:
+            <div class="codigo elemento_centrado" style="width: 11.5em;">
+                <div class="texto_izquierda">
+           <pre ngNonBindable># runlevel
+</pre>
+                </div>
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            Para
+            <strong>
+                cambiar manualmente el nivel de ejecución del sistema
+            </strong>
+            hay que
+            ejecutar: # telinit 3
+            <br>
+            o # init 3
+            <br/></li>
+    </ul>
+    <p>
+        Cada nivel de ejecución, tiene asociado un directorio donde se especifican los servicios que
+        se deben ejecutar o parar. Por ejemplo, el directorio
+        <em>
+            /etc/rc0.d
+        </em>
+        corresponde al
+        nivel 0, el directorio
+        <em>
+            /etc/rc1.d
+        </em>
+        al nivel 1, etcétera.
+    </p>
+    <p>
+        Ahora bien, ¿cómo puedo ver los
+        <span lang="en">
+         scripts
+        </span>
+        que se ejecutan en un
+        determinado nivel? Existen varias formas de ver los servicios asociados a un determinado
+        nivel. Por ejemplo, si muestras el contenido del directorio:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 13.15em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>cd /etc/rc3.d
+</pre>
+            <pre ngNonBindable>ls –l
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        obtienes una salida como la siguiente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 40.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable>lrwxrwxrwx 1 root root 17 3:11 S10network -&gt; ../init.d/network
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 16 3:11 S30syslog -&gt; ../init.d/syslog
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 14 3:32 S40cron -&gt; ../init.d/cron
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 14 3:11 S50inet -&gt; ../init.d/inet
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 13 3:11 S60nfs -&gt; ../init.d/nfs
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 15 3:11 S70nfsfs -&gt; ../init.d/nfsfs
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 18 3:11 S90lpd -&gt; ../init.d/lpd.init
+</pre>
+            <pre ngNonBindable>lrwxrwxrwx 1 root root 11 3:11 S99local -&gt; ../rc.local
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Como se puede observar, el directorio contiene enlaces simbólicos a scripts del directorio
+        <em>
+            /etc/init.d.
+        </em>
+        Cada enlace tiene una letra (
+        <em>
+            S
+        </em>
+        o
+        <em>
+            K)
+        </em>
+        y un número al
+        principio. El número establece el orden en el que se van a ejecutar los servicios mientras
+        que la letra “
+        <em>
+            S
+        </em>
+        ” significa que se inicia y la “
+        <em>
+            K”
+        </em>
+        que se para el servicio
+        correspondiente.
+    </p>
+    <p>
+        ¿Cómo hace el proceso
+        <em>
+            init
+        </em>
+        para arrancar y parar los servicios? Sencillo. Cada uno
+        de los
+        <span lang="en">
+         scripts
+        </span>
+        se escribe para aceptar un argumento que suele ser
+        <em>
+            start
+        </em>
+        ,
+        <em>
+            stop,
+            <code>
+                status
+            </code>
+            , restart
+        </em>
+        o
+        <em>
+            relaod.
+        </em>
+        Si lo desea
+        puedes ejecutar los
+        <span lang="en">
+         scripts
+        </span>
+        manualmente.
+    </p>
+    <p>
+        Por ejemplo, si quieres ver las opciones de un determinado servicio puedes ejecutarlo
+        directamente:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 58.25em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># /etc/init.d/apache2
+</pre>
+            <pre ngNonBindable>Uso: ./httpd &#123;start|stop|restart|condrestart|reload|status|fullstatus|graceful|help|configtest&#125;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Por lo tanto, si quiere parar el servidor de páginas web manualmente ejecuta:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 20.85em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># /etc/init.d/apache2 stop
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        También puedes administrar los servicios utilizando el comando
+        <em>
+            service
+        </em>
+        de la
+        siguiente forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 18.1em;">
+        <div class="texto_izquierda">
+         <pre ngNonBindable># service apache2 stop
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Una vez realizados todos los pasos que establece el nivel de ejecución, se procesas el
+        fichero
+        <em>
+            /etc/rc.local
+        </em>
+        . Este fichero es un “cajón desastre” donde se pueden escribir
+        todos los comandos que el sistema ejecuta al iniciarse.
+    </p>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+										uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>
