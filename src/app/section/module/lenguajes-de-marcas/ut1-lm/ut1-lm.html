@@ -1,0 +1,2916 @@
+<h1 class="title">
+    Aspectos básicos de los lenguajes de marcas y sistemas de gestión empresarial.
+</h1><div class="iDevice_content">
+    <p>
+        María y Félix son los fundadores y propietarios de una asesoría legal y empresarial,
+        que tiene su sede en Cantabria, con oficinas en los municipios más importantes de la
+        región.
+    </p>
+    <p>
+        María, licenciada en Derecho, ejercía como abogada especializada en derecho laboral y
+        representaba a alguna empresa, además de particulares en su propio despacho situado
+        en Torrelavega. Tenía una red informática cliente-servidor sobre un sistema
+        operativo
+        <span lang="en">
+           Windows
+          </span>
+        y trabajaba con una base de datos de
+        documentos jurídicos.
+    </p>
+    <p>
+        Félix, diplomado en Ciencias Empresariales, había creado una asesoría empresarial,
+        ubicada en Santander, que básicamente, se encargaba de la contabilidad de varias
+        PYMES
+        .
+        También tenía una red cliente-servidor, pero ésta bajo un sistema
+        <span lang="en">
+           Linux
+          </span>
+        con software libre de contabilidad.
+    </p>
+    <p>
+        Ambos eran amigos y un día en que habían estado hablando de sus respectivos trabajos,
+        decidieron que sus ingresos podían aumentar sustancialmente si, además de mantener
+        sus respectivas carteras de clientes, se unían y formaban una sociedad que ofreciese
+        a las empresas asesoría legal y empresarial de forma conjunta.
+    </p>
+    <p>
+        Desde el principio, la idea de asociarse fue un éxito. Al cabo de dos años el volumen
+        del negocio se había extendido y se hizo imprescindible el intercambio de
+        comunicación entre ambos.
+    </p>
+    <p>
+        Dado que trabajaban con sistemas informáticos diferentes se plateaba el problema de
+        cómo podían compartir información sobre los clientes comunes manteniendo la
+        infraestructura informática con la que trabaja cada uno.
+    </p>
+    <p>
+        Consultaron el problema a Juan, un técnico en administración de sistemas informáticos
+        en red, y éste les dijo que no había ningún problema de interconexión si los
+        ficheros que manejaban se ajustaban a un formato estándar conocido como
+        XML
+        .
+        Según lo que Juan les dijo, generar documentos con dicho estándar apenas requiere
+        conocimientos previos de informática, por tanto era una solución que parecía
+        perfecta para su problema.
+    </p>
+    <div class="elemento_centrado">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-xml">
+        <p>
+            eXtensible Markup Language.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-pymes">
+        <p>
+            Pequeñas y medianas empresas.
+        </p>
+    </div>
+</div><h1 class="title">
+    1.- Definición y clasificación de lenguajes de marcas.
+</h1><div class="iDevice_content">
+    <p>
+        Los "lenguajes de marcas" (o lenguajes de marcado) sirven para
+        <strong>
+            codificar un
+            documento
+        </strong>
+        donde, junto con el texto, se
+        <strong>
+            incorporan etiquetas
+        </strong>
+        ,
+        marcas o anotaciones
+        <strong>
+            con información adicional
+        </strong>
+        relativa a la estructura del
+        texto o su forma de presentarlo. El lenguaje de marcas es el que especifica cuáles serán las
+        etiquetas posibles, donde deben colocarse y el significado que tendrá cada una de ellas.
+        Permiten hacer explícita la estructura de un documento, su contenido semántico o cualquier
+        otra información lingüística o extralingüística que se quiera hacer patente.
+    </p>
+    <p>
+        Todo lenguaje de marcas está definido en un documento denominado
+        DTD
+        .
+        En él se establecen las marcas, los elementos utilizados por dicho lenguaje y sus
+        correspondientes etiquetas y atributos, su sintaxis y normas de uso.
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-dtd">
+        <p>
+            Document Type Definition.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.- Evolución de los lenguajes de marcas.
+</h1><div class="iDevice_content">
+    <p>
+        A finales de los años 60, para poder introducir anotaciones dentro de documentos
+        electrónicos, surgen unos lenguajes informáticos, distintos de los lenguajes de
+        programación, orientados a la gestión de información. Con el desarrollo de los editores y
+        procesadores de texto surgen los primeros lenguajes informáticos especializados en tareas de
+        descripción y estructuración de información:
+        <strong>
+            los lenguajes de marcas
+        </strong>
+        .
+        Paralelamente, también, surgen otros lenguajes informáticos orientados a la representación,
+        almacenamiento y consulta eficiente de grandes cantidades de datos: lenguajes y sistemas de
+        bases de datos.
+    </p>
+    <p>
+        Los lenguajes de marcas surgieron, inicialmente, como lenguajes formados por el conjunto de
+        códigos de formato que los procesadores de texto introducen en los documentos para dirigir
+        el proceso de presentación (impresión) mediante una impresora. Como en el caso de los
+        lenguajes de programación, inicialmente estos códigos de formato estaban ligados a las
+        características de una máquina, programa o procesador de textos concreto y, en ellos,
+        inicialmente no había nada que permitiese al programador (formateador de documentos en este
+        caso) abstraerse de las características del procesador de textos y expresar de forma
+        independiente a éste la estructura y la lógica interna del documento.
+    </p>
+</div><h1 class="title">
+    2.1.- El origen: GML y SGML.
+</h1><div class="iDevice_content">
+    <p>
+        Uno de los problemas que se conocen desde hace décadas en la informática es la
+        <strong>
+            falta
+            de estandarización
+        </strong>
+        en los formatos de información usados por los distintos
+        programas.
+    </p>
+    <p>
+        Para resolver este problema, en los años sesenta IBM encargó a Charles F.
+        <span>
+         Goldfarb
+        </span>
+        la construcción de un sistema de edición, almacenamiento y búsqueda de
+        documentos legales. Tras analizar el funcionamiento de la empresa llegaron a la conclusión
+        de que para realizar un buen procesado informático de los documentos había que establecer un
+        formato estándar para todos los documentos que se manejaban en la empresa. Con ello se
+        lograba gestionar cualquier documento en cualquier departamento y con cualquier aplicación,
+        sin tener en cuenta dónde ni con qué se generó el documento. Dicho formato tenía que ser
+        válido para los distintos tipos de documentos legales que utilizaba la empresa, por tanto,
+        debía ser flexible para que se pudiera ajustar a las distintas situaciones.
+    </p>
+    <p>
+        El formato de documentos que se creó como resultado de este trabajo fue
+        <strong>
+            GML
+        </strong>
+        , cuyo objetivo era describir los documentos de tal modo que el
+        resultado fuese independiente de la plataforma y la aplicación utilizada.
+    </p>
+    <p>
+        El formato GML evolucionó hasta que en 1986 dio lugar al estándar ISO 8879 que se denominó
+        <strong>
+            SGML
+        </strong>
+        . Éste era un lenguaje muy complejo y requería de unas herramientas
+        de software caras. Por ello su uso ha quedado relegado a grandes aplicaciones industriales.
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-GML">
+        <p>
+            Generalized Markup Language.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-SGML">
+        <p>
+            Standard Generalized Markup Language.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.2.- La popularización: HTML.
+</h1><div class="iDevice_content">
+    <p>
+        En 1989/90 Tim Berners-Lee creó el World Wide Web y conociendo SGML, se encontró con la
+        <strong>
+            necesidad de organizar, enlazar y compatibilizar gran cantidad de información
+            procedente de diversos sistemas
+        </strong>
+        . Para resolverlo, a partir de la sintaxis SGML,
+        creó un lenguaje de descripción de documentos llamado
+        <strong>
+            HTML
+        </strong>
+        , siendo una combinación de dos estándares ya existentes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            ASCII
+            : Es el formato que cualquier procesador de textos sencillo puede reconocer
+            y almacenar. Por tanto es un formato que permite la trasferencia de datos entre
+            diferentes ordenadores.
+        </li>
+        <li>
+            SGML: Lenguaje que permite dar estructura al texto, resaltando los títulos o aplicando
+            diversos formatos al texto.
+        </li>
+    </ul>
+    <p>
+        <strong>
+            HTML es una versión simplificada de SGML
+        </strong>
+        , ya que sólo se utilizaban las
+        instrucciones absolutamente imprescindibles. Era tan fácil de comprender que rápidamente
+        tuvo gran aceptación logrando lo que no pudo SGML, siendo un rotundo éxito en la World Wide
+        Web.
+        <strong>
+            HTML se convirtió en un estándar general para la creación de páginas
+            web
+        </strong>
+        . Además, tanto las herramientas de software como los navegadores que
+        permiten visualizar páginas HTML son cada vez mejores.
+    </p>
+    <p>
+        El HTML es hoy día el tipo de documento más empleado en el mundo. Su sencillez era tal que
+        cualquier persona podía escribir documentos en este formato, sin apenas necesidad de
+        conocimientos de informática. Esta fue una de las razones de su éxito, pero también condujo
+        a un cierto caos. El crecimiento exponencial de la web en los años 90 produjo documentos en
+        cantidades ingentes pero mal estructurados, problema agravado aún más por la falta de
+        respeto por los estándares, por parte de diseñadores web y fabricantes de software.
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-ASCII">
+        <p>
+            American Standard Code for Information Interchange o Código Estadounidense Estándar para
+            el Intercambio de Información), es un código de caracteres de 7 bits para representar
+            los caracteres del alfabeto latino, tal como se usa en inglés moderno. No estarían
+            representados caracteres como la “ñ”.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-HTML">
+        <p>
+            HyperText Markup Language.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.3.- La madurez: XML.
+</h1><div class="iDevice_content">
+    <p>
+        Como respuesta a problemas surgidos en torno al HTML, el
+        W3C
+        establece, en 1998, el estándar internacional
+        <strong>
+            XML
+        </strong>
+        , un lenguaje de marcas puramente estructural que
+        <strong>
+            no incluye
+            ninguna información relativa al diseño
+        </strong>
+        , que permite crear etiquetas adaptadas a
+        las necesidades (de ahí lo de "extensible"). Está convirtiéndose con rapidez en estándar
+        para el intercambio de datos en la Web. A diferencia de HTML las etiquetas indican el
+        significado de los datos en lugar del formato con el que se van a visualizar los datos.
+    </p>
+    <p>
+        <strong>
+            XML
+        </strong>
+        es un
+        metalenguaje
+        <strong>
+            caracterizado
+        </strong>
+        por:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Permitir definir etiquetas propias.
+        </li>
+        <li>
+            Permitir asignar atributos a las etiquetas.
+        </li>
+        <li>
+            Utilizar un esquema para definir de forma exacta las etiquetas y los atributos.
+        </li>
+        <li>
+            La estructura y el diseño son independientes.
+        </li>
+    </ul>
+    <p>
+        En realidad XML es un conjunto de estándares relacionados entre sí y que son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                XSL
+            </strong>
+            , eXtensible Style Language. Permite definir hojas de estilo para
+            los documentos XML e incluye capacidad para la transformación de documentos.
+        </li>
+        <li>
+            <strong>
+                XML Linking Language
+            </strong>
+            , incluye Xpath, Xlink y Xpointer. Determinan
+            aspectos sobre los enlaces entre documentos XML.
+        </li>
+        <li>
+            <strong>
+                XML Namespaces
+            </strong>
+            . Proveen un contexto al que se aplican las marcas de un
+            documento de XML y que sirve para diferenciarlas de otras con idéntico nombre válidas en
+            otros contextos.
+        </li>
+        <li>
+            <strong>
+                XML Schemas
+            </strong>
+            . Permiten definir restricciones que se aplicarán a un
+            documento XML. Actualmente los más usados son las DTD.
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-W3C">
+        <p>
+            El World Wide Web Consortium, abreviado W3C, es un consorcio internacional que produce
+            recomendaciones para la World Wide Web.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-XML">
+        <p>
+            eXtensible Markup Language.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-metalenguaje">
+        <p>
+            Lenguaje utilizado para definir otro lenguaje.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.4.- Comparativa XML-SGML.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Comparativa XML - SGML
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                XML
+            </th>
+            <th scope="col">
+                SGML
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Su uso es sencillo.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Su uso es muy complejo.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Trabaja con
+                        documentos
+                        bien formados
+                        , no exige que estén validados.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Sólo trabaja con
+                        documentos
+                        válidos
+                        .
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Facilita el desarrollo de aplicaciones de bajo coste.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Su complejidad hace que las aplicaciones informáticas para procesar SGML
+                        sean muy costosas.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Es muy utilizado en informática y en más áreas de aplicación.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Sólo se utiliza en sectores muy específicos.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Compatibilidad e integración con HTML.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        No hay una compatibilidad con HTML definida.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Formateo y estilos fáciles de aplicar.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Formateo y estilos relativamente complejos.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        No usa etiquetas opcionales.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-dbf">
+        <p>
+            Es aquel documento xml que verifica las reglas establecidas por la recomendación de w3c
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-dv">
+        <p>
+            Es aquel documento XML que, además de estar bien formado, verifica las restricciones de
+            otro elemento del que depende para su interpretación.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.5.- Comparativa XML-HTML.
+</h1><div class="iDevice_content">
+    <table class="tabla">
+        <caption>
+            Comparativa XML-HTML
+        </caption>
+        <thead>
+        <tr>
+            <th scope="col">
+                XML
+            </th>
+            <th scope="col">
+                HTML
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Es un perfil de SGML.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Es una aplicación de SGML.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Especifica cómo deben definirse conjuntos de etiquetas aplicables a un
+                        tipo de documento.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Aplica un conjunto limitado de etiquetas sobre un único tipo de
+                        documento.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Modelo de
+                        hiperenlaces
+                        complejo.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Modelo de hiperenlaces simple.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        El navegador es una plataforma para el desarrollo de aplicaciones.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        El navegador es un visor de páginas.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        Fin de la guerra de los navegadores y etiquetas propietarias.
+                    </li>
+                </ul>
+            </td>
+            <td>
+                <ul class="lista_verificacion">
+                    <li>
+                        El problema de la 'no compatibilidad' y las diferencias entre
+                        navegadores ha alcanzado un punto en el que la solución es difícil.
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-hiperenlaces">
+        <p>
+            También llamado vínculo o hipervínculo, es un elemento de una página web que permite ir a
+            un punto específico del mismo o de otro documento electrónico.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.- Etiquetas, elementos y atributos.
+</h1><div class="iDevice_content">
+    <p>
+        Los lenguajes de marcas utilizan una serie de etiquetas especiales intercaladas en un
+        documento de texto sin formato. Dichas etiquetas serán posteriormente interpretadas por los
+        intérpretes del lenguaje y ayudan al procesado del documento.
+    </p>
+    <p>
+        Existen tres términos comúnmente usados para describir las partes de un documento de
+        lenguajes de marcas:
+        <strong>
+            etiquetas
+        </strong>
+        ,
+        <strong>
+            elementos
+        </strong>
+        y
+        <strong>
+            atributos
+        </strong>
+        .
+    </p>
+    <p>
+        Una
+        <strong>
+            etiqueta
+        </strong>
+        (tag) es que
+        <strong>
+            se escriben encerradas entre símbolos
+            menor que
+        </strong>
+        (&lt;) y
+        <strong>
+            mayor que
+        </strong>
+        (&gt;). Normalmente,
+        <strong>
+            se
+            utilizan dos etiquetas: una de inicio y otra de fin
+        </strong>
+        para indicar que ha
+        terminado el efecto que queríamos presentar. La única diferencia entre ambas es que la de
+        cierre lleva una barra inclinada "/" antes del código.
+    </p>
+    <div class="codigo elemento_centrado" style="width: 51.3em;">
+        <p class="elemento_centrado">
+            < etiqueta >
+                texto que heredará las características de la etiqueta
+            < /etiqueta >
+        </p>
+    </div>
+    <p class="elemento_centrado">
+    </p>
+    <p class="elemento_centrado" style="text-align: left;">
+        Los
+        <strong>
+            elementos
+        </strong>
+        representan estructuras mediante las que se organizará el contenido del documento o acciones
+        que se desencadenan cuando el navegador interpreta lo interpreta. Constan de la etiqueta de
+        inicio, la etiqueta de fin y de todo aquello que se encuentre entre ambas.
+    </p>
+    <p class="elemento_centrado" style="text-align: left;">
+    </p>
+    <p class="elemento_centrado" style="text-align: left;">
+        Algunos elementos no tienen contenido, y
+        se denominan elementos vacíos (no deben llevar etiqueta de fin).
+    </p>
+    <p class="elemento_centrado" style="text-align: left;">
+    </p>
+    <p class="elemento_centrado" style="text-align: left;">
+        Un
+        <strong>
+            atributo
+        </strong>
+        es un par
+        nombre-valor, que se encuentra dentro de la etiqueta de inicio de un elemento e indican
+        diferentes propiedades que pueden llevar asociados los elementos.
+    </p>
+</div><h1 class="title">
+    4.- Herramientas de edición.
+</h1><div class="iDevice_content">
+    <p>
+        Para trabajar en XML es necesario editar los documentos y luego procesarlos, por
+        tanto tenemos dos tipos de herramientas:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Editores XML
+            </strong>
+            <p>
+                Una característica de los lenguajes de marcas es que se basan en la
+                utilización de ficheros de
+                texto
+                plano
+                por lo que basta utilizar un editor de texto para
+                construir un documento XML, es importante que el editor no permita
+                formatear el texto, para que no introduzca "código basura" en nuestro
+                documento.
+            </p>
+            <p>
+                Para crear documentos XML complejos e ir añadiendo datos es conveniente
+                usar algún software de edición XML. Estos nos ayudan a crear estructuras
+                y etiquetas de los elementos usados en los documentos, colorean las
+                etiquetas para diferenciarlas más cómodamente y además algunos incluyen
+                ayuda para la creación de otros elementos como DTD, hojas de estilo CSS
+                o XSL, ... El W3C ha desarrollado un editor de HTML, XHTML, CSS y XML
+                gratuito cuyo nombre es Amaya, pero existen otros gratuitos como son:
+                <em>
+                    Notepad++, Sublime Text, Netbeans
+                </em>
+                , etc...
+            </p>
+        </li>
+        <li>
+            <strong>
+                Procesadores XML
+            </strong>
+            <p>
+                Para interpretar el código XML se puede utilizar cualquier navegador. Los
+                procesadores de XML permiten leer los documentos XML y acceder a su
+                contenido y estructura. Un procesador es un conjunto de módulos de
+                software entre los que se encuentra un parser o analizador de XML que
+                comprueba que el documento cumple las normas establecidas para que pueda
+                abrirse. Estas normas pueden corresponderse con las necesarias para
+                trabajar sólo con documentos de tipo válido o sólo exigir que el
+                documento esté bien formado, primeros se conocen como validadores y los
+                segundos como no validadores. El modo en que los procesadores deben leer
+                los datos XML está descrito en la recomendación de XML establecida por
+                W3C.
+            </p>
+            <p>
+                Para publicar un documento XML en Internet se utilizan los procesadores
+                XSLT, que permiten generar archivos HTML a partir de documentos XML.
+            </p>
+            <p>
+                Puesto que XML se puede utilizar para el intercambio de datos entre
+                aplicaciones, hay que recurrir a motores independientes que se ejecutan
+                sin que nos demos cuenta. Entre estos destacan "XML para Java" de IBM,
+                JAXP de Sun, etc
+            </p>
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-tp">
+        <p>
+            Es aquel texto formado únicamente por datos sin formato, es decir, sólo por
+            caracteres.
+        </p>
+    </div>
+</div><h1 class="title">
+    5.- XML
+</h1><div class="iDevice_content">
+    <p>
+        Suponemos dos librerías (A y B) y una Editorial que provee libros. Cada
+        una de estas librerías tiene un software diferente para gestionar sus
+        libros, pero la finalidad es la misma, que es almacenar y gestionar sus
+        libros, pero cada una de ellas está introduciendo "a mano" todos los
+        datos de cada uno de ellos, con la consiguiente pérdida de tiempo, ya
+        que son los mismos datos...
+    </p>
+    <p>
+        Si la editorial ya dispone de los datos principales de los libros que
+        provee, ¿por qué volver a introducir esa información en cada librería?.
+        Lo más lógico es que la editorial les entregara un fichero o les
+        indicara un lugar donde importar y actualizar esos datos, de modo que
+        todas las librerías tendrían siempre la información actualizada
+        instantáneamente.
+    </p>
+    <p>
+        El problema radica en que el software que posee cada librería es
+        completamente diferente, por lo que sería necesario convertir los datos
+        que proporcina la editorial de forma individual para cada librería,
+        debido a que estamos ante distintos sistemas que organizan la misma
+        información.
+    </p>
+    <p>
+        La solución es sencilla y consiste en almacenar los datos de una forma
+        tan simple, que cualquier programa pueda interpretarla: XML.
+    </p>
+    <p>
+        Por ejemplo, para almacenar una información típica de un libro:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Título: Don Quijote de la Mancha
+        </li>
+        <li>
+            Autor: Miguel de Cervantes
+        </li>
+        <li>
+            Género: Burlesque
+        </li>
+        <li>
+            Editorial: Francisco de Robles
+        </li>
+        <li>
+            Personajes: Sancho Panza, Dulcinea del Toboso, Rocinante.
+        </li>
+        <li>
+            ISBN: 999-9-99-999999-9
+        </li>
+    </ul>
+    <p>
+        vamos a utilizar etiquetas que ilustren su contenido y así identificar
+        cada elemento. Hay que recordar que el nombre de las etiquetas se
+        escriben sólo con caracteres, sin tildes, sin espacios ni otros
+        símbolos. De este modo, tendremos la información del libro con una
+        estructura y sintaxis de XML:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 33.5em;">
+        <div class="texto_izquierda">
+            <pre ngNonBindable>&lt;libro&gt;</pre>
+            <pre ngNonBindable>&lt;titulo&gt;Don Quijote de la Mancha&lt;/titulo&gt;</pre>
+            <pre ngNonBindable>  &lt;autor&gt;Miguel de Cervantes&lt;/autor&gt;</pre>
+            <pre ngNonBindable>  &lt;genero&gt;Burlesque&lt;/genero&gt;</pre>
+            <pre ngNonBindable>  &lt;editorial&gt;Francisco de Robles&lt;/editorial&gt;</pre>
+            <pre ngNonBindable>  &lt;reparto&gt;</pre>
+            <pre ngNonBindable>   &lt;personaje&gt;Sancho Panza&lt;/personaje&gt;</pre>
+            <pre ngNonBindable>    &lt;personaje&gt;Dulcinea del Toboso&lt;/personaje&gt;</pre>
+            <pre ngNonBindable>    &lt;personaje&gt;Rocinante&lt;/personaje&gt;</pre>
+            <pre ngNonBindable>  &lt;/reparto&gt;</pre>
+            <pre ngNonBindable>&nbsp; &lt;isbn&gt;999-9-99-999999-9&lt;/isbn&gt;</pre>
+            <pre ngNonBindable>&lt;/libro&gt;</pre>
+        </div>
+    </div>
+    <p>
+        Más adelante veremos cómo construir un XML como el anterior, paso por
+        paso.
+    </p>
+</div><h1 class="title">
+    5.1.- Estructura y sintaxis
+</h1><div class="iDevice_content">
+    <p>
+        Al igual que en HTML un documento XML es un documento de texto, en este caso con
+        <strong>
+            extensión ".xml"
+        </strong>
+        , compuesto de
+        <strong>
+            parejas de
+            etiquetas
+        </strong>
+        ,
+        <strong>
+            estructuradas en árbol
+        </strong>
+        , que describen
+        una función en la organización del documento, que puede editarse con cualquier
+        editor de texto y que es interpretado por los navegadores Web.
+    </p>
+    <p>
+        Las
+        <strong>
+            características básicas
+        </strong>
+        de XML son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Dado que XML se concibió para trabajar en la Web, es directamente compatible
+            con protocolos que ya funcionan, como HTTP y los URL.
+        </li>
+        <li>
+            Todo documento que verifique las reglas de XML está conforme con SGML.
+        </li>
+        <li>
+            No se requieren conocimientos de programación para realizar tareas sencillas
+            en XML.
+        </li>
+        <li>
+            Los documentos XML son fáciles de crear.
+        </li>
+        <li>
+            La difusión de los documentos XML está asegurada ya que cualquier procesador
+            de XML puede leer un documento de XML.
+
+        </li>
+        <li>
+            El marcado de XML es legible para los humanos.
+        </li>
+        <li>
+            El diseño XML es formal y conciso.
+        </li>
+        <li>
+            XML es extensible, adaptable y aplicable a una gran variedad de situaciones.
+        </li>
+        <li>
+            XML es orientado a objetos.
+        </li>
+        <li>
+            Todo documento XML se compone exclusivamente de datos de marcado y datos
+            carácter entremezclados.
+        </li>
+    </ul>
+    <p>
+        El proceso de creación de un documento XML pasa por varias etapas en las que
+        <strong>
+            el éxito de cada una de ellas se basa en la calidad de la
+            anterior
+        </strong>
+        . Estas etapas son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Especificación de requisitos.
+        </li>
+        <li>
+            Diseño de etiquetas.
+        </li>
+        <li>
+            Marcado de los documentos.
+        </li>
+    </ul>
+    <p>
+        El marcado en XML son etiquetas que se añaden a un texto para estructurar el
+        contenido del documento. Esta información extra permite a los ordenadores
+        "interpretar" los textos. El marcado es todo lo que se sitúa entre los
+        caracteres
+        <em>
+            "&lt;" y "&gt;" o "&amp;" y ";"
+        </em>
+    </p>
+    <p>
+        Los datos carácter son los que forman la verdadera información del documento XML.
+    </p>
+    <p>
+        El marcado puede ser tan rico como se quiera. Puede ser interesante detectar
+        necesidades futuras y crear documentos con una estructura fácilmente
+        actualizables.
+    </p>
+    <p>
+        Los documentos XML
+        <strong>
+            pueden tener comentarios
+        </strong>
+        , que no son
+        interpretados por el interprete XML. Estos se incluyen entre las cadenas
+        <em>
+            "
+            <!--" y "-->
+            "
+        </em>
+        , pueden estar en cualquier posición en el documento salvo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Antes del prólogo.
+        </li>
+        <li>
+            Dentro de una etiqueta.
+        </li>
+    </ul>
+    <p>
+        Los documentos XML
+        <strong>
+            están formados por
+        </strong>
+        <strong>
+            dos
+            partes
+        </strong>
+        :
+        <strong>
+            prólogo
+        </strong>
+        <strong>
+            y ejemplar
+        </strong>
+        . Los
+        vemos a continuación.
+    </p>
+</div><h1 class="title">
+    5.1.1.- El prólogo.
+</h1><div class="iDevice_content">
+    <p>
+        El prólogo
+        <strong>
+            debe preceder al ejemplar del documento
+        </strong>
+        . Su inclusión
+        facilita el procesado de la información del ejemplar. El prólogo está dividido
+        en dos partes: la
+        <strong>
+            declaración XML
+        </strong>
+        y la
+        <strong>
+            declaración del
+            tipo de documento
+        </strong>
+        .
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                1.- La declaración XML
+            </strong>
+            : Es la primera línea del documento,
+            de no ser así se genera un error que impide que el documento sea procesado.
+            <p>
+                El hecho de que sea opcional permite el procesamiento de documentos HTML
+                y SGML como si fueran XML, si fuera obligatoria éstos deberían incluir
+                una declaración de versión XML que no tienen. Esta declaración permite
+                indicar de forma explícita que el documento es de tipo XML.
+            </p>
+            <p>
+                El prólogo puede tener
+                <strong>
+                    tres funciones
+                </strong>
+                :
+            </p>
+            <ul>
+                <li style="list-style-type: none;">
+                    <strong>
+                        Declaración la versión de XML
+                        usada para elaborar el documento
+                        <em>
+                            .
+                        </em>
+                    </strong>
+                    <p>
+                        Para ello se utiliza la etiqueta:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 51.3em;">
+                        <p class="texto_centrado">
+                            <!--?xml version= “1.0” ?-->
+                        </p>
+                    </div>
+                    <p>
+                        En este caso indica que el documento fue creado para la versión
+                        1.0 de XML.
+                    </p>
+                </li>
+                <li>
+                    <strong>
+                        Declaración de la codificación empleada para representar los
+                        caracteres
+                        <em>
+                            .
+                        </em>
+                    </strong>
+                    <p>
+                        Determina el conjunto de caracteres que se utiliza en el
+                        documento. Para ello se escribe:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 51.3em;">
+                        <p class="texto_centrado">
+                            <!--?xml version= “1.0” encoding=”iso-8859-1” ?-->
+                        </p>
+                    </div>
+                    <p>
+                        En este caso se usa el código iso-8859-1 (Latin-1) que permite el
+                        uso de tildes o caracteres como la ñ. Otro de los códigos a
+                        emplear es el
+                        UTF-8
+                        (
+                        unicode
+                        ). Sin entrar en detalles, diremos que UTF-8 soporta más
+                        caracteres y permite la visualización correcta de éstos en más
+                        sistemas o lugares que iso-8859-1. A no ser que por algún motivo
+                        no sea posible el uso de UTF-8, la recomendación es siempre
+                        utilizar UTF-8, que recordemos es la codificación de caracteres
+                        seleccionada por defecto. Hay que tener precaución en el momento
+                        de guardar el documento en el editor de código, por ejemplo, si
+                        usamos Sublime Text, cuando guardemos habrá que hacerlo según la
+                        codificación elegida.
+                    </p>
+                    <ul>
+                        <li style="list-style-type: none;">
+                            <ul>
+                                Los códigos más importantes son:
+                            </ul>
+                        </li>
+                    </ul>
+                    <table class="tabla">
+                        <caption>
+                            Estándares ISO y códigos de país más importantes
+                        </caption>
+                        <thead>
+                        <tr>
+                            <th scope="col">
+                                Estándar ISO
+                            </th>
+                            <th scope="col">
+                                Código de país
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                UTF-8 (Unicode)
+                            </td>
+                            <td>
+                                Conjunto de caracteres universal
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-1 (Latin-1)
+                            </td>
+                            <td>
+                                Europa occidental, Latinoamérica
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-2 (Latin-2)
+                            </td>
+                            <td>
+                                Europa central y oriental
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-3 (Latin-3)
+                            </td>
+                            <td>
+                                Sudoeste de Europa
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-4 (Latin-4)
+                            </td>
+                            <td>
+                                Países Escandinavos, Bálticos
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-5
+                            </td>
+                            <td>
+                                Cirílico
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-6
+                            </td>
+                            <td>
+                                Árabe
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-7
+                            </td>
+                            <td>
+                                Griego
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-8
+                            </td>
+                            <td>
+                                Hebreo
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO -8859-9
+                            </td>
+                            <td>
+                                Turco
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                ISO-8859-10
+                            </td>
+                            <td>
+                                Lapón. Nórdico, esquimal
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                EUC-JP oder Shitf_JIS
+                            </td>
+                            <td>
+                                Japonés
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </li>
+            </ul>
+            <br>
+            <ul>
+                <li>
+                    <strong>
+                        Declaración de la autonomía del documento
+                        <em>
+                            .
+                        </em>
+                    </strong>
+                    <p>
+                        Informa de si el documento necesita de otro para su
+                        interpretación. Para declararlo hay que definir el prólogo
+                        completo:
+                    </p>
+                    <div class="codigo elemento_centrado" style="width: 51.3em;">
+                        <p class="texto_centrado">
+                            <!--?xml version= “1.0” encoding=”iso-8859-1” standalone=”yes” ?-->
+                        </p>
+                    </div>
+                    <p>
+                        En este caso, el documento es independiente, es decir, que en su
+                        interior contiene toda la información relevante para su
+                        interpretación, de no ser así el atributo standalone hubiese
+                        tomado el valor "no".
+                        <br>
+                        <span style="font-size: 1em;">
+                Standalone Indica al procesador XML
+															si un documento es independiente (standalone=”yes”) o se
+															basa en información de fuentes externas, es decir, si
+															depende de declaraciones de marca externas como una DTD
+															externa (standalone=”no”).
+                <br>
+                Dicho de otro modo:
+															Especifica si la validez del documento depende de otro
+															documento externo, bien una DTD o un esquema, en cuyo caso
+															el valor es no, o si depende de una DTD incluida en el mismo
+															documento, en cuyo caso se especifica yes.
+               <br/></span>
+                        <br/></p>
+                </li>
+            </ul>
+            <br/></li>
+    </ul>
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    2.- La declaración del tipo de documento
+                </strong>
+                , define qué
+                tipo de documento estamos creando para ser procesado correctamente. Toda
+                declaración de tipo de documento comienza por la cadena:
+            </p>
+            <div class="codigo elemento_centrado" style="width: 51.3em;">
+                <p class="texto_centrado">
+                </p>
+            </div>
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-unicode">
+        <p>
+            Es un código de caracteres que permite el tratamiento informático de textos
+            de múltiples lenguajes y disciplinas técnicas, ya que representa todos los
+            caracteres conocidos para cualquier lengua. Es compatible con el código
+            ASCII.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-utf8">
+        <p>
+            8-bit Unicode Transformation Format.
+        </p>
+    </div>
+</div><h1 class="title">
+    5.1.2.- El ejemplar.
+</h1><div class="iDevice_content">
+    <p>
+        Es la parte más importante de un documento XML, ya que
+        <strong>
+            contiene los datos
+            reales del documento
+        </strong>
+        . Está formado por elementos anidados.
+    </p>
+    <p>
+        En realidad,
+        <strong>
+            el ejemplar es el elemento raíz de
+        </strong>
+        un documento
+        XML
+        <strong>
+            ,
+        </strong>
+        y éste se nombrará igual que la declaración de tipo de
+        documento (!DOCTYPE).
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    5.1.2.1.- Elementos.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            Todos los datos
+        </strong>
+        de un documento XML
+        <strong>
+            han de pertenecer a
+            un elemento
+        </strong>
+        del mismo.
+    </p>
+    <p>
+        Los elementos son los distintos
+        <strong>
+            bloques de información
+        </strong>
+        que
+        permiten definir la estructura de un documento XML. Están
+        <strong>
+            delimitados
+            por una etiqueta de apertura y una etiqueta de cierre
+        </strong>
+        . A su vez los
+        elementos
+        <strong>
+            pueden estar formados por otros elementos
+        </strong>
+        .
+    </p>
+    <p>
+        <strong>
+            Los nombres de las etiquetas han de ser autodescriptivo
+        </strong>
+        s, lo que
+        facilita el trabajo que se hace con ellas, es decir, que ilustren su contenido.
+        Por ejemplo, si estamos con datos relativos a un libro, una etiqueta no debería
+        ser
+        < caracteristica>
+            , ya que es demasiado ambiguo, deberiamos utilizar etiquetas
+            como
+            < titulo>
+                ,
+                < isbn>
+                    ,
+                    < paginas>
+                        , etc...
+                    < /paginas>
+                < /isbn>
+            < /titulo>
+        < /caracteristica>
+    </p>
+    <p>
+        <strong>
+            La formación de elementos ha de cumplir ciertas
+        </strong>
+        <strong>
+            normas
+        </strong>
+        para que queden perfectamente definidos y que el
+        documento XML al que pertenecen pueda ser interpretado por los procesadores XML
+        sin generar ningún error fatal. Dichas reglas son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                En todo documento XML debe existir
+                <strong>
+                    un elemento raíz, y sólo
+                    uno
+                </strong>
+                .
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Todos los elementos tienen una etiqueta de inicio y otra de
+                    cierre
+                </strong>
+                . En el caso de que en el documento existan elementos
+                vacíos, se pueden sustituir las etiquetas de inicio y cierre por una de
+                elemento vacío. Ésta se construye como la etiqueta de inicio, pero
+                sustituyendo el carácter "&gt;" por "/&gt;. Es decir,
+                < elemento>
+                < /elemento>
+                puede sustituirse por
+                < elemento>
+                    , que se considera una
+                    etiqueta de inicio y de cierre a la vez.
+                < /elemento>
+            </p>
+        </li>
+        <li>
+            <p>
+                Al anidar elementos hay que tener en cuenta que
+                <strong>
+                    no puede cerrarse
+                    un elemento que contenga algún otro elemento que aún no se haya
+                    cerrado
+                </strong>
+                .
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Los nombres de las etiquetas de inicio y de cierre de un mismo
+                    elemento han de ser idénticos
+                </strong>
+                , respetando las mayúsculas y
+                minúsculas. Pueden ser cualquier cadena alfanumérica que no contenga
+                espacios, sin tildes y que no comience ni por el carácter dos puntos,
+                ":", ni por la cadena "xml" (ni ninguna de sus versiones en que se
+                cambien mayúsculas y minúsculas: "XML", "XmL", "xML",...).
+            </p>
+        </li>
+        <li>
+            <p>
+                El contenido de los elementos
+                <strong>
+                    no puede contener la cadena
+                    "]]&gt;"
+                </strong>
+                por compatibilidad con SGML. Además
+                <strong>
+                    no se
+                    pueden utilizar directamente los caracteres mayor que, &gt;, menor
+                    que, &lt;, ampersand, &amp;, dobles comillas, ", y apostrofe,
+                    ‘
+                </strong>
+                . En el caso de tener que utilizar estos caracteres se
+                sustituyen por las siguientes cadenas:
+            </p>
+            <div style="width: 100%;">
+                <div style="width: 33%; float: left;">
+                    <div class="elemento_centrado">
+                        <table class="tabla">
+                            <caption>
+                            </caption>
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    Carácter
+                                </th>
+                                <th scope="col">
+                                    Cadena
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    &gt;
+                                </td>
+                                <td>
+                                    &gt;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &lt;
+                                </td>
+                                <td>
+                                    &lt;
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="width: 34%; float: left;">
+                    <div class="elemento_centrado">
+                        <table class="tabla">
+                            <caption>
+                            </caption>
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    Carácter
+                                </th>
+                                <th scope="col">
+                                    Cadena
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    &amp;
+                                </td>
+                                <td>
+                                    &amp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    "
+                                </td>
+                                <td>
+                                    "
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div style="width: 33%; float: right;">
+                    <div class="elemento_centrado">
+                        <table class="tabla">
+                            <caption>
+                            </caption>
+                            <thead>
+                            <tr>
+                                <th scope="col">
+                                    Carácter
+                                </th>
+                                <th scope="col">
+                                    Cadena
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>
+                                    ‘
+                                </td>
+                                <td>
+                                    '
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+            </div>
+            <p>
+            </p>
+        </li>
+        <li>
+            <strong>
+                Para utilizar caracteres especiales
+            </strong>
+            , como £, ©, ®,... hay
+            que usar las expresiones &amp;#D; o &amp;#H; donde D y H se corresponden
+            respectivamente con el número decimal o hexadecimal correspondiente al
+            carácter que se quiere representar en el código UNICODE. Por ejemplo, para
+            incluir el carácter de Euro, €, se usarían las cadenas € o €
+        </li>
+    </ul>
+</div><h1 class="title">
+    5.1.2.2.- Atributos.
+</h1><div class="iDevice_content">
+    <p>
+        Las etiquetas pueden tener atributos, que permiten definir propiedades a los
+        elementos de un documento. Los atributos no pueden organizarse en ninguna
+        jerarquía o estructuras en árbol, no pueden contener ningún otro elemento o
+        atributo,&nbsp;no pueden contener valores múltiples y no reflejan ninguna
+        estructura lógica. En definitiva, los atributos no se podrán extender fácilmente
+        para futuros cambios.
+    </p>
+    <p>
+    </p>
+    <p>
+        Un elemento puede tener varios atributos, pero no estar vacío. El atributo irá
+        entre comillas dobles o simples, de la siguiente forma:
+    </p>
+    <div class="codigo elemento_centrado" style="width: 51.3em;">
+        <p style="text-align: center;">
+            < nombreetiqueta="valor">
+            ...
+            < /nombreetiqueta="valor">
+        </p>
+    </div>
+    <p>
+        No se debe utilizar un atributo para contener información susceptible de ser
+        dividida, deben utilizarse para proporcionar una información adicional sobre el
+        elemento.
+    </p>
+</div><h1 class="title">
+    6.- Documentos XML bien formados.
+</h1><div class="iDevice_content">
+    <p>
+        Se pueden hablar de documentos "
+        <strong>
+            bien formados
+        </strong>
+        " y documentos
+        "
+        <strong>
+            válidos
+        </strong>
+        ", ambos son documentos XML correctos.
+    </p>
+    <p>
+        Los documentos bien formados son aquellos que son sintácticamente correctos, es
+        decir, que cumplen con las reglas de creación de documentos XML expuestas en
+        apartados previos, por ejemplo, usar caracteres válidos para el nombre de una
+        etiqueta y que las etiquetas deben cerrarse correctamente.
+    </p>
+    <p>
+        Sin embargo, los documentos válidos son aquellos que, además de estar bien
+        formados, cumplen los requisitos de una definición de esctructura que veremos
+        más adelante (DTD, XML Schema,...).
+    </p>
+    <p>
+        Por lo tanto, para que un documento esté bien formado,
+        <strong>
+            deben verificar
+            las reglas sintácticas que define la recomendación del W3C para el estándar
+            XML
+        </strong>
+        . Esas normas básicas son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El documento
+            <strong>
+                ha de tener definido una declaración XML en el
+                prólogo:
+            </strong>
+            <div class="codigo elemento_centrado" style="width: 43.95em;">
+                <div class="texto_izquierda">
+                    <!--?xml version="1.0" encoding="UTF-8" standalone="yes" ?-->
+                </div>
+            </div>
+            éstos serán los valores por defecto si no se incluye el prólogo, pero
+            recordamos que es muy recomendable incluirlo, ya que algunos navegadores nos
+            devolverán errores si no lo hacemos.
+        </li>
+        <li>
+            <strong>
+                Existe un único elemento raíz para cada documento
+            </strong>
+            : es un
+            solo elemento en el que todos los demás elementos y contenidos se encuentran
+            anidados.
+        </li>
+        <li>
+            Los elementos se organizan entre sí en
+            <strong>
+                estructura jerárquica y no se
+                permite el solapamiento de los elementos.
+            </strong>
+        </li>
+        <li>
+            Hay que
+            <strong>
+                cumplir las reglas sintácticas del lenguaje XML para definir
+                los distintos elementos y atributos
+            </strong>
+            del documento. Los
+            resumimos a continuación:
+            <br>
+            <ul>
+                <li>
+                    El nombre de los elementos pueden tener como primer carácter [A-Z],
+                    [a-z] y "_", y para el resto de caracteres, además de los citados:
+                    [0-9], "-" y "."
+                </li>
+                <li>
+                    <strong>
+                        Las etiquetas de apertura y de cierre tienen que ser
+                        idénticas
+                    </strong>
+                    , XML es sensible a las mayúsculas y
+                    minúsculas, por lo que, por ejemplo,
+                    < alumno>
+                        ...
+                    < /alumno>
+                    sería
+                    incorrecto. Recordemos que se permiten elementos vacíos.
+                </li>
+                <li>
+                    Los
+                    <strong>
+                        valores de los atributos se escribirán siempre entre
+                        comillas dobles o simples
+                    </strong>
+                    . Si queremos incluir un
+                    atributo que incluya alguno de esos caracteres, se hará de la
+                    siguiente forma: ": (") y ' ('). Existen atributos reservados que no
+                    podremos usar, salvo para la finalidad en la que están reservados:
+                    "xml:", "xml:lang", "xml:space: default | preserve" y "xml:id"
+                </li>
+                <li>
+                    <strong>
+                        Los comentarios en XML
+                    </strong>
+                    se escribirán así:
+                    <em>
+                        <!-- Comentario -->
+                    </em>
+                </li>
+            </ul>
+            <br/></li>
+    </ul>
+</div><h1 class="title">
+    7.- Sistemas de gestión empresarial.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            Félix
+        </strong>
+        ha disfrutado de un merecido descanso en un
+        pueblecito costero y a su vuelta&nbsp;a su puesto de trabajo ha
+        solicitado una reunión con Juan para plantear su nueva idea.
+    </p>
+    <p>
+        Mientras tanto Juan se ha estado informando sobre la utilidad de los
+        ERP
+        , ha leído que son sistemas informáticos que pueden mejorar notablemente
+        la actividad comercial de una empresa. Además, se pueden usar desde los
+        dispositivos móviles, con lo que no es imprescindible estar en un
+        despacho con un ordenador conectado a una red local determinada para
+        poder consultar la información alojada en ellos.
+    </p>
+    <p>
+        El mayor problema que ve Juan, es la posible necesidad de formar a los
+        trabajadores de la empresa para que puedan utilizar esta herramienta,
+        así como la integración de la misma con el resto de programas que se
+        usan, los que casi pueden reducirse a una suite ofimática.&nbsp;Según se
+        va informando del tema, cada vez encuentra menos inconvenientes ya que
+        no parece que la utilización de estos recursos requieran una gran
+        formación por parte de los usuarios y, por otro lado, la mayoría de los
+        ERP del mercado, si no todos, permiten la integración las suites
+        informáticas. Esto significa que los usuarios podrán seguir usando los
+        mismos programas que hasta ahora.
+    </p>
+    <p>
+        La reunión se plantea del siguiente modo:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Comenzará por exponer
+            <b>
+                cuales son los distintos flujos de
+                información que hay en la empresa
+            </b>
+            , haciendo especial
+            hincapié en aquellos que se usan en los procesos más importantes.
+        </li>
+        <li>
+            Después pasará a
+            <b>
+                analizar los distintos subsistemas de
+                información que existen
+            </b>
+            y su relación con los flujos de
+            información. Incidiendo en que si se optimizan los flujos de
+            información entre los subsistemas, se logrará mejorar la gestión y
+            el control de la información.
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-erp">
+        <p>
+            Enterprise Resource Plannig, significa planificación de recursos
+            empresariales.
+        </p>
+    </div>
+</div><h1 class="title">
+    7.1.- ERP.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+              Durante la reunión
+             </span>
+        <b style="font-size: 1em;">
+            Félix
+        </b>
+        <span style="font-size: 1em;">
+              y
+             </span>
+        <b style="font-size: 1em;">
+            María
+        </b>
+        <span style="font-size: 1em;">
+              escuchan atentamente las explicaciones de
+													Juan, pero no logran ver el beneficio que les aportará el uso de un
+              <b>
+               ERP
+              </b>
+              .
+             </span>
+        <br/></p>
+    <p>
+        <b>
+            Juan
+        </b>
+        pasa a explicarles que
+        <b>
+            un
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            está formado por
+            diversas partes integradas cuya funcionalidad es totalmente
+            independiente de las demás
+        </b>
+        . Les expone que en realidad la
+        información estaría guardada en una única base de datos, a la que
+        accedería el
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        a
+        medida que los usuarios lo demandasen. La gran ventaja que Juan ve en
+        todo esto, es que todos los usuarios comparten la misma información
+        garantizando que los datos con los que trabajan siempre estén
+        actualizados.
+    </p>
+</div><h1 class="title">
+    7.1.1.- Características.
+</h1><div class="iDevice_content">
+    <p>
+        Existen tres características principales que distinguen a un sistema de gestión
+        empresarial:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Integración
+            </strong>
+            :
+            <p>
+                Un sistema
+                ERP
+                integra
+                todos los procesos de la empresa, de tal forma que las considera como
+                una serie de áreas que se relacionan entre sí, para conseguir una mayor
+                eficiencia reduciendo tiempo y costes.
+            </p>
+            <p>
+                En un sistema
+                ERP
+                los
+                datos se ingresan una sola vez, formando una base de datos centralizada
+                y facilitando el flujo de información entre los diferentes módulos.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Modularidad
+            </strong>
+            :
+            <p>
+                Cada módulo del sistema
+                ERP
+                se
+                corresponde con un área funcional de la empresa. Gracias a una base de
+                datos centralizada, estos módulos comparten información entre sí,
+                facilitando la adaptabilidad, personalización e integración. Es habitual
+                que cada módulo utilice un software específico para su funcionalidad.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Adaptabilidad
+            </strong>
+            :
+            <p>
+                Aunque las dos características anteriores; integración y modularidad
+                facilitan la adaptabilidad a las necesidades de cada empresa, algunas
+                veces para abaratar costes se utiliza una solución más genérica y se
+                modifican algunos de los procesos para alinearlos al sistema
+                ERP
+                .
+            </p>
+        </li>
+    </ul>
+    <p>
+        Gracias a la modularidad y capacidad de integración de las funcionalidades un
+        sistema
+        ERP
+        es
+        fácilmente adaptable a las necesidades de cada empresa, permitiendo una total
+        configuración. Éstos&nbsp;módulos se interconectan entre sí, de forma que una
+        única herramienta
+        ERP
+        puede dar servicio a diferentes empresas, modificando el conjunto de módulos
+        activos y sus relaciones.
+    </p>
+
+    <p>
+        Éstos módulos permitirán almacenar, buscar, mostrar y representar cada proceso
+        interno de la empresa, pudiendo componerse un
+        ERP
+        de los siguientes módulos activos básicos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Ventas / Marketing:
+            </strong>
+            Interfaz pública que interactúa con los
+            clientes, pedidos, estrategias de ventas, precios, promociones, publicidad,
+            etc.
+        </li>
+        <li>
+            <strong>
+                Finanzas:
+            </strong>
+            Es la base del
+            ERP
+            ,
+            donde se almacena cada transacción, facilitando las auditorías.
+        </li>
+        <li>
+            <strong>
+                Inventario / Logística:
+            </strong>
+            Stock y flujos de entrada y salida.
+        </li>
+        <li>
+            <strong>
+                Recursos humanos:
+            </strong>
+            Gestión de personal, nóminas,
+            productividad, incentivos, beneficios, etc.
+        </li>
+        <li>
+            <strong>
+                Producción:
+            </strong>
+            El núcleo que se encarga de los movimientos
+            físicos de los artículos, planificación de materiales, etc.
+        </li>
+    </ul>
+    <p>
+        El listado anterior es básico y se puede complementar con
+        <strong>
+            otros
+            módulos
+        </strong>
+        , por ejemplo: proyectos, planificación de ventas,
+        mantenimiento, gestión de cambios de producto, configuración de productos a
+        medida, gestión de relaciones con los clientes (
+        CRM
+        ),
+        controles de planta y de almacenes, seguridad y planes de contingencia, cuadros
+        de mando, gestión de archivos, gestión comercial, proveedores, etc.
+    </p>
+    <p>
+        No todos los trabajadores accederán al
+        ERP
+        de la misma forma, ya que cada grupo tendrá su
+        <strong>
+            rol
+        </strong>
+        , que será
+        supervisado por un administrador, por lo que según el puesto a desempeñar, se
+        activarán o desactivarán sus módulos asociados.
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-erp">
+        <p>
+            Enterprise Resource Plannig, significa planificación de recursos
+            empresariales.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-crm">
+        <p>
+            Gestión de relaciones con los clientes.
+        </p>
+    </div>
+</div><h1 class="title">
+    7.1.2.- Ventajas e inconvenientes.
+</h1><div class="iDevice_content">
+    <p>
+        Contar con
+        <b>
+            un sistema
+            ERP
+            personalizado, permite a la empresa tener integradas diferentes utilidades
+            que le facilitan la gestión de la información
+        </b>
+        . Permitiendo entre otras
+        cosas, administrar interdependencias de los recibos de materiales, de los
+        productos estructurados en el mundo real, de los cambios de la ingeniería y de
+        la revisión y la mejora, y la necesidad de elaborar materiales sustitutos, etc.
+        La seguridad de los ordenadores está incluida dentro del ERP, para proteger a la
+        organización contra el espionaje industrial y la malversación.
+    </p>
+
+    <p>
+        <b>
+            Ventajas del uso de los
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            :
+        </b>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Aumento de la información que la empresa posee sobre sus actuales y
+            potenciales clientes:&nbsp;Los
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            que incluyen
+            CRM
+            aportan beneficios relacionados con la administración de los clientes de la
+            empresa, y pueden incluir un control de calidad en los productos finales,
+            que garantiza que no hay problemas no resueltos,&nbsp;lo que le permite
+            direccionar la oferta hacia sus deseos y necesidades, aumentando así el
+            grado de satisfacción y optimizando su ciclo de vida.
+        </li>
+        <li>
+            Aumento de las ventas.
+        </li>
+        <li>
+            Permiten resolver problemas derivados del tratamiento de la información con
+            los sistemas anteriores.
+        </li>
+        <li>
+            Aumentan la eficiencia operativa.
+        </li>
+        <li>
+            Facilitan el acceso de la información y constituyen una mejora en las
+            herramientas para el tratamiento de la misma.
+        </li>
+        <li>
+            Reducción de costes empresariales, especialmente los relacionados con las
+            operaciones de las tecnologías de información y comunicación en la empresa.
+        </li>
+        <li>
+            Permiten mayor facilidad en la configuración de los sistemas de la empresa.
+        </li>
+        <li>
+            Mejoran el entorno de integración de todas sus acciones.
+        </li>
+    </ul>
+    <div class="elemento_izquierda" style="margin-right: 20px;">
+        Muchos de los problemas
+        que tienen las compañías con el
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        , son debidos a la inversión
+        inadecuada para la formación del personal, y una falta de políticas corporativas
+        que afectan al modo en que se obtienen y actualizan los datos del
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        .
+    </div>
+    <p>
+        <br>
+        <br>
+        <br/><br/></p>
+
+    <p>
+        <b>
+            <br>
+            Limitaciones y obstáculos del uso de los
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            :
+            <br/></b>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            El
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            ha de ser utilizado
+            y realizado por personal capacitado.
+        </li>
+        <li>
+            La instalación del
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            es
+            muy costosa.
+        </li>
+        <li>
+            Los
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            son vistos como
+            sistemas muy rígidos, y difíciles de adaptar al modo de trabajo de las
+            empresas.
+        </li>
+        <li>
+            Son sistemas que sufren problemas de "cuello de botella", es decir, todos
+            los usuarios del sistema se pueden ver afectados por la ineficiencia en uno
+            de los departamentos participantes.
+        </li>
+        <li>
+            Altos costes de las modificaciones del
+            <abbr title="Enterprise Resource Plannig">
+                ERP
+            </abbr>
+            una vez implantado.
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-erp">
+        <p>
+            Enterprise Resource Plannig, significa planificación de recursos
+            empresariales.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-crm">
+        <p>
+            Customer Relationship Management, Gestión de relación con los clientes.
+        </p>
+    </div>
+</div><h1 class="title">
+    7.1.3.- ERP de software libre.
+</h1><div class="iDevice_content">
+
+    <p>
+        Dentro de los
+        ERP
+        de
+        <span lang="en">
+            software
+           </span>
+        libre existe una gran cantidad de
+        aplicaciones que aportan soluciones a nivel de planificación empresarial. Entre
+        ellas, podemos destacar
+        <strong>
+            Openbravo
+        </strong>
+        , que es una iniciativa
+        de origen español y
+        <strong>
+            <span lang="en">
+             OpenERP
+            </span>
+        </strong>
+        , ahora
+        denominado
+        <strong>
+            Odoo
+        </strong>
+        de origen belga y que se caracteriza por tener
+        una gran cantidad de módulos disponibles.
+    </p>
+    <p>
+           <span style="font-size: 1em;">
+            <strong>
+             Openbravo
+            </strong>
+            es una aplicación de
+											código abierto de planificación de recursos empresariales. Utiliza una
+											arquitectura cliente/servidor
+           </span>
+        <span lang="en" style="font-size: 1em;">
+            web
+           </span>
+        <span style="font-size: 1em;">
+            y está escrita en
+											Java. Se ejecuta sobre un servidor
+           </span>
+        <span lang="en" style="font-size: 1em;">
+            web
+           </span>
+        <span style="font-size: 1em;">
+            , y ofrece soporte para
+											las
+           </span>
+        <span style="font-size: 1em;">
+            bases de datos
+											Oracle
+           </span>
+        <span style="font-size: 1em;">
+            y
+           </span>
+        <span style="font-size: 1em;">
+            PostgreSQL
+           </span>
+        <span style="font-size: 1em;">
+            .
+           </span>
+    </p>
+    <p>
+        Openbravo consta de dos versiones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Openbravo
+                <span lang="en">
+              Community Edition
+             </span>
+            </strong>
+            ,
+            libre y gratuita desde la que no se puede acceder a los módulos comerciales.
+            Versión bajo licencia OBPL
+        </li>
+        <li>
+            <strong>
+                Openbravo
+                <span lang="en">
+              Network Edition
+             </span>
+            </strong>
+            ,
+            versión bajo licencia
+            <span lang="en">
+             OBCL
+            </span>
+            que proporciona
+            actualizaciones de código y en la que sí se pueden instalar los módulos
+            comerciales.
+        </li>
+    </ul>
+    <p>
+        Openbravo nos ofrece dos soluciones:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Suite de comercio Openbravo
+            </strong>
+            : Solución de comercio para
+            minoristas
+        </li>
+        <li>
+            <strong>
+                Suite de negocio Openbravo (ERP)
+            </strong>
+            : Solución global para
+            empresa. Nosotros nos centraremos en este producto.
+        </li>
+    </ul>
+    <p>
+        En el siguiente enlace se pueden ver las diferentes alternativas que se
+        disponen
+        : Suite de comercio y negocio
+        Openbravo
+    </p>
+    <p>
+        <strong>
+            <span lang="en">
+             Odoo (Anteriormente llamado
+												OpenERP)
+            </span>
+        </strong>
+        resuelve&nbsp;problemas complejos haciendo
+        uso de soluciones sencillas. Está escrita en&nbsp;Phyton&nbsp;y la base de datos
+        utilizada es
+        <span lang="en">
+            PostgreSQL
+           </span>
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-erp">
+        <p>
+            Enterprise Resource Plannig, significa planificación de recursos
+            empresariales.
+        </p>
+    </div>
+</div><h1 class="title">
+    7.1.4.- Instalación.
+</h1><div class="iDevice_content">
+
+    <p>
+           <span style="font-size: 1em;">
+            Para realizar la
+           </span>
+        instalación de un paquete
+        de gestión empresarial
+        <span style="font-size: 1em;">
+            , primero tenemos que
+            <strong>
+             definir cuáles son las necesidades que debe cubrir el
+												software
+            </strong>
+            y buscar aquel que mejor se ajuste a nuestras
+											necesidades.
+           </span>
+    </p>
+    <p>
+        En general, las tareas implicadas en un proceso de instalación e implantación de
+        un
+        ERP
+        son
+        las siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Diseño de la instalación
+            </strong>
+            . Previo a la instalación deberá
+            realizarse un estudio de las necesidades de la empresa y cómo serán
+            resueltas por la aplicación
+            <span lang="en">
+             ERP
+            </span>
+            : tablas que es
+            preciso adaptar, datos, formularios e informes que se requieren, etc.
+        </li>
+        <li>
+            <strong>
+                Instalación de equipos servidores y clientes
+            </strong>
+            . Será
+            necesaria la instalación, revisión y/o actualización del hardware de la
+            empresa, de manera que cumpla los requisitos mínimos necesario.
+        </li>
+        <li>
+            <strong>
+                Instalación del
+                <span lang="en">
+              software
+             </span>
+            </strong>
+            .
+            Instalación tanto de la aplicación
+            <span lang="en">
+             ERP
+            </span>
+            como
+            del
+            <span lang="en">
+             software
+            </span>
+            que ésta necesite para su
+            correcto funcionamiento.
+        </li>
+        <li>
+            <strong>
+                Adaptación y configuración del programa
+            </strong>
+            . Una vez instalado,
+            será necesario la configuración del
+            <span lang="en">
+             software
+            </span>
+            y su adaptación a la empresa cliente.
+        </li>
+        <li>
+            <strong>
+                Migración de datos
+            </strong>
+            . Este proceso es de gran importancia
+            para la empresa, pues los datos son imprescindibles para su buen
+            funcionamiento: clientes y proveedores, contabilidad, facturación, son datos
+            muy importantes y de gran volumen. En ocasiones serán necesarios procesos
+            manuales si no existe forma de automatizar el traspaso de datos del sistema
+            antiguo a la nueva aplicación
+            <span lang="en">
+             ERP
+            </span>
+            .
+        </li>
+        <li>
+            <strong>
+                Realización de pruebas
+            </strong>
+            . La instalación del
+            <span lang="en">
+             software
+            </span>
+            puede conllevar un periodo de transición
+            en el que coexistirá la solución
+            <span lang="en">
+             ERP
+            </span>
+            con la
+            solución antigua de gestión de la empresa. Este periodo de transición
+            comprenderá la realización de pruebas del nuevo aplicativo, y la migración
+            de datos del
+            <span lang="en">
+             software
+            </span>
+            antiguo al nuevo. En
+            cualquier caso, será necesario verificar mediante las pruebas necesarias que
+            la solución
+            <span lang="en">
+             ERP
+            </span>
+            funciona correctamente y
+            los resultados obtenidos son satisfactorios.
+        </li>
+        <li>
+            <strong>
+                Documentación del sistema
+            </strong>
+            . En esta fase se deben realizar
+            los documentos y manuales necesarios y su puesta a disposición ante la
+            organización, mediante los medios de difusión interna que disponga: tablón
+            de anuncios, correo electrónico,&nbsp;Intranet, etc.
+        </li>
+        <li>
+            <strong>
+                Formación de usuarios
+            </strong>
+            . Esta etapa comprende la formación de
+            los usuarios sobre la utilización del
+            <span lang="en">
+             ERP
+            </span>
+            , que
+            podrá conllevar una formación inicial para los responsables del proyecto y
+            una formación para los usuarios finales.
+        </li>
+    </ul>
+    <p>
+           <span style="font-size: 1em;">
+            En la mayoría de los casos los
+											sistemas
+           </span>
+        ERP
+        <span style="font-size: 1em;">
+            correrán sobre
+											una
+            <strong>
+             plataforma cliente-servidor
+            </strong>
+            , aunque esto no quita que
+											el sistema pueda estar integrado en un
+            <strong>
+             Servidor Web
+            </strong>
+            , o que
+											pueda utilizar
+            <strong>
+             tecnología
+            </strong>
+           </span>
+        <strong>
+            <abbr title="Software as a Service.">
+                SaaS
+            </abbr>
+        </strong>
+        <span style="font-size: 1em;">
+            .
+           </span>
+    </p>
+    <p>
+        Independientemente del sistema operativo que tengamos instalado en nuestra
+        empresa, o que decidamos utilizar para implementar nuestro&nbsp;ERP&nbsp;Windows
+        o Linux, básicamente siempre tenemos que
+        <strong>
+            tener en cuenta lo
+            siguiente
+        </strong>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Disponer de una máquina con prestaciones de servidor donde inicialmente
+            instalaremos nuestro&nbsp;ERP.
+        </li>
+        <li>
+            Instalar nuestra base de datos y conectarla con nuestro&nbsp;ERP.
+        </li>
+        <li>
+            Instalar los módulos necesarios ERP que hayamos decidido adquirir .
+        </li>
+        <li>
+            Configurar los diferentes clientes para que accedan al servidor y que puedan
+            realizar sus peticiones al sistema&nbsp;ERP.
+        </li>
+    </ul>
+    <p>
+        Nuestro sistema
+        <strong>
+            se basa en una base de datos
+        </strong>
+        en la que se irán
+        almacenando los datos, y desde la que se irán generando los informes que
+        requerimos al sistema, por lo que previamente la habremos creado en nuestro
+        sistema.
+    </p>
+    <p>
+    </p>
+    <p>
+        Hoy en día, lo más habitual es incorporar el ERP dentro de la intranet de la
+        empresa. En este caso, necesitamos tener activo un servidor web con soporte para
+        bases de datos, y el lenguaje de script de servidor en el que se haya codificado
+        la aplicación que vayamos a instalar. La instalación de este último tipo de
+        sistemas se realiza también a través de un navegador
+        <span lang="en">
+            web
+           </span>
+        siguiendo los pasos que indica el sistema.
+    </p>
+    <div class="elemento_derecha">
+        <div class="elemento_centrado">
+
+        </div>
+    </div>
+    <p>
+        Los tipos de instalación en un sistema
+        <span lang="en">
+            ERP
+           </span>
+        /
+        <span lang="en">
+            CRM
+           </span>
+        dependerán
+        de la plataforma en la que se van a instalar los programas y del
+        <span lang="en">
+            ERP
+           </span>
+        con el que trabajemos. Los más habituales son los
+        siguientes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Instalación mediante máquina virtual
+            </strong>
+            . La aplicación y
+            programas necesarios para su funcionamiento se proporcionan en una máquina
+            virtual lista para ejecutarla. Esta opción no es apta para un&nbsp;entorno
+            de producción, y se utiliza normalmente para hacer una primera evaluación
+            del producto.
+        </li>
+        <li>
+            <strong>
+                Instalación de paquetes bajo entorno gráfico
+            </strong>
+            . En este caso
+            las aplicaciones se instalan mediante el entorno gráfico del sistema
+            operativo, utilizando asistentes que instalan y resuelven las dependencias
+            entre paquetes. Este tipo de instalación puede utilizarse en entornos de
+            producción, pero hay que tener en cuenta que los paquetes pueden no estar
+            actualizados a la última versión.
+        </li>
+        <li>
+            <strong>
+                Instalación personalizada
+            </strong>
+            . Si queremos instalar una versión
+            más reciente de la aplicación, existe la posibilidad de descargarnos
+            los&nbsp;paquetes fuente&nbsp;desde la página
+            <span lang="en">
+             web
+            </span>
+            que los contenga, e instalarlos mediante
+            comandos. Ello permite un mayor control sobre los programas que se instalan
+            y las dependencias entre ellos, aunque suele ser un proceso más complejo que
+            la instalación bajo entorno gráfico.
+        </li>
+        <li>
+            <strong>
+                No instalar y acceder a la aplicación
+                <span lang="en">
+              on-line
+             </span>
+            </strong>
+            . Algunos
+            <span lang="en">
+             ERP
+            </span>
+            incluyen la posibilidad de acceder a
+            demostraciones
+            <span lang="en">
+             online
+            </span>
+            del producto, de
+            manera que no es necesario instalar nada, ya que nos conectamos a un
+            servidor en Internet que tiene todos los datos y programas de la aplicación.
+            Esta opción es utilizada por los proveedores de
+            <span lang="en">
+             ERP
+            </span>
+            que ofrecen el servicio
+            <span lang="en">
+             SaaS
+            </span>
+            .
+        </li>
+    </ul>
+    <p>
+           <span style="font-size: 1em;">
+            En
+            <strong>
+             Odoo
+            </strong>
+            podemos realizar
+											diferentes tipos de instalaciones, desde paquetes autoinstalables, donde no
+											tendremos que realizar prácticamente nada (se nos instalan y configuran
+											todos los componentes y referencias necesarias), hasta instalaciones paso a
+											paso, donde tendremos que instalar y configurar cada uno de los
+											componentes.
+           </span>
+    </p>
+    <p>
+        <strong>
+            Desde la versión 8.0
+        </strong>
+        , donde pasa a denominarse Odoo,
+        <strong>
+            el
+            servicio de acceso de cliente de escritorio no existe
+        </strong>
+        y su
+        <strong>
+            acceso es a través de cliente web
+        </strong>
+        , es decir, se accede al
+        software vía navegador web y la información se almacena en una base de datos.
+        Esta es la forma de acceso a la mayoría de los ERP actualmente.
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-erp">
+        <p>
+            Enterprise Resource Plannig, significa planificación de recursos
+            empresariales.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-crm">
+        <p>
+            Customer Relationship Management, Gestión de relación con los clientes.
+        </p>
+    </div>
+</div><h1 class="title">
+    7.1.5.- Personalización.
+</h1><div class="iDevice_content">
+
+    <p>
+        <b style="font-size: 1em;">
+            Tras el proceso de instalación del
+            <b>
+                <abbr title="Enterprise Resource Plannig">
+                    ERP
+                </abbr>
+            </b>
+            viene la
+            personalización
+        </b>
+        <span style="font-size: 1em;">
+            , para adecuarlo al entorno
+											de la empresa que va a utilizarlo. Este proceso incluye aspectos como
+											incorporar el logo de la compañía, o dar de alta a los usuarios con los
+											permisos adecuados, además de configurar el sistema de avisos que
+											proporciona la aplicación, o la compatibilidad con herramientas de
+											correo.
+           </span>
+    </p>
+    <p>
+        Los sistemas
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        que existen hoy
+        en el mercado permiten la incorporación de distintos tipos de módulos
+        predefinidos que facilitan la personalización del paquete.
+    </p>
+    <p>
+        Un
+        <strong>
+            módulo
+        </strong>
+        es un programa que se realiza para cubrir una
+        determinada función de la aplicación. Existen unos módulos básicos que se pueden
+        cargar automáticamente durante la instalación inicial del sistema, y otros que
+        pueden instalarse posteriormente desde el mismo programa o desde la web del
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        .
+    </p>
+    <p>
+        La integración de estos módulos, que complementan la aplicación base, puede
+        realizarse tanto en el momento inicial de la instalación de la aplicación, como
+        en un proceso posterior de ampliación de la misma.&nbsp;Los recursos que
+        proporcionan estos módulos son muy variados, desde la creación de informes
+        avanzados a servicios de comunicación para plataformas móviles (tablet-pc o
+        <span lang="en">
+            smartphones
+           </span>
+        ), pasando por la interconexión con el paquete
+        ofimático utilizado en la empresa. Hoy en día, la mayoría de los sistemas
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        cuentan con un módulo CRM
+        integrado, o con la posibilidad de incorporarlo como un módulo añadido.
+    </p>
+    <p>
+        Los módulos que se incorporan pueden estar prediseñados por el fabricante de la
+        aplicación base, ser módulos programados por terceros para ese software, o
+        incluso ser un programa solicitado a medida por la empresa en la que se instala
+        la aplicación.
+    </p>
+    <p>
+        Para realizar la instalación de módulos hay que entrar en el
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        con un usuario que tenga
+        permisos de administración, además hay que usar el cargador de módulos que
+        suelen tener estos paquetes en la sección de administración o aplicaciones.
+    </p>
+    <p>
+        A continuación un listado de los
+        <strong>
+            módulos más importantes
+        </strong>
+        de un
+        <abbr title="Enterprise Resource Plannig">
+            ERP
+        </abbr>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Gestión contable y financiera
+            </strong>
+            :
+            <span style="font-size: 1em;">
+             El módulo contable recoge y automatiza todas las
+												operaciones contables de la compañía, centralizándolas para su consulta,
+												publicación o control.
+             <span style="font-size: 1em;">
+              Este módulo debe
+													estar integrado con los módulos de compras y ventas para evitar
+													duplicidades en la introducción de datos, y para poder disponer
+													siempre de la información en tiempo real. De esta forma no sólo
+													realizaremos la gestión contable financiera, sino que podremos
+													obtener automáticamente facturas de clientes y proveedores desde los
+													pedidos de venta y compra, o desde los albaranes de salida y
+													entrada, respectivamente.
+             </span>
+            </span>
+        </li>
+        <li>
+            <span style="font-size: 1em;">
+             <strong>
+              Compras, ventas y
+													almacén
+             </strong>
+             :&nbsp;El&nbsp;módulo de compras y
+												ventas&nbsp;registra todas las operaciones de solicitudes de
+												presupuestos a proveedor, recepción de precios y creación de pedidos de
+												compra, con indicación de cualquier información relevante como precios,
+												plazos de entrega, etc. y del mismo modo con las
+												ventas.&nbsp;El&nbsp;módulo de Almacén&nbsp;permite gestionar las
+												existencias de productos en almacén.
+            </span>
+        </li>
+        <li>
+            <span style="font-size: 1em;">
+             <strong>
+              Facturación
+             </strong>
+             :&nbsp;El módulo
+												de facturación se encarga de la generación de todo tipo de datos que
+												tienen que ver con la facturación de productos y servicios a los
+												clientes: facturas de venta, albaranes, tarifas, etc. Son contempladas
+												diversas formas de cobro y pago de un cliente, como son contado,
+												transferencia, pagaré, giro, etc.
+            </span>
+        </li>
+        <li>
+            <span style="font-size: 1em;">
+             <strong>
+              Gestión de
+													personal:
+             </strong>
+             Este módulo lleva a cabo la planificación y
+												realización de las nóminas de los empleados, así como las altas, bajas,
+												contratos, control de horarios y datos de personal, además de un sistema
+												de remuneraciones para el pago de los empleados, con la inclusión de
+												comisiones por ventas.
+            </span>
+        </li>
+        <li>
+            <strong>
+                Gestión
+            </strong>
+            <span style="font-size: 1em;">
+             <strong>
+              de las
+													relaciones con el cliente
+             </strong>
+             :&nbsp;La gestión de las
+												relaciones con los clientes o
+             <span lang="en">
+              CRM
+             </span>
+             (
+             <span lang="en">
+              Customer Relationship
+													Management
+             </span>
+             ) permite registrar todo lo relativo a la relación
+												comercial con los clientes o posibles clientes: desde la creación de una
+												ficha de cliente hasta la determinación de los productos que le
+												interesan, histórico de pedidos, las ventas realizadas, contactos
+												mantenidos o la facturación de productos o servicios.
+            </span>
+        </li>
+    </ul>
+</div><h1 class="title">
+    7.1.6.- Seguridad: planificación, usuarios y roles.
+</h1><div class="iDevice_content">
+
+    <p>
+             <span style="font-size: 1em;">
+              Una vez que les convence de la utilidad de
+													los
+              <abbr title="Enterprise Resource Plannig">
+               ERP
+              </abbr>
+              ,
+             </span>
+        <b style="font-size: 1em;">
+            María y Félix le preguntan por la seguridad
+            de los datos
+        </b>
+        <span style="font-size: 1em;">
+              , ya que en su empresa
+													es imprescindible garantizar la privacidad de la información que
+													manejan, y el hecho de que todos compartan la misma información,
+													induce a creer que todos los usuarios del sistema van a poder
+													acceder a la información.
+             </span>
+    </p>
+    <p>
+        <b>
+            Juan
+        </b>
+        les cuenta que ese era uno de los puntos débiles que podría
+        tener su propuesta, pero que después de haberlo estudiado y meditado no
+        hay ningún problema.
+    </p>
+    <p>
+        Los ERP tienen integradas una serie de medidas de seguridad, que se
+        orientan a que haya
+        <b>
+            distintos perfiles de usuario
+        </b>
+        con diferentes
+        niveles de acceso a la información, lo que hace que cada usuario sólo
+        acceda a la información que necesita para realizar su trabajo. Además el
+        modo de este acceso es también el imprescindible para cada usuario. Es
+        decir, un usuario que sólo necesita consultar cierta información, podrá
+        consultarla, pero no modificarla.
+    </p>
+    <p>
+        La conexión entre distintos equipos se realiza utilizando protocolos de
+        seguros.
+    </p>
+    <p>
+        Se garantizan las operaciones que se realizan sobre los datos.
+    </p>
+</div><h1 class="title">
+    Anexo I.- Enlaces de interés
+</h1><div class="iDevice_content">
+    <p>
+        A continuación se indican las URL de algunos videos explicativos que
+        pueden ser de utilidad para ampliar o aclarar conceptos básicos
+        relacionados con la Unidad:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Introducción a XML:
+            https://youtu.be/bCd2xaQrTAo
+        </li>
+        <li>
+            Mi primer documento XML:
+            https://youtu.be/LljEw3Std1Y
+        </li>
+        <li>
+            Documentos XML bien formados:
+            https://youtu.be/s1RgyhO9F2I
+        </li>
+        <li>
+              <span>
+               Introducción a XML Namespaces:
+              </span>
+            https://youtu.be/YGFcD3-WO6c
+        </li>
+        <li>
+              <span>
+               Cómo se usa XML Namespaces:
+              </span>
+            https://youtu.be/2Hw-4QDySiA
+        </li>
+        <li>
+            Resumen teórico y práctico:
+            https://www.abrirllave.com
+        </li>
+    </ul>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados
+                inicialmente por el Ministerio de Educación, Cultura y Deporte y
+                actualizados por el profesorado de la Junta de Andalucía bajo
+                licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+             <span>
+              Antes de
+													cualquier uso leer detenidamente el siguente
+             </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

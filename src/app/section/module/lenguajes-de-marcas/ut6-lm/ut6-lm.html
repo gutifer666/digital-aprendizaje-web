@@ -1,0 +1,1851 @@
+<h1 class="title">
+    Almacenamiento de información.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+           Antes de irse de vacaciones con su familia,
+          </span>
+        <b style="font-size: 1em;">
+            María y Félix tienen una reunión con el responsable del departamento de
+            informática de la empresa, Juan
+        </b>
+        <span style="font-size: 1em;">
+           , en la que éste último les explica
+                    que aún se puede mejorar la gestión de datos de la empresa.
+          </span>
+        <br/></p>
+    <p>
+        Juan opina que ya que en la empresa
+        <b>
+            se ha impuesto el uso de la tecnología XML
+        </b>
+        , sería mejor
+        utilizar un sistema de almacenamiento y consulta de datos compatible con dicha tecnología.
+    </p>
+    <p>
+        Van a intentar utilizar un sistema de almacenamiento de datos, diferente de la base de datos
+        relacional que han usado hasta ahora, que es compatible con la tecnología XML que están utilizando.
+    </p>
+    <p>
+        Además, para acceder a los datos de esta base de datos nativa van a utilizar un lenguaje de consultas
+        llamado
+        <b>
+            XQuery
+        </b>
+        , que equivale al
+        <abbr title="Structured Query Language , significa Lenguaje de Consulta Estructurado.">
+            SQL
+        </abbr>
+        usado
+        con las bases de datos relacionales.
+    </p>
+</div><h1 class="title">
+    1.- Utilización de XML para almacenamiento de información.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Mientras
+        <b>
+            María
+        </b>
+        está de vacaciones con su familia le
+        <b>
+            explica a su marido, José Ramón
+        </b>
+        ,
+        las nuevas
+        <b>
+            modificaciones
+        </b>
+        que va a realizar Juan en el sistema informático de la empresa.
+    </p>
+    <p>
+        Comienza por explicarle lo que es un sistema de almacenamiento, su relación con la tecnología XML y
+        los distintos ámbitos de aplicación que pueden tener.
+    </p>
+</div><h1 class="title">
+    1.1.- Ámbitos de aplicación.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Los documentos y los requerimientos de almacenamiento de datos XML pueden ser agrupados en dos categorías
+        generales:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    Centrados en los datos.
+                </strong>
+                <br>
+                Suelen incluir documentos (archivos) que siguen un
+                esquema común altamente estructurados: una factura, un albarán, un ticket, una matrícula, un acta de
+                notas, órdenes de compra, contenidos de periódicos, artículos y publicidad. Tienen muchos elementos (o
+                etiquetas) con poco contenido o información, suelen estar muy estructurados y se suele automatizar su
+                uso.
+                <br/></p>
+            <p>
+          <span>
+           Si el documento XML tiene una estructura bien definida y contiene datos que pueden ser
+                    actualizados y usados de diversos modos, el documento es habitualmente centrado en los datos.
+          </span>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Centrados en los documentos.
+                </strong>
+                <br>
+                Tienden a ser más impredecibles en tamaño y
+                contenido con tipos de datos de tamaño limitado y reglas menos flexibles para campos opcionales y
+                contenido.&nbsp;Los archivos centrados en documentos son archivos variables dependiendo de quién los
+                realice o escriba (un libro de texto, un manual, un informe, etc.). Tienen pocos elementos (o
+                etiquetas) con gran cantidad de información y desestructurados (o poco estructurados) y están
+                orientados a un uso humano.
+                <br/></p>
+        </li>
+    </ul>
+    <p>
+        Los sistemas de almacenamiento XML deben acomodarse eficientemente con ambos tipos de requerimientos de
+        datos, dado que XML está siendo usado en sistemas que administran ambos tipos de datos. La mayoría de los
+        productos se enfocan en servir uno de esos formatos de datos mejor que el otro.
+    </p>
+    <p>
+        <strong>
+            Las bases de datos relacionales
+        </strong>
+        tradicionales
+        <strong>
+            son mejores para tratar con
+            requerimientos centrados en los datos
+        </strong>
+        , mientras que
+        <strong>
+            los sistemas de administración de
+            contenido y de documentos, suelen ser mejores para almacenar datos centrados en el documento
+        </strong>
+        .
+    </p>
+    <p>
+        Los sistemas de bases de datos deben ser capaces de exponer los datos relacionales como XML, y almacenar
+        el XML recibido como datos relacionales para transferir, obtener y almacenar los datos requeridos por la
+        aplicación.
+    </p>
+</div><h1 class="title">
+    2.- Sistemas de almacenamiento de información.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+           Mientras María disfruta de sus vacaciones Félix y Juan estudian si
+                    el cambio propuesto por este último es viable.
+          </span>
+        <br/></p>
+    <p>
+        Para ello lo primero que hacen es informarse sobre los distintos sistemas de almacenamiento posibles
+        y sus ventajas a la hora de utilizarlos con la tecnología XML.
+    </p>
+    <p>
+        En este proceso
+        <b>
+            Félix descubre que, además de las bases de datos relacionales, existen las
+            orientadas a objetos y las nativas.
+        </b>
+    </p>
+</div><h1 class="title">
+    2.1.- XML y BD relacionales.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Las bases de datos relacionales se basan en las relaciones (tablas bidimensionales), como único medio
+        para representar los datos del mundo real. Están asociadas al lenguaje estándar
+        <abbr title="Structured Query Languaje, significa  Lenguaje de Consulta Estructurado.">
+            SQL
+        </abbr>
+        .
+    </p>
+    <p>
+        Se han creado complejas teorías y patrones para encajar objetos o estructuras jerarquizadas en bases de
+        datos relacionales.
+    </p>
+    <p>
+        Existen numerosos
+        middlewares
+        encargados de la transferencia de información entre estructuras XML y bases de datos relacionales.
+    </p>
+    <p>
+        Las bases de datos relacionales suponen una posibilidad para el almacenamiento de datos XML. Sin embargo,
+        no están bien preparadas para almacenar estructuras de tipo jerárquico como son los documentos XML,
+        algunas de las causas son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Las bases de datos relacionales tienen una estructura regular frente al carácter heterogéneo de los
+            documentos XML.
+        </li>
+        <li>
+            Los documentos XML suelen contener muchos niveles de anidamiento mientras que los datos relacionales
+            son planos.
+        </li>
+        <li>
+            Los documentos XML tienen un orden intrínseco mientras que los datos relacionales son no ordenados.
+        </li>
+        <li>
+            Los datos relacionales son generalmente densos (cada columna tiene un valor), mientras que los datos
+            XML son dispersos, es decir, pueden representar la carencia de información mediante la ausencia del
+            elemento.
+        </li>
+    </ul>
+    <p>
+        Algunas de las razones para usar los tipos de bases de datos relacionales y los productos de bases de
+        datos existentes para almacenar XML, aún cuando no sea de forma nativa son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Las bases de datos relacionales y orientadas a objetos son bien conocidas, mientras que las bases de
+            datos XML nativas son nuevas.
+        </li>
+        <li>
+            Como resultado de la familiaridad con las bases de datos relacionales y orientadas a objetos, los
+            usuarios se inclinan a ellas especialmente por el rendimiento.
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-middlewares">
+        <p>
+            Es un software que asiste a una aplicación para interactuar o comunicarse con otras aplicaciones, o
+            paquetes de programas, redes, hardware y/o sistemas operativos.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.1.1.- Reglas de transformación relacional. DTD.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        La estructura XML debe ser capaz de acomodar algunos conceptos básicos, incluyendo claves primarias,
+        claves secundarias, tablas, y columnas.
+    </p>
+    <p>
+        El proceso de traducción puede ser descompuesto en los siguientes pasos básicos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    Crear el esquema XML
+                </strong>
+                con un elemento para cada tabla y los atributos
+                correspondientes para cada columna no clave. Las columnas que no permiten valores nulos pueden ser
+                marcadas como requeridas, mientras que aquellas que permiten valores nulos pueden ser marcadas como
+                opcionales en el esquema XML. Las columnas pueden ser también anidadas como elementos, pero pueden
+                surgir problemas cuando el mismo nombre de columna es usado en más de una tabla. Por ello, lo más
+                simple es transformar las columnas como atributos XML, donde las colisiones de nombre en el esquema
+                XML no son un problema.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Crear las claves primarias en el esquema XML
+            </strong>
+            . Una solución podría ser agregar un
+            atributo para la columna clave primaria, con un ID agregado al nombre de la columna. Este atributo
+            podría necesitar ser definido en el esquema XML como de tipo ID. Pueden surgir problemas de colisión al
+            crear claves primarias en el esquema XML, ya que a diferencia de las bases de datos relacionales, donde
+            las claves primarias necesitan ser únicas sólo dentro de una tabla, un atributo ID dentro de un
+            documento XML debe ser único a través de todo el documento.
+            <p>
+                Para resolverlo se puede agregar el nombre del elemento (nombre de la tabla), al valor de la clave
+                primaria (valor del atributo). Esto asegura que el valor es único a través del documento XML.
+            </p>
+        </li>
+        <li>
+            <strong>
+                Establecer las relaciones de clave migrada o foránea
+            </strong>
+            . Esto se puede lograr mediante
+            el anidamiento de elementos bajo el elemento padre, un ID de esquema XML puede ser usado para apuntar a
+            una estructura XML correspondiente conteniendo un IDREF.
+        </li>
+    </ul>
+    <p>
+        Pueden existir muchas variaciones de esquemas XML para representar la misma base de datos relacional.
+    </p>
+</div><h1 class="title">
+    2.2.- XML y Bases de Datos Orientadas a Objetos.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Las
+        <strong>
+            bases de datos orientadas a objetos
+        </strong>
+        soportan un modelo de objetos puro, en el
+        sentido de que no están basados en extensiones de otros modelos más clásicos como el relacional:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Están influenciados por los lenguajes de programación orientados a objetos.
+        </li>
+        <li>
+            Pueden verse como un intento de añadir la funcionalidad de un
+            <abbr title="Sistema Gestor de Bases de Datos.">
+                SGBD
+            </abbr>
+            a un lenguaje de programación.
+        </li>
+        <li>
+            Son una alternativa para el almacenamiento y gestión de documentos XML.
+        </li>
+    </ul>
+    <p>
+        Componentes del estándar:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Modelo de Objetos.
+            </strong>
+            Está concebido para proporcionar un modelo de objetos estándar
+            para las bases de datos orientadas a objetos. Es el modelo en el que se basan el lenguaje de definición
+            de objetos y el lenguaje de consultas.
+        </li>
+        <li>
+            <strong>
+                Lenguajes de Especificación de Objetos.
+            </strong>
+            <abbr title="Object Definition Languaje, significa  Lenguaje de Definición de Objetos.">
+                ODL
+            </abbr>
+        </li>
+        <li>
+            <strong>
+                Lenguaje de Consulta.
+            </strong>
+            Conocido como
+            <abbr title="Object Query Languaje, significa Lenguaje  de Consulta de Objetos.">
+                OQL
+            </abbr>
+            .
+        </li>
+        <li>
+            <strong>
+                Bindings
+            </strong>
+            para
+            <strong>
+                C++
+            </strong>
+            ,
+            <strong>
+                Java
+            </strong>
+            y
+            <strong>
+                Smalltalk
+            </strong>
+            Definen un
+            <abbr title="Object Manipulation Languaje, significa  Lenguaje de Manipulación de Objetos.">
+                OML
+            </abbr>
+            que extiende el lenguaje de programación para soportar objetos persistentes.
+            Además incluye soporte para OQL, navegación y transacciones.
+        </li>
+    </ul>
+    <p>
+        Una vez transformado el documento XML en objetos, éstos son gestionados directamente por el
+        <abbr title="Sistemas Gestores de Bases de Datos Orientados a  Objetos.">
+            SGBDOO
+        </abbr>
+        . Dicha información
+        se consulta acudiendo al lenguaje de consulta OQL. Los mecanismos de indexación, optimización,
+        procesamiento de consultas, etc. son los del propio SGBDOO, y por lo general, no son específicos para el
+        modelo XML.
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-cb">
+        <p>
+            Es una adaptación de una biblioteca para ser usada en un lenguaje de programación distinto de aquél en
+            el que ha sido escrita.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-c">
+        <p>
+            C++ es un lenguaje de programación diseñado a mediados de los años 1980 por Bjarne Stroustrup. La
+            intención de su creación fue el extender al exitoso lenguaje de programación C con mecanismos que
+            permitan la manipulación de objetos.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-java">
+        <p>
+            Java es un lenguaje de programación de propósito general, concurrente, orientado a objetos. Su
+            intención es permitir que los desarrolladores de aplicaciones escriban el programa una vez y lo ejecuten
+            en cualquier dispositivo.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-small">
+        <p>
+            Smalltalk es un lenguaje reflexivo de programación, orientado a objetos y con tipado dinámico. Por sus
+            características, Smalltalk puede ser considerado también como un entorno de objetos, donde incluso el
+            propio sistema es un objeto.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.3.- XML y Bases de Datos Nativas.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Son bases de datos, y como tales soportan transacciones, acceso multi-usuario, lenguajes de consulta,
+        etc. Están diseñadas especialmente para almacenar documentos XML.
+    </p>
+    <p>
+        Las
+        <abbr title="Bases de Datos.">
+            BD
+        </abbr>
+        nativas se caracterizan principalmente por:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    Almacenamiento de documentos en colecciones.
+                </strong>
+                <span style="font-size: 1em;">
+           La
+                    base de datos está estructurada en colecciones, una colección es un conjunto de documentos, de modo
+                    que es una estructura de árbol donde cada documento pertenece a una única colección.
+          </span>
+            </p>
+            <p>
+                Las colecciones juegan en las bases de datos nativas el papel de las tablas en las BD relacionales.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Validación de los documentos.
+                </strong>
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Consultas.
+                </strong>
+                La mayoría de las BD XML soportan uno o más lenguajes de consulta. Uno de
+                los más populares es XQuery.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Indexación XML.
+                </strong>
+                Se ha de permitir la creación de índices que aceleren las consultas
+                realizadas.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Creación de identificadores únicos.
+                </strong>
+                A cada documento XML se le asocia un
+                identificador único.
+            </p>
+        </li>
+        <li>
+            <p>
+                <strong>
+                    Actualizaciones y Borrados
+                </strong>
+                .
+            </p>
+        </li>
+    </ul>
+    <p>
+        Según el tipo de almacenamiento utilizado pueden dividirse en dos grupos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <strong>
+                    Almacenamiento Basado en Texto.
+                </strong>
+                Almacena el documento XML entero en forma de texto y
+                proporciona alguna funcionalidad de base de datos para acceder a él. Hay dos posibilidades:
+            </p>
+            <ul>
+                <li>
+                    <p>
+                        <strong>
+                            Posibilidad 1
+                        </strong>
+                        : Almacenar el documento como un
+                        <abbr title="Binary Large OBject, significa Objetos Binarios Grandes.">
+                            BLOB
+                        </abbr>
+                        en una
+                        base de datos relacional, mediante un fichero, y proporcionar algunos índices sobre el documento
+                        que aceleren el acceso a la información.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>
+                            Posibilidad 2
+                        </strong>
+                        : Almacenar el documento en un almacén adecuado con índices,
+                        soporte para transacciones, etc.
+                    </p>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Almacenamiento Basado en el modelo.
+            </strong>
+            Almacena un modelo binario del documento (por
+            ejemplo, DOM) en un almacén existente o bien específico.
+            <br>
+            <br>
+            <ul>
+                <li>
+                    <p>
+                        <strong>
+                            Posibilidad 1
+                        </strong>
+                        : Traducir el DOM a tablas relacionales como Elementos, Atributos,
+                        Entidades, etc.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>
+                            Posibilidad 2
+                        </strong>
+                        : Traducir el DOM a objetos en una
+                        <abbr title="Bases de Datos Orientadas a Objetos.">
+                            BDOO
+                        </abbr>
+                        .
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>
+                            Posibilidad 3
+                        </strong>
+                        : Utilizar un almacén creado especialmente para esta finalidad.
+                    </p>
+                </li>
+            </ul>
+            <br/><br/></li>
+    </ul>
+</div><h1 class="title">
+    3.- XQuery.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Una vez que María vuelve de vacaciones Juan y Félix le ponen al día de sus estudios.
+    </p>
+    <p>
+        La única cuestión que
+        <b>
+            queda por decidir es el modo de acceder a los datos guardados en los
+            archivos XML.
+        </b>
+        <br>
+        Juan les explica que existe un lenguaje semejante al SQL, con el que están
+        familiarizados, llamado
+        <b>
+            XQuery
+        </b>
+        y que a su vez está basado en
+        <b>
+            XPath
+        </b>
+        .
+        <br/></p>
+</div><h1 class="title">
+    3.1.- Aplicaciones.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Una vez que hemos visto la definición del lenguaje y sus principales requerimientos, queda pensar, ¿para
+        qué se utiliza?
+    </p>
+    <p>
+        Sus principales aplicaciones se resumen en tres:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Recuperar información a partir de conjuntos de datos XML
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Transformar unas estructuras de datos XML
+            </strong>
+            en otras estructuras que organizan la
+            información de forma diferente.
+        </li>
+        <li>
+            <strong>
+                Ofrecer una alternativa a
+                <abbr title="Extensible Stylesheet Language  Transformations, significa Transformaciones XSL.">
+                    XSLT
+                </abbr>
+            </strong>
+            para realizar transformaciones de datos en XML a otro tipo de
+            representaciones, como
+            <abbr title="HyperText Markup Language, significa  Lenguaje de Marcado de Hipertexto.">
+                HTML
+            </abbr>
+            o
+            <abbr title="Portable Document Format, significa Formato  de Documento Portatil.">
+                PDF
+            </abbr>
+            .
+        </li>
+    </ul>
+    <p>
+        ¿Y cuáles son los motores XQuery de
+        código
+        abierto
+        más relevantes y sus características principales?
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Qexo:
+            </strong>
+            escrito en Java y con licencia
+            <abbr title="General Public License significa Licencia  Pública General.">
+                GPL
+            </abbr>
+            que se
+            distribuye integrado dentro del
+            paquete
+            Kawa.
+        </li>
+        <li>
+            <strong>
+                Saxon:
+            </strong>
+            escrito en Java y distribuido en dos paquetes:
+            <ul>
+                <li>
+                    Saxon-B es open-source bajo licencia GPL y contiene una implementación básica de XSLT 2.0 y
+                    XQuery.
+                </li>
+                <li>
+                    Saxon-SA, contiene un procesador completo XSLT y XQuery pero tiene licencia propietaria, aunque
+                    está disponible una licencia de evaluación de 30 días.
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Qizx/open:
+            </strong>
+            es una implementación Java de todas las características del lenguaje
+            excepto la importación y validación de XML-Schemas. Es uno de los motores con licencia GPL más completo
+            que existe.
+        </li>
+    </ul>
+    <p>
+        ¿Qué otras herramientas relacionadas con XQuery existen?
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Xquark Bridge:
+            </strong>
+            es una herramienta que permite importar y exportar datos a bases de
+            datos relacionales utilizando XML, ofreciendo, por tanto, la posibilidad de manejar estructuras XML y
+            realizar la transformación a objetos de la base de datos, y viceversa. Además XQuark respeta las
+            restricciones de integridad y transforma las relaciones implícitas en los documentos XML, en relaciones
+            explícitas en la base de datos.
+            <p>
+                También soporta la consulta y manipulación de los datos en formato XML utilizando el lenguaje XQuery.
+                XQuark-Bridge soporta
+                MySQL
+                ,
+                Oracle
+                ,
+                SQLServer
+                y
+                SyBase
+                , tiene una licencia
+                <abbr title="Lesser General Public License significa  Licencia Pública General Reducida.">
+                    LGPL
+                </abbr>
+                .
+            </p>
+        </li>
+        <li>
+            <strong>
+                BumbleBee:
+            </strong>
+            es un entorno de prueba automático, creado para evaluar motores de XQuery
+            y validar consultas XQuery. BumbleBee permite entre otras cosas, comprobar si una versión más moderna de
+            nuestro motor permite seguir ejecutando nuestras consultas.
+            <p>
+                BumbleBee se distribuye con un conjunto de pruebas ya preparadas y además, ofrece un entorno sencillo
+                para redactar y ejecutar nuestras propias pruebas. Soporta los motores XQuery de código abierto: Qexo,
+                Qizx/open y Saxon y los motores XQuery propietarios: Cerisent, Ipedo, IPSI-XQ y X-Hive.
+                <br>
+                Es
+                software propietario aunque está disponible una versión de demostración completamente funcional
+                durante 30 días.
+                <br/></p>
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-cabierto">
+        <p>
+            Código abierto es la expresión con la que se conoce al software distribuido y desarrollado libremente.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-kawa">
+        <p>
+            Kawa es un lenguaje integrado en un entorno de trabajo (framework) escrito en Java que implementa el
+            lenguaje de programación Scheme, y puede ser utilizado para implementar otros lenguajes. Es una parte
+            del proyecto GNU.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-sql">
+        <p>
+            MySQL es un sistema de gestión de bases de datos relacional, multihilo y multiusuario.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-oracle">
+        <p>
+            Oracle Database es un sistema de gestión de base de datos objeto-relacional desarrollado por Oracle
+            Corporation.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-sqlserver">
+        <p>
+            Microsoft SQL Server es un sistema para la gestión de bases de datos producido por Microsoft basado en
+            el modelo relacional.
+        </p>
+    </div>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-sybase">
+        <p>
+            Sybase es una de bases de datos altamente optimizada para inteligencia empresarial, desarrollado por la
+            empresa Sybase, llamado ahora Sap Sybase IQ debido a la compra de la empresa Sybase por parte de Sap.
+        </p>
+    </div>
+</div><h1 class="title">
+    3.2.- Requerimientos técnicos.
+</h1><div class="iDevice_content">
+
+    <div class="page" title="Page 7">
+        <div class="layoutArea">
+            <div class="column">
+                <p>
+           <span>
+            El grupo de trabajo en XQuery del W3C[20] ha definido un conjunto de
+            <strong>
+             requerimientos
+                        técnicos
+            </strong>
+            para este lenguaje. Los más importantes se detallan a continuación:
+           </span>
+                </p>
+                <ul class="lista_verificacion">
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              XQuery debe ser un
+              <strong>
+               lenguaje declarativo
+              </strong>
+              . Al igual
+                          que SQL hay que indicar que se quiere, no la manera de obtenerlo.
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              XQuery debe ser
+              <strong>
+               independiente
+              </strong>
+              del protocolo de
+                          acceso a la colección de datos. Una consulta en XQuery debe funcionar igual al consultar un
+                          archivo local que al consultar un servidor de bases de datos que al consultar un archivo XML
+                          en un servidor web.
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              Las consultas y los resultados
+              <strong>
+               deben respetar el modelo de
+                            datos XML
+              </strong>
+              .
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              Las consultas y los resultados deben ofrecer
+              <strong>
+               soporte para los
+                            namespace
+              </strong>
+             </span>
+                            <strong>
+                                4
+                            </strong>
+                            <span>
+              .
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              Debe ser
+              <strong>
+               capaz de soportar XML-Schemas y DTDs
+              </strong>
+              y
+                          también debe ser
+             </span>
+                        </p>
+                        <p>
+             <span>
+              <strong>
+               capaz de trabajar sin ninguno de ellos
+              </strong>
+              .
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              XQuery debe poder trabajar con
+              <strong>
+               independencia
+              </strong>
+              de la
+                          estructura del
+             </span>
+                            documento, esto es, sin necesidad de conocerla.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              XQuery debe
+              <strong>
+               soportar
+              </strong>
+              <strong>
+               tipos
+              </strong>
+              simples,
+                          como enteros y cadenas, y tipos
+             </span>
+                            <span style="font-size: 1em;">
+              complejos, como un
+                          nodo compuesto por varios nodos hijos.
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span>
+             </span>
+                            <span>
+              Las consultan deben
+              <strong>
+               soportar cuantificadores
+              </strong>
+              universales (para todo) y
+             </span>
+                            <span style="font-size: 1em;">
+              existenciales
+                          (existe).
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span style="font-size: 1em;">
+             </span>
+                            Las consultas deben
+                            <strong>
+                                soportar operaciones
+                            </strong>
+                            sobre jerarquías de nodos y secuencias de nodos.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            Debe ser posible en una consulta
+                            <strong>
+                                combinar
+                            </strong>
+                            información de múltiples fuentes.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span style="font-size: 1em;">
+              Las consultas deben ser capaces de manipular los datos
+              <strong>
+               independientemente del origen
+              </strong>
+              de estos.
+             </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+             <span style="font-size: 1em;">
+             </span>
+                            Mediante XQuery debe ser posible
+                            <strong>
+                                definir
+                            </strong>
+                            consultas que transformen las estructuras de información originales y debe ser posible
+                            <strong>
+                                crear
+                            </strong>
+                            nuevas estructuras de datos.
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            El lenguaje de consulta debe ser
+                            <strong>
+                                independiente de la sintaxis
+                            </strong>
+                            , esto es, debe
+                            ser posible que existan varias sintaxis distintas para expresar una misma consulta en
+                            XQuery.
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.3.- Modelo de datos.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Aunque XQuery y SQL puedan considerarse similares, el modelo de datos sobre el que se sustenta XQuery es
+        muy distinto del modelo de datos relacional sobre el que sustenta SQL, ya que XML incluye conceptos como
+        jerarquía y orden de los datos que no están presentes en el modelo relacional.
+    </p>
+    <p>
+        Por ejemplo, a diferencia de SQL, en XQuery el orden en que se encuentren los datos es importante, ya que
+        no es lo mismo buscar una etiqueta “
+        <b>
+            ” dentro de una etiqueta “
+            ” que todas las etiquetas “
+
+            ” del
+            documento (que pueden estar anidadas dentro de una etiqueta “
+            <b>
+                ” o no).
+            </b>
+        </b>
+    </p>
+    <b>
+        <b>
+            La entrada y la salida de una consulta XQuery se define en términos de un modelo de datos. Dicho
+            modelo de datos de la consulta proporciona una representación abstracta de uno o más documentos XML
+            (o fragmentos de documentos).
+
+
+            Las principales características de este modelo de datos son:
+
+
+
+            Se basa en la
+
+            definición de secuencia
+
+            , como una colección ordenada de cero o más ítems.
+            Éstas pueden ser heterogéneas, es decir pueden contener varios tipos de nodos y valores atómicos.
+            Sin embargo, una secuencia nunca puede ser un ítem de otra secuencia.
+
+
+
+            Orden del documento
+
+            : corresponde al orden en que los nodos aparecerían si la jerarquía de
+            nodos fuese representada en formato XML, (si el primer carácter de un nodo ocurre antes que el
+            primer carácter de otro nodo, lo precederá también en el orden del documento).
+
+
+            Contempla un
+
+            valor especial llamado “error value”
+
+            que es el resultado de evaluar una
+            expresión que contiene un error.
+        </b>
+    </b>
+</div><h1 class="title">
+    3.4.- Expresiones.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        <strong>
+            Una consulta en XQuery es una expresión que lee una secuencia de datos en XML, y devuelve
+            como resultado otra secuencia de datos en XML.
+        </strong>
+    </p>
+    <p>
+        El valor de una expresión es una secuencia heterogénea de nodos y valores atómicos.
+        <br>
+        La mayoría de
+        las expresiones están compuestas por la combinación de expresiones más simples unidas mediante
+        operadores y palabras reservadas.
+        <br/></p>
+    <p>
+        Ya hemos visto que Xpath es un lenguaje declarativo para la localización de nodos y fragmentos de
+        información en árboles XML.
+        <br>
+        Puesto que XQuery ha sido construido sobre la base de Xpath y realiza
+        la selección de información y la iteración a través del conjunto de datos basándose en dicho lenguaje,
+        toda expresión XPath también es una consulta Xquery válida.
+        <br/></p>
+    <p>
+        Los comentarios en XQuery están limitados entre caras sonrientes, es decir: (: Esto es un comentario
+        XQuery :).
+    </p>
+    <p>
+        En un documento XQuery los caracteres &#123; &#125; delimitan las expresiones que son evaluadas para crear un
+        documento nuevo.
+    </p>
+    <p>
+        XQuery admite expresiones condicionales del tipo
+        <strong>
+            if-then-else
+        </strong>
+        con la misma semántica
+        que tienen en los lenguajes de programación habituales.
+    </p>
+    <p>
+        Las consultas XQuery pueden estar formadas por hasta cinco tipos de cláusulas diferentes, siguen la
+        norma
+        <abbr title="For,  Let, Where, Order by y Return, son las principales  cláusulas de XQuery">
+            FLWOR
+        </abbr>
+        (que se pronuncia "flower"). Estas cláusulas son los bloques principales del XQuery, equivalen a las
+        cláusulas
+        <strong>
+            select, from, where, group by, having, order by
+        </strong>
+        y
+        <strong>
+            limit
+        </strong>
+        de
+        <strong>
+            SQL.
+        </strong>
+    </p>
+    <p>
+        En una sentencia FLWOR al menos ha de existir una cláusula FOR o una LET, el resto, si existen, han
+        de
+        <strong>
+            respetar escrupulosamente
+        </strong>
+        el orden dado por el nombre, FLWOR.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                For
+            </strong>
+            :&nbsp;Vincula una o más variables a expresiones escritas en XPath, creando un
+            flujo de tuplas en el que cada tupla está vinculada a una de las variable.
+        </li>
+        <li>
+            <strong>
+                Let
+            </strong>
+            :&nbsp;Vincula una variable al resultado completo de una expresión añadiendo
+            esos vínculos a las tuplas generadas por una cláusula for o, si no existe ninguna cláusula for,
+            creando una única tupla que contenga esos vínculos.
+        </li>
+        <li>
+            <strong>
+                Where
+            </strong>
+            :&nbsp;Filtra las tuplas eliminando todos los valores que no cumplan las
+            condiciones dadas.
+        </li>
+        <li>
+            <strong>
+                Order by
+            </strong>
+            :&nbsp;Ordena las tuplas según el criterio dado.
+        </li>
+        <li>
+            <strong>
+                Return
+            </strong>
+            :&nbsp;Construye el resultado de la consulta para una tupla dada, después
+            de haber sido filtrada por la cláusula where y ordenada por la cláusula order by
+        </li>
+    </ul>
+    <p>
+          <span style="font-size: 1em;">
+           Con estas sentencias se consigue buena parte de la funcionalidad que
+                    diferencia a XQuery de XPath. Entre otras cosas permite construir el documento que será la salida de
+                    la sentencia.
+          </span>
+    </p>
+    <p>
+        Una consulta XQuery está formada por dos partes:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Prólogo
+            </strong>
+            : Lugar donde se declaran los espacios de nombres, de funciones,
+            variables, etc.
+        </li>
+        <li>
+            <strong>
+                Expresión
+            </strong>
+            : Consulta propiamente dicha.
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.5.- Cláusulas.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+           Hemos visto el modo de crear sentencias FLWOR, vamos ahora a
+                    estudiar aisladamente cada una de las cláusulas que pueden formar estas sentencias.
+          </span>
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            <p>
+                <b>
+                    FOR
+                </b>
+                : asocia una o más variables con cada nodo que encuentre en la colección de datos. Si
+                en la consulta aparece más de una cláusula FOR (o más de una variable en una cláusula FOR), el
+                resultado es el producto cartesiano de dichas variables.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    LET
+                </b>
+                : vincula las variables al resultado de una expresión. Si esta cláusula aparece en una
+                sentencia en la que ya hay al menos una cláusula FOR, los valores de la variable vinculada por la
+                cláusula LET se añaden a cada una de las tuplas generadas por la cláusula FOR.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    WHERE
+                </b>
+                : filtra tuplas producidas por las cláusulas FOR y LET, quedando solo aquellas que
+                cumplen con la condición.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    ORDER BY
+                </b>
+                : ordena las tuplas generadas por FOR y LET después de que han sido filtradas por
+                la cláusula WHERE. Por defecto el orden es ascendiente, pero se puede usar el modificador
+                <b>
+                    descending
+                </b>
+                para cambiar el sentido del orden.
+            </p>
+        </li>
+        <li>
+            <p>
+                <b>
+                    RETURN:
+                </b>
+                construye el resultado de la expresión FLWOR para una tupla dada.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Existen una serie de reglas que debe cumplir cualquier consulta escrita en XQuery:
+    </p>
+    <div class="page" title="Page 14">
+        <div class="layoutArea">
+            <div class="column">
+                <ul class="lista_verificacion">
+                    <li>
+                        <p>
+               <span>
+               </span>
+                            <span>
+                For y let sirven para crear las tuplas con las que trabajará el
+                              resto de las cláusulas de la consulta y pueden usarse tantas veces como se desee en una
+                              consulta, incluso dentro de otras cláusulas. Sin embargo solo puede declararse una única
+                              cláusula where, una única cláusula order by y una única cláusula return.
+               </span>
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+               <span>
+               </span>
+                            <span>
+                Ninguna de las cláusulas FLWOR es obligatoria en una consulta
+                              XQuery. Por ejemplo, una expresión XPath, como la que se muestra a continuación, es una
+                              consulta válida y no contiene ninguna de las cláusulas FLWOR.
+               </span>
+                        </p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.6.- Diferencias entre for y let.
+</h1><div class="iDevice_content">
+    <div class="page" title="Page 15">
+        <div class="layoutArea">
+            <div class="column">
+
+                <p>
+             <span>
+              <br>
+              Para ver claramente la diferencia entre una cláusula for y una cláusula let vamos a
+                          comenzar estudiando una misma consulta que muestre los títulos de todos los libros almacenados
+                          en el archivo “libros.xml”, primero con una cláusula for y, a continuación, con una cláusula
+                          let y vamos a detallar que diferencia hay en la información obtenida.
+             <br/></span>
+                </p>
+                <p>
+             <span>
+              La consulta con una cláusula for se muestra a continuación:
+             </span>
+                </p>
+                <div class="pre-code">
+                    <div>
+              <pre ngNonBindable>for
+  $d in doc("libros.xml")/bib/libro/titulo
+return
+  &lt;titulos&gt;&#123; $d &#125;&lt;/titulos&gt;</pre>
+                    </div>
+                </div>
+                <div class="page" title="Page 15">
+                    <div class="layoutArea">
+                        <div class="column">
+                            <p>
+                <span>
+                 El resultado de esta consulta se muestra a continuación:
+                </span>
+                            </p>
+                            <div class="pre-code">
+                                <div>
+                 <pre ngNonBindable>&lt;titulos&gt;
+     &lt;titulo&gt;TCP/IP Illustrated&lt;/titulo&gt;
+&lt;/titulos&gt;
+&lt;titulos&gt;
+     &lt;titulo&gt;Advan Programming for Unix environment&lt;/titulo&gt;
+&lt;/titulos&gt;
+&lt;titulos&gt;
+     &lt;titulo&gt;Data on the Web&lt;/titulo&gt;
+&lt;/titulos&gt;
+&lt;titulos&gt;
+     &lt;titulo&gt; Economics of Technology for Digital TV&lt;/titulo&gt;
+&lt;/titulos&gt;</pre>
+                                </div>
+                            </div>
+                            <div class="page" title="Page 15">
+                                <div class="layoutArea">
+                                    <div class="column">
+                                        <p>
+                   <span>
+                    A continuación repetimos la misma consulta sustituyendo la cláusula for una
+                                      cláusula let:
+                   </span>
+                                        </p>
+                                        <div class="pre-code">
+                                            <div>
+                    <pre ngNonBindable>let
+  $d := doc("libros.xml")/bib/libro/titulo
+return
+  &lt;titulos&gt;&#123; $d &#125;&lt;/titulos&gt;</pre>
+                                            </div>
+                                        </div>
+                                        <div class="page" title="Page 15">
+                                            <div class="layoutArea">
+                                                <div class="column">
+                                                    <p>
+                      <span>
+                       El resultado de esta consulta se muestra a continuación:
+                      </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pre-code">
+                                            <div>
+                    <pre ngNonBindable>&lt;titulos&gt;
+     &lt;titulo&gt;TCP/IP Illustrated&lt;/titulo&gt;
+     &lt;titulo&gt;Advan Programming for Unix environment&lt;/titulo&gt;
+     &lt;titulo&gt;Data on the Web&lt;/titulo&gt;
+     &lt;titulo&gt; Economics of Technology for Digital TV&lt;/titulo&gt;
+&lt;/titulos&gt;</pre>
+                                            </div>
+                                        </div>
+                                        <div class="page" title="Page 16">
+                                            <div class="layoutArea">
+                                                <div class="column">
+                                                    <p>
+                      <span>
+                       Como se puede ver comparando los resultados obtenidos por ambas
+                                            consultas:
+                      </span>
+                                                    </p>
+                                                    <ul class="lista_verificacion">
+                                                        <li>
+                       <span>
+                        <strong>
+                         La cláusula for
+                        </strong>
+                        vincula una variable con cada nodo
+                                              que encuentre en la colección de datos. En este ejemplo la variable $d va
+                                              vinculándose a cada uno de los títulos de todos los libros del archivo
+                                              "libros.xml", creando una tupla por cada título. Por este motivo aparece
+                                              repetido el par de etiquetas
+                        < titulos>
+                         ...
+                        < /titulos>
+                        para cada título.
+                       </span>
+                                                        </li>
+                                                        <li>
+                       <span>
+                        <strong>
+                         La cláusula let
+                        </strong>
+                        , en cambio, vincula una variable
+                                              con todo el resultado de una expresión. En este ejemplo, la variable $d se
+                                              vincula a todos los títulos de todos los libros del archivo "libros.xml",
+                                              creando una única tupla con todos esos títulos. Por este motivo solo
+                                              aparece el par de etiquetas
+                        < titulos>
+                         ...
+                        < /titulos>
+                        una única
+                                              vez.
+                       </span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    3.7.- Funciones.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+           Ahora que conocemos las cláusulas que sustentan el lenguaje
+          </span>
+        <b style="font-size: 1em;">
+            XQuery
+        </b>
+        <span style="font-size: 1em;">
+           , vamos a ocuparnos de las
+          </span>
+        <b style="font-size: 1em;">
+            funciones que soporta.
+        </b>
+        <br/></p>
+    <p>
+        Estas son funciones matemáticas, de cadenas, para el tratamiento de expresiones regulares,
+        comparaciones de fechas y horas, manipulación de nodos XML, manipulación de secuencias, comprobación y
+        conversión de tipos y lógica booleana. Además permite definir funciones propias y funciones
+        dependientes del entorno de ejecución del motor XQuery. Las funciones más importantes se muestran a
+        continuación:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <b>
+                Funciones numéricas
+            </b>
+            <ul>
+                <li>
+                    <b>
+                        floor(),
+                    </b>
+                    que devuelve el valor numérico inferior más próximo al dado
+                    <b>
+                        .
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        ceiling(),
+                    </b>
+                    que devuelve el valor numérico superior más próximo al dado
+                    <b>
+                        .
+                    </b>
+                </li>
+                <li>
+                    <b>
+                        round(),
+                    </b>
+                    que redondea el valor dado al más próximo.
+                </li>
+                <li>
+                    <b>
+                        count(),
+                    </b>
+                    determina el número de ítems en una colección.
+                </li>
+                <li>
+                    <b>
+                        min()
+                    </b>
+                    o
+                    <b>
+                        max(),
+                    </b>
+                    devuelven respectivamente el mínimo y el máximo de los valores de
+                    los nodos dados.
+                </li>
+                <li>
+                    <b>
+                        avg(),
+                    </b>
+                    calcula el valor medio de los valores dados.
+                </li>
+                <li>
+                    <b>
+                        sum(),
+                    </b>
+                    calcula la suma total de una cantidad de ítems dados.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <b>
+                Funciones de cadenas de texto
+            </b>
+            <ul>
+                <li>
+                    <b>
+                        concat(),
+                    </b>
+                    devuelve una cadena construida por la unión de dos cadenas dadas.
+                </li>
+                <li>
+                    <b>
+                        string-length(),
+                    </b>
+                    devuelve la cantidad de caracteres que forman una cadena.
+                </li>
+                <li>
+                    <b>
+                        startswith(), ends-with(),
+                    </b>
+                    determinan si una cadena dada comienza o termina,
+                    respectivamente, con otra cadena dada.
+                </li>
+                <li>
+                    <b>
+                        upper-case(), lower-case(),
+                    </b>
+                    devuelve la cadena dada en mayúsculas o minúsculas
+                    respectivamente.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <b>
+                Funciones de uso general
+            </b>
+            <ul>
+                <li>
+                    <b>
+                        empty(),
+                    </b>
+                    devuelve “
+                    <b>
+                        true
+                    </b>
+                    ” cuando la secuencia dada no contiene ningún elemento.
+                </li>
+                <li>
+                    <b>
+                        exits(),
+                    </b>
+                    devuelve “
+                    <b>
+                        true
+                    </b>
+                    ” cuando una secuencia contiene, al menos, un elemento.
+                </li>
+                <li>
+                    <b>
+                        distinct-values(),
+                    </b>
+                    extrae los valores de una secuencia de nodos y crea una nueva
+                    secuencia con valores únicos, eliminando los nodos duplicados.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <ul class="lista_verificacion">
+        <li>
+            <b>
+                Cuantificadores existenciales:
+            </b>
+            <ul>
+                <li>
+                    <b>
+                        some,
+                    </b>
+                    <b>
+                        every
+                    </b>
+                    , permiten definir consultas que devuelven algún, o todos los
+                    elementos, que verifiquen la condición dada.
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <p>
+        Además de estas funciones que están definidas, en el lenguaje XQuery se permite al desarrollador
+        construir sus propias funciones:
+    </p>
+    <p>
+        <strong>
+            declare
+        </strong>
+        nombre_funcion($param1 as tipo_dato1, $param2 as tipo_dato2,… $paramN as
+        tipo_datoN)
+        <br>
+        <strong>
+            as
+        </strong>
+        tipo_dato_devuelto
+        <br>
+        &#123;
+        <br>
+        ...CÓDIGO DE LA FUNCIÓN...
+        <br>
+        &#125;
+        <br/><br/><br/><br/></p>
+</div><h1 class="title">
+    3.8.- Operadores.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+           Veamos ahora algunos de los operadores más importantes agrupados
+                    según su funcionalidad:
+          </span>
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li style="margin-bottom: 25px;">
+            <b>
+                Comparación de valores:
+            </b>
+            Comparan dos valores escalares y
+            produce un error si alguno de los operandos es una secuencia de longitud mayor de 1. Estos
+            operadores son:
+            <ul>
+                <li>
+                    <b>
+                        eq
+                    </b>
+                    , igual.
+                </li>
+                <li>
+                    <b>
+                        ne
+                    </b>
+                    , no igual.
+                </li>
+                <li>
+                    <b>
+                        lt
+                    </b>
+                    , menor que.
+                </li>
+                <li>
+                    <b>
+                        le
+                    </b>
+                    , menor o igual que.
+                </li>
+                <li>
+                    <b>
+                        gt
+                    </b>
+                    , mayor que.
+                </li>
+                <li>
+                    <b>
+                        ge
+                    </b>
+                    , mayor o igual que.
+                </li>
+            </ul>
+        </li>
+        <li style="margin-bottom: 25px;">
+            <b>
+                Comparación generales:
+            </b>
+            Permiten comparar operandos que sean
+            secuencias.
+            <ul>
+                <li>
+                    <b>
+                        =
+                    </b>
+                    , igual.
+                </li>
+                <li>
+                    <b>
+                        !=
+                    </b>
+                    , distinto.
+                </li>
+                <li>
+                    <b>
+                        &gt;
+                    </b>
+                    , mayor que.
+                </li>
+                <li>
+                    <b>
+                        &gt;=
+                    </b>
+                    , mayor o igual que.
+                </li>
+                <li>
+                    <b>
+                        &lt;,
+                    </b>
+                    menor que.
+                </li>
+                <li>
+                    <b>
+                        &lt;=
+                    </b>
+                    , menor o igual que.
+                </li>
+            </ul>
+        </li>
+        <li style="margin-bottom: 25px;">
+            <b>
+                Comparación de nodos:
+            </b>
+            Comparan la identidad de dos nodos.
+            <ul>
+                <li>
+                    <b>
+                        is
+                    </b>
+                    , devuelve true si las dos variables que actúan de operandos están ligadas al mismo
+                    nodo.
+                </li>
+                <li>
+                    <b>
+                        is not
+                    </b>
+                    , devuelve true si las dos variables no están ligadas al mismo nodo.
+                </li>
+            </ul>
+        </li>
+        <li style="margin-bottom: 25px;">
+            <b>
+                Comparación de órdenes de los nodos:
+            </b>
+            <b>
+                &lt;&lt;
+            </b>
+            , compara
+            la posición de dos nodos. Devuelve “
+            <b>
+                true
+            </b>
+            “ si el nodo ligado al primer operando ocurre primero
+            en el orden del documento que el nodo ligado al segundo.
+        </li>
+        <li style="margin-bottom: 25px;">
+            <b>
+                Lógicos:
+            </b>
+            <b>
+                and
+            </b>
+            y
+            <b>
+                or
+            </b>
+            Se emplean para combinar
+            condiciones lógicas dentro de un predicado.
+        </li>
+        <li style="margin-bottom: 25px;">
+            <b>
+                Secuencias de nodos:
+            </b>
+            Devuelven secuencias de nodos en el orden
+            del documento y eliminan duplicados de las secuencias resultado.
+            <ul>
+                <li>
+                    <b>
+                        Unión
+                    </b>
+                    , devuelve una secuencia que contiene todos los nodos que aparecen en alguno de
+                    los dos operandos que recibe.
+                </li>
+                <li>
+                    <b>
+                        Intersect
+                    </b>
+                    , devuelve una secuencia que contiene todos los nodos que aparecen en los dos
+                    operandos que recibe.
+                </li>
+                <li>
+                    <b>
+                        Except
+                    </b>
+                    , devuelve una secuencia que contiene todos los nodos que aparecen en el primer
+                    operando que recibe y que no aparecen en el segundo.
+                </li>
+            </ul>
+        </li>
+        <li style="margin-bottom: 25px;">
+            <b>
+                Aritméticos
+            </b>
+            :
+            <b>
+                +, -, *, div y mod
+            </b>
+            , devuelven
+            respectivamente la suma, diferencia, producto, cociente y resto de operar dos números dados.
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Documentación de apoyo.
+</h1><div class="iDevice_content">
+    <div class="page" title="Page 1">
+        <div class="section">
+            <div class="layoutArea">
+                <div class="column">
+                    <ul class="lista_verificacion">
+                        <li>
+               <span>
+                XQuery (Universidad de Sevilla):
+                Descargar PDF
+               </span>
+                            <span class="tamano">
+                (187
+                <abbr title="KBytes">
+                 KB
+                </abbr>
+                )
+               </span>
+                        </li>
+                    </ul>
+                    <ul class="lista_verificacion">
+                        <li>
+               <span>
+                Resumen XQuery (Universidad de Oviedo):
+                Descargar PDF
+               </span>
+                            <span class="tamano">
+                (172
+                <abbr title="KBytes">
+                 KB
+                </abbr>
+                )
+               </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

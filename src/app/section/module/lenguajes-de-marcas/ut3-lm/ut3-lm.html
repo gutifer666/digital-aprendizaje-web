@@ -1,0 +1,949 @@
+<h1 class="title">
+    Aplicación de los lenguajes de marcas a la sindicación de contenidos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Desde que
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Félix
+        </strong>
+        se asociaron para
+        formar la asesoría legal y empresarial, la empresa ha ido creciendo. Después de
+        lograr compartir la información de sus negocios individuales con la ayuda de
+        <strong>
+            Juan
+        </strong>
+        , su amigo Técnico Superior en Administración de Aplicaciones
+        Informáticas, dueño de una empresa de consultoría informática y
+        <strong>
+            Marina
+        </strong>
+        , la trabajadora de esta empresa, y publicar la página web de
+        la empresa, el número de clientes de su negocio aumentó considerablemente, tal y
+        como esperaban.
+        <br/></p>
+    <p>
+        Con motivo de la cercanía de la navidad,
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Félix
+        </strong>
+        invitan a cenar a los colaboradores y trabajadores de la
+        empresa, entre ellos se encuentran
+        <strong>
+            Juan
+        </strong>
+        y
+        <strong>
+            Marina
+        </strong>
+        ,
+        cuya empresa se ha convertido en la encargada de los asuntos informáticos de la
+        asesoría. Haciendo un repaso de los logros conseguidos con las mejoras informáticas,
+        bromean preguntando a
+        <strong>
+            Juan
+        </strong>
+        cuál es la siguiente tecnología a
+        utilizar para lograr mejorar los servicios que ofrecen a sus clientes.
+        <strong>
+            Juan,
+        </strong>
+        entre risas, les sorprende con su respuesta, comentando la
+        posibilidad de utilizar la web de la empresa para que los clientes puedan informarse
+        de noticias de actualidad que afecten a sus negocios. Esta propuesta les resulta muy
+        atractiva a
+        <strong>
+            María
+        </strong>
+        y
+        <strong>
+            Félix
+        </strong>
+        , que se interesan por el
+        modo de llevarla a cabo.
+    </p>
+</div><h1 class="title">
+    1.- Sindicación de contenidos.
+</h1><div class="iDevice_content">
+    <p>
+        <b>
+            Juan
+        </b>
+        les dice que basta con aplicar los lenguajes de marcas a la redifusión
+        de contenidos web para lograr el nuevo servicio.
+        <b>
+            María
+        </b>
+        quiere que le explique
+        con un poco más de detalle en qué consiste la redifusión de contenidos web.
+    </p>
+    <p>
+        <b>
+            Juan
+        </b>
+        comenta que esta tecnología permite utilizar contenidos que ya existen
+        en otras web y ofrecerlos como servicios a través de la propia Web. Siempre,
+        cumpliendo las licencias de las normas de uso de esos contenidos o, si es el caso,
+        respetando las condiciones del contrato que regula los derechos de ese contenido.
+    </p>
+</div><h1 class="title">
+    1.1.- Características.
+</h1><div class="iDevice_content">
+    <p>
+        Publicar en la web puede ser visto como un flujo de información. Para que una web sea
+        suministradora de un canal en su cabecera
+        <strong>
+            &lt;head&gt;
+        </strong>
+        hay que
+        incluir&nbsp;un enlace al canal de contenidos. Para hacer esto hay que usar una de las dos
+        líneas siguientes, dependiendo de que el canal esté hecho con un estándar
+        <strong>
+            RSS
+        </strong>
+        o con uno
+        <strong>
+            Atom
+        </strong>
+        , respectivamente:
+    </p>
+    <div class="texto_izquierda">
+        <ul class="lista_verificacion">
+            <li>
+                &lt;link rel="alternate" type="application/rss+xml"
+                title="titulo_que_tendrá_el_enlace" href="/feed/fichero_rss.xml" /&gt;
+            </li>
+            <li>
+                &lt;link rel="alternate" type="application/atom+xml"
+                title="titulo_que_tendrá_el_enlace" href="/feed/fichero_atom.xml" /&gt;
+            </li>
+        </ul>
+    </div>
+
+    <p>
+        <span style="font-size: 1em;">
+         Supongamos que el flujo de información de la publicación tiene
+								su origen en unos ficheros localizados en un ordenador local. Por tanto el trabajo es
+								hacer que dicha información llegue a los usuarios y usuarias que leen. Cuando la
+								información se ha codificado en un documento HTML,&nbsp;esto se logra actualizando dicho
+								documento en el directorio adecuado del servidor web que contiene la página.
+        </span>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         Además tendremos que indicar el enlace para acceder a dicho
+								archivo,
+         <span>
+          dependiendo del
+									estándar
+          <span>
+          </span>
+         </span>
+         <strong>
+          RSS
+         </strong>
+         <span>
+          <span>
+          </span>
+          o
+         </span>
+         <strong>
+          Atom
+         </strong>
+         <span>
+          , un ejemplo podría ser
+         </span>
+         :
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            &lt;a rel="alternate" type="application/rss+xml" href="/feed/fichero_rss.xml"&gt;Pulsa
+            aquí&lt;/a&gt;
+        </li>
+        <li>
+            &lt;a rel="alternate" type="application/atom+xml" href="/feed/fichero_atom.xml"&gt;Pulsa
+            aquí&lt;/a&gt;
+        </li>
+    </ul>
+    <p>
+        Actualmente es habitual el uso de algún CMS.&nbsp;En este caso los contenidos se encuentran
+        en un repositorio y, antes de ser servidos al cliente en el formato adecuado, sufren algún
+        tipo de transformación. La parte superior de la figura muestra la estructura del flujo de la
+        información en este caso. Incluso puede haber más de un repositorio.
+    </p>
+    <p>
+        Esta transformación puede corresponder a uno de los siguientes casos:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Documento XML &nbsp;-&gt; Transformación XSLT&nbsp;-&gt; Documento XHTML.
+        </li>
+        <li>
+            Base de datos -&gt; script en Perl -&gt; Documento HTML.
+        </li>
+        <li>
+            Texto plano -&gt; ASP&nbsp;-&gt; Documento HTML.
+        </li>
+        <li>
+            Mente del autor -&gt; Bloc de notas -&gt; Documento HTML.
+        </li>
+    </ul>
+    <p>
+        Al utilizar un CMS de cualquier tipo la transformación puede replicarse. Además de tener más
+        de una entrada de información podríamos tener varias salidas. Por ejemplo, podemos generar
+        tanto ficheros HTML como canales RSS&nbsp;tal y como se muestra en la parte inferior de la
+        figura.
+    </p>
+</div><h1 class="title">
+    1.2.- Ventajas de la redifusión de contenidos.
+</h1><div class="iDevice_content">
+    <p>
+        ¿Cuáles serán las ventajas de utilizar los canales de contenidos de otros propietarios?
+    </p>
+
+    <p>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            Aumentar el tráfico de nuestro sitio web.
+        </li>
+        <li>
+            Ayuda a que los usuarios y usuarias visiten frecuentemente el sitio web.
+        </li>
+        <li>
+            Favorece el posicionamiento del sitio en buscadores.
+        </li>
+        <li>
+            Ayuda a establecer relaciones entre distintos sitios web dentro de la comunidad.
+        </li>
+        <li>
+            Permite a otras personas añadir características a los servicios del sitio web (por
+            ejemplo, notificaciones de actualizaciones mediante mensajes instantáneos), aunque se
+            requiera de tecnologías adicionales.
+        </li>
+        <li>
+            Enriquece Internet impulsando la tecnología semántica&nbsp;y fomentando la
+            reutilización.
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.- Ámbitos de aplicación.
+</h1><div class="iDevice_content">
+    <p>
+        Tras conocer las ventajas de la redifusión web, María y Félix se interesan por el
+        tipo de datos que se pueden sindicar, ya que esto puede ser determinante para saber
+        con que formatos de ficheros se pueden trabajar.
+    </p>
+    <p>
+        Juan les contesta que, aunque lo más habitual es el texto, debido a que es el
+        formato de datos más habitual de los blogs, en realidad se puede sindicar cualquier
+        tipo de información y les pone como ejemplo de redifusión de videos a Youtube.
+    </p>
+</div><h1 class="title">
+    3.- Tecnologías de creación de canales de contenidos.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        <br>
+        Viendo que el formato de la información a distribuir no plantea ningún problema,
+        <strong>
+            María
+        </strong>
+        se cuestiona si para ofrecer estos servicios de información a
+        sus clientes basta con hacer un enlace a los ficheros que contienen la información
+        utilizando HTML o XHTML.
+        <br/></p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        le informa que para sindicar contenidos hay que utilizar alguno
+        de los estándares de sindicación, los cuales están basados en XML y se agrupan en
+        dos estándares:&nbsp;RSS y
+        <span style="font-style: italic; font-size: 1em;">
+           Atom.
+          </span>
+    </p>
+</div><h1 class="title">
+    4.- Estructura de los canales de contenidos.
+</h1><div class="iDevice_content">
+    Después de saber con qué lenguajes de marcas hay que trabajar,
+    <b>
+        Félix
+    </b>
+    pregunta qué
+    es lo necesario para poder establecer un canal de contenidos.
+    <p>
+        <b>
+            Juan
+        </b>
+        le informa de que el primer paso es generar un fichero en RSS que ha de
+        verificar las normas XML. Además de definir en él cuál es el estándar con el que se
+        va a trabajar, hay que definir un canal donde se establecerá el sitio web asociado
+        al mismo. Además en ese canal se definirán tantos ítems como sitios web se pretendan
+        sindicar.
+    </p>
+</div><h1 class="title">
+    4.1.- RSS.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        ¿Qué vamos a hacer ahora?
+    </p>
+    <p>
+        Vamos a construir un canal de contenidos utilizando el lenguaje RSS.
+    </p>
+    <p>
+        Para ello comenzaremos creando, con un editor de texto plano, un fichero con extensión rss.
+    </p>
+    <p>
+        La primera línea del mismo será, como hemos dicho en el apartado anterior, la
+        <strong>
+            declaración de xml
+        </strong>
+        y la
+        <strong>
+            definición de la codificación
+        </strong>
+        utilizada en el documento.
+    </p>
+    <p>
+        Después se determinará la
+        <strong>
+            versión de RSS
+        </strong>
+        utilizada mediante el elemento
+        <em>
+            <strong>
+                rss
+            </strong>
+        </em>
+        , que será el ejemplar del documento xml. Un ejemplo de esta
+        línea es:
+    </p>
+    <p>
+        &lt;rss version="2.0"&gt;
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <p>
+        Tras ello definiremos el canal. Para ello utilizamos el elemento
+        <em>
+            <strong>
+                channel
+            </strong>
+        </em>
+        , para su definición se han de incluir los siguientes
+        elementos:
+    </p>
+    <table class="tabla">
+        <caption>
+            Elementos para crear un canal en RSS
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Elemento
+            </th>
+            <th scope="col">
+                Definición
+            </th>
+        </tr>
+        <tr>
+            <td>
+                &lt;title&gt;
+            </td>
+            <td>
+                Es el título que se va a dar al sitio web. Se puede poner cualquier cosa.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;link&gt;
+            </td>
+            <td>
+                Dirección web de la página asociada al fichero rss.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;description&gt;
+            </td>
+            <td>
+                Breve comentario que defina la finalidad del sitio.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;language&gt;
+            </td>
+            <td>
+                Determina el idioma utilizado en el sitio, en el caso del español su valor será
+                <strong>
+                    es
+                </strong>
+                .
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;item&gt;
+            </td>
+            <td>
+                Definirá cada una de las secciones del canal.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        En el fondo estos ítems del canal RSS son links a otros recursos, cada uno de los cuales
+        tiene una descripción diferente. Los canales RSS son siempre usados con sistemas en los que
+        el contenido puede estar segmentado en partes independientes que pueden ser enlazadas.
+    </p>
+    <p>
+        Los elementos que debemos incluir en cada ítem son:
+    </p>
+    <table class="tabla">
+        <caption>
+            Elementos para definir un ítem en RSS
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Elemento
+            </th>
+            <th scope="col">
+                Definición
+            </th>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;title&gt;
+            </td>
+            <td>
+                Es el título del enlace al que se referencia (no tiene por qué coincidir con el
+                del canal).
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;link&gt;
+            </td>
+            <td>
+                URL de la página enlazada, que ha de pertenecer al dominio establecido en el
+                canal.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;description&gt;
+            </td>
+            <td>
+                Comentario que defina el contenido que ofrece este enlace..
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    4.2.- Atom.
+</h1><div class="iDevice_content">
+    <p>
+        <span style="font-size: 1em;">
+        </span>
+    </p>
+
+    <p>
+        <span style="font-size: 1em;">
+         <br>
+         En este caso construiremos el mismo canal de contenidos
+								utilizando el estándar Atom. Empezamos generando, con un editor de texto plano, un
+								fichero con extensión atom.
+        <br/></span>
+    </p>
+    <p>
+        Al igual que en el caso anterior la primera línea del mismo será la declaración de xml y la
+        definición de la codificación utilizada en el documento.
+    </p>
+    <p>
+        Tras ello definimos el canal, el estándar de atom y el lenguaje utilizado en el fichero. En
+        este caso usamos el elemento feed.
+    </p>
+    <p>
+        &lt;feed xmlns="http://www.w3.org/2005/Atom" xml:lang="es-es"&gt;
+    </p>
+    <p>
+    </p>
+    <p>
+        Para definir el canal, el elemento feed ha de incluir los siguientes elementos:
+    </p>
+    <table class="tabla">
+        <caption>
+            Elementos para definir un canal en Atom.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Elemento
+            </th>
+            <th scope="col">
+                Definición
+            </th>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;title&gt;
+            </td>
+            <td>
+                Es el título que se va a dar al sitio web. Se puede poner cualquier cosa.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;id&gt;
+            </td>
+            <td>
+                Identificador del canal. Habitualmente es su URL.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;link&gt;
+            </td>
+            <td>
+                Enlaces que definen el canal. Son necesarios dos:
+                <br>
+                <ul class="lista_verificacion">
+                    <li>
+                        Uno al propio fichero .atom, cuyo valor del atributo
+                        <em>
+                            <strong>
+                                rel
+                            </strong>
+                        </em>
+                        del elemento
+                        <strong>
+                            <em>
+                                link
+                            </em>
+                        </strong>
+                        será
+                        "
+                        <strong>
+                            <em>
+                                self
+                            </em>
+                        </strong>
+                        ".
+                    </li>
+                    <li>
+                        Otro al fichero web que oferta ese canal, en este caso
+                        <strong>
+                            <em>
+                                rel="alternate"
+                            </em>
+                        </strong>
+                        .
+                    </li>
+                </ul>
+                <br/></td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;updated&gt;
+            </td>
+            <td>
+                Fecha y hora de actualización, utilizando el formato
+                <strong>
+                    CCYY-MM-DDTHH:MM:SSZ,
+                </strong>
+                donde T es el separador entre la fecha y
+                la hora y Z indica que la hora hace referencia al sistema de tiempo universal,
+                esto es la hora zulú, o la hora del meridiano de Greenwich.
+                <br>
+                Entonces para
+                indicar que el canal se ha actualizado el 6 de febrero de 2010 a la 17:15 hora
+                española tenemos que poner:
+                <br>
+                2010-02-06T16:15:00Z
+                <br/><br/></td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;author&gt;
+            </td>
+            <td>
+                Determina el autor del enlace. Puede contener otros elementos como name o email.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;entry&gt;
+            </td>
+            <td>
+                Definirá cada una de las secciones del canal.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <p>
+    </p>
+    <p>
+        Los elementos incluidos en cada elemento entry son:
+    </p>
+    <table class="tabla">
+        <caption>
+            Elementos para definir un
+            <em>
+                entry
+            </em>
+            en Atom.
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">
+                Elemento
+            </th>
+            <th scope="col">
+                Definición
+            </th>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;title&gt;
+            </td>
+            <td>
+                Es el título del enlace al que se referencia.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;id&gt;
+            </td>
+            <td>
+                Identificador de la sección, ha de ser única en el fichero.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;link&gt;
+            </td>
+            <td>
+                Enlace a la fuente de la sección, en este caso
+                <strong>
+                    <em>
+                        rel="alternate".
+                    </em>
+                </strong>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;updated&gt;
+            </td>
+            <td>
+                Fecha y hora de actualización, sólo se modifica en casos significativos. Sigue
+                el formato explicado anteriormente.
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;code&gt; &lt;author&gt;
+            </td>
+            <td>
+                Determina el autor del enlace. En su interior:
+                < name>
+                    y
+                    < email>
+                    < /email>
+                < /name>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &lt;summary&gt;
+            </td>
+            <td>
+                Breve resumen del contenido del enlace.
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div><h1 class="title">
+    5.- Validación.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            <br>
+            Juan
+            <br/></strong>
+        les explica que una vez generado el fichero con el canal
+        hay que verificar que su codificación es correcta. Para ello no es necesario tener
+        en el equipo local ningún elemento especial, ya que basta con tener una conexión a
+        Internet y entrar en uno de los validadores de fuentes de contenidos.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        se interesa por los datos que hay que darle al validador para
+        que realice el trabajo.
+        <strong>
+            Juan
+        </strong>
+        le contesta que hay dos posibilidades.
+        La más habitual es darle al validador la URL del canal que se quiere validar, pero
+        existen validadores que permiten que se les proporcione el código fuente del
+        fichero.
+    </p>
+</div><h1 class="title">
+    6.- Utilización de herramientas.
+</h1><div class="iDevice_content">
+    <p>
+        <b>
+            María
+        </b>
+        preguntó a
+        <b>
+            Juan
+        </b>
+        , si al trabajar con estas tecnologías de
+        sindicación hay que escribir los ficheros en el bloc de notas o, al igual que al
+        trabajar con HTML, XHTML y XML también existen editores que faciliten la creación de
+        estos ficheros.
+    </p>
+    <p>
+        Éste respondió que el trabajo puede hacerse con el bloc de notas, pero que, como en
+        el resto de los casos, existen editores que permiten a cualquier persona realizar
+        esa tarea sin dificultad alguna. Además de permitir modificar y crear el documento,
+        estas herramientas tienen más funcionalidades.
+        <br>
+        <br/></p>
+</div><h1 class="title">
+    7.- Directorios de canales de contenidos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <strong>
+            <br>
+            J
+            <br/></strong>
+        <strong>
+            uan
+        </strong>
+        continúa explicándoles el último paso para
+        llevar a cabo el proceso de sindicación. Después de tener el fichero fuente
+        validado, es necesario sindicarle.
+    </p>
+    <p>
+        <strong>
+            María
+        </strong>
+        pregunta qué pasos implica hacerlo.
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        le explica que no es más que registrar el fichero en un
+        directorio de canales web.
+    </p>
+    <p>
+        <strong>
+            Félix
+        </strong>
+        pregunta en qué consiste y
+        <strong>
+            Juan
+        </strong>
+        le dice que
+        es un sitio web al que basta darle la URL de la fuente que se quiere sindicar.
+        También les explica que en la mayor parte de los casos se requiere estar registrado
+        en el sitio.
+    </p>
+</div><h1 class="title">
+    8.- Agregación.
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            Juan
+        </strong>
+        les aclara que aquellos clientes que quieran utilizar este
+        nuevo servicio tendrán que utilizar un agregador de contenidos para poder leer estos
+        canales de información.
+    </p>
+    <p>
+        <strong>
+            Félix
+        </strong>
+        se interesa mucho por este tema, ya que habrá que informar a
+        los clientes de cómo instalarlo y utilizarlo.
+    </p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        le tranquiliza diciéndole que es tan sencillo de usar como un
+        gestor de correo y que no es imprescindible instalar la aplicación, ya que se puede
+        utilizar un agregador web, en lugar de uno de escritorio.
+    </p>
+</div><h1 class="title">
+    9.- Servidores.
+</h1><div class="iDevice_content">
+    <p>
+        <span>
+         Un
+         <strong>
+          servidor
+         </strong>
+         , como la misma palabra indica, es un ordenador o máquina
+								informática que está al “servicio” de otras máquinas, ordenadores o personas llamadas
+								clientes y que le suministran a estos, todo tipo de información,&nbsp;también pueden ser
+								otros dispositivos como ordenadores, móviles, impresoras, etc.
+        </span>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         Por tanto básicamente tendremos el siguiente esquema general,
+								en el denominado esquema “cliente-servidor” que es uno de los más usados ya que en él se
+								basa gran parte de internet.
+        </span>
+    </p>
+
+    <p>
+    </p>
+    <p>
+        Como vemos, tenemos una máquina servidora que se comunica con variados clientes, todos
+        demandando algún tipo de información. Esta información puede ser desde archivos de texto,
+        video, audio, imágenes, emails, aplicaciones, programas, consultas a base de datos, etc.
+    </p>
+    <p>
+        Las máquinas servidoras suelen ser algo más potentes que un ordenador normal. Sobre todo
+        suelen tener más capacidad tanto de almacenamiento de información como de memoria principal,
+        ya que tienen que dar servicio a muchos clientes. Pero también depende de las necesidades,
+        ya que podemos tener un servidor de menores prestaciones si vamos a tener pocos clientes
+        conectados, o si los servicios que queramos en el servidor no requieren una gran capacidad
+        servidora.
+    </p>
+    <p>
+        Existen muchos
+        <strong>
+            tipos de servidores
+        </strong>
+        : correo, proxy, web, bases de datos,
+        clústes, dedicados, etc.
+    </p>
+</div><h1 class="title">
+    9.1.- Servidores web.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        Un
+        <strong>
+            servidor web
+        </strong>
+        almacena principalmente documentos HTML (son documentos
+        a modo de archivos con un formato especial para la visualización de páginas web en los
+        navegadores de los clientes), imágenes, videos, texto, presentaciones, y en general todo
+        tipo de información. Además se encarga de enviar estas informaciones a los clientes.
+        <br/></p>
+    <div class="article-top-bar solid-bg post-meta-disabled">
+        <div class="wf-wrap">
+            <div class="wf-container-top">
+                <div class="navigation-inner">
+                    <div class="single-navigation-wrap">
+            <span>
+             A la hora de
+            </span>
+                        crear una
+                        página web
+                        <span>
+             será necesario contar con un dominio y un servidor
+												donde alojar los archivos de nuestra web. Si se trata de una página web
+												muy extensa lo recomendable es intentar hacerla en un servidor de
+												pruebas o
+            </span>
+                        <span>
+             servidor local
+            </span>
+                        <span>
+             ya que si
+												se contrata un hosting de pago antes de comenzar a hacer la página será
+												mucho tiempo el que perdamos hasta tenerla terminada y lista para
+												subirla y por otro lado si utilizamos el hosting de pago para hacer
+												la
+            </span>
+                        página web desde cero
+                        <span>
+             cometemos el riesgo de
+												tener un mal SEO ya que a medida que avanzamos se pueden realizar muchos
+												cambios que a futuro se convertirán en
+            </span>
+                        páginas 404
+                        <span>
+             . Es
+												por esto que se recomienda utilizar un
+            </span>
+                        <span>
+             servidor
+												local
+            </span>
+                        <span>
+             .
+            </span>
+                    </div>
+                    <p>
+            <span>
+            </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales desarrollados inicialmente
+                por el Ministerio de Educación, Cultura y Deporte y actualizados por el
+                profesorado de la Junta de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+          <span>
+           Antes de cualquier
+										uso leer detenidamente el siguente
+          </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>

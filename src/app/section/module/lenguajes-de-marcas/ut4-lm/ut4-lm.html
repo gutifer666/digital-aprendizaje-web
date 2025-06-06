@@ -1,0 +1,3090 @@
+<h1 class="title">
+    Definición de esquemas y vocabularios en xml.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        <strong style="font-size: 1em;">
+            María había salido a dar un paseo por el
+            puerto
+        </strong>
+        <span style="font-size: 1em;">
+           , como todos los domingos por la
+                                        mañana iba
+          </span>
+        <strong style="font-size: 1em;">
+            acompañada de su marido José
+            Ramón y su hijo
+        </strong>
+        <span style="font-size: 1em;">
+           .
+          </span>
+    </p>
+    <p>
+        Mientras les veía jugar,
+        <strong>
+            estaba pensando que al día siguiente tenía que
+            hablar con Juan, el técnico
+        </strong>
+        que se encargaba de resolver los problemas
+        de
+        <strong>
+            informática de la empresa de la cual es socia
+        </strong>
+        . Había estado
+        pensando si existiría algún
+        <strong>
+            modo de poder garantizar que la estructura de
+            datos
+        </strong>
+        de cada uno de los
+        <strong>
+            documentos XML que comparte con
+            Félix
+        </strong>
+        , su socio, es la que tiene que ser y no otra, además de asegurar
+        que todos los documentos del mismo tipo mantienen la misma estructura.
+    </p>
+</div><h1 class="title">
+    1.- Documento XML. Estructura y sintaxis.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+          <span style="font-size: 1em;">
+           Al día siguiente,
+          </span>
+        <b style="font-size: 1em;">
+            cuando habla con Juan
+        </b>
+        <span style="font-size: 1em;">
+           ,
+                                        sus dudas quedan disipadas. Resulta que hay
+          </span>
+        <b style="font-size: 1em;">
+            varias posibilidades para asegurar una normalización en
+            el formato de los documentos
+        </b>
+        <span style="font-size: 1em;">
+          </span>
+        <abbr title="eXtensible Markedup Language, significa Lenguaje de Marcas Extensible.">
+            XML
+        </abbr>
+        <span style="font-size: 1em;">
+           .
+          </span>
+    </p>
+    <p>
+        Juan comienza por describir la estructura de un documento XML y Félix y María
+        descubren que puede ser un poco más compleja que la que habían estado usando hasta
+        entonces para generar sus documentos.
+    </p>
+</div><h1 class="title">
+    1.1.- Declaración de tipo de documento.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        <span style="font-size: 1em;">
+         Ya habíamos visto que permite
+        </span>
+        <strong style="font-size: 1em;">
+            al autor definir restricciones y características en el
+            documento
+        </strong>
+        <span style="font-size: 1em;">
+         , aunque no habíamos profundizado en las
+                                partes que la forman:
+        </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                La declaración del tipo de documento propiamente dicha
+            </strong>
+            . Comienza con el
+            texto que indica el nombre del tipo, precedido por la cadena
+            <strong>
+                " separado del
+                nombre del tipo por, al menos, un espacio. El nombre del tipo ha de ser idéntico al
+                del ejemplar del documento XML en el que se está trabajando.
+            </strong>
+        </li>
+        <strong>
+            <li>
+                <strong>
+                    La definición del tipo de documento
+                </strong>
+                . Permite asociar al documento
+                una definición de tipo
+                <abbr title="Document Type Definition, significa Definición de Tipo de Documento.">
+                    DTD
+                </abbr>
+                , la cual se encarga de definir las cualidades del tipo.
+                Es decir, define los tipos de los elementos, atributos y notaciones que se pueden
+                utilizar en el documento así como las restricciones del documento, valores por
+                defecto, etc. Para formalizar todo esto, XML está provisto de ciertas estructuras
+                llamadas
+                <strong>
+                    declaraciones de marcado
+                </strong>
+                , las cuales pueden ser internas o
+                externas. Normalmente un documento XML se compone de una mezcla de declaraciones de
+                marcado internas y externas. En este último caso debe expresarse en el documento
+                dónde encontrar las declaraciones, así como indicar en la declaración de XML que el
+                documento no es autónomo. Las diferencias entre estos tipos de declaraciones de
+                marcado dan lugar a dos subconjuntos, el interno y el externo. Conviene saber que
+                primero se procesa el subconjunto interno y después el externo, lo que permite
+                sobrescribir declaraciones externas compartidas entre varios documentos y ajustar el
+                DTD a un documento específico.
+                <ul>
+                    <li>
+                        <strong>
+                            Subconjunto interno:
+                        </strong>
+                        Contiene las
+                        <strong>
+                            declaraciones que
+                            pertenecen exclusivamente a un documento
+                        </strong>
+                        y no es posible
+                        compartirlas. Se localizan dentro de unos corchetes que siguen a la
+                        declaración de tipo del documento.
+                    </li>
+                    <li>
+                        <strong>
+                            Subconjunto externo:
+                        </strong>
+                        Están localizadas en un documento con
+                        extensión
+                        <strong>
+                            dtd
+                        </strong>
+                        que puede situarse en el mismo directorio que
+                        el documento XML. Habitualmente son declaraciones que pueden ser compartidas
+                        entre múltiples documentos XML que pertenecen al mismo tipo. En este caso la
+                        declaración de documento autónomo ha de ser negativa, ya que es necesario el
+                        fichero del subconjunto externo para la correcta interpretación del
+                        documento. Con ello el procesado del documento será más lento, ya que antes
+                        de procesar el documento el procesador ha de obtener todas las entidades.
+                        Ahora los corchetes pierden sentido, para localizar las declaraciones del
+                        tipo de documento externo mediante una declaración explícita de subconjunto
+                        externo se utiliza:
+                        <ul>
+                            <li>
+                                <strong>
+                                    URI"&gt;
+                                </strong>
+                                <p>
+                                    En este caso, se especifica un URI donde pueden localizarse las
+                                    declaraciones.
+                                </p>
+                            </li>
+                            <li>
+                                <strong>
+                                </strong>
+                                <p>
+                                    En este caso también se especifica un identificador, que puede
+                                    ser utilizado por el procesador XML para intentar generar un URI
+                                    alternativo, posiblemente basado en alguna tabla.
+                                    <strong>
+                                        Como
+                                        se puede observar también es necesario incluir algún
+                                        URI
+                                    </strong>
+                                    .
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </strong>
+    </ul>
+    <strong>
+    </strong>
+</div><h1 class="title">
+    1.2.- Definición de la sintaxis de documentos XML.
+</h1><div class="iDevice_content">
+    Recordamos que en estos documentos las etiquetas de marcado describen la estructura del
+    documento.
+</div><h1 class="title">
+    2.- Definiciones de tipo de documento, DTD.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        <b>
+            Según Juan, el método más sencillo para intentar normalizar los documentos
+        </b>
+        con los que trabajan, consiste en
+        <b>
+            definir unos vocabularios
+        </b>
+        que han de
+        cumplir los documentos que generan, estos se llaman Definición de Tipo de
+        Documento. Además, aunque no es un lenguaje XML, tiene una sintaxis sencilla y
+        fácil para que ella y Félix puedan comprenderla y utilizarla.
+    </p>
+</div><h1 class="title">
+    2.1.- Declaración de la DTD
+</h1><div class="iDevice_content">
+    <div class="page" title="Page 3">
+        <div class="layoutArea">
+            <div class="column">
+
+                <p>
+            <span>
+             <br>
+             La DTD&nbsp;está compuesta por lo que aparece entre la etiqueta
+                                                "
+            <br/></span>
+                    <span>
+             <strong>
+             </strong>
+            </span>
+                    <strong>
+             <span>
+              y la etiqueta
+                                                    "
+             </span>
+                        <strong>
+                            ]&gt;"
+                        </strong>
+                        .&nbsp;El nombre corresponde con la
+                        etiqueta raíz que debe tener el documento XML.
+                    </strong>
+                </p>
+                <strong>
+                    <p>
+             <span>
+              Existen dos formas de definir la DTD que describirá la estructura
+                                                    de un documento XML. Se puede incluir dentro del mismo documento, o
+                                                    incluir la información sobre su ubicación (enlace a un documento
+                                                    DTD).
+             </span>
+                    </p>
+                    <ul class="lista_verificacion">
+                        <li>
+                            <strong>
+                                DTD incrustada:
+                            </strong>
+                            <span style="font-size: 1em;">
+               Es posible incluir la DTD en el mismo
+                                                        documento como se ha visto anteriormente. En el siguiente
+                                                        ejemplo está resaltada en negrita:
+              </span>
+                        </li>
+                    </ul>
+                    <div class="pre-code">
+                        <div>
+              <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;strong&gt;&lt;!DOCTYPE pelicula [
+  &lt;!ELEMENT pelicula (titulo)&gt;
+  &lt;!ELEMENT titulo (#PCDATA)&gt;
+]&gt;&lt;/strong&gt;
+&lt;pelicula&gt;
+  &lt;titulo&gt;Titanic&lt;/titulo&gt;
+&lt;/pelicula&gt;</pre>
+                        </div>
+                    </div>
+                    <p>
+             <span style="font-size: 1em;">
+              Se puede proporcionar una ayuda extra al
+                                                    analizador de XML, si a través de las instrucciones de proceso
+                                                    presentes en el prólogo, se indica que el documento es independiente
+                                                    y que todo lo que necesita está contenido en el mismo. Para ello
+                                                    basta con añadir el atributo standalone=”yes”, como puede verse a
+                                                    continuación:
+             </span>
+                    </p>
+                    <div class="page" title="Page 3">
+                        <div class="layoutArea">
+                            <div class="column">
+                                <div class="pre-code">
+                                    <div>
+                                        <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</pre>
+                                    </div>
+                                </div>
+                                <div class="page" title="Page 3">
+                                    <div class="layoutArea">
+                                        <div class="column">
+                                            <p>
+                   <span>
+                    El valor por defecto del atributo
+                                                                            standalone es no, es decir, en caso de
+                                                                            omitir el atributo es como si se pusiera
+                                                                            standalone="no".
+                   </span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="lista_verificacion">
+                        <li>
+              <span style="font-size: 1em;">
+               <span style="font-size: 1em;">
+                <strong>
+                 DTD
+                                                                externa:
+                </strong>
+               </span>
+              </span>
+                            En el ejemplo
+                            anterior, la DTD estaba incrustada en el documento XML. Es posible
+                            separar ambos elementos, guardándolos en archivos diferentes. Así,
+                            se puede situar en un archivo la DTD, en este caso se llama
+                            cine.dtd
+                        </li>
+                    </ul>
+                    <div class="pre-code">
+                        <div>
+              <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8" standalone="no"?&gt; &lt;!-- Enlace a la DTD --&gt;
+&lt;!DOCTYPE pelicula SYSTEM "cine.dtd"&gt;
+&lt;pelicula&gt;
+  &lt;titulo&gt;Titanic&lt;/titulo&gt;
+&lt;/pelicula&gt;</pre>
+                        </div>
+                    </div>
+                    <div class="page" title="Page 4">
+                        <div class="layoutArea">
+                            <div class="column">
+                                <p>
+                <span>
+                 No hace falta poner
+                </span>
+                                    <span>
+                 standalone="no"
+                </span>
+                                    <span>
+                 ya que por defecto toma ese valor.
+                </span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </strong>
+            </div>
+            <strong>
+            </strong>
+        </div>
+        <strong>
+        </strong>
+    </div>
+    <strong>
+    </strong>
+</div><h1 class="title">
+    2.2.- Declaraciones de tipos de elementos terminales.
+</h1><div class="iDevice_content">
+
+    <p>
+          <span style="font-size: 1em;">
+           Los
+          </span>
+        <strong style="font-size: 1em;">
+            tipos de
+            elementos terminales
+        </strong>
+        <span style="font-size: 1em;">
+           son aquellos
+                                        elementos que se corresponden con hojas de la estructura de árbol formada por
+                                        los datos del documento XML asociado al DTD. La declaración de tipos de
+                                        elementos está formada por la cadena
+          </span>
+        <strong style="font-size: 1em;">
+            "
+            <!--ELEMENT"</strong-->
+            <span style="font-size: 1em;">
+            separada por, al menos un
+                                            espacio del nombre del elemento XML que se declara, y seguido de la
+                                            declaración del contenido que puede tener dicho elemento.
+           </span>
+        </strong>
+    </p>
+    <strong style="font-size: 1em;">
+        <p>
+            En el caso de elementos terminales, es decir, aquellos que no contienen más
+            elementos, esta declaración de contenido es dada por uno de los siguientes
+            valores:
+        </p>
+        <ul class="lista_verificacion">
+            <li>
+                <strong>
+                    EMPTY:
+                </strong>
+                Indica que el elemento no es contenedor,
+                <span>
+             es
+                                                vacío, es decir, que no puede tener contenido
+            </span>
+                . Por ejemplo, la
+                siguiente definición muestra un elemento "ejemplo" que no contiene
+                nada:
+                <span style="font-size: 1em;">
+             <!--ELEMENT ejemplo EMPTY-->
+             .
+            </span>
+                <ul>
+                    <li>
+              <span style="font-size: 1em;">
+               <span style="font-size: 1em;">
+                XML
+                                                            asociado
+                <strong>
+                 correcto
+                </strong>
+                :
+               </span>
+              </span>
+                        <span style="font-size: 1em;">
+               <span style="font-size: 1em;">
+                <strong>
+                 <span style="font-family: 'courier new', courier;">
+                 </span>
+                </strong>
+               </span>
+              </span>
+                        <div class="pre-code">
+                            <div>
+                                <pre ngNonBindable> &lt;ejemplo&gt;&lt;/ejemplo&gt; ó &lt;ejemplo /&gt;</pre>
+                            </div>
+                        </div>
+                        <span style="font-family: courier new, courier, monospace;">
+               <br>
+              <br/></span>
+                    </li>
+                    <li style="text-align: left;">
+              <span style="font-size: 1em;">
+               XML asociado
+               <strong>
+                incorrecto
+               </strong>
+               :
+              </span>
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable>&lt;ejemplo&gt;Esto es un ejemplo&lt;/ejemplo&gt;
+ó
+&lt;ejemplo&gt;&lt;a&gt;&lt;/a&gt;&lt;/ejemplo&gt;</pre>
+                            </div>
+                        </div>
+                        <span style="font-size: 1em;">
+               <strong>
+                <span style="font-family: 'courier new', courier;">
+                 <br>
+                <br/></span>
+               </strong>
+              </span>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>
+                    (#PCDATA):
+                </strong>
+                Indica que los datos son analizados en busca de
+                etiquetas, resultando que el elemento no puede contener elementos, es decir
+                solo puede contener datos de tipo carácter exceptuando los siguientes: &lt;,
+                [, &amp;, ], &gt;. Si es de este tipo, el elemento "ejemplo" tendrá una
+                definición como:
+                <div class="pre-code">
+                    <div>
+              <pre ngNonBindable>&lt;!ELEMENT ejemplo (#PCDATA)&gt;.
+</pre>
+                    </div>
+                </div>
+                <ul>
+                    <li>
+                        XML&nbsp;asociado
+                        <strong>
+                            correcto
+                        </strong>
+                        :
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable>    &lt;ejemplo /&gt;
+    o&nbsp;
+    &lt;ejemplo&gt;Esto es un ejemplo&lt;/ejemplo&gt;
+    </pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        XML asociado
+                        <strong>
+                            incorrecto
+                        </strong>
+                        :
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable>    &lt;ejemplo&gt;&lt;a&gt;&lt;/a&gt;&lt;/ejemplo&gt;
+     </pre>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>
+                    ANY:
+                </strong>
+                Permite que el contenido del elemento sea cualquier
+                cosa
+                <span>
+             (texto y otros elementos)
+            </span>
+                .
+                <strong>
+                    No es recomendable usar
+                    este tipo de elemento.
+                </strong>
+                <br>
+                <ul>
+                    <li>
+                        Ejemplos de XML correcto con elemento ANY:
+                        <p>
+                        </p>
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE mascota[
+   &lt;!ELEMENT mascota ANY&gt;
+   &lt;!ELEMENT nombre (#PCDATA)&gt;
+   &lt;!ELEMENT tipo(#PCDATA)&gt;&lt;br /&gt;   &lt;!ELEMENT raza(#PCDATA)&gt;
+]&gt;</pre>
+                            </div>
+                        </div>
+                        <p>
+                            Para este vocabulario, estos documentos xml son válidos:
+                        </p>
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable>&lt;mascota&gt;
+   &lt;nombre&gt;Coco&lt;/nombre&gt; es mi mascota. &lt;br /&gt;Es una &lt;tipo&gt;chinchilla&lt;/tipo&gt; &lt;raza&gt;blanca&lt;/raza&gt;.
+&lt;/mascota&gt;</pre>
+                            </div>
+                        </div>
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable>&lt;mascota&gt;
+   Coco es mi mascota. &lt;br /&gt;Es una &lt;tipo&gt;chinchilla&lt;/tipo&gt; &lt;raza&gt;blanca&lt;/raza&gt;.
+&lt;/mascota&gt;</pre>
+                            </div>
+                        </div>
+                        <div class="pre-code">
+                            <div>
+                <pre ngNonBindable> &lt;mascota&gt;
+   &lt;nombre&gt;Coco&lt;/nombre&gt;.
+&lt;/mascota&gt;</pre>
+                            </div>
+                        </div>
+                        <div class="pre-code">
+                            <div>
+                                <pre ngNonBindable>     &lt;mascota/&gt;</pre>
+                            </div>
+                        </div>
+                        <strong>
+                        </strong>
+                    </li>
+                </ul>
+                <br/></li>
+        </ul>
+        <p>
+        </p>
+    </strong>
+</div><h1 class="title">
+    2.3.- Declaraciones de tipos de elementos no terminales.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Una vez que sabemos el modo de definir las hojas de un árbol de
+        datos,
+        <strong>
+            veamos cómo definir sus ramas
+        </strong>
+        , es decir los
+        elementos que están formados por otros elementos.
+        <br>
+        Para definirlos utilizamos
+        referencias a los grupos que los componen tal y como muestra el ejemplo:
+        <br/></p>
+    <p>
+        <strong>
+            <!--ELEMENT A (B, C)-->
+        </strong>
+    </p>
+    <p>
+        En este caso se ha definido un elemento A que está formado por un elemento B
+        seguido de un elemento C.
+    </p>
+    <p>
+        ¿Y qué sucede cuando un elemento puede aparecer en el documento varias veces, hay
+        que indicarlo de algún modo? Pues sí, también hay que indicar cuando un elemento
+        puede no aparecer. Para ello usamos los siguientes operadores, que nos permiten
+        definir la
+        cardinalidad
+        de un elemento:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Operador opción, ?.
+            </strong>
+            Indica que el elemento no es
+            obligatorio.
+            <ul>
+                <li>
+                    En el siguiente ejemplo el subelemento trabajo es opcional:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;!ELEMENT telefono (trabajo?, casa )&gt;</pre>
+                        </div>
+                    </div>
+                    <strong>
+               <span style="font-size: 1em; font-family: 'courier new', courier;">
+                <br>
+               <br/></span>
+                    </strong>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Operador uno-o-más, +.
+            </strong>
+            Define un componente presente al
+            menos una vez.
+            <ul>
+                <li>
+                    En el ejemplo definimos un elemento formado por el nombre de una
+                    provincia y otro grupo, que puede aparecer una o varias veces:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;!ELEMENT provincia (nombre, (cp, ciudad)+ )&gt;</pre>
+                        </div>
+                    </div>
+                    <span style="font-family: 'courier new', courier;">
+               <strong>
+                <span style="font-size: 1em;">
+                 <br>
+                <br/></span>
+               </strong>
+              </span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Operador cero-o-mas, *.
+            </strong>
+            Define un componente presente cero,
+            una o varias veces.
+            <ul>
+                <li>
+                    En el ejemplo el grupo (cp, ciudad) puede no aparecer o hacerlo
+                    varias veces:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;!ELEMENT provincia (nombre, (cp, ciudad)* )&gt;</pre>
+                        </div>
+                    </div>
+                    <strong>
+               <span style="font-size: 1em; font-family: 'courier new', courier;">
+                <br>
+               <br/></span>
+                    </strong>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                Operador de elección, |.
+            </strong>
+            Cuando se utiliza sustituyendo las
+            comas en la declaración de grupos indica que para formar el documento XML
+            hay que elegir entre los elementos separados por este operador.
+            <ul>
+                <li>
+                    En el ejemplo siguiente, el documento XML tendrá elementos provincia
+                    que estarán formados por el elemento nombre y el cp (código postal),
+                    o por el elemento nombre y la ciudad:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;!ELEMENT provincia (nombre, (cp | ciudad) )&gt;</pre>
+                        </div>
+                    </div>
+                    <strong>
+               <span style="font-size: 1em; font-family: 'courier new', courier;">
+                <br>
+               <br/></span>
+                    </strong>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-cardinalidad">
+        <p>
+            Es el número de entidades con la cual otra entidad puede asociar mediante una
+            relación binaria.
+        </p>
+    </div>
+</div><h1 class="title">
+    2.4.- Declaraciones de listas de atributos para los tipos de
+    elementos.
+</h1><div class="iDevice_content">
+    <p>
+    </p>
+
+    <p>
+           <span style="font-size: 1em;">
+            <br>
+            Ya sabemos cómo declarar elementos, ahora
+                                            veamos el modo de
+           <br/></span>
+        <strong style="font-size: 1em;">
+            declarar los
+            atributos asociados a un elemento
+        </strong>
+        <span style="font-size: 1em;">
+            .
+           </span>
+    </p>
+    <p>
+        Para ello utilizamos la cadena
+        <strong>
+            <!--ATTLIST</strong-->
+            seguida del nombre del elemento asociado al atributo
+            que se declara, luego el nombre de éste último seguido del tipo de atributo
+            y del modificador.
+        </strong>
+    </p>
+    <strong>
+        <div class="pre-code">
+            <div>
+             <pre ngNonBindable>&lt;! ATTLIST &lt;strong&gt;nombre_elemento_del_atributo&lt;/strong&gt; nombre_atributo &lt;strong&gt;tipo_del_atributo&lt;/strong&gt; "Valor_por_defecto"&gt;
+</pre>
+            </div>
+        </div>
+        <p>
+            Este elemento puede usarse para declarar una lista de atributos asociada a un
+            elemento, o repetirse el número de veces necesario para asociar a dicho
+            elemento esa lista de atributos, pero individualmente. Si un elemento tiene
+            más de un atributo se puede expresar:
+        </p>
+        <div class="pre-code">
+            <div>
+                <pre ngNonBindable>&lt;! ATTLIST&nbsp;&lt;strong&gt;nombre_elemento_del_atributo1&lt;/strong&gt; nombre_atributo1  tipo_del_atributo1  "Valor_por_defecto"&lt;br /&gt;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;                          nombre_atributo2&nbsp;tipo_del_atributo2  "Valor_por_defecto"&lt;br /&gt;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;              nombre_atributo3&nbsp; tipo_del_atributo3  Valor_por_defecto"&lt;br /&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ......................................................................................&gt;</pre>
+            </div>
+        </div>
+        <p>
+            Al igual que los elementos no todos los atributos son del mismo tipo, los más
+            destacados son:
+        </p>
+        <ul class="lista_verificacion">
+            <li>
+                <strong>
+                    Enumeración
+                </strong>
+                , es decir, el atributo solo puede tomar uno
+                de los valores determinados dentro de un paréntesis y separados por el
+                operador |.
+                <ul>
+                    <li style="text-align: left;">
+                        DTD:
+                        <div class="pre-code">
+                            <div>
+                                <pre ngNonBindable>&lt;!ATTLIST fecha dia_semana (lunes|martes|miércoles|jueves|viernes|sábado|domingo) #REQUIRED&gt;</pre>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>
+                    CDATA
+                </strong>
+                , se utiliza cuando el atributo es una cadena de
+                texto.
+                <ul>
+                    <li>
+                        DTD:
+                        <div class="pre-code">
+                            <div>
+                 <pre ngNonBindable>&lt;!ATTLIST ejemplo color CDATA #REQUIRED&gt;
+    </pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        XML asociado:
+                        <div class="pre-code">
+                            <div>
+                                <pre ngNonBindable>    &lt;ejemplo color="verde" /&gt;</pre>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>
+                    ID
+                </strong>
+                , permite declarar
+                <span>
+              el valor del atributo (no el
+                                                    nombre) debe ser único y no se puede repetir en otros elementos o
+                                                    atributos
+             </span>
+                . Hay que tener en cuenta que los números no son
+                nombres válidos en XML, por tanto no son un identificador legal de XML.
+                Para resolverlo suele incluirse un prefijo en los valores y separarlo
+                con un guión o una letra.
+                <ul>
+                    <li>
+                        DTD:
+                        <div class="pre-code">
+                            <div>
+                 <pre ngNonBindable>&lt;!ATTLIST libro&nbsp;&lt;b&gt;codigo ID&nbsp;#REQUIRED&gt;&lt;/b&gt;
+</pre>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        XML asociado:
+                        <div class="pre-code">
+                            <div>
+                 <pre ngNonBindable>    &lt;libro codigo="Q1"&gt;El Quijote&lt;/libro&gt;
+    </pre>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <strong>
+                    IDREF
+                </strong>
+                , permite hacer referencias a identificadores. En
+                este caso el valor del atributo ha de corresponder con el de un
+                identificador de un elemento existente en el documento.
+            </li>
+            <li>
+                <strong>
+                    NMTOKEN
+                </strong>
+                , permite determinar que el valor de un atributo
+                ha de ser una sola palabra compuesta por los caracteres permitidos por
+                XML, es decir letras, números y los caracteres ":", "_", "-" o ".".
+                <p>
+                </p>
+                <p>
+                </p>
+            </li>
+            <li>
+                <p>
+                    ¿También hemos de declarar si el valor de un atributo es obligatorio
+                    o no? Si, para ello se usan los siguientes modificadores:
+                </p>
+                <ul>
+                    <li>
+                        <strong>
+                            #IMPLIED
+                        </strong>
+                        , determina que el atributo sobre el
+                        que se aplica es opcional.
+                        <ul>
+                            <li>
+                                DTD:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>    &lt;!ATTLIST ejemplo color CDATA #IMPLIED&gt;
+    </pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                XML asociado:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;ejemplo color="verde" /&gt; o &lt;ejemplo color="" /&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>
+                            #REQUIRED
+                        </strong>
+                        , determina que el atributo tiene
+                        carácter obligatorio.
+                        <ul>
+                            <li>
+                                DTD:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;!ATTLIST ejemplo color CDATA #REQUIRED&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                XML asociado NO válido:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;ejemplo color="" /&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                XML asociado válido:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;ejemplo color="verde" /&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>
+                            #FIXED
+                        </strong>
+                        , permite definir un valor fijo para un
+                        atributo independientemente de que ese atributo se defina
+                        explícitamente en una instancia del elemento en el documento
+                        XML.
+                        <ul>
+                            <li>
+                                DTD:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;!ATTLIST ejemplo color CDATA #FIXED "verde"&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                XML asociado NO válido:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;ejemplo color="rojo" /&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                XML asociado válido:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;ejemplo color="verde" /&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>
+                            Literal
+                        </strong>
+                        , asigna por defecto a un atributo el
+                        valor dado por una cadena entre comillas, pero puede tomar otro
+                        valor.
+                        <ul>
+                            <li>
+                                DTD:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;!ATTLIST ejemplo color CDATA (rojo|verde|amarillo) "verde"&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                XML asociado:
+                                <div class="pre-code">
+                                    <div>
+                   <pre ngNonBindable>&lt;ejemplo color="verde" /&gt;
+</pre>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </strong>
+</div><h1 class="title">
+    2.5.- Declaraciones de entidades.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+             ¿Qué sucede si queremos
+            </span>
+        <strong style="font-size: 1em;">
+            declarar valores constantes dentro de los
+            documentos
+        </strong>
+        <span style="font-size: 1em;">
+             ? ¿Podemos?
+            </span>
+        <br/></p>
+    <p>
+        Las entidades nos permiten definir constantes en un documento XML. Cuando se
+        usan dentro del documento XML se limitan por "&amp;" y ";", por ejemplo
+        <strong>
+            &amp; entidad
+        </strong>
+        ;
+        <br>
+        ¿Cómo trabaja el intérprete con ellos? Al
+        procesar el documento XML, el intérprete sustituye la entidad por el valor
+        que se le ha asociado en el DTD.
+        <br>
+        <strong>
+            No admiten
+            recursividad
+        </strong>
+        , es decir, una entidad no puede hacer referencia a
+        ella misma.
+        <br/><br/></p>
+    <p>
+        Las entidades básicamente pueden ser de dos tipos,
+        <strong>
+            generales
+        </strong>
+        y de
+        <strong>
+            parámetro
+        </strong>
+        .
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Generales:
+                <br>
+                <br/></strong>
+            <ul>
+                <li>
+                    <strong>
+                        Internas:
+                    </strong>
+                    Son las entidades declaradas en el
+                    DTD.
+                    <ul>
+                        <li>
+                            Existen cinco entidades predefinidas en el lenguaje,
+                            son:
+                            <ul>
+                                <li>
+                                    <strong>
+                                        &lt;:
+                                    </strong>
+                                    Se corresponde con el
+                                    signo menor que, &lt;.
+                                </li>
+                                <li>
+                                    <strong>
+                                        &gt;:
+                                    </strong>
+                                    Hace referencia al signo
+                                    mayor que, &gt;.
+                                </li>
+                                <li>
+                                    <strong>
+                                        ":
+                                    </strong>
+                                    Son las comillas rectas
+                                    dobles, ''.
+                                </li>
+                                <li>
+                                    <strong>
+                                        ':
+                                    </strong>
+                                    Es el apóstrofe o comilla
+                                    simple, '.
+                                </li>
+                                <li>
+                                    <strong>
+                                        &amp;:
+                                    </strong>
+                                    Es el et o ampersand,
+                                    &amp;.
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            Podemos definir nuestras propias entidades usando la
+                            estructura:
+                            <!--ENTITY nombre_entidad "valor_entidad"-->
+                            , donde:
+                            <ul>
+                                <li>
+                                    nombre_entidad es el nombre que recibe la
+                                    entidad
+                                </li>
+                                <li>
+                                    "valor_entidad" es el valor que toma dicha
+                                    entidad
+                                </li>
+                                <li>
+                                    se hace referencia a la entidad usando
+                                    <strong>
+                                        &amp;nombre_entidad;
+                                    </strong>
+                                </li>
+                                <li>
+                                    Veamos un ejemplo. Dado el DTD:
+
+                                    <br>
+                                    Al abrir el fichero en un navegador, se
+                                    vería:
+
+                                    <br/></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>
+                        Externas:
+                    </strong>
+                    Permiten establecer una relación
+                    entre el documento XML y otro documento a través de la
+                    <abbr title="Uniform Resource Locator, significa Localizador Uniforme de Recursos.">
+                        URL
+                    </abbr>
+                    de éste último.
+                    <ul>
+                        <li>
+                            La declaración de una entidad externa cuando sólo va a
+                            ser utilizada por una única aplicación es:
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;!ENTITY nombre_entidad SYSTEM "http://localhost/docsxml/fichero_entidad.xml"&gt;
+</pre>
+        </div>
+    </div>
+    <p style="padding-left: 120px;">
+        En este caso el contenido de los ficheros es
+        analizado, por lo que deben seguir la sintaxis XML.
+    </p>
+    <p style="padding-left: 120px;">
+        Cuando es necesario incluir ficheros con
+        formatos binarios, es decir ficheros que no se analicen, se utiliza la
+        palabra reservada NDATA en la definición de la entidad y habrá que asociar a
+        dicha entidad una declaración de notación, tal y como muestra el ejemplo del
+        apartado siguiente.
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            La declaración de una entidad externa cuando va a ser utilizada por
+            varias aplicaciones es:
+        </li>
+    </ul>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;!ENTITY nombre_entidad PUBLIC "identificador público formal" "camino hasta la DTD (uri)"&gt;
+</pre>
+        </div>
+    </div>
+    <p style="padding-left: 30px;">
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                De parámetro:
+            </strong>
+            <ul>
+                <li>
+                    <strong>
+                        Internas
+                    </strong>
+                    : Permiten dar nombres a partes de un
+                    DTD y hacer referencia a ellas a lo largo del mismo. Son
+                    especialmente útiles cuando varios elementos del DTD comparten
+                    listas de atributos o especificaciones de contenidos. Se denotan
+                    por % entidad;
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>&lt;strong&gt;&lt;!ENTITY % direccion "calle, numero?, ciudad, cp"&gt;&lt;/strong&gt; y se puede usar como sigue: &lt;br /&gt;&lt;!ELEMENT almacen (%direccion;, web)&gt;&lt;br /&gt;&lt;!ELEMENT oficina (%direccion;, movil)&gt;&lt;br /&gt;&lt;!ELEMENT central (%direccion;, telefono)&gt;&lt;br /&gt;&lt;!ELEMENT tienda (%direccion;, fax)&gt;
+</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <strong>
+                        Externas:
+                    </strong>
+                    Permite incluir en un DTD elementos
+                    externos, lo que se aplica en dividir la definición DTD en
+                    varios documentos.
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>    &lt;strong&gt;&lt;!ENTITY %persona SYSTEM "persona.dtd"&gt;&lt;/strong&gt;
+    </pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    2.6.- Declaraciones de notación.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Cuando se incluyen ficheros binarios en un fichero, ¿cómo le decimos qué
+        aplicación ha de hacerse cargo de ellos? La respuesta es utilizando
+        notaciones. La sintaxis para declarar
+        <b>
+            notaciones
+        </b>
+        es:
+    </p>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;!NOTATION nombre SYSTEM aplicacion&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        Por ejemplo, una notación llamada
+        <b>
+            gif
+        </b>
+        donde se indica que se hace
+        referencia a un editor de formatos gif para visualizar imágenes será:
+    </p>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;!NOTATION gif SYSTEM "gifEditor.exe"&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+        Para asociar una entidad externa no analizada, a esta notación basta declarar
+        dicha entidad del siguiente modo:
+    </p>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;!ENTITY dibujo SYSTEM "imagen.gif" NDATA gif&gt;
+</pre>
+        </div>
+    </div>
+</div><h1 class="title">
+    2.7.- Secciones condicionales.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Permiten incluir o ignorar partes de la declaración de un DTD. Para ello se
+        usan dos
+        tokens
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <ul class="lista_verificacion">
+            <ul class="lista_verificacion">
+                <li>
+                    <strong>
+                        INCLUDE
+                    </strong>
+                    , permite que se vea esa parte de la
+                    declaración del DTD. Su sintaxis es:
+                    <br>
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>&lt;![INCLUDE [Declaraciones visibles] ] &gt;
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Por ejemplo:
+                    </p>
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>&lt;![INCLUDE [ &lt;!ELEMENT nombre (#PCDATA)&gt;] ] &gt;
+</pre>
+                        </div>
+                    </div>
+                    <br/></li>
+                <li>
+                    <strong>
+                        IGNORE
+                    </strong>
+                    , permite ocultar esa sección de
+                    declaraciones dentro del DTD. La forma de uso
+                    es:
+                    <strong>
+                    </strong>
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>&lt;![IGNORE [Declaraciones ocultas] ] &gt;
+</pre>
+                        </div>
+                    </div>
+                    <p>
+                        Por ejemplo:
+                    </p>
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>&lt;![IGNORE [&lt;!ELEMENT clave (#PCDATA)&gt;] ] &gt;
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ul>
+    </ul>
+    <p>
+    </p>
+    <p>
+        El uso de las secciones condicionales suele estar ligado a entidades
+        paramétricas.
+    </p>
+    <p>
+    </p>
+    <p>
+    </p>
+    <div class="exe-tooltip-text" id="t630ac71e-c1b5-7532-80c8-7a76bca8da03-tokens">
+        <p>
+            También llamado componente léxico es una cadena de caracteres que tiene
+            un significado coherente en cierto lenguaje de programación. Ejemplos de
+            tókenes podrían ser palabras clave (if, else, while, int, ...),
+            identificadores, números, signos, o un operador de varios caracteres,
+            (por ejemplo, := "':+"' ).
+        </p>
+    </div>
+</div><h1 class="title">
+    3.- XML Schema.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        <strong>
+            Félix, quien considera que la normalización de los documentos
+            XML que manejan en la empresa va a ser un duro trabajo para
+            María
+        </strong>
+        , él y otros trabajadores inexpertos, plantea la
+        posibilidad de que se encargue de ello algún trabajador de la
+        <strong>
+            consultoría informática que dirige Juan
+        </strong>
+        .
+    </p>
+    <p>
+        Al final se va a encargar de ello
+        <strong>
+            Marina
+        </strong>
+        . Les
+        explica que, en lugar de trabajar con DTD's le parece mejor hacerlo
+        con un lenguaje XML llamado
+        <strong>
+            XML Schema
+        </strong>
+        , el cual
+        tiene, entre otras, la ventaja de permitir definir el tipo de datos
+        de cada uno de los componentes de cada documento.
+    </p>
+</div><h1 class="title">
+    3.1.- Tipos de elementos en XML Schema
+</h1><div class="iDevice_content">
+
+    <p>
+        Un elemento se utiliza para describir datos. Recordemos que su etiqueta más
+        habitual suele ser xsd:element, xsi:element o xs:element.
+    </p>
+    <p>
+        Los elementos se utilizan para especificar las etiquetas válidas en un
+        documento XML. Todos los elementos que se vayan a utilizar en el ejemplar
+        XML tienen que estar declarados en el esquema. Las declaraciones de
+        elementos en XML Schema tienen una estructura diferente dependiendo de si
+        son
+        <strong>
+            simples
+        </strong>
+        o
+        <strong>
+            complejos
+        </strong>
+        :
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+             <span style="line-height: 1.5; font-size: 12pt;">
+              <span style="font-size: 12pt;">
+              </span>
+             </span>
+            <span style="font-size: 12pt;">
+              <span style="line-height: 1.5;">
+               <strong>
+                Tipo simple
+               </strong>
+               : No
+                                                        pueden contener otros elementos o atributos. Su estructura es la
+                                                        siguiente:
+               <br>
+              <br/></span>
+             </span>
+        </li>
+    </ul>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;xsd:element name="nombreElemento"
+ref="elementoReferenciado"
+type="tipoDato"
+minOccurs="valor"
+maxOccurs="valor"
+fixed=”valor"
+default=”valor”/&gt;
+</pre>
+        </div>
+    </div>
+    <div>
+            <span style="line-height: 1.5; font-size: 12pt;">
+             <b>
+              Donde:
+             </b>
+            </span>
+    </div>
+    <div>
+        <ul style="list-style-type: none;">
+            <li>
+                <ul class="lista_verificacion">
+                    <li>
+                <span style="line-height: 1.5; font-size: 12pt;">
+                 <b>
+                  name
+                 </b>
+                 :
+                                                                es el nombre del elemento.
+                 <br>
+                <br/></span>
+                    </li>
+                    <li>
+                <span style="line-height: 1.5; font-size: 12pt;">
+                 <strong>
+                  ref
+                 </strong>
+                 :
+                                                                el elemento al que hace referencia está declarado en
+                                                                otro lugar del esquema. No puede aparecer junto con
+                                                                "name" y ni si el elemento padre es
+                 < xs:schema>
+                 < /xs:schema>
+                </span>
+                    </li>
+                    <li>
+                <span style="line-height: 1.5; font-size: 12pt;">
+                 <b>
+                  type
+                 </b>
+                 :
+                                                                el tipo de dato del elemento. No puede aparecer si se
+                                                                usa "ref".
+                 <br>
+                <br/></span>
+                    </li>
+                    <li>
+                <span style="font-size: 12pt;">
+                 <span style="line-height: 1.5;">
+                  <b>
+                   minOccurs y
+                                                                        maxOccurs
+                  </b>
+                  (Opcionales): estos dos atributos
+                                                                    indican el mínimo (minOccurs) y
+                 </span>
+                 <span style="line-height: 1.5;">
+                  máximo (maxOccurs) número
+                                                                    de ocurrencias del elemento. El valor por defecto en
+                                                                    ambos
+                 </span>
+                 <span style="line-height: 1.5;">
+                  casos
+                                                                    es 1. Para indicar que el elemento puede aparecer un
+                                                                    número ilimitado de
+                 </span>
+                 <span style="line-height: 1.5;">
+                  veces, el atributo
+                                                                    maxOccurs toma el valor “unbounded”. Para indicar
+                                                                    que un elemento puede no aparecer, el atributo
+                                                                    minOccurs toma el valor 0. Ninguno de los atributos
+                                                                    se puede usar si el elemento padre es
+                  < xs:schema>
+                   .
+                   <br>
+                  <br/>< /xs:schema>
+                 </span>
+                </span>
+                    </li>
+                    <li>
+                <span style="line-height: 1.5; font-size: 12pt;">
+                 <b>
+                  fixed
+                 </b>
+                 (Opcional): especifica un valor fijo para el
+                                                                elemento.
+                </span>
+                    </li>
+                    <li>
+                <span style="line-height: 1.5; font-size: 12pt;">
+                 <b>
+                  default
+                 </b>
+                 (Opcional): especifica un valor por defecto para el
+                                                                elemento.
+                </span>
+                    </li>
+                    <li>
+                <span style="line-height: 1.5; font-size: 12pt;">
+                 Se pueden
+                                                                crear nuevos elementos "simpleType" a partir de uno ya
+                                                                existente, añadiendo condiciones a alguno de los tipos
+                                                                predefinidos en el XML Schema. Para ello se usa el
+                                                                elemento
+                 < xs:restriction>
+                 < /xs:restriction>
+                </span>
+                        <ul>
+                            <li style="list-style-type: none;">
+                                <ul>
+                                    <li>
+                    <span style="line-height: 1.5; font-size: 12pt;">
+                     Ejemplo:
+                    </span>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="pre-code">
+                            <div>
+                  <pre ngNonBindable>&lt;xsd:simpleType name="precio"&gt;
+   &lt;xsd:restriction base="xsd:decimal"&gt;
+      &lt;xsd:fractionDigits value="2"/&gt;
+   &lt;/xsd:restriction&gt;
+&lt;/xsd:simpleType&gt;
+</pre>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <blockquote style="margin: 0 0 0 40px; border: none; padding: 0;">
+    </blockquote>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Tipo complejo:
+            </strong>
+            Pueden estar compuestos por otros
+            elementos y/o atributos. Su contenido está definido entre las etiquetas
+            de inicio y de cierre del elemento .
+            <br>
+            <ul class="lista_verificacion">
+                <li>
+                    <strong>
+                        Esquema
+                    </strong>
+                    ,
+                    <strong>
+                        xs:schema
+                    </strong>
+                    , contiene
+                    la definición del esquema, es el elemento tipo complejo básico.
+                </li>
+                <li>
+                    <strong>
+                        xs:complexType
+                    </strong>
+                    , entre sus etiquetas de inicio y
+                    cierre se definen los elementos de tipo complejo. Pueden estar
+                    formados por subelementos predefinidos en XML Schema como:
+                    <ul>
+                        <li>
+                            <strong>
+                                Secuencias
+                            </strong>
+                            ,
+                            <strong>
+                                xs:sequence
+                            </strong>
+                            , permite construir
+                            elementos complejos mediante la enumeración de los
+                            elementos que los forman en un orden concreto. Si se
+                            altera dicho orden en el documento xml, dicho documento
+                            no será válido.
+                        </li>
+                        <li class="lista_verificacion">
+                            <strong>
+                                Alternativa
+                            </strong>
+                            ,
+                            <strong>
+                                xs:choice
+                            </strong>
+                            , representa alternativas, hay
+                            que tener en cuenta que es una o-exclusiva. Especifica
+                            una lista concreta de elementos de los que sólo puede
+                            aparecer uno.
+                        </li>
+                        <li>
+                            <strong>
+                                Secuencias no ordenadas
+                            </strong>
+                            ,
+                            <strong>
+                                xs:all
+                            </strong>
+                            , representa a todos los
+                            elementos que componen el elemento de tipo&nbsp;
+                            compuesto en cualquier orden. Pueden aparecer en el
+                            documento xml en cualquier orden y dicho documento es
+                            válido.
+                        </li>
+                        <li>
+                            <strong>
+                                Contenido mixto
+                            </strong>
+                            , definido dando valor
+                            true al atributo mixed del elemento
+                            &lt;
+                            <strong>
+                                xs:complexType mixed="true"&gt;
+                            </strong>
+                            ,
+                            permite mezclar texto con elementos hijo. Los elementos
+                            hijo se definen con las opciones anteriores;
+                            xs:sequence, xs:choice o xs:all.
+                        </li>
+                        <li>
+                            <strong>
+                                Elemento vacío
+                            </strong>
+                            , el elemento no puede
+                            contener texto mi otros subelementos; únicamente
+                            atributos.
+                            <ul>
+                                <li>
+                                    XSD:
+                                    <div class="pre-code">
+                                        <div>
+                     <pre ngNonBindable>&lt;xsd:element name="asignatura"&gt;
+      &lt;xsd:complexType&gt;
+        &lt;xsd:attribute name='codigo' type='xs:integer'/&gt;
+      &lt;/xsd:complexType&gt;
+&lt;/xsd:element&gt;</pre>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    XML válido:
+                                    <div class="pre-code">
+                                        <div>
+                     <pre ngNonBindable>&lt;asignatura codigo='MAT-1920'&gt;&lt;b&gt;(vacío)&lt;/b&gt;&lt;/asignatura&gt;
+
+&lt;strong&gt;&lt;i&gt;O lo que es lo mismo y más correcto:&lt;/i&gt;&lt;/strong&gt;
+
+&lt;asignatura codigo='MAT-1920'/&gt;
+</pre>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <br/></li>
+        <li>
+            <strong>
+                Referencias a otros elementos
+            </strong>
+            : Tal y como ocurre en
+            otros lenguajes, en un documento xsd podemos definir elementos de forma
+            global y luego hacer referencias a ellos desde otros elementos. Esto es
+            muy útil si a lo largo de un documento se repiten determinados
+            elementos.
+            <ul>
+                <li>
+                    Ejemplo:
+                </li>
+            </ul>
+            <div class="pre-code">
+                <div>
+               <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+   &lt;xsd:element name="Direccion"&gt;
+      &lt;xsd:complexType&gt;
+         &lt;xsd:sequence&gt;
+            &lt;xsd:element ref="via"/&gt;
+            &lt;xsd:element ref="numero"/&gt;
+            &lt;xsd:element ref="poblacion"/&gt;
+            &lt;xsd:element ref="provincia"/&gt;
+            &lt;xsd:element ref="cp"/&gt;
+         &lt;/xsd:sequence&gt;
+      &lt;/xsd:complexType&gt;
+   &lt;/xsd:element&gt;
+   &lt;xsd:element name="via" type="xsd:string"/&gt;
+   &lt;xsd:element name="numero" type="xsd:integer"/&gt;
+   &lt;xsd:element name="poblacion" type="xsd:string"/&gt;
+   &lt;xsd:element name="provincia" type="xsd:string"/&gt;
+   &lt;xsd:element name="cp" type="xsd:string"/&gt;
+&lt;/xsd:schema&gt;
+</pre>
+                </div>
+            </div>
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.2.- Atributos en XML Schema
+</h1><div class="iDevice_content">
+    <p>
+        El elemento "atributo" permite definir los atributos de los elementos en el
+        documento xsd para usarlos adecuadamente en el documento XML.
+    </p>
+    <p>
+        Su sintaxis es la siguiente:
+    </p>
+    <div class="pre-code">
+        <div>
+             <pre ngNonBindable>&lt;xsd:attribute name="nombreAtributo"
+ref="atributoReferenciado"
+type="tipoAtributo"
+use="valor"
+fixed=”valor"
+default=”valor”/&gt;
+</pre>
+        </div>
+    </div>
+    <p>
+    </p>
+    <p>
+        Donde:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                name
+            </strong>
+            : nombre del atributo.
+        </li>
+        <li>
+            <strong>
+                ref
+            </strong>
+            : el atributo referenciado se encuentra definido en
+            otra parte del esquema. No puede aparecer al mismo tiempo que
+            <strong>
+                name
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                type
+            </strong>
+            : tipo de dato del atributo. No puede aparecer al
+            mismo tiempo que
+            <strong>
+                ref
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                use
+            </strong>
+            (opcional): indica si la aparición del atributo es
+            opcional (optional), obligatoria (required) o prohibida (prohibited).
+            Por defecto toma el valor "optional".
+        </li>
+        <li>
+            <strong>
+                default
+            </strong>
+            (opcional): valor que tomará el atributo al ser
+            procesado si en el documento XML no hay ningún valor. Sólo se puede usar
+            con tipos de datos cadena de caracteres. No puede aparecer al mismo
+            tiempo que
+            <strong>
+                fixed
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                fixed
+            </strong>
+            (opcional): valor fijo que toma el atributo. No
+            puede aparecer al mismo tiempo que
+            <strong>
+                default
+            </strong>
+            .
+        </li>
+    </ul>
+    <p>
+        Los atributos sólo pueden aparecer en los elementos de tipo compuesto y su
+        declaración debe aparecer siempre al final de la definición del elemento del
+        que es atributo, justo antes del cierre de .
+    </p>
+    <p>
+    </p>
+</div><h1 class="title">
+    3.3.- Tipos de datos.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+             Son los distintos valores que puede tomar
+                                                el
+            </span>
+        <strong style="font-size: 1em;">
+            atributo type
+        </strong>
+        <span style="font-size: 1em;">
+             cuando se declara un elemento o un atributo y
+                                                representan el tipo de dato que tendrá el elemento o atributo asociado a
+                                                ese
+            </span>
+        <strong style="font-size: 1em;">
+            type
+        </strong>
+        <span style="font-size: 1em;">
+             en el documento XML.
+            </span>
+        <br/></p>
+    <p>
+        Algunos de estos valores predefinidos son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                string
+            </strong>
+            , se corresponde con una cadena de caracteres
+            UNICODE. Puede contener caracteres, saltos de línea y tabulaciones.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="poblacion" type="xs:string"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <div>
+                 <pre ngNonBindable>&lt;poblacion&gt;La Puebla de Vícar&lt;/poblacion&gt;&lt;br /&gt;&lt;strong&gt;&lt;i&gt;O lo que es lo mismo:&lt;/i&gt;&lt;/strong&gt;
+&lt;poblacion&gt;         La Puebla de Vícar      &lt;/poblacion&gt;
+</pre>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                boolean
+            </strong>
+            , representa valores lógicos, es decir que solo
+            pueden tomar dos valores, true o false.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:attibute name="cancelado" type="xs:boolean"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;vuelo cancelado="true"&gt;LK345&lt;/vuelo&gt;&lt;br /&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                integer
+            </strong>
+            , número entero positivo o negativo.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="precio" type="xs:integer"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;precio&gt;94&lt;/precio&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                positiveInteger
+            </strong>
+            , número entero positivo.
+        </li>
+        <li>
+            <strong>
+                negativeInteger
+            </strong>
+            , número entero negativo.
+        </li>
+        <li>
+            <strong>
+                decimal
+            </strong>
+            , número decimal, por ejemplo, 8,97.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="precio" type="xs:decimal"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;precio&gt;8,97&lt;/precio&gt;&lt;br /&gt;&lt;strong&gt;o&nbsp;también&lt;/strong&gt;&lt;br /&gt;&lt;precio&gt;8&lt;/precio&gt;&lt;br /&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                dateTime
+            </strong>
+            , representa una fecha y hora absolutas. Tiene
+            el siguiente formato: "YYYY-MM-DDThh:mm:ss. Sólo es válido si se
+            especifican todos los componentes.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="fecha" type="xs:dateTime"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;fecha&gt;&lt;span&gt;2020-05-20T08:20:00&lt;/span&gt;&lt;/fecha&gt;&lt;br /&gt;&lt;strong&gt;o&nbsp;bien&lt;/strong&gt;&lt;br /&gt;&lt;fecha&gt;&lt;span&gt;2020-05-20T08:20:00.5&lt;/span&gt;&lt;/fecha&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                duration
+            </strong>
+            , representa una duración de tiempo expresado
+            en años, meses, días, horas, minutos segundos. El formato utilizado es:
+            PnYnMnDTnHnMnS.&nbsp; Para indicar una duración negativa se pone un
+            signo – precediendo a la P.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="periodo" type="xs:duration"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                <pre ngNonBindable>&lt;strong&gt;Por ejemplo para representar una duración de 2 años, 4 meses, 3 días, 5 horas, 6 minutos y 7 segundos habría que poner:&lt;/strong&gt;
+&lt;periodo&gt;P2Y4M3DT5H6M7S&lt;/periodo&gt;&lt;br /&gt;&lt;strong&gt;Se pueden omitir los valores nulos, luego una duración de 2 años será&lt;/strong&gt;&lt;br /&gt;&lt;periodo&gt;P2Y&lt;/periodo&gt;&lt;br /&gt;&lt;strong&gt;Un&nbsp;ejemplo&nbsp;de&nbsp;duración&nbsp;negativa&nbsp;sería:&lt;/strong&gt;&lt;br /&gt;&lt;periodo&gt;-P2D&lt;/periodo&gt; indica un periodo de menos de dos días.&lt;br /&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                time
+            </strong>
+            , hora en el formato hh:mm:ss.
+        </li>
+        <li>
+            <strong>
+                date
+            </strong>
+            , fecha en formato CCYY-MM-DD.
+        </li>
+        <li>
+            <strong>
+                gYearMonth
+            </strong>
+            , representa un mes de un año determinado
+            mediante el formato CCYY-MM.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="fecha" type="xs:gYearMonth"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;fecha&gt;&lt;span&gt;2020-05-20T08:20:00&lt;/span&gt;&lt;/fecha&gt;  &lt;strong&gt;Mayo de 2020&lt;/strong&gt;&lt;br /&gt;</pre>
+                    </div>
+                </li>
+                <li>
+                    XML NO válidos:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;fecha&gt;&lt;span&gt;20-05&lt;/span&gt;&lt;/fecha&gt;  &lt;strong&gt;El año no puede dividirse&lt;/strong&gt;&lt;br /&gt;&lt;strong&gt;o&nbsp;bien&lt;/strong&gt;&lt;br /&gt;&lt;fecha&gt;&lt;span&gt;2020&lt;/span&gt;&lt;/fecha&gt;&nbsp;&lt;strong&gt;El&nbsp;mes&nbsp;es&nbsp;requerido&lt;/strong&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                gYear
+            </strong>
+            , indica un año gregoriano, el formato usado es
+            CCYY.
+        </li>
+        <li>
+            <strong>
+                gMothDay
+            </strong>
+            , representa un día de un mes mediante el
+            formato -–MM-DD.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="fecha" type="xs:gMonthDay"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;fecha&gt;&lt;span&gt;--05-19&lt;/span&gt;&lt;/fecha&gt; &lt;strong&gt;19 de  Mayo&lt;/strong&gt;&lt;br /&gt;</pre>
+                    </div>
+                </li>
+                <li>
+                    XML NO válidos:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;fecha&gt;&lt;span&gt;05-19&lt;/span&gt;&lt;/fecha&gt;  &lt;strong&gt;Los guiones delante del mes son obligatorios&lt;/strong&gt;&lt;br /&gt;&lt;strong&gt;o&nbsp;bien&lt;/strong&gt;&lt;br /&gt;&lt;fecha&gt;&lt;span&gt;--05-32&lt;/span&gt;&lt;/fecha&gt;&nbsp;&lt;strong&gt;Debe&nbsp;ser&nbsp;un&nbsp;día&nbsp;válido&nbsp;del&nbsp;año;&nbsp;mayo&nbsp;tiene&nbsp;31&nbsp;días.&lt;/strong&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                gDay
+            </strong>
+            , indica el ordinal del día del mes mediante el
+            formato - -DD, es decir el 4º día del mes será - -04.
+        </li>
+        <li>
+            <strong>
+                gMonth
+            </strong>
+            , representa el mes mediante el formato - -MM.
+            Por ejemplo, febrero es - -02.
+        </li>
+        <li>
+            <strong>
+                anyURI
+            </strong>
+            , representa una URI.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <div>
+                            <pre ngNonBindable>&lt;xs:element name="web" type="xs:anyURI"/&gt;</pre>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    XML válido:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;wweb&gt;www.iesaguadulce.es&lt;/web&gt; &lt;strong&gt;URI absoluta, incluso una URL&lt;br /&gt;&lt;/strong&gt;o&nbsp;bien&lt;br /&gt;&lt;web&gt;www.iesaguadulce.es#texto&lt;/web&gt;&nbsp;URI con un identificador&nbsp;#&lt;br /&gt;</pre>
+                    </div>
+                </li>
+                <li>
+                    XML NO válidos:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;web&gt;www.iesaguadulce.es#texto#texto1&lt;/web&gt;&nbsp;Demasiados&nbsp;identificadores&nbsp;#&lt;br /&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                language
+            </strong>
+            , representa los identificadores de lenguaje,
+            sus valores están definidos en
+            <abbr title="Request for Comments, significa Petición De Comentarios.">
+                RFC
+            </abbr>
+            1766.
+        </li>
+        <li>
+            <strong>
+                ID, IDREF, ENTITY, NOTATION, NMTOKEN
+            </strong>
+            . Representan lo
+            mismo que en los DTD's (ver apartado 2.4).
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.4.- Facetas de los tipos de datos.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        ¿Cuáles son las restricciones que podemos aplicar sobre los valores de los
+        datos de un elemento o atributo?
+        <br>
+        Están definidas por las
+        <strong>
+            facetas
+        </strong>
+        , que solo pueden aplicarse sobre tipos simples
+        utilizando el elemento
+        <strong>
+            xs:restriction
+        </strong>
+        , que tiene como
+        atributo "
+        <strong>
+            base
+        </strong>
+        " en el que se indica el tipo de dato a
+        partir del cual se define la restricción.
+        <br/></p>
+    <p>
+        Las facetas se expresan como un elemento dentro de una restricción y se
+        pueden combinar para lograr restringir más el valor del elemento. Son, entre
+        otros:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                length, minlength, maxlentgh:
+            </strong>
+            Longitud del tipo de
+            datos.
+        </li>
+        <li>
+            <strong>
+                enumeration:
+            </strong>
+            Restringe a un determinado conjunto de
+            valores.
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.5.- Definición de tipos de datos simples XML Schema.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        En los DTD se diferencia entre los elementos terminales y los no terminales
+        ¿en este caso también?
+        <br>
+        Si, este lenguaje
+        <strong>
+            permite trabajar tanto
+            con datos simples como con estructuras de datos complejos
+        </strong>
+        , es
+        decir, compuestos por el anidamiento de otros datos simples o compuestos. En
+        este apartado vamos a indicar las tres diferentes maneras que existen de
+        extender un tipo de datos simple:
+        <br/></p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Restricción
+            </strong>
+            .
+            <br>
+            Se hace una restricción sobre un tipo
+            de datos
+            <strong>
+                XSD
+            </strong>
+            ya definido y se establece el rango de
+            valores que puede tomar. Las restricciones son conocidas como
+            <strong>
+                facetas
+            </strong>
+            .
+            <br/></li>
+    </ul>
+</div><h1 class="title">
+    3.6.- Definición de tipos de datos complejos XML Schema
+</h1><div class="iDevice_content">
+    <p>
+        <strong>
+            Tipo complejo:
+        </strong>
+        <span>
+             Pueden estar compuestos por otros
+                                                elementos y/o atributos. Su contenido está definido entre las etiquetas
+                                                de inicio y de cierre del elemento .
+            </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Esquema
+            </strong>
+            ,
+            <span>
+             </span>
+            <strong>
+                xs:schema
+            </strong>
+            ,
+            contiene la definición del esquema, es el elemento tipo complejo básico.
+            Contiene el atributo xmlns (XML NameSapce), que indica el espacio de
+            nombres para el esquema.
+            <ul>
+                <li>
+                    XSD:
+                    <div class="pre-code">
+                        <pre ngNonBindable>&lt;xs:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;&lt;br /&gt;&lt;/xs:schema&gt;</pre>
+                    </div>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <strong>
+                xs:complexType
+            </strong>
+            , entre sus etiquetas de inicio y cierre
+            se definen los elementos de tipo complejo. Pueden estar formados por
+            subelementos predefinidos en XML Schema como:
+            <ul>
+                <li>
+                    <strong>
+                        Secuencias
+                    </strong>
+                    ,
+                    <span>
+               </span>
+                    <strong>
+                        xs:sequence
+                    </strong>
+                    ,
+                    permite construir elementos complejos mediante la enumeración de
+                    los elementos que los forman en un orden concreto. Si se altera
+                    dicho orden en el documento xml, dicho documento no será válido.
+                    <ul>
+                        <li>
+                            XSD:
+                            <div class="pre-code">
+                                <div>
+                   <pre ngNonBindable>&lt;xs:element name="Direccion"&gt;
+      &lt;xs:complexType&gt;</pre>
+                                    <pre ngNonBindable>&lt;span class="pln"/&gt;&lt;span class="tag"&gt;        &lt;xs:sequence/&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+            &lt;/span&gt;&lt;span class="tag"&gt;&lt;xs:element&lt; span=""&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"calle"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="tag"&gt;/&gt;&lt;br&gt;&lt;span class="pln"&gt;            &lt;/span&gt;&lt;xs:element&lt;span class="pln"&gt; &lt;/xs:element&lt;span&gt;&lt;/br&gt;&lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"poblacion"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;/&gt;&lt;/xs:element&lt;&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+	    &lt;/span&gt;&lt;span class="tag"&gt;&lt;xs:element&lt; span=""&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"provinvia"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="tag"&gt;/&gt;&lt;br&gt;&lt;span class="pln"&gt;            &lt;/span&gt;&lt;xs:element&lt;span class="pln"&gt; &lt;/xs:element&lt;span&gt;&lt;/br&gt;&lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"codigo_postal"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:int"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;/&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;/xs:element&lt;&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+&lt;/span&gt;&lt;span class="pln"&gt;        &lt;/span&gt;&lt;span class="tag"/&gt;&lt;span class="pln"&gt; &lt;/span&gt;</pre>
+                                    <pre ngNonBindable>&nbsp;    &lt;/xs:complexType&gt; &lt;br /&gt;&lt;/xs:element&gt;&lt;br /&gt;&lt;br /&gt;o&nbsp;lo&nbsp;que&nbsp;es&nbsp;lo&nbsp;mismo:&lt;br /&gt;</pre>
+                                    <pre ngNonBindable>&lt;xs:element name="Direccion"&gt;
+    &lt;xs:complexType&gt;&lt;br /&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexContent&gt;</pre>
+                                    <pre ngNonBindable>&lt;span class="pln"/&gt;&lt;span class="tag"&gt;        &lt;xs:sequence/&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+            &lt;/span&gt;&lt;span class="tag"&gt;&lt;xs:element&lt; span=""&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"calle"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="tag"&gt;/&gt;&lt;br&gt;&lt;span class="pln"&gt;            &lt;/span&gt;&lt;xs:element&lt;span class="pln"&gt; &lt;/xs:element&lt;span&gt;&lt;/br&gt;&lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"poblacion"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;/&gt;&lt;/xs:element&lt;&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+	    &lt;/span&gt;&lt;span class="tag"&gt;&lt;xs:element&lt; span=""&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"provinvia"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="tag"&gt;/&gt;&lt;br&gt;&lt;span class="pln"&gt;            &lt;/span&gt;&lt;xs:element&lt;span class="pln"&gt; &lt;/xs:element&lt;span&gt;&lt;/br&gt;&lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"codigo_postal"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:int"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;/&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;/xs:element&lt;&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+&lt;/span&gt;&lt;span class="pln"&gt;        &lt;/span&gt;&lt;span class="tag"/&gt;&lt;span class="pln"&gt; &lt;br&gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;xs:complexContent&gt;&lt;/br&gt;&lt;/span&gt;</pre>
+                                    <pre ngNonBindable>&nbsp;    &lt;/xs:complexType&gt; &lt;br /&gt;&lt;/xs:element&gt;</pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            XML válido:
+                            <div class="pre-code">
+                  <pre ngNonBindable>&lt;Direccion&gt;&lt;br /&gt;   &lt;calle&gt;Lago de Enol, nº 32&lt;/calle&gt;&lt;br /&gt;   &lt;poblacion&gt;Aguadulce&lt;/poblacion&gt;&lt;br /&gt;   &lt;provincia&gt;Almería&lt;/provincia&gt;&lt;br /&gt;   &lt;codigo_postal&gt;04720&lt;/codigo_postal&gt;&lt;br /&gt;&lt;/Direccion&gt;
+
+&lt;br /&gt;</pre>
+                            </div>
+                        </li>
+                        <li>
+                            XML
+                            <strong>
+                                NO
+                            </strong>
+                            válido:
+                            <div class="pre-code">
+                  <pre ngNonBindable>&lt;Direccion&gt;&lt;br /&gt;   &lt;poblacion&gt;Aguadulce&lt;/poblacion&gt;&lt;br /&gt;   &lt;provincia&gt;Almería&lt;/provincia&gt;&lt;br /&gt; &lt;calle&gt;Lago de Enol, nº 32&lt;/calle&gt;&lt;br /&gt;   &lt;codigo_postal&gt;04720&lt;/codigo_postal&gt;&lt;br /&gt;&lt;/Direccion&gt;
+
+</pre>
+                            </div>
+                        </li>
+                        <li class="lista_verificacion">
+                            <strong>
+                            </strong>
+                        </li>
+                    </ul>
+                </li>
+                <li class="lista_verificacion">
+                    <strong>
+                        Alternativa
+                    </strong>
+                    ,
+                    <span>
+               </span>
+                    <strong>
+                        xs:choice
+                    </strong>
+                    ,
+                    representa alternativas, hay que tener en cuenta que es una
+                    o-exclusiva. Especifica una lista concreta de elementos de los
+                    que sólo puede aparecer uno.
+                    <ul>
+                        <li>
+                            XSD:
+                            <div class="pre-code">
+                                <div>
+                   <pre ngNonBindable>&lt;xs:element name="FormaPago"&gt;
+      &lt;xs:complexType&gt;</pre>
+                                    <pre ngNonBindable>&lt;span class="pln"/&gt;&lt;span class="tag"&gt;        &lt;xs:choice/&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+            &lt;/span&gt;&lt;span class="tag"&gt;&lt;xs:element&lt; span=""&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"paypal"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="tag"&gt;/&gt;&lt;br&gt;&lt;span class="pln"&gt;            &lt;/span&gt;&lt;xs:element&lt;span class="pln"&gt; &lt;/xs:element&lt;span&gt;&lt;/br&gt;&lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"transferencia"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;/&gt;&lt;/xs:element&lt;&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+	    &lt;/span&gt;&lt;span class="tag"&gt;&lt;xs:element&lt; span=""&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"bizum"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:string"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="tag"&gt;/&gt;&lt;br&gt;&lt;span class="pln"&gt;            &lt;/span&gt;&lt;xs:element&lt;span class="pln"&gt; &lt;/xs:element&lt;span&gt;&lt;/br&gt;&lt;/span&gt;&lt;span class="atn"&gt;name&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"contado"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;span class="atn"&gt;type&lt;/span&gt;&lt;span class="pun"&gt;=&lt;/span&gt;&lt;span class="atv"&gt;"xs:int"&lt;/span&gt;&lt;span class="pln"&gt; &lt;/span&gt;/&gt;&lt;span class="pln"&gt; &lt;/span&gt;&lt;/xs:element&lt;&gt;&lt;/span&gt;&lt;span class="pln"&gt;
+&lt;/span&gt;&lt;span class="pln"&gt;        &lt;/span&gt;&lt;span class="tag"/&gt;&lt;span class="pln"&gt; &lt;/span&gt;</pre>
+                                    <pre ngNonBindable>&nbsp;     &lt;/xs:complexType&gt; &lt;br /&gt;&lt;/xs:element&gt;</pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            XML válido:
+                            <div class="pre-code">
+                  <pre ngNonBindable>&lt;FormaPago&gt;transferencia&lt;/FormaPago&gt;
+
+</pre>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>
+                        Secuencias no
+                        ordenadas
+                    </strong>
+                    ,
+                    <span>
+               </span>
+                    <strong>
+                        xs:all
+                    </strong>
+                    ,
+                    representa a todos los elementos que componen el elemento de
+                    tipo&nbsp; compuesto en cualquier orden. Pueden aparecer en el
+                    documento xml en cualquier orden y dicho documento es válido.
+                </li>
+                <li>
+                    <strong>
+                        Contenido mixto
+                    </strong>
+                    , definido dando valor true al
+                    atributo mixed del elemento &lt;
+                    <strong>
+                        xs:complexType
+                        mixed="true"&gt;
+                    </strong>
+                    , permite mezclar texto con
+                    elementos hijo. Los elementos hijo se definen con las opciones
+                    anteriores; xs:sequence, xs:choice o xs:all.
+                </li>
+                <li>
+                    <strong>
+                        Elemento vacío
+                    </strong>
+                    , el elemento no puede contener
+                    texto mi otros subelementos; únicamente atributos.
+                    <ul>
+                        <li>
+                            XSD:
+                            <div class="pre-code">
+                                <div>
+                   <pre ngNonBindable>&lt;xs:element&gt;
+      &lt;xs:complexType&gt;
+        &lt;xs:attribute name='codigo' type='xs:integer'/&gt;
+      &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;</pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            XML válido:
+                            <div class="pre-code">
+                                <div>
+                   <pre ngNonBindable>&lt;asignatura codigo='MAT-1920'&gt;&lt;b&gt;(vacío)&lt;/b&gt;&lt;/asignatura&gt;
+
+&lt;strong&gt;&lt;i&gt;O lo que es lo mismo y más correcto:&lt;/i&gt;&lt;/strong&gt;
+
+&lt;asignatura codigo='MAT-1920'/&gt;</pre>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>
+                        Elemento simple con atributo
+                    </strong>
+                    , es un elemento
+                    simple porque no contiene a otros elementos, sólo datos, pero es
+                    de tipo complejo (complexType) porque tiene un atributo.
+                    <ul>
+                        <li>
+                            XSD:
+                            <div class="pre-code">
+                                <div>
+                   <pre ngNonBindable>&lt;xs:element name="cuota"&gt;
+      &lt;xs:complexType&gt;&lt;br /&gt;            &lt;xs:simpleContent&gt;
+                 &lt;xs:attribute name='moneda' type='xs:string'/&gt;
+            &lt;/xs:simpleContent&gt;   &lt;br /&gt;   &lt;/xs:complexType&gt;
+&lt;/xs:element&gt;</pre>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            XML válido:
+                            <div class="pre-code">
+                  <pre ngNonBindable>&lt;cuota moneda='Euro'&gt;&lt;b&gt;1200&lt;/b&gt;&lt;/cuota&gt;
+</pre>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div><h1 class="title">
+    3.7.- Asociación con documentos XML.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Una vez que tenemos creado el
+        <b>
+            fichero XSD
+        </b>
+        ¿cómo lo
+        <b>
+            asociamos a un
+            fichero XML
+        </b>
+        ?
+    </p>
+    <p>
+        El modo de asociar un esquema a un documento XML es un espacio de nombres al
+        ejemplar del documento, donde se indica la ruta de localización de los
+        ficheros esquema mediante su
+        URI
+        ,
+        precedida del prefijo "
+        <b>
+            xs:
+        </b>
+        ".
+    </p>
+    <div class="page" title="Page 24">
+        <div class="section">
+            <div class="layoutArea">
+                <div class="column">
+                    <p>
+                <span>
+                 Para que un documento XML siga las reglas definidas en
+                                                                un esquema, no disponemos de etiqueta
+                </span>
+                        <span>
+                 !DOCTYPE
+                </span>
+                        <span>
+                 ; en su lugar utilizamos
+                                                                atributos especiales en el elemento raíz del documento
+                                                                XML.
+                </span>
+                    </p>
+                    <p>
+                <span>
+                 Primero, al igual que en el documento XMLSchema,
+                                                                necesitamos definir los dos espacios de nombres, el
+                                                                correspondiente al documento XML (que se suele usar sin
+                                                                abreviatura, es decir como espacio por defecto) y el
+                                                                espacio de nombres de XMLSchema (que suele utilizar el
+                                                                prefijo
+                </span>
+                        <span>
+                 xs
+                </span>
+                        <span>
+                 , aunque se puede
+                                                                utilizar otro).
+                </span>
+                    </p>
+                    <p>
+                <span>
+                 Además es necesario indicar dónde está el archivo
+                                                                XMLSchema que contiene las reglas de validación que se
+                                                                aplican al documento. Esto se hace gracias al atributo
+                                                                llamado
+                </span>
+                        <span>
+                 schemaLocation
+                </span>
+                        <span>
+                 (perteneciente al espacio de nombres del
+                                                                esquema, por lo que se usa normalmente como
+                </span>
+                        <span>
+                 xs:schemaLocation
+                </span>
+                        <span>
+                 ).
+                </span>
+                    </p>
+                    <div class="page" title="Page 24">
+                        <div class="section">
+                            <div class="layoutArea">
+                                <div class="column">
+                                    <p>
+                    <span>
+                     Ejemplo:
+                    </span>
+                                    </p>
+                                    <div class="pre-code">
+                                        <div>
+                     <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;documento xmlns="http://www.iesaguadulce.es/doc" xmlns:xs="http://w3.org/2001/XMLSchema-instance"
+xs:schemaLocation="esquema.xsd"&gt;
+....
+&lt;/documento&gt;</pre>
+                                        </div>
+                                    </div>
+                                    <div class="page" title="Page 24">
+                                        <div class="section">
+                                            <div class="layoutArea">
+                                                <div class="column">
+                                                    <p>
+                        <span>
+                         Se indica el espacio
+                                                                                                por defecto de nombres
+                                                                                                en el documento
+                                                                                                (coincide con el
+                                                                                                declarado en el propio
+                                                                                                archivo del esquema), se
+                                                                                                indica el espacio de
+                                                                                                nombres correspondiente
+                                                                                                al esquema (siempre es
+                                                                                                la misma dirección de
+                                                                                                Internet) y se asocia a
+                                                                                                este espacio el prefijo
+                        </span>
+                                                        <span>
+                         xs
+                        </span>
+                                                        <span>
+                         (se puede
+                                                                                                elegir otro prefijo,
+                                                                                                pero no es nada
+                                                                                                conveniente).
+                        </span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p>
+                    <span>
+                     En el caso de que en el Schema
+                                                                                únicamente definamos el espacio de
+                                                                                nombres&nbsp;
+                                                                                xmlns:xs="http://www.w3.org/2001/XMLSchema",
+                                                                                en el documento xml habrá que
+                                                                                indicar:
+                    </span>
+                                    </p>
+                                    <p>
+                    <span>
+                    </span>
+                                    </p>
+                                    <div class="pre-code">
+                                        <div>
+                     <pre ngNonBindable>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;documento xmlns:xs="http://w3.org/2001/XMLSchema-instance"
+&lt;span&gt;xs:noNamespaceSchemaLocation&lt;/span&gt;="esquema.xsd"&gt;
+....
+&lt;/documento&gt;</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="exe-tooltip-text" id="t74b850c3-6263-7780-71c5-370e7e2ef016">
+        <p>
+            Identificador de Recursos Uniforme
+        </p>
+    </div>
+</div><h1 class="title">
+    3.8.- Documentación del esquema.
+</h1><div class="iDevice_content">
+
+    <p>
+    </p>
+    <p>
+        Una vez que hemos visto como crear un esquema vamos a ver el modo de
+        incorporar cierta documentación (quién es el autor, limitaciones de derechos
+        de autor, utilidad del esquema, etc.) al mismo.
+    </p>
+    <p>
+        Podemos pensar que un método para añadir esta información es utilizar
+        comentarios. El problema es que los analizadores no garantizan que los
+        comentarios no se modifiquen al procesar los documentos y por tanto, que los
+        datos añadidos no se pierdan en algún proceso de transformación del
+        documento.
+    </p>
+    <p>
+        En lugar de usar los comentarios, XML Schema tiene definido un elemento
+        <strong>
+            xs:annotation
+        </strong>
+        que permite
+        <strong>
+            guardar información
+            adicional
+        </strong>
+        . Este elemento a su vez puede contener una
+        combinación de otros dos que son:
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                xs:documentation
+            </strong>
+            , además de contener elementos de
+            esquema puede contener elementos XML bien estructurados.
+            <br>
+            También
+            permite determinar el idioma del documento mediante el atributo
+            xml:lang.
+            <br/></li>
+        <li>
+            <strong>
+                xs:appinfo
+            </strong>
+            , se diferencia muy poco del elemento
+            anterior, aunque lo que se pretendió inicialmente era que
+            xs:documentation fuese legible para los usuarios y que xs:appinfo
+            guardase información para los programas de software.
+            <br>
+            También es
+            usado para generar una ayuda contextual para cada elemento declarado en
+            el esquema.
+            <br/></li>
+    </ul>
+</div><h1 class="title">
+    4.- Herramientas de creación y validación.
+</h1><div class="iDevice_content">
+
+    <p>
+        <br>
+        <span style="font-size: 1em;">
+               Antes de comenzar a trabajar con la
+              </span>
+        <strong style="font-size: 1em;">
+            normalización de los
+            documentos
+        </strong>
+        <span style="font-size: 1em;">
+               que utiliza
+              </span>
+        <strong style="font-size: 1em;">
+            la empresa de María y Félix.
+            Marina
+        </strong>
+        <span style="font-size: 1em;">
+               le presenta a
+              </span>
+        <strong style="font-size: 1em;">
+            Juan
+        </strong>
+        <span style="font-size: 1em;">
+               un informe sobre las diferentes
+                                                        herramientas que pueden facilitarles el trabajo de edición y
+                                                        validación de los documentos
+              </span>
+        <strong style="font-size: 1em;">
+            XSD
+        </strong>
+        <span style="font-size: 1em;">
+               y
+              </span>
+        <strong style="font-size: 1em;">
+            XML
+        </strong>
+        <span style="font-size: 1em;">
+               .
+              </span>
+        <br/></p>
+    <p>
+        <strong>
+            Juan
+        </strong>
+        hará un estudio de costes y escogerá alguna de
+        ellas para realizar el trabajo.
+    </p>
+</div><h1 class="title">
+    5.- Ejercicios resueltos.
+</h1><div class="iDevice_content">
+    <p>
+        La empresa
+        <strong>
+            Reggio
+        </strong>
+        tiene establecimientos
+        por toda Italia, pero su sede central está en&nbsp;Cesena, al igual
+        que el almacén donde se distribuye a todos los demás
+        establecimientos.&nbsp;Esta empresa distribuye alpiste para pájaros,
+        así como otros artículos ornitológicos.
+    </p>
+    <p>
+              <span style="font-size: 1em;">
+               Cada
+              </span>
+        <strong style="font-size: 1em;">
+            establecimiento
+        </strong>
+        <span style="font-size: 1em;">
+               tiene una
+              </span>
+        <strong style="font-size: 1em;">
+            tienda
+        </strong>
+        <span style="font-size: 1em;">
+               , así como un
+              </span>
+        <strong style="font-size: 1em;">
+            almacén
+        </strong>
+        <span style="font-size: 1em;">
+               , que pueden o no estar en la misma
+                                                        ubicación.
+              </span>
+        <span style="font-size: 1em;">
+               Cuando se
+                                                        hace un pedido a la fábrica por parte de los establecimientos,
+                                                        éstas reciben los artículos en su almacén, y la documentación
+                                                        (albarán y pago) se remite a la tienda.
+              </span>
+    </p>
+    <p>
+              <span style="font-size: 1em;">
+               Cada
+              </span>
+        <strong style="font-size: 1em;">
+            pedido
+        </strong>
+        <span style="font-size: 1em;">
+               debe tener los datos
+                                                        siguientes:
+              </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Datos del establecimiento
+            </strong>
+            que realiza el
+            pedido (Nombre, dirección para envío y dirección&nbsp;almacén
+            (si es la misma, sólo aparecerá una).
+        </li>
+        <li>
+            <strong>
+                Código de pedido
+            </strong>
+            (Cadena de caracteres
+            formada por: Código establecimiento (1 letra y 2 números),
+            número pedido (4 números), un guión y Año (dos números), por
+            ejemplo: E180021-17
+        </li>
+        <li>
+            <strong>
+                Nombre del empleado
+            </strong>
+            que realiza el pedido.
+        </li>
+        <li>
+            <strong>
+                Fecha
+            </strong>
+            de pedido.
+        </li>
+        <li>
+            <strong>
+                Tipo de envío
+            </strong>
+            (cuyos valores son: Normal o
+            Urgente)
+        </li>
+    </ul>
+    <p>
+              <span style="font-size: 1em;">
+               Respecto a
+                                                        los
+              </span>
+        <strong style="font-size: 1em;">
+            artículos del
+            pedido
+        </strong>
+        <span style="font-size: 1em;">
+               , se guardarán los
+                                                        siguientes datos:
+              </span>
+    </p>
+    <ul class="lista_verificacion">
+        <li>
+            <strong>
+                Código
+            </strong>
+            del artículo (formado por tres
+            letras y 3 números, por ejemplo: ZZZ134.
+        </li>
+        <li>
+            Número de
+            <strong>
+                unidades
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Precio por unidad
+            </strong>
+            .
+        </li>
+        <li>
+            <strong>
+                Observaciones
+            </strong>
+            .
+        </li>
+    </ul>
+</div><h1 class="title">
+    Anexo I.- Documentación de apoyo.
+</h1><div class="iDevice_content">
+    <div class="page" title="Page 1">
+        <div class="section">
+            <div class="layoutArea">
+                <div class="column">
+                    <ul class="lista_verificacion">
+                        <li>
+                 <span>
+                  <span>
+                   DTD:
+                  </span>
+                 </span>
+                            http://www.mclibre.org/consultar/xml/lecciones/xml_dtd.html
+
+                        </li>
+                    </ul>
+                    <ul class="lista_verificacion">
+                        <li>
+                 <span>
+                  Resumen DTD:
+                  Descargar PDF
+                 </span>
+                            <span class="tamano">
+                  (56
+                  <abbr title="KBytes">
+                   KB
+                  </abbr>
+                  )
+                 </span>
+                        </li>
+                    </ul>
+                    <ul class="lista_verificacion">
+                        <li>
+                            Ejercicios DTD:
+                            http://www.mclibre.org/consultar/xml/ejercicios/dtd.html
+
+                        </li>
+                    </ul>
+                    <ul class="lista_verificacion">
+                        <li>
+                 <span>
+                  DTD y XML Schema:
+                  Descargar PDF
+                 </span>
+                            <span class="tamano">
+                  (1,1
+                  <abbr title="Megabytes">
+                   MB
+                  </abbr>
+                  )
+                 </span>
+                        </li>
+                    </ul>
+                    <div class="page" title="Page 1">
+                        <div class="section">
+                            <div class="layoutArea">
+                                <div class="column">
+                                    <ul class="lista_verificacion">
+                                        <li style="text-align: left;">
+                                            [Video] XML
+                                            Schema (Estructura):
+                                            http://www.youtube.com/watch?
+                                            list=PLKLLGxMgKZ_QCcAMbq8L9dEXa6hMdb1q5&v=JKhfLpkVh3o&feature=player_detailpage
+                                        </li>
+                                    </ul>
+                                    <ul class="lista_verificacion">
+                                        <li>
+                                            [Video] Mi primer DTD:
+                                            https://www.youtube.com/watch?feature=player_embedded&v=EfnWCeQNTQI
+                                        </li>
+                                    </ul>
+                                    <ul class="lista_verificacion">
+                                        <li>
+                                            [Video] Elementos DTD:
+                                            https://www.youtube.com/watch?feature=player_embedded&v=ryoW-B_6cGs
+                                        </li>
+                                    </ul>
+                                    <ul class="lista_verificacion">
+                                        <li>
+                                            [Video] Creación DTD sencillo Parte I:
+                                            https://www.youtube.com/watch?feature=player_embedded&v=fPU1ex7bSgg
+                                        </li>
+                                    </ul>
+                                    <ul class="lista_verificacion">
+                                        <li>
+                     <span>
+                      [Video] Creación DTD sencillo
+                                                                                    Parte II:
+                     </span>
+                                            https://www.youtube.com/watch?feature=player_embedded&v=4NB89iXyxMU
+                                        </li>
+                                    </ul>
+                                    <ul class="lista_verificacion">
+                                        <li>
+                     <span>
+                      [Descarga] Referencia rápida Tipos
+                                                                                    de Datos:
+                      SchemaDataTypes
+                     </span>
+                                            <span class="tamano">
+                      (41
+                      <abbr title="Kbytes">
+                       KB
+                      </abbr>
+                      )
+                     </span>
+                                            -
+                                            Datatype Hierarchy
+                                            <span class="tamano">
+                      (35
+                      <abbr title="Kbytes">
+                       KB
+                      </abbr>
+                      )
+                     </span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><h1 class="title">
+    Condiciones y términos de uso de los materiales
+</h1><div class="iDevice_content">
+    <div title="Información acerca de la licencia de los materiales">
+        <p style="margin: 2px 2px;">
+            <strong>
+                Materiales
+                desarrollados inicialmente por el Ministerio de Educación,
+                Cultura y Deporte y actualizados por el profesorado de la Junta
+                de Andalucía bajo licencia Creative Commons
+                <abbr title="Reconocimiento-NoComercial-CompartirIgual">
+                    BY-NC-SA.
+                </abbr>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+            <strong>
+            </strong>
+        </p>
+        <p style="font-size: 0.8em; margin: 2px 2px;">
+              <span>
+               Antes
+                                                        de cualquier uso leer detenidamente el siguente
+              </span>
+            Aviso
+            legal
+        </p>
+    </div>
+</div>
