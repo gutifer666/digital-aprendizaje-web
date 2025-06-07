@@ -41,7 +41,7 @@
                     aria-label="Mostrar contenido original"
                     matIconButton
                     (click)="toggleOriginalContent()"
-                    [class.active]="showOriginalContent">
+                    [class.active]="showOriginalContent$ | async">
                     <mat-icon aria-label="Icono de contenido original">tv</mat-icon>
                 </button>
             }

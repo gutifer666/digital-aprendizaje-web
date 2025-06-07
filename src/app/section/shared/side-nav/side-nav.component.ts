@@ -10,6 +10,7 @@ import {Observable} from 'rxjs';
 import {filter, map, shareReplay} from 'rxjs/operators';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MAIN_MODULES, MODULE_LESSONS} from '../../../module/domain/menu-items';
+import {Content} from '../service/content';
 
 @Component({
   selector: 'app-side-nav',
@@ -29,6 +30,7 @@ import {MAIN_MODULES, MODULE_LESSONS} from '../../../module/domain/menu-items';
 export class SideNavComponent implements OnInit {
     private breakpointObserver = inject(BreakpointObserver);
     private router = inject(Router);
+    private content = inject(Content);
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
         .pipe(
@@ -41,7 +43,8 @@ export class SideNavComponent implements OnInit {
     mainModules = MAIN_MODULES;
     moduleLessons = MODULE_LESSONS;
 
-    showOriginalContent: boolean = false;
+    showOriginalContent$ = this.content.showOriginalContent$;
+
 
     ngOnInit() {
         // Detectar cambios en la ruta
@@ -81,7 +84,7 @@ export class SideNavComponent implements OnInit {
     }
 
     toggleOriginalContent() {
-        this.showOriginalContent = !this.showOriginalContent;
-        console.log('Mostrando contenido original:', this.showOriginalContent);
+        this.content.toggleShowOriginalContent();
+        console.log('Toggling original content');
     }
 }
