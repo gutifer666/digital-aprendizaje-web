@@ -41,6 +41,8 @@ export class SideNavComponent implements OnInit {
     mainModules = MAIN_MODULES;
     moduleLessons = MODULE_LESSONS;
 
+    showOriginalContent: boolean = false;
+
     ngOnInit() {
         // Detectar cambios en la ruta
         this.router.events.pipe(
@@ -70,5 +72,16 @@ export class SideNavComponent implements OnInit {
     getModuleTitle(): string {
         const module = this.mainModules.find(module => module.path.substring(1) === this.currentRoute);
         return module?.title || this.currentRoute;
+    }
+
+    isUTPage(): boolean {
+        const url = this.router.url;
+        const parts = url.split('/');
+        return parts.length >= 3 && parts[2]?.startsWith('ut');
+    }
+
+    toggleOriginalContent() {
+        this.showOriginalContent = !this.showOriginalContent;
+        console.log('Mostrando contenido original:', this.showOriginalContent);
     }
 }

@@ -32,8 +32,19 @@
                     <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
                 </button>
             }
-            <span>Aprendiza Digital Web</span>
+            <span>Digital Aprendizaje Web</span>
             <span class="toolbar-spacer"></span>
+            @if (isUTPage()) {
+                Vista Antigua
+                <button
+                    type="button"
+                    aria-label="Mostrar contenido original"
+                    matIconButton
+                    (click)="toggleOriginalContent()"
+                    [class.active]="showOriginalContent">
+                    <mat-icon aria-label="Icono de contenido original">tv</mat-icon>
+                </button>
+            }
             <button
                 type="button"
                 aria-label="Toggle right sidenav"
