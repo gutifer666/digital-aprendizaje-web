@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 import {filter, map, shareReplay} from 'rxjs/operators';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MAIN_MODULES, MODULE_LESSONS} from '../../../content/domain/menu-items';
-import {Content} from '../service/content';
+import {Content} from '../../../content/infrastructure/service/content';
 
 @Component({
   selector: 'app-side-nav',
@@ -84,7 +84,7 @@ export class SideNavComponent implements OnInit {
     }
 
     toggleOriginalContent() {
-        this.content.toggleShowOriginalContent();
+        this.content.toggle();
         console.log('Toggling original content');
     }
 }

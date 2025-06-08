@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
-import {Content} from '../../../shared/service/content';
+import {Content} from '../../../../content/infrastructure/service/content';
 
 @Component({
   selector: 'app-ut1-prog',
