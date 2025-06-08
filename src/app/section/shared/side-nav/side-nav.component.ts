@@ -9,7 +9,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {Observable} from 'rxjs';
 import {filter, map, shareReplay} from 'rxjs/operators';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
-import {MAIN_MODULES, MODULE_LESSONS} from '../../../module/domain/menu-items';
+import {MAIN_MODULES, MODULE_LESSONS} from '../../../content/domain/menu-items';
 import {Content} from '../service/content';
 
 @Component({
