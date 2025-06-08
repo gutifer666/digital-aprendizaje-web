@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
-import {Content} from '../../../../content/infrastructure/service/content';
+import {ChangeOfView} from '../../../../content/application/change-of-view';
 
 @Component({
   selector: 'app-ut1-prog',
@@ -11,6 +11,6 @@ import {Content} from '../../../../content/infrastructure/service/content';
   styleUrl: './ut1-prog.css'
 })
 export class Ut1Prog {
-    private content = inject(Content);
-    showOriginalContent$ = this.content.showOriginalContent$;
+    private changeOfView = new ChangeOfView();
+    protected showOriginalContent = this.changeOfView.showOriginalContent();
 }

@@ -20,6 +20,6 @@ export class ChangeOfView {
     }
 
     showOriginalContent(): Observable<boolean> {
-        return this.content.showOriginalContent$;
+        return this.content.showOriginalContent();
     }
 }
