@@ -74,4 +74,16 @@ export class SideNavComponent implements OnInit {
         return module?.title || this.currentRoute;
     }
 
+    isUTPage(): boolean {
+        return this.changeOfView.isUTPage();
+    }
+
+    toggleOriginalContent() {
+        this.changeOfView.toggleOriginalContent();
+    }
+
+    showOriginalContent(): Observable<boolean> {
+        return this.changeOfView.showOriginalContent();
+    }
+
 }

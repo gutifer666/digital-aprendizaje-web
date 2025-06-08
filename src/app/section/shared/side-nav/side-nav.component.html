@@ -34,14 +34,14 @@
             }
             <span>Digital Aprendizaje Web</span>
             <span class="toolbar-spacer"></span>
-            @if (changeOfView.isUTPage()) {
+            @if (isUTPage()) {
                 Vista Antigua
                 <button
                     type="button"
                     aria-label="Mostrar contenido original"
                     matIconButton
-                    (click)="changeOfView.toggleOriginalContent()"
-                    [class.active]="changeOfView.showOriginalContent() | async">
+                    (click)="toggleOriginalContent()"
+                    [class.active]="showOriginalContent() | async">
                     <mat-icon aria-label="Icono de contenido original">tv</mat-icon>
                 </button>
             }
