@@ -43,9 +43,6 @@ export class SideNavComponent implements OnInit {
     mainModules = MAIN_MODULES;
     moduleLessons = MODULE_LESSONS;
 
-    showOriginalContent$ = this.changeOfView.showOriginalContent$;
-
-
     ngOnInit() {
         // Detectar cambios en la ruta
         this.router.events.pipe(
