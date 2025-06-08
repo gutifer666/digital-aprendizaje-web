@@ -10,7 +10,7 @@ import {Observable} from 'rxjs';
 import {filter, map, shareReplay} from 'rxjs/operators';
 import {NavigationEnd, Router, RouterLink, RouterOutlet} from '@angular/router';
 import {MAIN_MODULES, MODULE_LESSONS} from '../../../content/domain/menu-items';
-import {Content} from '../../../content/infrastructure/service/content';
+import {ChangeOfView} from '../../../content/application/change-of-view';
 
 @Component({
   selector: 'app-side-nav',
@@ -30,7 +30,7 @@ import {Content} from '../../../content/infrastructure/service/content';
 export class SideNavComponent implements OnInit {
     private breakpointObserver = inject(BreakpointObserver);
     private router = inject(Router);
-    private content = inject(Content);
+    protected changeOfView = new ChangeOfView();
 
     isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
         .pipe(
@@ -43,7 +43,7 @@ export class SideNavComponent implements OnInit {
     mainModules = MAIN_MODULES;
     moduleLessons = MODULE_LESSONS;
 
-    showOriginalContent$ = this.content.showOriginalContent$;
+    showOriginalContent$ = this.changeOfView.showOriginalContent$;
 
 
     ngOnInit() {
@@ -77,14 +77,4 @@ export class SideNavComponent implements OnInit {
         return module?.title || this.currentRoute;
     }
 
-    isUTPage(): boolean {
-        const url = this.router.url;
-        const parts = url.split('/');
-        return parts.length >= 3 && parts[2]?.startsWith('ut');
-    }
-
-    toggleOriginalContent() {
-        this.content.toggle();
-        console.log('Toggling original content');
-    }
 }
