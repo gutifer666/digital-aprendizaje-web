@@ -1,4 +1,4 @@
-import {Component, inject} from '@angular/core';
+import {Component} from '@angular/core';
 import {AsyncPipe} from '@angular/common';
 import {ChangeOfView} from '../../../../content/application/change-of-view';
 
